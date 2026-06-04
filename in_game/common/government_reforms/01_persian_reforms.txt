@@ -1,0 +1,660 @@
+# =========================================================
+# Persianate Sultanate — Government Reform Tree
+#
+# Ages 1–3 of the post-Ilkhanid arc:
+#   Age 1 — what replaces the khan (the legitimacy crisis)
+#   Age 2 — the trifurcation (synthesis / Türk pole / Tazik pole
+#           / heterodox axis, with the universalist overlay)
+#   Age 3 — the Safavid fusion and its disciplining
+#
+# Conventions:
+#   - All reforms top-gated by `government = persianate_sultanate`
+#     (the government slot). Religious gates added where the
+#     reform is intrinsically Muslim / Shiʿi.
+#   - Mutual exclusivity via `potential = { NOT = has_reform = X }`.
+#   - One-shot adoption costs (stability hits, etc.) go in
+#     `on_activate`. Ongoing modifiers stay in `country_modifier`.
+#   - Magnitudes via `ez_*` script values in flavor_values.txt.
+# =========================================================
+
+
+# =========================================================
+# AGE 1 — BASELINE (auto-granted, not pickable)
+# =========================================================
+
+persianate_bureaucracy_reform = {
+	age = age_1_traditions
+	government = persianate_sultanate
+
+	country_modifier = {
+		country_cabinet_efficiency = 0.1
+		diwan_estate_target_satisfaction = 0.05
+		global_diwan_estate_power = 0.25
+		monthly_towards_centralization = 0.1
+		diwan_estate_allowed_in_cabinet = yes
+		amirs_estate_allowed_in_cabinet = no
+		# Command of the field armies is the amirs' exclusive prerogative
+		# in a baseline Persianate sultanate. The diwan may unlock its own
+		# right to lead through the Tazik Command of Arms privilege —
+		# at considerable cost to amir satisfaction.
+		amirs_estate_allowed_leading_military = yes
+		diwan_estate_allowed_leading_military = no
+		burghers_estate_allowed_leading_military = no
+		cultures_capacity = 1
+		# Demilitarization of the Sedentary Population
+		tax_income_efficiency = 0.1
+		diwan_estate_levy_size = -1
+		peasants_estate_levy_size = -0.85
+		global_max_urban_control = 0.15 # persianate states are built, at every level of their DNA, around the idea of cities as the main control centers. In persianate states, rural control collapses more readily, while urban control is more resilient.
+		global_max_rural_control = 0.05 # cadastral surveys.
+		global_estate_max_tax = 0.1 ## legitimately higher tax rates than euros.
+		## tribes are drawn from, not rural population.
+		tribes_estate_levy_size = 0.15
+	}
+
+	days = 0
+}
+
+
+# =========================================================
+# AGE 1 — THE LEGITIMACY TRIAD
+# In whose name is the khutba read and the sikka struck?
+# Pick one. Mutually exclusive.
+# =========================================================
+
+# In the name of the khan (the töre path). Chobanid–Jalayirid–
+# Timurid practice: a non-Chinggisid rules as regent for a
+# Chinggisid puppet. The fiction stabilizes — but you do not rule
+# in your own name, and the chancery feels it as a ceiling.
+chinggisid_regency = {
+	age = age_1_traditions
+	government = persianate_sultanate
+
+	potential = {
+		NOT = { has_reform = farr_i_izadi }
+		NOT = { has_reform = ghazi_sultanate }
+	}
+	locked = {
+		always = yes
+	}
+	country_modifier = {
+		tribes_estate_levy_size = 0.35
+		global_tribesmen_pop_growth = 0.2 # tribes rally
+		global_estate_target_satisfaction = 0.075 # doesn't rock the boat. for now.
+		stability_decay = -0.0001
+		monthly_legitimacy = 0.5 ## this is the cheapest, easiest legitimacy path, so it gets a big boost to reflect that. The legitimacy is very cheap by design, BUT you will eventually hit the downsides.
+		monthly_prestige = -0.2
+		global_max_control = -0.03 # the khan is the legal ruler, his name on every coin. You are a regent, a caretaker, a steward. You can never quite reach the full potential of the state under this borrowed mandate.
+		# The ceiling — the chancery cannot reach full stride under a
+		# borrowed mandate. Cancel the baseline's centralization push.
+		country_cabinet_efficiency = ez_reform_cabinet_malus
+		monthly_towards_decentralization = ez_reform_decentralization_push
+		monthly_towards_turk = 0.1
+	}
+
+	years = 0 # this is ... trivially easy to do, after all.
+}
+
+# Divine royal fortune — the mirror-for-princes path. You cease
+# to be a Turco-Mongol warlord and become shāh bearing the farr-i
+# īzadī, the Islamic-Persian synthesis the ulema themselves wrote
+# (Niẓām al-Mulk's Siyāsatnāma, Ṭūsī's Akhlāq-i Nāṣirī, Ghazālī's
+# Naṣīḥat al-Mulūk, later Davānī). Injuid–Muzaffarid–Kart practice.
+#
+# The friction is NOT theological — by 1337 farr, zill Allāh, and
+# Anūshīrvān-as-just-king are standard Islamic kingship doctrine,
+# praised in the very mirrors the clergy read and teach. The
+# friction is institutional: by what right do you crown yourself
+# when the only sanctioning authority is the ʿAbbāsid in Cairo,
+# and you have just bypassed him? And political: a settled Persian
+# shāh has no place for the steppe aristocracy that fights his wars.
+farr_i_izadi = {
+	age = age_1_traditions
+	government = persianate_sultanate
+
+	potential = {
+		NOT = { has_reform = chinggisid_regency }
+		NOT = { has_reform = ghazi_sultanate }
+	}
+
+	country_modifier = {
+		monthly_legitimacy = -0.25 ## this is a HARD legitimacy path. You are going to have to stick with it, pay HIGH cost of court to legitimize.
+		stability_decay = 0.05 # the realm bleeds while the kingship doctrine is being established — the project is its own stress.
+		monthly_towards_centralization = 0.05
+		monthly_towards_tazik = 0.05
+		global_max_urban_control = ez_diwan_rural_bonus
+
+		# The natural constituency of mirror-for-princes kingship
+		# rallies: the chancery sees its own theory of the state
+		# vindicated (this IS the doctrine of their own books); the
+		# burghers see their cities affirmed as the seat of justice.
+		diwan_estate_target_satisfaction = ez_priv_sat_large
+		burghers_estate_target_satisfaction = ez_priv_sat_major
+
+		# The price: the steppe-coded layers reject a crown that owes
+		# nothing to them — the amirs have no place in a settled shāh's
+		# court, the tribes see a state that does not want them.
+		amirs_estate_target_satisfaction = -0.15
+		tribes_estate_target_satisfaction = -0.10
+		monthly_amirs_estate_rebel_growth = 0.005
+		monthly_tribes_estate_rebel_growth = 0.005
+
+		# The jurists' grumble is quiet and institutional, not
+		# theological: a small, persistent unease about a sultan who
+		# declares himself God's shadow without caliphal investiture.
+		clergy_estate_target_satisfaction = -0.05
+
+		# The wider world's hostility is political-status, not
+		# religious: the Caliph in Cairo resents the bypass, rival
+		# amirs see a non-Borjigin claiming sovereign kingship as a
+		# status threat. Targeted CB hostility from chinggisid_regency
+		# / Türk-leaning persianate sultanates belongs in a separate
+		# antagonism_against trigger, not on this country_modifier.
+		antagonism_received_modifier = 0.15
+	}
+
+	years = 0 # this is a CLAIM.
+}
+
+# Sovereignty under the caliphal shadow — the Islamic exit.
+# Legitimacy through ghazā, the defense and expansion of the faith.
+# Frontier-marcher; mobile; not chancery-coded.
+ghazi_sultanate = {
+	age = age_1_traditions
+	government = persianate_sultanate
+
+	potential = {
+		religion_group = religion_group:muslim
+		NOT = { has_reform = chinggisid_regency }
+		NOT = { has_reform = farr_i_izadi }
+	}
+
+	country_modifier = {
+		# Caliphal sanction reads as a quiet, steady legitimacy stream —
+		# nothing like the Chinggisid pump, but real, and earned through
+		# ghazā rather than borrowed through someone else's seal.
+		potential_trigger = {
+			custom_tooltip = {
+				text = the_refuge_of_religion.tt
+			}
+		}
+		monthly_legitimacy = 0.1
+		antagonism_received_modifier = -0.10
+		global_manpower_modifier = 0.10
+		land_morale = 0.05
+		tolerance_own = 1
+
+		# The Caliphal handshake pays in ulema loyalty. The ghazi sultan
+		# is the clergy's preferred patron — the qadi reads his khutba
+		# without flinching, the madrasas accept his waqf.
+		clergy_estate_target_satisfaction = ez_priv_sat_large
+		global_clergy_estate_power = 0.50
+
+		# Frontier glory: raids translate to prestige and the battle
+		# tradition that grounds a future Ṣāḥib-Qirā1n claim. The Timurid
+		# universalist overlay sits on top of exactly these foundations —
+		# Sufi/Sunni legitimacy fused with Mongol conjunction astrology.
+
+		## this needs an auto modifier plus a tool tip.
+		monthly_prestige = 0.05
+		army_tradition_from_battle = 0.15
+
+		monthly_towards_turk = 0.05
+		monthly_towards_decentralization = 0.05
+		monthly_towards_spiritualist = 0.1
+		monthly_towards_jurisprudence = 0.1
+
+	}
+
+	years = 1 # claim but needs correspondance with the Caliph, so not instant.
+}
+
+
+# =========================================================
+# AGE 1 — THE CIRCLE OF JUSTICE
+# The settled state's own theory of itself (Ṭūsī, Davānī).
+# Not exclusive with the triad — but reads as the Tazik
+# companion to farr_i_izadi.
+# =========================================================
+
+circle_of_equity_reform = {
+	age = age_1_traditions
+	government = persianate_sultanate
+
+	# The dāʾira-yi ʿadālat does not sit comfortably with a borrowed
+	# Chinggisid mandate — it is the settled state's own justification.
+	potential = {
+		NOT = { has_reform = chinggisid_regency }
+	}
+
+	country_modifier = {
+		tax_income_efficiency = 0.15
+		global_manpower_modifier = 0.10
+		court_spending_cost_modifier = 0.10
+		peasants_estate_target_satisfaction = 0.05
+		monthly_towards_centralization = 0.05
+	}
+
+	years = 10
+}
+
+
+# =========================================================
+# AGE 2 — THE TRIFURCATION
+# Post-Ilkhanid Iran splits along the dyad. Three primary
+# state-forms; mutually exclusive.
+# =========================================================
+
+# The Shāhrukh / Herat model. Drops the puppet khan, subordinates
+# yasa to sharīʿa, Islamicizes-and-Persianizes the Timurid state.
+# Mechanically: dampens the Türk/Tazik drift by pushing both equally.
+timurid_synthesis = {
+	age = age_2_renaissance
+	government = persianate_sultanate
+
+	potential = {
+		NOT = { has_reform = turkmen_confederation }
+		NOT = { has_reform = iranian_kingship }
+	}
+
+	country_modifier = {
+		amirs_estate_target_satisfaction = ez_priv_sat_major
+		diwan_estate_target_satisfaction = ez_priv_sat_major
+		global_amirs_estate_power = 0.10
+		global_diwan_estate_power = 0.10
+		country_cabinet_efficiency = 0.05
+		cultural_tradition_modifier = 0.05
+		global_max_urban_control = ez_diwan_urban_bonus
+		# Dyad-friction reducer — small equal pulls cancel as drift.
+		monthly_towards_turk = 0.025
+		monthly_towards_tazik = 0.025
+		monthly_towards_centralization = 0.05
+	}
+
+	years = 10
+}
+
+# Rule as a tribal federation — the Aq/Qara Qoyunlu ulus.
+# Uzun Ḥasan is the model. Tribes stay tribesmen.
+turkmen_confederation = {
+	age = age_2_renaissance
+	government = persianate_sultanate
+
+	potential = {
+		NOT = { has_reform = timurid_synthesis }
+		NOT = { has_reform = iranian_kingship }
+	}
+
+	country_modifier = {
+		army_heavy_cavalry_power = 0.15
+		army_light_cavalry_power = 0.15
+		land_morale = 0.05
+		global_amirs_estate_power = 0.20
+		amirs_estate_target_satisfaction = ez_priv_sat_major
+		amirs_estate_levy_size = 0.20
+		tribes_estate_levy_size = 0.20
+		block_tribal_promotion = yes
+		global_tribesmen_assimilation_blocked = yes
+		monthly_towards_turk = 0.10
+		monthly_towards_decentralization = 0.10
+		global_max_rural_control = ez_amir_rural_malus
+	}
+
+	years = 10
+}
+
+# A settled Persian dynasty on a compact realm — Kart, Muzaffarid,
+# Injuid. No Turco-Mongol military aristocracy on top.
+# Requires that you have already declared farr in Age 1.
+iranian_kingship = {
+	age = age_2_renaissance
+	government = persianate_sultanate
+
+	potential = {
+		has_reform = farr_i_izadi
+		NOT = { has_reform = timurid_synthesis }
+		NOT = { has_reform = turkmen_confederation }
+	}
+
+	country_modifier = {
+		tax_income_efficiency = 0.10
+		country_cabinet_efficiency = 0.10
+		monthly_legitimacy = ez_reform_legitimacy_minor
+		global_diwan_estate_power = 0.15
+		diwan_estate_target_satisfaction = ez_priv_sat_major
+		monthly_towards_centralization = 0.10
+		monthly_towards_tazik = 0.10
+		global_max_urban_control = ez_diwan_urban_bonus
+		# The compact-realm limitation: weak rural reach (no tribal
+		# cavalry to police the country) and a manpower ceiling.
+		global_max_rural_control = ez_amir_rural_malus_small
+		global_manpower_modifier = -0.10
+		army_heavy_cavalry_power = -0.10
+	}
+
+	years = 10
+}
+
+
+# =========================================================
+# AGE 2 — HETERODOX AXIS
+# The Mushaʿshaʿ–Ḥurūfī–Sarbadār apocalyptic alternative.
+# Not strictly exclusive with the trifurcation — overlays it.
+# Thematic bridge to murshid_i_kamil in Age 3.
+# =========================================================
+
+mushasha_messianism = {
+	age = age_2_renaissance
+	government = persianate_sultanate
+
+	potential = {
+		religion_group = religion_group:muslim
+	}
+
+	country_modifier = {
+		land_morale = ez_reform_morale_big
+		global_manpower_modifier = 0.10
+		monthly_towards_centralization = 0.05 # charismatic concentration
+		tolerance_own = -1
+		global_clergy_estate_power = -0.15
+		clergy_estate_target_satisfaction = -0.10
+		tolerance_heretic = 2
+		stability_cost = 0.10
+	}
+
+	years = 5
+}
+
+
+# =========================================================
+# AGE 2 — UNIVERSALIST OVERLAY
+# Timur's astrological-conqueror claim. Sits on top of
+# whichever primary state-form you chose; not exclusive.
+# =========================================================
+
+sahib_qiran = {
+	age = age_2_renaissance
+	government = persianate_sultanate
+
+	country_modifier = {
+		land_morale = 0.05
+		army_tradition_from_battles = 0.25
+		monthly_legitimacy = ez_reform_legitimacy_minor
+		antagonism_received_modifier = -0.05
+		monthly_war_exhaustion = -0.02
+		stability_cost = -0.05
+	}
+
+	years = 5
+}
+
+
+# =========================================================
+# AGE 3 — MILITARY DILEMMA (the spine)
+# Otlukbeli (1473) and Chaldirān (1514) make the cavalry/
+# gunpowder dilemma bleed. Qizilbash ⟷ Ghulam is the central
+# rivalry; the gunpowder corps coexists with either.
+# =========================================================
+
+# The Türk cavalry aristocracy. Heart of early Safavid power
+# and the qizilbash khans of Anatolia and Azerbaijan.
+qizilbash_aristocracy_reform = {
+	age = age_3_discovery
+	government = persianate_sultanate
+
+	potential = {
+		religion = religion:shia
+		NOT = { has_reform = ghulam_system_reform }
+	}
+
+	country_modifier = {
+		army_heavy_cavalry_power = 0.20
+		army_light_cavalry_power = 0.20
+		land_morale = 0.10
+		global_amirs_estate_power = 0.20
+		amirs_estate_target_satisfaction = ez_priv_sat_major
+		tolerance_own = -1
+		global_max_rural_control = ez_amir_rural_malus
+		monthly_towards_turk = 0.10
+		monthly_towards_decentralization = 0.10
+	}
+
+	years = 5
+}
+
+# The gunpowder answer — muskets and field artillery. Anchored
+# on Chaldirān-as-trauma. Coexists with either qizilbash or
+# ghulam; centralizing, urban-coded, expensive, and resented
+# by the cavalry estates.
+tofangchi_topchi_corps = {
+	age = age_3_discovery
+	government = persianate_sultanate
+
+	country_modifier = {
+		army_infantry_power = 0.15
+		army_artillery_power = 0.15
+		discipline = 0.05
+		army_maintenance_efficiency = -0.10
+		global_amirs_estate_power = -0.10
+		amirs_estate_target_satisfaction = -0.05
+		global_max_urban_control = ez_diwan_urban_bonus
+		monthly_towards_centralization = 0.05
+		monthly_towards_tazik = 0.05
+	}
+
+	years = 5
+}
+
+# Abbas I's Caucasian slave-corps. Built specifically to break
+# qizilbash power. Salaried, loyal to the shah alone, staffed
+# by Georgian/Circassian/Armenian converts. Mutually exclusive
+# with qizilbash by design.
+ghulam_system_reform = {
+	age = age_3_discovery
+	government = persianate_sultanate
+
+	potential = {
+		religion_group = religion_group:muslim
+		NOT = { has_reform = qizilbash_aristocracy_reform }
+	}
+
+	country_modifier = {
+		discipline = 0.05
+		global_manpower_modifier = 0.15
+		army_maintenance_efficiency = -0.15
+		global_amirs_estate_power = -0.25
+		amirs_estate_target_satisfaction = -0.10
+		global_amirs_estate_power = -0.15
+		global_diwan_estate_power = 0.20
+		diwan_estate_target_satisfaction = ez_priv_sat_major
+		monthly_towards_quality = 0.10
+		monthly_towards_centralization = 0.10
+		monthly_towards_tazik = 0.10
+	}
+
+	years = 5
+}
+
+
+# =========================================================
+# AGE 3 — RELIGIOUS SETTLEMENT
+# Twelver imposition vs Sunni counter-reform. State-church
+# institutionalization. Permanent break from the Chinggisid
+# fiction is implicit in tashayyu (the Safavids exited it).
+# =========================================================
+
+# The Safavid imposition of 1501. Long-term unity gain at the
+# cost of an immediate stability hit — you are converting a
+# Sunni majority by force, importing Jabal ʿĀmil jurists to
+# staff an establishment that does not yet exist.
+imami_tashayyu = {
+	age = age_3_discovery
+	government = persianate_sultanate
+
+	potential = {
+		religion_group = religion_group:muslim
+		NOT = { has_reform = sunni_orthodoxy }
+		NOT = { has_reform = chinggisid_regency }
+	}
+
+	on_activate = {
+		add_stability = -1
+	}
+
+	country_modifier = {
+		tolerance_own = 3
+		tolerance_heretic = -1
+		monthly_legitimacy = ez_reform_legitimacy_minor
+		monthly_towards_centralization = 0.05
+		global_clergy_estate_power = 0.10
+		clergy_estate_target_satisfaction = ez_priv_sat_major
+	}
+
+	years = 10
+}
+
+# The Sunni counter-reform. The Timurid / Shaybanid road —
+# institutionalized Ḥanafī orthodoxy. Keeps the choice live
+# for non-Safavid Persianate players.
+sunni_orthodoxy = {
+	age = age_3_discovery
+	government = persianate_sultanate
+
+	potential = {
+		religion_group = religion_group:muslim
+		NOT = { religion = religion:shia }
+		NOT = { has_reform = imami_tashayyu }
+	}
+
+	country_modifier = {
+		tolerance_own = 2
+		tolerance_heretic = -1
+		global_clergy_estate_power = 0.15
+		clergy_estate_target_satisfaction = ez_priv_sat_major
+		stability_cost = -0.05
+		monthly_towards_centralization = 0.05
+	}
+
+	years = 10
+}
+
+# The ṣadr office — state-church bureaucratized. Salaried qadis,
+# state-supervised waqf. The clergy paid by the throne is happy
+# but tamed.
+sadr_judiciary_reform = {
+	age = age_3_discovery
+	government = persianate_sultanate
+
+	potential = {
+		religion_group = religion_group:muslim
+	}
+
+	country_modifier = {
+		tolerance_own = 1
+		global_diwan_estate_power = 0.20
+		global_clergy_estate_power = -0.15
+		clergy_estate_target_satisfaction = ez_priv_sat_major
+		monthly_towards_centralization = 0.05
+		monthly_towards_tazik = 0.05
+	}
+
+	years = 5
+}
+
+
+# =========================================================
+# AGE 3 — MESSIANIC FUSION
+# The Safavid cohesion reform — Ismāʿīl I as murshid-i kāmil
+# commanding qizilbash murīds. Pairs with the apocalyptic
+# legacy from Age 2; thematically what ghulam + sadr later
+# supersede when they discipline the fusion.
+# =========================================================
+
+murshid_i_kamil = {
+	age = age_3_discovery
+	government = persianate_sultanate
+
+	potential = {
+		religion = religion:shia
+		NOT = { has_reform = chinggisid_regency }
+	}
+
+	on_activate = {
+		add_stability = -1
+	}
+
+	country_modifier = {
+		land_morale = ez_reform_morale_big
+		monthly_legitimacy = ez_reform_legitimacy_major
+		amirs_estate_target_satisfaction = ez_priv_sat_huge
+		global_amirs_estate_power = 0.15
+		global_clergy_estate_power = -0.15
+		clergy_estate_target_satisfaction = -0.10
+		tolerance_own = -1
+		stability_cost = 0.10
+		cultural_influence_modifier = 0.05
+		monthly_towards_turk = 0.05
+	}
+
+	years = 5
+}
+
+
+# =========================================================
+# AGE 3 — LAND POLITICS
+# Soyurghal (feudal drift) ⟷ Khassa (crown demesne).
+# The land-political tension partner pair.
+# =========================================================
+
+# Hereditary, tax-immune, administratively-immune grants to
+# nobles and clergy. The drift toward fragmentation.
+soyurghal_grants_reform = {
+	age = age_3_discovery
+	government = persianate_sultanate
+
+	potential = {
+		NOT = { has_reform = khassa_crown_demesne }
+	}
+
+	country_modifier = {
+		amirs_estate_target_satisfaction = ez_priv_sat_major
+		global_amirs_estate_power = 0.10
+		clergy_estate_target_satisfaction = ez_priv_sat_major
+		global_clergy_estate_power = 0.10
+		tax_income_efficiency = -0.10
+		global_max_rural_control = ez_amir_rural_malus
+		province_integration_speed = -0.10
+		monthly_towards_decentralization = 0.10
+		monthly_towards_turk = 0.05
+	}
+
+	years = 5
+}
+
+# Abbas I's conversion of mamalik (provincial / governor) land
+# into khāṣṣa (crown demesne) administered by ghulams. The rare
+# reform that *raises* rural control — the crown directly runs
+# the country it has just seized.
+khassa_crown_demesne = {
+	age = age_3_discovery
+	government = persianate_sultanate
+
+	potential = {
+		NOT = { has_reform = soyurghal_grants_reform }
+		NOT = { has_reform = chinggisid_regency }
+	}
+
+	country_modifier = {
+		tax_income_efficiency = 0.15
+		global_diwan_estate_power = 0.15
+		diwan_estate_target_satisfaction = ez_priv_sat_major
+		global_amirs_estate_power = -0.20
+		amirs_estate_target_satisfaction = -0.10
+		global_amirs_estate_power = -0.10
+		global_max_rural_control = ez_khassa_rural_bonus
+		monthly_towards_centralization = 0.10
+		monthly_towards_tazik = 0.10
+	}
+
+	years = 5
+}

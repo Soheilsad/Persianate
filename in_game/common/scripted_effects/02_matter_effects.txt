@@ -1,0 +1,433 @@
+# Scripted effects for the Matter of Tork / Matter of Tazik disasters.
+# Design spec: docs/design/eranzamin_plan.md §19.7 (firing structure).
+#
+# Pattern: pre-defined dormant breakaway tags (BTC, BUR — see country
+# definitions) are released into a civil war via create_rebel +
+# start_civil_war. Tribal-or urban-coded cores migrate to the rebel.
+
+# ---Consolidation-months counter (gate for matter_of_X_can_start) -------
+# Ticks up monthly while the contender is above the territorial gate.
+# Resets to 0 the first month they fall below. Read by
+# is_eranzamin_consolidation_sustained via var:eranzamin_consolidation_months.
+
+eranzamin_maintain_consolidation_counter = {
+	if = {
+		limit = { is_eranzamin_territorial_gate_met = yes }
+		if = {
+			limit = { NOT = { has_variable = eranzamin_consolidation_months } }
+			set_variable = { name = eranzamin_consolidation_months value = 0 }
+		}
+		change_variable = { name = eranzamin_consolidation_months add = 1 }
+	}
+	else = {
+		if = {
+			limit = { has_variable = eranzamin_consolidation_months }
+			set_variable = { name = eranzamin_consolidation_months value = 0 }
+		}
+	}
+}
+
+# ---Progress meter helpers ----------------------------------------------
+
+matter_initialize_progress = {
+	# Called from disaster on_start. Establishes the progress counter
+	# and the threshold-fired flags.
+	if = {
+		limit = { NOT = { has_variable = matter_progress } }
+		set_variable = { name = matter_progress value = 0 }
+	}
+	else = {
+		set_variable = { name = matter_progress value = 0 }
+	}
+	# Clear any old threshold-fired flags from a previous run (in case
+	# re-firing is ever enabled — defensive).
+	remove_variable = matter_25_fired
+	remove_variable = matter_50_fired
+	remove_variable = matter_75_fired
+	remove_variable = co_opt_track
+	remove_variable = petition_refused
+}
+
+matter_clear_progress = {
+	# Called from disaster on_end.
+	if = {
+		limit = { has_variable = matter_progress }
+		remove_variable = matter_progress
+	}
+}
+
+# ---Tork stressor tick (sum of monthly contributions) -------------------
+# Per §19.4. Each branch adds to matter_progress when active. Decay
+# branches subtract. Net per month is the difference. Values stored
+# *100 so we can use integer add (EU5 variable arithmetic is cleaner
+# with integers). At 100x scale, +10 means +0.10 progress points/mo
+# at the design scale where 100 = disaster fire.
+
+matter_of_tork_monthly_tick = {
+	# Continuous stressors
+	if = { limit = { societal_value:turk_vs_tazik >= 30 } change_variable = { name = matter_progress add = 10 } }
+	if = { limit = { modifier:diwan_estate_target_satisfaction >= 0.80 } change_variable = { name = matter_progress add = 8 } }
+	if = { limit = { modifier:amirs_estate_target_satisfaction <= 0.30 } change_variable = { name = matter_progress add = 15 } }
+	# Decay
+	if = { limit = { has_estate_privilege = estate_privilege:amirs_tribal_hosts } change_variable = { name = matter_progress add = -5 } }
+	if = { limit = { modifier:amirs_estate_target_satisfaction >= 0.70 } change_variable = { name = matter_progress add = -8 } }
+	# Clamp progress to [0, 100]
+	if = { limit = { var:matter_progress < 0 } set_variable = { name = matter_progress value = 0 } }
+	if = { limit = { var:matter_progress > 100 } set_variable = { name = matter_progress value = 100 } }
+}
+
+matter_of_tazik_monthly_tick = {
+	if = { limit = { societal_value:turk_vs_tazik <= -30 } change_variable = { name = matter_progress add = 10 } }
+	if = { limit = { modifier:amirs_estate_target_satisfaction >= 0.80 } change_variable = { name = matter_progress add = 8 } }
+	if = { limit = { modifier:diwan_estate_target_satisfaction <= 0.30 } change_variable = { name = matter_progress add = 15 } }
+	# Decay
+	if = { limit = { modifier:diwan_estate_target_satisfaction >= 0.70 } change_variable = { name = matter_progress add = -8 } }
+	# Clamp
+	if = { limit = { var:matter_progress < 0 } set_variable = { name = matter_progress value = 0 } }
+	if = { limit = { var:matter_progress > 100 } set_variable = { name = matter_progress value = 100 } }
+}
+
+# ---Threshold dispatch (called from on_monthly each tick) ---------------
+
+matter_of_tork_threshold_dispatch = {
+	# Fire the 25-threshold event once.
+	if = {
+		limit = {
+			var:matter_progress >= 25
+			NOT = { has_variable = matter_25_fired }
+		}
+		set_variable = matter_25_fired
+		trigger_event_non_silently= matter_of_tork.25
+	}
+	if = {
+		limit = {
+			var:matter_progress >= 50
+			NOT = { has_variable = matter_50_fired }
+		}
+		set_variable = matter_50_fired
+		trigger_event_non_silently= matter_of_tork.50
+	}
+	if = {
+		limit = {
+			var:matter_progress >= 75
+			NOT = { has_variable = matter_75_fired }
+		}
+		set_variable = matter_75_fired
+		trigger_event_non_silently= matter_of_tork.75
+	}
+	if = {
+		limit = {
+			var:matter_progress >= 100
+			NOT = { has_variable = matter_100_fired }
+		}
+		set_variable = matter_100_fired
+		trigger_event_non_silently= matter_of_tork.100
+	}
+}
+
+matter_of_tazik_threshold_dispatch = {
+	if = {
+		limit = {
+			var:matter_progress >= 25
+			NOT = { has_variable = matter_25_fired }
+		}
+		set_variable = matter_25_fired
+		trigger_event_non_silently= matter_of_tazik.25
+	}
+	if = {
+		limit = {
+			var:matter_progress >= 50
+			NOT = { has_variable = matter_50_fired }
+		}
+		set_variable = matter_50_fired
+		trigger_event_non_silently= matter_of_tazik.50
+	}
+	if = {
+		limit = {
+			var:matter_progress >= 75
+			NOT = { has_variable = matter_75_fired }
+		}
+		set_variable = matter_75_fired
+		trigger_event_non_silently= matter_of_tazik.75
+	}
+	if = {
+		limit = {
+			var:matter_progress >= 100
+			NOT = { has_variable = matter_100_fired }
+		}
+		set_variable = matter_100_fired
+		trigger_event_non_silently= matter_of_tazik.100
+	}
+	# Safavid synthesis override — auto-resolves the disaster if the
+	# 75/75/0.80 thresholds are met while it's running. Per §20.4.
+	if = {
+		limit = {
+			safavid_synthesis_thresholds_met = yes
+			NOT = { has_variable = matter_synthesis_override }
+		}
+		set_variable = matter_synthesis_override
+		trigger_event_non_silently= matter_of_tazik.200
+	}
+}
+
+# ---Breakaway spawn (Matter of Tork firing) ----------------------------
+
+spawn_turkmen_breakaway = {
+	# Per §19.7: spawn the Türkmen Confederation breakaway tag as a
+	# civil-war rebel. Inherit 30-50% of player's tribal-pop cores.
+	# First implementation uses create_rebel + start_civil_war following
+	# horde_civil_war.txt patterns; pop allegiance shift per
+	# succession_crisis.txt:220 pattern.
+	create_rebel = {
+		category = pretender
+		name = matter_of_tork_breakaway
+		save_scope_as = matter_breakaway_scope
+	}
+	set_variable = {
+		name = matter_breakaway_ref
+		value = scope:matter_breakaway_scope
+	}
+	# Transfer allegiance of pops in tribal-pastoral locations. Engine
+	# auto-selects ~30-50% of provinces based on rebel weight after
+	# allegiance shifts.
+	every_province = {
+		limit = { is_tribal_pastoral_location = yes }
+		random = {
+			chance = 50
+			every_location_in_province = {
+				every_pop = {
+					limit = {
+						OR = {
+							pop_type = pop_type:tribesmen
+							AND = {
+								pop_type = pop_type:nobles
+								OR = {
+									culture = culture:turkoman_culture
+									culture ?= {
+										has_culture_group = culture_group:mongol_group
+									}
+								}
+							}
+						}
+					}
+					change_pop_allegiance = scope:matter_breakaway_scope
+				}
+			}
+		}
+	}
+	# Initiate the civil war.
+	scope:matter_breakaway_scope = {
+		start_civil_war = {}
+	}
+	# Track war duration in months so the Co-opt resolution can check
+	# the ≥ 36-month gate. Counter is incremented in the disaster's
+	# on_monthly while the civil war is active.
+	set_variable = { name = matter_war_months value = 0 }
+}
+
+# ---Breakaway spawn (Matter of Tazik firing) ---------------------------
+
+spawn_urban_breakaway = {
+	# §19.7 Matter of Tazik. Urban/theocratic breakaway. Inherit 30-50%
+	# of most urban-developed Persianate cores. Religious unrest cascade
+	# rolled in the threshold-100 event.
+	create_rebel = {
+		category = pretender
+		name = matter_of_tazik_breakaway
+		save_scope_as = matter_breakaway_scope
+	}
+	set_variable = {
+		name = matter_breakaway_ref
+		value = scope:matter_breakaway_scope
+	}
+	every_province = {
+		limit = { is_urban_diwan_capable_location = yes }
+		random = {
+			chance = 40
+			every_controlled_location = {
+				every_pop = {
+					limit = {
+						OR = {
+							pop_type = pop_type:burghers
+							pop_type = pop_type:clergy
+							AND = {
+								pop_type = pop_type:nobles
+								culture ?= {
+									has_culture_group = culture_group:iranic_group
+								}
+							}
+						}
+					}
+					change_pop_allegiance = scope:matter_breakaway_scope
+				}
+			}
+		}
+	}
+	scope:matter_breakaway_scope = {
+		start_civil_war = {}
+	}
+	set_variable = { name = matter_war_months value = 0 }
+}
+
+# ---War-duration tick (called from disaster on_monthly while in CW) ---
+
+matter_war_duration_tick = {
+	if = {
+		limit = {
+			has_variable = matter_war_months
+			in_civil_war = yes
+		}
+		change_variable = { name = matter_war_months add = 1 }
+	}
+}
+
+# ---Resolution polling (called from disaster on_monthly) ---------------
+# Detects war-end and routes to Suppress (won, no breakaway), Concede
+# (white peace, breakaway still exists), or Co-opt (only fires if the
+# co_opt_track flag is set and war ≥36mo — gated by the event triggers).
+
+matter_of_tork_resolution_poll = {
+	# Co-opt event (502) is checked first — fires only if co_opt_track,
+	# war ongoing, ≥36mo.
+	if = {
+		limit = {
+			in_civil_war = yes
+			has_variable = co_opt_track
+			has_variable = matter_war_months
+			var:matter_war_months >= 36
+			NOT = { has_variable = matter_coopt_offered }
+		}
+		set_variable = matter_coopt_offered
+		trigger_event_non_silently= matter_of_tork.502
+	}
+	# War ended — route to Suppress or Concede
+	if = {
+		limit = {
+			in_civil_war = no
+			has_variable = matter_of_tork_fired
+			NOT = { has_variable = matter_of_tork_resolved }
+			NOT = { has_variable = matter_of_tork_resolved_by_synthesis }
+		}
+		if = {
+			limit = { NOT = { exists = var:matter_breakaway_ref } }
+			trigger_event_non_silently= matter_of_tork.500
+		}
+		else = {
+			trigger_event_non_silently= matter_of_tork.501
+		}
+	}
+}
+
+matter_of_tazik_resolution_poll = {
+	if = {
+		limit = {
+			in_civil_war = yes
+			has_variable = co_opt_track
+			has_variable = matter_war_months
+			var:matter_war_months >= 36
+			NOT = { has_variable = matter_coopt_offered }
+		}
+		set_variable = matter_coopt_offered
+		trigger_event_non_silently= matter_of_tazik.502
+	}
+	if = {
+		limit = {
+			in_civil_war = no
+			has_variable = matter_of_tazik_fired
+			NOT = { has_variable = matter_of_tazik_resolved }
+			NOT = { has_variable = matter_of_tazik_resolved_by_synthesis }
+		}
+		if = {
+			limit = { NOT = { exists = var:matter_breakaway_ref } }
+			trigger_event_non_silently= matter_of_tazik.500
+		}
+		else = {
+			trigger_event_non_silently= matter_of_tazik.501
+		}
+	}
+}
+
+# ---Resolution-event applies -------------------------------------------
+
+# §19.8 Suppress (after Matter of Tork) — Tazik-coded polity won
+matter_of_tork_apply_suppress = {
+	add_country_modifier = {
+		modifier = pacified_pastures
+		years = -1
+		mode = add_and_extend
+	}
+	# Hard one-shot axis push toward Tazik per §19.8 design update.
+	change_societal_value = { type = turk_vs_tazik value = 25 }
+	set_variable = matter_of_tork_resolved
+	remove_variable = matter_of_tork_fired
+}
+
+matter_of_tork_apply_concede = {
+	add_country_modifier = {
+		modifier = dual_realm_of_eranzamin
+		years = -1
+		mode = add_and_extend
+	}
+	# Axis pinned ±15 — handled by periodic axis-correction effect
+	# checked in the eranzamin situation on_monthly.
+	set_variable = matter_of_tork_resolved
+	set_variable = matter_dual_realm_active
+	remove_variable = matter_of_tork_fired
+}
+
+matter_of_tork_apply_co_opt = {
+	add_country_modifier = {
+		modifier = convergent_eranzamin
+		years = -1
+		mode = add_and_extend
+	}
+	set_variable = matter_of_tork_resolved
+	set_variable = matter_convergent_active
+	remove_variable = matter_of_tork_fired
+}
+
+# §19.8 Suppress (after Matter of Tazik) — Türk-coded polity won
+matter_of_tazik_apply_suppress = {
+	add_country_modifier = {
+		modifier = praetorian_eranzamin
+		years = -1
+		mode = add_and_extend
+	}
+	change_societal_value = { type = turk_vs_tazik value = -25 }
+	set_variable = matter_of_tazik_resolved
+	remove_variable = matter_of_tazik_fired
+}
+
+matter_of_tazik_apply_concede = {
+	add_country_modifier = {
+		modifier = dual_realm_of_eranzamin
+		years = -1
+		mode = add_and_extend
+	}
+	set_variable = matter_of_tazik_resolved
+	set_variable = matter_dual_realm_active
+	remove_variable = matter_of_tazik_fired
+}
+
+matter_of_tazik_apply_co_opt = {
+	add_country_modifier = {
+		modifier = convergent_eranzamin
+		years = -1
+		mode = add_and_extend
+	}
+	set_variable = matter_of_tazik_resolved
+	set_variable = matter_convergent_active
+	remove_variable = matter_of_tazik_fired
+}
+
+# §20.4 Qizilbash Synthesis override
+matter_apply_qizilbash_synthesis = {
+	add_country_modifier = {
+		modifier = qizilbash_synthesis
+		years = -1
+		mode = add_and_extend
+	}
+	set_variable = matter_of_tork_resolved_by_synthesis
+	set_variable = matter_of_tazik_resolved_by_synthesis
+	# Disaster will end via can_end trigger once the flag is set.
+}

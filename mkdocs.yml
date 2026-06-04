@@ -1,0 +1,81 @@
+site_name: The Persianate World — Wiki
+site_description: Player wiki for The Persianate World, a mod for Europa Universalis V.
+site_url: https://soheilsad.github.io/3634535722/
+repo_url: https://github.com/Soheilsad/3634535722
+repo_name: Soheilsad/3634535722
+edit_uri: edit/main/wiki/
+
+docs_dir: wiki
+site_dir: site
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.action.edit
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - Home: index.md
+  - Concepts:
+      - Overview: concepts/index.md
+      - The Persianate Sultanate: concepts/persianate-sultanate.md
+      - Türk vs Tāzīk: concepts/turk-vs-tazik.md
+      - The Erānzamīn situation: concepts/eranzamin-situation.md
+      - The Dīwān estate: concepts/diwan-estate.md
+      - The Amirs estate: concepts/amirs-estate.md
+      - Estate privileges: concepts/estate-privileges.md
+      - Government reforms: concepts/government-reforms.md
+      - The Mazālim court: concepts/mazalim-court.md
+      - Buildings: concepts/buildings.md
+      - Military system: concepts/military-system.md
+      - Starting the game: concepts/starting-the-game.md

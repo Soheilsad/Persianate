@@ -1,0 +1,81 @@
+# encourage_pastoralism = {
+# 	ability = mil
+# 	icon = settle_tribesmen
+	
+# 	potential = {
+# 		has_estate = amirs_estate
+# 	}
+	
+# 	select_trigger = {
+# 		looking_for_a = area
+# 		source = actor
+# 		target_flag = selected_area
+		
+# 		visible = {
+# 			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = encourage_pastoralism interaction_target = selected_area } }
+# 		}
+		
+# 		name = "encourage_pastoralism_select_area"
+		
+# 		map_color = {
+# 			lerp = {
+# 				min_color = define:NMapColors|MAP_COLOR_LOW
+# 				max_color = define:NMapColors|MAP_COLOR_HIGH
+# 				factor = local_tribesmen_desired_pop
+# 			}
+# 		}
+# 	}
+	
+# 	location_modifier = {
+# 		local_tribesmen_desired_pop = 0.15
+# 		local_peasants_desired_pop = -0.15
+# 		local_food_capacity_modifier = -0.10
+# 		local_amirs_estate_power = 0.10
+# 	}
+	
+# 	map_marker = {
+# 		show_for_owner = yes
+# 	}
+# }
+
+# assess_provincial_deftar = {
+# 	ability = adm
+# 	icon = taluqdar_tax_collection
+	
+# 	potential = {
+# 		has_estate = diwan_estate
+# 	}
+	
+# 	select_trigger = {
+# 		looking_for_a = area
+# 		source = actor
+# 		target_flag = selected_area
+		
+# 		visible = {
+# 			"area_average_control(scope:actor)" < 0.90
+# 			NOT = { cabinet_already_performing_same_task_on_target = { cabinet_action = assess_provincial_deftar interaction_target = selected_area } }
+# 		}
+		
+# 		name = "assess_deftar_select_area"
+		
+# 		map_color = {
+# 			lerp = {
+# 				min_color = define:NMapColors|MAP_COLOR_LOW
+# 				max_color = define:NMapColors|MAP_COLOR_HIGH
+# 				factor = local_control
+# 			}
+# 		}
+# 	}
+	
+# 	location_modifier = {
+# 		local_integration_speed_modifier = 0.50
+# 		local_monthly_control = 0.005
+# 		local_tax_income_efficiency = 0.15
+# 		local_unrest = 2
+# 		local_amirs_estate_power = -0.10
+# 	}
+	
+# 	map_marker = {
+# 		show_for_owner = yes
+# 	}
+# }

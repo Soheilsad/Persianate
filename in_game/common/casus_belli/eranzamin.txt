@@ -1,0 +1,35 @@
+# Erānzamīn succession CB.
+#
+# The primary contender-vs-contender CB. Usable when both actor and target
+# are members of the eranzamin IO. The wargoal is region-limited
+# (annex/subjugate only locations in the contested region), so two
+# contenders fighting over Erānzamīn don't end up carving up Egypt.
+#
+# Conquer/subjugate cost on the wargoal stays at base-ilkhanate values
+# (0.75); the IO's war_score_cost_modifier provides the additional
+# discount on top — same arrangement as base cb_unify_ilkahante.
+
+cb_eranzamin_succession = {
+
+	create_visible = {
+		is_member_of_international_organization = international_organization:eranzamin
+		scope:target = {
+			is_member_of_international_organization = international_organization:eranzamin
+		}
+	}
+
+	declare_enabled = {
+		is_member_of_international_organization = international_organization:eranzamin
+		scope:target = {
+			is_member_of_international_organization = international_organization:eranzamin
+		}
+	}
+
+	speed = 10
+
+	war_goal_type = eranzamin_succession_wargoal
+}
+
+
+
+

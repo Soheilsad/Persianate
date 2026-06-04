@@ -1,0 +1,426 @@
+namespace = ilkhanate_flavor
+
+# -----------------------------------------------------------------------------------------
+# START EVENT — the legitimacy choice
+#
+# Fires once on every contender at situation start (see on_start of
+# eranzamin_succession). Forces the Age 1 legitimacy choice up front:
+# under what banner do you fight for Hulagu's seat?
+#
+#   A. Chinggisid Regency — the historical default. Rule as amir in
+#      the name of a Borjigin puppet (Hasan Buzurg's Sulayman Khan,
+#      Hasan Kuchak's Sati Beg, etc.). Reform carries the ongoing
+#      bonuses + maluses; this option spawns the puppet courtier
+#      and applies the one-shot adoption handshake.
+#
+#   B. Ghazi Sultanate — sovereignty under the Caliphal shadow.
+#      Muslims only. Frontier-marcher model.
+#
+#   C. Farr-i-Izadi — declare Iranian kingship. Muzaffarid path,
+#      brutally premature in 1337: the amirs and clergy bristle,
+#      the diwan and burghers rejoice, the realm shakes.
+# -----------------------------------------------------------------------------------------
+ilkhanate_flavor.1 = {
+	type = country_event
+	title = ilkhanate_flavor.1.title
+	desc = ilkhanate_flavor.1.desc
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	# ----- A: Chinggisid Regency -----
+	option = {
+		name = ilkhanate_flavor.1.a
+		trigger = {
+				NOT = {has_reform = government_reform:chinggisid_regency }
+			}
+		ai_chance = {
+			factor = 50
+			modifier = { factor = 2  societal_value:turk_vs_tazik < -10 }
+			modifier = { factor = 0  religion_group = religion_group:christian }
+		}
+
+		add_reform = government_reform:chinggisid_regency
+
+		# Adoption handshake — the puppet is enthroned, the amirs get
+		# the path they prefer, the chancery accepts the fiction.
+		add_legitimacy = 10
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.05 }
+
+		# Spawn the puppet. The player remains the monarch; this character
+		# is the Borjigin "khan in whose name we rule," sitting in the
+		# amirs estate. The patron_country variable on the character is
+		# what on_character_death reads to fire ilkhanate_flavor.2 (the
+		# removal-vs-enthronement choice).
+		if = {
+			limit = { NOT = { exists = dynasty:borjigin_dynasty } }
+			found_dynasty = borjigin_dynasty
+		}
+		create_character = {
+			dynasty = dynasty:borjigin_dynasty
+			estate = estate_type:amirs_estate
+			religion = root.religion
+			culture = culture:mongolian_culture
+			age = {18 30}
+
+			save_scope_as = borjigin_puppet
+		}
+
+		
+		scope:borjigin_puppet = {
+			set_variable = {
+				name = patron_country
+				value = root
+			}
+			add_character_modifier = {
+				modifier = blocked_from_character_interactions
+				years = -1
+				mode = add_and_extend
+			}
+		}
+		## we start it at 1.
+		set_variable = {
+			name = charade_counter
+			value = 1
+		}
+		international_organization:eranzamin = {
+			every_international_organization_member = {
+				limit = {
+					has_reform = government_reform:chinggisid_regency
+				}
+				add_opinion = {
+					modifier = opinion_rival_regent
+					target = scope:actor
+				}
+				add_casus_belli = {
+					type = casus_belli:cb_eranzamin_succession
+					target = scope:actor
+				}
+			}
+		}
+		## here, every chingissid claimant loses 50 opinion of you. you are now rivals.
+	}
+
+	# ----- B: Ghazi Sultanate -----
+	option = {
+		name = ilkhanate_flavor.1.b
+
+		trigger = { 
+			AND = {
+				religion_group = religion_group:muslim 
+				NOT = { has_reform = government_reform:chinggisid_regency }
+			}
+		}
+
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 2
+				any_neighbor_country = { religion_group != religion_group:muslim }
+			}
+		}
+
+		add_reform = government_reform:ghazi_sultanate
+
+		# The ulema bless the choice; the amirs see infidels to raid, not
+		# a chancery to be bent to.
+		add_legitimacy = 5
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.05 }
+	}
+
+	# ----- C: Farr-i-Izadi -----
+	option = {
+		name = ilkhanate_flavor.1.c
+
+		ai_chance = {
+			factor = 25
+			modifier = { factor = 2  societal_value:turk_vs_tazik > 25 }
+			modifier = { factor = 0.25  has_culture_group = culture_group:mongol_group }
+		}
+		trigger = {
+			NOT = { has_reform = government_reform:chinggisid_regency }
+		}
+		add_reform = government_reform:farr_i_izadi
+
+		# The price of premature kingship: a stability shock and a
+		# legitimacy gulf to climb back out of. The diwan and burghers
+		# rejoice; the amirs and clergy do not.
+		add_stability = -10
+		add_legitimacy = -10
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.15 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = 0.10 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.20 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.10 }
+
+
+		### here is 
+		international_organization:eranzamin = {
+			every_international_organization_member = {
+				limit = {
+					has_reform = government_reform:chinggisid_regency
+				}
+				add_opinion = {
+					modifier = opinion_betrayed_genghis
+					target = scope:actor
+				}
+				add_casus_belli = {
+					type = casus_belli:cb_eranzamin_succession
+					target = scope:actor
+				}
+			}
+		}
+	}
+	option = {
+		name = ilkhanate_flavor.1.d
+		trigger = {
+			root = c:CHB
+		}
+		add_legitimacy = 5
+
+
+		
+		character:chb_sati_beg_pw = {
+			set_variable = {
+				name = patron_country
+				value = root
+			}
+			add_character_modifier = {
+				modifier = blocked_from_character_interactions
+				years = -1
+				mode = add_and_extend
+			}
+		}
+		## we start it at 1.
+		set_variable = {
+			name = charade_counter
+			value = 1
+		}
+	}
+	option = {
+		name = ilkhanate_flavor.1.e
+		trigger = {
+			root = c:JAL
+		}
+		add_legitimacy = 5
+
+
+		
+		character:jal_muhammad_khan_pw = {
+			set_variable = {
+				name = patron_country
+				value = root
+			}
+			add_character_modifier = {
+				modifier = blocked_from_character_interactions
+				years = -1
+				mode = add_and_extend
+			}
+		}
+		## we start it at 1.
+		set_variable = {
+			name = charade_counter
+			value = 1
+		}
+	}
+
+}
+
+# -----------------------------------------------------------------------------------------
+# PUPPET DEATH EVENT — the Chinggisid crisis
+#
+# Fires via on_borjigin_puppet_death (in_game/common/on_action/04_borjigin_puppet_death.txt)
+# when the patron country's Borjigin puppet dies. The patron country must
+# still hold government_reform:chinggisid_regency for this to be relevant.
+#
+#   A. End the fiction. Drop the reform. The legitimacy of the regency
+#      goes with it; the amirs are furious; the realm is, for now,
+#      naked of any legitimacy doctrine and falls back under the
+#      Unsettled Legitimacy auto-modifier until another Age 1 reform
+#      is picked.
+#
+#   B. Enthrone the son. The chancery proclaims the puppet's heir as
+#      the new khan. The fiction grows thinner — each iteration
+#      applies charade_continues_mod, which stacks.
+# -----------------------------------------------------------------------------------------
+ilkhanate_flavor.2 = {
+	type = country_event
+	title = ilkhanate_flavor.2.title
+	desc = ilkhanate_flavor.2.desc
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	# ----- A: End the fiction -----
+	option = {
+
+		name = ilkhanate_flavor.2.a
+
+		ai_chance = {
+			factor = 30
+			modifier = { factor = 2  has_country_modifier = charade_continues_mod }
+		}
+
+		remove_reform = government_reform:chinggisid_regency
+		## massive. but you have committed to this path. To get out early like this, you have to pay.
+		add_legitimacy = -100
+		add_stability = -25
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.30 }
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = -0.30 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+	}
+
+	# ----- B: Enthrone the son -----
+	option = {
+		name = ilkhanate_flavor.2.b
+
+		ai_chance = {
+			factor = 70
+			modifier = { factor = 0.5  has_country_modifier = charade_continues_mod }
+		}
+
+		# Spawn the new puppet — the dead khan's son, same patron-country
+		# variable so the next death cycles the event again.
+		create_character = {
+			dynasty = dynasty:borjigin_dynasty
+			estate = estate_type:amirs_estate
+			religion = root.religion
+			culture = culture:mongolian_culture
+			age = {18 30}
+			save_scope_as = borjigin_puppet
+		}
+		scope:borjigin_puppet = {
+			set_variable = {
+				name = patron_country
+				value = root
+			}
+		}
+
+
+		# The charade grows thinner — stacks on each successive enthronement.
+		add_country_modifier = {
+			modifier = charade_continues_mod
+			years = -1
+			mode = replace
+			size = {
+				value = root.var:charade_counter
+			}
+		}
+		change_variable = {
+			name = charade_counter
+			add = 1
+		}
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.05 }
+	}
+}
+
+# -----------------------------------------------------------------------------------------
+# VICTORY EVENT (Branching)
+# -----------------------------------------------------------------------------------------
+ilkhanate_flavor.10 = {
+	type = country_event
+	title = ilkhanate_flavor.10.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { culture ?= { has_culture_group = culture_group:iranian_group } }
+				desc = ilkhanate_flavor.10.desc_persian
+			}
+			triggered_desc = {
+				desc = ilkhanate_flavor.10.desc_mongol
+			}
+		}
+	}
+	
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+	
+	# OPTION A: MONGOL RESTORATION (Default/Turkic)
+	option = {
+		name = ilkhanate_flavor.10.a
+		trigger = { NOT = { culture ?= { has_culture_group = culture_group:iranian_group } } }
+		
+		add_prestige = 50
+		add_legitimacy = 50
+		
+		# Mandate of the Khan
+		add_country_modifier = {
+			modifier = great_khans_mandate
+			years = -1
+		}
+		
+		# Shift to Turk
+		change_societal_value = {
+			type = turk_vs_tazik
+			value = -50
+		}
+		
+		# Restore IO
+		# (Mechanic to restore IO would go here, simplified as a modifier for now)
+	}
+	
+	# OPTION B: PERSIAN RESURGENCE
+	option = {
+		name = ilkhanate_flavor.10.b
+		trigger = { culture ?= { has_culture_group = culture_group:iranian_group } }
+		
+		add_prestige = 50
+		add_legitimacy = 50
+		
+		# Shahanshah Title
+		set_country_rank = country_rank:rank_empire
+		
+		# Throw out the Mongols
+		add_estate_satisfaction = { type = amirs_estate value = -0.50 }
+		add_estate_satisfaction = { type = diwan_estate value = 0.50 }
+		
+		# Restoration of Eran
+		add_country_modifier = {
+			modifier = restoration_of_eran
+			years = -1
+		}
+		
+		# Shift to Tazik
+		change_societal_value = {
+			type = turk_vs_tazik
+			value = 50
+		}
+	}
+}
+
+# -----------------------------------------------------------------------------------------
+# FAILURE EVENT (Timeout)
+# -----------------------------------------------------------------------------------------
+ilkhanate_flavor.99 = {
+	type = country_event
+	title = ilkhanate_flavor.99.title
+	desc = ilkhanate_flavor.99.desc
+	
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+	
+	option = {
+		name = ilkhanate_flavor.99.a
+		
+		add_stability = -10
+		
+		# Shattered Administration
+		every_province = {
+			limit = { is_eranzamin_region_province = yes }
+			add_province_modifier = {
+				modifier = shattered_administration_mod
+				years = -1
+			}
+		}
+	}
+}

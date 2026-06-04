@@ -1,0 +1,19 @@
+persian_caravanserai_advance = {
+	age = age_1_traditions
+	
+	potential = {
+		OR = {
+			culture = { has_culture_group = culture_group:iranian_group }
+			culture = { has_culture_group = culture_group:turkic_group }
+			culture = { has_culture_group = culture_group:tatar_group }
+			culture = { has_culture_group = culture_group:mongolian_group }
+			culture = { has_culture_group = culture_group:arabic_group }
+		}
+	}
+	
+	# Assuming 'beyond_the_sun' is a valid starting tech or accessible one. 
+	# If not, we can remove 'requires' or pick another.
+	requires = beyond_the_sun 
+	trade_land_efficiency = 0.66
+	unlock_building = caravanserai
+}

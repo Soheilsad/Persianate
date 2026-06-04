@@ -1,0 +1,24 @@
+amirs_power_from_tribes = {
+	potential = { has_reform = government_reform:persianate_bureaucracy_reform }
+	scales_with = {
+		value = val_tribal_percentage
+	}
+	global_amirs_estate_power = 25.0
+}
+
+diwan_power_from_sedentary = {
+	potential = { has_reform = government_reform:persianate_bureaucracy_reform }
+	scales_with = {
+		value = val_sedentary_percentage
+	}
+	global_diwan_estate_power = 2.5
+}
+
+diwan_base_values = {
+	potential = { has_reform = government_reform:persianate_bureaucracy_reform }
+	trigger = { always = yes }
+	modifier = {
+		global_diwan_estate_power = 0.30
+		global_amirs_estate_power = 0.30
+	}
+}

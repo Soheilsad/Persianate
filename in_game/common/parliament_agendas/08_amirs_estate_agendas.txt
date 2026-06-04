@@ -1,0 +1,151 @@
+pa_amirs_case_land_seizure = {
+	type = country
+	estate = amirs_estate
+	importance = 2.5
+	potential = {
+		country_has_estate = amirs_estate
+	}
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.20 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = 0.10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = 0.05 }
+		add_army_tradition = -7.5
+		add_manpower = { value = monthly_manpower multiply = -12 }
+		random_owned_location = {
+			limit = { is_capital = no }
+			add_location_modifier = { modifier = amir_purge_raw_output years = 10 }
+		}
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+pa_amirs_case_caravan_theft = {
+	type = country
+	estate = amirs_estate
+	importance = 1.85
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = 0.15 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = 0.05 }
+		
+		# Fine the Amirs (12 months)
+		add_gold_to_estate = {
+			estate_type = estate_type:amirs_estate
+			value = { value = root.monthly_income_trade_and_tax multiply = -12 }
+		}
+		# Compensate Burghers (8 months)
+		add_gold_to_estate = {
+			estate_type = estate_type:burghers_estate
+			value = { value = root.monthly_income_trade_and_tax multiply = 8 }
+		}
+		# Crown Share (4 months)
+		add_gold = { value = root.monthly_income_trade_and_tax multiply = 4 }
+		
+		add_country_modifier = { modifier = amir_purge_trade_buff years = 10 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+pa_amirs_case_enslavement = {
+	type = country
+	estate = amirs_estate
+	importance = 2.5
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.25 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.10 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = 0.05 }
+		
+		# Fine the Amirs (12 months)
+		add_gold_to_estate = {
+			estate_type = estate_type:amirs_estate
+			value = { value = root.monthly_income_trade_and_tax multiply = -12 }
+		}
+		# Compensate Victims (Clergy/Peasants share)
+		add_gold_to_estate = {
+			estate_type = estate_type:clergy_estate
+			value = { value = root.monthly_income_trade_and_tax multiply = 4 }
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:peasants_estate
+			value = { value = root.monthly_income_trade_and_tax multiply = 4 }
+		}
+		# Crown Share
+		add_gold = { value = root.monthly_income_trade_and_tax multiply = 4 }
+		
+		add_country_modifier = { modifier = amir_purge_tolerance_buff years = 10 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+pa_amirs_case_price_fixing = {
+	type = country
+	estate = amirs_estate
+	importance = 1.85
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.10 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = 0.10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = 0.05 }
+		
+		# Fine the Amirs (6 months)
+		add_gold_to_estate = {
+			estate_type = estate_type:amirs_estate
+			value = { value = root.monthly_income_trade_and_tax multiply = -6 }
+		}
+		# Compensate Burghers (4 months)
+		add_gold_to_estate = {
+			estate_type = estate_type:burghers_estate
+			value = { value = root.monthly_income_trade_and_tax multiply = 4 }
+		}
+		# Crown Share
+		add_gold = { value = root.monthly_income_trade_and_tax multiply = 2 }
+		
+		add_country_modifier = { modifier = amir_purge_supply_hit years = 10 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+pa_amirs_case_urban_garrison = {
+	type = country
+	estate = amirs_estate
+	importance = 1.85
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = 0.10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = 0.05 }
+		
+		# State Pays Compensation
+		add_gold = { value = root.monthly_income_trade_and_tax multiply = -6 }
+		add_gold_to_estate = {
+			estate_type = estate_type:burghers_estate
+			value = { value = root.monthly_income_trade_and_tax multiply = 6 }
+		}
+		
+		add_country_modifier = { modifier = amir_purge_maintenance_hit years = 10 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}

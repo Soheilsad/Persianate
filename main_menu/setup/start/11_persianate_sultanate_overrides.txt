@@ -1,0 +1,534 @@
+# Persianate Sultanate template wiring.
+# Redefines 6 base-game country entries to use the new persianate_sultanate
+# government type (via tazik_dominant / tork_dominant templates) instead of
+# base muslim_monarchy_* / eurasian_horde / turkish_beylik_* templates.
+#
+# Tazik-dominant (settled bureaucratic): KRT, MZF, INJ
+# Tork-dominant  (Turco-Mongol military): CHB, JAL, ERE
+# current_age = age_1_traditions
+
+countries = {
+	countries = {
+	#Persia
+#Jalayirids -JAL https://en.wikipedia.org/wiki/Jalayirid_Sultanate
+
+	
+		# In 1337 JAL is the Iraqi faction (Baghdad). Tabriz/Azerbaijan went
+		# to Hasan Kuchak's Chobanids until JAL conquered them after 1343.
+		JAL = {
+			# Absorbs base game's HLG (Musa Khan / Huleguids) territory except
+			# hoveyzeh — historically Musa Khan was Hasan Buzurg's defeated rival
+			# (Battle of Maraghaq, July 1336), holed up in Khuzestan with no
+			# real power by 1337.4. HLG kept as a hoveyzeh rump only.
+			type = location
+			own_control_core = {
+				baghdad
+				balad_ruz baqubah khalis khanaqin mandali
+				samarra ar_rabb tikrit ukbara
+				al_sinn
+				eyvan
+				
+				# Annexed from HLG (Musa Khan reduced to a hoveyzeh rump)
+				dayr_aqul badra ilam
+				wasit abdanan al_tib arkvaz bakusaya dehloran meymeh
+				basra abadan abdas al_madar al_qatr zuwayr
+				an_nil nasiriyah numaniyyah rusafa
+				khalafabad quban
+				ahvaz dowraq hamidiyeh mosharahat muhammerah
+				samawa suq_al_shuyukh kazimah
+				hillah kufa al_udayb qadisiyyah # fictional 'HILLAH' polity gone.
+				mosul qayyarah tal_afar
+				al_anbar hit ayn_tamr karbala # which illiterate gave them to ALFADL?
+				haditha anah
+			}
+
+			our_cores_conquered_by_others = {
+				# Local Arab tribal / Mamluk-influence zones
+				rahba abu_kemal 
+				machul
+				# HLG (Musa Khan rump) — historical Jalayirid claim
+				hoveyzeh
+			}
+			reforms = {}
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "persianate_sultanate_tork_dominant"
+			
+			government = {
+				type = persianate_sultanate
+				ruler_term = { character = jal_hasan_buzurg_pw start_date = 1332.1.1 }
+				ruler = jal_hasan_buzurg_pw
+				reforms = {
+					chinggisid_regency
+				}
+			}
+
+			country_rank = rank_kingdom
+			capital = baghdad
+			court_language = persian_language
+			tolerated_cultures = {
+				iraqi_culture
+				syriac_culture
+			}
+			religious_school = maturidi_school
+		}
+		CHB = { #Chobanids
+			type = location
+			own_control_core = {
+				tabriz heris maragheh sarab tufarqan
+				ganja barda beylagan lemberan gardman shamkir
+				mughan baciravan bilasuvar germi salyan varsan
+				ahar aslanduz kaleybar khiyav mardanaqom qahqaheh
+				hadishahr marand
+				urmia khameneh salmas
+				santeh takht_e_soleyman
+				miyaneh aghkand
+				zanjan mahneshan sarcham sojas
+				bijar bashqurtaran dehgolan divandarreh ghorveh sohrevard yasukand
+				goroz shusha
+				julfa nakhchivan
+			}
+			reforms = {} ### to remove base's chobanid_reforms which are incompatible with the new government type and would cause crashes. The 11_persianate redefinition of the tag will add new, appropriate reforms.
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "persianate_sultanate_tork_dominant"
+			government = {
+				type = persianate_sultanate
+				ruler_term = { character = chb_hasan_kuchak_pw start_date = 1335.1.1 }
+				ruler = chb_hasan_kuchak_pw
+				reforms = {
+					chinggisid_regency
+				}
+			}
+			court_language = persian_language
+			tolerated_cultures = {
+				adhari_culture
+				farsi_culture
+			}
+			country_rank = rank_kingdom
+			religious_school = jafari_school
+			capital = tabriz
+			dynasty = chobanid_dynasty
+		}
+
+		# Huleguids — Musa Khan's rump after the Battle of Maraghaq (July 1336).
+		# Base game gave HLG most of lower Iraq + Khuzestan with capital basra;
+		# JAL now owns those (see JAL block). Override pins HLG's capital to
+		# hoveyzeh — Khuzestan marshland, the only province HLG retains.
+		# Keep base's steppe_horde gov / hlg_musa_khan ruler / legacy_of_genghis
+		# reform; a Mongol prince in exile clinging to a Borjigid claim fits.
+		HLG = { #Huleguids
+			type = location
+			capital = hoveyzeh
+		}
+
+		MZF = { #Muzaffarids
+			own_control_core = {
+				yazd ardakan meybod nadushan saryazd taft
+				aqda anarak nain zavareh
+				abarkuh dehshir marvast
+				bafq behabad kuhbanan
+				anar  bahreman  dehaj ernan
+				harat khabar shahr_e_babak
+				bavanat
+				saghand ribat_ushturan jondaq
+			}
+
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "persianate_sultanate_tazik_dominant"
+			government = {
+				type = persianate_sultanate
+				ruler_term = { character = mzf_mubariz_al_din_muhammad start_date = 1314.1.1 regnal_number = 1 }
+				ruler = mzf_mubariz_al_din_muhammad
+			}
+
+			tolerated_cultures = {
+				baloch_culture
+			}
+			country_rank = rank_duchy
+			religious_school = maturidi_school
+			capital = yazd
+		}
+
+		INJ = { #Injuids
+			own_control_core = {
+				shiraz abadeh_tashk kherameh sarvestan zarqan
+				firuzabad bandar_deyr dehram kalameh khormoj riz
+				kazerun borazjan reyshahr farashband sar_mashhad
+				qala_safid bandar_deylam bandar_rig basht jannaba nurabad
+				deh_kord borujen samiram sisakht vanak yasuj
+				istakhr aspas beyza qaryat_al_bidh saadatshahr shahr_meyan
+				qumisha karkevand ramsheh sohrfiruzan yangabad yazdikhwast
+				isfahan dehagh dowlatabad komshecheh murcheh_khvort tudeshk
+				kavar
+				ardestan natanz
+				abadeh eqlid
+			}
+
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "persianate_sultanate_tazik_dominant"
+			government = {
+				type = persianate_sultanate
+				ruler_term = { character = inj_sharaf_al_din_mahmud_shah start_date = 1304.1.1 end_date = 1336.1.1 regnal_number = 1 }
+				ruler_term = { character = inj_ghiyas_al_din_kai_khusrau_pw start_date = 1336.1.1 regnal_number = 1 }
+				ruler = inj_ghiyas_al_din_kai_khusrau_pw
+			}
+
+			tolerated_cultures = {
+				lur_culture
+			}
+			country_rank = rank_duchy
+			religious_school = maturidi_school
+			capital = shiraz
+		}
+
+		KRT = { #Kartids
+			own_control_core = {
+				herat awbeh chishti_sarif firozkoh karokh pushang tulak
+				azghand mahvelat roshtkhar zaveh
+				turaythith kashmar
+				bakharz fariman mashhad_rizeh
+				marv_al_rudh ghormach jawand kusk kusk_kohneh qala_kohistan qala_naw qasr_ahnaf
+				barkdiz pandjih
+			}
+
+			own_control_integrated = {
+				adraskan azab firuzkuh_afghanistan khaysar shindand
+				torbat_e_jam salehabad
+			}
+
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "persianate_sultanate_tazik_dominant"
+			government = {
+				type = persianate_sultanate
+				ruler_term = { character = krt_mu_izz_uddin_husayn_ibn_ghiyath_uddin_pw start_date = 1332.1.1 regnal_number = 1 }
+				ruler = krt_mu_izz_uddin_husayn_ibn_ghiyath_uddin_pw
+			}
+
+			tolerated_cultures = {
+				tajik_culture
+				hazara_culture
+			}
+
+			religious_school = maturidi_school
+
+
+			capital = herat
+		}
+
+		#Anatolia
+
+		#Eretnids -ERE https://en.wikipedia.org/wiki/Eretnids
+		ERE = {
+			own_control_core = {
+				akdagmadeni aydincik koyulhisar sulusaray tokat zile
+				bozok baliseyh candir dinek_keskin sorgun
+				corum huseyinabad sungurlu
+				divrigi arapgir egin arguvan
+				kayseri bogazliyan comana_cil develi tomarza
+				hacibektas urgup
+				sivas darende dasmenda deliktash gemerek gurun hafik sarkisla zara
+				erzincan ilic kelkit kemah sebinkarahisar siran
+				yahyali malatya
+			}
+
+			our_cores_conquered_by_others = {
+				amasya
+			}
+			include = "expl_mongols"
+			include = "expl_eastern_europe"
+			include = "expl_muslim_mediterranean"
+			include = "persianate_sultanate_tork_dominant"
+			government = {
+				type = persianate_sultanate
+				ruler_term = { character = ere_eretna start_date = 1335.1.1 }
+				ruler = ere_eretna
+				privilege = {
+					dhimmi_abrahamic_communities
+					trunk_road_to_erzurum_privilege
+				}
+			}
+
+			country_rank = rank_duchy
+
+			capital = sivas
+			religious_school = maturidi_school
+			tolerated_cultures = {
+				armenian_culture
+				turkoman_culture
+			}
+		}
+
+		#Mesopotamia
+
+		
+
+		#Kerman — Nikrūzī dynasty (Negüderi/Qara'una offshoot, classic Turco-Mongol amirate over Persianate substrate)
+		KRM = { #Kerman
+			own_control_core = {
+				kerman ghobeyra mahan shahdad
+				ravar zarand_iran kahnuj mardehek
+				rafsanjan baghin bardsir negar khatunabad
+				sirjan  arzu  khabr saadatabad soghan
+				jiroft  baft dowlatabad_esfandaqeh rabor sarduiyeh zakht
+				bam fahraj_narmashir narmashir rayen rigan golashkerd
+			}
+			include = "expl_mongols"
+			include = "expl_middle_east"
+			include = "persianate_sultanate_tork_dominant"
+			government = {
+				type = persianate_sultanate
+				ruler = krm_qutb_al_din
+			}
+
+			tolerated_cultures = {
+				baloch_culture
+			}
+
+			religious_school = maturidi_school
+			capital = kerman
+			dynasty = nikruzi_dynasty
+		}
+
+		#Shabankara — Kurdish tribal confederation; "tork-dominant" reads as tribal-military, not ethnic
+		SHB = { #Shabankara
+			own_control_core = {
+				ij_iran jahrom fasa juyom meymand
+				hajjiabad_zarrindasht
+				neyriz
+			}
+			include = "expl_mongols"
+			include = "expl_middle_east"
+			include = "persianate_sultanate_tork_dominant"
+			government = {
+				type = persianate_sultanate
+				ruler_term = { character = shb_ardashir start_date = 1310.1.1 }
+				ruler = shb_ardashir
+			}
+
+			religious_school = maturidi_school
+			capital = ij_iran
+			dynasty = shabankarai_dynasty
+		}
+
+		#Hazaraspids — Lur-i Buzurg atabegate (Lur tribal, tork-dominant by structure not ethnicity)
+		HZP = { #Hazaraspids (Great Lorestan)
+			own_control_core = {
+				izeh andika dehdez lordegan naghan
+				somaleh bagh_malek
+				dezful  andimeshk masjed_soleyman shush shushtar
+				behbahan  dehdasht dishmok dogonbadan hendijan suq
+				ramhormoz
+				fereydunshahr
+				golpayegan khwansar
+			}
+			include = "expl_mongols"
+			include = "expl_middle_east"
+			include = "persianate_sultanate_tork_dominant"
+			government = {
+				type = persianate_sultanate
+				ruler = hzp_rukn_al_din_yusuf_shah
+				ruler_term = { character = hzp_rukn_al_din_yusuf_shah start_date = 1330.1.1 regnal_number = 2 }
+				regnal_numbers = {
+					name_joseph.name_shah = 2
+				}
+			}
+
+			tolerated_cultures = {
+				farsi_culture
+			}
+
+			religious_school = maturidi_school
+			capital = izeh
+		}
+
+		#Khorshidi — Atabegs of Lur-i Kuchik (Zaidi Shia, Lur tribal)
+		LCK = { #Khorshidi
+			own_control_core = {
+				khorramabad aleshtar kuhdast pol_dokhtar sarab_dowreh
+				borujerd aligurdaz borborud dorud gerit sibak
+			}
+			include = "expl_mongols"
+			include = "expl_middle_east"
+			include = "persianate_sultanate_tork_dominant"
+			government = {
+				type = persianate_sultanate
+				ruler = lck_soja_al_din_muhammad
+
+				laws = {
+					sharia_law = zaidi_policy
+				}
+			}
+
+			tolerated_cultures = {
+				farsi_culture
+			}
+
+			religious_school = zaidi_school
+			capital = khorramabad
+		}
+
+		#Caucasus
+
+		#Shirvan — Kasrānid Shirvanshahs (Iranian aristocracy, full Persianate court; tazik framing fits mechanically though "umara" loc is loose)
+		SRV = { #Shirvan
+			own_control_core = {
+				baku javad mahmudabad maraza qobustan shamakhi
+				shirvan derbent niyazabad quba shabran
+				agsu goychay zardab
+			}
+
+			own_control_integrated = {
+				qabala
+			}
+			include = "expl_mongols"
+			include = "expl_middle_east"
+			include = "persianate_sultanate_tazik_dominant"
+			government = {
+				type = persianate_sultanate
+				ruler_term = { character = srv_keykubad start_date = 1317.1.1 regnal_number = 1 }
+				ruler = srv_keykubad
+
+				laws = {
+					sharia_law = hanafi_policy
+				}
+
+				mysticism_vs_jurisprudence = -15
+			}
+
+			religious_school = hanafi_school
+
+			capital = baku
+			tolerated_cultures = {
+				azeri_culture
+			}
+		}
+
+		# Qom — Āl-i Khwāja sayyids under Tāj al-Dīn ʿAlī. Twelver Shi'i Persian
+		# sharifian house running a major shrine city with a full divan; the most
+		# unambiguously civilian-Persianate of the post-Ilkhanid amirates.
+		QOM = { #Qom
+			include = "expl_mongols"
+			include = "persianate_sultanate_tazik_dominant"
+			government = {
+				type = persianate_sultanate
+			}
+		}
+
+		# Hamadan — Mahmūd Qutlugh, Turco-Mongol amir (Chobanid orbit) over a
+		# Persian city. Same pattern as CHB/JAL/ERE: Turkic ruling household
+		# sitting atop a Persianate bureaucratic apparatus, hence tork-dominant.
+		HDN = { #Hamadan
+			include = "expl_mongols"
+			include = "persianate_sultanate_tork_dominant"
+			government = {
+				type = persianate_sultanate
+			}
+		}
+
+		SUT = {
+				own_control_core = {
+					harput adakli keban palu
+					malazgirt hinis karakilise tekman tutak varto
+					ahlat bargiri ercis
+					diyarbekir ergani
+					erzurum tercan
+					cermik bayburt 
+				}
+				## mosul was 100% under jal.
+
+				include = "expl_middle_east"
+				include = "expl_mongols"
+				include = "muslim_monarchy_no_coast"
+
+
+				government = {
+					type = monarchy
+					heir_selection = cognatic_primogeniture
+					ruler_term = {	 character = sut_sutay start_date = 1312.1.1 end_date = 1332.1.1}
+					ruler_term = {	 character = sut_hajji_taghay start_date = 1332.1.1	}
+					ruler = sut_hajji_taghay
+				}
+
+				tolerated_cultures = {
+					kurdish_culture
+					armenian_culture
+				}
+
+				capital = diyarbekir
+				religious_school = maturidi_school #Widespread among the Turks together with Hanafi
+			}
+			FDL = {
+					own_control_core = {
+						ithriya sukhnah taybah
+						khanaser qastal salamiyya
+						marrat
+						arak huwwarin qaryatayn tadmur
+					}
+
+					own_control_integrated = {
+						zubala al_labbah al_thulayma al_waqbi linah lowqah
+						
+						abu_kemal 
+						deir_ez_zor tabqah rahba
+					}
+
+					starting_technology_level = 3
+					include = "expl_middle_east"
+					include = "expl_mongols"
+					include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+					government = {
+						type = monarchy
+						heir_selection = cognatic_primogeniture
+						ruler = fdl_muzzaffar_ad_din_musa_ibn_muhanna
+						ruler_term = {	 character = fdl_haditha_bin_ghudayya start_date = 1218.1.1 end_date = 1220.1.1}
+						ruler_term = {	 character = fdl_mani_bin_haditha start_date = 1220.1.1 end_date = 1232.1.1}
+						ruler_term = {	 character = fdl_muhanna_bin_mani start_date = 1232.1.1 end_date = 1240.1.1}
+						ruler_term = {	 character = fdl_ali_bin_haditha start_date = 1240.1.1 end_date = 1260.1.1}
+						ruler_term = {	 character = fdl_sharaf_ad_din_isa_bin_muhanna_at_tai start_date = 1260.1.1 end_date = 1284.1.1}
+						ruler_term = {	 character = fdl_husam_ad_din_muhanna_ibn_isa start_date = 1284.1.1 end_date = 1293.1.1	regnal_number = 2}
+						ruler_term = {	 character = aal_muhammed_bin_abu_bakr start_date = 1293.1.1 end_date = 1295.1.1}
+						ruler_term = {	 character = fdl_husam_ad_din_muhanna_ibn_isa start_date = 1295.1.1 end_date = 1312.1.1	regnal_number = 2}
+						ruler_term = {	 character = fdl_fadl_ibn_isa start_date = 1312.1.1 end_date = 1317.1.1	regnal_number = 2}
+						ruler_term = {	 character = fdl_husam_ad_din_muhanna_ibn_isa start_date = 1317.1.1 end_date = 1320.1.1	regnal_number = 2}
+						ruler_term = {	 character = aal_muhammed_bin_abu_bakr start_date = 1320.1.1 end_date = 1322.1.1}
+						ruler_term = {	 character = fdl_fadl_ibn_isa start_date = 1322.1.1 end_date = 1330.1.1	regnal_number = 2}
+						ruler_term = {	 character = fdl_husam_ad_din_muhanna_ibn_isa start_date = 1330.1.1 end_date = 1335.1.1	regnal_number = 2}
+						ruler_term = {	 character = fdl_muzzaffar_ad_din_musa_ibn_muhanna start_date = 1335.1.1	}
+					}
+
+					capital = tadmur
+					tolerated_cultures = {
+						levantine_culture
+					}
+					religious_school = hanafi_school
+					government = { mysticism_vs_jurisprudence = -15 }
+					
+				}
+		### SARBEDARAN
+
+		SRB = { #Sarbadārs
+			own_control_core = {
+				beyarjomand haresabad kharturan
+				sabzevar farumad agh_qala ### representing SLIGHTLY LATER DATE. I DO NOT WANT TO SCRIPT A RANDOM EVENT.
+				
+			}
+			include = "expl_mongols"
+			include = "expl_middle_east"
+			include = "commonwealth_of_martyrs_starter"
+			government = {
+				type = commonwealth_of_martyrs
+				ruler = srb_abd_al_razzaq_ibn_fazlullah_pw
+				ruler_term = { character = srb_abd_al_razzaq_ibn_fazlullah_pw start_date = 1332.1.1 }
+			}
+
+
+			### 
+			religious_school = jafari_school
+			capital = sabzevar
+		}
+	}
+}

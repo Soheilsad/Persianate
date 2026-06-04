@@ -1,0 +1,35 @@
+levy_nomadic_tribes = {
+	size = 0.1 ## these tribes are really tolerated for their military contribution.
+	allowed_pop_type = tribesmen
+	country_allow = {
+		has_reform = government_reform:persianate_bureaucracy_reform
+	}
+	allow = {
+		current_age = age_1_traditions
+	}
+	unit = a_nomadic_skirmisher_cavalry
+}
+
+levy_turkoman_tribes = {
+	size = 0.1
+	allowed_pop_type = tribesmen
+	country_allow = {
+		has_reform = government_reform:persianate_bureaucracy_reform
+	}
+	allow = {
+		current_age = age_2_renaissance
+	}
+	unit = a_turkoman_light_cavalry
+}
+
+levy_qizilbash_tribes = {
+	size = 0.1 ## these tribes are really tolerated for their military contribution.
+	allowed_pop_type = tribesmen
+	country_allow = {
+		has_reform = government_reform:persianate_bureaucracy_reform
+	}
+	allow = {
+		current_age = age_3_discovery
+	}
+	unit = a_qizilbash_cavalry
+}

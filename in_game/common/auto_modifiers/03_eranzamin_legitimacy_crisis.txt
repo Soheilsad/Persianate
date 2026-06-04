@@ -1,0 +1,55 @@
+# Unsettled Legitimacy — the cost of deferring the choice. 
+# A persianate_sultanate in iran-zamīn that has not committed to one of
+# the three Age 1 legitimacy paths (Chinggisid Regency, Ghazi Sultanate,
+# Farr-i-Izadi) bleeds legitimacy and estate satisfaction equilibrium.
+#
+# Historically: the post-Ilkhanid amir who could not answer the khuṭba
+# question — in whose name is the Friday sermon read? — was the amir
+# his rivals devoured first. The qāḍīs, the mustawfīs, and the umarāʾ
+# all need an answer; "we are still deciding" is the worst one.
+#
+# Lifts as soon as any one of the three reforms is taken. The reforms
+# are mutually exclusive among themselves; this modifier vanishes the
+# moment any of them is enacted.
+
+unsettled_legitimacy_crisis = {
+	potential = {
+		government_type = government_type:persianate_sultanate
+		capital = { province = { is_eranzamin_region_province = yes } }
+	}
+	trigger = {
+		NOT = { has_reform = government_reform:chinggisid_regency }
+		NOT = { has_reform = government_reform:ghazi_sultanate }
+		NOT = { has_reform = government_reform:farr_i_izadi }
+	}
+	modifier = {
+		monthly_legitimacy = -0.50
+		amirs_estate_target_satisfaction = -0.20
+		diwan_estate_target_satisfaction = -0.20
+		clergy_estate_target_satisfaction = -0.15
+		burghers_estate_target_satisfaction = -0.15
+	}
+}
+
+
+ghazi_lord_at_war = {
+	potential = {
+		government_type = government_type:persianate_sultanate
+
+		has_reform = government_reform:ghazi_sultanate
+	}
+	trigger = {
+		is_at_war = yes
+		any_country_at_war_with = {
+			religion.group != root.religion.group
+		}
+		
+	}
+	modifier = {
+		monthly_legitimacy = 0.25
+		monthly_prestige = 0.10
+		global_levy_size_modifier = 0.25
+		global_manpower_modifier = 0.25
+
+	}
+}

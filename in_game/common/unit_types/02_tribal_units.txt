@@ -1,0 +1,58 @@
+a_nomadic_skirmisher_cavalry = {
+	category = army_cavalry
+	copy_from = a_age_1_traditions_light_cavalry
+	
+	maneuver = 2
+	fire_damage_dealt = 0.15
+	shock_damage_dealt = -0.20
+	morale_damage_taken = 0.15
+	
+	buildable = no
+	levy = yes
+	
+	combat = {
+		steppe = 0.25
+		plains = 0.10
+		hills = -0.10
+	}
+	gfx_tags = { light_tag }
+}
+
+a_turkoman_light_cavalry = {
+	category = army_cavalry
+	copy_from = a_age_2_renaissance_light_cavalry
+	
+	maneuver = 2
+	fire_damage_dealt = 0.10
+	shock_damage_dealt = 0.05
+	
+	buildable = no
+	levy = yes
+	
+	combat = {
+		steppe = 0.15
+		plains = 0.10
+		hills = 0.05
+	}
+	gfx_tags = { light_tag }
+}
+
+a_qizilbash_cavalry = {
+	category = army_cavalry
+	copy_from = a_age_3_discovery_heavy_cavalry
+	
+	maneuver = 1
+	fire_damage_dealt = -0.10
+	shock_damage_dealt = 0.20
+	morale_damage_dealt = 0.25
+	morale_damage_taken = -0.15
+	
+	buildable = no
+	levy = yes
+	
+	combat = {
+		hills = 0.15
+		plains = 0.10
+	}
+	gfx_tags = { medium_tag }
+}

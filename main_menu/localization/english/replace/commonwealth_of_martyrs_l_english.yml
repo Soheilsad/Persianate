@@ -1,0 +1,92 @@
+﻿l_english:
+ # Government Type
+ commonwealth_of_martyrs: "Commonwealth of Martyrs"
+ commonwealth_of_martyrs_desc: "A polity born from the 1337 Bāshtīn revolt, when the men of Khurāsān swore the sar-be-dār vow — 'head on the gallows' — and rose against the Mongol amīrs. The Hidden Imām's name is struck on the coinage; the throne is held in trust until His return. Rule is dyarchic: the [Concept('sufyani_notables_estate', 'Sufyānī notables')|E] hold the cities and the chancery, while the [Concept('shaykhi_dervishes_estate', 'Shaykhī dervishes')|E] hold the army and the pulpit. Succession alternates between the two factions — diarchic election — and every transition risks civil war. The Karbalāʾ paradigm of redemptive martyrdom is not a metaphor here; it is the operating principle of the state."
+
+ # Setup Template
+ commonwealth_of_martyrs_starter: "Commonwealth of Martyrs (Bāshtīn Settlement)"
+ commonwealth_of_martyrs_starter_desc: "The founding configuration of any Sarbedār-lineage polity: anti-aristocratic land redistribution, Twelver Jaʿfarī jurisprudence, a militant dervish corps, and the Bāshtīn Proclamation as founding reform. Used at game start by the Sarbedārs and, on Path 3 triggers, by later Mushaʿshaʿ-type mahdist polities."
+
+ # Estates
+ sufyani_notables_estate: "Sufyānī Notables"
+ sufyani_notables_estate_desc: "The urban-aristocratic conservative wing of the Sarbedār polity, named for the malik-led Sufyānī faction. Sayyids, civic notables, and the heads of merchant families; they staff the chancery, run the qāḍī courts, and administer the waqf endowments. They want order, fiscal extraction, and a sober Twelver ʿulamāʾ — not dervish enthusiasm. They despise the [Concept('shaykhi_dervishes_estate', 'Shaykhīs')|E] and resent every coin spent on the dervish corps."
+ shaykhi_dervishes_estate: "Shaykhī Dervishes"
+ shaykhi_dervishes_estate_desc: "The armed religious order at the heart of the Sarbedār polity, descended from Shaykh Khalīfa and Shaykh Ḥasan Jūrī's khānaqāh network. At its historical peak the corps numbered some five thousand armed dervishes; they are the state's primary army and its mahdist legitimacy reservoir simultaneously. They live in lodges, hold property in common, and proclaim the imminent return of the Hidden Imām. They despise the [Concept('sufyani_notables_estate', 'Sufyānīs')|E] for throttling the mahdist mission with their love of order."
+
+ # Sufyānī Privileges
+ sufyani_civic_assembly: "Sufyānī Civic Assembly"
+ sufyani_civic_assembly_desc: "Formal seats for the notables in the council of state. Channels their political energy into deliberative politics rather than street violence and faction-fighting in the bazaars."
+ sufyani_waqf_administration: "Sufyānī Waqf Administration"
+ sufyani_waqf_administration_desc: "The notables control the religious endowments — mosques, madrasas, soup kitchens, caravanserais. An autonomous fiscal base that undercuts the dervishes' control of pious infrastructure."
+ sufyani_judicial_office: "Sufyānī Judicial Office"
+ sufyani_judicial_office_desc: "Lay-notable control over qāḍī appointments, rather than the dervish-led revolutionary tribunals that historically tried (and often executed) confiscated amīrs. Formal courts, written rulings, predictable jurisprudence."
+ sufyani_urban_militia_rights: "Sufyānī Urban Militia"
+ sufyani_urban_militia_rights_desc: "Burgher militias under notable command — the aḥdāth and ʿayyār tradition of medieval Islamic cities, mobilized as a counterweight to the dervish corps. Strong in walls; weak in the open field."
+ sufyani_tax_collection_rights: "Sufyānī Tax-Farming Rights"
+ sufyani_tax_collection_rights_desc: "Urban notables farm the taxes of their own quarters. Yield rises sharply, but the crown loses direct control of the revenue, and revoking the privilege later becomes very expensive."
+ sufyani_sayyid_pensions: "Sufyānī Sayyid Pensions"
+ sufyani_sayyid_pensions_desc: "Formal stipends to the descendants of the Prophet, channelled through the notable families. The sayyids legitimize the lay elite as guardians of Imāmī piety against dervish heterodoxy."
+
+ # Shaykhī Privileges
+ shaykhi_dervish_corps: "Shaykhī Dervish Corps"
+ shaykhi_dervish_corps_desc: "Formal recognition of the armed dervish brotherhood as the polity's standing military. Historically Shaykh Ḥasan Jūrī's network fielded some five thousand mobilized fighters — the dervishes ARE the army, and they fight in the conviction that death in battle hastens the Hidden Imām's return."
+ shaykhi_khanaqah_network: "Shaykhī Khānaqāh Network"
+ shaykhi_khanaqah_network_desc: "The dervish lodges become a parallel administration — recruiting, indoctrinating, judging local disputes. Religious commitment soars, formal bureaucracy decays. Each khānaqāh is its own authority node."
+ shaykhi_mahdist_proclamation: "Shaykhī Mahdist Proclamation"
+ shaykhi_mahdist_proclamation_desc: "The dervishes proclaim the Hidden Imām's return imminent — perhaps tomorrow, perhaps next year, but soon. Soldiers fight with terrifying intensity; the polity tilts toward existential war and away from stable governance."
+ shaykhi_anti_aristocratic_purges: "Shaykhī Anti-Aristocratic Purges"
+ shaykhi_anti_aristocratic_purges_desc: "Formalized expropriation of amīr and Mongol-notable estates. Historical Sarbedār practice involved confiscation, exile, and not infrequently execution. The tribal-military class is crushed at home; relations with anything Mongol or Türk abroad collapse with it."
+ shaykhi_dergah_endowments: "Shaykhī Dargāh Endowments"
+ shaykhi_dergah_endowments_desc: "Pious endowments fund the dervish lodges directly, parallel to and competing with the [Concept('sufyani_notables_estate', 'Sufyānī')|E] waqf administration. Two religious infrastructures, two rival fiscal bases, one polity."
+ shaykhi_jihad_authority: "Shaykhī Jihād Authority"
+ shaykhi_jihad_authority_desc: "The dervish shaykh claims independent authority to proclaim jihād, without reference to the lay leadership. War initiation becomes a religious act; the Karbalāʾ paradigm becomes foreign policy."
+
+ # Government Reforms — the Sarbedār jurisprudential arc
+ bashtin_proclamation_reform: "Bāshtīn Proclamation"
+ bashtin_proclamation_reform_desc: "The founding moment, 1337: ʿAbd al-Razzāq Bāshtīnī and his men strike down the Mongol tax collector and raise the sar-be-dār banner in the village of Bāshtīn in Bayhaq. The proclamation establishes the polity on traditionist Twelver foundations — communal mahdism awaiting the Hidden Imām's return, anti-aristocratic land redistribution, dyarchic participation by lay notables and armed dervishes alike. No standing aristocracy, no settled royalty, no claim to legitimacy save the absent Twelfth Imām's. Coin is struck in His name only."
+ usuli_consolidation_reform: "Usūlī Consolidation"
+ usuli_consolidation_reform_desc: "The transition from traditionist Akhbārī communalism to rationalist Usūlī jurisprudence — the qualified jurist (mujtahid) gains the right of ijtihād, of independent legal reasoning. Formal courts, codified rulings, a textual establishment. The dervishes chafe: their charismatic authority is now bounded by the jurists' books. Historically, this transition did not happen in time; the Sarbedārs fell in 1381, and Usūlī victory waited another four centuries. Here, it arrives."
+ marjaiyya_reform: "Marjaʿiyya"
+ marjaiyya_reform_desc: "The institutionalization of the marjaʿ al-taqlīd — the 'source of emulation' — as binding authority for the faithful. A single qualified jurist's rulings now command universal obedience; personal piety is delegated to his learned judgment. The lay notables shrink before the jurist's eclipsing authority. The dervishes' charisma, once the polity's animating force, becomes ornamental."
+ wilayat_e_faqih_reform: "Wilāyat-i Faqīh"
+ wilayat_e_faqih_reform_desc: "The jurist's guardianship over the community, in the Hidden Imām's continuing absence, is declared total — political as well as spiritual. The qualified jurist is the Imām's active vicar (nāʾib khāṣṣ) in rule, not merely in legal interpretation. An endpoint historically articulated only in the twentieth century, projected here as the natural consummation of the Sarbedār-Usūlī arc. The clergy estate becomes the polity. The dervishes are domesticated. The Karbalāʾ paradigm of redemptive martyrdom is sublimated into juridical authority — and the manpower it once mobilized dries up with it."
+
+ # Opinion modifier descriptions
+ SUFYANI_HATES_SHAYKHI_POWER: "Sufyānī notables hate dervish ascendancy"
+ SHAYKHI_HATES_SUFYANI_POWER: "Shaykhī dervishes hate Sufyānī ascendancy"
+ SHAYKHI_OPINION_TWELVER_RULER: "Twelver ruler — keeper of the Imām's name"
+
+ # Sufyānī parliament issues
+ sufyani_codify_qadi_courts: "Codify the Qāḍī Courts"
+ sufyani_codify_qadi_courts_desc: "The notables press for written procedural code — formalized hearings, registered rulings, predictable jurisprudence. Order over enthusiasm."
+ sufyani_curb_dervish_excesses: "Curb the Dervish Excesses"
+ sufyani_curb_dervish_excesses_desc: "Public sermons calling for moderation; quiet enforcement against the more inflammatory khānaqāhs. The Sufyānī wing reins in its dyarchic partner."
+ sufyani_negotiate_amir_reconciliation: "Negotiate the Amīr Settlement"
+ sufyani_negotiate_amir_reconciliation_desc: "Quiet diplomacy with the surviving Mongol-Türk amīrs of the frontier — recognition of their territorial pre-eminence in exchange for non-aggression. The Karbalāʾ paradigm is briefly set aside; the Shaykhīs are furious."
+ sufyani_endow_great_madrasa: "Endow a Great Madrasa"
+ sufyani_endow_great_madrasa_desc: "A major endowment for a teaching mosque-school — formal Twelver jurisprudence, Arabic grammar, the sciences of ḥadīth. Rational learning, written authority, the apparatus of an ʿulamāʾ that can eventually argue Usūlī ijtihād."
+ sufyani_subsidize_bazaar_caravan: "Subsidize the Bazaar Caravans"
+ sufyani_subsidize_bazaar_caravan_desc: "Tax relief and protected escort for the great trans-Khurāsān trade caravans. The bāzāris prosper; the polity grows accustomed to revenue not extracted at sword-point."
+
+ # Shaykhī parliament issues
+ shaykhi_proclaim_jihad: "Proclaim Jihād"
+ shaykhi_proclaim_jihad_desc: "The dervish shaykh ascends the minbar and proclaims the sword path. War initiation needs no diplomatic pretext when the Hidden Imām's enemies are everywhere."
+ shaykhi_purge_remaining_amirs: "Purge the Surviving Amīrs"
+ shaykhi_purge_remaining_amirs_desc: "Confiscation of remaining tribal-aristocratic estates, exile or execution of their holders. The historical Sarbedār practice taken to its limit — and every Mongol-Türk neighbor takes note."
+ shaykhi_mobilize_dervish_corps: "Mobilize the Dervish Corps"
+ shaykhi_mobilize_dervish_corps_desc: "Lodges across the polity empty their fighting-age men into the field. Five thousand armed dervishes is the historical figure; sustained mobilization can match it."
+ shaykhi_proclaim_imminent_mahdi: "Proclaim the Imām's Return Imminent"
+ shaykhi_proclaim_imminent_mahdi_desc: "The shaykh declares the signs unmistakable — the Imām returns, perhaps within the year. Devotional intensity spikes; civic order disintegrates; the Sufyānīs rage at the impiety of the timetable."
+ shaykhi_excommunicate_compromisers: "Excommunicate the Compromisers"
+ shaykhi_excommunicate_compromisers_desc: "Named Sufyānī notables are publicly declared enemies of the Imām's cause and stripped of their religious standing. A direct strike against the dyarchic partner — and unmistakable proof of which faction holds the pulpit."
+
+ # Country modifier names (granted by parliament debates)
+ sufyani_codified_courts_mod: "Codified Qāḍī Courts"
+ sufyani_curbed_dervishes_mod: "Curbed Dervish Excesses"
+ sufyani_amir_settlement_mod: "Amīr Settlement"
+ sufyani_endowed_madrasa_mod: "Endowed Madrasa"
+ sufyani_bazaar_subsidy_mod: "Bazaar Caravan Subsidy"
+ shaykhi_jihad_proclaimed_mod: "Jihād Proclaimed"
+ shaykhi_amir_purge_mod: "Amīr Purge"
+ shaykhi_dervish_mobilization_mod: "Dervish Corps Mobilized"
+ shaykhi_mahdi_imminent_mod: "Imām's Return Proclaimed Imminent"

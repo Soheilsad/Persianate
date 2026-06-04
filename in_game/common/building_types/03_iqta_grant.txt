@@ -1,0 +1,108 @@
+# Iqṭāʿ Grant — a chancery-registered fiscal grant assigning the revenue of
+# a rural parcel to an amir in exchange for the upkeep of his retinue.
+# Mechanically: the amir physically settles, his clan and lieutenants with
+# him, and the local noble pop grows toward a larger cap. Because the new
+# arrivals live off horses and herds rather than tax registers, local noble
+# literacy is suppressed — they do not promote into the diwan class while
+# the grant remains in force.
+#
+# Eligibility: rural locations only, persianate_sultanate government, local
+# control < 50 at construction time (iqṭāʿ historically went to parcels the
+# chancery could not reach directly — the amir's tribal authority replaces
+# the absence of central authority). One iqṭāʿ per location.
+
+iqta_grant = {
+	is_foreign = no
+	max_levels = estate_building_single_level
+	pop_type = nobles
+
+	employment_size = large_noble_employment
+
+	category = government_category
+
+	rural_settlement = yes
+	town = no
+	city = no
+	megalopolis = no
+
+	build_time = estate_build_time
+
+	destroyable_building = yes
+
+	possible_production_methods = {
+		iqta_grant_maintenance
+	}
+
+	construction_demand = estate_construct_building
+
+	country_potential = {
+		government_type = government_type:persianate_sultanate
+		OR ={
+			has_estate_privilege = estate_privilege:amirs_iqta_grant
+			has_estate_privilege = estate_privilege:amirs_hereditary_tuyul
+		}
+	}
+
+	allow = {
+		local_control < 0.5
+	}
+
+	# Revoking an iqṭāʿ was historically the chancery's hardest political
+	# act — possible only once the diwan had reasserted direct order in the
+	# parcel. Below 70 control the amir's authority is still the only
+	# authority, and the grant cannot be pulled.
+	can_destroy = {
+		local_control > 0.7
+	}
+
+	# Noble pop cap: a flat baseline (the amir's own household plus a small
+	# personal retinue, present everywhere a grant exists) plus a scaled
+	# component that lets a populous parcel sustain a real Türkmen host
+	# while a thin rural rock supports only the amir's own kin.
+	raw_modifier = {
+		local_nobles_pop_growth = 0.10
+		local_nobles_max_literacy = -10
+		diwan_estate_target_satisfaction = -0.002 # minor reduction to reflect the amir's encroachment on the diwan's turf
+		amirs_estate_target_satisfaction = 0.01 # minor boost to reflect the amir's increased local presence and prestige
+		local_max_control = -0.05 # the amir's authority is a substitute for the chancery's; the grant is a recognition of that fact on the chancery's part, and a formalization of it on the amir's part. The grant is a formal acknowledgment that the amir's authority in the parcel is real, and that the chancery will not contest it while the grant stands. The control hit reflects the fact that the amir's authority is not as strong as the chancery's would be, but it is still significant.
+		local_amirs_estate_power = 0.75 # the amir's local power is a direct function of the grant — the grant is what gives the amir his local authority, and the amir's local power is a reflection of that authority. The grant is a recognition of the amir's local power, and a formalization of it on the chancery's part. The power boost reflects the fact that the amir's local power is significant, but not overwhelming — the grant is a recognition of the amir's local power, but it does not make him a local despot.
+	
+	}
+
+	modifier = {
+		local_nobles_desired_pop = 0.1
+		local_nobles_desired_pop_scaled = 0.02
+		local_levy_size_modifier = 0.2
+		}
+
+
+	# The grant is a Tazik instrument with Türk consequences: the diwan
+	# resents the lost revenue, the amirs welcome the formal recognition,
+	# and the axis drifts a hair toward Türk with every parcel registered.
+	on_built = {
+		location = {
+			add_pop = {
+					culture = root.owner.culture
+					religion = root.owner.religion
+					type = pop_type:nobles
+					size = { value = 0.05 }
+			}
+		}
+		owner = {
+			change_societal_value = { type = turk_vs_tazik value = -1 }
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.02 }
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.01 }
+		}
+		
+	}
+
+	# Revocation costs amir trust. The withholding-event hook lives in a
+	# later workstream; this is the satisfaction floor.
+	on_destroyed = {
+		owner = {
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.05 }
+		}
+	}
+
+	graphical_tags = { small_military }
+}

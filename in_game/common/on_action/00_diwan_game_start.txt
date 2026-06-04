@@ -1,0 +1,24 @@
+on_game_start = {
+	on_actions = {
+    	on_diwan_start
+    }
+}
+
+on_diwan_start = {
+	effect = {
+		# Set the global flag that gates eranzamin_succession's can_start.
+		# The situation's on_start handles contender flagging, warlord
+		# modifier grant, and flavor.1 dispatch — no per-country setup
+		# events needed here.
+		set_global_variable = start_eranzamin_succession
+		activate_situation = situation:eranzamin_succession
+		# Fire the one-shot cleanup pass (kill non-_pw character duplicates,
+		# revoke base communal_lands where Boneh System should rule).
+		# Needs a country root for the event scope; CHB is always present at
+		# game start and the character kills inside are absolute-scoped.
+		random_country = {
+			limit = { exists = this }
+			trigger_event_silently = { id = persianate_cleanup.1 }
+		}
+	}
+}

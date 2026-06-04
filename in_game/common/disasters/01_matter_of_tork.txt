@@ -1,0 +1,71 @@
+# Matter of Tork — Tazik-coded contender close to consolidation faces
+# a tribal backlash.
+#
+# Design spec: docs/design/eranzamin_plan.md §19. Mechanically: progress
+# meter (country variable matter_progress) accumulates from stressors,
+# decays from counter-actions, fires threshold events at 25 / 50 / 75
+# and a structural civil war at 100.
+#
+# Triggers: see in_game/common/scripted_triggers/03_matter_triggers.txt
+# Effects: see in_game/common/scripted_effects/02_matter_effects.txt
+# Modifiers: see in_game/common/static_modifiers/06_matter_resolution_modifiers.txt
+
+matter_of_tork = {
+
+	# Spawn at low chance — the can_start gate is the real filter.
+	monthly_spawn_chance = monthly_spawn_chance_high
+
+	can_start = {
+		matter_of_tork_can_start = yes
+	}
+
+	can_end = {
+		AND = {
+			had_disaster_for_years = {
+				disaster_type = disaster_type:matter_of_tork
+				years >= 10
+			}
+			OR = {
+				# Resolution flag set by Suppress/Concede/Co-opt/Synthesis events
+				has_variable = matter_of_tork_resolved
+				has_variable = matter_of_tork_resolved_by_synthesis
+				# Defensive: drop below contender flag (lost the realm)
+				NOT = { has_variable = eranzamin_contender }
+			}
+		}
+	}
+
+	# Disaster-active ambient drag — represents the constant tension of
+	# the tribes' restlessness even before the events fire. Tribes /
+	# amirs grow more rebellious; the diwan, doing the suppressing,
+	# grows quieter; legitimacy bleeds slowly.
+	modifier = {
+		monthly_tribes_estate_rebel_growth = 0.01
+		monthly_amirs_estate_rebel_growth = 0.01
+		monthly_diwan_estate_rebel_growth = -0.005
+		amirs_estate_target_satisfaction = -0.05
+		monthly_legitimacy = -0.15
+	}
+
+	on_start = {
+		matter_initialize_progress = yes
+		set_variable = matter_of_tork_fired
+		trigger_event_non_silently = matter_of_tork.1
+	}
+
+	on_monthly = {
+		# Stressor / decay tick — adjusts matter_progress.
+		matter_of_tork_monthly_tick = yes
+		# Threshold dispatch — fires 25/50/75/100 events on first crossing.
+		matter_of_tork_threshold_dispatch = yes
+		# War-duration counter for Co-opt eligibility.
+		matter_war_duration_tick = yes
+		# Resolution poll — fires Suppress / Concede / Co-opt event when
+		# the civil war ends (or Co-opt mid-war at ≥36mo).
+		matter_of_tork_resolution_poll = yes
+	}
+
+	on_end = {
+		matter_clear_progress = yes
+	}
+}

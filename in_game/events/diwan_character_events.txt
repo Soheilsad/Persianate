@@ -1,0 +1,44 @@
+namespace = diwan_character_events
+
+# Spawn Diwan Character (Bureaucrat)
+diwan_character_events.1 = {
+	type = country_event
+	hidden = yes
+	
+	trigger = {
+		country_has_estate = diwan_estate
+		NOT = { "num_characters_in_estate(estate_type:diwan_estate)" >= 6 }
+	}
+	
+	immediate = {
+		create_character = {
+			estate = diwan_estate
+			age = { min = 25 max = 45 }
+			culture = root.culture # Or specific Persian logic? Default is root culture.
+			religion = root.religion
+			
+			# Stats bias: Admin/Diplo
+			# (Assuming game handles stats by job or randomly, but we can nudge traits)
+		}
+	}
+}
+
+# Spawn Amir Character (General/Governor)
+diwan_character_events.2 = {
+	type = country_event
+	hidden = yes
+	
+	trigger = {
+		country_has_estate = amirs_estate
+		NOT = { "num_characters_in_estate(estate_type:amirs_estate)" >= 6 }
+	}
+	
+	immediate = {
+		create_character = {
+			estate = amirs_estate
+			age = { min = 20 max = 40 }
+			culture = root.culture # Or Turkic logic?
+			religion = root.religion
+		}
+	}
+}

@@ -1,0 +1,27 @@
+diwan_estate = {
+	type = country
+	text = {
+		localization_key = diwan_estate
+		fallback = yes
+	}
+}
+
+amirs_estate = {
+	type = country
+	text = {
+		localization_key = amirs_estate
+		fallback = yes
+	}
+}
+
+
+diwan_council = {
+	type = country
+	trigger = {
+		has_reform = government_reform:persianate_bureaucracy_reform
+	}
+	text = {
+		localization_key = diwan_council
+		fallback = yes
+	}
+}

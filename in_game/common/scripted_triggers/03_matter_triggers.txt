@@ -1,0 +1,166 @@
+# Triggers for the Matter of Tork / Matter of Tazik consolidation disasters.
+# Design spec: docs/design/eranzamin_plan.md §19 (mechanic), §20 (END gate).
+#
+# The territorial-gate-held-24-months requirement is implemented via a
+# country variable `eranzamin_consolidation_months` that ticks up each
+# month the country is above the territorial threshold and resets to 0
+# when it falls below. The on_monthly in the eranzamin_succession
+# situation maintains the counter.
+
+# ---Identity-pole detection helpers ---------------------------------------
+
+is_axis_tazik_committed = {
+	# Tazik commitment: axis at the Matter-trigger threshold for Tork.
+	# Per §19.2.
+	societal_value:turk_vs_tazik >= 45
+}
+
+is_axis_tork_committed = {
+	societal_value:turk_vs_tazik <= -45
+}
+
+is_axis_tazik_triumph = {
+	# END-gate Tazik clause A. Per §20.1.
+	societal_value:turk_vs_tazik >= 75
+}
+
+is_axis_tork_triumph = {
+	societal_value:turk_vs_tazik <= -75
+}
+
+# ---Territorial gate ------------------------------------------------------
+
+is_eranzamin_territorial_gate_met = {
+	# Proxy for "60% of region dev under direct or vassal control."
+	# TODO: when EU5 exposes a cleaner share_of_region_dev trigger, swap
+	# this for the exact 60% threshold. For now use the existing 150-loc
+	# full-victory threshold scaled to ~60% (90 locations).
+	num_locations_owned_or_owned_by_subjects_or_below > 300
+	is_subject = no
+	capital = { province = { is_eranzamin_region_province = yes } }
+}
+
+is_eranzamin_consolidation_sustained = {
+	# Held the territorial gate for 24 months continuous.
+	is_eranzamin_territorial_gate_met = yes
+	has_variable = eranzamin_consolidation_months
+	var:eranzamin_consolidation_months >= 24
+}
+
+# ---Matter trigger gates --------------------------------------------------
+
+matter_of_tork_can_start = {
+	# §19.2: Tazik-coded contender close to victory triggers the tribal
+	# backlash.
+	has_variable = eranzamin_contender
+	is_axis_tazik_committed = yes
+	is_eranzamin_consolidation_sustained = yes
+	NOT = { has_variable = matter_of_tork_fired }
+	NOT = { has_variable = matter_of_tork_resolved }
+	# Mixed-axis players (between -25 and 25) are not eligible here —
+	# they will route to the Safavid clause for END or trip Matter of
+	# Tazik first if drift takes them past -25.
+}
+
+matter_of_tazik_can_start = {
+	has_variable = eranzamin_contender
+	is_axis_tork_committed = yes
+	is_eranzamin_consolidation_sustained = yes
+	NOT = { has_variable = matter_of_tazik_fired }
+	NOT = { has_variable = matter_of_tazik_resolved }
+}
+
+# ---Matter resolution flags (set by resolution events) -------------------
+
+matter_of_tork_resolved_trigger = {
+	OR = {
+		has_variable = matter_of_tork_resolved
+		has_variable = matter_of_tork_resolved_by_synthesis
+	}
+}
+
+matter_of_tazik_resolved_trigger = {
+	OR = {
+		has_variable = matter_of_tazik_resolved
+		has_variable = matter_of_tazik_resolved_by_synthesis
+	}
+}
+
+# ---Safavid synthesis threshold -----------------------------------------
+
+# Per §20.1.C: spiritualism >= 75, mysticism >= 75, religious_unity >= 0.80.
+# TODO: confirm the exact societal-value polarity keys in the mod / base
+# game. Placeholders below assume `spiritualism` and `mysticism` are valid
+# societal-value names; if not, swap to the correct ones at integration time.
+safavid_synthesis_thresholds_met = {
+	religious_unity >= 0.80
+	# Spiritualism pole strong
+	# Mysticism pole strong
+	# Until polarity names are verified, gate on legitimacy + estate religion
+	# satisfaction as a pre-check. To be replaced.
+	custom_tooltip = {
+		text = safavid_synthesis_polarity_tt
+		legitimacy >= 75
+	}
+}
+
+# ---END gate (situation can_end) ----------------------------------------
+
+# Per §20: any one of these three clauses, plus territorial gate (which
+# is checked against `controls_eranzamin_key_cities` + 150-loc threshold
+# in the existing situation).
+eranzamin_end_condition_met = {
+	OR = {
+		# Clause A — Tazik Triumph
+		AND = {
+			is_axis_tazik_triumph = yes
+			matter_of_tork_resolved_trigger = yes
+		}
+		# Clause B — Türk Triumph
+		AND = {
+			is_axis_tork_triumph = yes
+			matter_of_tazik_resolved_trigger = yes
+		}
+		# Clause C — Safavid Synthesis
+		safavid_synthesis_thresholds_met = yes
+	}
+}
+
+# ---Stressor helper triggers --------------------------------------------
+
+# Used by the disaster's on_monthly to count one-shot bumps applied
+# during the disaster window.
+
+is_tribal_pastoral_location = {
+	# A location whose dominant pop type is tribesmen, used to detect
+	# "consolidate_diwan applied on a pastoral province" stressor.
+	OR = {
+		any_pop = {
+			pop_type = pop_type:tribesmen
+			pop_size >= 5
+		}
+	}
+}
+
+is_urban_diwan_capable_location = {
+	# Urban location whose pops include Urban Iranic OR Urban Iraqi Arab.
+	# Iraqi Arabs are part of the same bureaucratic tradition as Persians
+	# (dīwān is Pahlavi → Arabic); excluding them leaves Iraq with no
+	# diwan participation, which is historically wrong. See memory
+	# `feedback_iraqi_arabs_are_tazik.md`.
+	#
+	# TODO: confirm exact culture-group keys. Iraqi Arab is likely
+	# culture_group = mashriqi_group or culture = iraqi_arab.
+	any_pop = {
+		OR = {
+			AND = {
+				pop_type = pop_type:burghers
+				culture ?= { has_culture_group = culture_group:iranic_group }
+			}
+			AND = {
+				pop_type = pop_type:burghers
+				culture ?= { has_culture_group = culture_group:mashriqi_group }
+			}
+		}
+	}
+}

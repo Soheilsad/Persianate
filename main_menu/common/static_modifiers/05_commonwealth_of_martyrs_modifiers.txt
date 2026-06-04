@@ -1,0 +1,113 @@
+# -----------------------------------------------------------------------------
+# Country modifiers granted by Commonwealth of Martyrs parliament debates.
+#
+# Each is the temporary policy outcome of a dyarchic council resolution —
+# either Sufyānī (civic-fiscal) or Shaykhī (mahdist-militant). Durations are
+# set per-debate at the issue site, not here.
+# -----------------------------------------------------------------------------
+
+# ---Sufyānī outcomes ---
+
+sufyani_codified_courts_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_max_control = 0.10
+	stability_cost = -0.05
+	monthly_towards_centralization = 0.05
+}
+
+sufyani_curbed_dervishes_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_shaykhi_dervishes_estate_power = -0.10
+	stability_cost = -0.05
+	monthly_towards_tazik = 0.03
+}
+
+sufyani_amir_settlement_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	improve_relation_impact = 0.15
+	diplomatic_reputation = 1
+	global_amirs_estate_power = 0.10
+}
+
+sufyani_endowed_madrasa_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	research_speed_modifier = 0.08
+	tolerance_own = 1
+	global_clergy_estate_power = 0.10
+}
+
+sufyani_bazaar_subsidy_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	tax_income_efficiency = 0.10
+	trade_income = 0.10
+}
+
+# ---Shaykhī outcomes ---
+
+shaykhi_jihad_proclaimed_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	war_no_cb_cost_modifier = -0.25
+	land_morale_modifier = 0.10
+	global_manpower_modifier = 0.10
+	improve_relation_impact = -0.10
+}
+
+shaykhi_amir_purge_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_amirs_estate_power = -0.25
+	global_nobles_estate_power = -0.15
+	tax_income_efficiency = 0.10
+	improve_relation_impact = -0.10
+}
+
+shaykhi_dervish_mobilization_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_manpower_modifier = 0.20
+	global_manpower_modifier = 0.15
+	land_morale_modifier = 0.10
+}
+
+shaykhi_mahdi_imminent_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	monthly_devotion = 0.10
+	land_morale_modifier = 0.20
+	monthly_war_exhaustion = -0.025
+	stability_cost = 0.15
+	country_cabinet_efficiency = -0.10
+}

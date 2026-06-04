@@ -1,0 +1,153 @@
+# Resolution modifiers for the Matter of Tork / Matter of Tazik disasters.
+# Spec: docs/design/eranzamin_plan.md §19.8 (Suppress / Concede / Co-opt
+# baseline mods) and §20.5 (final victory-state mods).
+#
+# Pattern: the Matter resolution event applies one of these modifiers
+# permanently. The END condition in §20 then reads the axis state and
+# matter-resolved flag to determine which IO-transform victory variant
+# fires.
+
+# ---§19.8 SUPPRESS resolution modifiers ---------------------------------
+
+praetorian_eranzamin = {
+	# Suppress exit after Matter of Tazik (Türk-coded polity crushed
+	# the urban/sayyid revolt). The civilian side is structurally
+	# debuffed; the polity rides on its tribal-military spine.
+	# Per §19.8: roughly +10% manpower of the dominant side, -10%
+	# of the suppressed side, -5% control on suppressed-side province
+	# type, +legitimacy.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_manpower_modifier = 0.10
+	tax_income_efficiency = -0.10
+	global_max_control = -0.05
+	monthly_legitimacy = 0.10
+	monthly_towards_turk = 0.05
+}
+
+pacified_pastures = {
+	# Suppress exit after Matter of Tork (Tazik-coded polity crushed
+	# the tribal revolt). Pastoral pop is structurally debuffed,
+	# diwan administration consolidated.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	tax_income_efficiency = 0.10
+	global_manpower_modifier = -0.10
+	global_max_control = 0.05
+	monthly_legitimacy = 0.10
+	monthly_towards_turk = -0.05
+}
+
+# ---§19.8 CONCEDE resolution modifier -----------------------------------
+
+dual_realm_of_eranzamin = {
+	# Concede exit (either Matter). Polity persists with the breakaway
+	# as a permanent vassal or independent neighbor. Estate balance
+	# forcibly recentered; axis pinned within ±15 for 50y via the
+	# Concede resolution event applying a periodic axis-correction.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	# Tax + manpower split modestly between sides — no big swing.
+	tax_income_efficiency = 0.05
+	global_manpower_modifier = 0.05
+	# Diplomatic prestige hit for failing to fully reintegrate.
+	diplomatic_reputation = -1
+	# Stability premium — dual sovereignty is functional.
+	stability_investment = 0.10
+}
+
+# ---§19.8 CO-OPT resolution modifier ------------------------------------
+
+convergent_eranzamin = {
+	# Co-opt exit. Mid-war "Marriage at" / "Investiture at" event,
+	# requires co_opt_track flag set at 25 or 50 threshold AND war
+	# duration >= 36 months. Annexes the breakaway peacefully.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	# Modest bonuses both sides, no penalties anywhere.
+	tax_income_efficiency = 0.05
+	global_manpower_modifier = 0.05
+	stability_investment = 0.15
+	monthly_legitimacy = 0.15
+	# Cultural-tradition bonus — the polity has demonstrated synthesis
+	# capacity, which is rare and remembered.
+	cultural_tradition_modifier = 0.25
+	# Axis is pinned to 0 ± 5 via the resolution event applying a
+	# stronger periodic axis-correction.
+}
+
+# ---§19.6 75-threshold full-co-opt off-ramp modifiers -------------------
+
+# These two apply if the player took the FULL co-opt 75-threshold
+# option (Yarliq of Amnesty / Vizier-Regent settlement). Disaster
+# is averted at 0 progress but the polity is committed to a heavy
+# permanent stance.
+
+pastures_of_the_sword = {
+	# Full co-opt of the amir revolt before disaster fires. Major
+	# levy boost, major diwan tax penalty, axis pinned Türk for 50y.
+	# Player who reached here was Tazik-coded but bought peace by
+	# becoming Türk in everything but name.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_manpower_modifier = 0.25
+	tax_income_efficiency = -0.20
+	global_max_control = -0.10
+	monthly_towards_turk = 0.10
+}
+
+co_sovereignty_of_the_diwan = {
+	# Full co-opt of the urban revolt before disaster fires. Major
+	# diwan tax boost, major amir levy penalty, axis pinned Tazik
+	# for 50y. Türk-coded player buying peace by becoming Tazik.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	tax_income_efficiency = 0.25
+	global_manpower_modifier = -0.20
+	global_max_control = 0.10
+	monthly_towards_turk = -0.10
+}
+
+# ---§20.4 Qizilbash Synthesis (Safavid auto-override) -------------------
+
+qizilbash_synthesis = {
+	# Applied if 75/75/0.80 thresholds met while a Matter is active.
+	# Replaces all Tork/Tazik tensions with religious-mystical unity.
+	# Both matter_X_resolved flags get set in parallel.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	# Religious unity ratchet — synthesis IS unity.
+	tolerance_own = 4
+	# Divinized-soldier morale — the Qizilbash ghazi frame in mod
+	# form. Large manpower from the conversion of the realm.
+	global_manpower_modifier = 0.20
+	# Diwan tax bonus — the new clerical-administrative class is
+	# integrated, not opposing.
+	tax_income_efficiency = 0.15
+	# Estate satisfaction — the two old poles are bypassed.
+	amirs_estate_target_satisfaction = 0.05
+	diwan_estate_target_satisfaction = 0.05
+	# Stability — synthesis is durable.
+	stability_investment = 0.20
+}

@@ -1,0 +1,180 @@
+is_dhimmi = {
+	OR = {	
+		religion.group = religion_group:buddhist
+		religion.group = religion_group:christian
+		religion.group = religion_group:dharmic
+		religion.group = religion_group:israelite_group
+		religion.group = religion_group:mandean_group
+		religion.group = religion_group:manichaean_group
+		religion.group = religion_group:zoroastrian_group
+	}
+	owner ?= { 
+		religion.group = religion_group:muslim
+	}
+	is_linked_to_foreign_building = no
+}
+
+is_cossacks = {
+	culture = culture:cossack_culture
+	owner ?= {
+		OR = {
+			culture = { has_culture_group = culture_group:russian_group }
+			culture = { has_culture_group = culture_group:lithuanian_group }
+			culture = { has_culture_group = culture_group:polish_group }
+		}
+	}
+}
+
+is_gaelic_clans = {
+	culture ?= {
+		language = language:gaelic_language
+		has_culture_group = culture_group:celtic_group
+	}
+	owner ?= {
+		has_estate_privilege = estate_privilege:scottish_clans
+	}
+	is_linked_to_foreign_building = no
+}
+
+is_not_protected_from_conversion = {
+	OR = {
+		AND = {
+			owner ?= { modifier:global_nobles_conversion_blocked = no }
+			location = { modifier:local_nobles_conversion_blocked = no }
+			pop_type = pop_type:nobles
+		}
+		AND = {
+			owner ?= { modifier:global_clergy_conversion_blocked = no }
+			location = { modifier:local_clergy_conversion_blocked = no }
+			pop_type = pop_type:clergy
+		}
+		AND = {
+			owner ?= { modifier:global_burghers_conversion_blocked = no }
+			location = { modifier:local_burghers_conversion_blocked = no }
+			pop_type = pop_type:burghers
+		}
+		AND = {
+			owner ?= { modifier:global_peasants_conversion_blocked = no }
+			location = { modifier:local_peasants_conversion_blocked = no }
+			pop_type = pop_type:peasants
+		}
+		AND = {
+			owner ?= { modifier:global_slaves_conversion_blocked = no }
+			location = { modifier:local_slaves_conversion_blocked = no }
+			pop_type = pop_type:slaves
+		}
+		AND = {
+			owner ?= { modifier:global_tribesmen_conversion_blocked = no }
+			location = { modifier:local_tribesmen_conversion_blocked = no }
+			pop_type = pop_type:tribesmen
+		}
+		AND = {
+			owner ?= { modifier:global_laborers_conversion_blocked = no }
+			location = { modifier:local_laborers_conversion_blocked = no }
+			pop_type = pop_type:laborers
+		}
+		AND = {
+			owner ?= { modifier:global_soldiers_conversion_blocked = no }
+			location = { modifier:local_soldiers_conversion_blocked = no }
+			pop_type = pop_type:soldiers
+		}
+	}
+}
+
+is_diwan_pop = {
+	AND = {
+		OR = {
+			culture = { has_culture_group = culture_group:iranian_group }
+			culture = { has_culture_group = culture_group:arabic_group }
+		}
+		pop_literacy > 30
+		OR = {
+			owner ?= {
+				government_type = government_type:persianate_sultanate
+			}
+			owner ?= {
+				has_reform = government_reform:persianate_bureaucracy_reform
+			}
+		}
+
+		OR = {
+			location ?= {
+				is_province_capital = yes
+			}
+			location ?= {
+				is_city = yes
+			}
+				
+			location ?= {
+				percentage_pop_type_in_location:burghers > 0.05
+			}
+		}
+	}
+}
+
+is_amir_pop = {
+	OR = {
+		owner ?= {
+			government_type = government_type:persianate_sultanate
+		}
+		owner ?= {
+			has_reform = government_reform:persianate_bureaucracy_reform
+		}
+	}
+}
+
+is_burgher_diwan_pop = {
+	AND = {
+		culture ?= {
+			language = language:persian_language
+		}
+		owner = {
+			# Requires highly capitalized economy to allow merchants into the high bureaucracy
+			societal_value:capital_economy_vs_traditional_economy < -75
+		}
+		OR = {
+			owner ?= {
+				government_type = government_type:persianate_sultanate
+			}
+			owner ?= {
+				has_reform = government_reform:persianate_bureaucracy_reform
+			}
+		}
+		location ?= {
+			OR = {
+				location_rank = location_rank:city
+			}
+		}
+		pop_literacy > 60
+	}
+}
+
+# Sufyānī notables — urban-aristocratic faction in any Commonwealth of Martyrs
+# polity. Lay notables, malik families, urban patricians. The constituency is
+# nobles in cities; rural nobles (where they exist at all under this regime)
+# don't qualify because Sufyānī identity is bound to the urban civic order.
+is_sufyani_pop = {
+	owner ?= {
+		government_type = government_type:commonwealth_of_martyrs
+	}
+	OR = {
+		location ?= {
+			is_province_capital = yes
+		}
+		location ?= {
+			is_city = yes
+		}
+		location ?= {
+			location_rank = location_rank:city
+		}
+	}
+}
+
+# Shaykhī dervishes — the armed religious order. Clergy in any Commonwealth of
+# Martyrs polity qualify (khānaqāh dervishes), as do soldiers (the dervish
+# corps proper). Together they form the polity's mahdist-militant base.
+is_shaykhi_pop = {
+	owner ?= {
+		government_type = government_type:commonwealth_of_martyrs
+	}
+}

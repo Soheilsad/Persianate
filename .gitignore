@@ -1,0 +1,16 @@
+.DS_Store
+**/.DS_Store
+docs/
+**/metadata.json
+**/metadata.json
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/paradox-language-support.xml
+.idea/vcs.xml
+.idea/wip-pers-world.iml
+.vscode/settings.json
+**/*.py
+**/*.ipynb
+**/*.png
+CLAUDE.md

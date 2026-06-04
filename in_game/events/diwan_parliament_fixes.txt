@@ -1,0 +1,225 @@
+namespace = parliaments
+
+INJECT:parliaments.1 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.2 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.3 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.4 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.5 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.6 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.7 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.8 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.9 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.10 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.11 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.12 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.13 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.14 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.15 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.16 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.17 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.18 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.19 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.20 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.21 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.22 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.23 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.24 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.25 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.26 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.27 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}
+
+INJECT:parliaments.28 = {
+	INJECT:trigger = {
+		NOT = {
+			parliament_type = parliament_type:diwan_council
+		}
+	}
+}

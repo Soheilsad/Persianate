@@ -1,0 +1,38 @@
+# Base values for the Diwan Estate
+diwan_base_values = {
+    trigger = {
+        has_estate = diwan_estate
+    }
+    
+    # Base Satisfaction (similar to other estates having ~30-50%)
+    diwan_estate_target_satisfaction = 0.40
+    
+    # Base Power (if needed to ensure they exist)
+    global_diwan_estate_power = 0.05
+}
+
+
+amir_base_values = {
+    trigger = {
+        has_estate = amirs_estate
+    }
+
+    # Base Satisfaction (similar to other estates having ~30-50%)
+    amirs_estate_target_satisfaction = 0.40
+
+    # Base Power (if needed to ensure they exist)
+    global_amirs_estate_power = 0.05
+}
+
+# Compensates the engine's hidden pop-level court-language penalty on diwan
+# satisfaction. Persian was the diwan class's own professional language across
+# the Iranic-cultural zone (Iraq, Caucasus, Khorasan); a Persian court does
+# not chafe an Arab/Kurd/Lur diwan member the way the base mechanic assumes.
+diwan_persian_court_language = {
+    trigger = {
+        has_estate = diwan_estate
+        court_language = language:persian_language
+    }
+
+    diwan_estate_target_satisfaction = 0.15
+}
