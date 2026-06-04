@@ -127,7 +127,8 @@
  turk_vs_tazik_desc: "The eternal struggle between the Men of the Pen (Tazik bureaucracy) and the Men of the Sword (Turkic military aristocracy)."
  turk_vs_tazik_left: "Turkic Military Tradition"
  turk_vs_tazik_right: "Tazik Administration"
- 
+ tazik_focus: "Tazik Dominance"
+ turk_focus: "Turkic Dominance"
  # Privileges (Amirs)
  amirs_tuyul_grants: "Tuyul Grants"
  amirs_tuyul_grants_desc: "Land assignments that combine fiscal rights with administrative jurisdiction, effectively creating a military fiefdom."
