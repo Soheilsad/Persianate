@@ -16,7 +16,6 @@ diwan_power_from_sedentary = {
 
 diwan_base_values = {
 	potential_trigger = { has_reform = government_reform:persianate_bureaucracy_reform }
-	trigger = { always = yes }
 	modifier = {
 		global_diwan_estate_power = 0.30
 		global_amirs_estate_power = 0.30

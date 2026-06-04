@@ -13,43 +13,38 @@
 # moment any of them is enacted.
 
 unsettled_legitimacy_crisis = {
-	potential = {
+	potential_trigger = {
 		government_type = government_type:persianate_sultanate
-		capital = { province = { is_eranzamin_region_province = yes } }
-	}
-	trigger = {
 		NOT = { has_reform = government_reform:chinggisid_regency }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:farr_i_izadi }
 	}
-	modifier = {
-		monthly_legitimacy = -0.50
-		amirs_estate_target_satisfaction = -0.20
-		diwan_estate_target_satisfaction = -0.20
-		clergy_estate_target_satisfaction = -0.15
-		burghers_estate_target_satisfaction = -0.15
-	}
+
+	monthly_legitimacy = -0.50
+	amirs_estate_target_satisfaction = -0.20
+	diwan_estate_target_satisfaction = -0.20
+	clergy_estate_target_satisfaction = -0.15
+	burghers_estate_target_satisfaction = -0.15
+	
 }
 
 
 ghazi_lord_at_war = {
-	potential = {
+	potential_trigger = {
 		government_type = government_type:persianate_sultanate
 
 		has_reform = government_reform:ghazi_sultanate
-	}
-	trigger = {
 		is_at_war = yes
 		any_country_at_war_with = {
 			religion.group != root.religion.group
 		}
 		
 	}
-	modifier = {
-		monthly_legitimacy = 0.25
-		monthly_prestige = 0.10
-		global_levy_size_modifier = 0.25
-		global_manpower_modifier = 0.25
 
-	}
+	monthly_legitimacy = 0.25
+	monthly_prestige = 0.10
+	global_levy_size_modifier = 0.25
+	global_manpower_modifier = 0.25
+
+	
 }
