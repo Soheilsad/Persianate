@@ -8567,13 +8567,13 @@ locations={
 	}
 	herat = {
 		# Kart royal capital — the one Khurasani metropolis that came
-		# back. Oasis core of the Hari Rud.
+		# back. Oasis core of the Hari Rud. a bit more peasants. Herat should be genuinely bigger than nishapur.
 		define_pop = {	type = nobles	size = 0.450	culture = khorasani_culture	religion = sunni }
 		define_pop = {	type = clergy	size = 2.400	culture = khorasani_culture	religion = sunni }
 		define_pop = {	type = burghers	size = 12.000	culture = khorasani_culture	religion = sunni }
 		define_pop = {	type = burghers	size = 0.400	culture = khorasani_culture	religion = shia }
-		define_pop = {	type = peasants	size = 37.000	culture = khorasani_culture	religion = sunni }
-		define_pop = {	type = peasants	size = 8.000	culture = tajik_culture	religion = sunni }
+		define_pop = {	type = peasants	size = 67.000	culture = khorasani_culture	religion = sunni }
+		define_pop = {	type = peasants	size = 12.000	culture = tajik_culture	religion = sunni }
 		define_pop = {	type = tribesmen	size = 2.750	culture = mongolian_culture	religion = sunni }
 		define_pop = {	type = tribesmen	size = 2.750	culture = mongolian_culture	religion = tengri }
 	}

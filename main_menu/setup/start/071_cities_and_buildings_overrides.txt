@@ -1,5 +1,5 @@
 locations = {
-	pushang = { rank = city town_setup = khorasani_town }
+
 	tabriz = { rank = megalopolis town_setup = tabriz_city }
 
 	# === Central Iran ===
@@ -8,12 +8,17 @@ locations = {
 	saveh = { rank = town town_setup = iranian_kashi_town }
 	natanz = { rank = town town_setup = iranian_town }
 	meybod = { rank = town town_setup = iranian_town }
+	ardestan = { rank = town town_setup = tiny_iranian_town }
+	golpayegan = { rank = town town_setup = tiny_iranian_town }
 
 	# === Azerbaijan / NW ===
 	maragheh = { rank = city town_setup = iranian_city }
 	ardabil = { rank = town town_setup = iranian_pilgrimage_town }
 	khoy = { rank = town town_setup = iranian_town }
 	marand = { rank = town town_setup = iranian_town }
+	ahar = { rank = town town_setup = tiny_iranian_town }
+	miyaneh = { rank = town town_setup = tiny_iranian_caravan_town }
+	ujan = { rank = town town_setup = tiny_iranian_town }                  # Ghazan's summer capital — quiet by 1337 but still a place
 
 	# === Kurdistan / W. mountains ===
 	mahabad = { rank = town town_setup = iranian_town }
@@ -23,6 +28,7 @@ locations = {
 	amol = { rank = town town_setup = iranian_town }
 	sari = { rank = town town_setup = iranian_town }
 	gorgan = { rank = town town_setup = iranian_town }
+	lahijan = { rank = town town_setup = tiny_iranian_town }               # pre-Safavid Gilani center
 
 	# === Khorasan ===
 	sabzevar = { rank = city town_setup = khorasani_city }
@@ -33,26 +39,47 @@ locations = {
 	damghan = { rank = town town_setup = iranian_caravan_town }
 	semnan = { rank = town town_setup = iranian_caravan_town }
 	firuzkuh = { rank = town town_setup = khorasani_town }
+	pushang = { rank = town town_setup = khorasani_town }
+	esfarayen = { rank = town town_setup = tiny_iranian_town }
+	jajarm = { rank = town town_setup = tiny_iranian_caravan_town }
+	bakharz = { rank = town town_setup = tiny_iranian_town }
+	abiward = { rank = town town_setup = tiny_iranian_caravan_town }
+	andkhoy = { rank = town town_setup = tiny_iranian_caravan_town }       # Khurasan-Khwarazm route, Ibn Battuta stop
 
 	# === Quhistan / E. Iran ===
 	qaen = { rank = town town_setup = iranian_town }
 	tabas_al_tamr = { rank = town town_setup = iranian_town }
+	tun = { rank = town town_setup = tiny_iranian_fortified_town }
+	kashmar = { rank = town town_setup = tiny_iranian_fortified_town }     # Turshiz
+	gonabad = { rank = town town_setup = tiny_iranian_town }
 
 	# === Sistan / Mihrabanid sphere ===
 	farah = { rank = town town_setup = khorasani_town }
 	shahr_sabz = { rank = town town_setup = iranian_town }
+	bost = { rank = town town_setup = tiny_iranian_fortified_town }        # Ghaznavid winter capital site
 
-	# === Luristan ===
+	# === Luristan / Khuzestan ===
 	borujerd = { rank = town town_setup = iranian_town }
 	dezful = { rank = town town_setup = iranian_town }
 	shushtar = { rank = town town_setup = iranian_town }
 	khorramabad = { rank = town town_setup = iranian_town }
 	nahavand = { rank = town town_setup = iranian_town }
+	izeh = { rank = town town_setup = tiny_iranian_town }                  # Mal-Amir, Hazaraspid Atabeg capital
+
+	# === Fars ===
+	fasa = { rank = town town_setup = tiny_iranian_town }
+	darab = { rank = town town_setup = tiny_iranian_town }
+	neyriz = { rank = town town_setup = tiny_iranian_town }
+	khunj = { rank = town town_setup = tiny_iranian_town }
 
 	# === Kerman / SE Iran ===
 	bam = { rank = town town_setup = iranian_town }
 	jiroft = { rank = town town_setup = iranian_town }
 	lar = { rank = town town_setup = iranian_town }
+	nain = { rank = town town_setup = iranian_town }
+	sirjan = { rank = town town_setup = tiny_iranian_town }                # pre-Mongol Kirman capital
+	mahan = { rank = town town_setup = tiny_iranian_town }                 # future astana of Shah Niʿmatullah Wali
+	bardsir = { rank = town town_setup = tiny_iranian_caravan_town }    # Kuh-Biaban / Jiroft-coast road
 
 	# === Iraq / Mesopotamia ===
 	hillah = { rank = city town_setup = iranian_city }
@@ -63,6 +90,25 @@ locations = {
 	tikrit = { rank = town town_setup = iranian_town }
 	kirkuk = { rank = town town_setup = iranian_town }
 	ahvaz = { rank = town town_setup = iranian_town }
+	wasit = { rank = town town_setup = tiny_iranian_town }                 # historic second city of Iraq
+	khanaqin = { rank = town town_setup = tiny_iranian_caravan_town }      # Baghdad-Hamadan road, successor to Hulwan
+	hit = { rank = town town_setup = tiny_iranian_caravan_town }
+	anah = { rank = town town_setup = tiny_iranian_caravan_town }
+	daquq = { rank = town town_setup = tiny_iranian_caravan_town }         # Kirkuk-road chain
+
+	# === Transoxiana / Sayhun valley ===
+	khujand = { rank = town town_setup = tiny_iranian_town }
+	uzkand = { rank = town town_setup = tiny_iranian_town }
+	osh = { rank = town town_setup = tiny_iranian_town }
+	nasaf = { rank = town town_setup = tiny_iranian_town }                 # Karshi
+	kath = { rank = town town_setup = tiny_iranian_town }
+
+	# === Khwarazm ===
+	khiva = { rank = town town_setup = tiny_iranian_town }                 # deliberately tiny — its greatness is four centuries away
+
+	# === Jochid steppe-edge / Talas ===
+	talas = { rank = town town_setup = tiny_iranian_caravan_town }         # Taraz
+	sighnaq = { rank = town town_setup = tiny_iranian_fortified_town }
 }
 
 
@@ -107,7 +153,7 @@ building_manager = {
 	ilkhanid_mint = { tag = JAL level = 1 location = baghdad }
 	ilkhanid_mint = { tag = KRT level = 1 location = herat }
 	ilkhanid_mint = { tag = GRG level = 1 location = soltaniyeh }
-	ilkhanid_mint = { tag = MZF level = 1 location = yazd }
-	ilkhanid_mint = { tag = KRM level = 1 location = kerman }
+	ilkhanid_mint = { tag = MZF level = 1 location = nain }
+	ilkhanid_mint = { tag = KRM level = 1 location = bardsir }
 	## all the needed mints.
 } 

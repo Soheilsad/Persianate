@@ -14,8 +14,8 @@ ilkhanid_mint = {
               owns = location:soltaniyeh
               owns = location:baghdad
               owns = location:herat
-              owns = location:yazd
-              owns = location:kerman
+              owns = location:nain
+              owns = location:bardsir
           }
       }
       location_potential = {
@@ -24,8 +24,8 @@ ilkhanid_mint = {
               this = location:soltaniyeh
               this = location:baghdad
               this = location:herat
-              this = location:yazd
-              this = location:kerman
+              this = location:nain
+              this = location:bardsir
           }
       }
       allow = {
@@ -41,9 +41,10 @@ ilkhanid_mint = {
       always_add_demands = yes
                                                                                 
       modifier = {
-          local_proximity_source = 35                                           
+          local_proximity_source = 33                                          
           local_monthly_development_modifier = 0.025                          
           local_crown_estate_power = 0.1      
+          local_max_rgo_size_modifier = 1.0
       }                                   
 
       unique_production_methods = {                                             

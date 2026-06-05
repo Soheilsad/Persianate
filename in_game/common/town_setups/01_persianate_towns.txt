@@ -62,6 +62,49 @@ iranian_kashi_town = {
 }
 
 # ============================================================
+# Tiny town variants — the qaṣaba scale
+#
+# The Iranian / Iraqi / Transoxianan world had hundreds of
+# qaṣabas below the rank of a real town: administrative seats,
+# road halts, frontier outposts, shrine villages. The base game
+# maps Latin Europe at this density (every cathedral town, every
+# market lord's seat) and the Persianate world deserves the same
+# fabric. These templates carry it: light on the luxury crafts,
+# but with the literacy infrastructure (the maktab, a modest
+# scriptorium) that the Islamic urban tradition extended down to
+# even small places.
+# ============================================================
+
+tiny_iranian_town = {
+	temple = 1
+	tools_guild = 1
+	weapon_guild = 1
+	cloth_guild = 1
+	paper_guild = 1                # the maktab's paper and the qadi's registers
+	scriptorium = 1                # a single hand at the qasaba mosque
+	granary = 1
+	mason = 1
+	pottery_guild = 1
+	marketplace = 1
+	castle = 1
+	tannery = 1
+	dyes_guild = 1                 # rural indigo, madder, saffron, kermes
+	charcoal_maker = 1
+}
+
+tiny_iranian_caravan_town = {
+	copy_from = tiny_iranian_town
+	marketplace = 1                # caravan transit, monetized economy
+	granary = 1                    # provisioning stop
+	castle = 1                     # caravanserai-fort proxy
+}
+
+tiny_iranian_fortified_town = {
+	copy_from = tiny_iranian_town
+	castle = 2                     # Quhistani fortress qasaba, Sistan frontier, Jochid steppe-edge
+}
+
+# ============================================================
 # City setups
 # ============================================================
 iranian_city = {
