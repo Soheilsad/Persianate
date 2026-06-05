@@ -39,7 +39,6 @@ government = {
 		diwan_land_registers
 		diwan_tax_farming
 		diwan_provincial_auditors
-		diwan_waqf_administration
 
 		# Amirs (selective — service-class, not feudal)
 		amirs_personal_retinues

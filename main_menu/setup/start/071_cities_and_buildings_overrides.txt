@@ -1,6 +1,68 @@
 locations = {
-
+	pushang = { rank = city town_setup = khorasani_town }
 	tabriz = { rank = megalopolis town_setup = tabriz_city }
+
+	# === Central Iran ===
+	kashan = { rank = city town_setup = iranian_kashi_city }
+	qazvin = { rank = city town_setup = iranian_city }
+	saveh = { rank = town town_setup = iranian_kashi_town }
+	natanz = { rank = town town_setup = iranian_town }
+	meybod = { rank = town town_setup = iranian_town }
+
+	# === Azerbaijan / NW ===
+	maragheh = { rank = city town_setup = iranian_city }
+	ardabil = { rank = town town_setup = iranian_pilgrimage_town }
+	khoy = { rank = town town_setup = iranian_town }
+	marand = { rank = town town_setup = iranian_town }
+
+	# === Kurdistan / W. mountains ===
+	mahabad = { rank = town town_setup = iranian_town }
+	sanandaj = { rank = town town_setup = iranian_town }
+
+	# === Caspian / Tabaristan ===
+	amol = { rank = town town_setup = iranian_town }
+	sari = { rank = town town_setup = iranian_town }
+	gorgan = { rank = town town_setup = iranian_town }
+
+	# === Khorasan ===
+	sabzevar = { rank = city town_setup = khorasani_city }
+	tus = { rank = town town_setup = khorasani_town }
+	mashhad = { rank = town town_setup = iranian_pilgrimage_town }
+	torbat_e_jam = { rank = town town_setup = khorasani_town }
+	bastam = { rank = town town_setup = iranian_pilgrimage_town }
+	damghan = { rank = town town_setup = iranian_caravan_town }
+	semnan = { rank = town town_setup = iranian_caravan_town }
+	firuzkuh = { rank = town town_setup = khorasani_town }
+
+	# === Quhistan / E. Iran ===
+	qaen = { rank = town town_setup = iranian_town }
+	tabas_al_tamr = { rank = town town_setup = iranian_town }
+
+	# === Sistan / Mihrabanid sphere ===
+	farah = { rank = town town_setup = khorasani_town }
+	shahr_sabz = { rank = town town_setup = iranian_town }
+
+	# === Luristan ===
+	borujerd = { rank = town town_setup = iranian_town }
+	dezful = { rank = town town_setup = iranian_town }
+	shushtar = { rank = town town_setup = iranian_town }
+	khorramabad = { rank = town town_setup = iranian_town }
+	nahavand = { rank = town town_setup = iranian_town }
+
+	# === Kerman / SE Iran ===
+	bam = { rank = town town_setup = iranian_town }
+	jiroft = { rank = town town_setup = iranian_town }
+	lar = { rank = town town_setup = iranian_town }
+
+	# === Iraq / Mesopotamia ===
+	hillah = { rank = city town_setup = iranian_city }
+	erbil = { rank = city town_setup = iranian_city }
+	karbala = { rank = town town_setup = iranian_pilgrimage_town }
+	kufa = { rank = town town_setup = iranian_pilgrimage_town }
+	samarra = { rank = town town_setup = iranian_pilgrimage_town }
+	tikrit = { rank = town town_setup = iranian_town }
+	kirkuk = { rank = town town_setup = iranian_town }
+	ahvaz = { rank = town town_setup = iranian_town }
 }
 
 
@@ -40,5 +102,12 @@ building_manager = {
 	madrasa = { tag = INJ level = 1 location = shiraz }
 	madrasa = { tag = INJ level = 1 location = isfahan }
 	madrasa = { tag = JAL level = 1 location = mosul }
-
+	
+    ilkhanid_mint = { tag = CHB level = 1 location = tabriz }
+	ilkhanid_mint = { tag = JAL level = 1 location = baghdad }
+	ilkhanid_mint = { tag = KRT level = 1 location = herat }
+	ilkhanid_mint = { tag = GRG level = 1 location = soltaniyeh }
+	ilkhanid_mint = { tag = MZF level = 1 location = yazd }
+	ilkhanid_mint = { tag = KRM level = 1 location = kerman }
+	## all the needed mints.
 } 

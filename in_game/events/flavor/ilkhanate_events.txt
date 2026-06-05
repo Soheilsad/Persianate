@@ -309,6 +309,8 @@ ilkhanate_flavor.2 = {
 			mode = replace
 			size = {
 				value = root.var:charade_counter
+				min = 1
+				max = 4 ### eventually, you hit the rock bottom. the path of the Uzbek Emirates.
 			}
 		}
 		change_variable = {
