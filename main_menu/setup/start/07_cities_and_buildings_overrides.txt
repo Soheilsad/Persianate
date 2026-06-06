@@ -10,7 +10,7 @@ locations = {
 	meybod = { rank = town town_setup = iranian_town }
 	ardestan = { rank = town town_setup = tiny_iranian_town }
 	golpayegan = { rank = town town_setup = tiny_iranian_town }
-
+	varamin = { rank = town town_setup = iranian_town }
 	# === Azerbaijan / NW ===
 	maragheh = { rank = city town_setup = iranian_city }
 	ardabil = { rank = town town_setup = iranian_pilgrimage_town }
@@ -71,7 +71,7 @@ locations = {
 	darab = { rank = town town_setup = tiny_iranian_town }
 	neyriz = { rank = town town_setup = tiny_iranian_town }
 	khunj = { rank = town town_setup = tiny_iranian_town }
-
+	kazerun = { rank = town town_setup = iranian_town }
 	# === Kerman / SE Iran ===
 	bam = { rank = town town_setup = iranian_town }
 	jiroft = { rank = town town_setup = iranian_town }
@@ -136,7 +136,7 @@ building_manager = {
 	astana_complex = { tag = KAR level = 1 location = konya }
 	astana_complex = { tag = KRT level = 1 location = chishti_sarif }
 	astana_complex = { tag = CHG level = 1 location = turkestan }
-
+	astana_complex = { tag = INJ level = 1 location = kazerun }
 	
 	madrasa = { tag = JAL level = 1 location = baghdad }
 	madrasa = { tag = CHB level = 1 location = tabriz }
@@ -149,11 +149,18 @@ building_manager = {
 	madrasa = { tag = INJ level = 1 location = isfahan }
 	madrasa = { tag = JAL level = 1 location = mosul }
 	
-    ilkhanid_mint = { tag = CHB level = 1 location = tabriz }
-	ilkhanid_mint = { tag = JAL level = 1 location = baghdad }
-	ilkhanid_mint = { tag = KRT level = 1 location = herat }
+    ilkhanid_mint = { tag = CHB level = 1 location = ganja }
+	# ilkhanid_mint = { tag = JAL level = 1 location = baghdad }
+	# ilkhanid_mint = { tag = KRT level = 1 location = herat }
 	ilkhanid_mint = { tag = GRG level = 1 location = soltaniyeh }
 	ilkhanid_mint = { tag = MZF level = 1 location = nain }
-	ilkhanid_mint = { tag = KRM level = 1 location = bardsir }
+	ilkhanid_mint = { tag = KRM level = 1 location = jiroft }
 	## all the needed mints.
+
+
+	### naqshband
+	naqshband_guild = { tag = CHB level = 1 location = tabriz }
+	naqshband_guild = { tag = JAL level = 1 location = baghdad }
+	naqshband_guild = { tag = KRT level = 1 location = herat }
+	naqshband_guild = { tag = MZF level = 1 location = yazd }
 } 

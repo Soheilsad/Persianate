@@ -10,22 +10,22 @@ ilkhanid_mint = {
                                                                               
       country_potential = {
           OR = {
-              owns = location:tabriz
+              owns = location:ganja
               owns = location:soltaniyeh
-              owns = location:baghdad
-              owns = location:herat
+            #   owns = location:baghdad
+            #   owns = location:herat
               owns = location:nain
-              owns = location:bardsir
+              owns = location:jiroft
           }
       }
       location_potential = {
           OR = {
-              this = location:tabriz
+              this = location:ganja
               this = location:soltaniyeh
-              this = location:baghdad
-              this = location:herat
+            #   this = location:baghdad
+            #   this = location:herat
               this = location:nain
-              this = location:bardsir
+              this = location:jiroft
           }
       }
       allow = {

@@ -42,6 +42,12 @@ persianate_cleanup.1 = {
 		character:jal_hasan_buzurg ?= { kill_character_silently = this }
 		character:jal_muhammad_khan ?= { kill_character_silently = this }
 
+
+		## demote rey
+		location:rey ?= {
+			## ray was a ruined village, not the city the game thinks it to be.
+			change_location_rank = location_rank:rural_settlement
+		}
 		# --- (2) Revoke communal_lands where Boneh System should rule ---
 		# Mirrors boneh_system's potential exactly so we only touch the same
 		# set of countries that would naturally pick up the mod privilege.
