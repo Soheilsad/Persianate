@@ -423,7 +423,7 @@ development = {
 
 	## ilkhanate and periphery
     tabriz = 5                 # the Paris treatment, for the Paris reasons
-	baghdad = 3
+	# baghdad = 3
     urganj = 4
     soltaniyeh = 3
     herat = 3

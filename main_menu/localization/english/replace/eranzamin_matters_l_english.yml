@@ -29,107 +29,107 @@
  # ============================================================
 
  # --- .1 Announcement
- matter_of_tork.1.title:0 "The Matter of Tork"
- matter_of_tork.1.desc:0 "Riders return from the pasturelands with grim faces. The amirs are talking again — of old privileges, of the iqtaʿ withheld, of a court grown too Persian. The Matter of Tork has begun."
- matter_of_tork.1.a:0 "Acknowledged. We will weather this."
+ matter_of_tork.1.title: "The Matter of Tork"
+ matter_of_tork.1.desc: "Riders return from the pasturelands with grim faces. The amirs are talking again — of old privileges, of the iqtaʿ withheld, of a court grown too Persian. The Matter of Tork has begun."
+ matter_of_tork.1.a: "Acknowledged. We will weather this."
 
  # --- .25 Petition from the umarā
- matter_of_tork.25.title:0 "A Petition from the Umarā"
- matter_of_tork.25.desc:0 "A delegation of frontier amirs has ridden to court — gifts, complaints, demands. Seat them in honor, refer them to the vizier, or refuse them entirely?"
- matter_of_tork.25.a:0 "Receive them in person. Honor the old prerogatives."
- matter_of_tork.25.b:0 "Send the vizier with measured promises."
- matter_of_tork.25.c:0 "Refuse to seat them. The throne does not negotiate."
+ matter_of_tork.25.title: "A Petition from the Umarā"
+ matter_of_tork.25.desc: "A delegation of frontier amirs has ridden to court — gifts, complaints, demands. Seat them in honor, refer them to the vizier, or refuse them entirely?"
+ matter_of_tork.25.a: "Receive them in person. Honor the old prerogatives."
+ matter_of_tork.25.b: "Send the vizier with measured promises."
+ matter_of_tork.25.c: "Refuse to seat them. The throne does not negotiate."
 
  # --- .50 Frontier amir withholds levy
- matter_of_tork.50.title:0 "A Frontier Amir Withholds His Levy"
- matter_of_tork.50.desc:0 "The amir of the eastern marches has failed to send his promised cavalry. His messenger says drought; our spies say defiance. Confiscate, compromise, or marry-in?"
- matter_of_tork.50.a:0 "Confiscate his iqtaʿ. The realm answers to one throne."
- matter_of_tork.50.b:0 "Convene a panj-shanbeh. We will hear his case."
- matter_of_tork.50.c:0 "Marry his daughter to a prince. Bind him by blood."
+ matter_of_tork.50.title: "A Frontier Amir Withholds His Levy"
+ matter_of_tork.50.desc: "The amir of the eastern marches has failed to send his promised cavalry. His messenger says drought; our spies say defiance. Confiscate, compromise, or marry-in?"
+ matter_of_tork.50.a: "Confiscate his iqtaʿ. The realm answers to one throne."
+ matter_of_tork.50.b: "Convene a panj-shanbeh. We will hear his case."
+ matter_of_tork.50.c: "Marry his daughter to a prince. Bind him by blood."
 
  # --- .75 Tribes assembling
- matter_of_tork.75.title:0 "The Tribes Are Assembling"
- matter_of_tork.75.desc:0 "A great gathering of amirs has been called in the steppe. Banners we do not own ride between the encampments. The hour is late — march, concede openly, or issue the yarliq of amnesty if a path of co-option has been kept open."
- matter_of_tork.75.a:0 "March the standing army. Break them before they break us."
- matter_of_tork.75.b:0 "Convene a Great Diwan. Concede openly to ease the storm."
- matter_of_tork.75.c:0 "Issue the Yarliq of Amnesty — bind the amirs to the throne."
+ matter_of_tork.75.title: "The Tribes Are Assembling"
+ matter_of_tork.75.desc: "A great gathering of amirs has been called in the steppe. Banners we do not own ride between the encampments. The hour is late — march, concede openly, or issue the yarliq of amnesty if a path of co-option has been kept open."
+ matter_of_tork.75.a: "March the standing army. Break them before they break us."
+ matter_of_tork.75.b: "Convene a Great Diwan. Concede openly to ease the storm."
+ matter_of_tork.75.c: "Issue the Yarliq of Amnesty — bind the amirs to the throne."
 
  # --- .100 Disaster fires
- matter_of_tork.100.title:0 "The Standards Are Raised"
- matter_of_tork.100.desc:0 "The tribes have raised their own standards. A breakaway has been declared in the pastures, and the levies that once rode for us ride against us. The civil war is on."
- matter_of_tork.100.a:0 "So be it. We will retake the realm by the sword."
+ matter_of_tork.100.title: "The Standards Are Raised"
+ matter_of_tork.100.desc: "The tribes have raised their own standards. A breakaway has been declared in the pastures, and the levies that once rode for us ride against us. The civil war is on."
+ matter_of_tork.100.a: "So be it. We will retake the realm by the sword."
 
  # --- .500 Suppress
- matter_of_tork.500.title:0 "Pacified Pastures"
- matter_of_tork.500.desc:0 "The breakaway is broken. Its amirs are dead, exiled, or pardoned in chains. The realm — quieter now — has been bought with iqtaʿ broken open and granted to the divan."
- matter_of_tork.500.a:0 "Let the registers be redrawn."
+ matter_of_tork.500.title: "Pacified Pastures"
+ matter_of_tork.500.desc: "The breakaway is broken. Its amirs are dead, exiled, or pardoned in chains. The realm — quieter now — has been bought with iqtaʿ broken open and granted to the divan."
+ matter_of_tork.500.a: "Let the registers be redrawn."
 
  # --- .501 Concede
- matter_of_tork.501.title:0 "A Dual Realm"
- matter_of_tork.501.desc:0 "White peace has been written. The breakaway stands — as a vassal, as a neighbor, as a rival. The realm of Erānzamīn is two now, in fact if not in title."
- matter_of_tork.501.a:0 "We will live with this. For now."
+ matter_of_tork.501.title: "A Dual Realm"
+ matter_of_tork.501.desc: "White peace has been written. The breakaway stands — as a vassal, as a neighbor, as a rival. The realm of Erānzamīn is two now, in fact if not in title."
+ matter_of_tork.501.a: "We will live with this. For now."
 
  # --- .502 Co-opt
- matter_of_tork.502.title:0 "The Marriage at Sultānīya"
- matter_of_tork.502.desc:0 "The war drags on; the co-opt path remains open. The pretender's house has signaled willingness — a marriage, an oath, an investiture. Accept the bargain?"
- matter_of_tork.502.a:0 "Accept. The breakaway folds peacefully back into the realm."
- matter_of_tork.502.b:0 "Refuse. The war will be settled by arms."
+ matter_of_tork.502.title: "The Marriage at Sultānīya"
+ matter_of_tork.502.desc: "The war drags on; the co-opt path remains open. The pretender's house has signaled willingness — a marriage, an oath, an investiture. Accept the bargain?"
+ matter_of_tork.502.a: "Accept. The breakaway folds peacefully back into the realm."
+ matter_of_tork.502.b: "Refuse. The war will be settled by arms."
 
  # ============================================================
  # MATTER OF TAZIK EVENTS
  # ============================================================
 
  # --- .1 Announcement
- matter_of_tazik.1.title:0 "The Matter of Tazik"
- matter_of_tazik.1.desc:0 "The cities are murmuring. The sayyids of the great mosques will not look the chamberlain in the eye. The bāzārī close their shutters when the tax-rider passes. The Matter of Tazik has begun."
- matter_of_tazik.1.a:0 "Acknowledged. We will weather this."
+ matter_of_tazik.1.title: "The Matter of Tazik"
+ matter_of_tazik.1.desc: "The cities are murmuring. The sayyids of the great mosques will not look the chamberlain in the eye. The bāzārī close their shutters when the tax-rider passes. The Matter of Tazik has begun."
+ matter_of_tazik.1.a: "Acknowledged. We will weather this."
 
  # --- .25 Petition from the bāzār
- matter_of_tazik.25.title:0 "A Petition from the Bāzār"
- matter_of_tazik.25.desc:0 "The guild-masters of the central bāzār have submitted a formal grievance — taxes too heavy, the qāḍī's writ too thin, the Türk garrison too rough. Hear, delay, or punish?"
- matter_of_tazik.25.a:0 "Hear them in open court. Concede where we can."
- matter_of_tazik.25.b:0 "Refer to the qāḍī. Let the slow law settle them."
- matter_of_tazik.25.c:0 "Confiscate the shops of the loudest. The bāzār will learn."
+ matter_of_tazik.25.title: "A Petition from the Bāzār"
+ matter_of_tazik.25.desc: "The guild-masters of the central bāzār have submitted a formal grievance — taxes too heavy, the qāḍī's writ too thin, the Türk garrison too rough. Hear, delay, or punish?"
+ matter_of_tazik.25.a: "Hear them in open court. Concede where we can."
+ matter_of_tazik.25.b: "Refer to the qāḍī. Let the slow law settle them."
+ matter_of_tazik.25.c: "Confiscate the shops of the loudest. The bāzār will learn."
 
  # --- .50 Sayyid preaches against the throne
- matter_of_tazik.50.title:0 "A Sayyid Preaches Against the Throne"
- matter_of_tazik.50.desc:0 "A descendant of the Prophet has begun to preach in the Friday mosques that our rule is unrighteous. The crowds gather. The chamberlain awaits orders — kill, invite, or endow?"
- matter_of_tazik.50.a:0 "Have him quietly removed. The pulpit is the sword's enemy."
- matter_of_tazik.50.b:0 "Invite him to court. Honor — and silence — through proximity."
- matter_of_tazik.50.c:0 "Endow a madrasa in his name. Make him our patron-saint."
+ matter_of_tazik.50.title: "A Sayyid Preaches Against the Throne"
+ matter_of_tazik.50.desc: "A descendant of the Prophet has begun to preach in the Friday mosques that our rule is unrighteous. The crowds gather. The chamberlain awaits orders — kill, invite, or endow?"
+ matter_of_tazik.50.a: "Have him quietly removed. The pulpit is the sword's enemy."
+ matter_of_tazik.50.b: "Invite him to court. Honor — and silence — through proximity."
+ matter_of_tazik.50.c: "Endow a madrasa in his name. Make him our patron-saint."
 
  # --- .75 Cities shut their gates
- matter_of_tazik.75.title:0 "The Cities Have Shut Their Gates"
- matter_of_tazik.75.desc:0 "Word from the road: the gates of Isfahān, of Shīrāz, of Tabrīz have closed against our tax-rider. The dervishes preach openly in the squares. March, open the gates ourselves, or settle through the vizier-regent if a path has been kept open."
- matter_of_tazik.75.a:0 "March in and break the rebellion. Cities answer to swords."
- matter_of_tazik.75.b:0 "Open the gates to the dervishes — concede the streets."
- matter_of_tazik.75.c:0 "Convene the Vizier-Regent. The sovereignty of the divan will hold us together."
+ matter_of_tazik.75.title: "The Cities Have Shut Their Gates"
+ matter_of_tazik.75.desc: "Word from the road: the gates of Isfahān, of Shīrāz, of Tabrīz have closed against our tax-rider. The dervishes preach openly in the squares. March, open the gates ourselves, or settle through the vizier-regent if a path has been kept open."
+ matter_of_tazik.75.a: "March in and break the rebellion. Cities answer to swords."
+ matter_of_tazik.75.b: "Open the gates to the dervishes — concede the streets."
+ matter_of_tazik.75.c: "Convene the Vizier-Regent. The sovereignty of the divan will hold us together."
 
  # --- .100 Disaster fires
- matter_of_tazik.100.title:0 "The Urban Realm Breaks Free"
- matter_of_tazik.100.desc:0 "Within a fortnight a new realm has been proclaimed in the great cities — vizier-led, sayyid-blessed, dervish-protected. The treasuries of the bāzār have closed to us. The civil war is on."
- matter_of_tazik.100.a:0 "So be it. We will retake the cities."
+ matter_of_tazik.100.title: "The Urban Realm Breaks Free"
+ matter_of_tazik.100.desc: "Within a fortnight a new realm has been proclaimed in the great cities — vizier-led, sayyid-blessed, dervish-protected. The treasuries of the bāzār have closed to us. The civil war is on."
+ matter_of_tazik.100.a: "So be it. We will retake the cities."
 
  # --- .200 Safavid synthesis override
- matter_of_tazik.200.title:0 "The Qizilbash Synthesis"
- matter_of_tazik.200.desc:0 "The dervish and the divan, the pole of mysticism and the pole of spirit, have aligned beneath the throne. What threatened to break the realm has instead remade it. The Matter resolves itself in the new synthesis."
- matter_of_tazik.200.a:0 "A new realm. A new order."
+ matter_of_tazik.200.title: "The Qizilbash Synthesis"
+ matter_of_tazik.200.desc: "The dervish and the divan, the pole of mysticism and the pole of spirit, have aligned beneath the throne. What threatened to break the realm has instead remade it. The Matter resolves itself in the new synthesis."
+ matter_of_tazik.200.a: "A new realm. A new order."
 
  # --- .500 Suppress
- matter_of_tazik.500.title:0 "Praetorian Erānzamīn"
- matter_of_tazik.500.desc:0 "The cities are broken open. The sayyids are silenced, the dervish lodges scattered, the bāzārī taxed at sword-point. The realm holds — but the divan now answers to the captains, not the captains to the divan."
- matter_of_tazik.500.a:0 "Let the garrisons stand."
+ matter_of_tazik.500.title: "Praetorian Erānzamīn"
+ matter_of_tazik.500.desc: "The cities are broken open. The sayyids are silenced, the dervish lodges scattered, the bāzārī taxed at sword-point. The realm holds — but the divan now answers to the captains, not the captains to the divan."
+ matter_of_tazik.500.a: "Let the garrisons stand."
 
  # --- .501 Concede
- matter_of_tazik.501.title:0 "A Dual Realm"
- matter_of_tazik.501.desc:0 "The urban breakaway has been recognized in white peace. The realm of Erānzamīn is two now — court and city, throne and bāzār."
- matter_of_tazik.501.a:0 "We will live with this. For now."
+ matter_of_tazik.501.title: "A Dual Realm"
+ matter_of_tazik.501.desc: "The urban breakaway has been recognized in white peace. The realm of Erānzamīn is two now — court and city, throne and bāzār."
+ matter_of_tazik.501.a: "We will live with this. For now."
 
  # --- .502 Co-opt — Investiture at the City
- matter_of_tazik.502.title:0 "The Investiture at the City"
- matter_of_tazik.502.desc:0 "The war drags on; the path of co-option remains open. The vizier-regent of the breakaway offers an oath of investiture — to serve the throne, in exchange for the sovereignty of the divan being formally recognized. Accept?"
- matter_of_tazik.502.a:0 "Accept. The cities fold peacefully back into the realm."
- matter_of_tazik.502.b:0 "Refuse. The war will be settled by arms."
+ matter_of_tazik.502.title: "The Investiture at the City"
+ matter_of_tazik.502.desc: "The war drags on; the path of co-option remains open. The vizier-regent of the breakaway offers an oath of investiture — to serve the throne, in exchange for the sovereignty of the divan being formally recognized. Accept?"
+ matter_of_tazik.502.a: "Accept. The cities fold peacefully back into the realm."
+ matter_of_tazik.502.b: "Refuse. The war will be settled by arms."
 
  # ============================================================
  # RESOLUTION MODIFIERS

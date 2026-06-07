@@ -139,8 +139,8 @@ countries = {
 			include = "persianate_sultanate_tazik_dominant"
 			government = {
 				type = persianate_sultanate
-				ruler_term = { character = mzf_mubariz_al_din_muhammad start_date = 1314.1.1 regnal_number = 1 }
-				ruler = mzf_mubariz_al_din_muhammad
+				ruler_term = { character = mzf_mubariz_al_din_muhammad_pw start_date = 1314.1.1 regnal_number = 1 }
+				ruler = mzf_mubariz_al_din_muhammad_pw
 			}
 
 			tolerated_cultures = {

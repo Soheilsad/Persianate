@@ -36,3 +36,12 @@ diwan_persian_court_language = {
 
     diwan_estate_target_satisfaction = 0.15
 }
+
+amirs_war_auto_modifier = {
+    potential_trigger = {
+        has_estate = amirs_estate
+        at_war = yes
+    }
+    ## wars bring loot and revenue.
+    amirs_estate_target_satisfaction = 0.025
+}

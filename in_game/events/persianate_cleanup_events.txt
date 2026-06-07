@@ -41,6 +41,11 @@ persianate_cleanup.1 = {
 		# Jalayirids
 		character:jal_hasan_buzurg ?= { kill_character_silently = this }
 		character:jal_muhammad_khan ?= { kill_character_silently = this }
+		
+		
+		## mzf muzaffarids, killing the original to avoid duplicates. The mf is a major character with a long reign and many interactions, so it's worth the effort to rewrite him as a _pw character with proper flavor and traits.
+		character:mzf_mubariz_al_din_muhammad ?= { kill_character_silently = this }
+		character:mzf_shah_shuja ?= { kill_character_silently = this}
 
 
 		## demote rey

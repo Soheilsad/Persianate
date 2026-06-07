@@ -413,7 +413,7 @@ rally_turkic_tribes = {
 		value = 50
 		modifier = {
 			factor = 2
-			is_at_war = yes
+			at_war = yes
 		}
 	}
 }
@@ -565,7 +565,7 @@ press_eranzamin_claim = {
 		value = 100
 		modifier = {
 			factor = 0
-			is_at_war = yes
+			at_war = yes
 		}
 	}
 }

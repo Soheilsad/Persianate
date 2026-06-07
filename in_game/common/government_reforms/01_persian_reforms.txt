@@ -71,8 +71,9 @@ chinggisid_regency = {
 	government = persianate_sultanate
 
 	potential = {
-		NOT = { has_reform = farr_i_izadi }
-		NOT = { has_reform = ghazi_sultanate }
+		NOT = { has_reform = government_reform:farr_i_izadi }
+		NOT = { has_reform = government_reform:ghazi_sultanate }
+		NOT = { has_reform = government_reform:amir_sultanate }
 	}
 	locked = {
 		always = yes
@@ -113,12 +114,22 @@ farr_i_izadi = {
 	government = persianate_sultanate
 
 	potential = {
-		NOT = { has_reform = chinggisid_regency }
-		NOT = { has_reform = ghazi_sultanate }
+		NOT = { has_reform = government_reform:chinggisid_regency }
+		NOT = { has_reform = government_reform:ghazi_sultanate }
+		NOT = { has_reform = government_reform:amir_sultanate }
+		# Re-declaration lock: a dynasty that has tried farr and failed
+		# cannot re-declare. The attempted_farr_and_failed modifier is
+		# applied by the Broken-lapse and Broken-formal resolutions of
+		# the farr_proof_of_fortune disaster. Removing the modifier in
+		# console / by external event clears the lock.
+		NOT = { has_country_modifier = attempted_farr_and_failed }
 	}
 
 	country_modifier = {
-		monthly_legitimacy = -0.25 ## this is a HARD legitimacy path. You are going to have to stick with it, pay HIGH cost of court to legitimize.
+		# Legitimacy bleed has moved to the farr_proof_of_fortune disaster
+		# (-0.5/mo there, vs the -0.25 here). The reform is the STANDING
+		# claim; the disaster is the wager under test. Keeping the bleed
+		# on the reform double-taxes the same political fact.
 		stability_decay = 0.05 # the realm bleeds while the kingship doctrine is being established — the project is its own stress.
 		monthly_towards_centralization = 0.05
 		monthly_towards_tazik = 0.05
@@ -134,7 +145,7 @@ farr_i_izadi = {
 		# The price: the steppe-coded layers reject a crown that owes
 		# nothing to them — the amirs have no place in a settled shāh's
 		# court, the tribes see a state that does not want them.
-		amirs_estate_target_satisfaction = -0.15
+		amirs_estate_target_satisfaction = -0.05
 		tribes_estate_target_satisfaction = -0.10
 		monthly_amirs_estate_rebel_growth = 0.005
 		monthly_tribes_estate_rebel_growth = 0.005
@@ -165,8 +176,9 @@ ghazi_sultanate = {
 
 	potential = {
 		religion_group = religion_group:muslim
-		NOT = { has_reform = chinggisid_regency }
-		NOT = { has_reform = farr_i_izadi }
+		NOT = { has_reform = government_reform:chinggisid_regency }
+		NOT = { has_reform = government_reform:farr_i_izadi }
+		NOT = { has_reform = government_reform:amir_sultanate }
 	}
 
 	country_modifier = {
@@ -211,6 +223,82 @@ ghazi_sultanate = {
 
 
 # =========================================================
+# AGE 1 — RULE BY THE SWORD
+# The Ghaznavid template — Sebüktigin and Mahmūd as Türkic
+# slave-soldiers ruling a fully Persianized administrative
+# state, legitimacy via conquest and caliphal investiture
+# rather than farr or Chinggisid descent. Bayhaqī's Tārīkh-i
+# Masʿūdī is the chronicle of this regime — a Persian
+# secretary's account of a Türkic sultan's court, in Persian,
+# with full diwan apparatus.
+#
+# Auto-granted by the Broken-formal resolution of the
+# farr_proof_of_fortune disaster (farr_proof.201). Also
+# pickable at game start as a fourth Age 1 alternative —
+# the post-Saljuq Atabegate pattern, the late Ghūrid moment,
+# the regime that runs on the army's standing assent.
+# =========================================================
+
+amir_sultanate = {
+	age = age_1_traditions
+	government = persianate_sultanate
+
+	potential = {
+		NOT = { has_reform = government_reform:chinggisid_regency }
+		NOT = { has_reform = government_reform:farr_i_izadi }
+		NOT = { has_reform = government_reform:ghazi_sultanate }
+	}
+
+	country_modifier = {
+		# The amīrs ARE the state — the army's standing assent is
+		# the legitimating fact, and the umara take a seat at the
+		# table that the baseline reform denies them.
+		amirs_estate_target_satisfaction = ez_priv_sat_huge
+		global_amirs_estate_power = 0.25
+		amirs_estate_levy_size = 0.20
+		amirs_estate_allowed_in_cabinet = yes
+
+		# Persian administration is kept on — the dīwān runs the
+		# revenue and chancery as before, but without the political
+		# weight it carries under farr or the circle of justice.
+		# Sebüktigin retained Sāmānid administrators wholesale.
+		diwan_estate_target_satisfaction = 0.03
+
+		# Tribes are integrated into the military apparatus rather
+		# than petitioned for cavalry — modest goodwill, no special
+		# privilege.
+		tribes_estate_target_satisfaction = 0.05
+
+		# The sword grants legitimacy, but only modestly — nothing
+		# like the Chinggisid pump, and earned not borrowed. The
+		# Ghaznavids never claimed more than what conquest and the
+		# caliph's diploma gave them.
+		monthly_legitimacy = 0.15
+
+		# The conquest project. Mahmūd's seventeen Indian campaigns
+		# are the prototype — heavy cavalry and a deep manpower well,
+		# both supplied by the amīr-tribal complex.
+		army_heavy_cavalry_power = 0.10
+		army_light_cavalry_power = 0.10
+		global_manpower_modifier = 0.10
+		land_morale = 0.05
+
+		# A modest prestige stream from victorious arms — the sultan
+		# whose name is read in the khutba because he won the field,
+		# not because he was crowned by the chancery.
+		monthly_prestige = 0.05
+
+		# Drift: Türk-coded, decentralized — the iqṭāʿ holders run
+		# their grants at arm's length from the capital.
+		monthly_towards_turk = 0.075
+		monthly_towards_decentralization = 0.05
+	}
+
+	years = 1
+}
+
+
+# =========================================================
 # AGE 1 — THE CIRCLE OF JUSTICE
 # The settled state's own theory of itself (Ṭūsī, Davānī).
 # Not exclusive with the triad — but reads as the Tazik
@@ -224,7 +312,7 @@ circle_of_equity_reform = {
 	# The dāʾira-yi ʿadālat does not sit comfortably with a borrowed
 	# Chinggisid mandate — it is the settled state's own justification.
 	potential = {
-		NOT = { has_reform = chinggisid_regency }
+		NOT = { has_reform = government_reform:chinggisid_regency }
 	}
 
 	country_modifier = {
@@ -253,8 +341,8 @@ timurid_synthesis = {
 	government = persianate_sultanate
 
 	potential = {
-		NOT = { has_reform = turkmen_confederation }
-		NOT = { has_reform = iranian_kingship }
+		NOT = { has_reform = government_reform:turkmen_confederation }
+		NOT = { has_reform = government_reform:iranian_kingship }
 	}
 
 	country_modifier = {
@@ -281,8 +369,8 @@ turkmen_confederation = {
 	government = persianate_sultanate
 
 	potential = {
-		NOT = { has_reform = timurid_synthesis }
-		NOT = { has_reform = iranian_kingship }
+		NOT = { has_reform = government_reform:timurid_synthesis }
+		NOT = { has_reform = government_reform:iranian_kingship }
 	}
 
 	country_modifier = {
@@ -311,9 +399,9 @@ iranian_kingship = {
 	government = persianate_sultanate
 
 	potential = {
-		has_reform = farr_i_izadi
-		NOT = { has_reform = timurid_synthesis }
-		NOT = { has_reform = turkmen_confederation }
+		has_reform = government_reform:farr_i_izadi
+		NOT = { has_reform = government_reform:timurid_synthesis }
+		NOT = { has_reform = government_reform:turkmen_confederation }
 	}
 
 	country_modifier = {
@@ -404,7 +492,7 @@ qizilbash_aristocracy_reform = {
 
 	potential = {
 		religion = religion:shia
-		NOT = { has_reform = ghulam_system_reform }
+		NOT = { has_reform = government_reform:ghulam_system_reform }
 	}
 
 	country_modifier = {
@@ -455,7 +543,7 @@ ghulam_system_reform = {
 
 	potential = {
 		religion_group = religion_group:muslim
-		NOT = { has_reform = qizilbash_aristocracy_reform }
+		NOT = { has_reform = government_reform:qizilbash_aristocracy_reform }
 	}
 
 	country_modifier = {
@@ -493,8 +581,8 @@ imami_tashayyu = {
 
 	potential = {
 		religion_group = religion_group:muslim
-		NOT = { has_reform = sunni_orthodoxy }
-		NOT = { has_reform = chinggisid_regency }
+		NOT = { has_reform = government_reform:sunni_orthodoxy }
+		NOT = { has_reform = government_reform:chinggisid_regency }
 	}
 
 	on_activate = {
@@ -523,7 +611,7 @@ sunni_orthodoxy = {
 	potential = {
 		religion_group = religion_group:muslim
 		NOT = { religion = religion:shia }
-		NOT = { has_reform = imami_tashayyu }
+		NOT = { has_reform = government_reform:imami_tashayyu }
 	}
 
 	country_modifier = {
@@ -576,7 +664,7 @@ murshid_i_kamil = {
 
 	potential = {
 		religion = religion:shia
-		NOT = { has_reform = chinggisid_regency }
+		NOT = { has_reform = government_reform:chinggisid_regency }
 	}
 
 	on_activate = {
@@ -613,7 +701,7 @@ soyurghal_grants_reform = {
 	government = persianate_sultanate
 
 	potential = {
-		NOT = { has_reform = khassa_crown_demesne }
+		NOT = { has_reform = government_reform:khassa_crown_demesne }
 	}
 
 	country_modifier = {
@@ -640,8 +728,8 @@ khassa_crown_demesne = {
 	government = persianate_sultanate
 
 	potential = {
-		NOT = { has_reform = soyurghal_grants_reform }
-		NOT = { has_reform = chinggisid_regency }
+		NOT = { has_reform = government_reform:soyurghal_grants_reform }
+		NOT = { has_reform = government_reform:chinggisid_regency }
 	}
 
 	country_modifier = {

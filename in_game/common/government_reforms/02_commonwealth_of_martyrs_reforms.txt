@@ -71,7 +71,7 @@ usuli_consolidation_reform = {
 
 	potential = {
 		religion = religion:shia
-		has_reform = bashtin_proclamation_reform
+		has_reform = government_reform:bashtin_proclamation_reform
 	}
 
 	country_modifier = {
@@ -108,7 +108,7 @@ marjaiyya_reform = {
 
 	potential = {
 		religion = religion:shia
-		has_reform = usuli_consolidation_reform
+		has_reform = government_reform:usuli_consolidation_reform
 	}
 
 	country_modifier = {
@@ -142,7 +142,7 @@ wilayat_e_faqih_reform = {
 
 	potential = {
 		religion = religion:shia
-		has_reform = marjaiyya_reform
+		has_reform = government_reform:marjaiyya_reform
 	}
 
 	country_modifier = {

@@ -34,10 +34,15 @@ ghazi_lord_at_war = {
 		government_type = government_type:persianate_sultanate
 
 		has_reform = government_reform:ghazi_sultanate
-		is_at_war = yes
+		at_war = yes
 		any_country_at_war_with = {
-			religion.group != root.religion.group
+			OR = {
+				religion != root.religion
+				has_policy = mongol_law_policy # to have any law of mongol animalistic pagan past is a repudation of god's law, and a ghazi must purify the realm of such animalistic paganism.
+			}
+			
 		}
+
 		
 	}
 
@@ -48,3 +53,20 @@ ghazi_lord_at_war = {
 
 	
 }
+
+
+## needs localization. this is a horrendous blasphemy for a ghazi. Mongol customs are not laws or cultures to be respected, they are to be cleansed.
+ghazi_lord_has_yasa_law = {
+	potential_trigger = {
+		government_type = government_type:persianate_sultanate
+
+		has_reform = government_reform:ghazi_sultanate
+		has_policy = mongol_law_policy
+	}
+
+	monthly_legitimacy = -0.25
+	monthly_prestige = -0.10
+	global_levy_size_modifier = -0.25
+	global_manpower_modifier = -0.25
+}
+

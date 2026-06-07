@@ -56,6 +56,7 @@ character_db = {
 		ruler_trait = conqueror
 	}
 
+
 	chb_demasq_kaja_pw = {
 		first_name = { name = name_damascus.name_xwaja }
 		culture = mongolian_culture
@@ -235,5 +236,34 @@ character_db = {
 		father = jal_esen_temur
 		dynasty = borjigin_dynasty
 		tag = JAL
+	}
+
+
+	### Muzafirid.
+	mzf_mubariz_al_din_muhammad_pw = { #Ruler
+		first_name = { name = name_mubariz.name_al_din }
+		nickname = { name = name_muhammad }
+		culture = farsi_culture
+		religion = sunni
+		adm = 56 dip = 33 mil = 95 ## middling administrator, briliant commander, HORRENDOUS diplomat, as per his historical record. 
+		birth_date = 1301.1.1 #Unknown
+		birth = yazd
+		dynasty = muzaffarid_dynasty
+		tag = MZF
+		spouse = "random"
+		ruler_trait = zealot
+	}
+
+
+	mzf_shah_shoja_pw = {
+		first_name = { name = name_shah.name_shoja }
+		culture = farsi_culture
+		religion = sunni
+		birth_date = 1333.3.10
+		birth = khargerd
+		father = mzf_mubariz_al_din_muhammad_pw
+		dynasty = muzaffarid_dynasty
+		tag = MZF
+		child_trait = child_prodigy ## the mf memorized the quran at 9 fully, acted as literary critique for hafiz and savoj. 
 	}
 }

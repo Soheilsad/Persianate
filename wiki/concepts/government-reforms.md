@@ -104,7 +104,7 @@ Effects: `army_heavy_cavalry_power = +0.15`, `army_light_cavalry_power = +0.15`,
 
 ### `iranian_kingship` — a settled Persian dynasty on a compact realm
 
-Kart, Muẓaffarid, Injuid. **Requires `has_reform = farr_i_izadi`** — you must have already declared the *farr* in Age 1. No Turco-Mongol military aristocracy on top.
+Kart, Muẓaffarid, Injuid. **Requires `has_reform = government_reform:farr_i_izadi`** — you must have already declared the *farr* in Age 1. No Turco-Mongol military aristocracy on top.
 
 Effects: `tax_income_efficiency = +0.10`, `country_cabinet_efficiency = +0.10`, `monthly_legitimacy = +ez_reform_legitimacy_minor`, `global_diwan_estate_power = +0.15`, Dīwān satisfaction `+ez_priv_sat_major`, `monthly_towards_centralization = +0.10`, `monthly_towards_tazik = +0.10`, urban-control bonus. The compact-realm limitation: `global_max_rural_control = −ez_amir_rural_malus_small`, `global_manpower_modifier = −0.10`, `army_heavy_cavalry_power = −0.10`.
 

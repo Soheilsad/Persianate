@@ -45,6 +45,8 @@ eranzamin_flavor.1 = {
 			culture = farsi_culture
 			religion = sunni
 			birth_date = 1315.1.1
+			artist = writer
+			artist_skill = 0.98 ## this is Hafez, the undisputed master of the Persian ghazal form. He should be a top-tier poet, and if he is not, WHO IS?
 			save_scope_as = hafez_scope
 		}
 	}
@@ -52,14 +54,20 @@ eranzamin_flavor.1 = {
 	# OPTION A: Lavish patronage — commission the Diwan
 	option = {
 		name = eranzamin_flavor.1.a
-		change_societal_value = { type = turk_vs_tazik value = ez_major_axis_tazik }
+		change_societal_value = { type = turk_vs_tazik value = 0.025 }
 		change_gold_effect = { scale = ez_endowment_cost }
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = ez_minor_estate_sat }
 		add_prestige = ez_major_prestige
 		add_country_modifier = { modifier = hafez_patronage_active years = ez_long_years }
-		scope:hafez_scope ?= {
-			start_work_of_art_of_type_quality = { type = poem quality = 95 }
+		create_art = {
+			artist = scope:hafez_scope
+			type = work_of_art_type:poem
+			quality = 100 ## this is the diwan of hafiz. each and every household that speaks persian has a copy, reads from it on every holiday, and quotes it in times of joy and sorrow alike. it is the single most salient to every day life  work of persian literature, and it should be represented as such in the game.
+			
 		}
+		# scope:hafez_scope ?= {
+		# 	start_work_of_art = { type = poem quality = 95 }
+		# }
 	}
 
 	# OPTION B: Modest stipend

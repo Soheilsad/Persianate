@@ -1,0 +1,210 @@
+# ============================================================
+# On-action hooks for the Farr Proof of Fortune disaster.
+#
+# Paradox merges on_actions across files. Re-declaring an engine
+# on_action here EXTENDS it — the engine still runs its built-in
+# logic; we just add a farr-specific tail.
+#
+# Hooks:
+#   on_battle_won    — small per-battle legitimacy bump
+#   on_battle_lost   — small per-battle legitimacy hit
+#   on_winning_war   — apply farr_conquest_glory (the +0.4/mo
+#                      stacking modifier) + flat legitimacy
+#   on_losing_war    — apply farr_defeat_shame (-1.0/mo) + flat
+#                      legitimacy hit
+#   on_location_changed_owner — capital lost (-20 + capital_lost
+#                      modifier); non-capital province lost (-3)
+#
+# All hooks check has_variable = farr_proof_fired so they only
+# fire while the disaster is active.
+#
+# Each hook also fires a one-shot INDICATOR event the first time
+# its effect applies, gated on two variables (see farr_proof.300+):
+#   farr_indicator_<situation>_seen   — per-hook one-shot
+#   farr_indicators_suppressed        — master mute for the run
+# ============================================================
+on_battle_won = {
+	on_actions = {
+    	farr_on_battle_won
+		
+    }
+}
+
+
+on_battle_lost = {
+	on_actions = {
+		farr_on_battle_lost
+		
+	}
+}
+
+on_winning_war = {
+	on_actions = {
+		farr_on_winning_war
+		
+	}
+}
+
+on_losing_war = {
+	on_actions = {
+		farr_on_losing_war
+		
+	}
+}
+
+on_location_changed_owner = {
+	on_actions = {
+		farr_on_location_changed_owner
+		
+	}
+}
+
+
+
+# ---Battle won: scope:actor = winning unit, scope:target = losing unit.
+farr_on_battle_won = {
+	effect = {
+		if = {
+			limit = {
+				scope:actor = {
+					owner = { has_variable = farr_proof_fired }
+				}
+			}
+			scope:actor.owner = {
+				add_legitimacy = 1
+				if = {
+					limit = {
+						NOT = { has_variable = farr_indicator_battle_won_seen }
+						NOT = { has_variable = farr_indicators_suppressed }
+					}
+					trigger_event_non_silently = farr_proof.300
+				}
+			}
+		}
+	}
+}
+
+# ---Battle lost: scope:actor = losing unit, scope:target = winning unit.
+farr_on_battle_lost = {
+	effect = {
+		if = {
+			limit = {
+				scope:actor = {
+					owner = { has_variable = farr_proof_fired }
+				}
+			}
+			scope:actor.owner = {
+				add_legitimacy = -2
+				if = {
+					limit = {
+						NOT = { has_variable = farr_indicator_battle_lost_seen }
+						NOT = { has_variable = farr_indicators_suppressed }
+					}
+					trigger_event_non_silently = farr_proof.301
+				}
+			}
+		}
+	}
+}
+
+# ---Winning war: scope:winner = country, scope:loser = country.
+farr_on_winning_war = {
+	effect = {
+		if = {
+			limit = {
+				scope:winner ?= { has_variable = farr_proof_fired }
+			}
+			scope:winner = {
+				add_legitimacy = 5
+				add_country_modifier = {
+					modifier = farr_conquest_glory
+					months = 12
+					mode = add_and_extend
+				}
+				if = {
+					limit = {
+						NOT = { has_variable = farr_indicator_war_won_seen }
+						NOT = { has_variable = farr_indicators_suppressed }
+					}
+					trigger_event_non_silently = farr_proof.302
+				}
+			}
+		}
+	}
+}
+
+# ---Losing war: heaven visibly withdrew.
+farr_on_losing_war = {
+	effect = {
+		if = {
+			limit = {
+				scope:loser ?= { has_variable = farr_proof_fired }
+			}
+			scope:loser = {
+				add_legitimacy = -10
+				add_country_modifier = {
+					modifier = farr_defeat_shame
+					months = 6
+					mode = add_and_extend
+				}
+				if = {
+					limit = {
+						NOT = { has_variable = farr_indicator_war_lost_seen }
+						NOT = { has_variable = farr_indicators_suppressed }
+					}
+					trigger_event_non_silently = farr_proof.303
+				}
+			}
+		}
+	}
+}
+
+# ---Location changed owner: this = location, scope:winner / scope:loser = countries.
+# Capital lost is the visible humiliation — Tīmūr losing Samarqand,
+# Yazīd losing Baghdād. The check uses the loser's *current* capital
+# at the moment the trigger evaluates (engine moves capital after
+# location ownership changes, so this should still catch the original).
+farr_on_location_changed_owner = {
+	effect = {
+		# Capital lost — the seat itself has changed hands.
+		if = {
+			limit = {
+				scope:loser ?= {
+					has_variable = farr_proof_fired
+					capital = root
+				}
+			}
+			scope:loser = {
+				add_legitimacy = -20
+				add_country_modifier = {
+					modifier = farr_capital_lost
+					months = -1
+					mode = replace
+				}
+				if = {
+					limit = {
+						NOT = { has_variable = farr_indicator_capital_lost_seen }
+						NOT = { has_variable = farr_indicators_suppressed }
+					}
+					trigger_event_non_silently = farr_proof.304
+				}
+			}
+		}
+		# Non-capital province lost — a smaller, persistent erosion.
+		else_if = {
+			limit = {
+				scope:loser ?= { has_variable = farr_proof_fired }
+			}
+			scope:loser = {
+				add_legitimacy = -3
+				if = {
+					limit = {
+						NOT = { has_variable = farr_indicator_province_lost_seen }
+						NOT = { has_variable = farr_indicators_suppressed }
+					}
+					trigger_event_non_silently = farr_proof.305
+				}
+			}
+		}
+	}
+}
