@@ -59,14 +59,28 @@ farr_proof_of_fortune = {
 
 	# End conditions: any resolution variable set, or the realm has
 	# ceased to hold the reform (player abandoned the claim).
+	# Each branch gets its own custom_tooltip so the panel reads as a
+	# legible list of the four endings, not one opaque blob.
 	can_end = {
-		custom_tooltip = {
-			text = farr_proof_can_end_tt
-			OR = {
+		OR = {
+			custom_tooltip = {
+				text = farr_proof_end_vindicated_tt
 				has_variable = farr_proof_vindicated
+			}
+			custom_tooltip = {
+				text = farr_proof_end_broken_formal_tt
 				has_variable = farr_proof_broken_formal
+			}
+			custom_tooltip = {
+				text = farr_proof_end_broken_lapse_tt
 				has_variable = farr_proof_broken_lapse
+			}
+			custom_tooltip = {
+				text = farr_proof_end_endured_tt
 				has_variable = farr_proof_endured
+			}
+			custom_tooltip = {
+				text = farr_proof_end_abandoned_tt
 				NOT = { has_reform = government_reform:farr_i_izadi }
 			}
 		}
@@ -79,7 +93,8 @@ farr_proof_of_fortune = {
 	# The reform's amir-anger (-0.15 sat + 0.005 rebel growth) is
 	# already standing on the reform; the disaster doesn't double it.
 	modifier = {
-		monthly_legitimacy = -0.5
+		monthly_legitimacy = -1.0
+		court_spending_cost_modifier = 0.15
 		amirs_estate_target_satisfaction = -0.1
 		minting_income_factor = -0.4 ## we are not really considered legitimate enough to mint coins. minting is meant to be in the name of the ruler, which in the eyes of the world, is the Ilkhan, not our ruler.
 		clergy_estate_target_satisfaction = -0.05 ## lacking khutbah 
@@ -92,6 +107,7 @@ farr_proof_of_fortune = {
 		set_variable = farr_proof_fired
 		trigger_event_non_silently = farr_proof.1
 		add_legitimacy = -50 ### our own edict of appointment is invalidated, after all.
+		stability_decay = 0.0025
 	}
 
 	on_monthly = {

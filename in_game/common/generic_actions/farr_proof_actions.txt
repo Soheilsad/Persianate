@@ -54,7 +54,10 @@ claim_sikka = {
 		scope:actor = {
 			set_variable = farr_50_fired
 			trigger_event_non_silently = farr_proof.50
+			add_legitimacy = -10
 		}
+		 ## you lose some of the banked legitimacy by claiming the sikka, but you are now on the path to recovery.
+		### should COST legitimacy.
 		international_organization:eranzamin = {
 			every_international_organization_member = {
 				limit = {
@@ -110,7 +113,9 @@ claim_khutba = {
 		scope:actor = {
 			set_variable = farr_65_fired
 			trigger_event_non_silently = farr_proof.65
+			add_legitimacy = -15
 		}
+
 		international_organization:eranzamin = {
 			every_international_organization_member = {
 				limit = {
@@ -146,6 +151,7 @@ proclaim_hunt_and_nawruz = {
 		scope:actor = {
 			legitimacy >= 80
 			NOT = { has_variable = farr_80_fired }
+			
 		}
 	}
 
@@ -164,6 +170,7 @@ proclaim_hunt_and_nawruz = {
 
 	effect = {
 		scope:actor = {
+			add_legitimacy = -20
 			set_variable = farr_80_fired
 			trigger_event_non_silently = farr_proof.80
 		}
@@ -207,6 +214,7 @@ assume_padishah = {
 		scope:actor = {
 			set_variable = farr_90_fired
 			trigger_event_non_silently = farr_proof.90
+			add_legitimacy = -25 ## assuming pādishāh is a big deal, so you get a legitimacy boost on top of the legitimacy you banked to claim the title.
 		}
 	}
 

@@ -71,7 +71,6 @@ farr_proof.50 = {
 			modifier = farr_sikka_granted
 			months = -1
 		}
-		add_legitimacy = 5
 	}
 }
 
@@ -95,7 +94,7 @@ farr_proof.65 = {
 			modifier = farr_khutba_in_your_name
 			months = -1
 		}
-		add_legitimacy = 5
+
 	}
 }
 
@@ -120,7 +119,7 @@ farr_proof.80 = {
 			modifier = farr_hunt_and_nawruz
 			months = -1
 		}
-		add_legitimacy = 5
+		
 	}
 }
 
@@ -146,8 +145,8 @@ farr_proof.90 = {
 			modifier = farr_padishah
 			months = -1
 		}
-		set_country_rank = country_rank:kingdom ## we become, a kingdom.
-		add_legitimacy = 5
+		set_country_rank = country_rank:rank_kingdom ## we become, a kingdom.
+
 		add_prestige = 25
 	}
 }
@@ -539,17 +538,19 @@ farr_proof.300 = {
 	desc = farr_proof.300.desc
 	outcome = positive
 
-	immediate = {
-		set_variable = farr_indicator_battle_won_seen
-	}
+	# immediate = {
+	# 	set_variable = farr_indicator_battle_won_seen
+	# }
 
 	option = {
 		name = farr_proof.300.a
+		add_legitimacy = 1
 	}
 
 	option = {
 		name = farr_proof.300.b
 		set_variable = farr_indicators_suppressed
+		add_legitimacy = 1
 	}
 }
 
@@ -567,11 +568,13 @@ farr_proof.301 = {
 
 	option = {
 		name = farr_proof.301.a
+		add_legitimacy = -2
 	}
 
 	option = {
 		name = farr_proof.301.b
 		set_variable = farr_indicators_suppressed
+		add_legitimacy = -2
 	}
 }
 
@@ -589,11 +592,23 @@ farr_proof.302 = {
 
 	option = {
 		name = farr_proof.302.a
+		add_legitimacy = 5
+		add_country_modifier = {
+			modifier = farr_conquest_glory
+			months = 12
+			mode = add_and_extend
+		}
 	}
 
 	option = {
 		name = farr_proof.302.b
 		set_variable = farr_indicators_suppressed
+		add_legitimacy = 5
+		add_country_modifier = {
+			modifier = farr_conquest_glory
+			months = 12
+			mode = add_and_extend
+		}
 	}
 }
 
@@ -611,11 +626,23 @@ farr_proof.303 = {
 
 	option = {
 		name = farr_proof.303.a
+		add_legitimacy = -10
+		add_country_modifier = {
+			modifier = farr_defeat_shame
+			months = 6
+			mode = add_and_extend
+		}
 	}
 
 	option = {
 		name = farr_proof.303.b
 		set_variable = farr_indicators_suppressed
+		add_legitimacy = -10
+		add_country_modifier = {
+			modifier = farr_defeat_shame
+			months = 6
+			mode = add_and_extend
+		}
 	}
 }
 
@@ -633,11 +660,24 @@ farr_proof.304 = {
 
 	option = {
 		name = farr_proof.304.a
+		add_legitimacy = -20
+		add_country_modifier = {
+			modifier = farr_capital_lost
+			months = -1
+			mode = replace
+		}
 	}
 
 	option = {
+
 		name = farr_proof.304.b
 		set_variable = farr_indicators_suppressed
+		add_legitimacy = -20
+		add_country_modifier = {
+			modifier = farr_capital_lost
+			months = -1
+			mode = replace
+		}
 	}
 }
 
@@ -655,10 +695,36 @@ farr_proof.305 = {
 
 	option = {
 		name = farr_proof.305.a
+		add_legitimacy = -3
 	}
 
 	option = {
 		name = farr_proof.305.b
 		set_variable = farr_indicators_suppressed
+		add_legitimacy = -3
+	}
+}
+
+
+farr_proof.306 = {
+	type = country_event
+	category = disaster_event
+	title = farr_proof.306.title
+	desc = farr_proof.306.desc
+	outcome = positive
+
+	immediate = {
+		set_variable = farr_indicator_province_gained_seen
+	}
+
+	option = {
+		name = farr_proof.306.a
+		add_legitimacy = 0.5
+	}
+
+	option = {
+		name = farr_proof.306.b
+		set_variable = farr_indicators_suppressed
+		add_legitimacy = 0.5
 	}
 }

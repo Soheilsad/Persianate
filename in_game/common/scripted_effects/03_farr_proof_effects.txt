@@ -49,11 +49,11 @@ farr_proof_monthly_tick = {
 	change_variable = { name = farr_disaster_months add = 1 }
 
 	if = {
-		limit = { legitimacy >= 75 }
+		limit = { legitimacy >= 95 }
 		change_variable = { name = farr_high_months add = 1 }
 	}
 	if = {
-		limit = { legitimacy <= 25 }
+		limit = { legitimacy <= 40 }
 		change_variable = { name = farr_low_months add = 1 }
 	}
 }

@@ -130,8 +130,8 @@ farr_i_izadi = {
 		# (-0.5/mo there, vs the -0.25 here). The reform is the STANDING
 		# claim; the disaster is the wager under test. Keeping the bleed
 		# on the reform double-taxes the same political fact.
-		stability_decay = 0.05 # the realm bleeds while the kingship doctrine is being established — the project is its own stress.
-		monthly_towards_centralization = 0.05
+		stability_decay = -0.0025 # the realm bleeds while the kingship doctrine is being established — the project is its own stress.
+		monthly_towards_centralization = 0.1
 		monthly_towards_tazik = 0.05
 		global_max_urban_control = ez_diwan_rural_bonus
 
