@@ -173,6 +173,9 @@ ilkhanate_flavor.1 = {
 				}
 			}
 		}
+		custom_tooltip = {	#When he settles to the next state, if they have not learned of this area, he may share the knowledge with them.
+			text = the_boast_about_fortune_tt
+		}
 	}
 	option = {
 		name = ilkhanate_flavor.1.d
