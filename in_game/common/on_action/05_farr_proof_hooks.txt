@@ -99,10 +99,8 @@ on_farr_holder_battle_win = {
 					}
 					trigger_event_non_silently = farr_proof.300
 				}
-				else_if = {
-					limit = {
-						has_variable = farr_indicators_suppressed
-					}
+				else = {
+
 					trigger_event_silently = farr_proof.300
 				}
 			}
@@ -135,10 +133,7 @@ farr_on_battle_lost = {
 					}
 					trigger_event_non_silently = farr_proof.301
 				}
-				else_if = {
-					limit = {
-						has_variable = farr_indicators_suppressed
-					}
+				else = {
 					trigger_event_silently = farr_proof.301
 				}
 			}
@@ -167,10 +162,7 @@ farr_on_winning_war = {
 					}
 					trigger_event_non_silently = farr_proof.302
 				}
-				else_if = {
-					limit = {
-						has_variable = farr_indicators_suppressed
-					}
+				else = {
 					trigger_event_silently = farr_proof.302
 				}
 			}
@@ -197,10 +189,7 @@ farr_on_losing_war = {
 					}
 					trigger_event_non_silently = farr_proof.303
 				}
-				else_if = {
-					limit = {
-						has_variable = farr_indicators_suppressed
-					}
+				else = {
 					trigger_event_silently = farr_proof.303
 				}
 			}
@@ -236,10 +225,7 @@ farr_on_location_changed_owner_loss = {
 					}
 					trigger_event_non_silently = farr_proof.304
 				}
-				else_if = {
-					limit = {
-						has_variable = farr_indicators_suppressed
-					}
+				else = {
 					trigger_event_silently = farr_proof.304
 				}
 			}
@@ -258,10 +244,7 @@ farr_on_location_changed_owner_loss = {
 					}
 					trigger_event_non_silently = farr_proof.305
 				}
-				else_if = {
-					limit = {
-						has_variable = farr_indicators_suppressed
-					}
+				else = {
 					trigger_event_silently = farr_proof.305
 				}
 			}
@@ -292,10 +275,7 @@ farr_on_location_changed_owner_win = {
 					}
 					trigger_event_non_silently = farr_proof.306
 				}
-				else_if = {
-					limit = {
-						has_variable = farr_indicators_suppressed
-					}
+				else = {
 					trigger_event_silently = farr_proof.306
 				}
 			}

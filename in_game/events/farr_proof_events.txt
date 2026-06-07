@@ -69,7 +69,7 @@ farr_proof.50 = {
 		# (unless Broken-formal strips it).
 		add_country_modifier = {
 			modifier = farr_sikka_granted
-			months = -1
+			months = 300 ## twenty-five years. 
 		}
 	}
 }
@@ -92,7 +92,7 @@ farr_proof.65 = {
 		# Legacy: ʿulamāʾ-state alignment persists past resolution.
 		add_country_modifier = {
 			modifier = farr_khutba_in_your_name
-			months = -1
+			months = 300
 		}
 
 	}
@@ -117,7 +117,8 @@ farr_proof.80 = {
 		# dampener persists past resolution.
 		add_country_modifier = {
 			modifier = farr_hunt_and_nawruz
-			months = -1
+			months = 300
+			mode = add_and_extend
 		}
 		
 	}
@@ -369,7 +370,7 @@ farr_proof.200 = {
 		# Apply the permanent Farr Manifest modifier
 		add_country_modifier = {
 			modifier = farr_manifest
-			months = -1
+			months = 120
 		}
 		# Mark the dynasty's vindication for the Matter to read
 		set_variable = farr_proof_vindicated_permanent

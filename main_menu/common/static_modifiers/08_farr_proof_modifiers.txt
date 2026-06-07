@@ -211,14 +211,14 @@ farr_manifest = {
 		decaying = no
 	}
 
-	monthly_legitimacy = 0.25
+	monthly_legitimacy = 0.1
 	amirs_estate_target_satisfaction = 0.10
 	tribes_estate_target_satisfaction = 0.05
 	monthly_amirs_estate_rebel_growth = -0.010
 	monthly_tribes_estate_rebel_growth = -0.010
 	antagonism_received_modifier = -0.20
-	diplomatic_reputation = 2
-	stability_decay = -0.05
+	diplomatic_reputation = 1
+	stability_decay = -0.003
 }
 
 # Endured — the quieter vindication. Realm intact at year 25,

@@ -163,4 +163,22 @@ building_manager = {
 	naqshband_guild = { tag = JAL level = 1 location = baghdad }
 	naqshband_guild = { tag = KRT level = 1 location = herat }
 	naqshband_guild = { tag = MZF level = 1 location = yazd }
+
+
+	### tamma garrisons
+	tamma_garrison = { tag = MZF level = 1 location = yazd }
+
+	## jal garrisons. 
+	tamma_garrison = { tag = JAL level = 1 location = baghdad }
+	tamma_garrison = { tag = JAL level = 1 location = samarra }
+
+	#JKR
+	tamma_garrison = { tag = JKR level = 1 location = tus }
+
+	## SUT
+	tamma_garrison = { tag = SUT level = 1 location = diyarbekir }
+
+	
+	tamma_garrison = { tag = GRG level = 1 location = astarabad }
+
 } 

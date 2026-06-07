@@ -174,8 +174,8 @@
  # ============================================================
  # DISASTER PANEL — progress track headers
  # ============================================================
- FARR_PROOF_VINDICATION_TRACK: "Months at Legitimacy ≥ 75 (Vindication)"
- FARR_PROOF_LAPSE_TRACK: "Months at Legitimacy ≤ 25 (Lapse)"
+ FARR_PROOF_VINDICATION_TRACK: "Months at Legitimacy ≥ 95 (Vindication)"
+ FARR_PROOF_LAPSE_TRACK: "Months at Legitimacy ≤ 40 (Lapse)"
  FARR_PROOF_ENDURANCE_TRACK: "Months Elapsed (Endurance, year 25)"
 
  # ============================================================

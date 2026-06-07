@@ -37,7 +37,7 @@
 # ============================================================
 ### step one. we REMOVE irrigation systems building from the region. The qanat_farmland and crumbling_qanat vegetation types are left in place for mod compatibility, but their terrain bonuses are removed and they are replaced on the map with sparse. The qanat's functionality for THIS region is now entirely in the two buildings below.
 
-irrigation_systems = {
+REPLACE:irrigation_systems = {
 	is_foreign = no
 	max_levels = irrigant_cap
 	pop_type = peasants

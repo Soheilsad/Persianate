@@ -33,6 +33,7 @@ persianate_bureaucracy_reform = {
 		monthly_towards_centralization = 0.1
 		diwan_estate_allowed_in_cabinet = yes
 		amirs_estate_allowed_in_cabinet = no
+		burghers_estate_allowed_in_cabinet = no
 		# Command of the field armies is the amirs' exclusive prerogative
 		# in a baseline Persianate sultanate. The diwan may unlock its own
 		# right to lead through the Tazik Command of Arms privilege —
@@ -40,16 +41,19 @@ persianate_bureaucracy_reform = {
 		amirs_estate_allowed_leading_military = yes
 		diwan_estate_allowed_leading_military = no
 		burghers_estate_allowed_leading_military = no
+		global_clergy_desired_pop_scaled = 0.01
 		cultures_capacity = 1
 		# Demilitarization of the Sedentary Population
 		tax_income_efficiency = 0.1
 		diwan_estate_levy_size = -1
+		
 		peasants_estate_levy_size = -0.85
 		global_max_urban_control = 0.15 # persianate states are built, at every level of their DNA, around the idea of cities as the main control centers. In persianate states, rural control collapses more readily, while urban control is more resilient.
 		global_max_rural_control = 0.05 # cadastral surveys.
 		global_estate_max_tax = 0.1 ## legitimately higher tax rates than euros.
 		## tribes are drawn from, not rural population.
 		tribes_estate_levy_size = 0.15
+		amirs_estate_levy_size = 0.3
 	}
 
 	days = 0
@@ -163,7 +167,7 @@ farr_i_izadi = {
 		# antagonism_against trigger, not on this country_modifier.
 		antagonism_received_modifier = 0.15
 	}
-
+	
 	years = 0 # this is a CLAIM.
 }
 
@@ -391,8 +395,11 @@ turkmen_confederation = {
 	years = 10
 }
 
-# A settled Persian dynasty on a compact realm — Kart, Muzaffarid,
-# Injuid. No Turco-Mongol military aristocracy on top.
+# The verified claim. Iranian Kingship is what Farr was reaching for:
+# the dispute over "who rules" — an Iranian on the throne without
+# Chinggisid descent — settled in the Iranian's favor. The amīrs are
+# still there; they swore at vindication. The Türk question (levies,
+# tribal cavalry, sedentarization) is matter_of_tork, not this reform.
 # Requires that you have already declared farr in Age 1.
 iranian_kingship = {
 	age = age_2_renaissance
@@ -402,22 +409,27 @@ iranian_kingship = {
 		has_reform = government_reform:farr_i_izadi
 		NOT = { has_reform = government_reform:timurid_synthesis }
 		NOT = { has_reform = government_reform:turkmen_confederation }
+		OR = {
+			has_variable = farr_proof_vindicated_permanent
+			has_variable = farr_was_endured
+		}
 	}
 
 	country_modifier = {
 		tax_income_efficiency = 0.10
-		country_cabinet_efficiency = 0.10
-		monthly_legitimacy = ez_reform_legitimacy_minor
+		country_cabinet_efficiency = 0.15
+		monthly_legitimacy = ez_reform_legitimacy_major
 		global_diwan_estate_power = 0.15
 		diwan_estate_target_satisfaction = ez_priv_sat_major
+		# The amīrs swore at vindication — the dispute is settled,
+		# not suppressed. They give cavalry to a king they bent the
+		# knee to.
+		amirs_estate_target_satisfaction = ez_priv_sat_minor
 		monthly_towards_centralization = 0.10
 		monthly_towards_tazik = 0.10
 		global_max_urban_control = ez_diwan_urban_bonus
-		# The compact-realm limitation: weak rural reach (no tribal
-		# cavalry to police the country) and a manpower ceiling.
-		global_max_rural_control = ez_amir_rural_malus_small
-		global_manpower_modifier = -0.10
-		army_heavy_cavalry_power = -0.10
+		cultural_tradition_modifier = 0.05
+		diplomatic_reputation = 1
 	}
 
 	years = 10
