@@ -193,7 +193,7 @@ farr_proof.20 = {
 		name = farr_proof.20.a
 		add_legitimacy = 2
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.05 }
-		random_owned_province = {
+		random_owned_location = {
 			add_unrest = 3
 		}
 	}
@@ -417,7 +417,7 @@ farr_proof.201 = {
 		kill_character = ROOT.ruler
 		set_new_ruler = scope:the_military_usurper_scope
 		# Strip the farr reform; the doctrine dies with the dynasty.
-		remove_reform = farr_i_izadi
+		remove_reform = government_reform:farr_i_izadi
 		# The Ghaznavid template fills the vacuum — a Türkic amīr
 		# sultanate atop a fully Persianized administrative state.
 		# The realm survives; the legitimating doctrine has changed.
@@ -510,7 +510,7 @@ farr_proof.203 = {
 		}
 		set_variable = farr_was_broken_lapse
 		# Strip the reform — the unproven boast cannot be held indefinitely.
-		remove_reform = farr_i_izadi
+		remove_reform = government_reform:farr_i_izadi
 	}
 
 	option = {

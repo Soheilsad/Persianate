@@ -198,7 +198,12 @@ regional_diwan = {
 		}
 	}
 
-	construction_demand = early_capital_building_construction
+	construction_demand = {
+		lumber = 2
+		tools = 2
+		masonry = 2
+		category = building_construction
+	}
 }
 
 

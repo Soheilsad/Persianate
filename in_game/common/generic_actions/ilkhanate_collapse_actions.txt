@@ -93,8 +93,8 @@ consolidate_diwan = {
 			}
 		}
 		scope:actor = {
-			add_estate_satisfaction = { type = diwan_estate value = 0.10 }
-			add_estate_satisfaction = { type = amirs_estate value = -0.05 }
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.10 }
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.05 }
 			change_societal_value = { type = turk_vs_tazik value = 5 }
 		}
 	}
@@ -173,8 +173,8 @@ grant_the_yurt = {
 			}
 		}
 		scope:actor = {
-			add_estate_satisfaction = { type = amirs_estate value = 10 }
-			add_estate_satisfaction = { type = diwan_estate value = -5 }
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = 10 }
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = -5 }
 			change_societal_value = { type = turk_vs_tazik value = -5 }
 		}
 	}
@@ -471,8 +471,8 @@ restore_persian_bureaucracy = {
 				modifier = diwan_extension_mod
 				years = 25
 			}
-			add_estate_satisfaction = { type = diwan_estate value = 15 }
-			add_estate_satisfaction = { type = amirs_estate value = -15 }
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.15 }
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.15 }
 			change_societal_value = {
 				type = turk_vs_tazik
 				value = 10

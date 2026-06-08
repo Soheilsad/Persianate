@@ -3,7 +3,7 @@ pa_diwan_case_embezzlement = {
 	estate = diwan_estate
 	importance = 2.5
 	potential = {
-		country_has_estate = diwan_estate
+		country_has_estate = estate_type:diwan_estate
 	}
 	on_accept = {
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.20 }

@@ -222,7 +222,7 @@ ghazi_sultanate = {
 
 	}
 
-	years = 1 # claim but needs correspondance with the Caliph, so not instant.
+	years = 0 # claim but needs correspondance with the Caliph, so not instant.
 }
 
 
@@ -430,6 +430,78 @@ iranian_kingship = {
 		global_max_urban_control = ez_diwan_urban_bonus
 		cultural_tradition_modifier = 0.05
 		diplomatic_reputation = 1
+	}
+
+	years = 10
+}
+
+# Dār al-Jihād — the verified ghaza claim. What the Ghāzī Sultanate
+# was reaching for, now institutionalized: the wager has been won,
+# the corps is a standing fact, and the realm is reorganized around
+# the doctrine. Cemal Kafadar's frame for the early Ottoman polity
+# (Between Two Worlds), but also the Ghaznavid-Ghūrid template —
+# the polity that exists FOR the ghaza and is held together by it.
+# The akıncı become a vocational estate, the ribats become tax-
+# exempt waqfs with mustering halls, the qāḍī reads the khutba
+# without flinching. Requires that you have already declared ghazi
+# and that the wager closed in your favor — Vindicated (Sword of
+# Islam) or Endured (Guardian of the Thughur).
+dar_al_jihad = {
+	age = age_2_renaissance
+	government = persianate_sultanate
+
+	potential = {
+		NOT = { has_reform = government_reform:timurid_synthesis }
+		NOT = { has_reform = government_reform:turkmen_confederation }
+		NOT = { has_reform = government_reform:iranian_kingship }
+		OR = {
+			has_variable = ghazi_sword_of_islam
+			has_variable = ghazi_guardian_of_thughur
+		}
+	}
+
+	country_modifier = {
+		# The wager is won. The doctrine is no longer under audit;
+		# it is the constitutional fact of the realm. Standing
+		# legitimacy, in the iranian_kingship register.
+		monthly_legitimacy = 0.25
+		government_reform_slots = 1
+		# The corps is institutionalized. Manpower deepens past the
+		# base reform's pulse; the field army moves as if the muster
+		# were already standing — because, in this realm, it is.
+		global_manpower_modifier = 0.20
+		global_levy_size_modifier = 0.25
+		land_morale = 0.10
+		army_tradition_from_battle = 0.20
+
+		# Sword of the Faith named in chanceries from Cairo to Delhi.
+		# Antagonism falls; the diplomatic register changes shape.
+		antagonism_received_modifier = -0.20
+		diplomatic_reputation = 1
+
+		# The clergy patronage deepened. The qāḍīs read the khutba
+		# without flinching; orthodoxy institutionalized as a state
+		# apparatus, not a constituency to be courted.
+		clergy_estate_target_satisfaction = ez_priv_sat_huge
+		global_clergy_estate_power = 0.40
+		tolerance_own = 2
+
+		# The amīrs and tribes are the corps' constituency; the
+		# frontier marches have been integrated as a vocational
+		# warrior estate rather than a problem to be solved.
+		amirs_estate_target_satisfaction = ez_priv_sat_major
+		tribes_estate_target_satisfaction = ez_priv_sat_minor
+
+		# Drift: the doctrine has institutionalized, so the chancery
+		# and the corps now coexist rather than the chancery being
+		# subordinated to the frontier. Light centralization; the
+		# spiritualist / jurisprudential pulls persist as the
+		# doctrinal apparatus deepens.
+		monthly_towards_centralization = 0.1
+		monthly_towards_spiritualist = 0.1
+		monthly_towards_jurisprudence = 0.15
+
+		cultural_tradition_modifier = 0.05
 	}
 
 	years = 10

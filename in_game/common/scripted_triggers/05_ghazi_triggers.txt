@@ -125,14 +125,14 @@ ghazi_can_claim_sultan_of_ghazis = {
 # happened.
 ghazi_can_resolve_sword_of_islam = {
 	legitimacy >= 75
-	check_variable = { name = ghazi_high_months value >= 60 }
-	check_variable = { name = ghazi_tier3_wins value >= 2 }
+	var:ghazi_high_months >= 60
+	var:ghazi_tier3_wins >= 2
 }
 
 # GUARDIAN OF THE THUGHUR — 25 years elapsed, realm intact, AND
 # the realm BORDERS dar al-harb (interior states excluded).
 ghazi_can_resolve_guardian = {
-	check_variable = { name = ghazi_burden_months value >= 300 }
+	var:ghazi_burden_months >= 300
 	ghazi_borders_dar_al_harb = yes
 	# No catastrophic damage — capital not lost, dynasty intact.
 	NOT = { has_country_modifier = ghazi_capital_lost }
@@ -143,17 +143,17 @@ ghazi_can_resolve_guardian = {
 # repeatedly failed.
 ghazi_can_resolve_dervish_rising = {
 	legitimacy <= 25
-	check_variable = { name = ghazi_low_months value >= 60 }
+	var:ghazi_low_months >= 60
 	# The constituency must exist before it can defect.
 	has_country_modifier = ghazi_the_lodges_endowed
 	# Two or more designation failures recorded.
-	check_variable = { name = ghazi_designation_failures value >= 2 }
+	var:ghazi_designation_failures >= 2
 }
 
 # DOCTRINE LAPSES — sustained low legitimacy WITHOUT the rising's
 # preconditions. The quiet failure.
 ghazi_can_resolve_doctrine_lapse = {
-	check_variable = { name = ghazi_low_months value >= 60 }
+	var:ghazi_low_months >= 60
 	# If the rising's gate would fire, defer to it.
 	NOT = { ghazi_can_resolve_dervish_rising = yes }
 }
@@ -168,11 +168,11 @@ ghazi_can_resolve_doctrine_lapse = {
 ghazi_can_launch_internal_campaign = {
 	has_country_modifier = ghazi_hisba_apparatus
 	OR = {
-		has_law_option = strict_hisba_enforcement
-		has_law_option = muhtasib_regime
+		has_policy = strict_hisba_enforcement
+		has_policy = muhtasib_regime
 	}
 	any_owned_location = {
 		has_building = building_type:hisba_office
 	}
-	check_variable = { name = ghazi_internal_campaigns value < 3 }
+	var:ghazi_internal_campaigns < 3
 }

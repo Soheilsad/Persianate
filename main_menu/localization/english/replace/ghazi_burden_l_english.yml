@@ -7,13 +7,55 @@
  # ============================================================
 
  # ----- Disaster header -----
- DISASTER_NAME_ghazi_burden_of_sword: "The Burden of the Sword"
- DISASTER_DESC_ghazi_burden_of_sword: "You have taken the khutba in the name of holy war. The volunteers gather; the Friday preachers wait to hear what you have done about it. The qāḍīs are watching which wars are credited and which are not. The Sufis of the frontier ribats keep their counsel. Until the sword is seen working — and seen working in the right places — the realm's credibility bleeds at peace."
+ ghazi_burden_of_sword: "The Burden of the Sword"
+ ghazi_burden_of_sword_desc: "You have taken the khutba in the name of holy war. The volunteers gather; the Friday preachers wait to hear what you have done about it. The qāḍīs are watching which wars are credited and which are not. The Sufis of the frontier ribats keep their counsel. Until the sword is seen working — and seen working in the right places — the realm's credibility bleeds at peace."
+
+ # ----- Disaster action buttons -----
+ claim_jihad_within: "Establish the Hisba"
+ claim_jihad_within_desc: "Plant the muhtasib's office under your sikka. The censor walks the bazaar in your name; the jurists, withholding endorsement until the ruler cleans his own house, concede the first step. Available at legitimacy ≥ 50 with the sharīʿa unblocked. Costs 10 legitimacy — the doctrine's first apparatus is paid for from the bank of credibility."
+
+ claim_ribat_network: "Endow the Frontier Lodges"
+ claim_ribat_network_desc: "Stones laid at the marches: ribats at the river fords, khanqahs at the passes. The mutaṭawwiʿa have a hearth at the frontier; the corps the doctrine promised has somewhere to sleep. Available at legitimacy ≥ 60 with 100 gold in the treasury. Costs 15 legitimacy."
+
+ claim_caliphal_investiture: "Seek the Caliph's Diploma"
+ claim_caliphal_investiture_desc: "Send envoys to Cairo. The shadow-caliph's diploma is not free — a thread of public deference to the Mamluks — but it covers the doctrine until your own name suffices. Available at legitimacy ≥ 60. Costs 15 legitimacy."
+
+ claim_sultan_of_ghazis: "Assume the Style of Sultan of the Ghazis"
+ claim_sultan_of_ghazis_desc: "On the sikka, on the khutba, in the address of envoys: Sulṭān al-Ghuzāt, Sword of the Faith. The doctrine speaks in its own name now. Available at legitimacy ≥ 90, or ≥ 75 if the caliphal diploma is already in hand. Costs 25 legitimacy — the largest silence ends here."
+
+ launch_internal_campaign: "Launch an Internal Campaign"
+ launch_internal_campaign_desc: "Set the muhtasib's apparatus to the realm itself: vice, heterodoxy, or the other branch. The chronicles will read it as proof that ghaza is not merely for distant frontiers. The first campaign is loud; the third is theater the poets mock. Requires the hisba apparatus, the strict-hisba or muhtasib_regime law, and at least one hisba office. Costs 50 gold and 3 legitimacy. Capped at three campaigns per reign."
 
  # ----- can_start / can_end tooltips -----
  ghazi_burden_not_yet_completed_tt: "The wager of ghaza has not yet been resolved by this dynasty."
  ghazi_burden_not_yet_fired_tt: "The ghazi claim has not yet been put to the umma's test."
  ghazi_burden_can_end_tt: "Ends when the doctrine is vindicated, lapses, endures, or is overtaken by a dervish rising — or when the ghazi reform is abandoned."
+
+ # ============================================================
+ # HISBA LAW — enforcement of public morals. The axis is
+ # mobilized vs monetized piety: the stick converts religiosity
+ # into manpower; the open bazaar converts it into custom and
+ # tax. Wired to the ghazi disaster: only a ghazi_sultanate can
+ # adopt the muhtasib-regime, and lax enforcement makes the
+ # realm a legitimate ghaza target for din-panah neighbors.
+ # ============================================================
+ hisba_law: "Hisba — Enforcement of Public Morals"
+ hisba_law_desc: "How strictly the muhtasib walks the bazaar. The office checks weights, fines the wine-seller, examines the qāḍī's piety, drives the unveiled women home. A serious enforcement converts the population's religiosity into levy and zeal; a lax one frees the bazaar and the diwan, but demobilizes the same energy and exposes the throne to neighbors who claim the title of din-panāh."
+
+ lax_hisba_enforcement: "Lax Enforcement — The Open Bazaar"
+ lax_hisba_enforcement_desc: "The wine-shops stand open; the muhtasib is a joke the poets tell. The bazaar, the diwan, and the treasury flourish; the pious seethe and nobody musters for anything. The posture of Abu Ishaq Inju's Shiraz — and the standing invitation that brought Mubariz al-Din down upon it. The realm reads as legitimate ghaza ground to any din-panāh neighbor who cares to claim the pretext."
+
+ customary_enforcement: "Customary Enforcement — The Qāḍī's Discretion"
+ customary_enforcement_desc: "The qāḍī enforces what the quarter expects: ʿurf and discretion. Wine-shops in the side alleys, not on the great street; an unveiled woman fined when the neighbors complain, otherwise not. The default posture of most Muslim courts, and the one that gives the fewest enemies."
+
+ strict_hisba_enforcement: "Strict Enforcement — The Stick in the Bazaar"
+ strict_hisba_enforcement_desc: "The muhtasib walks the markets with a stick and a notebook. Piety runs hot and converts to manpower; the mutaṭawwiʿa pool fills. The merchants pay for it twice — in fines and in custom that flees to a quieter city. A court can run on this, but it cannot grow rich on it."
+
+ muhtasib_regime: "The Muhtasib-King"
+ muhtasib_regime_desc: "Not enforcement as policy but enforcement as the throne's own identity. Mubariz al-Din Muḥammad sealing the taverns of Shiraz with his own hand — the king himself the censor, the censor himself the king. Only a ruler who has staked his legitimacy on guarding the faith can govern like this; everyone else lacks the standing. The bazaar pays its full price, and Hafez writes his complaint, but the levy musters before the order is finished. Requires the Ghazi Sultanate reform."
+
+ zill_allah_regime: "Ẓill Allāh — The Shadow of God"
+ zill_allah_regime_desc: "Enforcement dissolved into the person of the murshid. The wine-shop and the khanqah stand on the same street; the ghulāt drink at the same table as the jurist who would have called them heretics in any other reign. The murīds die for the murshid, not for the muhtasib. Available only to a Shia throne whose societal preference has tilted firmly toward mysticism — the Safavid posture, before the jurists arrived to enforce a different orthodoxy."
 
  # ============================================================
  # STATIC MODIFIERS — name + desc require the STATIC_MODIFIER_

@@ -88,8 +88,7 @@ on_ghazi_burden_battle_win = {
 				}
 				trigger_event_non_silently = ghazi_burden.300
 			}
-			else_if = {
-				limit = { has_variable = ghazi_indicators_suppressed }
+			else = {
 				trigger_event_silently = ghazi_burden.300
 			}
 		}
@@ -116,8 +115,7 @@ ghazi_burden_on_battle_lost = {
 				}
 				trigger_event_non_silently = ghazi_burden.301
 			}
-			else_if = {
-				limit = { has_variable = ghazi_indicators_suppressed }
+			else = {
 				trigger_event_silently = ghazi_burden.301
 			}
 		}

@@ -87,7 +87,7 @@ ghazi_burden_of_sword = {
 	# tensions over yasa) stand on the reform; the disaster does
 	# not double them.
 	modifier = {
-		monthly_legitimacy = -0.5
+		monthly_legitimacy = -0.5 ## calibrated such that a TRUE ghazva removes the penalty.
 		clergy_estate_target_satisfaction = -0.05
 		global_levy_size_modifier = -0.10
 		monthly_religious_influence = -0.10
@@ -98,7 +98,7 @@ ghazi_burden_of_sword = {
 		ghazi_burden_init = yes
 		set_variable = ghazi_burden_fired
 		trigger_event_non_silently = ghazi_burden.1
-		add_legitimacy = -40 ### the khutba names you ghazi; the world is now waiting to see it.
+		add_legitimacy = -60 ### the khutba names you ghazi; the world is now waiting to see it.
 	}
 
 	on_monthly = {

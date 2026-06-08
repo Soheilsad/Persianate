@@ -49,6 +49,9 @@
  iranian_kingship: "Iranian Kingship"
  iranian_kingship_desc: "A compact Persian dynasty of the kind the Karts ran at Herat, the Muzaffarids at Shiraz, the Injuids at Fars. No Turco-Mongol military aristocracy on top — just the shāh, the chancery, and the high culture they inherit. Requires that you have already declared farr-i īzadī."
 
+ dar_al_jihad: "Dār al-Jihād"
+ dar_al_jihad_desc: "The verified ghaza claim — what the Ghāzī Sultanate was reaching for, now institutionalized. The corps no longer waits for the muster; the akıncı are a vocational estate, the ribats are tax-exempt waqfs with mustering halls, the dervish lodge keeps a recruitment ledger. The qāḍī reads the khutba without flinching. From Cairo to Delhi the chanceries write your style. This is the Anatolian beyliks' institutional crystallization (Kafadar's reading of the early Ottomans), and equally the Ghaznavid-Ghūrid pattern of the polity that exists for the ghaza and is held together by it. Requires that you have already declared ghāzī and that the wager closed in your favor — Sword of Islam or Guardian of the Thughur."
+
  # Age 2 — Heterodox Axis
  mushasha_messianism: "Mushaʿshaʿ Messianism"
  mushasha_messianism_desc: "Apocalyptic Islam — Muḥammad b. Falāḥ's Mushaʿshaʿiyya in Khūzistān, Fażlallāh Astarābādī's Ḥurūfism, the Sarbadār dervish-soldiers of Sabzevār. The orthodox ʿulamāʾ hate it; the believers fight like men with nothing to lose."

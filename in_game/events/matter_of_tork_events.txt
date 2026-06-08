@@ -39,8 +39,8 @@ matter_of_tork.25 = {
 	# Receive them with honor — concedes
 	option = {
 		name = matter_of_tork.25.a
-		add_estate_satisfaction = { type = amirs_estate value = 10 }
-		add_estate_satisfaction = { type = diwan_estate value = -5 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -5 }
 		change_variable = { name = matter_progress add = -10 }
 		set_variable = co_opt_track
 	}
@@ -50,7 +50,7 @@ matter_of_tork.25 = {
 		name = matter_of_tork.25.b
 		change_variable = { name = matter_progress add = -5 }
 		# Random frontier amir antagonism
-		random_owned_province = {
+		random_owned_location = {
 			limit = { is_tribal_pastoral_location = yes }
 			add_unrest = 3
 		}
@@ -76,7 +76,7 @@ matter_of_tork.50 = {
 	# Confiscate his iqtaʿ — suppression line
 	option = {
 		name = matter_of_tork.50.a
-		add_estate_satisfaction = { type = amirs_estate value = -10 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -10 }
 		change_variable = { name = matter_progress add = 5 }
 		# Mark the suppression posture for later resolution-event routing.
 		set_variable = matter_chose_suppression
@@ -85,14 +85,14 @@ matter_of_tork.50 = {
 	# Convene a panj-shanbeh — compromise
 	option = {
 		name = matter_of_tork.50.b
-		add_estate_satisfaction = { type = amirs_estate value = 5 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 5 }
 		change_variable = { name = matter_progress add = -5 }
 	}
 
 	# Marry his daughter to a prince — co-opt
 	option = {
 		name = matter_of_tork.50.c
-		add_estate_satisfaction = { type = amirs_estate value = 15 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 15 }
 		change_variable = { name = matter_progress add = -15 }
 		add_prestige = -10
 		set_variable = co_opt_track
@@ -161,7 +161,7 @@ matter_of_tork.100 = {
 			}
 		}
 		# Player buffs during war
-		add_estate_satisfaction = { type = diwan_estate value = 20 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 20 }
 	}
 
 	option = {

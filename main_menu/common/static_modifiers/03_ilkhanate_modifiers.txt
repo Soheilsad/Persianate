@@ -101,3 +101,11 @@ charade_continues_mod = {
 	amirs_estate_target_satisfaction = -0.05
 	diwan_estate_target_satisfaction = -0.10
 }
+
+
+cloistered_khan = {
+	game_data = {
+		category = character
+	}
+	blocked_from_character_interactions = yes
+}

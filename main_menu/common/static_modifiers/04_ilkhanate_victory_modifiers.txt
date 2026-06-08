@@ -18,7 +18,7 @@ restoration_of_eran = {
 	}
 	
 	tax_income_efficiency = 0.25
-	global_monthly_control = 0.1
+	global_monthly_control = 0.005
 	stability_investment = 0.2
 	global_manpower_modifier = -0.10
 	cultural_tradition_modifier = 0.5

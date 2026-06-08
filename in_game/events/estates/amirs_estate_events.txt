@@ -7,7 +7,7 @@ amirs_estate_events.1 = {
 	desc = amirs_estate_events.1.desc
 
 	trigger = {
-		country_has_estate = amirs_estate
+		country_has_estate = estate_type:amirs_estate
 		"estate_power(estate_type:amirs_estate)" >= 0.25
 		NOT = { has_estate_privilege = estate_privilege:noble_leaders_only } # Can use vanilla privilege or clone
 	}
@@ -38,7 +38,7 @@ amirs_estate_events.2 = {
 	title = amirs_estate_events.2.title
 	desc = amirs_estate_events.2.desc
 	trigger = {
-		country_has_estate = amirs_estate
+		country_has_estate = estate_type:amirs_estate
 		"estate_power(estate_type:amirs_estate)" >= 0.25
 	}
 
@@ -63,7 +63,7 @@ amirs_estate_events.3 = {
 	title = amirs_estate_events.3.title
 	desc = amirs_estate_events.3.desc
 	trigger = {
-		country_has_estate = amirs_estate
+		country_has_estate = estate_type:amirs_estate
 		"estate_power(estate_type:amirs_estate)" >= 0.25
 		any_owned_location = {
 			modifier:local_amirs_estate_power > 0.5 # Using amirs power

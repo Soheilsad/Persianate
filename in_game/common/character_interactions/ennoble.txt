@@ -33,7 +33,7 @@
 			is_alive = yes
 			### adding diwan and amir, since they are already nobles. the idea makes no sense for them to be able to be ennobled, but this is a minor quibble compared to the fact that they should be able to marry into the noble class.
 			NOT = { has_estate = estate_type:diwan_estate }
-			NOT = { has_estate = estate_type:amir_estate }
+			NOT = { has_estate = estate_type:amirs_estate }
 			NOT = { has_estate = estate_type:nobles_estate }
 			NOT = { has_estate = estate_type:crown_estate }
 		}

@@ -29,14 +29,14 @@
 # +legitimacy for the year, stackable with add_and_extend.
 ghazi_conquest_glory = {
 	monthly_legitimacy = 0.4
-	morale_of_armies = 0.05
+	land_morale_modifier = 0.05
 }
 
 # A war lost — heaven's reward visibly withheld. Sharp legitimacy
 # pull for half a year.
 ghazi_defeat_shame = {
 	monthly_legitimacy = -1.0
-	morale_of_armies = -0.05
+	land_morale_modifier = -0.05
 }
 
 # Capital lost. The seat of the ghazi has fallen — the silence is
@@ -49,19 +49,19 @@ ghazi_capital_lost = {
 # Frontier designated — Caucasus. Volunteers stream toward the
 # theater; tier-3 wars against Georgia/steppe credit at a bonus.
 ghazi_frontier_caucasus = {
-	manpower_recovery_speed = 0.10
+	global_manpower_modifier = 0.10
 	global_levy_size_modifier = 0.05
 }
 
 # Frontier designated — Anatolia (the Road to Rum).
 ghazi_frontier_rum = {
-	manpower_recovery_speed = 0.10
+	global_manpower_modifier = 0.10
 	global_levy_size_modifier = 0.05
 }
 
 # Frontier designated — Hindustan (the Ghaznavid road).
 ghazi_frontier_hindustan = {
-	manpower_recovery_speed = 0.10
+	global_manpower_modifier = 0.10
 	global_levy_size_modifier = 0.05
 }
 
@@ -123,7 +123,7 @@ ghazi_hisba_apparatus = {
 # dynasty's name; a small permanent levy trace.
 ghazi_the_lodges_endowed = {
 	global_levy_size_modifier = 0.03
-	manpower_recovery_speed = 0.05
+	global_manpower_modifier = 0.05
 	tribes_estate_target_satisfaction = 0.05
 }
 
@@ -185,8 +185,8 @@ ghazi_sectarian_campaign_scar = {
 ghazi_sword_of_islam = {
 	monthly_legitimacy = 0.2
 	global_levy_size_modifier = 0.10
-	morale_of_armies = 0.10
-	manpower_recovery_speed = 0.10
+	land_morale_modifier = 0.10
+	global_manpower_modifier = 0.10
 	tolerance_own = 2
 	monthly_prestige = 0.10
 }
@@ -197,7 +197,7 @@ ghazi_sword_of_islam = {
 ghazi_guardian_of_thughur = {
 	monthly_legitimacy = 0.1
 	global_levy_size_modifier = 0.05
-	morale_of_armies = 0.05
+	land_morale_modifier = 0.05
 	monthly_prestige = 0.05
 }
 

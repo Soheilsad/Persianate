@@ -54,7 +54,7 @@ ghazi_burden_monthly_tick = {
 		}
 		change_variable = { name = ghazi_designation_progress_months add = 1 }
 		if = {
-			limit = { check_variable = { name = ghazi_designation_progress_months value >= 60 } }
+			limit = { var:ghazi_designation_progress_months >= 60 }
 			trigger_event_non_silently = ghazi_burden.40
 			change_variable = { name = ghazi_designation_failures add = 1 }
 			set_variable = { name = ghazi_designation_progress_months value = 0 }
@@ -240,12 +240,12 @@ ghazi_apply_war_credit = {
 
 ghazi_apply_internal_campaign_credit = {
 	if = {
-		limit = { check_variable = { name = ghazi_internal_campaigns value = 0 } }
+		limit = { var:ghazi_internal_campaigns = 0 }
 		add_legitimacy = 5
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.08 }
 	}
 	else_if = {
-		limit = { check_variable = { name = ghazi_internal_campaigns value = 1 } }
+		limit = { var:ghazi_internal_campaigns = 1 }
 		add_legitimacy = 3
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 }
 	}
