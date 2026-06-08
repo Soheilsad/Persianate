@@ -18,11 +18,11 @@ namespace = farr_proof
 #   .201          Broken-formal — Türk amīr usurpation
 #   .202          Endured — quiet vindication at year 25
 #   .203          Broken-lapse — doctrine lapses, prestige scar
-#   .300–.305     INDICATOR events for the on-action hooks. Each
-#                     fires once, the first time its hook applies.
-#                     Option (b) sets farr_indicators_suppressed —
-#                     a master switch that mutes every remaining
-#                     indicator for the run.
+#   .300–.306     INDICATOR events for the on-action hooks. Each
+#                     fires every time its hook applies, until the
+#                     player silences it. Option (b) sets
+#                     farr_silence_<type> (per-type mute); option
+#                     (c) sets farr_silence_all (master mute).
 # ============================================================
 
 # ---------------------------------------------------------------
@@ -522,27 +522,31 @@ farr_proof.203 = {
 }
 
 # ===============================================================
-# INDICATOR EVENTS — first-time-only explanations for each hook.
+# INDICATOR EVENTS — fire whenever their hook applies, until the
+# player silences them.
 #
-# Pattern: the hook gates trigger on
-#   NOT = has_variable = farr_indicator_X_seen
-#   NOT = has_variable = farr_indicators_suppressed
-# The event sets the per-event seen-variable in immediate, so it
-# only ever fires once. Option (b) on every indicator also sets
-# farr_indicators_suppressed — the master mute for the run.
+# Each event has three options:
+#   (a) Acknowledge — applies the effect, keeps notifying.
+#   (b) Silence this notification type — applies the effect and
+#       sets farr_silence_<type>, muting future notifications of
+#       only this kind.
+#   (c) Silence all of these notifications — applies the effect
+#       and sets farr_silence_all, muting every remaining
+#       notification for the run.
+#
+# The hook checks BOTH farr_silence_<type> and farr_silence_all;
+# if either is set, the hook applies the effect directly and does
+# not trigger the event (trigger_event_silently does not work on
+# multi-option events).
 # ===============================================================
 
-# ---300 FIRST BATTLE WON --------------------------------------------
+# ---300 BATTLE WON --------------------------------------------------
 farr_proof.300 = {
 	type = country_event
 	category = disaster_event
 	title = farr_proof.300.title
 	desc = farr_proof.300.desc
 	outcome = positive
-
-	# immediate = {
-	# 	set_variable = farr_indicator_battle_won_seen
-	# }
 
 	option = {
 		name = farr_proof.300.a
@@ -551,22 +555,24 @@ farr_proof.300 = {
 
 	option = {
 		name = farr_proof.300.b
-		set_variable = farr_indicators_suppressed
+		set_variable = farr_silence_battle_won
+		add_legitimacy = 1
+	}
+
+	option = {
+		name = farr_proof.300.c
+		set_variable = farr_silence_all
 		add_legitimacy = 1
 	}
 }
 
-# ---301 FIRST BATTLE LOST -------------------------------------------
+# ---301 BATTLE LOST -------------------------------------------------
 farr_proof.301 = {
 	type = country_event
 	category = disaster_event
 	title = farr_proof.301.title
 	desc = farr_proof.301.desc
 	outcome = negative
-
-	immediate = {
-		set_variable = farr_indicator_battle_lost_seen
-	}
 
 	option = {
 		name = farr_proof.301.a
@@ -575,22 +581,24 @@ farr_proof.301 = {
 
 	option = {
 		name = farr_proof.301.b
-		set_variable = farr_indicators_suppressed
+		set_variable = farr_silence_battle_lost
+		add_legitimacy = -2
+	}
+
+	option = {
+		name = farr_proof.301.c
+		set_variable = farr_silence_all
 		add_legitimacy = -2
 	}
 }
 
-# ---302 FIRST WAR WON -----------------------------------------------
+# ---302 WAR WON -----------------------------------------------------
 farr_proof.302 = {
 	type = country_event
 	category = disaster_event
 	title = farr_proof.302.title
 	desc = farr_proof.302.desc
 	outcome = positive
-
-	immediate = {
-		set_variable = farr_indicator_war_won_seen
-	}
 
 	option = {
 		name = farr_proof.302.a
@@ -604,7 +612,18 @@ farr_proof.302 = {
 
 	option = {
 		name = farr_proof.302.b
-		set_variable = farr_indicators_suppressed
+		set_variable = farr_silence_war_won
+		add_legitimacy = 5
+		add_country_modifier = {
+			modifier = farr_conquest_glory
+			months = 12
+			mode = add_and_extend
+		}
+	}
+
+	option = {
+		name = farr_proof.302.c
+		set_variable = farr_silence_all
 		add_legitimacy = 5
 		add_country_modifier = {
 			modifier = farr_conquest_glory
@@ -614,17 +633,13 @@ farr_proof.302 = {
 	}
 }
 
-# ---303 FIRST WAR LOST ----------------------------------------------
+# ---303 WAR LOST ----------------------------------------------------
 farr_proof.303 = {
 	type = country_event
 	category = disaster_event
 	title = farr_proof.303.title
 	desc = farr_proof.303.desc
 	outcome = negative
-
-	immediate = {
-		set_variable = farr_indicator_war_lost_seen
-	}
 
 	option = {
 		name = farr_proof.303.a
@@ -638,7 +653,18 @@ farr_proof.303 = {
 
 	option = {
 		name = farr_proof.303.b
-		set_variable = farr_indicators_suppressed
+		set_variable = farr_silence_war_lost
+		add_legitimacy = -10
+		add_country_modifier = {
+			modifier = farr_defeat_shame
+			months = 6
+			mode = add_and_extend
+		}
+	}
+
+	option = {
+		name = farr_proof.303.c
+		set_variable = farr_silence_all
 		add_legitimacy = -10
 		add_country_modifier = {
 			modifier = farr_defeat_shame
@@ -648,17 +674,13 @@ farr_proof.303 = {
 	}
 }
 
-# ---304 FIRST CAPITAL LOST ------------------------------------------
+# ---304 CAPITAL LOST ------------------------------------------------
 farr_proof.304 = {
 	type = country_event
 	category = disaster_event
 	title = farr_proof.304.title
 	desc = farr_proof.304.desc
 	outcome = negative
-
-	immediate = {
-		set_variable = farr_indicator_capital_lost_seen
-	}
 
 	option = {
 		name = farr_proof.304.a
@@ -671,9 +693,19 @@ farr_proof.304 = {
 	}
 
 	option = {
-
 		name = farr_proof.304.b
-		set_variable = farr_indicators_suppressed
+		set_variable = farr_silence_capital_lost
+		add_legitimacy = -20
+		add_country_modifier = {
+			modifier = farr_capital_lost
+			months = -1
+			mode = replace
+		}
+	}
+
+	option = {
+		name = farr_proof.304.c
+		set_variable = farr_silence_all
 		add_legitimacy = -20
 		add_country_modifier = {
 			modifier = farr_capital_lost
@@ -683,17 +715,13 @@ farr_proof.304 = {
 	}
 }
 
-# ---305 FIRST NON-CAPITAL PROVINCE LOST -----------------------------
+# ---305 NON-CAPITAL PROVINCE LOST -----------------------------------
 farr_proof.305 = {
 	type = country_event
 	category = disaster_event
 	title = farr_proof.305.title
 	desc = farr_proof.305.desc
 	outcome = negative
-
-	immediate = {
-		set_variable = farr_indicator_province_lost_seen
-	}
 
 	option = {
 		name = farr_proof.305.a
@@ -702,22 +730,24 @@ farr_proof.305 = {
 
 	option = {
 		name = farr_proof.305.b
-		set_variable = farr_indicators_suppressed
+		set_variable = farr_silence_province_lost
+		add_legitimacy = -3
+	}
+
+	option = {
+		name = farr_proof.305.c
+		set_variable = farr_silence_all
 		add_legitimacy = -3
 	}
 }
 
-
+# ---306 PROVINCE GAINED ---------------------------------------------
 farr_proof.306 = {
 	type = country_event
 	category = disaster_event
 	title = farr_proof.306.title
 	desc = farr_proof.306.desc
 	outcome = positive
-
-	immediate = {
-		set_variable = farr_indicator_province_gained_seen
-	}
 
 	option = {
 		name = farr_proof.306.a
@@ -726,7 +756,13 @@ farr_proof.306 = {
 
 	option = {
 		name = farr_proof.306.b
-		set_variable = farr_indicators_suppressed
+		set_variable = farr_silence_province_gained
+		add_legitimacy = 0.5
+	}
+
+	option = {
+		name = farr_proof.306.c
+		set_variable = farr_silence_all
 		add_legitimacy = 0.5
 	}
 }

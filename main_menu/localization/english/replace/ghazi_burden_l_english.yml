@@ -266,49 +266,57 @@
  ghazi_burden.300.title: "A Battle Won"
  ghazi_burden.300.desc: "While the ghaza doctrine is under audit, battle outcomes feed the ledger. Wins against dar al-harb credit the realm; ordinary battles are noted but pass without remark."
  ghazi_burden.300.a: "Understood."
- ghazi_burden.300.b: "Stop showing these explanations."
+ ghazi_burden.300.b: "Stop showing me battle-win notifications."
+ ghazi_burden.300.c: "Stop showing me any of these notifications."
 
  # ----- .301 INDICATOR: BATTLE LOST -----
  ghazi_burden.301.title: "A Battle Lost"
  ghazi_burden.301.desc: "Defeats while the doctrine is under audit do not pass unnoticed. The volunteers note who left the field; the chroniclers note who paid the wages."
  ghazi_burden.301.a: "Understood."
- ghazi_burden.301.b: "Stop showing these explanations."
+ ghazi_burden.301.b: "Stop showing me battle-loss notifications."
+ ghazi_burden.301.c: "Stop showing me any of these notifications."
 
  # ----- .302 INDICATOR: WAR WON -----
  ghazi_burden.302.title: "A War Won"
  ghazi_burden.302.desc: "War outcomes are credited by tier: dar al-harb wars are the doctrine's native food (full credit, tier-3 counter); Muslim-in-name wars credit half without the fatwa, full with it; ordinary Sunni wars are not credit at all, only complaint."
  ghazi_burden.302.a: "Understood."
- ghazi_burden.302.b: "Stop showing these explanations."
+ ghazi_burden.302.b: "Stop showing me war-victory notifications."
+ ghazi_burden.302.c: "Stop showing me any of these notifications."
 
  # ----- .303 INDICATOR: WAR LOST -----
  ghazi_burden.303.title: "A War Lost"
  ghazi_burden.303.desc: "A losing war while ghaza is under audit is the doctrine's nightmare: the sword failed in the field; heaven's reward, which the doctrine promised, has visibly withheld itself."
  ghazi_burden.303.a: "Understood."
- ghazi_burden.303.b: "Stop showing these explanations."
+ ghazi_burden.303.b: "Stop showing me war-defeat notifications."
+ ghazi_burden.303.c: "Stop showing me any of these notifications."
 
  # ----- .304 INDICATOR: CAPITAL LOST -----
  ghazi_burden.304.title: "The Capital Lost"
  ghazi_burden.304.desc: "The seat itself, taken. The court of the ghazi cannot be a borrowed roof for long; the doctrine assumes a throne in a city, and that city has changed hands."
  ghazi_burden.304.a: "Understood."
- ghazi_burden.304.b: "Stop showing these explanations."
+ ghazi_burden.304.b: "Stop showing me capital-loss notifications."
+ ghazi_burden.304.c: "Stop showing me any of these notifications."
 
  # ----- .305 INDICATOR: PROVINCE LOST -----
  ghazi_burden.305.title: "A Province Lost"
  ghazi_burden.305.desc: "Land that the ghazi promised to hold has been taken. Each such loss feeds the chroniclers' quiet judgment; the failure of small things is what discredits doctrines."
  ghazi_burden.305.a: "Understood."
- ghazi_burden.305.b: "Stop showing these explanations."
+ ghazi_burden.305.b: "Stop showing me province-loss notifications."
+ ghazi_burden.305.c: "Stop showing me any of these notifications."
 
  # ----- .306 INDICATOR: PROVINCE GAINED -----
  ghazi_burden.306.title: "A Province Gained"
  ghazi_burden.306.desc: "Lands taken in war while the doctrine runs are read by the chronicles as credit. Lands taken from dar al-harb count double."
  ghazi_burden.306.a: "Understood."
- ghazi_burden.306.b: "Stop showing these explanations."
+ ghazi_burden.306.b: "Stop showing me province-gained notifications."
+ ghazi_burden.306.c: "Stop showing me any of these notifications."
 
  # ----- .307 INDICATOR: CONSOLIDATION -----
  ghazi_burden.307.title: "A Mosque on Conquered Ground"
  ghazi_burden.307.desc: "On ground taken from dar al-harb, the doctrine's consolidation is now visible: a mosque, a ribat, a madrasa. This is what the ghaza is FOR, and the umma hears of it."
  ghazi_burden.307.a: "Understood."
- ghazi_burden.307.b: "Stop showing these explanations."
+ ghazi_burden.307.b: "Stop showing me consolidation notifications."
+ ghazi_burden.307.c: "Stop showing me any of these notifications."
 
  # ----- .500 INTERNAL CAMPAIGN -----
  ghazi_burden.500.title: "The Muhtasib Awaits His Orders"

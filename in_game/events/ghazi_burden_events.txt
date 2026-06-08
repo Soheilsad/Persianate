@@ -28,9 +28,10 @@
 #   .202          Guardian of the Thughur (Endured)
 #   .203          Doctrine Lapses (Broken-lapse)
 #   .300–.307     INDICATOR events for the on-action hooks. Each
-#                     fires once, the first time its hook applies.
-#                     Option (b) sets ghazi_indicators_suppressed —
-#                     master mute for the run.
+#                     fires every time its hook applies, until the
+#                     player silences it. Option (b) sets
+#                     ghazi_silence_<type> (per-type mute); option
+#                     (c) sets ghazi_silence_all (master mute).
 # ============================================================
 
 # ---------------------------------------------------------------
@@ -781,22 +782,31 @@ ghazi_burden.203 = {
 }
 
 # ===============================================================
-# INDICATOR EVENTS — first-time-only explanations per hook.
-# Pattern matches farr_proof.300+: per-event seen variable +
-# master ghazi_indicators_suppressed mute.
+# INDICATOR EVENTS — fire whenever their hook applies, until the
+# player silences them.
+#
+# Each event has three options:
+#   (a) Acknowledge — applies the effect, keeps notifying.
+#   (b) Silence this notification type — applies the effect and
+#       sets ghazi_silence_<type>, muting future notifications of
+#       only this kind.
+#   (c) Silence all of these notifications — applies the effect
+#       and sets ghazi_silence_all, muting every remaining
+#       notification for the run.
+#
+# The hook checks BOTH ghazi_silence_<type> and ghazi_silence_all;
+# if either is set, the hook applies the effect directly and does
+# not trigger the event (trigger_event_silently does not work on
+# multi-option events).
 # ===============================================================
 
-# ---300 FIRST BATTLE WON -----------------------------------------
+# ---300 BATTLE WON -----------------------------------------------
 ghazi_burden.300 = {
 	type = country_event
 	category = disaster_event
 	title = ghazi_burden.300.title
 	desc = ghazi_burden.300.desc
 	outcome = positive
-
-	immediate = {
-		set_variable = ghazi_indicator_battle_won_seen
-	}
 
 	option = {
 		name = ghazi_burden.300.a
@@ -805,22 +815,24 @@ ghazi_burden.300 = {
 
 	option = {
 		name = ghazi_burden.300.b
-		set_variable = ghazi_indicators_suppressed
+		set_variable = ghazi_silence_battle_won
+		add_legitimacy = 1
+	}
+
+	option = {
+		name = ghazi_burden.300.c
+		set_variable = ghazi_silence_all
 		add_legitimacy = 1
 	}
 }
 
-# ---301 FIRST BATTLE LOST ----------------------------------------
+# ---301 BATTLE LOST ----------------------------------------------
 ghazi_burden.301 = {
 	type = country_event
 	category = disaster_event
 	title = ghazi_burden.301.title
 	desc = ghazi_burden.301.desc
 	outcome = negative
-
-	immediate = {
-		set_variable = ghazi_indicator_battle_lost_seen
-	}
 
 	option = {
 		name = ghazi_burden.301.a
@@ -829,15 +841,21 @@ ghazi_burden.301 = {
 
 	option = {
 		name = ghazi_burden.301.b
-		set_variable = ghazi_indicators_suppressed
+		set_variable = ghazi_silence_battle_lost
+		add_legitimacy = -2
+	}
+
+	option = {
+		name = ghazi_burden.301.c
+		set_variable = ghazi_silence_all
 		add_legitimacy = -2
 	}
 }
 
-# ---302 FIRST WAR WON --------------------------------------------
-# The legitimacy and modifiers are applied by the war-credit
-# scripted effect (which dispatches by tier); this event explains
-# the bookkeeping.
+# ---302 WAR WON --------------------------------------------------
+# The tier-dispatched credit is applied by ghazi_apply_war_credit
+# in the hook itself; the option payload here is the per-event
+# legitimacy pulse, mirroring the silent path in the hook.
 ghazi_burden.302 = {
 	type = country_event
 	category = disaster_event
@@ -845,22 +863,25 @@ ghazi_burden.302 = {
 	desc = ghazi_burden.302.desc
 	outcome = positive
 
-	immediate = {
-		set_variable = ghazi_indicator_war_won_seen
-	}
-
 	option = {
 		name = ghazi_burden.302.a
-		# Credit is already applied by ghazi_apply_war_credit.
+		add_legitimacy = 1.5
 	}
 
 	option = {
 		name = ghazi_burden.302.b
-		set_variable = ghazi_indicators_suppressed
+		set_variable = ghazi_silence_war_won
+		add_legitimacy = 1.5
+	}
+
+	option = {
+		name = ghazi_burden.302.c
+		set_variable = ghazi_silence_all
+		add_legitimacy = 1.5
 	}
 }
 
-# ---303 FIRST WAR LOST -------------------------------------------
+# ---303 WAR LOST -------------------------------------------------
 ghazi_burden.303 = {
 	type = country_event
 	category = disaster_event
@@ -868,13 +889,9 @@ ghazi_burden.303 = {
 	desc = ghazi_burden.303.desc
 	outcome = negative
 
-	immediate = {
-		set_variable = ghazi_indicator_war_lost_seen
-	}
-
 	option = {
 		name = ghazi_burden.303.a
-		add_legitimacy = -10
+		add_legitimacy = -3
 		add_country_modifier = {
 			modifier = ghazi_defeat_shame
 			months = 6
@@ -884,8 +901,19 @@ ghazi_burden.303 = {
 
 	option = {
 		name = ghazi_burden.303.b
-		set_variable = ghazi_indicators_suppressed
-		add_legitimacy = -10
+		set_variable = ghazi_silence_war_lost
+		add_legitimacy = -3
+		add_country_modifier = {
+			modifier = ghazi_defeat_shame
+			months = 6
+			mode = add_and_extend
+		}
+	}
+
+	option = {
+		name = ghazi_burden.303.c
+		set_variable = ghazi_silence_all
+		add_legitimacy = -3
 		add_country_modifier = {
 			modifier = ghazi_defeat_shame
 			months = 6
@@ -894,17 +922,13 @@ ghazi_burden.303 = {
 	}
 }
 
-# ---304 FIRST CAPITAL LOST ---------------------------------------
+# ---304 CAPITAL LOST ---------------------------------------------
 ghazi_burden.304 = {
 	type = country_event
 	category = disaster_event
 	title = ghazi_burden.304.title
 	desc = ghazi_burden.304.desc
 	outcome = negative
-
-	immediate = {
-		set_variable = ghazi_indicator_capital_lost_seen
-	}
 
 	option = {
 		name = ghazi_burden.304.a
@@ -918,7 +942,18 @@ ghazi_burden.304 = {
 
 	option = {
 		name = ghazi_burden.304.b
-		set_variable = ghazi_indicators_suppressed
+		set_variable = ghazi_silence_capital_lost
+		add_legitimacy = -25
+		add_country_modifier = {
+			modifier = ghazi_capital_lost
+			months = -1
+			mode = replace
+		}
+	}
+
+	option = {
+		name = ghazi_burden.304.c
+		set_variable = ghazi_silence_all
 		add_legitimacy = -25
 		add_country_modifier = {
 			modifier = ghazi_capital_lost
@@ -928,17 +963,13 @@ ghazi_burden.304 = {
 	}
 }
 
-# ---305 FIRST NON-CAPITAL PROVINCE LOST --------------------------
+# ---305 NON-CAPITAL PROVINCE LOST --------------------------------
 ghazi_burden.305 = {
 	type = country_event
 	category = disaster_event
 	title = ghazi_burden.305.title
 	desc = ghazi_burden.305.desc
 	outcome = negative
-
-	immediate = {
-		set_variable = ghazi_indicator_province_lost_seen
-	}
 
 	option = {
 		name = ghazi_burden.305.a
@@ -947,22 +978,24 @@ ghazi_burden.305 = {
 
 	option = {
 		name = ghazi_burden.305.b
-		set_variable = ghazi_indicators_suppressed
+		set_variable = ghazi_silence_province_lost
+		add_legitimacy = -3
+	}
+
+	option = {
+		name = ghazi_burden.305.c
+		set_variable = ghazi_silence_all
 		add_legitimacy = -3
 	}
 }
 
-# ---306 FIRST PROVINCE GAINED ------------------------------------
+# ---306 PROVINCE GAINED ------------------------------------------
 ghazi_burden.306 = {
 	type = country_event
 	category = disaster_event
 	title = ghazi_burden.306.title
 	desc = ghazi_burden.306.desc
 	outcome = positive
-
-	immediate = {
-		set_variable = ghazi_indicator_province_gained_seen
-	}
 
 	option = {
 		name = ghazi_burden.306.a
@@ -971,25 +1004,26 @@ ghazi_burden.306 = {
 
 	option = {
 		name = ghazi_burden.306.b
-		set_variable = ghazi_indicators_suppressed
+		set_variable = ghazi_silence_province_gained
+		add_legitimacy = 1
+	}
+
+	option = {
+		name = ghazi_burden.306.c
+		set_variable = ghazi_silence_all
 		add_legitimacy = 1
 	}
 }
 
-# ---307 FIRST MOSQUE/RIBAT ON CONQUERED TIER-3 LAND --------------
+# ---307 CONSOLIDATION ON CONQUERED TIER-3 LAND -------------------
 # Bonus pulse — the consolidation the doctrine is FOR. Hook fires
-# this when a religious building is constructed in a province
-# conquered from a tier-3 target.
+# this when a province is taken from a tier-3 target.
 ghazi_burden.307 = {
 	type = country_event
 	category = disaster_event
 	title = ghazi_burden.307.title
 	desc = ghazi_burden.307.desc
 	outcome = positive
-
-	immediate = {
-		set_variable = ghazi_indicator_consolidation_seen
-	}
 
 	option = {
 		name = ghazi_burden.307.a
@@ -999,7 +1033,14 @@ ghazi_burden.307 = {
 
 	option = {
 		name = ghazi_burden.307.b
-		set_variable = ghazi_indicators_suppressed
+		set_variable = ghazi_silence_consolidation
+		add_legitimacy = 4
+		add_prestige = 10
+	}
+
+	option = {
+		name = ghazi_burden.307.c
+		set_variable = ghazi_silence_all
 		add_legitimacy = 4
 		add_prestige = 10
 	}
