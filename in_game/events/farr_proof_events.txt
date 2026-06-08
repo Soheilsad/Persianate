@@ -381,7 +381,7 @@ farr_proof.200 = {
 		name = farr_proof.200.a
 		add_legitimacy = 20
 		add_prestige = 50
-		add_stability = 1
+		add_stability = 10
 	}
 }
 

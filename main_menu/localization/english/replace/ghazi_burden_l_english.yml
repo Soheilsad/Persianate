@@ -251,7 +251,7 @@
  # ----- .200 SWORD OF ISLAM -----
  ghazi_burden.200.title: "Sword of Islam"
  ghazi_burden.200.desc: "The doctrine, paid for in full. The volunteers no longer wait for the muster; they arrive ahead of it. The Friday khutba names you sword of the faith without hesitation. The dar al-harb knows it shares a border with a ghazi state, and a frontier so designated does not easily go quiet."
- ghazi_burden.200.a: "The wager has been won."
+ ghazi_burden.200.a: "The wager has been won. (Unlock Dar-al-Jihad Government Reform)"
 
  # ----- .201 DERVISH RISING -----
  ghazi_burden.201.title: "The Dervish Rising"

@@ -33,6 +33,10 @@ cb_eranzamin_succession = {
 
 cb_ghozva = {
 	create_visible = {
+		OR = {
+			has_reform = government_reform:ghazi_sultanate
+			has_reform = government_reform:dar_al_jihad
+		}
 		NOT = { religion.group = scope:target.religion.group } 
 	}
 	declare_enabled = {

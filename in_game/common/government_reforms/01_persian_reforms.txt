@@ -414,7 +414,10 @@ iranian_kingship = {
 			has_variable = farr_was_endured
 		}
 	}
+	on_activate = {
 
+		add_stability = 15 ## refunds most of the cost for the change.
+	}
 	country_modifier = {
 		tax_income_efficiency = 0.10
 		country_cabinet_efficiency = 0.15
@@ -459,7 +462,10 @@ dar_al_jihad = {
 			has_variable = ghazi_guardian_of_thughur
 		}
 	}
+	on_activate = {
 
+		add_stability = 15 ## refunds most of the cost for the change.
+	}
 	country_modifier = {
 		# The wager is won. The doctrine is no longer under audit;
 		# it is the constitutional fact of the realm. Standing
@@ -504,7 +510,7 @@ dar_al_jihad = {
 		cultural_tradition_modifier = 0.05
 	}
 
-	years = 10
+	years = 2
 }
 
 
@@ -670,7 +676,7 @@ imami_tashayyu = {
 	}
 
 	on_activate = {
-		add_stability = -1
+		add_stability = -7.5
 	}
 
 	country_modifier = {
@@ -752,7 +758,7 @@ murshid_i_kamil = {
 	}
 
 	on_activate = {
-		add_stability = -1
+		add_stability = -7.5
 	}
 
 	country_modifier = {

@@ -659,7 +659,7 @@ ghazi_burden.200 = {
 		name = ghazi_burden.200.a
 		add_legitimacy = 25
 		add_prestige = 50
-		add_stability = 1
+		add_stability = 10
 	}
 }
 

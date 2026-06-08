@@ -112,6 +112,8 @@ hisba_law = {
 		unique = yes
 		potential = {
 			has_reform = government_reform:ghazi_sultanate
+			has_reform = government_reform:dar_al_jihad
+				
 		}
 		country_modifier = {
 			clergy_estate_target_satisfaction = 0.1         # [verify key]
