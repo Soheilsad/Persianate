@@ -64,6 +64,8 @@ Effects:
 
 A note on rationale: the friction is **not theological**. By 1337, *farr*, *ẓill Allāh*, and Anūshīrvān-as-just-king are standard Islamic kingship doctrine — praised in the very mirrors the clergy teach. The friction is institutional (by what right do you crown yourself when you have bypassed the ʿAbbāsid?) and political (a settled Persian *shāh* has no place for the steppe aristocracy that fights his wars).
 
+Adopting this reform fires the **[Farr Proof of Fortune](farr-proof-of-fortune.md)** disaster — the world's audit of the boast. Continuous conquest and apparatus claims at 50 / 65 / 80 / 90 legitimacy lead to Vindicated; a stalemated peace at low legitimacy leads to Broken-lapse or Türk amīr usurpation. The disaster is the central content of the *farr* path.
+
 ### `ghazi_sultanate` — sovereignty under the caliphal shadow
 
 The Islamic exit. Legitimacy through *ghazā*. Muslim-religion-group only. Frontier-marcher, mobile, not chancery-coded. Picked via `ilkhanate_flavor.1` option B.
@@ -77,6 +79,8 @@ Effects:
 - `monthly_towards_turk = +0.05`, `monthly_towards_decentralization = +0.05`, `monthly_towards_spiritualist = +0.10`, `monthly_towards_jurisprudence = +0.10`.
 
 `years = 1` — there is a one-year delay on the reform's adoption (correspondence with the Cairo Caliph takes time).
+
+Adopting this reform fires the **[Ghāzī Burden of the Sword](ghazi-burden-of-sword.md)** disaster — the umma's audit of the *ghāzī* claim. Continuous war against tier-3 *dār al-ḥarb* targets (offset by the `ghazi_lord_at_war` auto-modifier at +0.75 leg/mo) and apparatus claims at 50 / 60 / 60 / 75 legitimacy lead to Sword of Islam; a stalemated peace or a yāsā-holding court leads to Doctrine Lapses or Dervish Rising. The disaster is the central content of the *ghāzī* path.
 
 ## Age 1 — the circle of equity (companion)
 
@@ -193,4 +197,4 @@ Effects: `tax_income_efficiency = +0.15`, `global_diwan_estate_power = +0.15`, D
 
 These are sketch paths, not rails. The reform tree's branching points are real and most of them are one-way.
 
-See also: [Erānzamīn situation](eranzamin-situation.md), [Türk vs Tāzīk](turk-vs-tazik.md), [Estate privileges](estate-privileges.md), [Persianate Sultanate](persianate-sultanate.md).
+See also: [Erānzamīn situation](eranzamin-situation.md), [Türk vs Tāzīk](turk-vs-tazik.md), [Estate privileges](estate-privileges.md), [Persianate Sultanate](persianate-sultanate.md), [Farr Proof of Fortune](farr-proof-of-fortune.md), [Ghāzī Burden of the Sword](ghazi-burden-of-sword.md).
