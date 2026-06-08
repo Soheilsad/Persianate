@@ -14,7 +14,7 @@
  farr_proof_not_yet_completed_tt: "This dynasty has not yet declared and resolved a Farr Proof of Fortune"
  farr_proof_not_yet_fired_tt: "The Farr Proof of Fortune is not already running"
  # One key per end branch — each renders as a separate line in the can_end tooltip.
- farr_proof_end_vindicated_tt: "Vindicated — sixty cumulative months at legitimacy ≥ 75, the houses have sworn"
+ farr_proof_end_vindicated_tt: "Vindicated — sixty cumulative months at legitimacy ≥ 90, the houses have sworn"
  farr_proof_end_broken_formal_tt: "Broken (formal) — legitimacy collapsed to 0, the amīrs have seized the throne"
  farr_proof_end_broken_lapse_tt: "Broken (lapse) — sixty cumulative months at legitimacy ≤ 25, the doctrine has been dropped quietly"
  farr_proof_end_endured_tt: "Endured — twenty-five years elapsed with the realm intact, the claim stands in a smaller key"
@@ -26,6 +26,7 @@
  farr_proof.1.title: "The Wager Begins"
  farr_proof.1.desc: "The decree has gone out; the chancery has stamped it; the great mosque of the capital has been notified. By declaring farr-i īzadī you have made a public claim that heaven's favor has settled on this house. The world has now to answer.\n\nThe answer, this Friday, is silence. The mints have not yet recut their dies — the dirham in every hand still carries the Ilkhan's name. The khutba in the great mosques of the realm has not yet been read for you — the qāḍīs are waiting to see what the other qāḍīs do. The amīrs have written elaborate congratulations and sent none of their persons. The bazaar prices the foreign coin at par with yours, and the burghers cannot be made to do otherwise by decree.\n\nUntil each of these continues to belong to someone else, the boast stands unanswered, and the realm reads the silence. The bleed will run until the rituals come into line — one by one, as the threshold of recognition is crossed, you will claim them. Or the wager will be lost on the absence of recognition, not on the field of battle."
  farr_proof.1.a: "Let the wager run."
+ farr_proof.1.a.tt: "Being at war will now give monthly legitimacy. Battlefield victories, defeats, and lost or won cities and wars will now move the ledger. The world will read the wager as it unfolds; the chronicles will remember how it went."
 
  # ============================================================
  # APPARATUS EVENTS (upward thresholds, irreversible rewards)

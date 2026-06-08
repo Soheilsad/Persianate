@@ -11,7 +11,7 @@
  consolidate_diwan_central_diwan_tt: "Dīwān al-Mamālik built in the capital"
  consolidate_diwan_select_province: "Select a province to consolidate"
  consolidate_diwan_no_provinces: "No territory-level provinces available to consolidate. Provinces also require a Local Dīwān in one of their locations."
-
+ restore_diwan_tt: "Restoring the Persian Bureaucracy allows hitherto Turk nations to restore the diwan, unlocking Diwan of the Realms. Tazik dominant nations can also use this to push themselves further towards Tazik Administration. "
  grant_the_yurt: "Grant the Yurt"
  grant_the_yurt_desc: "Settle the province as iqtaʿ to your amirs — Mongol practice, light hand. The Amirs are rewarded with land they will hold; tax revenue suffers but levies follow."
  grant_the_yurt_axis_tt: "Realm leans Türk (turk_vs_tazik < -15)"
@@ -91,4 +91,5 @@
  opinion_betrayed_genghis: "Ignored the Hallowed bloodline of Genghis Khan"
  the_refuge_of_religion.tt: "Levies, manpower and legitimacy bonuses while at war with an infidel or heretic."
  opinion_own_khutbah: "Read khutbah in his own name"
+ 
  

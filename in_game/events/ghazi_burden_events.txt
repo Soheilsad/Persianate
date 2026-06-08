@@ -49,6 +49,7 @@ ghazi_burden.1 = {
 
 	option = {
 		name = ghazi_burden.1.a
+		custom_tooltip = ghazi_burden.1.a.tt
 		# Acknowledge — no mechanical effect. The hunger has begun.
 	}
 }

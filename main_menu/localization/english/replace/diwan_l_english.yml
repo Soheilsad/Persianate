@@ -383,3 +383,6 @@
  AUTO_MODIFIER_NAME_diwan_base_values: "Persianate Estate Base Influence" 
  persianate_bureaucracy_reform: "Persianate Bureaucracy"
  persianate_bureaucracy_reform_desc: "The integration of the ancient Persian administrative tradition into the state, emphasizing a professional scribal class and centralized fiscal oversight."
+ consolidate_the_diwan_tt: "Integrates the Province immediately by incorporating existing Ilkhanate-era land registers and local legal ammendments and privileges into our own Daftar."
+ grant_the_yurt_tt: "Grants the right of pasture to a tribal host, integrating the province at the price of rural and urban prosperity and our fiscal legibility"
+ mixed_settlement_tt: "Recognizes local Turkic and Settled people's rights, allowing them a degree of self-rule. Integration without major benefits."

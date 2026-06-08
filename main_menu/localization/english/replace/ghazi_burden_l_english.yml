@@ -150,6 +150,8 @@
  ghazi_burden.1.title: "The Khutba Names You Ghazi"
  ghazi_burden.1.desc: "In the Friday sermon, the preacher names your dynasty sword of the faith. The qāḍīs in the audience exchange glances; the volunteers in the back of the mosque sit up. The boast has been made publicly. The umma is now waiting to see what you have done about it. From this moment, the credibility of the ghaza is your legitimacy, and credit comes only with wars in the right places."
  ghazi_burden.1.a: "Let the sword be seen, then."
+ ghazi_burden.1.a.tt: "Wars against other religions will now give major legitimacy and count towards the Dar-al-Harb indicator. \n\n Wars against Nations with the Mongol Yasa Law legal basis with give medium amounts of legitimacy, but will not count as ghaza for the purposes of the wager. \n\n Wars against muslims with Lax Hisba / Sharia enforcement law will give minor legitimacy bonus, but will not count as ghaza for the purposes of the wager. "
+
 
  # ----- .50 JIHAD WITHIN -----
  ghazi_burden.50.title: "The Censor Walks the Bazaar"

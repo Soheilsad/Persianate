@@ -40,6 +40,7 @@ farr_proof.1 = {
 	}
 
 	option = {
+		custom_tooltip = farr_proof.1.a.tt
 		name = farr_proof.1.a
 		# Acknowledge — no mechanical effect. The wager has begun.
 	}
