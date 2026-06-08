@@ -26,6 +26,12 @@
  launch_internal_campaign: "Launch an Internal Campaign"
  launch_internal_campaign_desc: "Set the muhtasib's apparatus to the realm itself: vice, heterodoxy, or the other branch. The chronicles will read it as proof that ghaza is not merely for distant frontiers. The first campaign is loud; the third is theater the poets mock. Requires the hisba apparatus, the strict-hisba or muhtasib_regime law, and at least one hisba office. Costs 50 gold and 3 legitimacy. Capped at three campaigns per reign."
 
+
+ ghazi_declare_holy_war: "Ask Ulemma for a Jihad Ruling."
+ ghazi_declare_holy_war_desc: "Gain justification for war against an enemy of the faith."
+
+ ghazi_holy_war_target: "Select a Country to target for purification."
+ ghazi_no_holy_war_target_countries: "There are no valid targets for this declaration."
  # ----- can_start / can_end tooltips -----
  ghazi_burden_not_yet_completed_tt: "The wager of ghaza has not yet been resolved by this dynasty."
  ghazi_burden_not_yet_fired_tt: "The ghazi claim has not yet been put to the umma's test."

@@ -239,3 +239,87 @@ claim_sultan_of_ghazis = {
 		add = 100
 	}
 }
+
+
+ghazi_declare_holy_war = {
+	type = disaster
+
+	potential = {
+		scope:actor = {
+			has_reform = government_reform:ghazi_sultanate
+		}
+	}
+
+	ai_tick = monthly
+	ai_tick_frequency = 3
+
+	cooldown = {
+		type = ghazi_declare_holy_war
+		months = 6
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = { data = name }
+		visible = {
+			disaster_type = disaster_type:ghazi_burden_of_sword
+			disaster_is_active = yes
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		interaction_source_list = {
+			scope:actor = {
+				every_neighbor_country = {
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target
+		name = "ghazi_holy_war_target"
+		none_available_msg_key = "ghazi_no_holy_war_target_countries"
+		column = { data = name }
+		column = { data = expected_army_size }
+		visible = {
+			is_real_country = yes
+			OR = {
+				NOT = {religion = religion:sunni } ## a heathen or heretic.
+				AND = {
+					religion = religion:sunni ## a co-religionist, but of a different sect.
+					scope:actor = {
+						has_variable = ghazi_fatwa_acquired ## at least the first apparatus claimed, so the claim has some doctrinal weight.
+					}
+				}
+			}
+			scope:actor = {
+				can_declare_war_on = root
+				NOT = { has_truce_with = root }
+				NOT = { is_allied_with = { target = root } }
+			}
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			if = {
+				limit = { exists = scope:target }
+				add_casus_belli = {
+					target = scope:target
+					type = casus_belli:cb_ghozva
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		value = 100
+		modifier = {
+			factor = 0
+			at_war = yes
+		}
+	}
+}
+

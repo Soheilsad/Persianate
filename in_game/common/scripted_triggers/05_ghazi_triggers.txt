@@ -19,11 +19,7 @@
 # Tier-3: true dar al-harb. Non-Muslim states are the doctrine's
 # native food. Any non-Muslim religion qualifies.
 ghazi_target_is_tier_3 = {
-	OR = {
-		religion_group = christian_group
-		religion_group = dharmic_group
-		religion_group = pagan_group
-	}
+	NOT = {religion.group = religion_group:muslim}
 }
 
 # Tier-2: Muslims-in-name. Yasa-holders (the Chinggisid ring still
@@ -31,7 +27,7 @@ ghazi_target_is_tier_3 = {
 # rule: a Muslim ruler whose practice the doctrine refuses to
 # recognize.
 ghazi_target_is_tier_2 = {
-	religion_group = muslim_group
+	religion.group = religion_group:muslim
 	OR = {
 		# Yasa-policy holders — the chinggisid_regency reform or
 		# yasa_law law-option presence. (Implementation note: edit

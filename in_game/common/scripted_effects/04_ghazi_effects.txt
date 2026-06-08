@@ -117,6 +117,11 @@ ghazi_burden_omen_pulse = {
 		# Muhtasib turns on the court (only with hisba apparatus +
 		# sustained low legitimacy)
 		6  = { trigger_event_silently = ghazi_burden.104 }
+		# A scholar at court proposes the yasa-fatwa. Multi-option
+		# event — fired non-silently. The event-side trigger gates on
+		# NOT ghazi_fatwa_acquired so subsequent rolls re-fire only
+		# while the fatwa is still unclaimed.
+		8  = { trigger_event_non_silently = ghazi_burden.150 }
 	}
 }
 

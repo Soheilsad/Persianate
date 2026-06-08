@@ -37,6 +37,8 @@
  war_goal_eranzamin_succession_wargoal_desc: "A war to destroy a rival in the field, and conquer his land with or without a treaty."
  cb_eranzamin_succession: "Succession of Erānzamīn"
  cb_eranzamin_succession_desc: "We are a contender for the throne of Erānzamīn, and so is our enemy. Only one claimant can sit on Hulagu's seat — the legitimacy of the Khans does not divide."
+ cb_ghozva: "Ghozva Holy War"
+ cb_ghozva_desc: "A holy war declared against enemies of the faith by a Ghazi"
  ERANZAMIN_SUCCESSION_WAR_NAME: "$ATTACKER$'s Succession War against $DEFENDER$"
  rally_turkic_tribes: "Rally Turkic Tribes"
  rally_turkic_tribes_desc: "Send the bitikchis out to the ulus — call the Türkmen lineages in to the muster. Tribesmen and their amir layer arrive in the chosen rural location, scaled to the rank of the realm. The diwan, the burghers, and the peasantry are alienated by the influx; the steppe will not be summoned by a court that has gone Tāzīk."

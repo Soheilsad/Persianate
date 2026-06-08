@@ -112,6 +112,10 @@ ghazi_burden.65 = {
 			months = -1
 		}
 		add_estate_satisfaction = { type = estate_type:tribes_estate value = 0.05 }
+		# The volunteers, with somewhere to sleep at last, gather.
+		# Hand the player the frontier-designation assembly directly —
+		# this is the doctrinal next step the ribat network is FOR.
+		trigger_event_non_silently = ghazi_burden.160
 	}
 }
 
