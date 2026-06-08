@@ -8,6 +8,10 @@ levy_nomadic_tribes = {
 		current_age = age_1_traditions
 	}
 	unit = a_nomadic_skirmisher_cavalry
+	mercenaries_per_location = {
+		pop_type = tribesmen
+		multiply = 0.3
+	}
 }
 
 levy_turkoman_tribes = {

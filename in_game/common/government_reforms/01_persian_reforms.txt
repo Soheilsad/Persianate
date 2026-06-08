@@ -78,6 +78,10 @@ chinggisid_regency = {
 		NOT = { has_reform = government_reform:farr_i_izadi }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:amir_sultanate }
+		NOT = { has_reform = government_reform:dar_al_jihad }
+		NOT = { has_reform = government_reform:timurid_synthesis }
+		NOT = { has_reform = government_reform:iranian_kingship }
+
 	}
 	locked = {
 		always = yes
@@ -121,6 +125,9 @@ farr_i_izadi = {
 		NOT = { has_reform = government_reform:chinggisid_regency }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:amir_sultanate }
+		NOT = { has_reform = government_reform:dar_al_jihad }
+		NOT = { has_reform = government_reform:farr_i_izadi }
+
 		# Re-declaration lock: a dynasty that has tried farr and failed
 		# cannot re-declare. The attempted_farr_and_failed modifier is
 		# applied by the Broken-lapse and Broken-formal resolutions of
@@ -183,6 +190,8 @@ ghazi_sultanate = {
 		NOT = { has_reform = government_reform:chinggisid_regency }
 		NOT = { has_reform = government_reform:farr_i_izadi }
 		NOT = { has_reform = government_reform:amir_sultanate }
+		NOT = { has_reform = government_reform:dar_al_jihad }
+		NOT = { has_reform = government_reform:iranian_kingship }
 	}
 
 	country_modifier = {
@@ -317,6 +326,7 @@ circle_of_equity_reform = {
 	# Chinggisid mandate — it is the settled state's own justification.
 	potential = {
 		NOT = { has_reform = government_reform:chinggisid_regency }
+	
 	}
 
 	country_modifier = {
@@ -409,6 +419,8 @@ iranian_kingship = {
 		has_reform = government_reform:farr_i_izadi
 		NOT = { has_reform = government_reform:timurid_synthesis }
 		NOT = { has_reform = government_reform:turkmen_confederation }
+		NOT = { has_reform = government_reform:dar_al_jihad }
+		NOT = { has_reform = government_reform:ghazi_sultanate }
 		OR = {
 			has_variable = farr_proof_vindicated_permanent
 			has_variable = farr_was_endured
@@ -455,6 +467,7 @@ dar_al_jihad = {
 
 	potential = {
 		NOT = { has_reform = government_reform:timurid_synthesis }
+		NOT = { has_reform = government_reform:farr_i_izadi }
 		NOT = { has_reform = government_reform:turkmen_confederation }
 		NOT = { has_reform = government_reform:iranian_kingship }
 		OR = {

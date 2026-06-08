@@ -16,9 +16,10 @@ a_tumen_cavalry = {
 	combat = { 
 		grasslands = 0.05
 		hills = 0.10
-		steppe = 0.10
+		sparse = 0.10
 		wetlands = -0.10
 	}
 
 	gfx_tags = { medium_tag }
 }
+

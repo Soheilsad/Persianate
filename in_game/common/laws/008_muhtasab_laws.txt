@@ -109,10 +109,12 @@ hisba_law = {
 	# can govern like this; everyone else lacks the standing.
 	# ----------------------------------------------------------
 	muhtasib_regime = {
-		unique = yes
+
 		potential = {
-			has_reform = government_reform:ghazi_sultanate
-			has_reform = government_reform:dar_al_jihad
+			OR = {
+				has_reform = government_reform:ghazi_sultanate
+				has_reform = government_reform:dar_al_jihad	
+			}
 				
 		}
 		country_modifier = {

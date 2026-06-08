@@ -44,7 +44,10 @@ ghazi_lord_at_war = {
 	potential_trigger = {
 		government_type = government_type:persianate_sultanate
 
-		has_reform = government_reform:ghazi_sultanate
+		OR ={
+			has_reform = government_reform:ghazi_sultanate
+			has_reform = government_reform:dar_al_jihad
+		}
 		at_war = yes
 		any_country_at_war_with = {
 

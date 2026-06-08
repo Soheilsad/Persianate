@@ -52,7 +52,7 @@ ayyar_militia_recognition = {
 		fort_maintenance_cost = -0.10
 		pop_join_rebel_threshold = -0.02
 		monthly_towards_mysticism = 0.05
-		burghers_estate_levy_size = 0.15
+		burghers_estate_levy_size = 0.25
 	}
 }
 

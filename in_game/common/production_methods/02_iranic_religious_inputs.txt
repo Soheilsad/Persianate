@@ -57,3 +57,20 @@ imam_shrine_maintenance = {
 
 	category = building_maintenance
 }
+
+mutatawwia_maintenance = {
+	paper      = 0.2   # the recruitment ledger, the muster roll, the ribat-shaykh's correspondence
+	books      = 0.1   # ḥadīth of jihad, the futuwwa manuals, the preacher's homiletic stock
+	fine_cloth = 0.2   # banners, the volunteers' standard-issue cloak
+	weapons    = 0.4   # the lodge's racks — the muraābiṭūn arm themselves from the ribat's stores
+
+	category = building_maintenance
+}
+
+zurkhanah_maintenance = {
+	fine_cloth = 0.1   # the pahlavān's tunbān, the murshid's robe
+	weapons    = 0.2   # mils, kabādeh, the training-floor arms
+	furniture  = 0.1   # the gowd, the sardam, the audience benches
+
+	category = building_maintenance
+}

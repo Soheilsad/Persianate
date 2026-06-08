@@ -8189,12 +8189,12 @@ paropamisus_mountains5 = { topography = mountain_wasteland vegetation = sparse c
 farah = { topography = flatland vegetation = farmland climate = arid religion = sunni culture = afghan_culture raw_material = rice }
 anardara = { topography = hills vegetation = desert climate = arid religion = sunni culture = afghan_culture raw_material = stone }
 doroh = { topography = hills vegetation = desert climate = arid religion = sunni culture = farsi_culture raw_material = copper }
-lash_joveyn = { topography = flatland vegetation = desert climate = arid religion = sunni culture = tajik_culture raw_material = fruit }
-sarbisheh = { topography = plateau vegetation = desert climate = cold_arid religion = sunni culture = farsi_culture raw_material = livestock }
+lash_joveyn = { topography = flatland vegetation = seasonal_irrigated climate = arid religion = sunni culture = tajik_culture raw_material = fruit }
+sarbisheh = { topography = plateau vegetation = sparse climate = cold_arid religion = sunni culture = farsi_culture raw_material = livestock }
 shahr_sabz = { topography = flatland vegetation = desert climate = arid religion = sunni culture = afghan_culture raw_material = wool }
 garmsir = { topography = plateau vegetation = qanat_farmland climate = arid religion = sunni culture = afghan_culture raw_material = beeswax }
 banader = { topography = flatland vegetation = desert climate = arid religion = sunni culture = baloch_culture raw_material = wild_game }
-khanashin = { topography = flatland vegetation = desert climate = arid religion = sunni culture = afghan_culture raw_material = wool }
+khanashin = { topography = flatland vegetation = seasonal_irrigated climate = arid religion = sunni culture = afghan_culture raw_material = wool }
 maiwand = { topography = hills vegetation = qanat_farmland climate = arid religion = sunni culture = afghan_culture raw_material = livestock }
 pangvay = { topography = plateau vegetation = qanat_farmland climate = arid religion = sunni culture = afghan_culture raw_material = legumes }
 dasht_registan = { topography = dune_wasteland vegetation = desert climate = arid }
