@@ -3,7 +3,7 @@ recent_cadastre_modifier = {
 		category = country
 	}
 	tax_income_efficiency = 0.15
-	global_monthly_control = 0.1
+	global_monthly_control = 0.001
 }
 
 expanded_secretariat_modifier = {
@@ -35,7 +35,7 @@ amir_cavalry_buff = {
 	}
 	army_heavy_cavalry_power = 0.10
 	army_light_cavalry_power = 0.10
-	land_morale_modifier = 0.05
+	land_morale_modifier = 0.25
 }
 
 ilkhanate_civil_war_mode = {
@@ -185,7 +185,7 @@ peasant_banditry_suppressed = {
 
 decree_centralization_mod = {
 	game_data = { category = country }
-	global_monthly_control = 0.5
+	global_monthly_control = 0.005
 	global_integration_speed_modifier = 0.25
 	monthly_towards_centralization = 0.2
 }
@@ -217,7 +217,7 @@ decree_justice_mod = {
 decree_royal_progress_mod = {
 	game_data = { category = country }
 	monthly_legitimacy = 0.3
-	global_monthly_control = 0.3
+	global_monthly_control = 0.003
 	antagonism_received_modifier = -0.05
 }
 

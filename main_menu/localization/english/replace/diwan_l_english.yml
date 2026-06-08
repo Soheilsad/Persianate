@@ -97,7 +97,11 @@
  AUTO_MODIFIER_NAME_diwan_base_values: "Diwan Base Values for any civilized nation"
  AUTO_MODIFIER_NAME_amirs_base_values: "Amirs Base Values for any civilized nation"
  AUTO_MODIFIER_NAME_diwan_persian_court_language: "Persian, the Tongue of the Diwan"
-
+ AUTO_MODIFIER_DESC_diwan_persian_court_language: "The Diwan's use of Persian as the court language reinforces its cultural prestige and administrative cohesion, but may alienate non-Persian subjects."
+ AUTO_MODIFIER_NAME_amirs_war_auto_modifier: "Amirs With a Mission"
+ AUTO_MODIFIER_DESC_amirs_war_auto_modifier: "The Amirs estate thrives on war — the loot, the glory, the tribal prestige. They are more satisfied when the realm is at war"
+ AUTO_MODIFIER_NAME_ghazi_lord_has_yasa_law: "Ghazi Lord with Yasa Law"
+ AUTO_MODIFIER_DESC_ghazi_lord_has_yasa_law: "A Ghazi lord who has adopted the Yasa code of law, a contradiction that makes a mockery of his claim to be a champion of Islam and justice. The very word law flinches at the association with the Yasa, and the Ghazi's legitimacy suffers accordingly."
  # Privileges (Diwan)
  diwan_land_registers: "Land Registers"
  diwan_land_registers_desc: "Detailed surveys of land ownership ensure efficient taxation."
@@ -379,3 +383,6 @@
  AUTO_MODIFIER_NAME_diwan_base_values: "Persianate Estate Base Influence" 
  persianate_bureaucracy_reform: "Persianate Bureaucracy"
  persianate_bureaucracy_reform_desc: "The integration of the ancient Persian administrative tradition into the state, emphasizing a professional scribal class and centralized fiscal oversight."
+ consolidate_the_diwan_tt: "Integrates the Province immediately by incorporating existing Ilkhanate-era land registers and local legal ammendments and privileges into our own Daftar."
+ grant_the_yurt_tt: "Grants the right of pasture to a tribal host, integrating the province at the price of rural and urban prosperity and our fiscal legibility"
+ mixed_settlement_tt: "Recognizes local Turkic and Settled people's rights, allowing them a degree of self-rule. Integration without major benefits."

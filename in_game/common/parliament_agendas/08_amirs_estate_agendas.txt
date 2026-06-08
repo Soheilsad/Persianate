@@ -3,7 +3,7 @@ pa_amirs_case_land_seizure = {
 	estate = amirs_estate
 	importance = 2.5
 	potential = {
-		country_has_estate = amirs_estate
+		country_has_estate = estate_type:amirs_estate
 	}
 	on_accept = {
 		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.20 }

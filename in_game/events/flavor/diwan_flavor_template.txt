@@ -98,7 +98,7 @@ diwan_flavor.template_3 = {
 	desc = diwan_flavor.template_3.desc
 	
 	trigger = {
-		country_has_estate = amirs_estate
+		country_has_estate = estate_type:amirs_estate
 		"estate_power(estate_type:amirs_estate)" > 0.4
 	}
 	

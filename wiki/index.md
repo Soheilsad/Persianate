@@ -20,6 +20,8 @@ If you want to understand the systems:
 - **[The Dīwān estate](concepts/diwan-estate.md)** and **[the Amirs estate](concepts/amirs-estate.md)** — the two replacement nobilities, and why they cannot be treated as one thing.
 - **[Estate privileges](concepts/estate-privileges.md)** — the rivalry pairs and the prerogative violations.
 - **[Government reforms](concepts/government-reforms.md)** — the Age 1–3 reform tree, with the Age 1 trilemma at its head.
+- **[The Farr Proof of Fortune](concepts/farr-proof-of-fortune.md)** — the audit on a dynasty that has claimed *farr-i īzadī*: legitimacy management, apparatus claims, and the four outcomes.
+- **[The Ghāzī Burden of the Sword](concepts/ghazi-burden-of-sword.md)** — the audit on a dynasty that has avowed *ghazā*: war-credit tiers, the *muḥtasib* axis, internal campaigns, and the four outcomes.
 - **[The Mazalim court](concepts/mazalim-court.md)** — what the parliament becomes when the political tradition has no horizontal legitimacy.
 - **[The military system](concepts/military-system.md)** — iqṭāʿ, tribes, ghulāms, and why you should not bring a European siege game to the plateau.
 

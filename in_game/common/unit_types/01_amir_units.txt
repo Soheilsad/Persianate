@@ -16,7 +16,7 @@ a_amir_cavalry = {
 	combat = { 
 		grasslands = 0.05
 		hills = 0.10
-		steppe = 0.10
+		sparse = 0.10
 		wetlands = -0.10
 	}
 
@@ -29,7 +29,7 @@ a_frontier_amir_cavalry = {
 	copy_from = a_age_2_renaissance_heavy_cavalry
 
 	# Better equipment, approaching plated knights
-	strength_damage_taken = -0.18
+	strength_damage_taken = -0.075
 	morale_damage_taken = -0.30
 
 	initiative = 2
@@ -40,7 +40,7 @@ a_frontier_amir_cavalry = {
 	combat = { 
 		grasslands = 0.05
 		hills = 0.10
-		steppe = 0.10
+		sparse = 0.10
 		mountains = -0.05
 	}
 
@@ -54,7 +54,7 @@ a_reformed_amir_cavalry = {
 	copy_from = a_age_3_discovery_heavy_cavalry
 
 	# Improved equipment, still below plated knights
-	strength_damage_taken = -0.20
+	strength_damage_taken = 0.1
 	morale_damage_taken = -0.30
 
 	initiative = 2
@@ -65,7 +65,7 @@ a_reformed_amir_cavalry = {
 	combat = { 
 		grasslands = 0.05
 		hills = 0.10
-		steppe = 0.10
+		sparse = 0.10
 	}
 
 	gfx_tags = { medium_tag heavy_tag }

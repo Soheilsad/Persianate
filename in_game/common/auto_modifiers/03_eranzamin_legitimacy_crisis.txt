@@ -30,21 +30,90 @@ unsettled_legitimacy_crisis = {
 
 
 ghazi_lord_at_war = {
+	# The at-war offset for the Burden of the Sword disaster.
+	# Bleed during the disaster is -0.5/mo; this offset is +0.75
+	# so the realm nets +0.25 at qualifying war, -0.5 in peace —
+	# the doctrine's signature: decay-at-rest.
+	#
+	# Qualifying target: religion != root.religion (covers tier-3
+	# dar al-harb AND tier-2 heterodox Muslim states with their
+	# own religion entry), OR explicit mongol_law_policy holders
+	# (the tent-law violation case the doctrine names by name).
 	potential_trigger = {
 		government_type = government_type:persianate_sultanate
 
 		has_reform = government_reform:ghazi_sultanate
-		is_at_war = yes
+		at_war = yes
 		any_country_at_war_with = {
-			religion.group != root.religion.group
+
+			religion != root.religion
+
+			
 		}
-		
 	}
 
-	monthly_legitimacy = 0.25
+	# The +0.75 here exceeds the disaster's -0.5 bleed by exactly
+	# the +0.25 net the design specifies. Outside the disaster
+	# this stacks on the reform's own +0.1, which is fine.
+	monthly_legitimacy = 0.75
 	monthly_prestige = 0.10
 	global_levy_size_modifier = 0.25
 	global_manpower_modifier = 0.25
-
-	
 }
+
+
+ghazi_lord_at_war_yasa = {
+	### this is meant to be more of a fake ghozva, because the mongols in this case are supposed to still be muslm
+	potential_trigger = {
+		government_type = government_type:persianate_sultanate
+
+		has_reform = government_reform:ghazi_sultanate
+		at_war = yes
+		any_country_at_war_with = {
+			has_policy = mongol_law_policy
+		}
+	}
+
+	# The +0.75 here exceeds the disaster's -0.5 bleed by exactly
+	# the +0.25 net the design specifies. Outside the disaster
+	# this stacks on the reform's own +0.1, which is fine.
+	monthly_legitimacy = 0.5
+	monthly_prestige = 0.05
+	global_levy_size_modifier = 0.125
+	global_manpower_modifier = 0.125
+}
+
+ghazi_lord_at_war_lax = {
+	### this is meant to be more of a fake ghozva, because the mongols in this case are supposed to still be muslm
+	potential_trigger = {
+		government_type = government_type:persianate_sultanate
+
+		has_reform = government_reform:ghazi_sultanate
+		at_war = yes
+		any_country_at_war_with = {
+			has_policy = lax_hisba_enforcement
+		}
+	}
+
+	monthly_legitimacy = 0.25
+	monthly_prestige = 0.025
+	global_levy_size_modifier = 0.125
+	global_manpower_modifier = 0.125
+}
+				#  # to have any law of mongol animalistic pagan past is a repudation of god's law, and a ghazi must purify the realm of such animalistic paganism.
+				# has_policy = lax_hisba_enforcement
+## needs localization. this is a horrendous blasphemy for a ghazi. Mongol customs are not laws or cultures to be respected, they are to be cleansed.
+ghazi_lord_has_yasa_law = {
+	potential_trigger = {
+		government_type = government_type:persianate_sultanate
+
+		has_reform = government_reform:ghazi_sultanate
+		has_policy = mongol_law_policy
+	}
+
+	monthly_legitimacy = -0.25
+	monthly_prestige = -0.10
+	global_levy_size_modifier = -0.25
+	global_manpower_modifier = -0.25
+}
+

@@ -19,6 +19,8 @@ Start with the **government** and the **dyad** — almost every other mechanic i
 ## Statecraft
 
 - [**Government reforms (Ages 1–3)**](government-reforms.md) — the Age 1 trilemma (Regency / Caliphal Investiture / Royal Farr) and what flows out of each branch.
+- [**The Farr Proof of Fortune**](farr-proof-of-fortune.md) — the disaster that follows the `farr_i_izadi` claim: the wager, the apparatus claims, the four outcomes.
+- [**The Ghāzī Burden of the Sword**](ghazi-burden-of-sword.md) — the disaster that follows `ghazi_sultanate`: war-credit tiers, the *muḥtasib* axis, internal campaigns, the four outcomes.
 - [**The Mazālim court**](mazalim-court.md) — the parliament slot occupied by the king's own court of grievances, and the crown decrees that issue from it.
 - [**Buildings of the pen and the sword**](buildings.md) — the three-tier Dīwān chain and the iqṭāʿ grant.
 - [**The military system**](military-system.md) — iqṭāʿ, tribal levies, ghulāms, and the absence of the European siege game.

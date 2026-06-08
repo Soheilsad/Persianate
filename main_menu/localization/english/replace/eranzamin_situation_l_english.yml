@@ -11,7 +11,7 @@
  consolidate_diwan_central_diwan_tt: "Dīwān al-Mamālik built in the capital"
  consolidate_diwan_select_province: "Select a province to consolidate"
  consolidate_diwan_no_provinces: "No territory-level provinces available to consolidate. Provinces also require a Local Dīwān in one of their locations."
-
+ restore_diwan_tt: "Restoring the Persian Bureaucracy allows hitherto Turk nations to restore the diwan, unlocking Diwan of the Realms. Tazik dominant nations can also use this to push themselves further towards Tazik Administration. "
  grant_the_yurt: "Grant the Yurt"
  grant_the_yurt_desc: "Settle the province as iqtaʿ to your amirs — Mongol practice, light hand. The Amirs are rewarded with land they will hold; tax revenue suffers but levies follow."
  grant_the_yurt_axis_tt: "Realm leans Türk (turk_vs_tazik < -15)"
@@ -37,6 +37,8 @@
  war_goal_eranzamin_succession_wargoal_desc: "A war to destroy a rival in the field, and conquer his land with or without a treaty."
  cb_eranzamin_succession: "Succession of Erānzamīn"
  cb_eranzamin_succession_desc: "We are a contender for the throne of Erānzamīn, and so is our enemy. Only one claimant can sit on Hulagu's seat — the legitimacy of the Khans does not divide."
+ cb_ghozva: "Ghozva Holy War"
+ cb_ghozva_desc: "A holy war declared against enemies of the faith by a Ghazi"
  ERANZAMIN_SUCCESSION_WAR_NAME: "$ATTACKER$'s Succession War against $DEFENDER$"
  rally_turkic_tribes: "Rally Turkic Tribes"
  rally_turkic_tribes_desc: "Send the bitikchis out to the ulus — call the Türkmen lineages in to the muster. Tribesmen and their amir layer arrive in the chosen rural location, scaled to the rank of the realm. The diwan, the burghers, and the peasantry are alienated by the influx; the steppe will not be summoned by a court that has gone Tāzīk."
@@ -82,9 +84,14 @@
  STATIC_MODIFIER_DESC_restoration_of_eran: "The ancient Persian empire has been reborn, centered on efficient bureaucracy and high culture."
  STATIC_MODIFIER_NAME_shattered_administration_mod: "Shattered Administration"
  STATIC_MODIFIER_DESC_shattered_administration_mod: "The administrative links that once bound this region have completely collapsed."
-
- # Auto-modifier — the cost of deferring the Age 1 legitimacy choice.
+ STATIC_MODIFIER_NAME_cloistered_khan: "Puppet Khan"
+ STATIC_MODIFIER_DESC_cloistered_khan: "Puppet Khan For Greater Powers"
  AUTO_MODIFIER_NAME_unsettled_legitimacy_crisis: "Unsettled Legitimacy"
  AUTO_MODIFIER_NAME_ghazi_lord_at_war: "Fighting against Infidels, Heretics or Corruption on Earth"
+ AUTO_MODIFIER_NAME_ghazi_lord_at_war_yasa: "Fighting Against Muslims who Cling to Primitive Law"
+ AUTO_MODIFIER_NAME_ghazi_lord_at_war_lax: "Fighting Against Muslims who Tolerate Corruption"
  opinion_betrayed_genghis: "Ignored the Hallowed bloodline of Genghis Khan"
  the_refuge_of_religion.tt: "Levies, manpower and legitimacy bonuses while at war with an infidel or heretic."
+ opinion_own_khutbah: "Read khutbah in his own name"
+ 
+ 

@@ -81,6 +81,10 @@ consolidate_diwan = {
 	}
 
 	effect = {
+		custom_tooltip = {
+			text = consolidate_the_diwan_tt
+			
+		}
 		scope:target = {
 			every_location_in_province = {
 				limit = { owner = scope:actor }
@@ -93,8 +97,8 @@ consolidate_diwan = {
 			}
 		}
 		scope:actor = {
-			add_estate_satisfaction = { type = diwan_estate value = 0.10 }
-			add_estate_satisfaction = { type = amirs_estate value = -0.05 }
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.10 }
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.05 }
 			change_societal_value = { type = turk_vs_tazik value = 5 }
 		}
 	}
@@ -160,6 +164,7 @@ grant_the_yurt = {
 	}
 
 	effect = {
+
 		scope:target = {
 			every_location_in_province = {
 				limit = { owner = scope:actor }
@@ -172,9 +177,13 @@ grant_the_yurt = {
 				add_unrest = -3
 			}
 		}
+		custom_tooltip = {
+			text = grant_the_yurt_tt
+			
+		}
 		scope:actor = {
-			add_estate_satisfaction = { type = amirs_estate value = 10 }
-			add_estate_satisfaction = { type = diwan_estate value = -5 }
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.10 }
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.05 }
 			change_societal_value = { type = turk_vs_tazik value = -5 }
 		}
 	}
@@ -230,6 +239,10 @@ mixed_settlement = {
 	}
 
 	effect = {
+		custom_tooltip = {
+			text = mixed_settlement_tt
+			
+		}
 		scope:target = {
 			every_location_in_province = {
 				limit = { owner = scope:actor }
@@ -413,7 +426,7 @@ rally_turkic_tribes = {
 		value = 50
 		modifier = {
 			factor = 2
-			is_at_war = yes
+			at_war = yes
 		}
 	}
 }
@@ -466,13 +479,16 @@ restore_persian_bureaucracy = {
 		# Realm-wide diwan extension. Stack-friendly — each fire adds
 		# another 25-year instance, so a contender who keeps Persianizing
 		# accumulates real admin weight over the succession arc.
+		custom_tooltip = {
+			text = restore_diwan_tt
+		}
 		scope:actor = {
 			add_country_modifier = {
 				modifier = diwan_extension_mod
 				years = 25
 			}
-			add_estate_satisfaction = { type = diwan_estate value = 15 }
-			add_estate_satisfaction = { type = amirs_estate value = -15 }
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.15 }
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.15 }
 			change_societal_value = {
 				type = turk_vs_tazik
 				value = 10
@@ -540,7 +556,7 @@ press_eranzamin_claim = {
 		column = { data = expected_army_size }
 		visible = {
 			is_real_country = yes
-			has_variable = eranzamin_contender
+			is_member_of_international_organization = international_organization:eranzamin
 			scope:actor = {
 				can_declare_war_on = root
 				NOT = { has_truce_with = root }
@@ -565,7 +581,7 @@ press_eranzamin_claim = {
 		value = 100
 		modifier = {
 			factor = 0
-			is_at_war = yes
+			at_war = yes
 		}
 	}
 }

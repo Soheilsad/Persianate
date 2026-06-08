@@ -7,7 +7,7 @@ diwan_estate_events.1 = {
 	desc = diwan_estate_events.1.desc
 
 	trigger = {
-		country_has_estate = diwan_estate
+		country_has_estate = estate_type:diwan_estate
 		"estate_power(estate_type:diwan_estate)" >= 0.25
 	}
 
@@ -38,7 +38,7 @@ diwan_estate_events.2 = {
 	title = diwan_estate_events.2.title
 	desc = diwan_estate_events.2.desc
 	trigger = {
-		country_has_estate = diwan_estate
+		country_has_estate = estate_type:diwan_estate
 		"estate_power(estate_type:diwan_estate)" >= 0.25
 	}
 
@@ -63,7 +63,7 @@ diwan_estate_events.3 = {
 	title = diwan_estate_events.3.title
 	desc = diwan_estate_events.3.desc
 	trigger = {
-		country_has_estate = diwan_estate
+		country_has_estate = estate_type:diwan_estate
 		"estate_power(estate_type:diwan_estate)" >= 0.25
 		any_owned_location = {
 			modifier:local_diwan_estate_power > 0.5

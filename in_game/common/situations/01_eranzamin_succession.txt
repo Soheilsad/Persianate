@@ -65,7 +65,7 @@ eranzamin_succession = {
 					add_location_modifier = {
 						modifier = eranzamin_succession_region_modifier
 						mode = add_and_extend
-						years = -1
+						years = 40
 					}
 				}
 

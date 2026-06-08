@@ -61,6 +61,9 @@ countries = {
 				reforms = {
 					chinggisid_regency
 				}
+				laws = {
+					legal_code_law = mongol_law_policy
+				}
 			}
 
 			country_rank = rank_kingdom
@@ -98,6 +101,9 @@ countries = {
 				ruler = chb_hasan_kuchak_pw
 				reforms = {
 					chinggisid_regency
+				}
+				laws = {
+					legal_code_law = mongol_law_policy
 				}
 			}
 			court_language = persian_language
@@ -139,8 +145,8 @@ countries = {
 			include = "persianate_sultanate_tazik_dominant"
 			government = {
 				type = persianate_sultanate
-				ruler_term = { character = mzf_mubariz_al_din_muhammad start_date = 1314.1.1 regnal_number = 1 }
-				ruler = mzf_mubariz_al_din_muhammad
+				ruler_term = { character = mzf_mubariz_al_din_muhammad_pw start_date = 1314.1.1 regnal_number = 1 }
+				ruler = mzf_mubariz_al_din_muhammad_pw
 			}
 
 			tolerated_cultures = {
@@ -360,6 +366,7 @@ countries = {
 
 				laws = {
 					sharia_law = zaidi_policy
+
 				}
 			}
 
@@ -451,6 +458,9 @@ countries = {
 					ruler_term = {	 character = sut_sutay start_date = 1312.1.1 end_date = 1332.1.1}
 					ruler_term = {	 character = sut_hajji_taghay start_date = 1332.1.1	}
 					ruler = sut_hajji_taghay
+					laws = {
+						legal_code_law = mongol_law_policy
+					}
 				}
 
 				tolerated_cultures = {
@@ -530,5 +540,55 @@ countries = {
 			religious_school = jafari_school
 			capital = sabzevar
 		}
+		GRG = { #Gurgan
+			type = army
+			own_control_core = {
+				gorgan aliabad_katul etrek incheh_borun minudasht mubarakabad nardin
+				damghan bastam lasjerd qumis semnan
+				raz
+				konjikala anew dargaz durun
+				faraveh dehistan ganlygala gazanjyk jargalan maraveh sarlawuk
+				orta_kuyu talaikhan_ata uzboy
+				bojnord samalqan khabushan shirvan_iran
+				firuzkuh
+				damavand eyvanekey khwar rahimabad razeqan varamin
+				abhar avaj qeydar sagzabad takestan
+				soltaniyeh
+				rudbar shahrestan_sofla shamiram sirdan
+			}
+
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "eurasian_horde"
+			starting_technology_level = 3
+			government = {
+				type = steppe_horde
+				heir_selection = tribal_oldest_male
+
+				ruler_term = { character = grg_togha_temur start_date = 1335.12.1 }
+
+				ruler = grg_togha_temur
+
+				reforms = {
+					legacy_of_genghis
+				}
+				laws = {
+					legal_code_law = mongol_law_policy
+				}
+			}
+
+			religious_school = maturidi_school #Said to be predominant in Persia before the Safavids
+			court_language = turkmen_dialect
+			tolerated_cultures = {
+				turkmen_culture
+				khorasani_culture
+				farsi_culture
+				adhari_culture
+				semnani_culture	
+			}
+
+			country_rank = rank_kingdom
+			capital = gorgan
+			}
 	}
 }

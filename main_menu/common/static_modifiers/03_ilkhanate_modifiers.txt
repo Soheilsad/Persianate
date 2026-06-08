@@ -7,7 +7,7 @@ eranzamin_contender_modifier = {
 	global_war_score_efficiency = 0.33
 	antagonism_received_modifier = -0.50 # "Antagonism" analogue
 	diplomatic_annexation_cost = -0.25
-	aggressiveness_modifier = 0.20
+	aggressiveness_modifier = 0.5
 	# Represents the chaos / opportunity of the succession
 	pop_join_rebel_threshold = 0.1
 	land_morale_modifier = 0.10
@@ -16,11 +16,11 @@ eranzamin_contender_modifier = {
 eranzamin_succession_region_modifier = {
 	game_data = {
 		category = location
-		decaying = no
+		decaying = yes
 	}
 
-	local_defensive = -0.35 # Forts are neglected
-	local_monthly_prosperity = -0.0025 # The breakdown of order and the rise of warlordism disrupts trade and agriculture, but the militarization of society keeps the economy limping along.
+	local_defensive = -0.66 # Forts are neglected
+	local_monthly_prosperity = -0.0020 # The breakdown of order and the rise of warlordism disrupts trade and agriculture, but the militarization of society keeps the economy limping along.
 	local_levy_size_modifier = 0.1 # But breeds warriors
 }
 
@@ -53,7 +53,7 @@ mixed_settlement_mod = {
 		category = location
 	}
 	# Compromise — modest gains across the board, no big bonus.
-	local_max_control = 0.05
+	# local_max_control = 0.05
 	local_manpower_modifier = 0.10
 	local_unrest = -1
 }
@@ -81,7 +81,7 @@ diwan_extension_mod = {
 	# another 25-year instance, so a contender who keeps Persianizing
 	# accumulates real admin weight over the succession arc.
 	tax_income_efficiency = 0.075
-	global_max_control = 0.075
+	global_max_control = 0.05
 	diwan_estate_target_satisfaction = 0.05
 	global_diwan_estate_power = 0.10
 }
@@ -100,4 +100,12 @@ charade_continues_mod = {
 	monthly_legitimacy = -0.15 ## every generation, the great khan's legitimacy 
 	amirs_estate_target_satisfaction = -0.05
 	diwan_estate_target_satisfaction = -0.10
+}
+
+
+cloistered_khan = {
+	game_data = {
+		category = character
+	}
+	blocked_from_character_interactions = yes
 }

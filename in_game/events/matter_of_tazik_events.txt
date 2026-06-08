@@ -34,8 +34,8 @@ matter_of_tazik.25 = {
 	# Hear in open court — concedes
 	option = {
 		name = matter_of_tazik.25.a
-		add_estate_satisfaction = { type = diwan_estate value = 10 }
-		add_estate_satisfaction = { type = amirs_estate value = -5 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 10 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -5 }
 		change_variable = { name = matter_progress add = -10 }
 		set_variable = co_opt_track
 	}
@@ -44,7 +44,7 @@ matter_of_tazik.25 = {
 	option = {
 		name = matter_of_tazik.25.b
 		change_variable = { name = matter_progress add = -5 }
-		random_owned_province = {
+		random_owned_location = {
 			limit = { is_urban_diwan_capable_location = yes }
 			add_unrest = 3
 		}
@@ -70,7 +70,7 @@ matter_of_tazik.50 = {
 	# Have him quietly killed — suppression line
 	option = {
 		name = matter_of_tazik.50.a
-		add_estate_satisfaction = { type = diwan_estate value = -10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -10 }
 		change_variable = { name = matter_progress add = 5 }
 		set_variable = matter_chose_suppression
 	}
@@ -78,14 +78,14 @@ matter_of_tazik.50 = {
 	# Invite him to court — compromise
 	option = {
 		name = matter_of_tazik.50.b
-		add_estate_satisfaction = { type = diwan_estate value = 5 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 5 }
 		change_variable = { name = matter_progress add = -5 }
 	}
 
 	# Endow a madrasa — co-opt
 	option = {
 		name = matter_of_tazik.50.c
-		add_estate_satisfaction = { type = diwan_estate value = 15 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 15 }
 		change_variable = { name = matter_progress add = -15 }
 		add_treasury = -100
 		set_variable = co_opt_track
@@ -149,7 +149,7 @@ matter_of_tazik.100 = {
 				change_control = control_severe_penalty
 			}
 		}
-		add_estate_satisfaction = { type = amirs_estate value = 20 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 20 }
 	}
 
 	option = {

@@ -31,5 +31,26 @@ cb_eranzamin_succession = {
 }
 
 
+cb_ghozva = {
+	create_visible = {
+		OR = {
+			has_reform = government_reform:ghazi_sultanate
+			has_reform = government_reform:dar_al_jihad
+		}
+		NOT = { religion.group = scope:target.religion.group } 
+	}
+	declare_enabled = {
+		NOT = { religion.group = scope:target.religion.group } 
+	}
+	
+	#scopes are actor/recipient for countries, while root = province checked.
+	province = {
+		any_location_in_province = {
+			always = yes
+		}
+	}
+	custom_tags = { religious_casus_belli }
 
+	war_goal_type = religious_conquer_province
+}
 

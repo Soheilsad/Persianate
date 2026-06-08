@@ -1,0 +1,200 @@
+# ============================================================
+# ERANZAMIN — The qanat pair
+#
+# Replaces the qanat vegetation types. All former qanat_farmland /
+# crumbling_qanat locations convert to vegetation = sparse; the
+# qanat STATE lives in these two buildings. The modifier values
+# are exactly the old vegetation blocks minus sparse's baseline
+# (pop capacity 25), so the 1337 map is numerically unchanged —
+# but now the land can degrade and recover.
+#
+#   qanat_dilapidated : seeded at start on the crumbling belt.
+#       NOT player-buildable. Residual channels still watering a
+#       reduced population. This is what war leaves behind.
+#   qanat_network     : the maintained system. Seeded on the
+#       intact oasis belts at start; elsewhere it is BUILT —
+#       expensive, slow, and gated (axis or diwan privilege, plus
+#       a control floor): restoring the channels is a Tazik act
+#       of justice, the dāʾira-yi ʿadālat in masonry.
+#
+# SEEDING WORKFLOW: before converting the vegetation, dump the
+# lists with the places tool —
+#   python3 places.py filter --vegetation qanat_farmland    -> seed qanat_network
+#   python3 places.py filter --vegetation crumbling_qanat   -> seed qanat_dilapidated
+# then write those names into building_manager and flip the
+# vegetation to sparse.
+#
+# WAR WIRING (elsewhere): hostile sack / tribal settlement events
+# should downgrade — destroy qanat_network, spawn qanat_dilapidated
+# in its place (one effect block in rally_turkic_tribes' arrival
+# effects and in any sack event). Full destruction (removing even
+# the dilapidated tier) should be rare and deliberate: that is the
+# Merv treatment, and it should read as an atrocity.
+#
+# [verify] flags: climate keys, modifier names, whether allow can
+# read estate privileges at location scope (if not, hoist the
+# privilege check into country_potential).
+# ============================================================
+### step one. we REMOVE irrigation systems building from the region. The qanat_farmland and crumbling_qanat vegetation types are left in place for mod compatibility, but their terrain bonuses are removed and they are replaced on the map with sparse. The qanat's functionality for THIS region is now entirely in the two buildings below.
+
+REPLACE:irrigation_systems = {
+	is_foreign = no
+	max_levels = irrigant_cap
+	pop_type = peasants
+
+	category = infrastructure_category
+	employment_size = generic_peasant_building_employment
+	remove_if = {
+		location = {
+			OR = {
+				has_building = building_type:crumbling_qanat
+				has_building = building_type:qanat_network
+			}
+		}
+	}
+	rural_settlement = yes
+	town = yes
+	city = yes
+	megalopolis = yes
+	
+	forbidden_for_estates = yes
+	
+	location_potential = {
+		OR = {
+			has_river = yes
+			is_adjacent_to_lake = yes
+		}
+	}
+
+	build_time = infrastructure_build_time
+	
+	unique_production_methods = {
+		irrigation_maintenance = {
+			tools = 0.1
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = village_construction
+
+	modifier = {
+		local_population_capacity = 1.0
+		local_monthly_food_modifier = 0.05
+	}
+}
+
+crumbling_qanat = {
+	is_foreign = no
+	pop_type = peasants
+	max_levels = irrigant_cap
+
+	employment_size = 0.5        # large numbers of people are needed to work part time regardless.
+
+	category = infrastructure_category       # [verify key]
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	# Never built — only seeded at start or left behind by war.
+	country_potential = {
+		always = no
+	}
+	remove_if = {
+		### two scenarios for AUTOMATIC. the location becomes thoroughly ruined. or the location auto grows enough over time. the player can also invest but that's separate (not autoamtic).
+		location = {
+			OR = {
+				development 
+			}
+			
+		}
+
+	}
+	# Cannot be demolished by its owner; ruins are not policy.
+	is_indestructible = yes
+
+	modifier = {
+		# crumbling_qanat (45 / 0.10 / 0.02 / supply 0) minus sparse (25):
+		local_population_capacity = 20
+		local_monthly_food_modifier = 0.10
+		local_monthly_development_modifier = 0.02
+	}
+}
+
+qanat_network = {
+	is_foreign = no
+	pop_type = peasants
+	max_levels = 1
+
+	employment_size = small_rural_employment       # [verify key] the muqanni corps and the mirab's men
+
+	category = rural_infrastructure_category       # [verify key]
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	expensive = yes
+	build_time = large_capital_build_time          # a major qanat took years
+
+	# Where qanats make sense at all: the arid plateau, not the
+	# Caspian rainforest and not the high wasteland.
+	location_potential = {
+		
+	}
+
+
+	allow = {
+		local_control > 0.3
+		custom_tooltip = {
+			text = qanat_repair_gate_tt
+			owner = {
+				OR = {
+					societal_value:turk_vs_tazik >= 25
+					has_estate_privilege = estate_privilege:diwan_land_registers   # [verify scope/trigger name]
+				}
+			}
+		}
+	}
+
+	# 
+	is_indestructible = yes
+	#
+
+	unique_production_methods = {
+		qanat_maintenance = {
+			masonry = 0.3
+			tools   = 0.1
+			category = building_maintenance
+		}
+	}
+
+	modifier = {
+		# qanat_farmland (65 / 0.22 / 0.04 / rgo 0.05 / supply 2) minus sparse (25):
+		local_population_capacity = 40
+		local_monthly_food_modifier = 0.22
+		local_monthly_development_modifier = 0.04
+		local_max_rgo_size_modifier = 0.05
+		supply_limit = 2
+	}
+
+	# Repairing the channels is the Circle of Justice made physical:
+	# the peasants return, the registers record it, the realm tilts
+	# toward the pen. Consumes the ruin it replaces.
+	on_built = {
+		location = {
+			if = {
+				limit = { has_building = building_type:qanat_dilapidated }
+				remove_building = building_type:qanat_dilapidated   # [verify effect name]
+			}
+		}
+		owner = {
+			add_estate_satisfaction = { type = estate_type:peasants_estate value = 0.03 }
+			change_societal_value = { type = turk_vs_tazik value = 1 }
+		}
+	}
+
+	construction_demand = early_capital_building_construction   # [verify: masonry-heavy demand set]
+
+	graphical_tags = { small_economy }                          # [verify tag]
+}

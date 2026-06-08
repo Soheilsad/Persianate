@@ -173,6 +173,9 @@ ilkhanate_flavor.1 = {
 				}
 			}
 		}
+		custom_tooltip = {	#When he settles to the next state, if they have not learned of this area, he may share the knowledge with them.
+			text = the_boast_about_fortune_tt
+		}
 	}
 	option = {
 		name = ilkhanate_flavor.1.d
@@ -309,6 +312,8 @@ ilkhanate_flavor.2 = {
 			mode = replace
 			size = {
 				value = root.var:charade_counter
+				min = 1
+				max = 4 ### eventually, you hit the rock bottom. the path of the Uzbek Emirates.
 			}
 		}
 		change_variable = {
@@ -379,8 +384,8 @@ ilkhanate_flavor.10 = {
 		set_country_rank = country_rank:rank_empire
 		
 		# Throw out the Mongols
-		add_estate_satisfaction = { type = amirs_estate value = -0.50 }
-		add_estate_satisfaction = { type = diwan_estate value = 0.50 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.50 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.50 }
 		
 		# Restoration of Eran
 		add_country_modifier = {

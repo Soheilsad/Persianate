@@ -165,8 +165,8 @@ mazalim_events.4 = {
 		
 		scope:traitor_vizier = { death = { reason = death_reason:execution } }
 		
-		add_estate_satisfaction = { type = diwan_estate value = -40 }
-		add_estate_satisfaction = { type = amirs_estate value = -40 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -40 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -40 }
 		
 		# Refund Victims (Cost 1 Year Income)
 		add_gold = { value = monthly_income multiply = -12 }
@@ -199,7 +199,7 @@ mazalim_events.4 = {
 		
 		scope:traitor_vizier = { death = { reason = death_reason:execution } }
 		
-		add_estate_satisfaction = { type = diwan_estate value = -50 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -50 }
 		
 		# Keep Confiscated Wealth (Gain 6 Months Income)
 		add_gold = { value = monthly_income multiply = 6 }
@@ -223,7 +223,7 @@ mazalim_events.4 = {
 		}
 		add_army_tradition = -20
 		
-		add_estate_satisfaction = { type = amirs_estate value = -50 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -50 }
 		
 		scope:traitor_vizier = { death = { reason = death_reason:execution } }
 		
