@@ -198,12 +198,7 @@ regional_diwan = {
 		}
 	}
 
-	construction_demand = {
-		lumber = 2
-		tools = 2
-		masonry = 2
-		category = building_construction
-	}
+	construction_demand = local_governor_construction
 }
 
 
