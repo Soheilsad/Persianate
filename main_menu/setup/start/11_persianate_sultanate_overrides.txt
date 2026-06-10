@@ -10,7 +10,7 @@
 countries = {
 	countries = {
 	#Persia
-#Jalayirids -JAL https://en.wikipedia.org/wiki/Jalayirid_Sultanate
+	#Jalayirids -JAL https://en.wikipedia.org/wiki/Jalayirid_Sultanate
 
 	
 		# In 1337 JAL is the Iraqi faction (Baghdad). Tabriz/Azerbaijan went
@@ -107,10 +107,7 @@ countries = {
 				}
 			}
 			court_language = persian_language
-			tolerated_cultures = {
-				adhari_culture
-				farsi_culture
-			}
+			accepted_cultures = { adhari_culture azeri_culture }
 			country_rank = rank_kingdom
 			religious_school = hanafi_school
 			capital = tabriz
@@ -408,7 +405,7 @@ countries = {
 
 			religious_school = hanafi_school
 
-			capital = baku
+			capital = shamakhi
 			tolerated_cultures = {
 				azeri_culture
 			}

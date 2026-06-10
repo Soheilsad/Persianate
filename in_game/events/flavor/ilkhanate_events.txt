@@ -39,7 +39,7 @@ ilkhanate_flavor.1 = {
 		ai_chance = {
 			factor = 50
 			modifier = { factor = 2  societal_value:turk_vs_tazik < -10 }
-			modifier = { factor = 0  religion_group = religion_group:christian }
+			modifier = { factor = 0  religion.group =religion_group:christian }
 		}
 
 		add_reform = government_reform:chinggisid_regency
@@ -110,7 +110,7 @@ ilkhanate_flavor.1 = {
 
 		trigger = { 
 			AND = {
-				religion_group = religion_group:muslim 
+				religion.group = religion_group:muslim 
 				NOT = { has_reform = government_reform:chinggisid_regency }
 			}
 		}

@@ -20,8 +20,8 @@ diwan_council = {
 		nobles_estate_can_participate_in_parliament = no
 		nobles_estate_blocked_from_parliament = yes
 		# Agenda Impact is higher against elites.
-		amirs_estate_agenda_impact = 0.1
-		clergy_estate_agenda_impact = 0.1
+		amirs_estate_agenda_impact = 0.25
+		clergy_estate_agenda_impact = 0.25
 		diwan_estate_agenda_impact = 0.1
 	}
 }
