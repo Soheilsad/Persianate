@@ -4465,18 +4465,18 @@ shamkir = { topography = mountains vegetation = sparse climate = cold_arid relig
 lake_agh_gol = { topography = lakes climate = cold_arid }
 lake_sarisu = { topography = lakes climate = cold_arid }
 lesser_caucasus_mountains6 = { topography = mountain_wasteland vegetation = sparse climate = arctic }
-baku = { topography = flatland vegetation = sparse climate = cold_arid religion = sunni culture = adhari_culture raw_material = alum }
+baku = { topography = flatland vegetation = grasslands climate = cold_arid religion = sunni culture = adhari_culture raw_material = alum }
 javad = { topography = flatland vegetation = grasslands climate = cold_arid religion = sunni culture = adhari_culture raw_material = livestock }
-mahmudabad = { topography = flatland vegetation = sparse climate = cold_arid religion = sunni culture = adhari_culture raw_material = legumes }
-maraza = { topography = plateau vegetation = sparse climate = cold_arid religion = sunni culture = adhari_culture raw_material = wool }
-qobustan = { topography = flatland vegetation = sparse climate = cold_arid religion = sunni culture = adhari_culture raw_material = cotton }
+mahmudabad = { topography = flatland vegetation = grasslands climate = cold_arid religion = sunni culture = adhari_culture raw_material = legumes }
+maraza = { topography = plateau vegetation = grasslands climate = cold_arid religion = sunni culture = adhari_culture raw_material = wool }
+qobustan = { topography = flatland vegetation = grasslands climate = cold_arid religion = sunni culture = adhari_culture raw_material = cotton }
 shamakhi = { topography = hills vegetation = farmland climate = cold_arid religion = sunni culture = adhari_culture raw_material = silk }
 mughan = { topography = wetlands vegetation = grasslands climate = cold_arid religion = sunni culture = adhari_culture raw_material = livestock }
-baciravan = { topography = flatland vegetation = sparse climate = cold_arid religion = sunni culture = adhari_culture raw_material = cotton }
+baciravan = { topography = flatland vegetation = grasslands climate = cold_arid religion = sunni culture = adhari_culture raw_material = cotton }
 bilasuvar = { topography = wetlands vegetation = grasslands climate = cold_arid religion = sunni culture = adhari_culture raw_material = livestock }
 germi = { topography = hills vegetation = seasonal_irrigated climate = cold_arid religion = sunni culture = adhari_culture raw_material = legumes }
 salyan = { topography = wetlands vegetation = grasslands climate = cold_arid religion = sunni culture = adhari_culture raw_material = fish }
-varsan = { topography = flatland vegetation = sparse climate = cold_arid religion = sunni culture = adhari_culture raw_material = medicaments }
+varsan = { topography = flatland vegetation = grasslands climate = cold_arid religion = sunni culture = adhari_culture raw_material = medicaments }
 shaki = { topography = plateau vegetation = woods climate = subtropical religion = sunni culture = adhari_culture raw_material = silk }
 agsu = { topography = hills vegetation = farmland climate = cold_arid religion = sunni culture = adhari_culture raw_material = legumes }
 aresh = { topography = flatland vegetation = farmland climate = cold_arid religion = sunni culture = adhari_culture raw_material = wheat }
