@@ -20,5 +20,101 @@ on_diwan_start = {
 			limit = { exists = this }
 			trigger_event_silently = { id = persianate_cleanup.1 }
 		}
+		international_organization:eranzamin = {
+			every_international_organization_member = {
+				every_owned_location = {
+					limit = {
+						OR = {
+						vegetation = farmland
+						vegetation = qanat_farmland
+						vegetation = seasonal_irrigated
+						vegetation = crumbling_qanat
+						}
+
+					}
+					construct_building = {
+						cost_multiplier = 0
+						demand_multiplier = 0
+						instant = yes
+						building_type = building_type:farming_village
+					}
+				}
+				every_owned_location = {
+					limit = {
+						OR = {
+						vegetation = farmland
+						vegetation = qanat_farmland
+						vegetation = seasonal_irrigated
+						}
+
+					}
+					construct_building = {
+						cost_multiplier = 0
+						demand_multiplier = 0
+						instant = yes
+						building_type = building_type:farming_village
+					}
+				}
+				every_owned_location = {
+					limit = {
+						OR = {
+						vegetation = farmland
+						vegetation = seasonal_irrigated
+						}
+
+					}
+					construct_building = {
+						cost_multiplier = 0
+						demand_multiplier = 0
+						instant = yes
+						building_type = building_type:farming_village
+					}
+				}
+				every_owned_location = {
+					limit = {
+						OR = {
+						vegetation = farmland
+						}
+
+					}
+					construct_building = {
+						cost_multiplier = 0
+						demand_multiplier = 0
+						instant = yes
+						building_type = building_type:farming_village
+					}
+				}
+				every_owned_location = {
+					limit = {
+						OR = {
+						vegetation = qanat_farmland
+							}
+
+					}
+					construct_building = {
+						cost_multiplier = 0
+						demand_multiplier = 0
+						instant = yes
+						building_type = building_type:qanat_network
+					}
+				}
+				every_owned_location = {
+					limit = {
+						OR = {
+						vegetation = seasonal_irrigated
+						vegetation = farmland
+							}
+
+					}
+					construct_building = {
+						cost_multiplier = 0
+						demand_multiplier = 0
+						instant = yes
+						building_type = building_type:irrigation_systems
+					}
+				}
+
+			}
+		}
 	}
 }
