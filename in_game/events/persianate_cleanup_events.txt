@@ -138,6 +138,38 @@ persianate_cleanup.1 = {
 				age = { 16 25 }
 				female = yes
 			}
+
+			### now, we also want to add the pastures.
+
+			every_owned_rural_location = {
+
+				limit = {
+					OR = {
+						region = region:persia_region
+						region = region:khorasan_region
+						region = region:crescent_region
+						region = region:anatolia_region
+						region = region:caucasus_region
+					}
+					OR = {
+						climate = arid
+						climate = cold_arid
+						climate = continental
+					}
+					OR = {
+						vegetation = grasslands
+						vegetation = seasonal_irrigated ## will stress it less
+					}
+					num_pop_type:tribesmen > 25.0
+					local_control < 0.33
+				}
+				construct_estate_building = {
+					building_type = building_type:tribal_pasture
+					estate_type = estate_type:tribes_estate
+				}
+
+			}
+
 		}
 
 	}

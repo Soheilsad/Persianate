@@ -112,7 +112,7 @@ countries = {
 				farsi_culture
 			}
 			country_rank = rank_kingdom
-			religious_school = jafari_school
+			religious_school = hanafi_school
 			capital = tabriz
 			dynasty = chobanid_dynasty
 		}
