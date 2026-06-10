@@ -175,7 +175,7 @@ decree_renew_the_khutba = {
 
 	allow = {
 		parliament_type = parliament_type:diwan_council
-		religion_group = religion_group:muslim
+		religion.group = religion_group:muslim
 	}
 
 	chance = 30

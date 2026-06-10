@@ -8,7 +8,7 @@
 ## CROWN
 ############################################
 
-royal_monopoly_on_trade = {
+REPLACE:royal_monopoly_on_trade = {
 	estate = crown_estate
 
 	modifier_when_in_debate = {
@@ -46,7 +46,7 @@ royal_monopoly_on_trade = {
 	}
 }
 
-charter_subject_governors = {
+REPLACE:charter_subject_governors = {
 	estate = crown_estate
 
 	modifier_when_in_debate = {
@@ -84,7 +84,7 @@ charter_subject_governors = {
 	}
 }
 
-establish_colonial_administration = {
+REPLACE:establish_colonial_administration = {
 	estate = crown_estate
 
 	modifier_when_in_debate = {
@@ -123,7 +123,7 @@ establish_colonial_administration = {
 	}
 }
 
-reform_the_royal_treasury = {
+REPLACE:reform_the_royal_treasury = {
 	estate = crown_estate
 
 	modifier_when_in_debate = {
@@ -161,7 +161,7 @@ reform_the_royal_treasury = {
 	}
 }
 
-issue_royal_censure = {
+REPLACE:issue_royal_censure = {
 	estate = crown_estate
 
 	modifier_when_in_debate = {
@@ -198,7 +198,7 @@ issue_royal_censure = {
 	}
 }
 
-mandate_emergency_levies = {
+REPLACE:mandate_emergency_levies = {
 	estate = crown_estate
 
 	modifier_when_in_debate = {
@@ -228,7 +228,7 @@ mandate_emergency_levies = {
 	}
 }
 
-fund_royal_art_patronage = {
+REPLACE:fund_royal_art_patronage = {
 	estate = crown_estate
 
 	modifier_when_in_debate = {
@@ -343,7 +343,7 @@ REPLACE:establish_military_exercises = {
 	}
 }
 
-establish_heralds_college = {
+REPLACE:establish_heralds_college = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
@@ -375,7 +375,7 @@ establish_heralds_college = {
 	}
 }
 
-promote_chivalric_orders = {
+REPLACE:promote_chivalric_orders = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
@@ -405,7 +405,7 @@ promote_chivalric_orders = {
 	}
 }
 
-license_noble_privateers = {
+REPLACE:license_noble_privateers = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
@@ -442,7 +442,7 @@ license_noble_privateers = {
 	}
 }
 
-monopolize_land_trade_routes = {
+REPLACE:monopolize_land_trade_routes = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
@@ -473,7 +473,7 @@ monopolize_land_trade_routes = {
 	}
 }
 
-fund_noble_colonization = {
+REPLACE:fund_noble_colonization = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
@@ -507,7 +507,7 @@ fund_noble_colonization = {
 	}
 }
 
-grant_exclusive_hunting_rights = {
+REPLACE:grant_exclusive_hunting_rights = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
@@ -538,7 +538,7 @@ grant_exclusive_hunting_rights = {
 	}
 }
 
-establish_noble_garrison_law = {
+REPLACE:establish_noble_garrison_law = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
