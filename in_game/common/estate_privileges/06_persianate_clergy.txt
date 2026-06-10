@@ -131,7 +131,7 @@ hajj_caravan_patronage = {
 # In a Persianate state the analogous institution is the madrasa,
 # which sits structurally inside madrasa_endowment above.
 
-clergy_lecture_oaths = {
+REPLACE:clergy_lecture_oaths = {
 	estate = clergy_estate
 
 	potential = {

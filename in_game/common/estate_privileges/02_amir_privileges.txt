@@ -46,7 +46,7 @@ amirs_hereditary_tuyul = {
 		global_max_urban_control = ez_amir_urban_malus_big
 		monthly_towards_turk = 0.2
 	}
-	revoke_privilege_cost_modifier = 2.0
+	
 }
 
 amirs_frontier_autonomy = {

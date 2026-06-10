@@ -33,6 +33,7 @@ persianate_bureaucracy_reform = {
 		monthly_towards_centralization = 0.1
 		diwan_estate_allowed_in_cabinet = yes
 		amirs_estate_allowed_in_cabinet = no
+		nobles_estate_allowed_in_cabinet = no
 		burghers_estate_allowed_in_cabinet = no
 		# Command of the field armies is the amirs' exclusive prerogative
 		# in a baseline Persianate sultanate. The diwan may unlock its own
@@ -41,11 +42,12 @@ persianate_bureaucracy_reform = {
 		amirs_estate_allowed_leading_military = yes
 		diwan_estate_allowed_leading_military = no
 		burghers_estate_allowed_leading_military = no
+		nobles_estate_allowed_leading_military = no
 		global_clergy_desired_pop_scaled = 0.01
-		cultures_capacity = 1
+		cultures_capacity = 2
 		# Demilitarization of the Sedentary Population
 		tax_income_efficiency = 0.1
-		diwan_estate_levy_size = -1
+		diwan_estate_levy_size = -0.9
 		government_size = 1
 		peasants_estate_levy_size = -0.9
 		global_max_urban_control = 0.15 # persianate states are built, at every level of their DNA, around the idea of cities as the main control centers. In persianate states, rural control collapses more readily, while urban control is more resilient.
@@ -187,7 +189,7 @@ ghazi_sultanate = {
 	government = persianate_sultanate
 
 	potential = {
-		religion_group = religion_group:muslim
+		religion.group = religion_group:muslim
 		NOT = { has_reform = government_reform:chinggisid_regency }
 		NOT = { has_reform = government_reform:farr_i_izadi }
 		NOT = { has_reform = government_reform:amir_sultanate }
@@ -540,7 +542,7 @@ mushasha_messianism = {
 	government = persianate_sultanate
 
 	potential = {
-		religion_group = religion_group:muslim
+		religion.group = religion_group:muslim
 	}
 
 	country_modifier = {
@@ -598,6 +600,11 @@ qizilbash_aristocracy_reform = {
 	potential = {
 		religion = religion:shia
 		NOT = { has_reform = government_reform:ghulam_system_reform }
+		# Matter of Tork: a realm that dissolved, expelled, or
+		# eradicated its Türk military constituency has no qizilbash
+		# to aristocratize — the Iranization / Expulsion / Eradication
+		# dispositions foreclose this road permanently.
+		NOT = { has_variable = matter_turk_dissolved }
 	}
 
 	country_modifier = {
@@ -647,7 +654,7 @@ ghulam_system_reform = {
 	government = persianate_sultanate
 
 	potential = {
-		religion_group = religion_group:muslim
+		religion.group = religion_group:muslim
 		NOT = { has_reform = government_reform:qizilbash_aristocracy_reform }
 	}
 
@@ -685,7 +692,7 @@ imami_tashayyu = {
 	government = persianate_sultanate
 
 	potential = {
-		religion_group = religion_group:muslim
+		religion.group = religion_group:muslim
 		NOT = { has_reform = government_reform:sunni_orthodoxy }
 		NOT = { has_reform = government_reform:chinggisid_regency }
 	}
@@ -714,7 +721,7 @@ sunni_orthodoxy = {
 	government = persianate_sultanate
 
 	potential = {
-		religion_group = religion_group:muslim
+		religion.group = religion_group:muslim
 		NOT = { religion = religion:shia }
 		NOT = { has_reform = government_reform:imami_tashayyu }
 	}
@@ -739,7 +746,7 @@ sadr_judiciary_reform = {
 	government = persianate_sultanate
 
 	potential = {
-		religion_group = religion_group:muslim
+		religion.group = religion_group:muslim
 	}
 
 	country_modifier = {
