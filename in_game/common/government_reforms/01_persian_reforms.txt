@@ -46,13 +46,13 @@ persianate_bureaucracy_reform = {
 		# Demilitarization of the Sedentary Population
 		tax_income_efficiency = 0.1
 		diwan_estate_levy_size = -1
-		
-		peasants_estate_levy_size = -0.85
+		government_size = 1
+		peasants_estate_levy_size = -0.9
 		global_max_urban_control = 0.15 # persianate states are built, at every level of their DNA, around the idea of cities as the main control centers. In persianate states, rural control collapses more readily, while urban control is more resilient.
 		global_max_rural_control = 0.05 # cadastral surveys.
 		global_estate_max_tax = 0.1 ## legitimately higher tax rates than euros.
 		## tribes are drawn from, not rural population.
-		tribes_estate_levy_size = 0.15
+		tribes_estate_levy_size = 0.1
 		amirs_estate_levy_size = 0.3
 		global_peasant_enfranchisment = 1.0 
 	}
@@ -153,7 +153,7 @@ farr_i_izadi = {
 		# burghers see their cities affirmed as the seat of justice.
 		diwan_estate_target_satisfaction = ez_priv_sat_large
 		burghers_estate_target_satisfaction = ez_priv_sat_major
-
+		government_size = 1
 		# The price: the steppe-coded layers reject a crown that owes
 		# nothing to them — the amirs have no place in a settled shāh's
 		# court, the tribes see a state that does not want them.

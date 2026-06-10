@@ -12,8 +12,8 @@ diwan_land_registers = {
 	country_modifier = {
 		diwan_estate_target_satisfaction = 0.05
 		global_diwan_estate_power = 0.50
-
-		global_nobles_estate_power = -0.1
+		global_nobles_city_desired_pop_scaled = 0.025 ### cities attract more diwan. 
+		global_amirs_estate_power = -0.1
 		tax_income_efficiency = 0.05
 		country_cabinet_efficiency = 0.05
 		# The register's hardest catch is the village. Once the
@@ -218,7 +218,7 @@ diwan_ghulam_administration = {
 	country_modifier = {
 		global_manpower_modifier = 0.15
 		army_maintenance_efficiency = -0.1
-		global_nobles_estate_power = -0.1
+		global_amirs_estate_power = -0.1
 		diwan_estate_target_satisfaction = 0.03
 		monthly_towards_quality = 0.05
 		monthly_towards_tazik = 0.05
@@ -248,7 +248,7 @@ diwan_collective_responsibility = {
 	
 	country_modifier = {
 		global_diwan_estate_power = 0.10
-		global_nobles_estate_power = -0.15
+		global_amirs_estate_power = -0.15
 		monthly_towards_centralization = 0.10
 
 		# Harder to integrate because it disrupts traditional social fabric

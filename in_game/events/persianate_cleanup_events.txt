@@ -161,7 +161,7 @@ persianate_cleanup.1 = {
 						vegetation = seasonal_irrigated ## will stress it less
 					}
 					num_pop_type:tribesmen > 25.0
-					local_control < 0.33
+					local_control < 0.4
 				}
 				construct_estate_building = {
 					building_type = building_type:tribal_pasture
