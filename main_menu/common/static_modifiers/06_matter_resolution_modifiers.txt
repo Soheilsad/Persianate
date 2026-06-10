@@ -1,21 +1,287 @@
-# Resolution modifiers for the Matter of Tork / Matter of Tazik disasters.
-# Spec: docs/design/eranzamin_plan.md §19.8 (Suppress / Concede / Co-opt
-# baseline mods) and §20.5 (final victory-state mods).
+# ============================================================
+# Matter of Tork — disposition modifiers
+# Design: docs/design/matter_of_tork_design.md
 #
-# Pattern: the Matter resolution event applies one of these modifiers
-# permanently. The END condition in §20 then reads the axis state and
-# matter-resolved flag to determine which IO-transform victory variant
-# fires.
+# Layers:
+#   - matter_answer_given: transient offset, applied when a slow
+#     disposition is claimed (Iranization only — the tribes being
+#     honored into the gentry is an answer; expulsion/eradication
+#     give them nothing to be calmed by). Removed at disaster end.
+#   - *_underway: transient process costs. Removed at completion
+#     or disaster end.
+#   - Outcome modifiers: permanent. One per disposition ending.
+#   - Gap modifiers (matter_cavalry_gap, matter_eradication_aftermath):
+#     fixed-duration suppressors of the permanent payoffs. Their
+#     EXPIRY is the maturation — no polling.
+#
+# Matter of Tazik modifiers retained at the bottom untouched (its
+# old implementation stays as-is until its own redesign/removal).
+# ============================================================
 
-# ---§19.8 SUPPRESS resolution modifiers ---------------------------------
+# ---Transient: the answer given ------------------------------------------
+
+matter_answer_given = {
+	# Cancels most of the disaster's standing friction: the armed
+	# constituency has been told its place. The stability_decay
+	# slice keeps bleeding — the work itself remains to be done.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	amirs_estate_target_satisfaction = 0.075
+	tribes_estate_target_satisfaction = 0.075
+	monthly_amirs_estate_rebel_growth = -0.0075
+	monthly_tribes_estate_rebel_growth = -0.01
+	monthly_legitimacy = 0.075
+}
+
+# ---A. Iranization ---------------------------------------------------------
+
+matter_iranization_underway = {
+	# The cabinet is doing THIS instead of anything else. The player
+	# should also run the vanilla assimilate-culture cabinet action —
+	# this modifier is the program's cost and its tail wind.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	country_cabinet_efficiency = -0.25
+	global_pop_assimilation_speed_modifier = 0.25
+	amirs_estate_target_satisfaction = -0.05
+	global_levy_size_modifier = -0.10
+	monthly_towards_tazik = 0.10
+}
+
+matter_iranized_realm = {
+	# Türk has become Tazik. The amīrs are iqtaʿ-landed gentry; the
+	# registers reach the old pasture margins; the cavalry tradition
+	# thins but the state deepens.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	tax_income_efficiency = 0.10
+	global_max_control = 0.05
+	stability_investment = 0.10
+	global_levy_size_modifier = -0.05
+	monthly_towards_tazik = 0.05
+}
+
+# ---B. Frontier Confederation ----------------------------------------------
+
+matter_marcher_compact = {
+	# The ghazi's native disposition: the restless tribes become his
+	# holy-war marchers, sworn and pointed outward. The realm keeps
+	# the cavalry at one remove and the frontier burns in the right
+	# direction.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_manpower_modifier = 0.10
+	land_morale = 0.05
+	antagonism_received_modifier = -0.05
+	monthly_legitimacy = 0.05
+}
+
+matter_marcher_compact_mercenary = {
+	# The farr-king's weak variant: he can exile them to the edge but
+	# cannot give them a MISSION there. The marchers are hired, not
+	# sworn — useful, expensive, and cool toward the center.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_manpower_modifier = 0.05
+	tax_income_efficiency = -0.05
+}
+
+# ---C. Sufi Synthesis --------------------------------------------------------
+
+matter_murid_bond = {
+	# The murīd-murshid bond replaces the khan-bond. Tribal cavalry
+	# kept whole, undiminished, MORE loyal than blood — their rank is
+	# their devotion. The jurists seethe, permanently.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	amirs_estate_target_satisfaction = 0.10
+	tribes_estate_target_satisfaction = 0.10
+	land_morale = 0.10
+	global_levy_size_modifier = 0.15
+	clergy_estate_target_satisfaction = -0.05
+	tolerance_heretic = 1
+	monthly_towards_mysticism = 0.10
+}
+
+matter_zandaqa_storm = {
+	# The ghazi's transition crisis (20y): the orthodox-legalist
+	# apparatus he built condemns the claim he has just made. The
+	# road Islamic gunpowder orthodoxy historically refused.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	monthly_clergy_estate_rebel_growth = 0.02
+	clergy_estate_target_satisfaction = -0.10
+	stability_decay = -0.002
+	monthly_legitimacy = -0.10
+}
+
+# ---D. Expulsion --------------------------------------------------------------
+
+matter_expulsion_underway = {
+	# Ten years of grim work. The hosts resist being moved; the levy
+	# rolls thin as the cavalry rides off them; the pastoral economy
+	# collapses ahead of the resettlement.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	monthly_tribes_estate_rebel_growth = 0.03
+	global_levy_size_modifier = -0.15
+	tax_income_efficiency = -0.05
+	monthly_legitimacy = -0.05
+}
+
+matter_expelled_hosts = {
+	# Internal homogeneity, bought wholesale. The interior is clean;
+	# the registers run unbroken from city to pasture-turned-field.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_max_control = 0.10
+	stability_investment = 0.15
+	tolerance_own = 1
+}
+
+matter_cavalry_gap = {
+	# The amputation (25y): the cavalry arm left with the hosts. Its
+	# expiry is the replacement army standing.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_manpower_modifier = -0.20
+	land_morale = -0.05
+}
+
+matter_exiled_confederation = {
+	# On the SPAWNED exile host (25y): a confederation forged in
+	# eviction, riding with nothing to lose. Goes and founds problems
+	# elsewhere — historically how Türk states propagated.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	land_morale = 0.15
+	global_manpower_modifier = 0.25
+}
+
+# ---E. Eradication --------------------------------------------------------------
+
+matter_eradication_underway = {
+	# The attempt. The class being destroyed defects en masse; the
+	# realm fights its own sword arm.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	monthly_amirs_estate_rebel_growth = 0.03
+	monthly_tribes_estate_rebel_growth = 0.05
+	global_levy_size_modifier = -0.25
+	stability_decay = -0.003
+	monthly_legitimacy = -0.20
+}
+
+matter_post_tribal_state = {
+	# The permanent payoff: no tribal-pop or amir balance to manage
+	# at all. The unitary post-tribal army answerable to no estate —
+	# the Age 3 ghulam path, forced early. Suppressed for its first
+	# fifty years by matter_eradication_aftermath.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	discipline = 0.05
+	global_max_control = 0.10
+	tax_income_efficiency = 0.15
+	global_amirs_estate_power = -0.30
+	stability_investment = 0.15
+	monthly_towards_centralization = 0.10
+}
+
+matter_eradication_aftermath = {
+	# The gap (50y): numerically cancels the payoff and digs the
+	# military hole beneath it — sword arm amputated, slave-army
+	# rebuilt from scratch, neighbors smelling blood. Its EXPIRY is
+	# the maturation.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	discipline = -0.05
+	global_max_control = -0.10
+	tax_income_efficiency = -0.15
+	global_manpower_modifier = -0.30
+	global_levy_size_modifier = -0.25
+	land_morale = -0.10
+}
+
+# ---Catastrophic outcomes ---------------------------------------------------
+
+matter_turk_defection_scar = {
+	# The tribes left — and took the realm's sword arm with them. The
+	# rival confederation stands on the flank.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_manpower_modifier = -0.15
+	land_morale = -0.05
+	monthly_prestige = -0.05
+}
+
+matter_broken_hosts = {
+	# The defection was crushed — an answer, but one written by the
+	# sword you did not choose to draw. Weaker than any disposition.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_manpower_modifier = -0.10
+	global_max_control = 0.02
+	stability_investment = 0.05
+}
+
+# ============================================================
+# MATTER OF TAZIK — retained untouched pending its own redesign
+# (or removal). Referenced by matter_of_tazik_events.txt and
+# 02_matter_effects.txt tazik applies.
+# ============================================================
 
 praetorian_eranzamin = {
 	# Suppress exit after Matter of Tazik (Türk-coded polity crushed
 	# the urban/sayyid revolt). The civilian side is structurally
 	# debuffed; the polity rides on its tribal-military spine.
-	# Per §19.8: roughly +10% manpower of the dominant side, -10%
-	# of the suppressed side, -5% control on suppressed-side province
-	# type, +legitimacy.
 	game_data = {
 		category = country
 		decaying = no
@@ -28,93 +294,36 @@ praetorian_eranzamin = {
 	monthly_towards_turk = 0.05
 }
 
-pacified_pastures = {
-	# Suppress exit after Matter of Tork (Tazik-coded polity crushed
-	# the tribal revolt). Pastoral pop is structurally debuffed,
-	# diwan administration consolidated.
-	game_data = {
-		category = country
-		decaying = no
-	}
-
-	tax_income_efficiency = 0.10
-	global_manpower_modifier = -0.10
-	global_max_control = 0.05
-	monthly_legitimacy = 0.10
-	monthly_towards_turk = -0.05
-}
-
-# ---§19.8 CONCEDE resolution modifier -----------------------------------
-
 dual_realm_of_eranzamin = {
-	# Concede exit (either Matter). Polity persists with the breakaway
-	# as a permanent vassal or independent neighbor. Estate balance
-	# forcibly recentered; axis pinned within ±15 for 50y via the
-	# Concede resolution event applying a periodic axis-correction.
+	# Concede exit. Polity persists with the breakaway as a permanent
+	# vassal or independent neighbor.
 	game_data = {
 		category = country
 		decaying = no
 	}
 
-	# Tax + manpower split modestly between sides — no big swing.
 	tax_income_efficiency = 0.05
 	global_manpower_modifier = 0.05
-	# Diplomatic prestige hit for failing to fully reintegrate.
 	diplomatic_reputation = -1
-	# Stability premium — dual sovereignty is functional.
 	stability_investment = 0.10
 }
 
-# ---§19.8 CO-OPT resolution modifier ------------------------------------
-
 convergent_eranzamin = {
-	# Co-opt exit. Mid-war "Marriage at" / "Investiture at" event,
-	# requires co_opt_track flag set at 25 or 50 threshold AND war
-	# duration >= 36 months. Annexes the breakaway peacefully.
+	# Co-opt exit (Tazik).
 	game_data = {
 		category = country
 		decaying = no
 	}
 
-	# Modest bonuses both sides, no penalties anywhere.
 	tax_income_efficiency = 0.05
 	global_manpower_modifier = 0.05
 	stability_investment = 0.15
 	monthly_legitimacy = 0.15
-	# Cultural-tradition bonus — the polity has demonstrated synthesis
-	# capacity, which is rare and remembered.
 	cultural_tradition_modifier = 0.25
-	# Axis is pinned to 0 ± 5 via the resolution event applying a
-	# stronger periodic axis-correction.
-}
-
-# ---§19.6 75-threshold full-co-opt off-ramp modifiers -------------------
-
-# These two apply if the player took the FULL co-opt 75-threshold
-# option (Yarliq of Amnesty / Vizier-Regent settlement). Disaster
-# is averted at 0 progress but the polity is committed to a heavy
-# permanent stance.
-
-pastures_of_the_sword = {
-	# Full co-opt of the amir revolt before disaster fires. Major
-	# levy boost, major diwan tax penalty, axis pinned Türk for 50y.
-	# Player who reached here was Tazik-coded but bought peace by
-	# becoming Türk in everything but name.
-	game_data = {
-		category = country
-		decaying = no
-	}
-
-	global_manpower_modifier = 0.25
-	tax_income_efficiency = -0.20
-	global_max_control = -0.10
-	monthly_towards_turk = 0.10
 }
 
 co_sovereignty_of_the_diwan = {
-	# Full co-opt of the urban revolt before disaster fires. Major
-	# diwan tax boost, major amir levy penalty, axis pinned Tazik
-	# for 50y. Türk-coded player buying peace by becoming Tazik.
+	# Tazik 75-threshold full co-opt off-ramp.
 	game_data = {
 		category = country
 		decaying = no
@@ -126,28 +335,17 @@ co_sovereignty_of_the_diwan = {
 	monthly_towards_turk = -0.10
 }
 
-# ---§20.4 Qizilbash Synthesis (Safavid auto-override) -------------------
-
 qizilbash_synthesis = {
-	# Applied if 75/75/0.80 thresholds met while a Matter is active.
-	# Replaces all Tork/Tazik tensions with religious-mystical unity.
-	# Both matter_X_resolved flags get set in parallel.
+	# §20.4 Safavid auto-override (Tazik machinery).
 	game_data = {
 		category = country
 		decaying = no
 	}
 
-	# Religious unity ratchet — synthesis IS unity.
 	tolerance_own = 4
-	# Divinized-soldier morale — the Qizilbash ghazi frame in mod
-	# form. Large manpower from the conversion of the realm.
 	global_manpower_modifier = 0.20
-	# Diwan tax bonus — the new clerical-administrative class is
-	# integrated, not opposing.
 	tax_income_efficiency = 0.15
-	# Estate satisfaction — the two old poles are bypassed.
 	amirs_estate_target_satisfaction = 0.05
 	diwan_estate_target_satisfaction = 0.05
-	# Stability — synthesis is durable.
 	stability_investment = 0.20
 }

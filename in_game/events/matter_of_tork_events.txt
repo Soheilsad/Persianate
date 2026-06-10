@@ -1,14 +1,24 @@
 namespace = matter_of_tork
 
-# Matter of Tork events — Tazik-coded polity faces tribal backlash.
-# Design spec: docs/design/eranzamin_plan.md §19.6 (thresholds 25/50/75)
-# and §19.7 (firing structure).
+# ============================================================
+# The Matter of Tork — "The Place of the Sword"
 #
-# All event flavor text is placeholder-mechanical here; the user is
-# producing narrative text and art in a parallel branch.
+# Five dispositions, claimed via disaster-panel buttons (see
+# common/generic_actions/matter_of_tork_actions.txt). Numbering:
+#
+#   .1        announce
+#   .10/.11   A. Iranization claim / completion (~20y)
+#   .20       B. Marcher Compact (instant — creates the March)
+#   .30       C. Murid Bond (instant — mysticism-gated)
+#   .40-.43   D. Expulsion claim / tranches / completion (~10y)
+#   .50/.51   E. Eradication confirm / revolt survived
+#   .90-.92   horizon defection / scar / broken hosts
+#   .99       eradication failed (catastrophic)
+#
+# Design: docs/design/matter_of_tork_design.md
+# ============================================================
 
 # ---ANNOUNCEMENT --------------------------------------------------------
-# Fires once when disaster starts. Tells player the Matter has begun.
 
 matter_of_tork.1 = {
 	type = country_event
@@ -23,240 +33,444 @@ matter_of_tork.1 = {
 
 	option = {
 		name = matter_of_tork.1.a
-		# Acknowledge — no mechanical effect.
+		# Acknowledge. The five answers are on the disaster panel.
 	}
 }
 
-# ---25 THRESHOLD: A petition from the umarā ---------------------------
+# ---A. CO-OPTATION / IRANIZATION ---------------------------------------
 
-matter_of_tork.25 = {
+# Claimed. The cabinet turns to the long work: amīrs onto iqtaʿ
+# rolls, tribal cavalry onto provincial registers, qanat-settlement
+# of the pasture margins. Türk becomes Tazik over a generation.
+matter_of_tork.10 = {
 	type = country_event
 	category = disaster_event
-	title = matter_of_tork.25.title
-	desc = matter_of_tork.25.desc
+	title = matter_of_tork.10.title
+	desc = matter_of_tork.10.desc
 	outcome = neutral
 
-	# Receive them with honor — concedes
-	option = {
-		name = matter_of_tork.25.a
-		add_estate_satisfaction = { type = estate_type:amirs_estate value = 10 }
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = -5 }
-		change_variable = { name = matter_progress add = -10 }
-		set_variable = co_opt_track
+	immediate = {
+		set_variable = matter_tork_disposition_chosen
+		set_variable = matter_tork_iranization_underway
+		set_variable = { name = matter_tork_iranization_months value = 0 }
+		# The constituency has been told its place — the dread of NO
+		# answer ends. (The work itself still takes a generation.)
+		add_country_modifier = { modifier = matter_answer_given months = -1 }
+		add_country_modifier = { modifier = matter_iranization_underway months = -1 }
 	}
 
-	# Send the vizier — delays
 	option = {
-		name = matter_of_tork.25.b
-		change_variable = { name = matter_progress add = -5 }
-		# Random frontier amir antagonism
+		name = matter_of_tork.10.a
+		custom_tooltip = matter_tork_iranization_explainer_tt
+	}
+}
+
+# Complete: 240 months of cabinet work and the realm has actually
+# Iranized (axis ≥ +25). The finisher settles a share of the
+# remaining tribesmen into the village world.
+matter_of_tork.11 = {
+	type = country_event
+	category = disaster_event
+	title = matter_of_tork.11.title
+	desc = matter_of_tork.11.desc
+	outcome = positive
+
+	immediate = {
+		remove_variable = matter_tork_iranization_underway
+		if = {
+			limit = { has_country_modifier = matter_iranization_underway }
+			remove_country_modifier = matter_iranization_underway
+		}
+		# The finisher: a share of the remaining tribesmen settle —
+		# into the peasantry, into the court culture.
+		every_owned_province = {
+			limit = { is_tribal_pastoral_location = yes }
+			random = {
+				chance = 40
+				every_location_in_province = {
+					every_pop = {
+						limit = { pop_type = pop_type:tribesmen }
+						change_pop_type = pop_type:peasants
+						change_culture = root.culture
+					}
+				}
+			}
+		}
+		add_country_modifier = { modifier = matter_iranized_realm months = -1 }
+		# The qizilbash-equivalent can never form — the constituency
+		# that would have carried it has dissolved into the realm.
+		set_variable = matter_turk_dissolved
+		set_variable = matter_of_tork_resolved
+	}
+
+	option = {
+		name = matter_of_tork.11.a
+	}
+}
+
+# ---B. FRONTIER CONFEDERATION ------------------------------------------
+
+# Instant: the tribes become marcher-vassals on the dar al-harb
+# frontier. A March subject with huge tribal demographics —
+# militarily strong, therefore unruly, and fiscally poor. The
+# Aq Qoyunlu fuse, lit by your own hand and pointed outward.
+matter_of_tork.20 = {
+	type = country_event
+	category = disaster_event
+	title = matter_of_tork.20.title
+	desc = matter_of_tork.20.desc
+	outcome = positive
+
+	immediate = {
+		set_variable = matter_tork_disposition_chosen
+		# Seat of the confederation: a tribal-pastoral location.
+		# TODO: prefer dar al-harb frontier adjacency once a clean
+		# border-direction trigger is settled; random tribal seat
+		# for first implementation.
 		random_owned_location = {
+			limit = { is_tribal_pastoral_location = yes }
+			create_country_from_location = {
+				change_country_name = MATTER_TORK_MARCH
+				make_subject_of = { target = root type = subject_type:march }
+				save_scope_as = matter_march_country
+			}
+		}
+		# The tribal-share provinces ride out with it.
+		if = {
+			limit = { exists = scope:matter_march_country }
+			every_owned_province = {
+				limit = { is_tribal_pastoral_location = yes }
+				random = {
+					chance = 40
+					every_location_in_province = {
+						change_location_owner = scope:matter_march_country
+					}
+				}
+			}
+		}
+		# The ghazi has a holy war to point them at — sworn marchers.
+		# The farr-king can exile them to the edge but cannot give
+		# them a MISSION there — hired marchers, not sworn.
+		if = {
+			limit = { matter_tork_is_ghazi_line = yes }
+			add_country_modifier = { modifier = matter_marcher_compact months = -1 }
+		}
+		else = {
+			add_country_modifier = { modifier = matter_marcher_compact_mercenary months = -1 }
+		}
+		set_variable = matter_of_tork_resolved
+	}
+
+	option = {
+		name = matter_of_tork.20.a
+	}
+}
+
+# ---C. SUFI SYNTHESIS / MELT INTO THE VILĀYAT --------------------------
+
+# Instant, mysticism-gated. The murīd-murshid bond replaces the
+# khan-bond: loyalty that ran to the golden line now runs to the
+# ruler as murshid-i kāmil. Cavalry kept whole, re-bonded, MORE
+# loyal than blood. The cost is asymmetric by prior path: farr +
+# vilāyat compound; ghazā + vilāyat collide.
+matter_of_tork.30 = {
+	type = country_event
+	category = disaster_event
+	title = matter_of_tork.30.title
+	desc = matter_of_tork.30.desc
+	outcome = positive
+
+	immediate = {
+		set_variable = matter_tork_disposition_chosen
+		# Forecloses muhtasib_regime (law potential reads this) —
+		# the murshid claim is precisely what the muhtasib exists
+		# to condemn. Steers the realm toward zill_allah_regime.
+		set_variable = matter_sufi_synthesis
+		add_country_modifier = { modifier = matter_murid_bond months = -1 }
+		if = {
+			limit = { matter_tork_is_ghazi_line = yes }
+			# The orthodox-legalist ghazi is unbuilding the thing that
+			# made him legitimate to claim a thing it called blasphemy.
+			# Near-conversion crisis. (He KEEPS ghazi_sultanate /
+			# dar_al_jihad — the synthesis is an addition, not a
+			# repudiation of the ghaza itself.)
+			add_legitimacy = -40
+			add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.20 }
+			add_country_modifier = { modifier = matter_zandaqa_storm years = 20 }
+		}
+		else = {
+			# Farr is already a charismatic-person theory — adding
+			# murshid-hood is fusion of like with like. Smooth.
+			add_legitimacy = -10
+			add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.05 }
+		}
+		# Collapsed with the Qizilbash Synthesis END clause: the
+		# synthesis answers both questions at once.
+		set_variable = matter_of_tork_resolved_by_synthesis
+		set_variable = matter_of_tazik_resolved_by_synthesis
+		set_variable = matter_of_tork_resolved
+	}
+
+	option = {
+		name = matter_of_tork.30.a
+	}
+}
+
+# ---D. EXPULSION --------------------------------------------------------
+
+# Claimed. Drive them out — steppe, Anatolia, India. Ten years of
+# grim work; the cavalry arm goes with them.
+matter_of_tork.40 = {
+	type = country_event
+	category = disaster_event
+	title = matter_of_tork.40.title
+	desc = matter_of_tork.40.desc
+	outcome = neutral
+
+	immediate = {
+		set_variable = matter_tork_disposition_chosen
+		set_variable = matter_tork_expulsion_underway
+		set_variable = { name = matter_tork_expulsion_months value = 0 }
+		# No matter_answer_given here — the tribes know what is
+		# coming; the friction does not soften.
+		add_country_modifier = { modifier = matter_expulsion_underway months = -1 }
+	}
+
+	option = {
+		name = matter_of_tork.40.a
+		custom_tooltip = matter_tork_expulsion_explainer_tt
+	}
+}
+
+# First tranche (~3y): the eastern hosts are moved on.
+matter_of_tork.41 = {
+	type = country_event
+	category = disaster_event
+	title = matter_of_tork.41.title
+	desc = matter_of_tork.41.desc
+	outcome = neutral
+
+	immediate = {
+		matter_tork_remove_tribal_tranche = yes
+		every_owned_province = {
 			limit = { is_tribal_pastoral_location = yes }
 			add_unrest = 3
 		}
 	}
 
-	# Refuse to seat them — provokes
 	option = {
-		name = matter_of_tork.25.c
-		change_variable = { name = matter_progress add = 5 }
-		set_variable = petition_refused
+		name = matter_of_tork.41.a
 	}
 }
 
-# ---50 THRESHOLD: A frontier amir withholds his levy ------------------
+# Second tranche (~7y): the pastures empty.
+matter_of_tork.42 = {
+	type = country_event
+	category = disaster_event
+	title = matter_of_tork.42.title
+	desc = matter_of_tork.42.desc
+	outcome = neutral
 
+	immediate = {
+		matter_tork_remove_tribal_tranche = yes
+		matter_tork_remove_tribal_tranche = yes
+		every_owned_province = {
+			limit = { is_tribal_pastoral_location = yes }
+			add_unrest = 3
+		}
+	}
+
+	option = {
+		name = matter_of_tork.42.a
+	}
+}
+
+# Complete (~10y): the last hosts cross the border — and coalesce
+# just beyond it. One border tribal location is ceded to a newly
+# spawned, independent, hostile confederation: the expelled go
+# found problems elsewhere. Historically how Türk states propagated.
+matter_of_tork.43 = {
+	type = country_event
+	category = disaster_event
+	title = matter_of_tork.43.title
+	desc = matter_of_tork.43.desc
+	outcome = positive
+
+	immediate = {
+		remove_variable = matter_tork_expulsion_underway
+		if = {
+			limit = { has_country_modifier = matter_expulsion_underway }
+			remove_country_modifier = matter_expulsion_underway
+		}
+		matter_tork_remove_tribal_tranche = yes
+		# The exile host coalesces on the flank.
+		random_owned_location = {
+			limit = { is_tribal_pastoral_location = yes }
+			create_country_from_location = {
+				change_country_name = MATTER_TORK_EXILE_HOST
+				save_scope_as = matter_exile_host
+			}
+		}
+		scope:matter_exile_host ?= {
+			add_country_modifier = { modifier = matter_exiled_confederation years = 25 }
+		}
+		# Clean interior, amputated cavalry arm.
+		add_country_modifier = { modifier = matter_expelled_hosts months = -1 }
+		add_country_modifier = { modifier = matter_cavalry_gap years = 25 }
+		set_variable = matter_turk_dissolved
+		set_variable = matter_of_tork_resolved
+	}
+
+	option = {
+		name = matter_of_tork.43.a
+	}
+}
+
+# ---E. ERADICATION ------------------------------------------------------
+
+# The confirm. Eliminating the Türk military class AS a class means
+# the class being destroyed defects en masse, NOW — to a rival, a
+# breakaway, a shaykh of your own failed ribats. The payoff is real
+# but materializes only for a realm that survives the revolt window
+# and the fifty-year vulnerability gap behind it.
 matter_of_tork.50 = {
 	type = country_event
 	category = disaster_event
 	title = matter_of_tork.50.title
 	desc = matter_of_tork.50.desc
-	outcome = neutral
+	outcome = negative
 
-	# Confiscate his iqtaʿ — suppression line
+	# Begin. The standards go up the same season.
 	option = {
 		name = matter_of_tork.50.a
-		add_estate_satisfaction = { type = estate_type:amirs_estate value = -10 }
-		change_variable = { name = matter_progress add = 5 }
-		# Mark the suppression posture for later resolution-event routing.
-		set_variable = matter_chose_suppression
+		set_variable = matter_tork_disposition_chosen
+		set_variable = matter_eradication_attempt
+		add_country_modifier = { modifier = matter_eradication_underway months = -1 }
+		matter_tork_remove_tribal_tranche = yes
+		spawn_turkmen_breakaway = yes
 	}
 
-	# Convene a panj-shanbeh — compromise
+	# Recoil. The button returns to the panel; the question remains.
 	option = {
 		name = matter_of_tork.50.b
-		add_estate_satisfaction = { type = estate_type:amirs_estate value = 5 }
-		change_variable = { name = matter_progress add = -5 }
-	}
-
-	# Marry his daughter to a prince — co-opt
-	option = {
-		name = matter_of_tork.50.c
-		add_estate_satisfaction = { type = estate_type:amirs_estate value = 15 }
-		change_variable = { name = matter_progress add = -15 }
-		add_prestige = -10
-		set_variable = co_opt_track
+		remove_variable = matter_tork_eradication_claimed
 	}
 }
 
-# ---75 THRESHOLD: The tribes are assembling --------------------------
-
-matter_of_tork.75 = {
+# The revolt window survived. The purge completes; the class is
+# gone. TWO modifiers apply at once: the permanent post-tribal
+# payoff, and a fifty-year gap that suppresses it and worse — the
+# sword arm is amputated while the slave-army is rebuilt from
+# scratch and the neighbors smell blood. The gap EXPIRING is the
+# maturation; no clock is polled.
+matter_of_tork.51 = {
 	type = country_event
 	category = disaster_event
-	title = matter_of_tork.75.title
-	desc = matter_of_tork.75.desc
-	outcome = neutral
+	title = matter_of_tork.51.title
+	desc = matter_of_tork.51.desc
+	outcome = positive
 
-	# March the standing army — accelerate to 100, fire disaster
-	option = {
-		name = matter_of_tork.75.a
-		set_variable = { name = matter_progress value = 100 }
-		set_variable = matter_chose_suppression
-	}
-
-	# Convene a Great Diwan — mass concession, rollback to 30
-	option = {
-		name = matter_of_tork.75.b
-		set_variable = { name = matter_progress value = 30 }
-		add_stability = -20
-		add_legitimacy = -25
-	}
-
-	# Yarliq of Amnesty — full co-opt, disaster averted
-	# Available only if co_opt_track is set
-	option = {
-		name = matter_of_tork.75.c
-		trigger = { has_variable = co_opt_track }
-		set_variable = { name = matter_progress value = 0 }
-		add_country_modifier = {
-			modifier = pastures_of_the_sword
-			years = -1
-			mode = add_and_extend
+	immediate = {
+		if = {
+			limit = { has_country_modifier = matter_eradication_underway }
+			remove_country_modifier = matter_eradication_underway
 		}
+		matter_tork_remove_tribal_tranche = yes
+		matter_tork_remove_tribal_tranche = yes
+		add_country_modifier = { modifier = matter_post_tribal_state months = -1 }
+		add_country_modifier = { modifier = matter_eradication_aftermath years = 50 }
+		set_variable = matter_turk_dissolved
 		set_variable = matter_of_tork_resolved
-		# Disaster will end via can_end on next tick.
+	}
+
+	option = {
+		name = matter_of_tork.51.a
+		custom_tooltip = matter_tork_aftermath_explainer_tt
 	}
 }
 
-# ---100: DISASTER FIRES (civil war structural event) -----------------
+# ---CATASTROPHIC: THE TRIBES ANSWER FOR YOU ----------------------------
 
-matter_of_tork.100 = {
+# Horizon reached without a disposition. A non-khan who offers
+# neither war, nor devotion, nor a place is not worth following.
+matter_of_tork.90 = {
 	type = country_event
 	category = disaster_event
-	title = matter_of_tork.100.title
-	desc = matter_of_tork.100.desc
-	outcome = neutral
+	title = matter_of_tork.90.title
+	desc = matter_of_tork.90.desc
+	outcome = negative
 
 	immediate = {
 		spawn_turkmen_breakaway = yes
-		# Wide-area amir defection roll + unrest cascade on non-rollers
-		every_province = {
+		every_owned_province = {
 			limit = { is_tribal_pastoral_location = yes }
-			# Non-rolling provinces (those that didn't transfer pops in
-			# spawn_turkmen_breakaway) get unrest debuff.
 			add_unrest = 5
-			every_location_in_province = {
-				change_control = control_severe_penalty
-			}
 		}
-		# Player buffs during war
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = 20 }
 	}
 
 	option = {
-		name = matter_of_tork.100.a
-		# Acknowledge — the war is on.
+		name = matter_of_tork.90.a
 	}
 }
 
-# ---RESOLUTION EVENTS (war ended; route by player flags) ------------
-
-# Resolution events are triggered by an on_action listener on
-# `on_civil_war_ended` (or wired via on_monthly polling). For first
-# implementation, the eranzamin situation's on_monthly polls
-# `in_civil_war = no` + has_variable = matter_of_tork_fired to
-# route into one of these.
-
-# Suppress — player won the war
-matter_of_tork.500 = {
+# Defection war lost / white peace — the rival confederation stands
+# on the bleeding flank. The realm is maimed.
+matter_of_tork.91 = {
 	type = country_event
 	category = disaster_event
-	title = matter_of_tork.500.title
-	desc = matter_of_tork.500.desc
-	outcome = good
-
-	trigger = {
-		has_variable = matter_of_tork_fired
-		in_civil_war = no
-		# Won — breakaway tag was annexed
-		NOT = { exists = var:matter_breakaway_ref }
-	}
+	title = matter_of_tork.91.title
+	desc = matter_of_tork.91.desc
+	outcome = negative
 
 	immediate = {
-		matter_of_tork_apply_suppress = yes
+		add_country_modifier = { modifier = matter_turk_defection_scar months = -1 }
+		set_variable = matter_of_tork_resolved
 	}
 
 	option = {
-		name = matter_of_tork.500.a
+		name = matter_of_tork.91.a
 	}
 }
 
-# Concede — white peace, breakaway survives as vassal/independent
-matter_of_tork.501 = {
+# Defection war won — the question answered with a sword you did
+# not choose to draw. Weaker than ANY disposition outcome.
+matter_of_tork.92 = {
 	type = country_event
 	category = disaster_event
-	title = matter_of_tork.501.title
-	desc = matter_of_tork.501.desc
+	title = matter_of_tork.92.title
+	desc = matter_of_tork.92.desc
 	outcome = neutral
 
-	trigger = {
-		has_variable = matter_of_tork_fired
-		in_civil_war = no
-		exists = var:matter_breakaway_ref
-		NOT = { has_variable = matter_chose_suppression }
-	}
-
 	immediate = {
-		matter_of_tork_apply_concede = yes
+		add_country_modifier = { modifier = matter_broken_hosts months = -1 }
+		set_variable = matter_of_tork_resolved
 	}
 
 	option = {
-		name = matter_of_tork.501.a
+		name = matter_of_tork.92.a
 	}
 }
 
-# Co-opt — mid-war "Marriage at" event. Available only if
-# co_opt_track was set AND war has lasted ≥36 months.
-matter_of_tork.502 = {
+# Eradication failed the revolt window — the class you tried to
+# destroy has carved its state out of yours.
+matter_of_tork.99 = {
 	type = country_event
 	category = disaster_event
-	title = matter_of_tork.502.title
-	desc = matter_of_tork.502.desc
-	outcome = good
+	title = matter_of_tork.99.title
+	desc = matter_of_tork.99.desc
+	outcome = negative
 
-	trigger = {
-		has_variable = matter_of_tork_fired
-		has_variable = co_opt_track
-		in_civil_war = yes
-		exists = var:matter_breakaway_ref
-		# ≥ 36mo since war started
-		var:matter_war_months >= 36
-	}
-
-	# Player choice: accept the marriage or refuse
-	option = {
-		name = matter_of_tork.502.a
-		matter_of_tork_apply_co_opt = yes
-		# Peacefully annex the breakaway
-		var:matter_breakaway_ref ?= {
-			destroy_rebel = this
+	immediate = {
+		if = {
+			limit = { has_country_modifier = matter_eradication_underway }
+			remove_country_modifier = matter_eradication_underway
 		}
+		add_country_modifier = { modifier = matter_turk_defection_scar months = -1 }
+		add_legitimacy = -20
+		set_variable = matter_of_tork_resolved
 	}
 
 	option = {
-		name = matter_of_tork.502.b
-		# Refused — war continues. -10 progress as a small consolation.
-		change_variable = { name = matter_progress add = -10 }
+		name = matter_of_tork.99.a
 	}
 }

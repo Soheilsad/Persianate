@@ -56,24 +56,195 @@ matter_clear_progress = {
 	}
 }
 
-# ---Tork stressor tick (sum of monthly contributions) -------------------
-# Per §19.4. Each branch adds to matter_progress when active. Decay
-# branches subtract. Net per month is the difference. Values stored
-# *100 so we can use integer add (EU5 variable arithmetic is cleaner
-# with integers). At 100x scale, +10 means +0.10 progress points/mo
-# at the design scale where 100 = disaster fire.
+# ============================================================
+# MATTER OF TORK — "The Place of the Sword" disposition machinery
+# Design: docs/design/matter_of_tork_design.md
+#
+# No progress meter. A 240-month horizon counter, two process
+# counters (Iranization / Expulsion), and war-end polls for the
+# Eradication attempt and the catastrophic defection.
+# ============================================================
 
-matter_of_tork_monthly_tick = {
-	# Continuous stressors
-	if = { limit = { societal_value:turk_vs_tazik >= 30 } change_variable = { name = matter_progress add = 10 } }
-	if = { limit = { modifier:diwan_estate_target_satisfaction >= 0.80 } change_variable = { name = matter_progress add = 8 } }
-	if = { limit = { modifier:amirs_estate_target_satisfaction <= 0.30 } change_variable = { name = matter_progress add = 15 } }
-	# Decay
-	if = { limit = { has_estate_privilege = estate_privilege:amirs_tribal_hosts } change_variable = { name = matter_progress add = -5 } }
-	if = { limit = { modifier:amirs_estate_target_satisfaction >= 0.70 } change_variable = { name = matter_progress add = -8 } }
-	# Clamp progress to [0, 100]
-	if = { limit = { var:matter_progress < 0 } set_variable = { name = matter_progress value = 0 } }
-	if = { limit = { var:matter_progress > 100 } set_variable = { name = matter_progress value = 100 } }
+matter_tork_init = {
+	# Called from disaster on_start. Zero the horizon, clear any
+	# stale flags from a hypothetical earlier run (defensive — the
+	# Matter is one-shot per playthrough).
+	set_variable = { name = matter_tork_months value = 0 }
+	remove_variable = matter_tork_disposition_chosen
+	remove_variable = matter_tork_iranization_underway
+	remove_variable = matter_tork_iranization_months
+	remove_variable = matter_tork_expulsion_underway
+	remove_variable = matter_tork_expulsion_months
+	remove_variable = matter_tork_expulsion_stage_1
+	remove_variable = matter_tork_expulsion_stage_2
+	remove_variable = matter_eradication_attempt
+	remove_variable = matter_tork_defection_war
+	remove_variable = matter_tork_war_observed
+	remove_variable = matter_tork_war_settled
+	remove_variable = matter_tork_iranization_claimed
+	remove_variable = matter_tork_marcher_claimed
+	remove_variable = matter_tork_murid_claimed
+	remove_variable = matter_tork_expulsion_claimed
+	remove_variable = matter_tork_eradication_claimed
+}
+
+matter_tork_monthly_tick = {
+	change_variable = { name = matter_tork_months add = 1 }
+	# Process counters tick only while their disposition runs.
+	if = {
+		limit = { has_variable = matter_tork_iranization_underway }
+		change_variable = { name = matter_tork_iranization_months add = 1 }
+	}
+	if = {
+		limit = { has_variable = matter_tork_expulsion_underway }
+		change_variable = { name = matter_tork_expulsion_months add = 1 }
+	}
+	# War-observation latch: the war-end polls only arm after the
+	# civil war has actually been seen running, so the month between
+	# spawn and the war flag going up cannot false-fire a resolution.
+	if = {
+		limit = {
+			in_civil_war = yes
+			OR = {
+				has_variable = matter_eradication_attempt
+				has_variable = matter_tork_defection_war
+			}
+		}
+		set_variable = matter_tork_war_observed
+	}
+}
+
+matter_tork_process_dispatch = {
+	# --- A. Iranization completion: 240 months of cabinet work AND
+	# the realm has actually Iranized (axis at/past +25).
+	if = {
+		limit = {
+			has_variable = matter_tork_iranization_underway
+			var:matter_tork_iranization_months >= 240
+			societal_value:turk_vs_tazik >= 25
+			NOT = { has_variable = matter_of_tork_resolved }
+		}
+		trigger_event_non_silently = matter_of_tork.11
+	}
+	# --- D. Expulsion tranches at 36 / 84 / 120 months.
+	if = {
+		limit = {
+			has_variable = matter_tork_expulsion_underway
+			var:matter_tork_expulsion_months >= 36
+			NOT = { has_variable = matter_tork_expulsion_stage_1 }
+		}
+		set_variable = matter_tork_expulsion_stage_1
+		trigger_event_non_silently = matter_of_tork.41
+	}
+	if = {
+		limit = {
+			has_variable = matter_tork_expulsion_underway
+			var:matter_tork_expulsion_months >= 84
+			NOT = { has_variable = matter_tork_expulsion_stage_2 }
+		}
+		set_variable = matter_tork_expulsion_stage_2
+		trigger_event_non_silently = matter_of_tork.42
+	}
+	if = {
+		limit = {
+			has_variable = matter_tork_expulsion_underway
+			var:matter_tork_expulsion_months >= 120
+			NOT = { has_variable = matter_of_tork_resolved }
+		}
+		trigger_event_non_silently = matter_of_tork.43
+	}
+	# --- E. Eradication revolt window: the attempt's civil war ended.
+	if = {
+		limit = {
+			has_variable = matter_eradication_attempt
+			has_variable = matter_tork_war_observed
+			in_civil_war = no
+			NOT = { has_variable = matter_tork_war_settled }
+		}
+		set_variable = matter_tork_war_settled
+		if = {
+			limit = { NOT = { exists = var:matter_breakaway_ref } }
+			# Won — the class is broken; the purge completes.
+			trigger_event_non_silently = matter_of_tork.51
+		}
+		else = {
+			# Lost / white peace — the catastrophic failure.
+			trigger_event_non_silently = matter_of_tork.99
+		}
+	}
+	# --- Catastrophic defection war ended.
+	if = {
+		limit = {
+			has_variable = matter_tork_defection_war
+			has_variable = matter_tork_war_observed
+			in_civil_war = no
+			NOT = { has_variable = matter_tork_war_settled }
+		}
+		set_variable = matter_tork_war_settled
+		if = {
+			limit = { exists = var:matter_breakaway_ref }
+			trigger_event_non_silently = matter_of_tork.91
+		}
+		else = {
+			trigger_event_non_silently = matter_of_tork.92
+		}
+	}
+}
+
+matter_tork_horizon_poll = {
+	# 240 months without an answer → the tribes answer for you.
+	if = {
+		limit = {
+			var:matter_tork_months >= 240
+			NOT = { has_variable = matter_tork_disposition_chosen }
+			NOT = { has_variable = matter_tork_defection_war }
+		}
+		set_variable = matter_tork_defection_war
+		set_variable = matter_tork_disposition_chosen
+		trigger_event_non_silently = matter_of_tork.90
+	}
+}
+
+matter_tork_clear = {
+	# Called from disaster on_end. Remove counters and transient
+	# modifiers; permanent disposition outcomes stay.
+	remove_variable = matter_tork_months
+	remove_variable = matter_tork_iranization_months
+	remove_variable = matter_tork_expulsion_months
+	remove_variable = matter_tork_war_observed
+	if = {
+		limit = { has_country_modifier = matter_answer_given }
+		remove_country_modifier = matter_answer_given
+	}
+	if = {
+		limit = { has_country_modifier = matter_iranization_underway }
+		remove_country_modifier = matter_iranization_underway
+	}
+	if = {
+		limit = { has_country_modifier = matter_expulsion_underway }
+		remove_country_modifier = matter_expulsion_underway
+	}
+	if = {
+		limit = { has_country_modifier = matter_eradication_underway }
+		remove_country_modifier = matter_eradication_underway
+	}
+}
+
+# ---Tribal tranche removal (Expulsion stages / Eradication purge) -------
+# Strips a slice of tribesmen pops from owned tribal provinces.
+# [verify] add_pop_size negative-literal form in 1.2.0 — base game uses
+# variable form (add_pop_size = root.var:burned_witches_variable).
+
+matter_tork_remove_tribal_tranche = {
+	every_owned_province = {
+		limit = { is_tribal_pastoral_location = yes }
+		every_location_in_province = {
+			every_pop = {
+				limit = { pop_type = pop_type:tribesmen }
+				add_pop_size = -2
+			}
+		}
+	}
 }
 
 matter_of_tazik_monthly_tick = {
@@ -87,43 +258,7 @@ matter_of_tazik_monthly_tick = {
 	if = { limit = { var:matter_progress > 100 } set_variable = { name = matter_progress value = 100 } }
 }
 
-# ---Threshold dispatch (called from on_monthly each tick) ---------------
-
-matter_of_tork_threshold_dispatch = {
-	# Fire the 25-threshold event once.
-	if = {
-		limit = {
-			var:matter_progress >= 25
-			NOT = { has_variable = matter_25_fired }
-		}
-		set_variable = matter_25_fired
-		trigger_event_non_silently= matter_of_tork.25
-	}
-	if = {
-		limit = {
-			var:matter_progress >= 50
-			NOT = { has_variable = matter_50_fired }
-		}
-		set_variable = matter_50_fired
-		trigger_event_non_silently= matter_of_tork.50
-	}
-	if = {
-		limit = {
-			var:matter_progress >= 75
-			NOT = { has_variable = matter_75_fired }
-		}
-		set_variable = matter_75_fired
-		trigger_event_non_silently= matter_of_tork.75
-	}
-	if = {
-		limit = {
-			var:matter_progress >= 100
-			NOT = { has_variable = matter_100_fired }
-		}
-		set_variable = matter_100_fired
-		trigger_event_non_silently= matter_of_tork.100
-	}
-}
+# ---Threshold dispatch (Tazik only — Tork now uses dispositions) --------
 
 matter_of_tazik_threshold_dispatch = {
 	if = {
@@ -189,8 +324,9 @@ spawn_turkmen_breakaway = {
 	}
 	# Transfer allegiance of pops in tribal-pastoral locations. Engine
 	# auto-selects ~30-50% of provinces based on rebel weight after
-	# allegiance shifts.
-	every_province = {
+	# allegiance shifts. OWNED provinces only — allegiance cannot be
+	# shifted on land we do not hold (audit fix).
+	every_owned_province = {
 		limit = { is_tribal_pastoral_location = yes }
 		random = {
 			chance = 50
@@ -286,38 +422,6 @@ matter_war_duration_tick = {
 # (white peace, breakaway still exists), or Co-opt (only fires if the
 # co_opt_track flag is set and war ≥36mo — gated by the event triggers).
 
-matter_of_tork_resolution_poll = {
-	# Co-opt event (502) is checked first — fires only if co_opt_track,
-	# war ongoing, ≥36mo.
-	if = {
-		limit = {
-			in_civil_war = yes
-			has_variable = co_opt_track
-			has_variable = matter_war_months
-			var:matter_war_months >= 36
-			NOT = { has_variable = matter_coopt_offered }
-		}
-		set_variable = matter_coopt_offered
-		trigger_event_non_silently= matter_of_tork.502
-	}
-	# War ended — route to Suppress or Concede
-	if = {
-		limit = {
-			in_civil_war = no
-			has_variable = matter_of_tork_fired
-			NOT = { has_variable = matter_of_tork_resolved }
-			NOT = { has_variable = matter_of_tork_resolved_by_synthesis }
-		}
-		if = {
-			limit = { NOT = { exists = var:matter_breakaway_ref } }
-			trigger_event_non_silently= matter_of_tork.500
-		}
-		else = {
-			trigger_event_non_silently= matter_of_tork.501
-		}
-	}
-}
-
 matter_of_tazik_resolution_poll = {
 	if = {
 		limit = {
@@ -347,44 +451,8 @@ matter_of_tazik_resolution_poll = {
 	}
 }
 
-# ---Resolution-event applies -------------------------------------------
-
-# §19.8 Suppress (after Matter of Tork) — Tazik-coded polity won
-matter_of_tork_apply_suppress = {
-	add_country_modifier = {
-		modifier = pacified_pastures
-		years = -1
-		mode = add_and_extend
-	}
-	# Hard one-shot axis push toward Tazik per §19.8 design update.
-	change_societal_value = { type = turk_vs_tazik value = 25 }
-	set_variable = matter_of_tork_resolved
-	remove_variable = matter_of_tork_fired
-}
-
-matter_of_tork_apply_concede = {
-	add_country_modifier = {
-		modifier = dual_realm_of_eranzamin
-		years = -1
-		mode = add_and_extend
-	}
-	# Axis pinned ±15 — handled by periodic axis-correction effect
-	# checked in the eranzamin situation on_monthly.
-	set_variable = matter_of_tork_resolved
-	set_variable = matter_dual_realm_active
-	remove_variable = matter_of_tork_fired
-}
-
-matter_of_tork_apply_co_opt = {
-	add_country_modifier = {
-		modifier = convergent_eranzamin
-		years = -1
-		mode = add_and_extend
-	}
-	set_variable = matter_of_tork_resolved
-	set_variable = matter_convergent_active
-	remove_variable = matter_of_tork_fired
-}
+# ---Resolution-event applies (Tazik only — Tork applies live in its
+# disposition events) ----------------------------------------------------
 
 # §19.8 Suppress (after Matter of Tazik) — Türk-coded polity won
 matter_of_tazik_apply_suppress = {

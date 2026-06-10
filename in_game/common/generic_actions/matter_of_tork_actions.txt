@@ -1,0 +1,231 @@
+# ============================================================
+# The Matter of Tork — disposition claim buttons
+#
+# Five buttons on the disaster panel. Each is one answer to
+# "what is the Türk's place now?" — and the ONLY door to that
+# answer in the whole mod. One claim per realm: any disposition
+# locks the others (matter_tork_disposition_chosen, set by the
+# claim events).
+#
+#   claim_iranization     — A. dissolved into us      (~20y process)
+#   claim_marcher_compact — B. kept at the edge        (instant; March)
+#   claim_murid_bond      — C. our instrument          (mysticism ≤ -50)
+#   claim_expulsion       — D. removed from society    (~10y process)
+#   claim_eradication     — E. destroyed as a class    (civil war + 50y)
+#
+# The claim buttons COST nothing at the button layer — the costs
+# live in the claim events (the farr/ghazi lesson about claims
+# cascading does not apply here: the dispositions are mutually
+# exclusive, so there is no cascade to prevent).
+#
+# Design: docs/design/matter_of_tork_design.md §4
+# ============================================================
+
+claim_iranization = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 1
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	allow = {
+		scope:actor = {
+			matter_tork_can_claim_iranization = yes
+			NOT = { has_variable = matter_tork_iranization_claimed }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = { data = name }
+		visible = {
+			disaster_type = disaster_type:matter_of_tork
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = matter_tork_iranization_claimed
+			trigger_event_non_silently = matter_of_tork.10
+		}
+	}
+
+	# The historical default — the AI's safe answer.
+	ai_will_do = {
+		add = 60
+	}
+}
+
+claim_marcher_compact = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 1
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	allow = {
+		scope:actor = {
+			matter_tork_can_claim_marcher_compact = yes
+			NOT = { has_variable = matter_tork_marcher_claimed }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = { data = name }
+		visible = {
+			disaster_type = disaster_type:matter_of_tork
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = matter_tork_marcher_claimed
+			trigger_event_non_silently = matter_of_tork.20
+		}
+	}
+
+	# The ghazi's native disposition; the farr-king's weak one.
+	ai_will_do = {
+		add = 20
+		if = {
+			limit = { scope:actor = { matter_tork_is_ghazi_line = yes } }
+			add = 60
+		}
+	}
+}
+
+claim_murid_bond = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 1
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	allow = {
+		scope:actor = {
+			matter_tork_can_claim_murid_bond = yes
+			NOT = { has_variable = matter_tork_murid_claimed }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = { data = name }
+		visible = {
+			disaster_type = disaster_type:matter_of_tork
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = matter_tork_murid_claimed
+			trigger_event_non_silently = matter_of_tork.30
+		}
+	}
+
+	# Native for the mystical line; the AI ghazi avoids unbuilding
+	# his own law.
+	ai_will_do = {
+		add = 80
+		if = {
+			limit = { scope:actor = { matter_tork_is_ghazi_line = yes } }
+			subtract = 70
+		}
+	}
+}
+
+claim_expulsion = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 1
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	allow = {
+		scope:actor = {
+			matter_tork_can_claim_expulsion = yes
+			NOT = { has_variable = matter_tork_expulsion_claimed }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = { data = name }
+		visible = {
+			disaster_type = disaster_type:matter_of_tork
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = matter_tork_expulsion_claimed
+			trigger_event_non_silently = matter_of_tork.40
+		}
+	}
+
+	# High-risk; AI takes it only rarely.
+	ai_will_do = {
+		add = 5
+	}
+}
+
+claim_eradication = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 1
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	allow = {
+		scope:actor = {
+			matter_tork_can_claim_eradication = yes
+			NOT = { has_variable = matter_tork_eradication_claimed }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = { data = name }
+		visible = {
+			disaster_type = disaster_type:matter_of_tork
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = matter_tork_eradication_claimed
+			trigger_event_non_silently = matter_of_tork.50
+		}
+	}
+
+	# Extreme risk, deferred payoff — effectively never for the AI.
+	ai_will_do = {
+		add = 0
+	}
+}

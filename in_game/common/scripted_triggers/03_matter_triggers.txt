@@ -50,16 +50,85 @@ is_eranzamin_consolidation_sustained = {
 # ---Matter trigger gates --------------------------------------------------
 
 matter_of_tork_can_start = {
-	# §19.2: Tazik-coded contender close to victory triggers the tribal
-	# backlash.
+	# The Place of the Sword fires for ANY non-Borjigin consolidator —
+	# farr, ghazi, or mystical. No axis gate: the Türk question exists
+	# regardless of how Tazik the court is. Design:
+	# docs/design/matter_of_tork_design.md §2.
 	has_variable = eranzamin_contender
-	is_axis_tazik_committed = yes
 	is_eranzamin_consolidation_sustained = yes
-	NOT = { has_variable = matter_of_tork_fired }
-	NOT = { has_variable = matter_of_tork_resolved }
-	# Mixed-axis players (between -25 and 25) are not eligible here —
-	# they will route to the Safavid clause for END or trip Matter of
-	# Tazik first if drift takes them past -25.
+
+	# A Borjigin has no Matter — his right to the ulus runs through
+	# the line, so the Türks have no grievance.
+	custom_tooltip = {
+		text = matter_tork_not_borjigin_tt
+		NOT = { ruler ?= { dynasty = dynasty:borjigin_dynasty } }
+	}
+	# A regent rules in the khan's name; same logic.
+	NOT = { has_reform = government_reform:chinggisid_regency }
+	# Türk-coded regimes: the Türk military class IS the constituency,
+	# so the question has no force. They face the Matter of Tazik.
+	NOT = { has_reform = government_reform:amir_sultanate }
+	NOT = { has_reform = government_reform:turkmen_confederation }
+
+	custom_tooltip = {
+		text = matter_tork_not_yet_fired_tt
+		NOT = { has_variable = matter_of_tork_fired }
+	}
+	custom_tooltip = {
+		text = matter_tork_not_yet_completed_tt
+		NOT = { has_variable = matter_of_tork_completed }
+	}
+}
+
+# ---Disposition availability (claim-button allow gates) -------------------
+# One answer per realm: any claim locks the rest.
+
+matter_tork_no_disposition_yet = {
+	has_variable = matter_of_tork_fired
+	NOT = { has_variable = matter_tork_disposition_chosen }
+}
+
+matter_tork_can_claim_iranization = {
+	matter_tork_no_disposition_yet = yes
+	in_civil_war = no
+}
+
+matter_tork_can_claim_marcher_compact = {
+	matter_tork_no_disposition_yet = yes
+	in_civil_war = no
+	any_owned_province = { is_tribal_pastoral_location = yes }
+}
+
+matter_tork_can_claim_murid_bond = {
+	matter_tork_no_disposition_yet = yes
+	in_civil_war = no
+	# The charismatic-authority pole. Foreclosed by legalism, Sunni OR
+	# Shia; enabled by mysticism, Sunni OR Shia. Same bar as the
+	# zill_allah_regime law.
+	societal_value:mysticism_vs_jurisprudence <= -50
+}
+
+matter_tork_can_claim_expulsion = {
+	matter_tork_no_disposition_yet = yes
+	# You do this from strength, not mid-war.
+	at_war = no
+}
+
+matter_tork_can_claim_eradication = {
+	matter_tork_no_disposition_yet = yes
+	at_war = no
+	# The attempt is a civil war by design; a realm already shaking
+	# does not get to start it on purpose.
+	stability >= 0
+}
+
+# Ghazi-line identity — used to branch the Frontier (strong/native)
+# and Sufi (very hard) disposition variants.
+matter_tork_is_ghazi_line = {
+	OR = {
+		has_reform = government_reform:ghazi_sultanate
+		has_reform = government_reform:dar_al_jihad
+	}
 }
 
 matter_of_tazik_can_start = {

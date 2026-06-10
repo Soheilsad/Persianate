@@ -11,7 +11,39 @@
 
  # --- Disasters ---------------------------------------------------
  matter_of_tork: "The Matter of Tork"
- matter_of_tork_desc: "The tribes are restive. Word reaches the divan that the amirs of the Türk pastures consider their iqtaʿ unpaid in honor, and that the bureaucracy of the Tazik has gone too far. The crisis must be navigated — by sword, by table, or by marriage."
+ matter_of_tork_desc: "Your legitimacy is settled — but it answered a question the Türk military constituency never asked. Their world ran on proximity to the golden line, and your crown has made that line irrelevant. They did not evaporate. They stand in the realm, armed, a third of the land and most of the cavalry, waiting to be told their place. Five answers exist. Twenty years to give one."
+
+ # --- Matter of Tork: trigger & end tooltips ----------------------
+ matter_tork_not_borjigin_tt: "The ruler is not of the Borjigin line (a Borjigin has no Matter — his right to the ulus runs through the blood)"
+ matter_tork_not_yet_fired_tt: "The Matter of Tork has not yet been faced"
+ matter_tork_not_yet_completed_tt: "The Matter of Tork has not already been settled in this realm's history"
+ matter_tork_end_resolved_tt: "A disposition has run its course — the Türk's place is settled"
+ matter_tork_end_synthesis_tt: "The murid bond has been sworn — the question is dissolved in the vilayat"
+ matter_tork_end_lost_realm_tt: "The realm has fallen from contention for Erānzamīn"
+
+ # --- Matter of Tork: explainer tooltips & GUI tracks -------------
+ matter_tork_iranization_explainer_tt: "The cabinet turns to the long work. Run cultural assimilation through the cabinet; completion needs 240 months AND the realm Iranized (Türk-Tazik axis at +25 or beyond)."
+ matter_tork_expulsion_explainer_tt: "Ten years of grim work. The hosts will be moved on in tranches; the cavalry arm goes with them; what coalesces beyond the border will not love you."
+ matter_tork_aftermath_explainer_tt: "The payoff is applied now — and suppressed for fifty years by the aftermath. When the gap expires, the post-tribal state stands alone."
+ MATTER_TORK_HORIZON_TRACK: "Months without an answer"
+ MATTER_TORK_IRANIZATION_TRACK: "Iranization — the long work"
+ MATTER_TORK_EXPULSION_TRACK: "Expulsion — the hosts moved on"
+
+ # --- Matter of Tork: created tags --------------------------------
+ MATTER_TORK_MARCH: "Marches of the Sword"
+ MATTER_TORK_EXILE_HOST: "The Exiled Hosts"
+
+ # --- Matter of Tork: disposition claim buttons --------------------
+ claim_iranization: "Dissolve Them Into Us"
+ claim_iranization_desc: "Co-optation, the historical default. Amirs onto iqtaʿ rolls, cavalry onto provincial registers, villages up the pasture margins — Türk becomes Tazik over a generation. The cabinet does this and nothing else for twenty years; completion needs the realm actually Iranized. Risk: low. Cost: time, and the cavalry tradition."
+ claim_marcher_compact: "Point Them Outward"
+ claim_marcher_compact_desc: "The hosts become marcher-lords on the dar al-harb frontier — a March of huge tribal strength: militarily formidable, fiscally poor, and unruly by construction. The ghazi can swear them to the holy war; a king of the farr can only hire them. Risk: medium, deferred — strong marches have founded dynasties before."
+ claim_murid_bond: "Bind Them to the Guide"
+ claim_murid_bond_desc: "The murid-murshid bond replaces the khan-bond: the hosts enter the throne's own order as disciples, cavalry kept whole and bound stronger than blood. Requires the realm steeped in mysticism. The jurists will name it heresy — and for a ghazi of the law, swearing it means weathering their full fury."
+ claim_expulsion: "Remove Them From the Realm"
+ claim_expulsion_desc: "Drive the hosts out — steppe, Anatolia, Hindustan. Ten years of grim work buys an interior with no tribal question; the cavalry arm goes with them, and what coalesces beyond the border will not love you. Risk: high."
+ claim_eradication: "End Them as a Class"
+ claim_eradication_desc: "Not moved, not bound, not bought — ended. The class being destroyed defects entire, at once: a civil war against your own sword arm, NOW, followed by fifty years without one. Survive both, and no Persianate realm in memory has stood so unanswerable. Risk: extreme, front-loaded; reward back-loaded."
  matter_of_tazik: "The Matter of Tazik"
  matter_of_tazik_desc: "The cities are restive. Sayyids preach against the throne in the bāzārs; dervish lodges multiply on the road from Ardabīl. The urban realm and the tribal court do not see one another, and the divan begs the sovereign to choose."
 
@@ -25,55 +57,84 @@
  matter_of_tazik_breakaway_desc: "A breakaway of the cities, the divan, and the dervish lodges, formed in revolt against the Türk-leaning throne."
 
  # ============================================================
- # MATTER OF TORK EVENTS
+ # MATTER OF TORK EVENTS — the five dispositions
  # ============================================================
 
  # --- .1 Announcement
- matter_of_tork.1.title: "The Matter of Tork"
- matter_of_tork.1.desc: "Riders return from the pasturelands with grim faces. The amirs are talking again — of old privileges, of the iqtaʿ withheld, of a court grown too Persian. The Matter of Tork has begun."
- matter_of_tork.1.a: "Acknowledged. We will weather this."
+ matter_of_tork.1.title: "The Place of the Sword"
+ matter_of_tork.1.desc: "The realm is yours, and the khutba says so without flinching. But riders return from the pasturelands with a question no khutba answers. The amirs of the hosts — whose grandfathers ranked themselves by the distance of their blood from the golden line — sit in their encampments with nothing above them but you, and no reason written anywhere that they should kneel. They have not rebelled. They are waiting. What is their place now?"
+ matter_of_tork.1.a: "They will have an answer. Within the generation."
 
- # --- .25 Petition from the umarā
- matter_of_tork.25.title: "A Petition from the Umarā"
- matter_of_tork.25.desc: "A delegation of frontier amirs has ridden to court — gifts, complaints, demands. Seat them in honor, refer them to the vizier, or refuse them entirely?"
- matter_of_tork.25.a: "Receive them in person. Honor the old prerogatives."
- matter_of_tork.25.b: "Send the vizier with measured promises."
- matter_of_tork.25.c: "Refuse to seat them. The throne does not negotiate."
+ # --- .10 Iranization claimed
+ matter_of_tork.10.title: "The Long Work Begins"
+ matter_of_tork.10.desc: "The decision is taken in the chancery, not the camp: the hosts will be dissolved into the realm. Amirs onto the iqtaʿ rolls — landed, registered, taxed in honor. Tribal cavalry onto provincial registers. Qanat-settlement creeping up the pasture margins, one village at a time. No decree will announce it; in two generations the Türk will be a Tazik gentleman who keeps fine horses."
+ matter_of_tork.10.a: "Set the cabinet to it. Everything else can wait."
 
- # --- .50 Frontier amir withholds levy
- matter_of_tork.50.title: "A Frontier Amir Withholds His Levy"
- matter_of_tork.50.desc: "The amir of the eastern marches has failed to send his promised cavalry. His messenger says drought; our spies say defiance. Confiscate, compromise, or marry-in?"
- matter_of_tork.50.a: "Confiscate his iqtaʿ. The realm answers to one throne."
- matter_of_tork.50.b: "Convene a panj-shanbeh. We will hear his case."
- matter_of_tork.50.c: "Marry his daughter to a prince. Bind him by blood."
+ # --- .11 Iranization complete
+ matter_of_tork.11.title: "Türk Into Tazik"
+ matter_of_tork.11.desc: "The work of a generation is done. The amirs hold deeds where their fathers held herds; their sons read Persian and compete for chancery posts; the pasture margins are fields, and the fields pay tax. The hosts were not broken — they were absorbed, and what absorbed them is richer for it. The cavalry tradition thins. The state deepens."
+ matter_of_tork.11.a: "The registers run from city to steppe, unbroken."
 
- # --- .75 Tribes assembling
- matter_of_tork.75.title: "The Tribes Are Assembling"
- matter_of_tork.75.desc: "A great gathering of amirs has been called in the steppe. Banners we do not own ride between the encampments. The hour is late — march, concede openly, or issue the yarliq of amnesty if a path of co-option has been kept open."
- matter_of_tork.75.a: "March the standing army. Break them before they break us."
- matter_of_tork.75.b: "Convene a Great Diwan. Concede openly to ease the storm."
- matter_of_tork.75.c: "Issue the Yarliq of Amnesty — bind the amirs to the throne."
+ # --- .20 Marcher Compact
+ matter_of_tork.20.title: "The Marches of the Sword"
+ matter_of_tork.20.desc: "The answer is the frontier. The hosts ride out — not in exile but in commission: marcher-lords on the edge of the dar al-harb, armed, pastoral, useful, and far from the capital. Their restlessness is now the realm's sword-edge, pointed outward. Their strength is now their own problem — and, one day, perhaps ours."
+ matter_of_tork.20.a: "Let the marches stand. Let them burn outward."
 
- # --- .100 Disaster fires
- matter_of_tork.100.title: "The Standards Are Raised"
- matter_of_tork.100.desc: "The tribes have raised their own standards. A breakaway has been declared in the pastures, and the levies that once rode for us ride against us. The civil war is on."
- matter_of_tork.100.a: "So be it. We will retake the realm by the sword."
+ # --- .30 Murid Bond
+ matter_of_tork.30.title: "The Bond of the Vilāyat"
+ matter_of_tork.30.desc: "The khan-bond is dead; long live the murid-bond. What ran to the golden line now runs to the throne itself — not as sultan but as murshid, the perfect guide, whose order the hosts enter as disciples. Their rank is their devotion. The cavalry is kept whole, undiminished, and bound by something older than salary and stronger than blood. The jurists understand precisely what has been claimed, and they will not forgive it."
+ matter_of_tork.30.a: "The hosts kneel — not to the crown, but to the guide who wears it."
 
- # --- .500 Suppress
- matter_of_tork.500.title: "Pacified Pastures"
- matter_of_tork.500.desc: "The breakaway is broken. Its amirs are dead, exiled, or pardoned in chains. The realm — quieter now — has been bought with iqtaʿ broken open and granted to the divan."
- matter_of_tork.500.a: "Let the registers be redrawn."
+ # --- .40 Expulsion claimed
+ matter_of_tork.40.title: "The Hosts Will Go"
+ matter_of_tork.40.desc: "The decision is final: the realm will be clean of them. Steppe, Anatolia, Hindustan — the direction is theirs; the departure is not. Ten years of columns on the roads, of pastures emptied and watch-posts built, of grim work that the chronicles will write down quietly. The cavalry arm goes with them, every horse of it."
+ matter_of_tork.40.a: "Begin. The realm will be one thing, finally."
 
- # --- .501 Concede
- matter_of_tork.501.title: "A Dual Realm"
- matter_of_tork.501.desc: "White peace has been written. The breakaway stands — as a vassal, as a neighbor, as a rival. The realm of Erānzamīn is two now, in fact if not in title."
- matter_of_tork.501.a: "We will live with this. For now."
+ # --- .41 First tranche
+ matter_of_tork.41.title: "The Eastern Hosts Move On"
+ matter_of_tork.41.desc: "The first columns have crossed out of the realm — herds, households, standards furled. The pastures behind them stand empty in a way no one alive remembers. Those who remain watch the roads and understand."
+ matter_of_tork.41.a: "Continue."
 
- # --- .502 Co-opt
- matter_of_tork.502.title: "The Marriage at Sultānīya"
- matter_of_tork.502.desc: "The war drags on; the co-opt path remains open. The pretender's house has signaled willingness — a marriage, an oath, an investiture. Accept the bargain?"
- matter_of_tork.502.a: "Accept. The breakaway folds peacefully back into the realm."
- matter_of_tork.502.b: "Refuse. The war will be settled by arms."
+ # --- .42 Second tranche
+ matter_of_tork.42.title: "The Pastures Empty"
+ matter_of_tork.42.desc: "The second wave is larger and angrier. There are burnings now, and reprisals, and amirs who swore loyalty last year riding east with their levies intact. The muster rolls thin with every season. The interior, behind it all, grows quiet."
+ matter_of_tork.42.a: "Continue. It is too late for any other answer."
+
+ # --- .43 Expulsion complete
+ matter_of_tork.43.title: "Beyond the Border, a Confederation"
+ matter_of_tork.43.desc: "The last hosts have crossed — and stopped. Just past the frontier the exiles have done what expelled hosts have always done: found each other, found a khan, and founded a state. The realm within is homogeneous, governable, and clean. The realm without has a new neighbor that remembers every road it was marched down."
+ matter_of_tork.43.a: "We knew. We chose it anyway."
+
+ # --- .50 Eradication confirm
+ matter_of_tork.50.title: "The Final Answer"
+ matter_of_tork.50.desc: "What is proposed has no precedent and no name the chancery will write down: the Türk military class, ended — not moved, not bound, not bought. Ended as a class. The moment the first iqtaʿ is voided they will know, all of them, at once; and the cavalry that is to be destroyed will defect entire, to a rival, to a breakaway, to some shaykh of the failed ribats. The sword arm must be cut off and survived before anything is gained. The gain, if the realm lives to see it: no tribal question, ever again."
+ matter_of_tork.50.a: "End them. The realm will be answerable to no estate."
+ matter_of_tork.50.b: "No. Not this. The question stands."
+
+ # --- .51 Revolt survived
+ matter_of_tork.51.title: "A Realm Without Tribes"
+ matter_of_tork.51.desc: "The standards are down, the encampments burned, the class that rode against the realm broken in the field and finished in the registers. What remains is something no Persianate state has been in living memory: a realm with no tribal question at all. It remains only to survive what comes next — fifty years without a sword arm, while the slave-army is bought, trained, and bound, and every neighbor counts our horses."
+ matter_of_tork.51.a: "Begin the rebuilding. Tell the frontier commanders to dig in."
+
+ # --- .90 Horizon: the tribes answer
+ matter_of_tork.90.title: "They Stopped Waiting"
+ matter_of_tork.90.desc: "Twenty years without an answer was the answer. A non-khan who offers neither war, nor devotion, nor a place is not worth following — and the hosts have stopped following. The standards going up in the pastures are not a petition. They are a departure, armed."
+ matter_of_tork.90.a: "Then it will be settled the old way."
+
+ # --- .91 Defection war lost
+ matter_of_tork.91.title: "The Flank Bleeds"
+ matter_of_tork.91.desc: "The war is over and the confederation stands — carved out of our pastures, mounted on our horses, ruled by amirs who learned our weaknesses from the inside. The realm is maimed, and the chronicles will say it was maimed by silence: the question stood for twenty years, and no one answered it."
+ matter_of_tork.91.a: "Hold what remains."
+
+ # --- .92 Defection war won
+ matter_of_tork.92.title: "An Answer Written in Blood"
+ matter_of_tork.92.desc: "The defection is crushed. The hosts that rode out lie under the grass they wanted, and the question is answered — by a sword we did not choose to draw, at a price no disposition would have asked. The realm holds. It is less than it could have been, and it knows it."
+ matter_of_tork.92.a: "Bury them. Bury the question with them."
+
+ # --- .99 Eradication failed
+ matter_of_tork.99.title: "The Class That Would Not Die"
+ matter_of_tork.99.desc: "The attempt has failed in the worst of the foreseen ways. The class marked for ending has carved its state out of ours instead, and every horseman between here and the frontier knows what was attempted and who attempted it. The realm is maimed, the name is stained, and the new confederation on the flank does not forget."
+ matter_of_tork.99.a: "Survive it. Nothing else is left to do."
 
  # ============================================================
  # MATTER OF TAZIK EVENTS
@@ -132,32 +193,70 @@
  matter_of_tazik.502.b: "Refuse. The war will be settled by arms."
 
  # ============================================================
- # RESOLUTION MODIFIERS
+ # MATTER OF TORK — DISPOSITION MODIFIERS
  # ============================================================
 
- # --- Suppress: Pacified Pastures (Matter of Tork won)
- STATIC_MODIFIER_NAME_pacified_pastures: "Pacified Pastures"
- STATIC_MODIFIER_DESC_pacified_pastures: "The tribal levies have been broken. The realm is bureaucratized — the divan grows, the amirs are dust."
+ # --- Transient: the answer given
+ STATIC_MODIFIER_NAME_matter_answer_given: "An Answer Given"
+ STATIC_MODIFIER_DESC_matter_answer_given: "The hosts have been told their place. The dread of silence ends; the work itself remains."
 
- # --- Suppress: Praetorian Erānzamīn (Matter of Tazik won)
+ # --- A. Iranization
+ STATIC_MODIFIER_NAME_matter_iranization_underway: "The Long Work"
+ STATIC_MODIFIER_DESC_matter_iranization_underway: "The cabinet is dissolving the hosts into the realm — amirs onto iqtaʿ rolls, cavalry onto provincial registers, villages up the pasture margins. It is doing nothing else."
+ STATIC_MODIFIER_NAME_matter_iranized_realm: "Türk Into Tazik"
+ STATIC_MODIFIER_DESC_matter_iranized_realm: "The hosts were absorbed, not broken. The amirs hold deeds; their sons compete for chancery posts; the cavalry tradition thins and the state deepens."
+
+ # --- B. Frontier Confederation
+ STATIC_MODIFIER_NAME_matter_marcher_compact: "The Marcher Compact"
+ STATIC_MODIFIER_DESC_matter_marcher_compact: "The hosts ride the dar al-harb frontier as sworn marchers of the holy war — armed, distant, and pointed outward."
+ STATIC_MODIFIER_NAME_matter_marcher_compact_mercenary: "Hired Marches"
+ STATIC_MODIFIER_DESC_matter_marcher_compact_mercenary: "The hosts hold the frontier for pay, not for faith. A king of the farr can exile them to the edge; he cannot give them a mission there."
+
+ # --- C. Sufi Synthesis
+ STATIC_MODIFIER_NAME_matter_murid_bond: "The Murid Bond"
+ STATIC_MODIFIER_DESC_matter_murid_bond: "Loyalty that ran to the golden line runs to the murshid on the throne. The cavalry is whole, undiminished, and bound stronger than blood. The jurists will not forgive it."
+ STATIC_MODIFIER_NAME_matter_zandaqa_storm: "The Cry of Zandaqa"
+ STATIC_MODIFIER_DESC_matter_zandaqa_storm: "The orthodox apparatus the throne itself built condemns the claim the throne has just made. The qadis preach against their patron; the muhtasib's stick points at the palace."
+
+ # --- D. Expulsion
+ STATIC_MODIFIER_NAME_matter_expulsion_underway: "The Hosts Moved On"
+ STATIC_MODIFIER_DESC_matter_expulsion_underway: "Columns on the roads, pastures emptying, muster rolls thinning. Grim work, written down quietly."
+ STATIC_MODIFIER_NAME_matter_expelled_hosts: "A Realm Made One"
+ STATIC_MODIFIER_DESC_matter_expelled_hosts: "The interior is homogeneous, governable, and clean. The registers run unbroken from city to pasture-turned-field."
+ STATIC_MODIFIER_NAME_matter_cavalry_gap: "The Missing Arm"
+ STATIC_MODIFIER_DESC_matter_cavalry_gap: "The cavalry left with the hosts — every horse of it. Until a new army stands, the realm fights short-handed."
+ STATIC_MODIFIER_NAME_matter_exiled_confederation: "Forged in Eviction"
+ STATIC_MODIFIER_DESC_matter_exiled_confederation: "A confederation of the expelled — riding with nothing to lose and a long memory of the roads it was marched down."
+
+ # --- E. Eradication
+ STATIC_MODIFIER_NAME_matter_eradication_underway: "The Ending of a Class"
+ STATIC_MODIFIER_DESC_matter_eradication_underway: "The realm is fighting its own sword arm. The class marked for ending defects entire, and what it cannot take it burns."
+ STATIC_MODIFIER_NAME_matter_post_tribal_state: "The Post-Tribal State"
+ STATIC_MODIFIER_DESC_matter_post_tribal_state: "No tribal question, no amir bargain, no estate behind the army. A realm answerable to nothing but its own registers."
+ STATIC_MODIFIER_NAME_matter_eradication_aftermath: "The Fifty-Year Gap"
+ STATIC_MODIFIER_DESC_matter_eradication_aftermath: "The sword arm is amputated; the slave-army is being bought, trained, and bound from nothing. Every neighbor counts our horses. Survive this, and the post-tribal state stands alone."
+
+ # --- Catastrophic outcomes
+ STATIC_MODIFIER_NAME_matter_turk_defection_scar: "The Bleeding Flank"
+ STATIC_MODIFIER_DESC_matter_turk_defection_scar: "The hosts left armed, and what they founded watches the border. The chronicles say the realm was maimed by silence."
+ STATIC_MODIFIER_NAME_matter_broken_hosts: "Broken Hosts"
+ STATIC_MODIFIER_DESC_matter_broken_hosts: "The defection was crushed at a price no disposition would have asked. An answer written in blood, weaker than any that could have been chosen."
+
+ # ============================================================
+ # MATTER OF TAZIK MODIFIERS — retained pending redesign/removal
+ # ============================================================
+
  STATIC_MODIFIER_NAME_praetorian_eranzamin: "Praetorian Erānzamīn"
  STATIC_MODIFIER_DESC_praetorian_eranzamin: "The cities have been broken. The realm rides on the spears of its garrisons — strong of arm, thin of revenue."
 
- # --- Concede: Dual Realm of Erānzamīn (both Matters)
  STATIC_MODIFIER_NAME_dual_realm_of_eranzamin: "Dual Realm of Erānzamīn"
  STATIC_MODIFIER_DESC_dual_realm_of_eranzamin: "The realm is two — court and breakaway live side-by-side. The axis is pinned by negotiation, not by force."
 
- # --- Co-opt: Convergent Erānzamīn (both Matters)
  STATIC_MODIFIER_NAME_convergent_eranzamin: "Convergent Erānzamīn"
  STATIC_MODIFIER_DESC_convergent_eranzamin: "The factions have converged. The realm is whole, the axis quiet, the contradiction managed by ceremony rather than steel."
-
- # --- 75-threshold full co-opt off-ramps
- STATIC_MODIFIER_NAME_pastures_of_the_sword: "Pastures of the Sword"
- STATIC_MODIFIER_DESC_pastures_of_the_sword: "The Yarliq of Amnesty has bound the amirs. The pastures answer the call without breaking the divan."
 
  STATIC_MODIFIER_NAME_co_sovereignty_of_the_diwan: "Co-Sovereignty of the Divan"
  STATIC_MODIFIER_DESC_co_sovereignty_of_the_diwan: "The vizier-regent settlement has formalized shared sovereignty — court and city under one writ."
 
- # --- Safavid synthesis exit
  STATIC_MODIFIER_NAME_qizilbash_synthesis: "Qizilbash Synthesis"
  STATIC_MODIFIER_DESC_qizilbash_synthesis: "The pole of mysticism and the pole of spirit have aligned. The realm is reborn under the new synthesis — sword and crown remade as one."
