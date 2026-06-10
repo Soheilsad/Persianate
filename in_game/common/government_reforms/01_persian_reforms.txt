@@ -54,6 +54,7 @@ persianate_bureaucracy_reform = {
 		## tribes are drawn from, not rural population.
 		tribes_estate_levy_size = 0.15
 		amirs_estate_levy_size = 0.3
+		global_peasant_enfranchisment = 1.0 
 	}
 
 	days = 0
@@ -551,6 +552,7 @@ mushasha_messianism = {
 		clergy_estate_target_satisfaction = -0.10
 		tolerance_heretic = 2
 		stability_cost = 0.10
+		
 	}
 
 	years = 5
@@ -569,7 +571,7 @@ sahib_qiran = {
 
 	country_modifier = {
 		land_morale = 0.05
-		army_tradition_from_battles = 0.25
+		army_tradition_from_battle = 0.25
 		monthly_legitimacy = ez_reform_legitimacy_minor
 		antagonism_received_modifier = -0.05
 		monthly_war_exhaustion = -0.02

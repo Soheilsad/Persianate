@@ -72,6 +72,8 @@ hisba_law = {
 	customary_enforcement = {
 		country_modifier = {
 			global_estate_target_satisfaction = 0.025
+			ban_imports_of_beer = yes
+			ban_imports_of_liquor = yes
 		}
 		estate_preferences = {
 			peasants_estate
@@ -94,6 +96,9 @@ hisba_law = {
 			tax_income_efficiency = -0.025
 			monthly_towards_traditionalist = 0.05  
             monthly_towards_jurisprudence = 0.1                     # [verify value name]
+			ban_imports_of_wine = yes
+			ban_imports_of_beer = yes
+			ban_imports_of_liquor = yes
 		}
 		estate_preferences = {
 			clergy_estate
@@ -127,6 +132,9 @@ hisba_law = {
 			tax_income_efficiency = -0.05
 			global_monthly_prosperity = -0.001           # Hafez's complaint, quantified
 			monthly_towards_traditionalist = 0.1                        # [verify value name]
+			ban_imports_of_wine = yes
+			ban_imports_of_beer = yes
+			ban_imports_of_liquor = yes
 		}
 		estate_preferences = {
 			clergy_estate
