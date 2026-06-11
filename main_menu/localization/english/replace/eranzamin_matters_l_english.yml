@@ -22,7 +22,7 @@
  matter_tork_end_lost_realm_tt: "The realm has fallen from contention for Erānzamīn"
 
  # --- Matter of Tork: explainer tooltips & GUI tracks -------------
- matter_tork_iranization_explainer_tt: "The cabinet turns to the long work. Run cultural assimilation through the cabinet; completion needs 240 months AND the realm Iranized (Türk-Tazik axis at +25 or beyond)."
+ matter_tork_iranization_explainer_tt: "The cabinet turns to the long work. Run cultural assimilation through the cabinet; completion needs 240 months AND the realm fully Iranized (Türk-Tazik axis at +90 or beyond — the whole reform stack must cooperate, not just this program)."
  matter_tork_expulsion_explainer_tt: "Ten years of grim work. The hosts will be moved on in tranches; the cavalry arm goes with them; what coalesces beyond the border will not love you."
  matter_tork_aftermath_explainer_tt: "The payoff is applied now — and suppressed for fifty years by the aftermath. When the gap expires, the post-tribal state stands alone."
  MATTER_TORK_HORIZON_TRACK: "Months without an answer"
@@ -63,7 +63,52 @@
  # --- .1 Announcement
  matter_of_tork.1.title: "The Place of the Sword"
  matter_of_tork.1.desc: "The realm is yours, and the khutba says so without flinching. But riders return from the pasturelands with a question no khutba answers. The amirs of the hosts — whose grandfathers ranked themselves by the distance of their blood from the golden line — sit in their encampments with nothing above them but you, and no reason written anywhere that they should kneel. They have not rebelled. They are waiting. What is their place now?"
- matter_of_tork.1.a: "They will have an answer. Within the generation."
+ matter_of_tork.1.a: "Convene the council. They will have an answer."
+
+ # --- .2 The Council on the Hosts (approach choice)
+ matter_of_tork.2.title: "The Council on the Hosts"
+ matter_of_tork.2.desc: "The viziers, the qadi, and the master of the muster stand before the throne, and each has brought a memorandum. Four roads are laid on the carpet. None is the answer itself — each is a direction of preparation, and the realm can change its mind later, though the years spent will not return. The hosts wait outside the door, and the door is theirs to break, given time."
+ matter_of_tork.2.a: "We must reduce our reliance on these barbarians."
+ matter_of_tork.2.b: "Iran is the Beacon of Civilization. Even these half-men can be illuminated by its light."
+ matter_of_tork.2.c: "We must forge a new Identity to bind everyone into a greater whole."
+ matter_of_tork.2.d: "Why tame what we can unleash upon our enemies?"
+ matter_of_tork.2.e: "The council adjourns. We will decide later."
+
+ # --- Approach tooltips
+ matter_tork_approach_ghulam_tt: "We want to be rid of them — but we are too reliant. Begin building the ghulam corps: the slave-army answerable to no estate. Prepares Expulsion and Eradication above all, though a realm may build the corps and still keep the Türks. Unlocks the corps actions; the amirs will notice."
+ matter_tork_approach_beacon_tt: "The long work of Iranization: amirs onto iqtaʿ rolls, their sons into the chancery, villages up the pasture margins. Unlocks the assimilation privileges and actions. The amirs must first be seated at the diwan — Niẓām al-Mulk's nightmare as the price of his solution."
+ matter_tork_approach_vilayat_tt: "Court the lodges. The realm tilts toward the mystical pole (+0.2/month toward Mysticism) and the jurists seethe. Unlocks the lodge endowments and the shaykhs' invitation — and, for the committed, the road to the Hidden Imam. The Murid Bond needs Mysticism at −50."
+ matter_tork_approach_unleash_tt: "The hosts are for war — use them. Tribal levies ride larger and prouder while you carve out the frontier zone their March will hold. The March must be real land: big enough, rich enough, and bordering someone who is not us."
+
+ # --- Change Approach button
+ matter_tork_change_approach: "Change Approach"
+ matter_tork_change_approach_desc: "Re-convene the Council on the Hosts. The horizon clock does not reset — years spent are years lost — but everything earned (privileges granted, corps built, axis moved, land conquered) is kept. Only the ambient direction swaps."
+
+ # --- Approach 1: ghulam actions & events --------------------------
+ matter_tork_purchase_ghulams: "Purchase Ghulam Levies"
+ matter_tork_purchase_ghulams_desc: "Buy boys from the Caucasus markets and raise them in the fostering households: salaried, converted, loyal to the stipend and the throne. One corps tier per purchase. Needs an administrator (a ghulam administration privilege, or the ghulam reform) and the fostering households; tier II needs a ghulam barracks built, tier III needs three."
+ matter_tork_anger_explainer_tt: "The amirs and the tribes can see what the parade ground means. If either estate stays below 30% satisfaction, the plot is realized within two further years — the hosts will defect en masse rather than wait to be replaced."
+
+ matter_of_tork.62.title: "The First Muster"
+ matter_of_tork.62.desc: "Three hundred purchased men stand in ranks on the new parade ground — Georgian and Circassian boys grown into soldiers who own nothing, owe everything, and answer to no amir. The drillmasters present them for review. What the realm sees today will be told in every encampment by spring."
+ matter_of_tork.62.a: "Let them march past."
+
+ matter_of_tork.63.title: "The Amirs Watch the Parade Ground"
+ matter_of_tork.63.desc: "A delegation of amirs attends the corps' review uninvited. They watch in silence — the salaried ranks, the new barracks, the muster rolls kept by clerks. On leaving, their eldest asks the chamberlain, politely, what the throne intends to do with so many soldiers who have no tribe."
+ matter_of_tork.63.a: "Honor them at the review stand. The corps guards them too."
+ matter_of_tork.63.b: "The corps is not their business. Show them out."
+
+ matter_of_tork.64.title: "A Georgian Officer"
+ matter_of_tork.64.desc: "The corps has produced its first commander worth the name — a Georgian convert who came north in a slave caravan twenty years ago and now drills three regiments with a precision no tribal levy ever knew. He kneels to the throne alone. There is no uncle, no pasture, no lineage behind him to be negotiated with."
+ matter_of_tork.64.a: "Give him the command. This is what the corps is FOR."
+
+ matter_of_tork.60.title: "The Amirs Smell the Plot"
+ matter_of_tork.60.desc: "A captain of the hosts was found drunk and talking: 'the throne buys Georgians so it can be rid of us.' He was not wrong, and everyone in the bazaar knows it. The encampments are quiet in the way a steppe is quiet before weather. If the hosts are left this unhappy much longer, they will not wait to be replaced."
+ matter_of_tork.60.a: "Watch the encampments. And hurry."
+
+ matter_of_tork.61.title: "The Plot Realized"
+ matter_of_tork.61.desc: "They did not wait. The hosts have read the parade ground correctly and drawn the conclusion the throne hoped to schedule for a more convenient decade: the standards are up, the levies ride against us, and the new corps — half-built, half-drilled — is all that stands on our side of the question."
+ matter_of_tork.61.a: "Then the corps fights its first war early."
 
  # --- .10 Iranization claimed
  matter_of_tork.10.title: "The Long Work Begins"
@@ -235,6 +280,167 @@
  STATIC_MODIFIER_DESC_matter_post_tribal_state: "No tribal question, no amir bargain, no estate behind the army. A realm answerable to nothing but its own registers."
  STATIC_MODIFIER_NAME_matter_eradication_aftermath: "The Fifty-Year Gap"
  STATIC_MODIFIER_DESC_matter_eradication_aftermath: "The sword arm is amputated; the slave-army is being bought, trained, and bound from nothing. Every neighbor counts our horses. Survive this, and the post-tribal state stands alone."
+
+ # --- Ghulam corps tiers & muster quality
+ STATIC_MODIFIER_NAME_matter_ghulam_corps_1: "Palace Ghulam Corps"
+ STATIC_MODIFIER_DESC_matter_ghulam_corps_1: "A few hundred purchased men — drilled, salaried, loyal to the stipend and the household."
+ STATIC_MODIFIER_NAME_matter_ghulam_corps_2: "Ghulam Regiments"
+ STATIC_MODIFIER_DESC_matter_ghulam_corps_2: "A standing force with its own barracks and registers. The muster no longer depends on anyone's goodwill."
+ STATIC_MODIFIER_NAME_matter_ghulam_corps_3: "The Army Within the Army"
+ STATIC_MODIFIER_DESC_matter_ghulam_corps_3: "Three corps of men with no tribe, no pasture, and no uncle to negotiate with. The amirs know which army the throne trusts."
+ STATIC_MODIFIER_NAME_matter_ghulam_drilled: "Drilled to the Drum"
+ STATIC_MODIFIER_DESC_matter_ghulam_drilled: "The first muster marched like a wall. The realm noticed."
+ STATIC_MODIFIER_NAME_matter_ghulam_teething: "Teething Troubles"
+ STATIC_MODIFIER_DESC_matter_ghulam_teething: "Bad drillmasters, sold-on equipment, two desertions before dawn. The corps will learn — expensively."
+
+ # --- Approach 4: the march, earned ---------------------------------
+ matter_tork_release_march: "Release the March"
+ matter_tork_release_march_desc: "Carve the zone and let the hosts hold it. Pick a seat among your tribal pasturelands: its area must be at least eight owned locations and must border a realm that is neither us nor ours — someone to be unleashed upon. The area rides out as a March: militarily formidable, fiscally poor, unruly by construction. Releasing it seals the compact and settles the Matter."
+
+ matter_of_tork.85.title: "The Begs Quarrel Over the Vanguard"
+ matter_of_tork.85.desc: "Word of the coming march has reached every encampment, and the begs have begun to position themselves — gifts to the court, raids to advertise prowess, a knife-fight at a wedding. Whoever leads the march will found a house. They all know it. So do we."
+ matter_of_tork.85.a: "Note the ablest of them. The march will need him — and watching."
+
+ # --- Approach 2: beacon action, privileges, reform & events --------
+ matter_tork_sponsor_qanat: "Sponsor Qanat Settlement"
+ matter_tork_sponsor_qanat_desc: "Pay the muqannis to drive a channel up a pasture margin. A village takes root where the herds wintered; the registers follow the water; the assimilation runs faster where the wheat grows. One sponsorship per five years."
+ iqta_commutation: "Iqtaʿ Commutation"
+ iqta_commutation_desc: "Tribal levy obligations commuted into landed military service. The amir trades the host's muster for a deed and a salary schedule — what a tribal elite in decline actually wants is land security, and the chancery knows it."
+ chancery_commissions: "Chancery Commissions for Amir Sons"
+ chancery_commissions_desc: "The amirs' sons sit the examinations and enter the diwan — with honor, with stipends, and with Persian. The generational mechanism of every Iranization that ever worked."
+ salaried_pastoral_levies: "Salaried Pastoral Levies"
+ salaried_pastoral_levies_desc: "The tribes keep the herds and the pasture-roads; the fighting men ride for pay, not for the lineage. Identity Iranizes. The pastoralism stays."
+ ilat_compact: "The Īlāt Compact"
+ ilat_compact_desc: "The tribes as a part of the realm's economy: herds taxed and counted, pasture-roads in the registers, wool and horses in the bazaar. Pastoral, prosperous, and no longer a separate political order — Iranization of identity without sedentarization."
+
+ matter_of_tork.80.title: "The Amir's Son Takes the Examination"
+ matter_of_tork.80.desc: "The eldest son of a frontier amir has sat the chancery examination — in Persian, on the revenue law, beside the sons of scribes. He passed third of his year. His father pretends displeasure and tells every encampment on the road home. In a generation this is how the question answers itself."
+ matter_of_tork.80.a: "Commission him. Let the encampments hear THAT, too."
+
+ matter_of_tork.81.title: "The Qanat Reaches the Pasture"
+ matter_of_tork.81.desc: "The channel the crown paid for has reached the winter pasture at last, and a village is already growing around the outlet — mud walls, a mill, a registered headman. The herders who wintered there for six generations are watching the wheat come up on their ground."
+ matter_of_tork.81.a: "Celebrate the village. The settled order is the realm's order."
+ matter_of_tork.81.b: "Compensate the herders — grazing rights written elsewhere."
+
+ matter_of_tork.82.title: "Resistance in the Margins"
+ matter_of_tork.82.desc: "A surveyor dead in a dry streambed; a new village's mill burned; herds driven deliberately across young wheat. The margins have understood what the program is, and some of them have decided what they think of it."
+ matter_of_tork.82.a: "Suppress it. The program does not slow for arson."
+ matter_of_tork.82.b: "Accommodate — write the grazing corridors into the registers."
+
+ STATIC_MODIFIER_NAME_matter_qanat_settlement: "Qanat Settlement"
+ STATIC_MODIFIER_DESC_matter_qanat_settlement: "A crown-paid channel and a village taking root where the herds wintered. The registers follow the water."
+
+ # --- Approach 3: vilayat action, privilege & events ----------------
+ matter_tork_invite_shaykhs: "Invite the Shaykhs of the Order"
+ matter_tork_invite_shaykhs_desc: "Bring the masters of the great lodges to court — honored, housed, and listened to. A shaykh joins the court, and a door opens that the jurists would prefer stayed shut: with the realm leaning far enough toward the mystical pole, the claim of the Hidden Imam can be made."
+ dervish_lodge_endowments: "Lodge Endowments"
+ dervish_lodge_endowments_desc: "Waqf revenue committed to the dervish orders — khanqahs roofed, kitchens stocked, silsilas honored. The lodges flourish beyond the crown's fiscal reach, and the realm tilts toward the pole they preach."
+
+ matter_of_tork.70.title: "The Claim of the Hidden Imam"
+ matter_of_tork.70.desc: "The shaykh has stopped speaking in courtesies. What the lodges offer is not advice but a theory of the throne itself: the realm aligned to the House of the Prophet, the ruler as the Imam's shadow until the Hidden One returns, the hosts re-sworn not to a khan's line but to a living guide. It is conversion — of the dynasty, then of the realm, by every minbar and every lodge. The jurists will call it the end of everything they guard. They will be correct."
+ matter_of_tork.70.a: "Make the claim. The realm turns to the House of the Prophet."
+ matter_of_tork.70.b: "Not this. The lodges may preach; the throne keeps its creed."
+
+ matter_of_tork.71.title: "A Shaykh Preaches in the Camps"
+ matter_of_tork.71.desc: "Reports from the pastures: a shaykh of the order has been preaching among the encampments, and the hosts — who never once filled a Friday mosque — crowd his circle by the hundred. The old loyalty ran to a bloodline. What he offers runs to a living man. The camps have always known how to follow one of those."
+ matter_of_tork.71.a: "Note it well. THIS is what the bond will be made of."
+
+ matter_of_tork.72.title: "The Jurists' Ultimatum"
+ matter_of_tork.72.desc: "The chief qadi comes to court with the heads of the law schools behind him, and what they carry is not a petition. The throne's courtship of the lodges has a name in their books, and the books prescribe its remedy. Abandon it — or be named from every minbar that still answers to the law."
+ matter_of_tork.72.a: "Cave. The courtship ends; the lodges are left to their dhikr."
+ matter_of_tork.72.b: "Defy them. The realm needs what the lodges have."
+
+ matter_of_tork.73.title: "Red Headgear"
+ matter_of_tork.73.desc: "It began in one lodge and is now in every bazaar between here and the frontier: the young men of the orders have taken to a red cap, wound twelve times. It marks a devotion that drills, marches, and waits to be called. No one ordered it. That is exactly what makes it worth watching."
+ matter_of_tork.73.a: "Let them wear it. We may yet give it something to do."
+
+ STATIC_MODIFIER_NAME_matter_jurists_fury: "The Jurists' Fury"
+ STATIC_MODIFIER_DESC_matter_jurists_fury: "The law schools preach against the throne's new friends, from every minbar that still answers to the law."
+ STATIC_MODIFIER_NAME_matter_red_headgear: "The Red Headgear"
+ STATIC_MODIFIER_DESC_matter_red_headgear: "A devotion that drills and marches. No one ordered it — that is what makes it formidable."
+
+ # --- Ghulam barracks building & production method
+ ghulam_barracks: "Ghulam Barracks"
+ ghulam_barracks_desc: "Purpose-built barracks for the new corps: dormitories, drill grounds, a mosque, and the salary office. Where the mamluk barracks of the old powers were inherited, these are designed — and it shows."
+ ghulam_barracks_maintenance: "$ghulam_barracks$"
+
+ # --- Ghulam privileges (estate privilege names use base registry)
+ diwan_ghulam_administration: "Dīwān al-ʿArḍ"
+ diwan_ghulam_administration_desc: "The army ministry: muster rolls, salary registers, the corps as a column in the chancery's books. The CORRECT ghulam system — salaried, registered, answerable to no estate — and the amirs' monopoly on violence, broken by accountants."
+ amirs_ghulam_administration: "Amir-Held Commands"
+ amirs_ghulam_administration_desc: "The amirs supervise the new corps as they have supervised everything military. Politically painless — and the Saljuq failure mode: slave soldiers administered by amirs become amir households within a generation."
+ ghulam_fostering_households: "Fostering Households"
+ ghulam_fostering_households_desc: "Village households paid to raise and school the purchased boys before palace service — the layer every ghulam system actually ran on."
+
+ # --- Cultural-weight rebalance auto-modifiers (05_cultural_weight_auto)
+ AUTO_MODIFIER_NAME_mongol_thin_stratum: "A Thin Stratum"
+ AUTO_MODIFIER_DESC_mongol_thin_stratum: "A military elite with no urban base and no literary corpus of its own — already Persianizing at court and Turkicizing in the saddle. The empire is vast; the culture is thin."
+ AUTO_MODIFIER_NAME_iranian_civilizational_weight: "The Persianate Continuum"
+ AUTO_MODIFIER_DESC_iranian_civilizational_weight: "The corpus, the chancery language, the cities — a civilization that absorbs its conquerors regardless of who sits the throne."
+ AUTO_MODIFIER_NAME_han_civilizational_weight: "The Sinic Continuum"
+ AUTO_MODIFIER_DESC_han_civilizational_weight: "The examination classics, the bureaucratic register, the demographic mass — dynasties pass through it; it remains."
+ AUTO_MODIFIER_NAME_mashriqi_civilizational_weight: "The Arabic Continuum"
+ AUTO_MODIFIER_DESC_mashriqi_civilizational_weight: "The language of revelation and law, the scholarly belt of Baghdad and Basra — weight that no conquest dislodges."
+ AUTO_MODIFIER_NAME_iranian_core_city_native: "Heart of the Persianate"
+ AUTO_MODIFIER_DESC_iranian_core_city_native: "A city of the Persian literary world under a throne of its own civilization. The corpus, the chancery, and the crown speak the same language."
+ AUTO_MODIFIER_NAME_iranian_core_city_foreign: "The Conqueror's Bargain"
+ AUTO_MODIFIER_DESC_iranian_core_city_foreign: "A city of the Persian literary world under a foreign throne. The court learns the chancery's language, not the other way around — whoever holds this city is being absorbed by it."
+ AUTO_MODIFIER_NAME_han_core_city_native: "Heart of the Sinic World"
+ AUTO_MODIFIER_DESC_han_core_city_native: "A city of the examination classics under a throne of its own civilization."
+ AUTO_MODIFIER_NAME_han_core_city_foreign: "The Conqueror's Bargain"
+ AUTO_MODIFIER_DESC_han_core_city_foreign: "A city of the examination classics under a foreign throne. Dynasties pass through this civilization; it remains — and it keeps the dynasty's children."
+ AUTO_MODIFIER_NAME_mashriqi_core_city_native: "Heart of the Arabic World"
+ AUTO_MODIFIER_DESC_mashriqi_core_city_native: "A city of the scholarly belt under a throne of its own civilization."
+ AUTO_MODIFIER_NAME_mashriqi_core_city_foreign: "The Conqueror's Bargain"
+ AUTO_MODIFIER_DESC_mashriqi_core_city_foreign: "A city of the scholarly belt under a foreign throne. The language of revelation does not bend to the court; the court bends."
+
+ # --- Rank-tier variants (rural / town / megalopolis) ---------------
+ AUTO_MODIFIER_NAME_iranian_core_rural_native: "Persianate Countryside"
+ AUTO_MODIFIER_DESC_iranian_core_rural_native: "A village world of the Persian continuum under a throne of its own civilization."
+ AUTO_MODIFIER_NAME_iranian_core_rural_foreign: "Persianate Countryside, Foreign-Held"
+ AUTO_MODIFIER_DESC_iranian_core_rural_foreign: "The village keeps its tongue and its saints; the foreign throne taxes it and learns nothing from it — and teaches it less."
+ AUTO_MODIFIER_NAME_iranian_core_town_native: "Persianate Town"
+ AUTO_MODIFIER_DESC_iranian_core_town_native: "A bazaar town of the Persian continuum under a throne of its own civilization."
+ AUTO_MODIFIER_NAME_iranian_core_town_foreign: "Persianate Town, Foreign-Held"
+ AUTO_MODIFIER_DESC_iranian_core_town_foreign: "The town's scribes staff the conqueror's chancery — in Persian. The current runs one way."
+ AUTO_MODIFIER_NAME_iranian_core_megalopolis_native: "Jewel of the Persianate"
+ AUTO_MODIFIER_DESC_iranian_core_megalopolis_native: "One of the great cities of the Persian world under a throne of its own civilization — the corpus, the chancery, and the crown in one tongue, at scale."
+ AUTO_MODIFIER_NAME_iranian_core_megalopolis_foreign: "Jewel of the Persianate, Foreign-Held"
+ AUTO_MODIFIER_DESC_iranian_core_megalopolis_foreign: "A great city of the Persian world under a foreign throne. Whole dynasties have been swallowed by less."
+ AUTO_MODIFIER_NAME_han_core_rural_native: "Sinic Countryside"
+ AUTO_MODIFIER_DESC_han_core_rural_native: "A village world of the Sinic continuum under a throne of its own civilization."
+ AUTO_MODIFIER_NAME_han_core_rural_foreign: "Sinic Countryside, Foreign-Held"
+ AUTO_MODIFIER_DESC_han_core_rural_foreign: "The village keeps its registers and its rites; the foreign throne taxes it and is counted by it."
+ AUTO_MODIFIER_NAME_han_core_town_native: "Sinic Town"
+ AUTO_MODIFIER_DESC_han_core_town_native: "A market town of the Sinic continuum under a throne of its own civilization."
+ AUTO_MODIFIER_NAME_han_core_town_foreign: "Sinic Town, Foreign-Held"
+ AUTO_MODIFIER_DESC_han_core_town_foreign: "The town's clerks keep the conqueror's books — in the script of the classics. The current runs one way."
+ AUTO_MODIFIER_NAME_han_core_megalopolis_native: "Jewel of the Sinic World"
+ AUTO_MODIFIER_DESC_han_core_megalopolis_native: "One of the great cities of the examination classics under a throne of its own civilization."
+ AUTO_MODIFIER_NAME_han_core_megalopolis_foreign: "Jewel of the Sinic World, Foreign-Held"
+ AUTO_MODIFIER_DESC_han_core_megalopolis_foreign: "A great city of the classics under a foreign throne. Dynasties pass through; the city keeps their children."
+ AUTO_MODIFIER_NAME_mashriqi_core_rural_native: "Mashriqi Countryside"
+ AUTO_MODIFIER_DESC_mashriqi_core_rural_native: "A village world of the Arabic scholarly belt under a throne of its own civilization."
+ AUTO_MODIFIER_NAME_mashriqi_core_rural_foreign: "Mashriqi Countryside, Foreign-Held"
+ AUTO_MODIFIER_DESC_mashriqi_core_rural_foreign: "The village keeps the language of revelation; the foreign throne taxes it and bends toward it."
+ AUTO_MODIFIER_NAME_mashriqi_core_town_native: "Mashriqi Town"
+ AUTO_MODIFIER_DESC_mashriqi_core_town_native: "A town of the scholarly belt under a throne of its own civilization."
+ AUTO_MODIFIER_NAME_mashriqi_core_town_foreign: "Mashriqi Town, Foreign-Held"
+ AUTO_MODIFIER_DESC_mashriqi_core_town_foreign: "The town's qadis judge in Arabic regardless of who appoints them. The current runs one way."
+ AUTO_MODIFIER_NAME_mashriqi_core_megalopolis_native: "Jewel of the Mashriq"
+ AUTO_MODIFIER_DESC_mashriqi_core_megalopolis_native: "One of the great cities of the Arabic world under a throne of its own civilization."
+ AUTO_MODIFIER_NAME_mashriqi_core_megalopolis_foreign: "Jewel of the Mashriq, Foreign-Held"
+ AUTO_MODIFIER_DESC_mashriqi_core_megalopolis_foreign: "A great city of the Arabic world under a foreign throne. The language of revelation does not bend; the court bends, at scale."
+
+ # --- Approach ambients
+ STATIC_MODIFIER_NAME_matter_approach_ghulam: "Reducing the Reliance"
+ STATIC_MODIFIER_DESC_matter_approach_ghulam: "The crown quietly builds the army that will make a real answer possible. The amirs watch the parade ground and understand."
+ STATIC_MODIFIER_NAME_matter_approach_beacon: "The Beacon of Civilization"
+ STATIC_MODIFIER_DESC_matter_approach_beacon: "The chancery leans into the long work — registers, examinations, qanats creeping up the pasture margins."
+ STATIC_MODIFIER_NAME_matter_approach_vilayat: "Courting the Vilāyat"
+ STATIC_MODIFIER_DESC_matter_approach_vilayat: "The court courts the lodges. The realm tilts toward the mystical pole, and the jurists keep a register of every tilt."
+ STATIC_MODIFIER_NAME_matter_approach_unleash: "The Hosts Unleashed"
+ STATIC_MODIFIER_DESC_matter_approach_unleash: "The tribes ride larger and prouder — they are being used for the thing they are for, and they know it."
 
  # --- Location unrest (generic, shared with farr/ghazi/tazik events)
  STATIC_MODIFIER_NAME_ez_unrest_3: "Local Ferment"

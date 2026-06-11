@@ -649,6 +649,16 @@ tofangchi_topchi_corps = {
 # qizilbash power. Salaried, loyal to the shah alone, staffed
 # by Georgian/Circassian/Armenian converts. Mutually exclusive
 # with qizilbash by design.
+# Retrofitted to the Matter of Tork ghulam system (Approach 1):
+# this is the Age 3 CAPSTONE — the crown administering the corps
+# directly, superseding the privilege-era administration. It grants
+# can_build_ghulam_barracks in its own right (the privileges'
+# potential lists this reform as an alternative root), and stacks
+# with whatever matter_ghulam_corps_N tier the Matter-era program
+# built. A matter_turk_dissolved realm arrives here with qizilbash
+# foreclosed and (if it ran Approach 1) the corps already standing —
+# the historical Abbas move, available a century early to the realm
+# that paid for it during the Matter.
 ghulam_system_reform = {
 	age = age_3_discovery
 	government = persianate_sultanate
@@ -659,12 +669,12 @@ ghulam_system_reform = {
 	}
 
 	country_modifier = {
+		can_build_ghulam_barracks = yes
 		discipline = 0.05
 		global_manpower_modifier = 0.15
 		army_maintenance_efficiency = -0.15
 		global_amirs_estate_power = -0.25
 		amirs_estate_target_satisfaction = -0.10
-		global_amirs_estate_power = -0.15
 		global_diwan_estate_power = 0.20
 		diwan_estate_target_satisfaction = ez_priv_sat_major
 		monthly_towards_quality = 0.10
@@ -857,4 +867,41 @@ khassa_crown_demesne = {
 	}
 
 	years = 5
+}
+
+
+# =========================================================
+# MATTER OF TORK — IRANIZATION OUTCOME
+# The Īlāt Compact: Iranization of identity WITHOUT
+# sedentarization — the historical outcome for Iran's Turkic
+# pastoralists (the lineage politics died; the pastoralism
+# didn't). Unlocked by the Iranization disposition's completion
+# (matter_of_tork.11 sets matter_tork_iranized). The visible
+# institutional fact of what the long work produced.
+# Design: docs/design/matter_of_tork_design.md, decision 26.
+# =========================================================
+
+ilat_compact = {
+	age = age_1_traditions
+	government = persianate_sultanate
+
+	potential = {
+		has_variable = matter_tork_iranized
+	}
+
+	country_modifier = {
+		# The tribes are a PART of the economy: herds taxed and
+		# counted, pasture-roads in the registers, wool and horses
+		# in the bazaar. Pastoral, prosperous, and no longer a
+		# separate political order.
+		tribes_estate_target_satisfaction = 0.075
+		tax_income_efficiency = 0.05
+		global_tribesmen_pop_growth = 0.05
+		global_max_rural_control = 0.03
+		# The fighting men ride for pay, not lineage.
+		tribes_estate_levy_size = -0.15
+		monthly_towards_tazik = 0.05
+	}
+
+	years = 2
 }

@@ -18,6 +18,127 @@
 # old implementation stays as-is until its own redesign/removal).
 # ============================================================
 
+# ---Approach ambients (the Council on the Hosts) ---------------------------
+# Exactly one active at a time; swapped by matter_tork_set_approach_X.
+# These are the DIRECTION, not the gains — earned gains live in
+# privileges, corps tiers, buildings, and event modifiers, and persist
+# across switches.
+
+matter_approach_ghulam = {
+	# "We want to be rid of them, but we are too reliant." The crown
+	# quietly builds the army that will make the answer possible. The
+	# amirs notice the parade ground.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	discipline = 0.025
+	amirs_estate_target_satisfaction = -0.025
+}
+
+matter_approach_beacon = {
+	# "Iran is the Beacon of Civilization. Even these half-men can be
+	# illuminated by its light." The chancery leans into the long work.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_pop_assimilation_speed_modifier = 0.15
+	monthly_towards_tazik = 0.05
+}
+
+matter_approach_vilayat = {
+	# "We must forge a new Identity to bind everyone into a greater
+	# whole." The court courts the lodges; the jurists watch.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	monthly_towards_mysticism = 0.20
+	clergy_estate_target_satisfaction = -0.05
+	monthly_religious_influence = -0.05
+}
+
+matter_approach_unleash = {
+	# "Why tame what we can unleash upon our enemies?" The hosts are
+	# being USED — which is what they wanted all along.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	tribes_estate_levy_size = 0.15
+	land_morale = 0.05
+	tribes_estate_target_satisfaction = 0.05
+}
+
+# ---Ghulam corps tiers (Approach 1 earned gains — PERSIST across
+# approach switches and past disaster end) ----------------------------------
+# One active at a time; the purchase action swaps tier N-1 for tier N.
+# The corps is what makes the Expulsion cavalry gap and the Eradication
+# aftermath survivable — the positive manpower nets against the holes.
+
+matter_ghulam_corps_1 = {
+	# A palace corps: a few hundred purchased men, drilled, salaried,
+	# loyal to the stipend and the household.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_manpower_modifier = 0.05
+	discipline = 0.01
+}
+
+matter_ghulam_corps_2 = {
+	# A standing regiment with its own barracks and registers.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_manpower_modifier = 0.10
+	discipline = 0.02
+}
+
+matter_ghulam_corps_3 = {
+	# An army within the army — and the amirs know which one the
+	# throne trusts.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_manpower_modifier = 0.15
+	discipline = 0.03
+	global_amirs_estate_power = -0.05
+}
+
+# ---First Muster quality (timed, from event .62) ----------------------------
+
+matter_ghulam_drilled = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	discipline = 0.02
+	land_morale = 0.05
+}
+
+matter_ghulam_teething = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	discipline = -0.01
+	army_maintenance_efficiency = -0.05
+}
+
 # ---Transient: the answer given ------------------------------------------
 
 matter_answer_given = {
@@ -119,6 +240,30 @@ matter_murid_bond = {
 	clergy_estate_target_satisfaction = -0.05
 	tolerance_heretic = 1
 	monthly_towards_mysticism = 0.10
+}
+
+matter_jurists_fury = {
+	# The courtship defied the ultimatum (10y): the legalist half of
+	# the clergy preaches against the throne's new friends.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	monthly_clergy_estate_rebel_growth = 0.01
+	clergy_estate_target_satisfaction = -0.05
+}
+
+matter_red_headgear = {
+	# The lodge youths adopt the mark (10y): a visible devotion that
+	# fights — the proto-qizilbash moment.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	land_morale = 0.05
+	monthly_towards_mysticism = 0.05
 }
 
 matter_zandaqa_storm = {
@@ -242,6 +387,21 @@ matter_eradication_aftermath = {
 	global_manpower_modifier = -0.30
 	global_levy_size_modifier = -0.25
 	land_morale = -0.10
+}
+
+# ---Qanat settlement (Approach 2 targeted action, 20y) ----------------------
+
+matter_qanat_settlement = {
+	# The qanat reaches the pasture margin; a village takes root
+	# where the herds wintered. Assimilation runs faster where the
+	# water flows.
+	game_data = {
+		category = location
+	}
+
+	local_pop_assimilation_speed_modifier = 0.25
+	local_unrest = -0.05
+	local_monthly_prosperity = 0.001
 }
 
 # ---Location unrest (add_unrest does not exist as an effect — unrest

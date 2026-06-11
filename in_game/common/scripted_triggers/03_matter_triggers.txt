@@ -91,6 +91,10 @@ matter_tork_no_disposition_yet = {
 matter_tork_can_claim_iranization = {
 	matter_tork_no_disposition_yet = yes
 	in_civil_war = no
+	# To digest the amirs you must first seat them at the diwan —
+	# Niẓām al-Mulk's nightmare as the price of his solution. The
+	# grant also costs a one-shot −20 axis push toward Türk.
+	has_estate_privilege = estate_privilege:amirs_umara_at_the_diwan
 }
 
 matter_tork_can_claim_marcher_compact = {

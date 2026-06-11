@@ -209,21 +209,12 @@ diwan_waqf_administration = {
 	}
 }
 
-diwan_ghulam_administration = {
-	estate = diwan_estate
-	potential = { }
-	allow = { }
-	can_revoke = { }
-	
-	country_modifier = {
-		global_manpower_modifier = 0.15
-		army_maintenance_efficiency = -0.1
-		global_amirs_estate_power = -0.1
-		diwan_estate_target_satisfaction = 0.03
-		monthly_towards_quality = 0.05
-		monthly_towards_tazik = 0.05
-	}
-}
+# NOTE: diwan_ghulam_administration now lives in
+# 08_ghulam_privileges.txt (Matter of Tork, Approach 1) — it carries
+# the can_build_ghulam_barracks gate, sticky availability via
+# matter_tork_ghulam_program, and mutual exclusion with
+# amirs_ghulam_administration. The free-floating version that lived
+# here was a duplicate key and has been removed.
 
 diwan_royal_workshops = {
 	estate = diwan_estate

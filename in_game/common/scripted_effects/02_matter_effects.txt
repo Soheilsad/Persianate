@@ -86,6 +86,76 @@ matter_tork_init = {
 	remove_variable = matter_tork_murid_claimed
 	remove_variable = matter_tork_expulsion_claimed
 	remove_variable = matter_tork_eradication_claimed
+	remove_variable = matter_tork_approach
+	remove_variable = matter_tork_anger_months
+	remove_variable = matter_tork_anger_warned
+	remove_variable = matter_tork_vilayat_months
+	remove_variable = matter_tork_vilayat_71_fired
+	remove_variable = matter_tork_vilayat_72_fired
+	remove_variable = matter_tork_vilayat_73_fired
+	remove_variable = matter_tork_imam_offered
+	remove_variable = matter_tork_beacon_months
+	remove_variable = matter_tork_beacon_80_fired
+	remove_variable = matter_tork_beacon_81_fired
+	remove_variable = matter_tork_beacon_82_fired
+	remove_variable = matter_tork_unleash_months
+	remove_variable = matter_tork_unleash_85_fired
+}
+
+# ---Approach layer (the Council on the Hosts) ---------------------------
+# Switching swaps ONLY the ambient modifier. Earned gains — privileges,
+# corps tiers, axis movement, conquered land, timed event modifiers —
+# persist. The horizon clock never resets.
+
+matter_tork_clear_approach_ambients = {
+	if = {
+		limit = { has_country_modifier = matter_approach_ghulam }
+		remove_country_modifier = matter_approach_ghulam
+	}
+	if = {
+		limit = { has_country_modifier = matter_approach_beacon }
+		remove_country_modifier = matter_approach_beacon
+	}
+	if = {
+		limit = { has_country_modifier = matter_approach_vilayat }
+		remove_country_modifier = matter_approach_vilayat
+	}
+	if = {
+		limit = { has_country_modifier = matter_approach_unleash }
+		remove_country_modifier = matter_approach_unleash
+	}
+}
+
+matter_tork_set_approach_ghulam = {
+	matter_tork_clear_approach_ambients = yes
+	set_variable = { name = matter_tork_approach value = 1 }
+	add_country_modifier = { modifier = matter_approach_ghulam months = -1 }
+	# Sticky: once the program is founded it exists as an institution.
+	# The ghulam privileges' potential reads this; a granted privilege
+	# survives an approach switch (earned-gains rule).
+	set_variable = matter_tork_ghulam_program
+}
+
+matter_tork_set_approach_beacon = {
+	matter_tork_clear_approach_ambients = yes
+	set_variable = { name = matter_tork_approach value = 2 }
+	add_country_modifier = { modifier = matter_approach_beacon months = -1 }
+	# Sticky: the program's privileges stay grantable once founded.
+	set_variable = matter_tork_beacon_program
+}
+
+matter_tork_set_approach_vilayat = {
+	matter_tork_clear_approach_ambients = yes
+	set_variable = { name = matter_tork_approach value = 3 }
+	add_country_modifier = { modifier = matter_approach_vilayat months = -1 }
+	# Sticky: the courtship, once begun, is a fact the lodges remember.
+	set_variable = matter_tork_vilayat_program
+}
+
+matter_tork_set_approach_unleash = {
+	matter_tork_clear_approach_ambients = yes
+	set_variable = { name = matter_tork_approach value = 4 }
+	add_country_modifier = { modifier = matter_approach_unleash months = -1 }
 }
 
 matter_tork_monthly_tick = {
@@ -98,6 +168,55 @@ matter_tork_monthly_tick = {
 	if = {
 		limit = { has_variable = matter_tork_expulsion_underway }
 		change_variable = { name = matter_tork_expulsion_months add = 1 }
+	}
+	# Vilayat courtship counter — drives the approach-3 event chain.
+	if = {
+		limit = {
+			has_variable = matter_tork_approach
+			var:matter_tork_approach = 3
+		}
+		if = {
+			limit = { NOT = { has_variable = matter_tork_vilayat_months } }
+			set_variable = { name = matter_tork_vilayat_months value = 0 }
+		}
+		change_variable = { name = matter_tork_vilayat_months add = 1 }
+	}
+	# Beacon counter — drives the approach-2 event chain.
+	if = {
+		limit = {
+			has_variable = matter_tork_approach
+			var:matter_tork_approach = 2
+		}
+		if = {
+			limit = { NOT = { has_variable = matter_tork_beacon_months } }
+			set_variable = { name = matter_tork_beacon_months value = 0 }
+		}
+		change_variable = { name = matter_tork_beacon_months add = 1 }
+	}
+	# Unleash counter — drives the approach-4 event chain.
+	if = {
+		limit = {
+			has_variable = matter_tork_approach
+			var:matter_tork_approach = 4
+		}
+		if = {
+			limit = { NOT = { has_variable = matter_tork_unleash_months } }
+			set_variable = { name = matter_tork_unleash_months value = 0 }
+		}
+		change_variable = { name = matter_tork_unleash_months add = 1 }
+	}
+	# Amirs-at-the-diwan hook (decision 32): seating the amīrs is a
+	# political fact — a hard one-shot −20 axis push toward Türk the
+	# month the privilege is first seen granted. (Detected here, so
+	# only while the Matter runs — acceptable: this is when the
+	# privilege matters; revisit if it needs to be global.)
+	if = {
+		limit = {
+			has_estate_privilege = estate_privilege:amirs_umara_at_the_diwan
+			NOT = { has_variable = matter_amir_diwan_pushed }
+		}
+		set_variable = matter_amir_diwan_pushed
+		change_societal_value = { type = turk_vs_tazik value = -20 }
 	}
 	# War-observation latch: the war-end polls only arm after the
 	# civil war has actually been seen running, so the month between
@@ -112,16 +231,43 @@ matter_tork_monthly_tick = {
 		}
 		set_variable = matter_tork_war_observed
 	}
+	# Ghulam-approach anger counter: building the replacement army
+	# while the military estates sit at low satisfaction is a plot
+	# they can smell. Counter resets the month satisfaction recovers.
+	if = {
+		limit = {
+			has_variable = matter_tork_approach
+			var:matter_tork_approach = 1
+			OR = {
+				estate_satisfaction:amirs_estate < 0.3
+				estate_satisfaction:tribes_estate < 0.3
+			}
+		}
+		if = {
+			limit = { NOT = { has_variable = matter_tork_anger_months } }
+			set_variable = { name = matter_tork_anger_months value = 0 }
+		}
+		change_variable = { name = matter_tork_anger_months add = 1 }
+	}
+	else = {
+		if = {
+			limit = { has_variable = matter_tork_anger_months }
+			remove_variable = matter_tork_anger_months
+			remove_variable = matter_tork_anger_warned
+		}
+	}
 }
 
 matter_tork_process_dispatch = {
 	# --- A. Iranization completion: 240 months of cabinet work AND
-	# the realm has actually Iranized (axis at/past +25).
+	# the realm has ACTUALLY Iranized — axis at/past +90. Reaching 50
+	# is easy; +90 demands the full Tazik reform stack cooperating,
+	# not just the approach tools. (Design decision #31.)
 	if = {
 		limit = {
 			has_variable = matter_tork_iranization_underway
 			var:matter_tork_iranization_months >= 240
-			societal_value:turk_vs_tazik >= 25
+			societal_value:turk_vs_tazik >= 90
 			NOT = { has_variable = matter_of_tork_resolved }
 		}
 		trigger_event_non_silently = matter_of_tork.11
@@ -172,6 +318,114 @@ matter_tork_process_dispatch = {
 			trigger_event_non_silently = matter_of_tork.99
 		}
 	}
+	# --- Unleash chain (approach 4 active, pre-release): the begs
+	# quarrel at 12 months.
+	if = {
+		limit = {
+			has_variable = matter_tork_unleash_months
+			var:matter_tork_unleash_months >= 12
+			NOT = { has_variable = matter_tork_unleash_85_fired }
+			NOT = { has_variable = matter_tork_disposition_chosen }
+		}
+		set_variable = matter_tork_unleash_85_fired
+		trigger_event_non_silently = matter_of_tork.85
+	}
+	# --- Beacon chain (approach 2 active): the examination at 18
+	# months, the qanat at 40, the resistance at 70.
+	if = {
+		limit = {
+			has_variable = matter_tork_beacon_months
+			var:matter_tork_beacon_months >= 18
+			NOT = { has_variable = matter_tork_beacon_80_fired }
+		}
+		set_variable = matter_tork_beacon_80_fired
+		trigger_event_non_silently = matter_of_tork.80
+	}
+	if = {
+		limit = {
+			has_variable = matter_tork_beacon_months
+			var:matter_tork_beacon_months >= 40
+			NOT = { has_variable = matter_tork_beacon_81_fired }
+		}
+		set_variable = matter_tork_beacon_81_fired
+		trigger_event_non_silently = matter_of_tork.81
+	}
+	if = {
+		limit = {
+			has_variable = matter_tork_beacon_months
+			var:matter_tork_beacon_months >= 70
+			NOT = { has_variable = matter_tork_beacon_82_fired }
+		}
+		set_variable = matter_tork_beacon_82_fired
+		trigger_event_non_silently = matter_of_tork.82
+	}
+	# --- Vilayat courtship chain (approach 3 active): the camps at
+	# 12 months, the jurists at 36, the headgear at 60. The Hidden
+	# Imam offer is condition-gated, not clocked.
+	if = {
+		limit = {
+			has_variable = matter_tork_vilayat_months
+			var:matter_tork_vilayat_months >= 12
+			NOT = { has_variable = matter_tork_vilayat_71_fired }
+		}
+		set_variable = matter_tork_vilayat_71_fired
+		trigger_event_non_silently = matter_of_tork.71
+	}
+	if = {
+		limit = {
+			has_variable = matter_tork_vilayat_months
+			var:matter_tork_vilayat_months >= 36
+			NOT = { has_variable = matter_tork_vilayat_72_fired }
+		}
+		set_variable = matter_tork_vilayat_72_fired
+		trigger_event_non_silently = matter_of_tork.72
+	}
+	if = {
+		limit = {
+			has_variable = matter_tork_vilayat_months
+			var:matter_tork_vilayat_months >= 60
+			NOT = { has_variable = matter_tork_vilayat_73_fired }
+		}
+		set_variable = matter_tork_vilayat_73_fired
+		trigger_event_non_silently = matter_of_tork.73
+	}
+	# --- The Claim of the Hidden Imam: the Shia turn, offered once
+	# the realm is leaning mystical and the shaykhs are at court.
+	if = {
+		limit = {
+			has_variable = matter_tork_approach
+			var:matter_tork_approach = 3
+			has_variable = matter_tork_shaykh_invited
+			societal_value:mysticism_vs_jurisprudence <= -25
+			NOT = { religion = religion:shia }
+			NOT = { has_variable = matter_tork_imam_offered }
+		}
+		set_variable = matter_tork_imam_offered
+		trigger_event_non_silently = matter_of_tork.70
+	}
+	# --- Ghulam-approach anger: warning at 24 months, the plot
+	# realized at 48 (early defection — the same machinery as the
+	# horizon catastrophe; the war-end poll routes it to .91/.92).
+	if = {
+		limit = {
+			has_variable = matter_tork_anger_months
+			var:matter_tork_anger_months >= 24
+			NOT = { has_variable = matter_tork_anger_warned }
+		}
+		set_variable = matter_tork_anger_warned
+		trigger_event_non_silently = matter_of_tork.60
+	}
+	if = {
+		limit = {
+			has_variable = matter_tork_anger_months
+			var:matter_tork_anger_months >= 48
+			NOT = { has_variable = matter_tork_defection_war }
+			NOT = { has_variable = matter_tork_disposition_chosen }
+		}
+		set_variable = matter_tork_defection_war
+		set_variable = matter_tork_disposition_chosen
+		trigger_event_non_silently = matter_of_tork.61
+	}
 	# --- Catastrophic defection war ended.
 	if = {
 		limit = {
@@ -207,11 +461,20 @@ matter_tork_horizon_poll = {
 
 matter_tork_clear = {
 	# Called from disaster on_end. Remove counters and transient
-	# modifiers; permanent disposition outcomes stay.
+	# modifiers; permanent disposition outcomes stay. Earned approach
+	# gains (privileges, corps tiers) also stay — they are political
+	# facts, not disaster bookkeeping.
+	matter_tork_clear_approach_ambients = yes
 	remove_variable = matter_tork_months
 	remove_variable = matter_tork_iranization_months
 	remove_variable = matter_tork_expulsion_months
 	remove_variable = matter_tork_war_observed
+	remove_variable = matter_tork_approach
+	remove_variable = matter_tork_anger_months
+	remove_variable = matter_tork_anger_warned
+	remove_variable = matter_tork_vilayat_months
+	remove_variable = matter_tork_beacon_months
+	remove_variable = matter_tork_unleash_months
 	if = {
 		limit = { has_country_modifier = matter_answer_given }
 		remove_country_modifier = matter_answer_given
@@ -339,7 +602,7 @@ spawn_turkmen_breakaway = {
 								OR = {
 									culture = culture:turkoman_culture
 									culture ?= {
-										has_culture_group = culture_group:mongol_group
+										has_culture_group = culture_group:mongolian_group
 									}
 								}
 							}

@@ -28,8 +28,6 @@ If you want to understand the systems:
 ## Useful links
 
 - [Workshop page](https://steamcommunity.com/sharedfiles/filedetails/?id=3634535722)
-- [Source on GitHub](https://github.com/Soheilsad/3634535722)
-- [Report a bug or suggest an idea](https://github.com/Soheilsad/3634535722/issues)
 
 ---
 

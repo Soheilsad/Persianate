@@ -7,11 +7,15 @@
 # locks the others (matter_tork_disposition_chosen, set by the
 # claim events).
 #
-#   claim_iranization     — A. dissolved into us      (~20y process)
-#   claim_marcher_compact — B. kept at the edge        (instant; March)
-#   claim_murid_bond      — C. our instrument          (mysticism ≤ -50)
-#   claim_expulsion       — D. removed from society    (~10y process)
-#   claim_eradication     — E. destroyed as a class    (civil war + 50y)
+#   claim_iranization        — A. dissolved into us   (~20y; needs amirs at the diwan)
+#   matter_tork_release_march — B. kept at the edge   (zone earned by conquest)
+#   claim_murid_bond         — C. our instrument      (mysticism ≤ -50)
+#   claim_expulsion          — D. removed from society (~10y process)
+#   claim_eradication        — E. destroyed as a class (civil war + 50y)
+#
+# Plus the approach layer: matter_tork_change_approach (the council),
+# and the per-approach actions (purchase ghulams / sponsor qanat /
+# invite shaykhs / release march).
 #
 # The claim buttons COST nothing at the button layer — the costs
 # live in the claim events (the farr/ghazi lesson about claims
@@ -20,6 +24,283 @@
 #
 # Design: docs/design/matter_of_tork_design.md §4
 # ============================================================
+
+matter_tork_change_approach = {
+	type = disaster
+	show_message = no
+
+	# The AI picks its approach once, at the council; it does not
+	# second-guess itself monthly.
+	ai_tick = never
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	allow = {
+		scope:actor = {
+			has_variable = matter_of_tork_fired
+			NOT = { has_variable = matter_tork_disposition_chosen }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = { data = name }
+		visible = {
+			disaster_type = disaster_type:matter_of_tork
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			# Re-convene the council. The horizon clock does not reset;
+			# earned gains persist; only the ambient swaps.
+			trigger_event_non_silently = matter_of_tork.2
+		}
+	}
+
+	ai_will_do = {
+		add = 0
+	}
+}
+
+# ---Approach 1: Purchase Ghulam Levies ---------------------------------
+# One corps tier per purchase (I → II → III). Needs an administrator
+# (a ghulam administration privilege or the reform), an implementer
+# (the fostering households privilege), and — past tier I — the
+# physical apparatus: tier II needs >= 1 ghulam barracks, tier III
+# needs >= 3. [verify: any_owned_location count = N syntax]
+
+matter_tork_purchase_ghulams = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 3
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	price = price:matter_purchase_ghulams
+
+	allow = {
+		scope:actor = {
+			has_variable = matter_tork_approach
+			var:matter_tork_approach = 1
+			# The administrator.
+			OR = {
+				has_estate_privilege = estate_privilege:diwan_ghulam_administration
+				has_estate_privilege = estate_privilege:amirs_ghulam_administration
+				has_reform = government_reform:ghulam_system_reform
+			}
+			# The implementer.
+			has_estate_privilege = estate_privilege:ghulam_fostering_households
+			# Tier ladder + apparatus gates.
+			OR = {
+				NOT = { has_variable = matter_ghulam_corps_tier }
+				AND = {
+					var:matter_ghulam_corps_tier = 1
+					any_owned_location = {
+						has_building = building_type:ghulam_barracks
+					}
+				}
+				AND = {
+					var:matter_ghulam_corps_tier = 2
+					any_owned_location = {
+						count = 3
+						has_building = building_type:ghulam_barracks
+					}
+				}
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = { data = name }
+		visible = {
+			disaster_type = disaster_type:matter_of_tork
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			capital.market = {
+				add_temporary_demand = { type = demand:ghulam_purchase_demand years = 5 scale_with_pop = 0.01 }
+
+			}
+			# The purchase ripples through the slave markets.
+			# The boys arrive where the barracks stand.
+			every_owned_location = {
+				limit = { has_building = building_type:ghulam_barracks }
+				every_pop = {
+					limit = { pop_type = pop_type:peasants }
+					split_pop = {
+						fraction = 0.02
+						type = pop_type:slaves
+					}
+				}
+			}
+			# Tier up.
+			if = {
+				limit = { NOT = { has_variable = matter_ghulam_corps_tier } }
+				set_variable = { name = matter_ghulam_corps_tier value = 1 }
+				add_country_modifier = { modifier = matter_ghulam_corps_1 months = -1 }
+				trigger_event_non_silently = matter_of_tork.62
+			}
+			else_if = {
+				limit = { var:matter_ghulam_corps_tier = 1 }
+				set_variable = { name = matter_ghulam_corps_tier value = 2 }
+				remove_country_modifier = matter_ghulam_corps_1
+				add_country_modifier = { modifier = matter_ghulam_corps_2 months = -1 }
+				trigger_event_non_silently = matter_of_tork.63
+			}
+			else_if = {
+				limit = { var:matter_ghulam_corps_tier = 2 }
+				set_variable = { name = matter_ghulam_corps_tier value = 3 }
+				remove_country_modifier = matter_ghulam_corps_2
+				add_country_modifier = { modifier = matter_ghulam_corps_3 months = -1 }
+				trigger_event_non_silently = matter_of_tork.64
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = 50
+	}
+}
+
+# ---Approach 2: Sponsor Qanat Settlement -----------------------------------
+# Repeatable (5y cooldown). Target a pastoral location: the qanat
+# creeps up the margin, a village takes root where the herds
+# wintered, and the assimilation runs faster where the water flows.
+
+matter_tork_sponsor_qanat = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 6
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	price = price:matter_sponsor_qanat
+
+	cooldown = {
+		type = matter_tork_sponsor_qanat
+		years = 5
+	}
+
+	allow = {
+		scope:actor = {
+			has_variable = matter_tork_approach
+			var:matter_tork_approach = 2
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = { data = name }
+		visible = {
+			disaster_type = disaster_type:matter_of_tork
+			disaster_is_active = yes
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		interaction_source_list = {
+			scope:actor = {
+				every_owned_location = {
+					limit = { is_tribal_pastoral_location = yes }
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target
+		name = "choose_location"
+		none_available_msg_key = "no_locations_available"
+		column = { data = name }
+		column = { data = population }
+		visible = {
+			NOT = { has_location_modifier = matter_qanat_settlement }
+		}
+	}
+
+	effect = {
+		if = {
+			limit = { exists = scope:target }
+			scope:target = {
+				add_location_modifier = { modifier = matter_qanat_settlement years = 20 }
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = 40
+	}
+}
+
+# ---Approach 3: Invite the Shaykhs of the Order ---------------------------
+# One-shot. A shaykh of the great lodges joins the court — and arms
+# the Hidden Imam chain (the Shia turn fires once mysticism reaches
+# -25 with the shaykh present).
+
+matter_tork_invite_shaykhs = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 3
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	allow = {
+		scope:actor = {
+			has_variable = matter_tork_approach
+			var:matter_tork_approach = 3
+			NOT = { has_variable = matter_tork_shaykh_invited }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = { data = name }
+		visible = {
+			disaster_type = disaster_type:matter_of_tork
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = matter_tork_shaykh_invited
+			create_character = {
+				estate = estate_type:clergy_estate
+				religion = root.religion
+				culture = root.culture
+				age = { 40 60 }
+				adm = { 30 60 }
+				dip = { 60 90 }
+				mil = { 10 40 }
+			}
+			add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.05 }
+		}
+	}
+
+	ai_will_do = {
+		add = 50
+	}
+}
 
 claim_iranization = {
 	type = disaster
@@ -61,19 +342,33 @@ claim_iranization = {
 	}
 }
 
-claim_marcher_compact = {
+# ---B. Release the March (disposition B, consummated by the act) -------
+# The march is EARNED by conquest, not auto-transferred (design
+# decision 19; create_uc_bey is the engine-native template). The
+# player picks a seat among owned tribal-pastoral locations whose
+# AREA passes the checks: >= 8 owned locations [verify: count = N in
+# any_* iterators] and a border with at least one country that is
+# neither us nor our subject — someone to be unleashed upon.
+# TODO v1.1: a pop-capacity floor on the zone (useful land, not
+# desert margins) once the right location-scope trigger is settled.
+# TODO v1.5: custom marcher_confederation subject type (uc_bey-like
+# contract) instead of plain march — the ticking bomb in the terms.
+
+matter_tork_release_march = {
 	type = disaster
 	show_message = no
 
 	ai_tick = monthly
-	ai_tick_frequency = 1
+	ai_tick_frequency = 6
 	automation_tick = never
 	automation_tick_frequency = 12
 
 	allow = {
 		scope:actor = {
-			matter_tork_can_claim_marcher_compact = yes
-			NOT = { has_variable = matter_tork_marcher_claimed }
+			has_variable = matter_tork_approach
+			var:matter_tork_approach = 4
+			matter_tork_no_disposition_yet = yes
+			at_war = no
 		}
 	}
 
@@ -88,10 +383,71 @@ claim_marcher_compact = {
 		}
 	}
 
+	select_trigger = {
+		looking_for_a = location
+		interaction_source_list = {
+			scope:actor = {
+				every_owned_location = {
+					limit = { is_tribal_pastoral_location = yes }
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target
+		name = "choose_location"
+		none_available_msg_key = "no_locations_available"
+		column = { data = name }
+		column = { data = population }
+		visible = {
+			is_tribal_pastoral_location = yes
+			area = {
+				# Big enough to be a real march.
+				any_location_in_area = {
+					count = 8
+					owner = scope:actor
+				}
+				# Pointed at someone — the zone must touch a country
+				# that is neither us nor ours.
+				any_location_in_area = {
+					owner = scope:actor
+					any_neighbor_location = {
+						exists = owner
+						NOT = { owner = scope:actor }
+						owner = {
+							NOT = { is_subject_of = scope:actor }
+						}
+					}
+				}
+			}
+		}
+	}
+
 	effect = {
-		scope:actor = {
-			set_variable = matter_tork_marcher_claimed
-			trigger_event_non_silently = matter_of_tork.20
+		if = {
+			limit = { exists = scope:target }
+			scope:target = {
+				save_scope_as = matter_march_seat
+				create_country_from_location = {
+					change_country_name = MATTER_TORK_MARCH
+					make_subject_of = { target = scope:actor type = subject_type:march }
+					save_scope_as = matter_march_country
+				}
+			}
+			# The rest of the zone rides out with the seat.
+			scope:matter_march_seat.area = {
+				every_location_in_area = {
+					limit = { owner = scope:actor }
+					change_location_owner = scope:matter_march_country
+				}
+			}
+			scope:actor = {
+				# The interior hosts ride out to join the march.
+				matter_tork_remove_tribal_tranche = yes
+				set_variable = matter_tork_disposition_chosen
+				set_variable = matter_tork_marcher_claimed
+				# The compact ceremony — modifiers + resolution.
+				trigger_event_non_silently = matter_of_tork.20
+			}
 		}
 	}
 

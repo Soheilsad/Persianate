@@ -115,7 +115,7 @@ cloth = {		#Daily clothing, Canvas, Uniforms, Course table cloth, etc
 		slaves = 0.00113
 		burghers = 0.045
 		clergy = 0.09
-		tribesmen = 0.0015      # cloak, felt, basic clothing — they don't make all their own
+		tribesmen = 0.001      # cloak, felt, basic clothing — they don't make all their own
 	}
 
 	wealth_impact_threshold = {

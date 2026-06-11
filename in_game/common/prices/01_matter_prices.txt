@@ -1,0 +1,13 @@
+# Matter of Tork action prices.
+
+# One corps tier per purchase; three purchases to tier III.
+# Calibrate against a year-50 consolidated Iran's treasury
+# (base rto_create_uc_bey = 100 for scale).
+matter_purchase_ghulams = {
+	gold = 150
+}
+
+# One qanat-settlement sponsorship (Approach 2, repeatable w/ 5y cooldown).
+matter_sponsor_qanat = {
+	gold = 50
+}
