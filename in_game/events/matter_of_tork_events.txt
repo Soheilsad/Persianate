@@ -252,9 +252,9 @@ matter_of_tork.41 = {
 
 	immediate = {
 		matter_tork_remove_tribal_tranche = yes
-		every_owned_province = {
+		every_owned_location = {
 			limit = { is_tribal_pastoral_location = yes }
-			add_unrest = 3
+			add_location_modifier = { modifier = matter_tork_unrest_minor years = 3 }
 		}
 	}
 
@@ -274,9 +274,9 @@ matter_of_tork.42 = {
 	immediate = {
 		matter_tork_remove_tribal_tranche = yes
 		matter_tork_remove_tribal_tranche = yes
-		every_owned_province = {
+		every_owned_location = {
 			limit = { is_tribal_pastoral_location = yes }
-			add_unrest = 3
+			add_location_modifier = { modifier = matter_tork_unrest_minor years = 3 }
 		}
 	}
 
@@ -402,9 +402,9 @@ matter_of_tork.90 = {
 
 	immediate = {
 		spawn_turkmen_breakaway = yes
-		every_owned_province = {
+		every_owned_location = {
 			limit = { is_tribal_pastoral_location = yes }
-			add_unrest = 5
+			add_location_modifier = { modifier = matter_tork_unrest_major years = 5 }
 		}
 	}
 

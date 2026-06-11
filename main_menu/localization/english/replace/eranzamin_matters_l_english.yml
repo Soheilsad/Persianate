@@ -236,6 +236,18 @@
  STATIC_MODIFIER_NAME_matter_eradication_aftermath: "The Fifty-Year Gap"
  STATIC_MODIFIER_DESC_matter_eradication_aftermath: "The sword arm is amputated; the slave-army is being bought, trained, and bound from nothing. Every neighbor counts our horses. Survive this, and the post-tribal state stands alone."
 
+ # --- Location unrest (generic, shared with farr/ghazi/tazik events)
+ STATIC_MODIFIER_NAME_ez_unrest_3: "Local Ferment"
+ STATIC_MODIFIER_DESC_ez_unrest_3: "The quarter is restive. The qadi's runners report meetings after dark."
+ STATIC_MODIFIER_NAME_ez_unrest_5: "Open Defiance"
+ STATIC_MODIFIER_DESC_ez_unrest_5: "The throne's writ is read aloud and laughed at. It will take more than a runner to settle this."
+
+ # --- Location unrest (Matter of Tork)
+ STATIC_MODIFIER_NAME_matter_tork_unrest_minor: "Pastures in Ferment"
+ STATIC_MODIFIER_DESC_matter_tork_unrest_minor: "The hosts resist being moved on. The roads are not safe; the herds are not counted."
+ STATIC_MODIFIER_NAME_matter_tork_unrest_major: "A Wavering Amir"
+ STATIC_MODIFIER_DESC_matter_tork_unrest_major: "The amir here has not joined the defection — yet. His riders watch the roads and wait to see who wins."
+
  # --- Catastrophic outcomes
  STATIC_MODIFIER_NAME_matter_turk_defection_scar: "The Bleeding Flank"
  STATIC_MODIFIER_DESC_matter_turk_defection_scar: "The hosts left armed, and what they founded watches the border. The chronicles say the realm was maimed by silence."

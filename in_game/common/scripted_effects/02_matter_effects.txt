@@ -232,8 +232,7 @@ matter_tork_clear = {
 
 # ---Tribal tranche removal (Expulsion stages / Eradication purge) -------
 # Strips a slice of tribesmen pops from owned tribal provinces.
-# [verify] add_pop_size negative-literal form in 1.2.0 — base game uses
-# variable form (add_pop_size = root.var:burned_witches_variable).
+# add_pop_size confirmed valid (takes negative values).
 
 matter_tork_remove_tribal_tranche = {
 	every_owned_province = {
