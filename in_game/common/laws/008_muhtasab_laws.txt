@@ -122,10 +122,9 @@ hisba_law = {
 			}
 			# Matter of Tork, Sufi Synthesis disposition: the murshid
 			# claim is precisely what the muhtasib exists to condemn.
-			# Taking the murid bond forecloses this regime. [verify
-			# in-game: an ACTIVE law option whose potential goes false
-			# should be revoked by the engine — confirm on first
-			# playtest of the murid-bond path.]
+			# Taking the murid bond forecloses this regime — the engine
+			# revokes an active law option whose potential goes false
+			# (confirmed).
 			NOT = { has_variable = matter_sufi_synthesis }
 		}
 		country_modifier = {

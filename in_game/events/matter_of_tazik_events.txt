@@ -46,7 +46,7 @@ matter_of_tazik.25 = {
 		change_variable = { name = matter_progress add = -5 }
 		random_owned_location = {
 			limit = { is_urban_diwan_capable_location = yes }
-			add_unrest = 3
+			add_location_modifier = { modifier = ez_unrest_3 years = 3 }
 		}
 	}
 
@@ -144,8 +144,8 @@ matter_of_tazik.100 = {
 		# Religious-unrest cascade on non-rolling urban provinces
 		every_owned_province = {
 			limit = { is_urban_diwan_capable_location = yes }
-			add_unrest = 5
 			every_location_in_province = {
+				add_location_modifier = { modifier = ez_unrest_5 years = 5 }
 				change_control = control_severe_penalty
 			}
 		}

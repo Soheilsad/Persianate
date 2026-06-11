@@ -244,6 +244,27 @@ matter_eradication_aftermath = {
 	land_morale = -0.10
 }
 
+# ---Location unrest (add_unrest does not exist as an effect — unrest
+# is applied via timed location modifiers) -----------------------------------
+
+matter_tork_unrest_minor = {
+	# Tranche unrest: the pastures resist being emptied.
+	game_data = {
+		category = location
+	}
+
+	local_unrest = 0.15
+}
+
+matter_tork_unrest_major = {
+	# Defection unrest: the wavering amir's province.
+	game_data = {
+		category = location
+	}
+
+	local_unrest = 0.5
+}
+
 # ---Catastrophic outcomes ---------------------------------------------------
 
 matter_turk_defection_scar = {

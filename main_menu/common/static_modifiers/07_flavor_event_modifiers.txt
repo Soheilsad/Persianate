@@ -1,6 +1,20 @@
 # Static modifiers attached to flavor-event outcomes.
 # Short-lived (5-25y), small bonuses. Outcome-effects of one-shot choices.
 
+# ---Generic local unrest (add_unrest does not exist as an effect;
+# unrest is applied as a timed location modifier). Names carry the
+# old literal values: 3 ≈ 0.15 local_unrest, 5 ≈ 0.25.
+# Used by farr_proof, ghazi_burden, matter_of_tazik events. ---
+ez_unrest_3 = {
+	game_data = { category = location }
+	local_unrest = 0.15
+}
+
+ez_unrest_5 = {
+	game_data = { category = location }
+	local_unrest = 0.25
+}
+
 # ---Mustawfi register adoption (event #2 option A) ---
 mustawfi_register_adopted = {
 	game_data = { category = country decaying = no }

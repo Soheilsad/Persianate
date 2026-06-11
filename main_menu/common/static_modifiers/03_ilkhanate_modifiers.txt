@@ -35,7 +35,7 @@ consolidate_diwan_mod = {
 	# The diwan reaches in — taxation, registers, courts.
 	local_max_control = 0.1
 	local_raw_material_output = 0.10
-	local_unrest = -2
+	local_unrest = -0.5
 }
 
 grant_the_yurt_mod = {
@@ -45,7 +45,7 @@ grant_the_yurt_mod = {
 	# Amirs hold the land as iqtaʿ/yurt — fewer revenues, more soldiers.
 	local_manpower_modifier = 0.30
 	local_max_control = -0.075
-	local_unrest = -1
+	local_unrest = -0.25
 }
 
 mixed_settlement_mod = {
@@ -55,7 +55,7 @@ mixed_settlement_mod = {
 	# Compromise — modest gains across the board, no big bonus.
 	# local_max_control = 0.05
 	local_manpower_modifier = 0.10
-	local_unrest = -1
+	local_unrest = -0.25
 }
 
 turkic_tribal_settlement_mod = {

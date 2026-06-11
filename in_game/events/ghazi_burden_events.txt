@@ -222,7 +222,7 @@ ghazi_burden.20 = {
 		name = ghazi_burden.20.a
 		add_legitimacy = 2
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.05 }
-		random_owned_location = { add_unrest = 3 }
+		random_owned_location = { add_location_modifier = { modifier = ez_unrest_3 years = 3 } }
 	}
 
 	# Endow a new madrasa — buy back the pulpit's warmth
@@ -628,7 +628,7 @@ ghazi_burden.500 = {
 			months = 60
 			mode = add_and_extend
 		}
-		random_owned_location = { add_unrest = 3 }
+		random_owned_location = { add_location_modifier = { modifier = ez_unrest_3 years = 3 } }
 	}
 }
 

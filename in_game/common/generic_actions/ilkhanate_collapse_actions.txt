@@ -93,7 +93,6 @@ consolidate_diwan = {
 					modifier = consolidate_diwan_mod
 					years = 10
 				}
-				add_unrest = -5
 			}
 		}
 		scope:actor = {
@@ -174,7 +173,6 @@ grant_the_yurt = {
 					modifier = grant_the_yurt_mod
 					years = 10
 				}
-				add_unrest = -3
 			}
 		}
 		custom_tooltip = {
@@ -251,7 +249,6 @@ mixed_settlement = {
 					modifier = mixed_settlement_mod
 					years = 10
 				}
-				add_unrest = -3
 			}
 		}
 		# No estate or axis shifts — the compromise is neutral.
