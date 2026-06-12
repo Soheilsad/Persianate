@@ -13,7 +13,7 @@
 
 iqta_grant = {
 	is_foreign = no
-	max_levels = estate_building_single_level
+	max_levels = 3
 	pop_type = nobles
 
 	employment_size = large_noble_employment
@@ -65,7 +65,7 @@ iqta_grant = {
 		diwan_estate_target_satisfaction = -0.002 # minor reduction to reflect the amir's encroachment on the diwan's turf
 		amirs_estate_target_satisfaction = 0.01 # minor boost to reflect the amir's increased local presence and prestige
 		local_max_control = -0.05 # the amir's authority is a substitute for the chancery's; the grant is a recognition of that fact on the chancery's part, and a formalization of it on the amir's part. The grant is a formal acknowledgment that the amir's authority in the parcel is real, and that the chancery will not contest it while the grant stands. The control hit reflects the fact that the amir's authority is not as strong as the chancery's would be, but it is still significant.
-		local_amirs_estate_power = 0.75 # the amir's local power is a direct function of the grant — the grant is what gives the amir his local authority, and the amir's local power is a reflection of that authority. The grant is a recognition of the amir's local power, and a formalization of it on the chancery's part. The power boost reflects the fact that the amir's local power is significant, but not overwhelming — the grant is a recognition of the amir's local power, but it does not make him a local despot.
+		local_amirs_estate_power = 1 # the amir's local power is a direct function of the grant — the grant is what gives the amir his local authority, and the amir's local power is a reflection of that authority. The grant is a recognition of the amir's local power, and a formalization of it on the chancery's part. The power boost reflects the fact that the amir's local power is significant, but not overwhelming — the grant is a recognition of the amir's local power, but it does not make him a local despot.
 		
 	}
 

@@ -493,20 +493,67 @@ matter_tork_clear = {
 	}
 }
 
+# -------- The refounding of the amirs estate (Expulsion / Eradication) --------
+# Decision (round 6): the estate SLOT — men of the sword holding
+# land — survives; its Turko-Mongol content does not. Strip the old
+# charter's privileges; the dehqan-revival set (11_dehqan_privileges)
+# becomes grantable via matter_turk_dissolved. If the corps was
+# amir-administered, the purge transfers it to the chancery — the
+# can_build_ghulam_barracks chain survives the change of nature.
+
+matter_tork_refound_amirs_estate = {
+	if = {
+		limit = { has_estate_privilege = estate_privilege:amirs_tribal_hosts }
+		revoke_estate_privilege = estate_privilege:amirs_tribal_hosts
+	}
+	if = {
+		limit = { has_estate_privilege = estate_privilege:amirs_tribal_autonomy_rights }
+		revoke_estate_privilege = estate_privilege:amirs_tribal_autonomy_rights
+	}
+	if = {
+		limit = { has_estate_privilege = estate_privilege:amirs_umara_at_the_diwan }
+		revoke_estate_privilege = estate_privilege:amirs_umara_at_the_diwan
+	}
+	if = {
+		limit = { has_estate_privilege = estate_privilege:iqta_commutation }
+		revoke_estate_privilege = estate_privilege:iqta_commutation
+	}
+	# The purge transfers amir-held ghulam commands to the chancery.
+	if = {
+		limit = { has_estate_privilege = estate_privilege:amirs_ghulam_administration }
+		revoke_estate_privilege = estate_privilege:amirs_ghulam_administration
+		grant_estate_privilege = estate_privilege:diwan_ghulam_administration
+	}
+}
+
 # ---Tribal tranche removal (Expulsion stages / Eradication purge) -------
 # Strips a slice of tribesmen pops from owned tribal provinces.
 # add_pop_size confirmed valid (takes negative values).
 
 matter_tork_remove_tribal_tranche = {
-	every_owned_province = {
-		limit = { is_tribal_pastoral_location = yes }
-		every_location_in_province = {
-			every_pop = {
-				limit = { pop_type = pop_type:tribesmen }
-				add_pop_size = -2
-			}
+
+	every_owned_location = {
+		
+		limit = {is_tribal_pastoral_location = yes}
+		every_pop = {
+			limit = { pop_type = pop_type:tribesmen }
+			add_pop_size = -7.5
 		}
 	}
+	
+}
+
+matter_tork_remove_tribal_tranche_token = {
+
+	every_owned_location = {
+		
+		limit = {is_tribal_pastoral_location = yes}
+		every_pop = {
+			limit = { pop_type = pop_type:tribesmen }
+			add_pop_size = -1
+		}
+	}
+	
 }
 
 matter_of_tazik_monthly_tick = {
@@ -588,11 +635,13 @@ spawn_turkmen_breakaway = {
 	# auto-selects ~30-50% of provinces based on rebel weight after
 	# allegiance shifts. OWNED provinces only — allegiance cannot be
 	# shifted on land we do not hold (audit fix).
-	every_owned_province = {
+
+
+
+	every_owned_location = {
 		limit = { is_tribal_pastoral_location = yes }
 		random = {
-			chance = 50
-			every_location_in_province = {
+			chance = 75
 				every_pop = {
 					limit = {
 						OR = {
@@ -601,6 +650,12 @@ spawn_turkmen_breakaway = {
 								pop_type = pop_type:nobles
 								OR = {
 									culture = culture:turkoman_culture
+									# turkic_group covers the Azeri and the rest
+									# of the Turkic spectrum (playtest fix);
+									# mongolian_group for the Chinggisid retinues.
+									culture ?= {
+										has_culture_group = culture_group:turkic_group
+									}
 									culture ?= {
 										has_culture_group = culture_group:mongolian_group
 									}
@@ -610,9 +665,9 @@ spawn_turkmen_breakaway = {
 					}
 					change_pop_allegiance = scope:matter_breakaway_scope
 				}
-			}
 		}
 	}
+	
 	# Initiate the civil war.
 	scope:matter_breakaway_scope = {
 		start_civil_war = {}

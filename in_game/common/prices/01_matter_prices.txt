@@ -4,10 +4,46 @@
 # Calibrate against a year-50 consolidated Iran's treasury
 # (base rto_create_uc_bey = 100 for scale).
 matter_purchase_ghulams = {
-	gold = 150
+	scaled_gold = 6
 }
 
 # One qanat-settlement sponsorship (Approach 2, repeatable w/ 5y cooldown).
 matter_sponsor_qanat = {
-	gold = 50
+	scaled_gold = 6
+}
+
+# Declaring a tribal zone crown demesne (Approach 1, repeatable w/ 2y
+# cooldown). Cheap in gold — the cost is political.
+matter_declare_inju = {
+	scaled_gold = 6
+}
+
+# Founding the slave-caravan institution (Approach 1, one-shot).
+matter_institutionalize_caravans = {
+	scaled_gold = 12
+}
+
+# A subsidized khanqah (Approach 3, repeatable w/ 3y cooldown).
+matter_endow_khanqah = {
+	scaled_gold = 6
+}
+
+# A season of dhikr festivals (Approach 3, repeatable w/ 4y cooldown).
+matter_dhikr_festivals = {
+	scaled_gold = 6
+}
+
+# The Madrasa of the Registers (Approach 2, 10y program).
+matter_endow_madrasa = {
+	scaled_gold = 6
+}
+
+# The Shahnama recension (Approach 2, one-shot).
+matter_shahnama_recension = {
+	scaled_gold = 12
+}
+
+# A yurt charter (Approach 4, repeatable w/ 2y cooldown).
+matter_yurt_charters = {
+	scaled_gold = 12
 }

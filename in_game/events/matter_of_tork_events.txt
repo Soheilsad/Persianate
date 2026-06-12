@@ -137,17 +137,17 @@ matter_of_tork.11 = {
 		}
 		# The finisher: a share of the remaining tribesmen settle —
 		# into the peasantry, into the court culture.
-		every_owned_province = {
+		every_owned_location = {
 			limit = { is_tribal_pastoral_location = yes }
 			random = {
 				chance = 40
-				every_location_in_province = {
+
 					every_pop = {
 						limit = { pop_type = pop_type:tribesmen }
 						change_pop_type = pop_type:peasants
 						change_culture = root.culture
 					}
-				}
+				
 			}
 		}
 		add_country_modifier = { modifier = matter_iranized_realm months = -1 }
@@ -379,6 +379,9 @@ matter_of_tork.43 = {
 		add_country_modifier = { modifier = matter_expelled_hosts months = -1 }
 		add_country_modifier = { modifier = matter_cavalry_gap years = 25 }
 		set_variable = matter_turk_dissolved
+		# The estate is refounded: old charter stripped, dehqan set
+		# becomes grantable.
+		matter_tork_refound_amirs_estate = yes
 		set_variable = matter_of_tork_resolved
 	}
 
@@ -407,7 +410,9 @@ matter_of_tork.50 = {
 		set_variable = matter_tork_disposition_chosen
 		set_variable = matter_eradication_attempt
 		add_country_modifier = { modifier = matter_eradication_underway months = -1 }
-		matter_tork_remove_tribal_tranche = yes
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -1 }
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = -1 }
+		matter_tork_remove_tribal_tranche_token = yes
 		spawn_turkmen_breakaway = yes
 	}
 
@@ -713,6 +718,30 @@ matter_of_tork.64 = {
 
 	option = {
 		name = matter_of_tork.64.a
+	}
+}
+
+# An Amir's Open Protest (Royal Inju crisis roll). The zone the
+# crown has just claimed wintered HIS clients' herds.
+matter_of_tork.66 = {
+	type = country_event
+	category = disaster_event
+	title = matter_of_tork.66.title
+	desc = matter_of_tork.66.desc
+	outcome = negative
+
+	# Compensate him — grazing rights written elsewhere, a robe, a gift.
+	option = {
+		name = matter_of_tork.66.a
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.05 }
+		add_legitimacy = -5
+	}
+
+	# The inju stands. He can petition the registers like anyone else.
+	option = {
+		name = matter_of_tork.66.b
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.05 }
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = -0.05 }
 	}
 }
 

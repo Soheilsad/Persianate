@@ -66,6 +66,8 @@ consolidate_diwan = {
 		name = "consolidate_diwan_select_province"
 		none_available_msg_key = "consolidate_diwan_no_provinces"
 		column = { data = name }
+		column = { data = population }
+		column = { data = province_tax_base }
 		visible = {
 			is_eranzamin_region_province = yes
 			any_location_in_province = {
@@ -153,6 +155,8 @@ grant_the_yurt = {
 		name = "grant_the_yurt_select_province"
 		none_available_msg_key = "grant_the_yurt_no_provinces"
 		column = { data = name }
+		column = { data = population }
+		column = { data = province_tax_base }
 		visible = {
 			is_eranzamin_region_province = yes
 			any_location_in_province = {
@@ -227,6 +231,8 @@ mixed_settlement = {
 		name = "mixed_settlement_select_province"
 		none_available_msg_key = "mixed_settlement_no_provinces"
 		column = { data = name }
+		column = { data = population }
+		column = { data = province_tax_base }
 		visible = {
 			is_eranzamin_region_province = yes
 			any_location_in_province = {
@@ -407,11 +413,11 @@ rally_turkic_tribes = {
 		# settled estates — diwan, burghers, peasants all alienated by
 		# the influx — and in lost stability. Amirs are pleased.
 		scope:actor = {
-			add_estate_satisfaction = { type = estate_type:amirs_estate value = 10 }
-			add_estate_satisfaction = { type = estate_type:diwan_estate value = -25 }
-			add_estate_satisfaction = { type = estate_type:burghers_estate value = -25 }
-			add_estate_satisfaction = { type = estate_type:peasants_estate value = -25 }
-			add_stability = -10
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.10 }
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.25 }
+			add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.25 }
+			add_estate_satisfaction = { type = estate_type:peasants_estate value = -0.25 }
+			add_stability = -0.10
 			change_societal_value = {
 				type = turk_vs_tazik
 				value = -5

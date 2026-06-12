@@ -164,6 +164,9 @@ amirs_umara_at_the_diwan = {
 
 	potential = {
 		government_type = government_type:persianate_sultanate
+		# Matter of Tork: foreclosed once the Türk military class is
+		# dissolved — the umara this licenses no longer exist.
+		NOT = { has_variable = matter_turk_dissolved }
 	}
 
 	# Türk amīrs holding administrative posts is the bête noire of

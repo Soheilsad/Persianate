@@ -7,6 +7,8 @@ namespace = eranzamin_flavor
 # panegyrics first for Abu Ishaq Inju, then Shah Shuja Muzaffarid, then
 # Sultan Ahmad Jalayir — fortune followed the patron, not the man. He
 # famously refused to leave Shiraz when called to Baghdad and Bengal.
+#
+#
 # ============================================================================
 eranzamin_flavor.1 = {
 	type = country_event
@@ -59,12 +61,15 @@ eranzamin_flavor.1 = {
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = ez_minor_estate_sat }
 		add_prestige = ez_major_prestige
 		add_country_modifier = { modifier = hafez_patronage_active years = ez_long_years }
-		create_art = {
-			artist = scope:hafez_scope
-			type = work_of_art_type:poem
-			quality = 100 ## this is the diwan of hafiz. each and every household that speaks persian has a copy, reads from it on every holiday, and quotes it in times of joy and sorrow alike. it is the single most salient to every day life  work of persian literature, and it should be represented as such in the game.
-			
+		capital = {
+			create_art = {
+				artist = scope:hafez_scope
+				type = work_of_art_type:poem
+				quality = 100 ## this is the diwan of hafiz. each and every household that speaks persian has a copy, reads from it on every holiday, and quotes it in times of joy and sorrow alike. it is the single most salient to every day life  work of persian literature, and it should be represented as such in the game.
+				key = diwan_of_hafiz
+			}
 		}
+
 		# scope:hafez_scope ?= {
 		# 	start_work_of_art = { type = poem quality = 95 }
 		# }

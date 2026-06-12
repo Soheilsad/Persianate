@@ -70,6 +70,17 @@ matter_of_tork_can_start = {
 	NOT = { has_reform = government_reform:amir_sultanate }
 	NOT = { has_reform = government_reform:turkmen_confederation }
 
+	# The question needs a questioner: no Matter without an actual
+	# Türk demographic base (playtest fix — fired for MZF whose
+	# military constituency was rural Iranic gentry; the breakaway
+	# had no support base and zero provinces defected). ABSOLUTE
+	# count, not percentage: a million armed tribesmen are a problem
+	# for a fifty-million realm too.
+	custom_tooltip = {
+		text = matter_tork_tribal_base_tt
+		num_pop_type_in_country:tribesmen >= 750
+	}
+
 	custom_tooltip = {
 		text = matter_tork_not_yet_fired_tt
 		NOT = { has_variable = matter_of_tork_fired }
@@ -110,12 +121,26 @@ matter_tork_can_claim_murid_bond = {
 	# Shia; enabled by mysticism, Sunni OR Shia. Same bar as the
 	# zill_allah_regime law.
 	societal_value:mysticism_vs_jurisprudence <= -50
+	# The bond needs a physical network for the murids to BE in
+	# (decision 38): four lodges standing. sufi_lodge is max_levels 1,
+	# so levels = lodge count.
+	custom_tooltip = {
+		text = matter_tork_lodge_network_tt
+		total_effective_building_levels:sufi_lodge >= 4
+	}
 }
 
 matter_tork_can_claim_expulsion = {
 	matter_tork_no_disposition_yet = yes
 	# You do this from strength, not mid-war.
 	at_war = no
+	# The hosts cannot be marched off land that still feeds them:
+	# at least two zones already declared royal inju (decision 38).
+	custom_tooltip = {
+		text = matter_tork_expulsion_inju_tt
+		has_variable = matter_tork_inju_count
+		var:matter_tork_inju_count >= 2
+	}
 }
 
 matter_tork_can_claim_eradication = {
@@ -124,6 +149,13 @@ matter_tork_can_claim_eradication = {
 	# The attempt is a civil war by design; a realm already shaking
 	# does not get to start it on purpose.
 	stability >= 0
+	# You cannot end a class whose economic base still stands: five
+	# zones declared royal inju first (decision 38).
+	custom_tooltip = {
+		text = matter_tork_eradication_inju_tt
+		has_variable = matter_tork_inju_count
+		var:matter_tork_inju_count >= 5
+	}
 }
 
 # Ghazi-line identity — used to branch the Frontier (strong/native)

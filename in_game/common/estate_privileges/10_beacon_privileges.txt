@@ -2,7 +2,6 @@
 # BEACON OF CIVILIZATION — Matter of Tork, Approach 2
 #
 # Two registers of co-optation, split by estate (decision 26):
-#
 #  AMIRS — the Turkic military elite transitions from de-facto
 #  tribal aristocracy + military caste into PURE military
 #  administration. Both privileges make the amirs HAPPIER while
@@ -36,6 +35,9 @@ iqta_commutation = {
 	potential = {
 		government_type = government_type:persianate_sultanate
 		has_variable = matter_tork_beacon_program
+		# Foreclosed by Expulsion/Eradication — the amirs being
+		# commuted are gone; the dehqan set replaces the charter.
+		NOT = { has_variable = matter_turk_dissolved }
 	}
 
 	country_modifier = {

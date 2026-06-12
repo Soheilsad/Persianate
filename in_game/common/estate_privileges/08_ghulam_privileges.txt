@@ -72,6 +72,9 @@ amirs_ghulam_administration = {
 			has_reform = government_reform:ghulam_system_reform
 		}
 		NOT = { has_estate_privilege = estate_privilege:diwan_ghulam_administration }
+		# Foreclosed by Expulsion/Eradication: the refounding purge
+		# transfers amir-held commands to the chancery, permanently.
+		NOT = { has_variable = matter_turk_dissolved }
 	}
 
 	country_modifier = {

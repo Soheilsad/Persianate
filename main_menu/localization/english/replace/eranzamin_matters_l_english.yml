@@ -15,6 +15,7 @@
 
  # --- Matter of Tork: trigger & end tooltips ----------------------
  matter_tork_not_borjigin_tt: "The ruler is not of the Borjigin line (a Borjigin has no Matter — his right to the ulus runs through the blood)"
+ matter_tork_tribal_base_tt: "The Türk hosts are a real presence in the realm (a substantial tribesmen population) — no Matter without a constituency to ask the question"
  matter_tork_not_yet_fired_tt: "The Matter of Tork has not yet been faced"
  matter_tork_not_yet_completed_tt: "The Matter of Tork has not already been settled in this realm's history"
  matter_tork_end_resolved_tt: "A disposition has run its course — the Türk's place is settled"
@@ -86,7 +87,27 @@
 
  # --- Approach 1: ghulam actions & events --------------------------
  matter_tork_purchase_ghulams: "Purchase Ghulam Levies"
- matter_tork_purchase_ghulams_desc: "Buy boys from the Caucasus markets and raise them in the fostering households: salaried, converted, loyal to the stipend and the throne. One corps tier per purchase. Needs an administrator (a ghulam administration privilege, or the ghulam reform) and the fostering households; tier II needs a ghulam barracks built, tier III needs three."
+ matter_tork_purchase_ghulams_desc: "Buy boys from the Caucasus markets and raise them in the fostering households: salaried, converted, loyal to the stipend and the throne. One corps tier per purchase. Needs an administrator (a ghulam administration privilege, or the ghulam reform), the fostering households, and the physical plant: barracks levels totaling 1 for the first tier, 3 for the second, 6 for the third — with the slave caravans institutionalized for tiers beyond the first."
+ matter_tork_barracks_ladder_tt: "Barracks levels: tier I needs 1, tier II needs 3 plus the slave caravans, tier III needs 6 plus the slave caravans"
+ matter_tork_declare_inju: "Declare Royal Inju"
+ matter_tork_declare_inju_desc: "Declare a tribal zone the crown's own demesne — the inju of the Ilkhans, turned against the hosts who invented it. The pasture is broken, the herds moved off, the registers extended to land that never knew them. Cheap in gold; the cost is political. Eradication needs five of these declared; Expulsion needs two."
+ matter_tork_institutionalize_caravans: "Institutionalize the Slave Caravans"
+ matter_tork_institutionalize_caravans_desc: "Found the Caucasus road as an institution: three caravanserais on the route, and a fortified door onto the infidel frontier — your castle facing their fort-less land. Conquer their forts or demand their destruction at the peace table. Unlocks corps tiers II and III."
+ matter_tork_caravanserai_tt: "Caravanserai levels totaling at least three across the realm (one level-3 caravanserai qualifies)"
+ matter_tork_inju_target_tt: "An owned location with a tribal pasture not yet declared inju — the declaration covers its whole province"
+ matter_tork_slave_frontier_tt: "A castle or fortress of ours adjacent to unfortified land of a non-Muslim realm — the door the caravans come through"
+ matter_tork_expulsion_inju_tt: "At least two zones declared Royal Inju — the hosts cannot be marched off land that still feeds them"
+ matter_tork_eradication_inju_tt: "At least five zones declared Royal Inju — you cannot end a class whose economic base still stands"
+
+ matter_of_tork.66.title: "An Amir's Open Protest"
+ matter_of_tork.66.desc: "The zone the crown has just written into its own registers wintered his clients' herds for three generations, and he has come to court to say so — publicly, in front of the envoys, with the deed of an old yarliq in his hand. The word 'inju' does not impress him. His grandfather took this land FROM an inju."
+ matter_of_tork.66.a: "Compensate him — grazing rights written elsewhere, and a robe."
+ matter_of_tork.66.b: "The inju stands. He may petition the registers like anyone else."
+
+ STATIC_MODIFIER_NAME_matter_royal_inju: "Royal Inju"
+ STATIC_MODIFIER_DESC_matter_royal_inju: "Crown demesne, declared and registered. The pasture is broken; the herds are gone; the assessor rides where the herdsman rode."
+ STATIC_MODIFIER_NAME_matter_slave_caravans: "The Slave Caravans"
+ STATIC_MODIFIER_DESC_matter_slave_caravans: "The Caucasus road, franchised: caravanserais staffed, the border castle garrisoned, the contracts sealed. The corps grows by purchase, not by levy."
  matter_tork_anger_explainer_tt: "The amirs and the tribes can see what the parade ground means. If either estate stays below 30% satisfaction, the plot is realized within two further years — the hosts will defect en masse rather than wait to be replaced."
 
  matter_of_tork.62.title: "The First Muster"
@@ -300,6 +321,40 @@
  matter_of_tork.85.title: "The Begs Quarrel Over the Vanguard"
  matter_of_tork.85.desc: "Word of the coming march has reached every encampment, and the begs have begun to position themselves — gifts to the court, raids to advertise prowess, a knife-fight at a wedding. Whoever leads the march will found a house. They all know it. So do we."
  matter_of_tork.85.a: "Note the ablest of them. The march will need him — and watching."
+
+ # --- Dehqan revival (the amirs estate, refounded) -------------------
+ dehqan_revival: "The Dehqan Revival"
+ dehqan_revival_desc: "The Sasanian-descended gentry — the class that kept the Shāhnāma alive and that the iqtaʿ system destroyed — rearmed from above: gentry horsemen on service tenure, mustered through the chancery's rolls. The asvārān, six centuries late. Slower and politically dearer than slave-soldiers; native."
+ dehqan_service_tenure_registers: "Service Tenure Registers"
+ dehqan_service_tenure_registers_desc: "The gentry's land is conditional — held against the registers, not against memory. The leash, and the gentry know it is a leash."
+ dehqan_shahnama_endowment: "The Shāhnāma Endowment"
+ dehqan_shahnama_endowment_desc: "Recitations in the garrison towns, illustrated copies for the tenure-holders, the asvār past as living genealogy. The new class needs a self-image, and Ferdowsī wrote it three centuries early."
+
+ # --- Approach 3: khanqah & dhikr actions ----------------------------
+ matter_tork_endow_khanqah: "Endow a Khanqah"
+ matter_tork_endow_khanqah_desc: "Build a lodge at the crown's expense — dormitories, a kitchen, a tomb to gather around. The murid bond needs four lodges standing: a devotion requires somewhere to BE."
+ matter_tork_dhikr_festivals: "Sponsor the Dhikr Festivals"
+ matter_tork_dhikr_festivals_desc: "A season of public devotion — drums, circles, the names of God in the squares. The realm tilts toward the mystical pole; the camps love it; the jurists keep a register."
+ matter_tork_lodge_network_tt: "At least four sufi lodges standing in the realm — the bond needs a network for the murids to be in"
+
+ # --- Approach 2: madrasa & shahnama actions -------------------------
+ matter_tork_endow_madrasa: "Endow the Madrasa of the Registers"
+ matter_tork_endow_madrasa_desc: "A school for the amir sons and the new assessors — revenue law, survey method, chancery Persian. For ten years the cabinet teaches instead of administering: the long work is paid for in the coin of government itself."
+ matter_tork_shahnama_recension: "Commission the Shāhnāma Recension"
+ matter_tork_shahnama_recension_desc: "A great illustrated recension — the court binding itself into the Iranian kingly past in pigment and gold, for every envoy to see. Once per realm; the book outlives the dynasty either way."
+
+ # --- Approach 4: raid & charter actions -----------------------------
+ matter_tork_great_raid: "Proclaim the Great Raid"
+ matter_tork_great_raid_desc: "A decade of license: the hosts pointed outward with the throne's blessing. They ride larger and prouder — at someone else's expense."
+ matter_tork_yurt_charters: "Grant the Yurt Charters"
+ matter_tork_yurt_charters_desc: "Pasture rights written into the registers for the zone the march will hold. The hosts see their future formalized — and the land they are promised quiets."
+
+ STATIC_MODIFIER_NAME_matter_madrasa_registers: "The Madrasa of the Registers"
+ STATIC_MODIFIER_DESC_matter_madrasa_registers: "The cabinet is teaching, not administering. The long work, paid for in the coin of government."
+ STATIC_MODIFIER_NAME_matter_great_raid: "The Great Raid"
+ STATIC_MODIFIER_DESC_matter_great_raid: "The hosts ride outward under the throne's blessing — larger, prouder, and pointed away."
+ STATIC_MODIFIER_NAME_matter_yurt_charter: "Yurt Charter"
+ STATIC_MODIFIER_DESC_matter_yurt_charter: "Pasture rights, written and sealed. The land the hosts are promised quiets."
 
  # --- Approach 2: beacon action, privileges, reform & events --------
  matter_tork_sponsor_qanat: "Sponsor Qanat Settlement"

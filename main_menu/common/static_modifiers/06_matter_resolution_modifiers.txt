@@ -345,9 +345,10 @@ matter_eradication_underway = {
 		category = country
 		decaying = no
 	}
-
-	monthly_amirs_estate_rebel_growth = 0.03
-	monthly_tribes_estate_rebel_growth = 0.05
+	tribes_estate_target_satisfaction = -0.50
+	amirs_estate_target_satisfaction = -0.50
+	monthly_amirs_estate_rebel_growth = 1.5
+	monthly_tribes_estate_rebel_growth = 1.5
 	global_levy_size_modifier = -0.25
 	stability_decay = -0.003
 	monthly_legitimacy = -0.20
@@ -387,6 +388,79 @@ matter_eradication_aftermath = {
 	global_manpower_modifier = -0.30
 	global_levy_size_modifier = -0.25
 	land_morale = -0.10
+}
+
+# ---Royal Inju (Approach 1 targeted action, permanent) ----------------------
+
+matter_royal_inju = {
+	# The zone is crown demesne now: the pasture broken, the herds
+	# moved off, the registers extended to land that never knew them.
+	game_data = {
+		category = location
+	}
+
+	local_tax_modifier = 0.05
+	local_max_control = 0.05
+}
+
+# ---The slave-caravan institution (Approach 1, permanent) -------------------
+
+matter_slave_caravans = {
+	# The Caucasus road franchised: caravanserais staffed, the border
+	# castle garrisoned, the contracts sealed. Corps tiers II-III
+	# draw on this.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	burghers_estate_target_satisfaction = 0.025
+	tax_income_efficiency = 0.025
+}
+
+# ---The Madrasa of the Registers (Approach 2, 10y program) ------------------
+
+matter_madrasa_registers = {
+	# Training the amir sons and the new assessors — by SPENDING the
+	# chancery. The cabinet is teaching, not administering (the
+	# Iranization program's signature cost, decision 41).
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	global_pop_assimilation_speed_modifier = 0.10
+	diwan_estate_target_satisfaction = 0.05
+	country_cabinet_efficiency = -0.05
+	monthly_towards_tazik = 0.05
+}
+
+# ---The Great Raid (Approach 4, 10y license) ---------------------------------
+
+matter_great_raid = {
+	# The hosts pointed outward, formally. They ride larger and
+	# prouder for a decade.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	land_morale = 0.05
+	tribes_estate_levy_size = 0.10
+	monthly_prestige = 0.025
+}
+
+# ---Yurt charter (Approach 4 targeted action, permanent) ---------------------
+
+matter_yurt_charter = {
+	# Pasture rights written into the registers — the future march's
+	# land, formalized before it is released.
+	game_data = {
+		category = location
+	}
+
+	local_unrest = -0.05
+	local_manpower = 0.005
 }
 
 # ---Qanat settlement (Approach 2 targeted action, 20y) ----------------------

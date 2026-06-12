@@ -140,7 +140,6 @@ persianate_cleanup.1 = {
 			}
 
 			### now, we also want to add the pastures.
-
 			every_owned_rural_location = {
 
 				limit = {
