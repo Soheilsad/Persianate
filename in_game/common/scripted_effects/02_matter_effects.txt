@@ -640,37 +640,44 @@ spawn_turkmen_breakaway = {
 
 	every_owned_location = {
 		limit = { is_tribal_pastoral_location = yes }
-		random = {
-			chance = 75
-				every_pop = {
-					limit = {
+
+		every_pop = {
+			limit = {
+				OR = {
+					pop_type = pop_type:tribesmen
+					AND = {
+						pop_type = pop_type:nobles
 						OR = {
-							pop_type = pop_type:tribesmen
-							AND = {
-								pop_type = pop_type:nobles
-								OR = {
-									culture = culture:turkoman_culture
-									# turkic_group covers the Azeri and the rest
-									# of the Turkic spectrum (playtest fix);
-									# mongolian_group for the Chinggisid retinues.
-									culture ?= {
-										has_culture_group = culture_group:turkic_group
-									}
-									culture ?= {
-										has_culture_group = culture_group:mongolian_group
-									}
-								}
+							culture = culture:turkoman_culture
+							# turkic_group covers the Azeri and the rest
+							# of the Turkic spectrum (playtest fix);
+							# mongolian_group for the Chinggisid retinues.
+							culture ?= {
+								has_culture_group = culture_group:turkic_group
+							}
+							culture ?= {
+								has_culture_group = culture_group:mongolian_group
 							}
 						}
 					}
-					change_pop_allegiance = scope:matter_breakaway_scope
 				}
+			}
+			change_pop_allegiance = scope:matter_breakaway_scope
 		}
+		add_to_list = rev_rebelling_locations_list	
+		
 	}
 	
 	# Initiate the civil war.
 	scope:matter_breakaway_scope = {
-		start_civil_war = {}
+		start_civil_war = {
+				save_scope_as = matter_breakaway_country
+				every_in_list = {
+					list = rev_rebelling_locations_list
+
+					change_location_owner = scope:matter_breakaway_country
+				}
+		}
 	}
 	# Track war duration in months so the Co-opt resolution can check
 	# the ≥ 36-month gate. Counter is incremented in the disaster's

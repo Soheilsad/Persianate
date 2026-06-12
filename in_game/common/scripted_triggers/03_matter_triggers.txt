@@ -240,12 +240,32 @@ is_tribal_pastoral_location = {
 	# A location whose dominant pop type is tribesmen, used to detect
 	# "consolidate_diwan applied on a pastoral province" stressor.
 	OR = {
+		location_rank = location_rank:rural_settlement
+		location_rank = location_rank:town
+	}
+	OR = {
 		any_pop = {
 			pop_type = pop_type:tribesmen
-			pop_size >= 5
+			pop_size >= 2.5
 		}
+		### need a compare system here later.
+		any_pop = {
+			pop_type = pop_type:nobles
+			pop_size > 0.2
+			estate_type = estate_type:amirs_estate
+			AND = {
+				NOT = { culture = culture:farsi_culture }
+				NOT = { culture = culture:iraqi_culture }
+				NOT = { culture = culture:adhari_culture }
+				NOT = { culture = culture:khorasani_culture }
+				NOT = { culture = culture:tajik_culture }
+			}
+		} 
+			
 	}
+		
 }
+
 
 is_urban_diwan_capable_location = {
 	# Urban location whose pops include Urban Iranic OR Urban Iraqi Arab.
