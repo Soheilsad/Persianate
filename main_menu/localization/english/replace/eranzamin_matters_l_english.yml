@@ -13,6 +13,10 @@
  matter_of_tork: "The Matter of Tork"
  matter_of_tork_desc: "Your legitimacy is settled — but it answered a question the Türk military constituency never asked. Their world ran on proximity to the golden line, and your crown has made that line irrelevant. They did not evaporate. They stand in the realm, armed, a third of the land and most of the cavalry, waiting to be told their place. Five answers exist. Twenty years to give one."
 
+ # --- Forming Persia (IRA_f) gates ---------------------------------
+ ira_f_legitimacy_tt: "The question of right is settled in your favor: the farr-i īzadī vindicated or endured, the ghazi's wager won (Sword of Islam) or held (Guardian of the Thughur), or the murid bond sworn"
+ ira_f_matter_tt: "The Place of the Sword is settled: the Matter of Tork resolved (and not by the hosts founding a rival on your flank) — or never posed, in a realm without a Türk military constituency"
+
  # --- Matter of Tork: trigger & end tooltips ----------------------
  matter_tork_not_borjigin_tt: "The ruler is not of the Borjigin line (a Borjigin has no Matter — his right to the ulus runs through the blood)"
  matter_tork_tribal_base_tt: "The Türk hosts are a real presence in the realm (a substantial tribesmen population) — no Matter without a constituency to ask the question"
@@ -508,6 +512,10 @@
  STATIC_MODIFIER_DESC_matter_tork_unrest_minor: "The hosts resist being moved on. The roads are not safe; the herds are not counted."
  STATIC_MODIFIER_NAME_matter_tork_unrest_major: "A Wavering Amir"
  STATIC_MODIFIER_DESC_matter_tork_unrest_major: "The amir here has not joined the defection — yet. His riders watch the roads and wait to see who wins."
+
+ # --- Total mobilization (on the spawned breakaway)
+ STATIC_MODIFIER_NAME_matter_total_mobilization: "Total Mobilization of the Hosts"
+ STATIC_MODIFIER_DESC_matter_total_mobilization: "Every man who can sit a horse rides. The confederation fights for its existence, and it knows it."
 
  # --- Catastrophic outcomes
  STATIC_MODIFIER_NAME_matter_turk_defection_scar: "The Bleeding Flank"

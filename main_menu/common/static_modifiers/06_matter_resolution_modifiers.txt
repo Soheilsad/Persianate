@@ -499,6 +499,22 @@ matter_tork_unrest_major = {
 	local_unrest = 0.5
 }
 
+# ---Total mobilization (on the SPAWNED breakaway, 10y) ----------------------
+
+matter_total_mobilization = {
+	# The defected hosts under arms entire — every man who can sit a
+	# horse rides. The breakaway fights like a confederation at war
+	# for its existence, because it is one.
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	tribes_estate_levy_size = 1.5
+	land_morale = 0.2
+	global_max_control = 1.0
+}
+
 # ---Catastrophic outcomes ---------------------------------------------------
 
 matter_turk_defection_scar = {

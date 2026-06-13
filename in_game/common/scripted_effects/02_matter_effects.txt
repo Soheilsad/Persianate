@@ -679,6 +679,15 @@ spawn_turkmen_breakaway = {
 				}
 		}
 	}
+	# Total mobilization of the hosts: every man who can sit a horse
+	# rides. Without this the breakaway is a pushover; with it the
+	# civil war is the real war §19.7 intended.
+	scope:matter_breakaway_country ?= {
+		add_country_modifier = { modifier = matter_total_mobilization years = 10 }
+		every_owned_location = {
+			change_control = 1.0
+		}
+	}
 	# Track war duration in months so the Co-opt resolution can check
 	# the ≥ 36-month gate. Counter is incremented in the disaster's
 	# on_monthly while the civil war is active.
