@@ -1,0 +1,66 @@
+# ============================================================
+# Ulus Governorate — the deferring administrator's vassalage.
+#
+# What an ilkhanate_governorate becomes when it declares fealty for
+# a steward (custody_declare_fealty). NOT a conquered vassal: the
+# governorate keeps strong internal autonomy (it chose this, and it
+# administers its own corner as it always did) — the overlord gets
+# its levies, its loyalty in war, and its weight in the custody
+# contest, but cannot easily annex or micromanage it. The Injuid
+# under the Ilkhan, the Kart under whoever held Khurasan.
+#
+# Design: docs/design/custody_of_the_ulus_design.md
+# ============================================================
+
+ulus_governorate = {
+	subject_pays = subject_pays_vassal
+	color = subject_vassal
+	level = 2
+	annullment_favours_required = 20
+
+	# Created only through the declare-fealty action.
+	creation_visible = { always = no }
+	visible_through_diplomacy = { always = no }
+	visible_through_treaty = { always = no }
+	subject_creation_enabled = { always = no }
+	release_country_enabled = { always = no }
+
+	# Sworn for the war the steward is fighting — they march together.
+	join_offensive_wars_always = {
+		scope:actor ?= { is_subject_of = scope:recipient }
+	}
+	join_defensive_wars_always = { always = yes }
+	will_join_independence_wars = yes
+
+	# The governorate chose this — it does not strain at the leash, but
+	# it keeps its own house. High autonomy, hard to annex.
+	has_overlords_ruler = no
+	strength_vs_overlord = -0.25
+	annexation_speed = 0.5
+	annexation_min_years_before = 15
+	annexation_min_opinion = 175
+	overlord_can_cancel = yes
+
+	diplomatic_capacity_cost_scale = 0.75
+	has_limited_diplomacy = yes
+
+	# The daimyo pattern: a governorate may make war on anyone except
+	# its own custodian — fellow governorates above all (the Ilkhanid
+	# successor melee), and outsiders too. The one bond it keeps is
+	# the khan's name in the khutbah; everything else it settles by
+	# the sword. (root = subject type; scope:overlord / scope:subject
+	# the relation; scope:attacker / scope:defender the war.)
+	allow_declaring_wars = { always = yes }
+	can_attack = {
+		NOT = { scope:defender = scope:overlord }
+	}
+
+	can_overlord_build_roads = no
+	can_overlord_build_buildings = no
+	can_overlord_build_rgos = no
+
+	can_change_rank = yes
+	can_change_heir_selection = yes
+
+	great_power_score_transfer = 0.25
+}

@@ -266,4 +266,18 @@ character_db = {
 		tag = MZF
 		child_trait = child_prodigy ## the mf memorized the quran at 9 fully, acted as literary critique for hafiz and savoj. 
 	}
+	grg_togha_temur_pw = {
+		first_name = { name = name_togha.name_timur }
+		culture = mongolian_culture
+		religion = sunni
+		adm = 35 dip = 30 mil = 50
+		birth_date = 1300.1.1 #Unknown
+		birth = gorgan
+		dynasty = borjigin_dynasty
+		father = suri_borjigin
+		spouse = "random"
+		tag = GRG
+		ruler_trait = well_connected
+		ruler_trait = naive
+	}
 }

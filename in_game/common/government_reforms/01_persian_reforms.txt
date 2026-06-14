@@ -71,6 +71,52 @@ persianate_bureaucracy_reform = {
 
 # In the name of the khan (the töre path). Chobanid–Jalayirid–
 # Timurid practice: a non-Chinggisid rules as regent for a
+# =========================================================
+# AGE 1 — THE DEFERRAL: the Ilkhanate Governorate
+# The third tier below the legitimacy-contenders: the realm
+# that does NOT claim the ulus, but administers a corner of it
+# and waits to see who wins — the Injuid fiscal governors of
+# Fars, the Kart maliks of Herat, the Sarbadar towns before
+# their radicalization. A governorate can DECLARE FEALTY for a
+# steward (custody_declare_fealty) and become his ulus_governorate
+# vassal — the peaceful submission the Chinggisid contest absorbs.
+# Design: docs/design/custody_of_the_ulus_design.md
+# =========================================================
+ilkhanate_governorate = {
+	age = age_1_traditions
+	government = persianate_sultanate
+
+	potential = {
+		is_member_of_international_organization = international_organization:eranzamin
+		NOT = { has_reform = government_reform:chinggisid_regency }
+		NOT = { has_reform = government_reform:farr_i_izadi }
+		NOT = { has_reform = government_reform:ghazi_sultanate }
+		NOT = { has_reform = government_reform:amir_sultanate }
+		NOT = { has_reform = government_reform:dar_al_jihad }
+		# You cannot defer and contend at once.
+		NOT = { has_variable = eranzamin_contender }
+	}
+
+	country_modifier = {
+		# The administrator who keeps his head down: defensible,
+		# solvent, and unthreatening. A recognized governor's lawful
+		# place — modest legitimacy, no pump (you make no claim).
+		monthly_legitimacy = 0.1
+		stability_cost = -0.10
+		fort_defence = 0.20
+		land_morale = 0.05
+		tax_income_efficiency = 0.10
+		# Nobody marches on the humble governor.
+		antagonism_received_modifier = -0.20
+		# The ceiling: no ambition, no reach. A governor is not a king.
+		monthly_prestige = -0.1
+		province_integration_speed = -0.20
+		diplomatic_reputation = -1
+	}
+
+	years = 0
+}
+
 # Chinggisid puppet. The fiction stabilizes — but you do not rule
 # in your own name, and the chancery feels it as a ceiling.
 chinggisid_regency = {
@@ -84,6 +130,7 @@ chinggisid_regency = {
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		NOT = { has_reform = government_reform:timurid_synthesis }
 		NOT = { has_reform = government_reform:iranian_kingship }
+		NOT = { has_reform = government_reform:ilkhanate_governorate }
 
 	}
 	locked = {
@@ -130,6 +177,7 @@ farr_i_izadi = {
 		NOT = { has_reform = government_reform:amir_sultanate }
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		NOT = { has_reform = government_reform:farr_i_izadi }
+		NOT = { has_reform = government_reform:ilkhanate_governorate }
 
 		# Re-declaration lock: a dynasty that has tried farr and failed
 		# cannot re-declare. The attempted_farr_and_failed modifier is
@@ -195,6 +243,7 @@ ghazi_sultanate = {
 		NOT = { has_reform = government_reform:amir_sultanate }
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		NOT = { has_reform = government_reform:iranian_kingship }
+		NOT = { has_reform = government_reform:ilkhanate_governorate }
 	}
 
 	country_modifier = {
@@ -263,6 +312,7 @@ amir_sultanate = {
 		NOT = { has_reform = government_reform:chinggisid_regency }
 		NOT = { has_reform = government_reform:farr_i_izadi }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
+		NOT = { has_reform = government_reform:ilkhanate_governorate }
 	}
 
 	country_modifier = {
@@ -867,6 +917,43 @@ khassa_crown_demesne = {
 	}
 
 	years = 5
+}
+
+
+# =========================================================
+# CUSTODY OF THE ULUS — ENDURED OUTCOME
+# The Gurkani Regime: the Timurid model — the fiction
+# institutionalized permanently. Rule as gurkan (son-in-law)
+# with a tame khan: no more pump, no more step-down, no expiry.
+# Worse than the fresh fiction; stable forever. Granted only by
+# the Endured resolution (custody.50.a) — exits the puppet-death
+# cycle because chinggisid_regency is removed in the same stroke.
+# Design: docs/design/custody_of_the_ulus_design.md §4.
+# =========================================================
+
+gurkani_regime = {
+	age = age_1_traditions
+	government = persianate_sultanate
+
+	potential = {
+		has_variable = custody_endured
+		NOT = { has_reform = government_reform:chinggisid_regency }
+	}
+
+	country_modifier = {
+		# The capped, stable version of the borrowed mandate.
+		monthly_legitimacy = 0.2
+		tribes_estate_levy_size = 0.2
+		global_tribesmen_pop_growth = 0.1
+		global_estate_target_satisfaction = 0.05
+		# The permanent ceiling: a gurkan is still not a king.
+		monthly_prestige = -0.1
+		global_max_control = -0.02
+		country_cabinet_efficiency = ez_reform_cabinet_malus
+		monthly_towards_turk = 0.05
+	}
+
+	years = 2
 }
 
 

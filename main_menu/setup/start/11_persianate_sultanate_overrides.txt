@@ -562,9 +562,9 @@ countries = {
 				type = steppe_horde
 				heir_selection = tribal_oldest_male
 
-				ruler_term = { character = grg_togha_temur start_date = 1335.12.1 }
+				ruler_term = { character = grg_togha_temur_pw start_date = 1335.12.1 }
 
-				ruler = grg_togha_temur
+				ruler = grg_togha_temur_pw
 
 				reforms = {
 					legacy_of_genghis

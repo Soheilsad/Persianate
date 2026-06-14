@@ -47,3 +47,15 @@ matter_shahnama_recension = {
 matter_yurt_charters = {
 	scaled_gold = 12
 }
+
+# ---Custody of the Ulus ------------------------------------------------
+
+# Securing the khan's household (one-shot succession insurance).
+custody_secure_household = {
+	scaled_gold = 12
+}
+
+# A coinage cycle in the khan's name (repeatable w/ 5y cooldown).
+custody_sikka_everywhere = {
+	scaled_gold = 6
+}

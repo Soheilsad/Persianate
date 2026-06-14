@@ -13,6 +13,88 @@
  matter_of_tork: "The Matter of Tork"
  matter_of_tork_desc: "Your legitimacy is settled — but it answered a question the Türk military constituency never asked. Their world ran on proximity to the golden line, and your crown has made that line irrelevant. They did not evaporate. They stand in the realm, armed, a third of the land and most of the cavalry, waiting to be told their place. Five answers exist. Twenty years to give one."
 
+ # ============================================================
+ # CUSTODY OF THE ULUS — the regency's fiction under audit
+ # ============================================================
+ custody_of_the_ulus: "The Custody of the Ulus"
+ custody_of_the_ulus_desc: "Your legitimacy is borrowed, cheap, and high — the khan's name on your coins, the khan's seal on your decrees, the khan himself in your palace. What is under audit is not you but the FICTION: rival courts hold rival khans and call you usurper, and khans die, each replacement less credible than the last. One ulus, one khan, one steward. Make it true, ride it to the end, or watch the mask come off in public."
+
+ custody_not_yet_fired_tt: "The Custody has not yet come under audit"
+ custody_not_yet_completed_tt: "The Custody has not already been settled in this realm's history"
+ custody_end_quiet_crown_tt: "The Quiet Crown — the fiction dropped on your own terms, from Sole Custody"
+ custody_end_yarliq_tt: "The Restored Yarliq — the khanate made real; the khan is your house now"
+ custody_end_endured_tt: "Endured — three hundred months and two successions survived with the fiction intact"
+ custody_end_expired_tt: "The Fiction Expired — the mask came off in public, and what stood behind it was an army"
+ custody_kuriltai_gate_tt: "Sole Custody held for 24 months — no rival regency and no Borjigin sovereign standing in Erānzamīn"
+
+ CUSTODY_RIVALS_TRACK: "Rival custodies standing"
+ CUSTODY_SOLE_TRACK: "Sole Custody — months held"
+ CUSTODY_CHARADE_TRACK: "The charade — successions survived"
+
+ demand_ulus_fealty: "Demand Fealty"
+ demand_ulus_fealty_desc: "Call upon a governorate to read our khan's name in its khutbah and enter our house as an ulus governorate. We send khalʿat and gifts to sweeten the oath — and to ask at all is to admit we do not yet rule alone."
+ custody_demand_fealty: "Demand Fealty"
+ custody_demand_fealty_desc: "Send robes and gifts to a non-subject Ilkhanate governorate and call it to swear. If it accepts, it becomes our ulus governorate — at the cost of gold, and of the legitimacy that asking betrays; the prestige of a steward whose name draws oaths is the recompense."
+ custody_drop_khan: "Drop the Khan from the Khutbah"
+ custody_drop_khan_desc: "Cease reading the custodian's khan in our Friday khutbah. The oath lapses, the subjecthood ends, and we stand alone again — for better or worse, our corner is our own."
+ custody_press_claim: "Press the Custody"
+ custody_press_claim_desc: "Name the pretenders and choose one to break. The roll of rival stewards — every court in Erānzamīn that holds a khan, puppet or Borjigin — is laid before you; pressing the claim against one grants the Erānzamīn succession casus belli, and the war is yours to declare."
+ custody_proclaim_gate_tt: "Either a rival custody already put down, or no more than three left standing — a denunciation needs a winning hand"
+ custody_sikka_gate_tt: "Either two rival custodies already put down, or no more than two left standing — the coinage cannot carry a contested name"
+ custody_proclaim_true: "Proclaim the True Custody"
+ custody_proclaim_true_desc: "Denounce the rival khans from minbar and chancery alike: theirs are captives dressed as sovereigns; ours is the khan. Five years of louder legitimacy — and the rivals hear every word."
+ custody_secure_household: "Secure the Khan's Household"
+ custody_secure_household_desc: "Tutors, guards, physicians, and an heir already identified. Khans die — the fiction does not have to die with them. The Endure path's insurance, bought once."
+ custody_sikka_everywhere: "The Khan's Name on Every Coin"
+ custody_sikka_everywhere_desc: "A coinage cycle in the khan's name through every mint you hold. The fiction maintained in silver, where everyone can read it."
+ custody_summon_kuriltai: "Summon the Kuriltai of Confirmation"
+ custody_summon_kuriltai_desc: "With no rival custody standing for two years, the assembly can be called — and what it confirms is YOUR choice: drop the fiction on your own terms (the Quiet Crown), or marry into the line and make the khanate real (the Restored Yarliq)."
+
+ custody.1.title: "The Custody of the Ulus"
+ custody.1.desc: "The khan signs what is put before him, and the realm runs in his name and your hand. But riders bring two kinds of news: in other courts other khans sign other decrees — each steward calling his the true custody — and in the khan's apartments the physicians whisper about his cough. The mandate is indivisible, and it is mortal. Both problems are now yours."
+ custody.1.a: "One ulus. One khan. One steward — and it will be us."
+
+ custody.40.title: "The Kuriltai of Confirmation"
+ custody.40.desc: "No rival khan signs anything anywhere in Erānzamīn. The begs and the bitikchis assemble on the plain as their grandfathers did, and what they have come to confirm is whatever you tell them. The custody war is won, and victory has bought exactly one thing: the right to decide what the regency becomes."
+ custody.40.a: "The Quiet Crown — the khan's name comes off the coins. Ours goes on."
+ custody.40.b: "The Restored Yarliq — marry into the line. The khanate is real, and it is ours."
+
+ custody.50.title: "The Long Regency"
+ custody.50.desc: "Twenty-five years. Two khans buried with honor, a third signing what is put before him. No court in Erānzamīn remembers a time before your custody, and the fiction has acquired the dignity of furniture. It can be institutionalized — the gurkan's way, a son-in-law's throne, stable and lesser — or dropped at a survivor's price, or ridden onward toward the place where all fictions end."
+ custody.50.a: "Institutionalize it. The Gurkani throne — lesser, and ours forever."
+ custody.50.b: "Drop it. A survivor's price is still a price worth paying."
+ custody.50.c: "Ride on. The charade has carried us this far."
+
+ custody.90.title: "The Fiction Expires"
+ custody.90.desc: "There is no one left to enthrone. The line of credible khans has run out — a child, a girl, a cousin of a cousin, each tried, each spent — and the realm watched the mask come off in public. What stands behind it is what always stood behind it: an army holding a realm, and the army's assent as the only writ that runs."
+ custody.90.a: "Then rule by the sword's assent, in our own name."
+
+ STATIC_MODIFIER_NAME_custody_proclaimed_mod: "The True Custody Proclaimed"
+ STATIC_MODIFIER_DESC_custody_proclaimed_mod: "The rival khans denounced from minbar and chancery: captives dressed as sovereigns. Ours is the khan."
+ STATIC_MODIFIER_NAME_custody_household_mod: "The Khan's Household Secured"
+ STATIC_MODIFIER_DESC_custody_household_mod: "Tutors, guards, physicians, and an heir identified. Khans die; the fiction need not die with them."
+ STATIC_MODIFIER_NAME_custody_sikka_mod: "The Khan's Name in Silver"
+ STATIC_MODIFIER_DESC_custody_sikka_mod: "A coinage cycle in the khan's name through every mint — the fiction maintained where everyone can read it."
+ STATIC_MODIFIER_NAME_custody_restored_yarliq_mod: "The Restored Yarliq"
+ STATIC_MODIFIER_DESC_custody_restored_yarliq_mod: "The throne bound to the Borjigin line by marriage and enthronement. The fiction consummated into fact — the khan is your house now."
+ STATIC_MODIFIER_NAME_custody_expired_scar: "The Mask Came Off"
+ STATIC_MODIFIER_DESC_custody_expired_scar: "Every chancery from Cairo to Delhi watched the fiction die in public. What stood behind it was an army holding a realm."
+ STATIC_MODIFIER_NAME_custody_contested: "The Duel of Khans"
+ STATIC_MODIFIER_DESC_custody_contested: "Rival courts hold rival khans, and each calls the other's a captive in robes. Every rival custody standing makes the mandate more argument and less fact — the drag deepens with each one."
+
+ gurkani_regime: "The Gurkani Regime"
+ gurkani_regime_desc: "The fiction institutionalized: rule as gūrkān — son-in-law of the line — with a tame khan whose name adorns and obliges nothing. No more successions to survive, no more rivals to outbid. Lesser than a crown, and stable forever: the Timurid bargain."
+
+ # --- The deferral: Ilkhanate Governorate ---------------------------
+ ilkhanate_governorate: "Ilkhanate Governorate"
+ ilkhanate_governorate_desc: "You make no claim to the ulus. You administer your corner of it — defensible, solvent, and unthreatening — as the Injuid did at Fars and the Karts did at Herat, and you wait to see who wins. A governor may declare fealty for a steward and become his ulus governorate, the peaceful submission the Chinggisid contest absorbs. No legitimacy pump, no reach: a governor is not a king."
+
+ custody_declare_fealty: "Declare Fealty"
+ custody_declare_fealty_desc: "Choose a steward from the roll of those who hold a khan — regency, Borjigin, or contender in earnest — and submit as his ulus governorate. You keep your house and your corner; he gets your levies, your loyalty in his wars, and your weight behind his claim."
+
+ ulus_governorate: "Ulus Governorate"
+ ulus_governorate_desc: "A governorate that has declared fealty for a steward: autonomous in its own corner, sworn to his wars, and counted on his side of the custody. Not conquered — submitted."
+
  # --- Forming Persia (IRA_f) gates ---------------------------------
  ira_f_legitimacy_tt: "The question of right is settled in your favor: the farr-i īzadī vindicated or endured, the ghazi's wager won (Sword of Islam) or held (Guardian of the Thughur), or the murid bond sworn"
  ira_f_matter_tt: "The Place of the Sword is settled: the Matter of Tork resolved (and not by the hosts founding a rival on your flank) — or never posed, in a realm without a Türk military constituency"

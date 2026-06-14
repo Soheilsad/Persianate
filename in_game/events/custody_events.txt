@@ -1,0 +1,128 @@
+namespace = custody
+
+# ============================================================
+# The Custody of the Ulus — events
+#   .1   announce
+#   .40  the Kuriltai of Confirmation (Sole Custody fork)
+#   .50  Endured (the weaker, dated fork)
+#   .90  the Fiction Expires
+# Design: docs/design/custody_of_the_ulus_design.md
+# ============================================================
+
+custody.1 = {
+	type = country_event
+	category = disaster_event
+	title = custody.1.title
+	desc = custody.1.desc
+	outcome = neutral
+
+	trigger = {
+		has_variable = custody_fired
+	}
+
+	option = {
+		name = custody.1.a
+	}
+}
+
+# ---THE KURILTAI OF CONFIRMATION (Sole Custody fork) --------------------
+# Fired by the Summon the Kuriltai action: zero rivals, held 24
+# months. Winning the custody war gets you nothing durable — it gets
+# you the RIGHT TO CHOOSE what the regency becomes.
+
+custody.40 = {
+	type = country_event
+	category = disaster_event
+	title = custody.40.title
+	desc = custody.40.desc
+	outcome = positive
+
+	# The Quiet Crown — the Shaykh Uvays move, 1356: stop minting
+	# the khan's name, take the sultan title. The realm is already
+	# yours in fact, so the claim lands softly. Behind it, the
+	# legitimacy market opens: farr, ghazi, the amirs' assent — and
+	# the Matter of Tork can now fire; Persia can now be formed.
+	option = {
+		name = custody.40.a
+		remove_reform = government_reform:chinggisid_regency
+		add_legitimacy = -25
+		set_variable = custody_quiet_crown
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.10 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.10 }
+	}
+
+	# The Restored Yarliq — the khanate made real: the throne bound
+	# to the Borjigin line by marriage and enthronement, the fiction
+	# consummated into fact. The Mongol endpoint; deliberately NOT
+	# Persia. The puppet-death cycle ends — the khan is your house now.
+	option = {
+		name = custody.40.b
+		set_variable = custody_restored_yarliq
+		add_country_modifier = { modifier = custody_restored_yarliq_mod months = -1 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.10 }
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = 0.10 }
+	}
+}
+
+# ---ENDURED (300 months, two successions survived) ----------------------
+# The weaker, dated fork: survival earns options — worse ones than
+# victory would have.
+
+custody.50 = {
+	type = country_event
+	category = disaster_event
+	title = custody.50.title
+	desc = custody.50.desc
+	outcome = neutral
+
+	# The Gurkani Regime — the Timurid model: the fiction
+	# institutionalized permanently. Rule as son-in-law with a tame
+	# khan. Worse than the fresh fiction; stable forever. Exits the
+	# puppet-death cycle (the reform is gone).
+	option = {
+		name = custody.50.a
+		remove_reform = government_reform:chinggisid_regency
+		add_reform = government_reform:gurkani_regime
+		add_legitimacy = -10
+		set_variable = custody_endured
+	}
+
+	# The late Quiet Crown — the open market, at a survivor's price.
+	option = {
+		name = custody.50.b
+		remove_reform = government_reform:chinggisid_regency
+		add_legitimacy = -50
+		set_variable = custody_endured
+		set_variable = custody_quiet_crown
+	}
+
+	# Ride on. The charade continues toward rock bottom; the
+	# disaster closes its books, but the puppet-death cycle does not.
+	option = {
+		name = custody.50.c
+		set_variable = custody_endured
+	}
+}
+
+# ---THE FICTION EXPIRES --------------------------------------------------
+# The reform is gone with no resolution flag to explain it: the
+# -100 exit was forced (charade_counter at rock bottom) or taken in
+# panic. What remains is the army's standing assent — the honest
+# version of what the regency always was.
+
+custody.90 = {
+	type = country_event
+	category = disaster_event
+	title = custody.90.title
+	desc = custody.90.desc
+	outcome = negative
+
+	immediate = {
+		add_reform = government_reform:amir_sultanate
+		add_country_modifier = { modifier = custody_expired_scar months = -1 }
+	}
+
+	option = {
+		name = custody.90.a
+	}
+}

@@ -230,6 +230,32 @@ ilkhanate_flavor.1 = {
 		}
 	}
 
+	# ----- F: Ilkhanate Governorate — defer the question -----
+	# The third tier below the legitimacy-contenders: claim nothing,
+	# administer your corner, wait to see who wins. The Injuid/Kart
+	# road. A governorate can later declare fealty for a steward
+	# (custody_declare_fealty) and become his ulus_governorate.
+	option = {
+		name = ilkhanate_flavor.1.f
+		trigger = {
+			NOT = { has_reform = government_reform:chinggisid_regency }
+		}
+		ai_chance = {
+			factor = 15
+			# The weak defer. A realm that cannot field an army has no
+			# business claiming the ulus — it keeps its corner instead.
+			modifier = {
+				factor = 10
+				country_total_army_levy_size < 5
+			}
+		}
+		add_reform = government_reform:ilkhanate_governorate
+		# The prudent administrator's choice: the diwan approves the
+		# caution, and no rival is provoked — you have claimed nothing.
+		add_legitimacy = 5
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+	}
+
 }
 
 # -----------------------------------------------------------------------------------------
@@ -281,6 +307,17 @@ ilkhanate_flavor.2 = {
 	# ----- B: Enthrone the son -----
 	option = {
 		name = ilkhanate_flavor.2.b
+
+		# Custody of the Ulus: at rock bottom (four successions) no
+		# further enthronement is credible — only the -100 exit
+		# remains, and the custody disaster reads the reform's loss
+		# as the Fiction Expires.
+		trigger = {
+			OR = {
+				NOT = { has_variable = charade_counter }
+				var:charade_counter < 4
+			}
+		}
 
 		ai_chance = {
 			factor = 70
