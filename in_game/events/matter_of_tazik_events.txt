@@ -70,7 +70,7 @@ matter_of_tazik.50 = {
 	# Have him quietly killed — suppression line
 	option = {
 		name = matter_of_tazik.50.a
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = -10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.10 }
 		change_variable = { name = matter_progress add = 5 }
 		set_variable = matter_chose_suppression
 	}
@@ -78,16 +78,16 @@ matter_of_tazik.50 = {
 	# Invite him to court — compromise
 	option = {
 		name = matter_of_tazik.50.b
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = 5 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
 		change_variable = { name = matter_progress add = -5 }
 	}
 
 	# Endow a madrasa — co-opt
 	option = {
 		name = matter_of_tazik.50.c
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = 15 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.15 }
 		change_variable = { name = matter_progress add = -15 }
-		add_treasury = -100
+		add_gold = -100
 		set_variable = co_opt_track
 	}
 }

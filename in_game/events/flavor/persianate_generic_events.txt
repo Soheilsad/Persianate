@@ -127,7 +127,7 @@ persianate_generic.3 = {
 	trigger = {
 		country_has_estate = estate_type:diwan_estate
 		country_has_estate = estate_type:amirs_estate
-		religion ?= { group = religion_group:muslim }
+
 	}
 
 	# OPTION A: Back the vizier

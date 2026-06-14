@@ -16,7 +16,7 @@
  # ============================================================
  # CUSTODY OF THE ULUS — the regency's fiction under audit
  # ============================================================
- custody_of_the_ulus: "The Custody of the Ulus"
+ custody_of_the_ulus: "The Borrowed Mandate"
  custody_of_the_ulus_desc: "Your legitimacy is borrowed, cheap, and high — the khan's name on your coins, the khan's seal on your decrees, the khan himself in your palace. What is under audit is not you but the FICTION: rival courts hold rival khans and call you usurper, and khans die, each replacement less credible than the last. One ulus, one khan, one steward. Make it true, ride it to the end, or watch the mask come off in public."
 
  custody_not_yet_fired_tt: "The Custody has not yet come under audit"
@@ -31,8 +31,19 @@
  CUSTODY_SOLE_TRACK: "Sole Custody — months held"
  CUSTODY_CHARADE_TRACK: "The charade — successions survived"
 
- demand_ulus_fealty: "Demand Fealty"
- demand_ulus_fealty_desc: "Call upon a governorate to read our khan's name in its khutbah and enter our house as an ulus governorate. We send khalʿat and gifts to sweeten the oath — and to ask at all is to admit we do not yet rule alone."
+ custody.31.title: "A Demand of Fealty"
+ custody.31.desc: "[scope:custody_demanding_lord.GetName] sends riders to our court — and behind them, mules laden with robes of honor, silver, and a stipend pledged in writing. The message beneath the gifts is plain: read their khan's name in our khutbah, enter their house as a governor of the ulus, and these favors are the first of many. Refuse, and we keep our corner — and our quarrel."
+ custody.31.a: "We accept. Their khan is our khan now; their gifts, our due."
+ custody.31.b: "We refuse. Abu Saʿīd made us governors — we need no borrowed khan."
+
+ custody.32.title: "A Governorate Sworn"
+ custody.32.desc: "[scope:custody_sworn_gov.GetName] has read our khan's name in its khutbah and entered our house as a governorate of the ulus. The khalʿat is sent, the registers amended — and one more banner stands beneath ours, where before it stood alone."
+ custody.32.a: "Let the registers show it. The ulus gathers."
+
+ custody.33.title: "Fealty Refused"
+ custody.33.desc: "[scope:custody_sworn_gov.GetName] has sent our robes back unworn and our silver uncounted. They keep their corner and their own name — and the slight is noted. A steward who must ask, and is refused, is a steward not yet sole."
+ custody.33.a: "Noted. There are other roads to a governorate's oath."
+
  custody_demand_fealty: "Demand Fealty"
  custody_demand_fealty_desc: "Send robes and gifts to a non-subject Ilkhanate governorate and call it to swear. If it accepts, it becomes our ulus governorate — at the cost of gold, and of the legitimacy that asking betrays; the prestige of a steward whose name draws oaths is the recompense."
  custody_drop_khan: "Drop the Khan from the Khutbah"
@@ -50,9 +61,16 @@
  custody_summon_kuriltai: "Summon the Kuriltai of Confirmation"
  custody_summon_kuriltai_desc: "With no rival custody standing for two years, the assembly can be called — and what it confirms is YOUR choice: drop the fiction on your own terms (the Quiet Crown), or marry into the line and make the khanate real (the Restored Yarliq)."
 
- custody.1.title: "The Custody of the Ulus"
- custody.1.desc: "The khan signs what is put before him, and the realm runs in his name and your hand. But riders bring two kinds of news: in other courts other khans sign other decrees — each steward calling his the true custody — and in the khan's apartments the physicians whisper about his cough. The mandate is indivisible, and it is mortal. Both problems are now yours."
+ custody.1.title: "The Borrowed Mandate"
+ custody.1.desc: "The khan signs what is put before him, and the realm runs in his name and your hand. But the mandate you hold is borrowed, and it is contested. Two truths now govern our fate:\n\nThe mandate is INDIVISIBLE. In other courts, other stewards seat other khans and call ours the puppet. While even one rival custody stands, our legitimacy bleeds — every khan but ours an argument that ours is false. We must break them: Press the Custody to take the field against a rival, or Demand Fealty of the lesser governorates who have sworn to no one, and bring them under our khan. When no rival is left and the realm has been ours alone for two years, we may Summon the Kuriltai — and there choose what we become: drop the fiction and take a crown of our own (and the door to Iran opens behind it), or wed the golden line and make the khanate real.\n\nThe mandate is MORTAL. Khans die, and each one we enthrone after is a thinner reproduction of the last — a prince, then a child, then a cousin of a cousin. Secure the Khan's Household to steady the succession; keep the Khan's Name on Every Coin to hold the fiction firm. Endure long enough across enough deaths and the regency can be made permanent as a gūrkān's throne. Run out of credible khans, and the mask comes off in public — and we are left only what we always were beneath it: an army, holding a realm.\n\nThe panel tracks all three: the rivals standing, the months we have ruled alone, the deaths the fiction has survived."
  custody.1.a: "One ulus. One khan. One steward — and it will be us."
+
+ custody.30.title: "In Whose Name Do We Govern?"
+ custody.30.desc: "We hold our corner well enough — but a governor governs in someone's name, and the registers grow uneasy with a blank where the khan's should be. Riders bring word of who is strong this season: the great stewards counting their musters, each minting his own khan, each willing to take our oath. We may read one of their names in our khutbah and shelter under his banner — or wait, as we have waited, and answer to no one yet."
+ custody.30.a: "We swear to [scope:steward_1.GetName] — the strongest banner standing."
+ custody.30.b: "We swear to [scope:steward_2.GetName]."
+ custody.30.c: "We swear to [scope:steward_3.GetName]."
+ custody.30.d: "Not yet. We were made governors by Abu Saʿīd, you know — not by these horse-thieves with their borrowed khans."
 
  custody.40.title: "The Kuriltai of Confirmation"
  custody.40.desc: "No rival khan signs anything anywhere in Erānzamīn. The begs and the bitikchis assemble on the plain as their grandfathers did, and what they have come to confirm is whatever you tell them. The custody war is won, and victory has bought exactly one thing: the right to decide what the regency becomes."
@@ -92,8 +110,8 @@
  custody_declare_fealty: "Declare Fealty"
  custody_declare_fealty_desc: "Choose a steward from the roll of those who hold a khan — regency, Borjigin, or contender in earnest — and submit as his ulus governorate. You keep your house and your corner; he gets your levies, your loyalty in his wars, and your weight behind his claim."
 
- ulus_governorate: "Ulus Governorate"
- ulus_governorate_desc: "A governorate that has declared fealty for a steward: autonomous in its own corner, sworn to his wars, and counted on his side of the custody. Not conquered — submitted."
+ ulus_governorate: "Ilkhanate Governorate"
+ ulus_governorate_desc: "A governorate that has decided to pretend everything is fine in the state, swearing fealty to a Khan and obeying him or his loyal regent."
 
  # --- Forming Persia (IRA_f) gates ---------------------------------
  ira_f_legitimacy_tt: "The question of right is settled in your favor: the farr-i īzadī vindicated or endured, the ghazi's wager won (Sword of Islam) or held (Guardian of the Thughur), or the murid bond sworn"

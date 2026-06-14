@@ -431,12 +431,11 @@ countries = {
 
 				include = "expl_middle_east"
 				include = "expl_mongols"
-				include = "muslim_monarchy_no_coast"
+				include = "persianate_sultanate_tork_dominant"
 
 
 				government = {
-					type = monarchy
-					heir_selection = cognatic_primogeniture
+					type = persianate_sultanate
 					ruler_term = {	 character = sut_sutay start_date = 1312.1.1 end_date = 1332.1.1}
 					ruler_term = {	 character = sut_hajji_taghay start_date = 1332.1.1	}
 					ruler = sut_hajji_taghay
@@ -576,7 +575,7 @@ countries = {
 ### NON overriden begins here.
 
 UGH = { #Ughanids
-		type = army
+		type = location
 		own_control_core = {
 			qatruyeh hajjiabad meshkan
 		}
@@ -584,10 +583,9 @@ UGH = { #Ughanids
 		include = "expl_middle_east"
 		include = "expl_mongols"
 		starting_technology_level = 3
-		include = "eurasian_horde_no_muslim"
+		include = "persianate_sultanate_tork_dominant"
 		government = {
-			type = steppe_horde
-			heir_selection = tribal_oldest_male
+			type = persianate_sultanate
 			ruler = random
 
 
@@ -611,10 +609,10 @@ KHU = { #Khunj https://en.wikipedia.org/wiki/Khonj
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = random
 
 		}
@@ -642,10 +640,10 @@ MIH = { #Mihrabanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 
 			ruler_term = { character = mih_qutb_al_din_muhammad start_date = 1330.12.1 }
 
@@ -672,10 +670,10 @@ MIH = { #Mihrabanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 0
-		include = "muslim_tribe_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tork_dominant"
 		government = {
-			type = tribe
-			heir_selection = tribal_oldest_male
+			type = persianate_sultanate
 			ruler = random
 
 		}
@@ -691,31 +689,8 @@ MIH = { #Mihrabanids
 		dynasty = nahrui_dynasty
 	}
 
-	SHB = { #Shabankara
-		own_control_core = {
-			ij_iran jahrom fasa juyom meymand
-			hajjiabad_zarrindasht
-			neyriz
-		}
-
-		include = "expl_middle_east"
-		starting_technology_level = 3
-		include = "muslim_tribe_no_coast"
-		government = {
-			type = tribe
-			heir_selection = tribal_oldest_male
-
-			ruler_term = { character = shb_ardashir start_date = 1310.1.1 }
-
-			ruler = shb_ardashir
-		}
-
-		religious_school = maturidi_school #Said to be predominant in Persia before the Safavids
-		capital = ij_iran
-		dynasty = shabankarai_dynasty
-	}
 JUR = { #Jurmanids
-		type = army
+		type = location
 		own_control_core = {
 			darab jannat_shahr rostaq tarom
 		}
@@ -723,10 +698,9 @@ JUR = { #Jurmanids
 		include = "expl_middle_east"
 		include = "expl_mongols"
 		starting_technology_level = 3
-		include = "eurasian_horde_no_muslim"
+		include = "persianate_sultanate_tork_dominant"
 		government = {
-			type = steppe_horde
-			heir_selection = tribal_oldest_male
+			type = persianate_sultanate
 			ruler = random
 
 
@@ -742,39 +716,6 @@ JUR = { #Jurmanids
 		dynasty = jurmanid_dynasty
 	}
 
-	HZP = { #Hazaraspids (Great Lorestan)
-	#Ruler Title: Atabegate (Atabeg)
-		own_control_core = {
-			izeh andika dehdez lordegan naghan
-			somaleh bagh_malek
-			dezful  andimeshk masjed_soleyman shush shushtar
-			behbahan  dehdasht dishmok dogonbadan hendijan suq
-			ramhormoz
-			fereydunshahr
-			golpayegan khwansar
-		}
-
-		include = "expl_middle_east"
-		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-			ruler = hzp_rukn_al_din_yusuf_shah
-			ruler_term = { character = hzp_rukn_al_din_yusuf_shah start_date = 1330.1.1 regnal_number = 2 }
-			regnal_numbers = {
-				name_joseph.name_shah = 2
-			}
-
-		}
-
-		tolerated_cultures = {
-			farsi_culture
-		}
-
-		religious_school = maturidi_school #Said to be predominant in Persia before the Safavids
-		capital = izeh
-	}
 
 	ORM = { #Ormus
 		own_control_core = {
@@ -793,10 +734,10 @@ JUR = { #Jurmanids
 		}
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 
 			ruler_term = { character = orm_izz_al_din_kurdanshah start_date = 1311.1.1 end_date = 1317.1.1 regnal_number = 1 }
 			ruler_term = { character = orm_kut_al_din_tahamtan start_date = 1317.1.1 regnal_number = 2 }
@@ -825,10 +766,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 0
-		include = "muslim_tribe"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tork_dominant"
 		government = {
-			type = tribe
-			heir_selection = tribal_oldest_male
+			type = persianate_sultanate
 			ruler = random
 
 		}
@@ -849,10 +790,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 0
-		include = "muslim_tribe"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tork_dominant"
 		government = {
-			type = tribe
-			heir_selection = tribal_oldest_male
+			type = persianate_sultanate
 			ruler = random
 
 		}
@@ -872,10 +813,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {
@@ -901,10 +842,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {
@@ -930,10 +871,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {
@@ -959,10 +900,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {
@@ -988,10 +929,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {
@@ -1015,10 +956,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = mzn_hasan
 			ruler_term = { character = mzn_hasan start_date = 1334.1.1 regnal_number = 2 }
 			regnal_numbers = {
@@ -1046,10 +987,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 
 			ruler_term = { character = bds_taj_al_dawla_ziyar start_date = 1324.1.1 end_date = 1333.1.1 regnal_number = 1 }
 			ruler_term = { character = bds_jalal_al_dawla_iskandar start_date = 1333.1.1 regnal_number = 1 }
@@ -1080,10 +1021,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tork_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = mkr_ghiyath_al_din_dinar
 
 			laws = {
@@ -1112,10 +1053,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 0
-		include = "muslim_tribe_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tork_dominant"
 		government = {
-			type = tribe
-			heir_selection = tribal_oldest_male
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {
@@ -1143,10 +1084,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 0
-		include = "muslim_tribe_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tork_dominant"
 		government = {
-			type = tribe
-			heir_selection = tribal_oldest_male
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {
@@ -1173,10 +1114,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 0
-		include = "muslim_tribe_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tork_dominant"
 		government = {
-			type = tribe
-			heir_selection = tribal_oldest_male
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {
@@ -1204,10 +1145,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 0
-		include = "muslim_tribe"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tork_dominant"
 		government = {
-			type = tribe
-			heir_selection = tribal_oldest_male
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {
@@ -1235,10 +1176,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 0
-		include = "muslim_tribe_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tork_dominant"
 		government = {
-			type = tribe
-			heir_selection = tribal_oldest_male
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {
@@ -1254,32 +1195,6 @@ JUR = { #Jurmanids
 		court_language = persian_language
 	}
 
-	LCK = { #Khorsidi
-		own_control_core = {
-			khorramabad aleshtar kuhdast pol_dokhtar sarab_dowreh
-			borujerd aligurdaz borborud dorud gerit sibak
-		}
-
-		include = "expl_middle_east"
-		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-			ruler = lck_soja_al_din_muhammad
-
-			laws = {
-				sharia_law = zaidi_policy
-			}
-		}
-
-		tolerated_cultures = {
-			farsi_culture
-		}
-
-		religious_school = zaidi_school
-		capital = khorramabad
-	}
 
 	LST = { #Larestan
 		own_control_core = {
@@ -1289,10 +1204,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {
@@ -1398,10 +1313,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = asr_shaikh_ali_pw
 
 			laws = {
@@ -1455,10 +1370,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = sfr_shaikh_ali_qushji
 
 			laws = {
@@ -1472,30 +1387,6 @@ JUR = { #Jurmanids
 		capital = esfarayen
 	}
 
-	SBZ = { #Sabzevar
-		own_control_core = {
-			sabzevar farumad
-			agh_qala
-		}
-
-		include = "expl_middle_east"
-		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
-		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
-			ruler = sbz_ala_ad_din_muhammad
-
-			laws = {
-				sharia_law = shafii_policy
-			}
-		}
-
-		religious_school = shafii_school
-		government = { mysticism_vs_jurisprudence = 20 }
-		
-		capital = sabzevar
-	}
 
 	KHT = { #Kuhestan
 		own_control_core = {
@@ -1509,10 +1400,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = kht_abd_allah
 
 			laws = {
@@ -1533,10 +1424,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {
@@ -1557,10 +1448,10 @@ JUR = { #Jurmanids
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = persianate_sultanate
 			ruler = random
 
 			laws = {

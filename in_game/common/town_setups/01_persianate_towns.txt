@@ -25,7 +25,7 @@ iranian_town = {
 	glass_guild = 1
 	jewelry_guild = 1
 	marketplace = 2
-	castle = 1
+	stockade = 1
 	tannery = 1
     dyes_guild = 1
     charcoal_maker = 1
@@ -43,7 +43,7 @@ iranian_caravan_town = {
 	copy_from = iranian_town
 	marketplace = 1                # caravan transit, monetized economy
 	granary = 1                    # provisioning stop
-	castle = 1                     # caravanserai-fort proxy
+	stockade = 1                     # caravanserai-fort proxy
 	caravanserai = 2
 }
 
@@ -89,7 +89,7 @@ tiny_iranian_town = {
 	mason = 1
 	pottery_guild = 1
 	marketplace = 1
-	castle = 1
+
 	tannery = 1
 	dyes_guild = 1                 # rural indigo, madder, saffron, kermes
 	charcoal_maker = 1
@@ -99,7 +99,7 @@ tiny_iranian_caravan_town = {
 	copy_from = tiny_iranian_town
 	marketplace = 1                # caravan transit, monetized economy
 	granary = 1                    # provisioning stop
-	castle = 1                     # caravanserai-fort proxy
+                   # caravanserai-fort proxy
 	caravanserai = 1
 }
 
@@ -128,7 +128,7 @@ iranian_city = {
 	jewelry_guild = 2
 	dyes_guild = 2
 	marketplace = 2
-	castle = 1
+	city_walls = 1
 	tannery = 1
 	slave_market = 1
 }

@@ -27,7 +27,7 @@
 
 custody_of_the_ulus = {
 
-	monthly_spawn_chance = 0.25
+	monthly_spawn_chance = 1
 
 	can_start = {
 		has_reform = government_reform:chinggisid_regency

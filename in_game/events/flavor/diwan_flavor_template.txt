@@ -29,7 +29,7 @@ diwan_flavor.template_1 = {
 		# Push towards Bureaucracy
 		change_societal_value = { type = turk_vs_tazik value = 5 }
 		
-		add_treasury = -50
+		add_gold = -50
 	}
 
 	# Option B: The Path of the Sword (Turk/Pragmatism)
@@ -70,7 +70,7 @@ diwan_flavor.template_2 = {
 		name = diwan_flavor.template_2.a
 		
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = -20 }
-		add_treasury = 100
+		add_gold = 100
 		change_corruption = -1
 		
 		change_societal_value = { type = turk_vs_tazik value = 5 }

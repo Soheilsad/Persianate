@@ -7,12 +7,16 @@ diwan_character_events.1 = {
 	
 	trigger = {
 		country_has_estate = estate_type:diwan_estate
-		NOT = { "num_characters_in_estate(estate_type:diwan_estate)" >= 6 }
+		any_character = {
+			count > 4
+			has_estate = estate_type:diwan_estate
+			is_female = no
+		}
 	}
 	
 	immediate = {
 		create_character = {
-			estate = diwan_estate
+			estate = estate_type:diwan_estate
 			age = { min = 25 max = 45 }
 			culture = root.culture # Or specific Persian logic? Default is root culture.
 			religion = root.religion
@@ -30,15 +34,19 @@ diwan_character_events.2 = {
 	
 	trigger = {
 		country_has_estate = estate_type:amirs_estate
-		NOT = { "num_characters_in_estate(estate_type:amirs_estate)" >= 6 }
+		any_character = {
+			count > 4
+			has_estate = estate_type:diwan_estate
+			is_female = no
+		}
 	}
 	
 	immediate = {
 		create_character = {
-			estate = amirs_estate
+			estate = estate_type:amirs_estate
 			age = { min = 20 max = 40 }
-			culture = root.culture # Or Turkic logic?
-			religion = root.religion
+			# culture = {azeri_culture}
+			# religion = root.religion
 		}
 	}
 }

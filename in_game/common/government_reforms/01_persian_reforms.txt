@@ -25,7 +25,9 @@
 persianate_bureaucracy_reform = {
 	age = age_1_traditions
 	government = persianate_sultanate
-
+	locked = {
+		always = yes
+	}
 	country_modifier = {
 		country_cabinet_efficiency = 0.1
 		diwan_estate_target_satisfaction = 0.05
@@ -35,6 +37,7 @@ persianate_bureaucracy_reform = {
 		amirs_estate_allowed_in_cabinet = no
 		nobles_estate_allowed_in_cabinet = no
 		burghers_estate_allowed_in_cabinet = no
+		global_nobles_food_consumption = -0.3 ## MANY of the nobles are really just tribal elite, not lavish city-dwellers. This is a nod to the fact that the Persianate sultanate's landed aristocracy is not a class of great lords, but a class of rural tax-farmers and militia commanders.
 		# Command of the field armies is the amirs' exclusive prerogative
 		# in a baseline Persianate sultanate. The diwan may unlock its own
 		# right to lead through the Tazik Command of Arms privilege —
@@ -94,7 +97,7 @@ ilkhanate_governorate = {
 		NOT = { has_reform = government_reform:amir_sultanate }
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		# You cannot defer and contend at once.
-		NOT = { has_variable = eranzamin_contender }
+		# NOT = { has_variable = eranzamin_contender }
 	}
 
 	country_modifier = {
@@ -170,13 +173,14 @@ chinggisid_regency = {
 farr_i_izadi = {
 	age = age_1_traditions
 	government = persianate_sultanate
-
+	# locked = {
+	# 	always = yes
+	# }
 	potential = {
 		NOT = { has_reform = government_reform:chinggisid_regency }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:amir_sultanate }
 		NOT = { has_reform = government_reform:dar_al_jihad }
-		NOT = { has_reform = government_reform:farr_i_izadi }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
 
 		# Re-declaration lock: a dynasty that has tried farr and failed
@@ -235,7 +239,9 @@ farr_i_izadi = {
 ghazi_sultanate = {
 	age = age_1_traditions
 	government = persianate_sultanate
-
+	# locked = {
+	# 	always = yes
+	# }
 	potential = {
 		religion.group = religion_group:muslim
 		NOT = { has_reform = government_reform:chinggisid_regency }
@@ -469,7 +475,7 @@ iranian_kingship = {
 	government = persianate_sultanate
 
 	potential = {
-		has_reform = government_reform:farr_i_izadi
+		# has_reform = government_reform:farr_i_izadi
 		NOT = { has_reform = government_reform:timurid_synthesis }
 		NOT = { has_reform = government_reform:turkmen_confederation }
 		NOT = { has_reform = government_reform:dar_al_jihad }

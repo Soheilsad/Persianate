@@ -150,21 +150,23 @@ custody_demand_fealty = {
 				}
 			}
 		}
-		target_flag = target_gov
+		target_flag = target
 		name = "choose_governorate"
 		none_available_msg_key = "no_governorates_available"
 		column = { data = name }
 	}
 
+	# Event-based, not a diplomatic action: the engine auto-rejects
+	# subjugation-via-country-interaction regardless of diplo_chance.
+	# We point the governor at the demanding custodian (a variable
+	# survives the event boundary) and fire the demand AT it; the
+	# governor accepts or refuses by its own event options.
 	effect = {
 		if = {
-			limit = { exists = scope:target_gov }
-			scope:actor = {
-				perform_diplomatic_action = {
-					type = demand_ulus_fealty
-					actor = scope:actor
-					recipient = scope:target_gov
-				}
+			limit = { exists = scope:target }
+			scope:target = {
+				set_variable = { name = custody_demanding_lord value = scope:actor }
+				trigger_event_non_silently = custody.31
 			}
 		}
 	}

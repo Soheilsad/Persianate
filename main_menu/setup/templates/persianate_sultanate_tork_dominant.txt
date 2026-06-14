@@ -72,7 +72,7 @@ government = {
 		# distribution_of_power_law = dop_favor_the_nobles
 		immigration_law = open_borders_law
 		# mining_law = nobles_mining_law
-		coin_laws = gold_and_silver_coins
+		coin_laws = silver_coins ### gold was only an accounting unit.
 
 		# Mod custom laws
 		recruitment_law = tribal_host_recruitment

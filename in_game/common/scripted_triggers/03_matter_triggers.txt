@@ -89,13 +89,15 @@ matter_of_tork_can_start = {
 		text = matter_tork_not_yet_completed_tt
 		NOT = { has_variable = matter_of_tork_completed }
 	}
+	OR = {
+		estate_type:amirs_estate = {
+			target_satisfaction < 0.65
+		}
+		estate_type:tribes_estate = {
+			target_satisfaction < 0.65
+		}
+	}
 
-	estate_type:amirs_estate = {
-		target_satisfaction < 0.65
-	}
-	estate_type:tribes_estate = {
-		target_satisfaction < 0.65
-	}
 
 }
 

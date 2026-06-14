@@ -413,16 +413,16 @@ diplomacy_manager = {
 
     #-------------Persia------------
     # dependency = { first = HLG second = HLL subject_type = vassal }
-    dependency = { first = GRG second = ASR subject_type = vassal }
-    dependency = { first = GRG second = HDN subject_type = vassal }
+    # dependency = { first = GRG second = ASR subject_type = vassal }
+    # dependency = { first = GRG second = HDN subject_type = vassal }
     dependency = { first = GRG second = JKR subject_type = vassal }
-    dependency = { first = GRG second = KHT subject_type = vassal }
+    # dependency = { first = GRG second = KHT subject_type = vassal }
 
-    dependency = { first = GRG second = KSA subject_type = vassal }
-    dependency = { first = GRG second = MZN subject_type = vassal }
-    dependency = { first = GRG second = QOM subject_type = vassal }
-    dependency = { first = GRG second = SBZ subject_type = vassal }
-    dependency = { first = GRG second = SFR subject_type = vassal }
+    # dependency = { first = GRG second = KSA subject_type = vassal }
+    # dependency = { first = GRG second = MZN subject_type = vassal }
+    # dependency = { first = GRG second = QOM subject_type = vassal }
+    # dependency = { first = GRG second = SBZ subject_type = vassal }
+    # dependency = { first = GRG second = SFR subject_type = vassal }
 
 
     # scripted_mutual = { first = HLG second = GRG type = alliance }
