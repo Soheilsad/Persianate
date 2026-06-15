@@ -1,0 +1,39 @@
+# Custody of the Ulus — the governorate's fealty pulse.
+#
+# Paradox merges on_actions, so re-declaring monthly_country_pulse
+# EXTENDS it. A non-subject Ilkhanate governorate, with at least one
+# regency standing to swear to, is periodically pressed to choose a
+# steward (custody.30) — medium cadence (~9%/month via the 100=0
+# empty option). The per-event work and the choice live in the event.
+#
+# Design: docs/design/custody_of_the_ulus_design.md
+
+monthly_country_pulse = {
+	on_actions = {
+		custody_governorate_pulse
+	}
+}
+
+custody_governorate_pulse = {
+	trigger = {
+		has_reform = government_reform:ilkhanate_governorate
+		is_subject = no
+		# Not pressed in the last five years — the timed variable set in
+		# custody.30's immediate auto-expires, then the pulse may ask
+		# again. (At most once per 5 years.)
+		NOT = { has_variable = custody_gov_pulse_recent }
+		# There must be a khan to swear to.
+		international_organization:eranzamin ?= {
+			any_international_organization_member = {
+				NOT = { this = root }
+				has_reform = government_reform:chinggisid_regency
+			}
+		}
+	}
+
+	random_events = {
+		# 100 = 0 keeps the pulse mostly silent; 10 = ~9%/month.
+		100 = 0
+		10 = custody.30
+	}
+}

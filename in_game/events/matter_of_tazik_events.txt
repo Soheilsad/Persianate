@@ -46,7 +46,7 @@ matter_of_tazik.25 = {
 		change_variable = { name = matter_progress add = -5 }
 		random_owned_location = {
 			limit = { is_urban_diwan_capable_location = yes }
-			add_unrest = 3
+			add_location_modifier = { modifier = ez_unrest_3 years = 3 }
 		}
 	}
 
@@ -70,7 +70,7 @@ matter_of_tazik.50 = {
 	# Have him quietly killed — suppression line
 	option = {
 		name = matter_of_tazik.50.a
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = -10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.10 }
 		change_variable = { name = matter_progress add = 5 }
 		set_variable = matter_chose_suppression
 	}
@@ -78,16 +78,16 @@ matter_of_tazik.50 = {
 	# Invite him to court — compromise
 	option = {
 		name = matter_of_tazik.50.b
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = 5 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
 		change_variable = { name = matter_progress add = -5 }
 	}
 
 	# Endow a madrasa — co-opt
 	option = {
 		name = matter_of_tazik.50.c
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = 15 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.15 }
 		change_variable = { name = matter_progress add = -15 }
-		add_treasury = -100
+		add_gold = -100
 		set_variable = co_opt_track
 	}
 }
@@ -144,8 +144,8 @@ matter_of_tazik.100 = {
 		# Religious-unrest cascade on non-rolling urban provinces
 		every_owned_province = {
 			limit = { is_urban_diwan_capable_location = yes }
-			add_unrest = 5
 			every_location_in_province = {
+				add_location_modifier = { modifier = ez_unrest_5 years = 5 }
 				change_control = control_severe_penalty
 			}
 		}

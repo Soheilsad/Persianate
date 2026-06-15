@@ -40,7 +40,7 @@ REPLACE:caravanserai = {
 	is_foreign = no
 	pop_type = laborers
 	
-	max_levels = 1
+	max_levels = 5
 	employment_size = trade_employment
 	
 	category = trade_category

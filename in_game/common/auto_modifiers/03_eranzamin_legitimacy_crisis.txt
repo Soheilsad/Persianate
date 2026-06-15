@@ -18,6 +18,9 @@ unsettled_legitimacy_crisis = {
 		NOT = { has_reform = government_reform:chinggisid_regency }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:farr_i_izadi }
+		NOT = { has_reform = government_reform:dar_al_jihad }
+		NOT = { has_reform = government_reform:iranian_kingship }
+		NOT = { has_reform = government_reform:ilkhanate_governorate }
 	}
 
 	monthly_legitimacy = -0.50
@@ -42,7 +45,10 @@ ghazi_lord_at_war = {
 	potential_trigger = {
 		government_type = government_type:persianate_sultanate
 
-		has_reform = government_reform:ghazi_sultanate
+		OR ={
+			has_reform = government_reform:ghazi_sultanate
+			has_reform = government_reform:dar_al_jihad
+		}
 		at_war = yes
 		any_country_at_war_with = {
 
@@ -67,7 +73,10 @@ ghazi_lord_at_war_yasa = {
 	potential_trigger = {
 		government_type = government_type:persianate_sultanate
 
-		has_reform = government_reform:ghazi_sultanate
+		OR ={
+			has_reform = government_reform:ghazi_sultanate
+			has_reform = government_reform:dar_al_jihad
+		}
 		at_war = yes
 		any_country_at_war_with = {
 			has_policy = mongol_law_policy
@@ -88,7 +97,10 @@ ghazi_lord_at_war_lax = {
 	potential_trigger = {
 		government_type = government_type:persianate_sultanate
 
-		has_reform = government_reform:ghazi_sultanate
+		OR ={
+			has_reform = government_reform:ghazi_sultanate
+			has_reform = government_reform:dar_al_jihad
+		}
 		at_war = yes
 		any_country_at_war_with = {
 			has_policy = lax_hisba_enforcement
@@ -107,7 +119,11 @@ ghazi_lord_has_yasa_law = {
 	potential_trigger = {
 		government_type = government_type:persianate_sultanate
 
-		has_reform = government_reform:ghazi_sultanate
+		OR = {
+			has_reform = government_reform:ghazi_sultanate
+			has_reform = government_reform:dar_al_jihad
+		}
+		
 		has_policy = mongol_law_policy
 	}
 
@@ -117,3 +133,22 @@ ghazi_lord_has_yasa_law = {
 	global_manpower_modifier = -0.25
 }
 
+
+### ghazi lord without good sharia enforcement
+ghazi_lord_has_yasa_law = {
+	potential_trigger = {
+		government_type = government_type:persianate_sultanate
+
+		OR = {
+			has_reform = government_reform:ghazi_sultanate
+			has_reform = government_reform:dar_al_jihad
+		}
+		
+		has_policy = lax_hisba_enforcement
+	}
+
+	monthly_legitimacy = -0.1
+	monthly_prestige = -0.05
+	global_levy_size_modifier = -0.1
+	global_manpower_modifier = -0.1
+}

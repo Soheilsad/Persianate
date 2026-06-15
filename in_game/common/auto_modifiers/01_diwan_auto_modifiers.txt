@@ -1,7 +1,7 @@
 # Base values for the Diwan Estate
 diwan_base_values = {
     potential_trigger = {
-        has_estate = diwan_estate
+        government_type = government_type:persianate_sultanate
     }
     
     # Base Satisfaction (similar to other estates having ~30-50%)
@@ -14,7 +14,7 @@ diwan_base_values = {
 
 amirs_base_values = {
     potential_trigger = {
-        has_estate = amirs_estate
+        government_type = government_type:persianate_sultanate
     }
 
     # Base Satisfaction (similar to other estates having ~30-50%)
@@ -30,7 +30,7 @@ amirs_base_values = {
 # not chafe an Arab/Kurd/Lur diwan member the way the base mechanic assumes.
 diwan_persian_court_language = {
     potential_trigger = {
-        has_estate = diwan_estate
+        country_has_estate = estate_type:diwan_estate
         court_language = language:persian_language
     }
 
@@ -39,7 +39,7 @@ diwan_persian_court_language = {
 
 amirs_war_auto_modifier = {
     potential_trigger = {
-        has_estate = amirs_estate
+        country_has_estate = estate_type:amirs_estate
         at_war = yes
     }
     ## wars bring loot and revenue.

@@ -72,6 +72,8 @@ hisba_law = {
 	customary_enforcement = {
 		country_modifier = {
 			global_estate_target_satisfaction = 0.025
+			ban_imports_of_beer = yes
+			ban_imports_of_liquor = yes
 		}
 		estate_preferences = {
 			peasants_estate
@@ -94,6 +96,9 @@ hisba_law = {
 			tax_income_efficiency = -0.025
 			monthly_towards_traditionalist = 0.05  
             monthly_towards_jurisprudence = 0.1                     # [verify value name]
+			ban_imports_of_wine = yes
+			ban_imports_of_beer = yes
+			ban_imports_of_liquor = yes
 		}
 		estate_preferences = {
 			clergy_estate
@@ -109,11 +114,18 @@ hisba_law = {
 	# can govern like this; everyone else lacks the standing.
 	# ----------------------------------------------------------
 	muhtasib_regime = {
-		unique = yes
+
 		potential = {
-			has_reform = government_reform:ghazi_sultanate
-			has_reform = government_reform:dar_al_jihad
-				
+			OR = {
+				has_reform = government_reform:ghazi_sultanate
+				has_reform = government_reform:dar_al_jihad
+			}
+			# Matter of Tork, Sufi Synthesis disposition: the murshid
+			# claim is precisely what the muhtasib exists to condemn.
+			# Taking the murid bond forecloses this regime — the engine
+			# revokes an active law option whose potential goes false
+			# (confirmed).
+			NOT = { has_variable = matter_sufi_synthesis }
 		}
 		country_modifier = {
 			clergy_estate_target_satisfaction = 0.1         # [verify key]
@@ -125,6 +137,9 @@ hisba_law = {
 			tax_income_efficiency = -0.05
 			global_monthly_prosperity = -0.001           # Hafez's complaint, quantified
 			monthly_towards_traditionalist = 0.1                        # [verify value name]
+			ban_imports_of_wine = yes
+			ban_imports_of_beer = yes
+			ban_imports_of_liquor = yes
 		}
 		estate_preferences = {
 			clergy_estate
@@ -134,8 +149,17 @@ hisba_law = {
 	zill_allah_regime = {
 		unique = yes
 		potential = {
-			religion = religion:shia
-			societal_value:mysticism_vs_jurisprudence <= -50 
+			OR = {
+				AND = {
+					religion = religion:shia
+					societal_value:mysticism_vs_jurisprudence <= -50
+				}
+				# Matter of Tork, Sufi Synthesis disposition: the
+				# murid-bond realm is steered here regardless of
+				# madhhab — Sunni-mystical is the prior/natural form
+				# of the same charismatic-person sovereignty.
+				has_variable = matter_sufi_synthesis
+			}
 		}
 		country_modifier = {
 			monthly_legitimacy = 0.1                 # zill Allah: the person IS the proof

@@ -6,7 +6,7 @@
 # tag, estate availability, etc.); this outer trigger is just a cheap
 # religion gate so the engine can skip the whole pulse for 80% of countries.
 
-religion_flavor_pulse = {
+government_flavor_pulse = {
 	first_valid_on_action = {
 		persianate_flavor_pulse
 	}
@@ -14,7 +14,7 @@ religion_flavor_pulse = {
 
 persianate_flavor_pulse = {
 	trigger = {
-		religion ?= { group = religion_group:muslim }
+		government_type = government_type:persianate_sultanate
 	}
 
 	random_events = {
@@ -41,5 +41,10 @@ persianate_flavor_pulse = {
 		10 = eranzamin_flavor.8     # Dervish in the Bazaar
 		10 = eranzamin_flavor.9     # Khanqah Endowment
 		10 = eranzamin_flavor.10    # Lur and Kurd Chiefs
+		5 = diwan_estate_events.1
+		5 = diwan_estate_events.2
+		5 = diwan_estate_events.3
+		
+		2 = mazalim_events.1	  # Mazalim Court (Path-3 secondary channel; fires when mazalim is
 	}
 }

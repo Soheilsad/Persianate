@@ -1,7 +1,7 @@
 persian_nobles_rights_laws = {
 	# Option 1: Centralize Power (Diwan Preference)
 	curtail_umara_rights = {
-		potential = { has_estate = amirs_estate }
+		potential = { country_has_estate = estate_type:amirs_estate }
 		country_modifier = {
 			amirs_estate_target_satisfaction = -0.05
 			global_amirs_estate_power = -0.10
@@ -17,7 +17,7 @@ persian_nobles_rights_laws = {
 
 	# Option 2: The Traditional Pact (Balance)
 	rights_of_umara = {
-		potential = { has_estate = amirs_estate }
+		potential = { country_has_estate = estate_type:amirs_estate }
 		country_modifier = {
 			amirs_estate_target_satisfaction = 0.10
 			global_amirs_estate_power = 0.10
@@ -30,7 +30,7 @@ persian_nobles_rights_laws = {
 
 	# Option 3: Decentralized Confederation (Amir Preference)
 	amirs_autonomy = {
-		potential = { has_estate = amirs_estate }
+		potential = { country_has_estate = estate_type:amirs_estate }
 		country_modifier = {
 			global_amirs_estate_power = 0.30
 			amirs_estate_target_satisfaction = 0.05

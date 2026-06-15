@@ -19,17 +19,18 @@ If you want to understand the systems:
 - **[Türk vs Tāzīk](concepts/turk-vs-tazik.md)** — the dyad that runs underneath every other mechanic.
 - **[The Dīwān estate](concepts/diwan-estate.md)** and **[the Amirs estate](concepts/amirs-estate.md)** — the two replacement nobilities, and why they cannot be treated as one thing.
 - **[Estate privileges](concepts/estate-privileges.md)** — the rivalry pairs and the prerogative violations.
-- **[Government reforms](concepts/government-reforms.md)** — the Age 1–3 reform tree, with the Age 1 trilemma at its head.
+- **[Government reforms](concepts/government-reforms.md)** — the Age 1–3 reform tree, with the Age 1 choice (Regency / Caliphal Investiture / Royal Farr / Governorate deferral) at its head.
 - **[The Farr Proof of Fortune](concepts/farr-proof-of-fortune.md)** — the audit on a dynasty that has claimed *farr-i īzadī*: legitimacy management, apparatus claims, and the four outcomes.
 - **[The Ghāzī Burden of the Sword](concepts/ghazi-burden-of-sword.md)** — the audit on a dynasty that has avowed *ghazā*: war-credit tiers, the *muḥtasib* axis, internal campaigns, and the four outcomes.
+- **[The Borrowed Mandate](concepts/borrowed-mandate.md)** — the audit on a regency ruling in a borrowed khan's name: rival custodies, the mortal succession, the Sole Custody fork, and the Gurkani exit.
+- **[The Matter of Tork](concepts/matter-of-tork.md)** — the question legitimacy cannot answer: what becomes of the Türk military class once the realm is consolidated. Approaches, dispositions, and the dehqān refounding.
+- **[The Ilkhanate Governorate](concepts/ilkhanate-governorate.md)** — for those who decline the contest: defer, administer a corner, and swear fealty to whoever prevails.
 - **[The Mazalim court](concepts/mazalim-court.md)** — what the parliament becomes when the political tradition has no horizontal legitimacy.
 - **[The military system](concepts/military-system.md)** — iqṭāʿ, tribes, ghulāms, and why you should not bring a European siege game to the plateau.
 
 ## Useful links
 
 - [Workshop page](https://steamcommunity.com/sharedfiles/filedetails/?id=3634535722)
-- [Source on GitHub](https://github.com/Soheilsad/3634535722)
-- [Report a bug or suggest an idea](https://github.com/Soheilsad/3634535722/issues)
 
 ---
 

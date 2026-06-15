@@ -9,10 +9,13 @@ a_nomadic_skirmisher_cavalry = {
 	
 	buildable = no
 	levy = yes
-	
+	mercenaries_per_location = {
+		pop_type = tribesmen
+		multiply = 0.4
+	}
 	combat = {
-		steppe = 0.25
-		plains = 0.10
+		sparse = 0.25
+		flatland = 0.10
 		hills = -0.10
 	}
 	gfx_tags = { light_tag }
@@ -25,13 +28,16 @@ a_turkoman_light_cavalry = {
 	maneuver = 2
 	fire_damage_dealt = 0.10
 	shock_damage_dealt = 0.05
-	
+	mercenaries_per_location = {
+		pop_type = tribesmen
+		multiply = 0.3
+	}
 	buildable = no
 	levy = yes
 	
 	combat = {
-		steppe = 0.15
-		plains = 0.10
+		sparse = 0.15
+		flatland = 0.10
 		hills = 0.05
 	}
 	gfx_tags = { light_tag }
@@ -52,7 +58,7 @@ a_qizilbash_cavalry = {
 	
 	combat = {
 		hills = 0.15
-		plains = 0.10
+		flatland = 0.10
 	}
 	gfx_tags = { medium_tag }
 }

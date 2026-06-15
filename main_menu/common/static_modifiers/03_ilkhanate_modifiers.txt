@@ -22,6 +22,7 @@ eranzamin_succession_region_modifier = {
 	local_defensive = -0.66 # Forts are neglected
 	local_monthly_prosperity = -0.0020 # The breakdown of order and the rise of warlordism disrupts trade and agriculture, but the militarization of society keeps the economy limping along.
 	local_levy_size_modifier = 0.1 # But breeds warriors
+	local_pop_food_consumption = -0.1 ## the land is being ravaged, and the people are being extracted from.
 }
 
 # Integration outcome modifiers. Applied to every owned location in the
@@ -35,7 +36,7 @@ consolidate_diwan_mod = {
 	# The diwan reaches in — taxation, registers, courts.
 	local_max_control = 0.1
 	local_raw_material_output = 0.10
-	local_unrest = -2
+	local_unrest = -0.5
 }
 
 grant_the_yurt_mod = {
@@ -45,7 +46,7 @@ grant_the_yurt_mod = {
 	# Amirs hold the land as iqtaʿ/yurt — fewer revenues, more soldiers.
 	local_manpower_modifier = 0.30
 	local_max_control = -0.075
-	local_unrest = -1
+	local_unrest = -0.25
 }
 
 mixed_settlement_mod = {
@@ -55,7 +56,7 @@ mixed_settlement_mod = {
 	# Compromise — modest gains across the board, no big bonus.
 	# local_max_control = 0.05
 	local_manpower_modifier = 0.10
-	local_unrest = -1
+	local_unrest = -0.25
 }
 
 turkic_tribal_settlement_mod = {

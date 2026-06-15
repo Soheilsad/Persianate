@@ -33,6 +33,8 @@ persianate_generic.1 = {
 				region ?= region:persia_region
 				region ?= region:khorasan_region
 				region ?= region:caucasus_region
+				area ?= area:iraq_arabi_area
+				area ?= area:jazira_area
 			}
 		}
 	}
@@ -81,6 +83,9 @@ persianate_generic.2 = {
 				region ?= region:persia_region
 				region ?= region:khorasan_region
 				region ?= region:caucasus_region
+				area ?= area:iraq_arabi_area
+				area ?= area:jazira_area
+
 			}
 		}
 	}
@@ -127,7 +132,7 @@ persianate_generic.3 = {
 	trigger = {
 		country_has_estate = estate_type:diwan_estate
 		country_has_estate = estate_type:amirs_estate
-		religion ?= { group = religion_group:muslim }
+
 	}
 
 	# OPTION A: Back the vizier
@@ -177,6 +182,8 @@ persianate_generic.4 = {
 				region ?= region:persia_region
 				region ?= region:khorasan_region
 				region ?= region:caucasus_region
+				area ?= area:iraq_arabi_area
+				area ?= area:jazira_area
 			}
 		}
 	}
@@ -239,6 +246,8 @@ persianate_generic.5 = {
 				region ?= region:persia_region
 				region ?= region:khorasan_region
 				region ?= region:caucasus_region
+				area ?= area:iraq_arabi_area
+				area ?= area:jazira_area
 			}
 		}
 	}
@@ -289,6 +298,8 @@ persianate_generic.6 = {
 				region ?= region:persia_region
 				region ?= region:khorasan_region
 				region ?= region:caucasus_region
+				area ?= area:iraq_arabi_area
+				area ?= area:jazira_area
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 persian_bureaucracy_law = {
 	diwan_administration = {
-		potential = { has_estate = diwan_estate }
+		potential = { country_has_estate = estate_type:diwan_estate }
 		country_modifier = {
 			country_cabinet_efficiency = 0.05
 			global_max_control = 0.03
@@ -17,7 +17,7 @@ persian_bureaucracy_law = {
 	}
 	
 	diwan_tax_farming_system = {
-		potential = { has_estate = diwan_estate }
+		potential = { country_has_estate = estate_type:diwan_estate }
 		country_modifier = {
 			tax_income_efficiency = 0.20
 			global_max_control = -0.02

@@ -63,6 +63,7 @@ REPLACE:irrigation_systems = {
 		OR = {
 			has_river = yes
 			is_adjacent_to_lake = yes
+			vegetation = seasonal_irrigated ### seasonal river canals.
 		}
 	}
 
@@ -86,7 +87,7 @@ REPLACE:irrigation_systems = {
 crumbling_qanat = {
 	is_foreign = no
 	pop_type = peasants
-	max_levels = irrigant_cap
+	max_levels = 1
 
 	employment_size = 0.5        # large numbers of people are needed to work part time regardless.
 
@@ -124,9 +125,9 @@ crumbling_qanat = {
 qanat_network = {
 	is_foreign = no
 	pop_type = peasants
-	max_levels = 1
+	max_levels = 4
 
-	employment_size = small_rural_employment       # [verify key] the muqanni corps and the mirab's men
+	employment_size = 0.5       # [verify key] the muqanni corps and the mirab's men
 
 	category = rural_infrastructure_category       # [verify key]
 
@@ -140,7 +141,10 @@ qanat_network = {
 	# Where qanats make sense at all: the arid plateau, not the
 	# Caspian rainforest and not the high wasteland.
 	location_potential = {
-		
+		OR = {
+			vegetation = qanat_farmland
+			vegetation = crumbling_qanat
+		}
 	}
 
 
@@ -171,11 +175,11 @@ qanat_network = {
 
 	modifier = {
 		# qanat_farmland (65 / 0.22 / 0.04 / rgo 0.05 / supply 2) minus sparse (25):
-		local_population_capacity = 40
-		local_monthly_food_modifier = 0.22
-		local_monthly_development_modifier = 0.04
-		local_max_rgo_size_modifier = 0.05
-		supply_limit = 2
+		local_population_capacity = 5
+		local_monthly_food_modifier = 0.025
+		local_monthly_development_modifier = 0.004
+		local_max_rgo_size_modifier = 0.00125
+		supply_limit = 0.5
 	}
 
 	# Repairing the channels is the Circle of Justice made physical:
@@ -194,7 +198,12 @@ qanat_network = {
 		}
 	}
 
-	construction_demand = early_capital_building_construction   # [verify: masonry-heavy demand set]
+	construction_demand = {
+		lumber = 2
+		tools = 2
+		masonry = 2
+		category = building_construction
+	}   
 
 	graphical_tags = { small_economy }                          # [verify tag]
 }

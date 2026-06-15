@@ -37,9 +37,21 @@ ilkhanate_flavor.1 = {
 				NOT = {has_reform = government_reform:chinggisid_regency }
 			}
 		ai_chance = {
-			factor = 50
-			modifier = { factor = 2  societal_value:turk_vs_tazik < -10 }
-			modifier = { factor = 0  religion_group = religion_group:christian }
+			factor = 25
+			
+			modifier = {factor = 2 
+				OR = {
+					"culture_group_percentage_in_country(culture_group:mongolian_group)" > 0.1
+					"culture_group_percentage_in_country(culture_group:turkic_group)" > 0.1
+				}
+			}
+
+
+			modifier = { factor = 0  religion.group =religion_group:christian }
+			modifier = {
+				factor = 0
+				military_strength < 35 ## this is no option for the weak.
+			}
 		}
 
 		add_reform = government_reform:chinggisid_regency
@@ -110,7 +122,7 @@ ilkhanate_flavor.1 = {
 
 		trigger = { 
 			AND = {
-				religion_group = religion_group:muslim 
+				religion.group = religion_group:muslim 
 				NOT = { has_reform = government_reform:chinggisid_regency }
 			}
 		}
@@ -118,8 +130,22 @@ ilkhanate_flavor.1 = {
 		ai_chance = {
 			factor = 25
 			modifier = {
+				factor = 4
+				any_neighbor_country = { religion.group != religion_group:muslim }
+			}
+			modifier = {
+				factor = 3
+				any_neighbor_country = { religion != scope:actor.religion }
+			}
+			modifier = {
 				factor = 2
-				any_neighbor_country = { religion_group != religion_group:muslim }
+				any_neighbor_country = { has_policy = mongol_law_policy }
+			}
+			modifier = {
+				factor = 10
+				ruler = {
+					has_trait = zealot
+				}
 			}
 		}
 
@@ -136,13 +162,27 @@ ilkhanate_flavor.1 = {
 	option = {
 		name = ilkhanate_flavor.1.c
 
-		ai_chance = {
-			factor = 25
-			modifier = { factor = 2  societal_value:turk_vs_tazik > 25 }
-			modifier = { factor = 0.25  has_culture_group = culture_group:mongol_group }
-		}
+
 		trigger = {
 			NOT = { has_reform = government_reform:chinggisid_regency }
+		}
+		ai_chance = {
+			factor = 25
+			modifier = {factor = 0.25
+				OR = {
+					"culture_group_percentage_in_country(culture_group:mongolian_group)" > 0.1
+					"culture_group_percentage_in_country(culture_group:turkic_group)" > 0.1
+				}
+			}
+			modifier = {
+				factor = 1.5
+				military_strength > 40 ## this is no option for the weak.
+			}
+			modifier = {
+				factor = 0.5
+				military_strength < 25 ## this is no option for the weak.
+			}
+			
 		}
 		add_reform = government_reform:farr_i_izadi
 
@@ -153,8 +193,9 @@ ilkhanate_flavor.1 = {
 		add_legitimacy = -10
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.15 }
 		add_estate_satisfaction = { type = estate_type:burghers_estate value = 0.10 }
-		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.20 }
-		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.10 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = -0.25 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.05 }
 
 
 		### here is 
@@ -230,6 +271,40 @@ ilkhanate_flavor.1 = {
 		}
 	}
 
+	# ----- F: Ilkhanate Governorate — defer the question -----
+	# The third tier below the legitimacy-contenders: claim nothing,
+	# administer your corner, wait to see who wins. The Injuid/Kart
+	# road. A governorate can later declare fealty for a steward
+	# (custody_declare_fealty) and become his ulus_governorate.
+	option = {
+		name = ilkhanate_flavor.1.f
+		trigger = {
+			NOT = { has_reform = government_reform:chinggisid_regency }
+		}
+		ai_chance = {
+			factor = 15
+			# The weak defer. A realm that cannot field an army has no
+			# business claiming the ulus — it keeps its corner instead.
+			modifier = {
+				factor = 30
+				military_strength < 10
+			}
+			modifier = {
+				factor = 0.5
+				military_strength > 20
+			}
+			modifier = {
+				factor = 0.5
+				military_strength > 30
+			} ## the strong have little chance of simply deferring. They want a piece of the action.
+		}
+		add_reform = government_reform:ilkhanate_governorate
+		# The prudent administrator's choice: the diwan approves the
+		# caution, and no rival is provoked — you have claimed nothing.
+		add_legitimacy = 5
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+	}
+
 }
 
 # -----------------------------------------------------------------------------------------
@@ -281,6 +356,17 @@ ilkhanate_flavor.2 = {
 	# ----- B: Enthrone the son -----
 	option = {
 		name = ilkhanate_flavor.2.b
+
+		# Custody of the Ulus: at rock bottom (four successions) no
+		# further enthronement is credible — only the -100 exit
+		# remains, and the custody disaster reads the reform's loss
+		# as the Fiction Expires.
+		trigger = {
+			OR = {
+				NOT = { has_variable = charade_counter }
+				var:charade_counter < 4
+			}
+		}
 
 		ai_chance = {
 			factor = 70

@@ -19,7 +19,10 @@ a_amir_cavalry = {
 		sparse = 0.10
 		wetlands = -0.10
 	}
-
+	mercenaries_per_location = {
+		pop_type = nobles
+		multiply = 0.2
+	}
 	gfx_tags = { medium_tag }
 }
 
@@ -43,7 +46,10 @@ a_frontier_amir_cavalry = {
 		sparse = 0.10
 		mountains = -0.05
 	}
-
+	mercenaries_per_location = {
+		pop_type = nobles
+		multiply = 0.2
+	}
 	gfx_tags = { medium_tag heavy_tag }
 }
 

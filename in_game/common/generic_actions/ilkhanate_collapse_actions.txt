@@ -66,6 +66,8 @@ consolidate_diwan = {
 		name = "consolidate_diwan_select_province"
 		none_available_msg_key = "consolidate_diwan_no_provinces"
 		column = { data = name }
+		column = { data = population }
+		column = { data = province_tax_base }
 		visible = {
 			is_eranzamin_region_province = yes
 			any_location_in_province = {
@@ -93,7 +95,6 @@ consolidate_diwan = {
 					modifier = consolidate_diwan_mod
 					years = 10
 				}
-				add_unrest = -5
 			}
 		}
 		scope:actor = {
@@ -154,6 +155,8 @@ grant_the_yurt = {
 		name = "grant_the_yurt_select_province"
 		none_available_msg_key = "grant_the_yurt_no_provinces"
 		column = { data = name }
+		column = { data = population }
+		column = { data = province_tax_base }
 		visible = {
 			is_eranzamin_region_province = yes
 			any_location_in_province = {
@@ -174,7 +177,6 @@ grant_the_yurt = {
 					modifier = grant_the_yurt_mod
 					years = 10
 				}
-				add_unrest = -3
 			}
 		}
 		custom_tooltip = {
@@ -229,6 +231,8 @@ mixed_settlement = {
 		name = "mixed_settlement_select_province"
 		none_available_msg_key = "mixed_settlement_no_provinces"
 		column = { data = name }
+		column = { data = population }
+		column = { data = province_tax_base }
 		visible = {
 			is_eranzamin_region_province = yes
 			any_location_in_province = {
@@ -251,7 +255,6 @@ mixed_settlement = {
 					modifier = mixed_settlement_mod
 					years = 10
 				}
-				add_unrest = -3
 			}
 		}
 		# No estate or axis shifts — the compromise is neutral.
@@ -410,11 +413,11 @@ rally_turkic_tribes = {
 		# settled estates — diwan, burghers, peasants all alienated by
 		# the influx — and in lost stability. Amirs are pleased.
 		scope:actor = {
-			add_estate_satisfaction = { type = estate_type:amirs_estate value = 10 }
-			add_estate_satisfaction = { type = estate_type:diwan_estate value = -25 }
-			add_estate_satisfaction = { type = estate_type:burghers_estate value = -25 }
-			add_estate_satisfaction = { type = estate_type:peasants_estate value = -25 }
-			add_stability = -10
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.10 }
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.25 }
+			add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.25 }
+			add_estate_satisfaction = { type = estate_type:peasants_estate value = -0.25 }
+			add_stability = -0.10
 			change_societal_value = {
 				type = turk_vs_tazik
 				value = -5
@@ -582,6 +585,176 @@ press_eranzamin_claim = {
 		modifier = {
 			factor = 0
 			at_war = yes
+		}
+	}
+}
+
+
+custody_declare_fealty = {
+	type = situation
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	allow = {
+		scope:actor = {
+			OR ={
+				has_reform = government_reform:ilkhanate_governorate
+				# has_reform = government_reform:ghazi_sultanate
+				# has_reform = government_reform:farr_i_izadi
+				# has_reform = government_reform:chinggisid_regency
+			}
+			is_subject = no
+			at_war = no
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = situation
+		target_flag = recipient
+		name = "choose_situation"
+		column = { data = name }
+		visible = {
+			situation:eranzamin_succession = this
+			situation_is_active = yes
+		}
+	}
+
+	# The roll of stewards: IO members holding a khan (regency or
+	# Borjigin) or contending in earnest. Self excluded.
+	select_trigger = {
+		looking_for_a = country
+		interaction_source_list = {
+			scope:actor = {
+				international_organization:eranzamin ?= {
+					every_international_organization_member = {
+						limit = {
+							NOT = { this = scope:actor }
+							OR = {
+								has_reform = government_reform:chinggisid_regency
+								has_variable = eranzamin_contender
+								ruler ?= { dynasty = dynasty:borjigin_dynasty }
+							}
+						}
+						add_to_list = source
+					}
+				}
+			}
+		}
+		target_flag = target_steward
+		name = "choose_steward"
+		none_available_msg_key = "no_stewards_available"
+		column = { data = name }
+		column = { data = expected_army_size }
+	}
+
+	effect = {
+		scope:actor = {
+			# if = {
+			# 	limit = {
+			# 		scope:actor = {
+			# 			### this is a retreat. you lose legitimacy and prestige, but the disaster ends. commenting for now.
+			# 			OR ={
+			# 				has_reform = government_reform:ilkhanate_governorate
+			# 				has_reform = government_reform:ghazi_sultanate
+			# 				has_reform = government_reform:farr_i_izadi
+			# 				has_reform = government_reform:chinggisid_regency
+			# 			}
+			# 		}
+			# 	}
+			# }
+			if = {
+				limit = { exists = scope:target_steward }
+				make_subject_of = {
+					target = scope:target_steward
+					type = subject_type:ulus_governorate
+				}
+			}
+
+		}
+	}
+
+	# A governorate swears for protection: the weaker and the more
+	# threatened it is, the readier it is to kneel.
+	ai_will_do = {
+		add = 10
+		modifier = {
+			add = 50
+			scope:actor = { country_total_army_levy_size < 5 }
+		}
+		modifier = {
+			add = 30
+			scope:actor = { at_war = yes }
+		}
+		modifier = {
+			add = -40
+			scope:actor = { country_total_army_levy_size > 20 }
+		}
+	}
+}
+
+# ============================================================
+# Drop the Khan from the Khutbah — the governorate walks out.
+#
+# An ulus_governorate stops reading its overlord's khan in the
+# Friday khutbah: the subjecthood ends. The overlord cancels the
+# relation (cancel_subject, overlord-scoped) — a clean, near-
+# peaceful renunciation, fitting the governorate's high autonomy.
+# An AI does this when it is strong enough to stand alone, or its
+# overlord can no longer shield it.
+# ============================================================
+
+custody_drop_khan = {
+	type = situation
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	allow = {
+		scope:actor = {
+			has_reform = government_reform:ilkhanate_governorate
+			is_subject_type = subject_type:ulus_governorate
+			NOT = { is_at_war_with = scope:actor.overlord }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = situation
+		target_flag = recipient
+		name = "choose_situation"
+		column = { data = name }
+		visible = {
+			situation:eranzamin_succession = this
+			situation_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			overlord ?= {
+				cancel_subject = scope:actor
+			}
+			add_legitimacy = 5
+		}
+	}
+
+	# Walk out when strong enough to stand alone, or when the
+	# overlord is in no position to object.
+	ai_will_do = {
+		add = 0
+		modifier = {
+			add = 30
+			scope:actor = { country_total_army_levy_size > 15 }
+		}
+		modifier = {
+			add = 30
+			scope:actor.overlord ?= { at_war = yes }
 		}
 	}
 }

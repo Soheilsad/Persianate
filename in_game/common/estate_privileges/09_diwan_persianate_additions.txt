@@ -40,7 +40,7 @@ sahib_diwan_plenipotentiary = {
 		monthly_towards_centralization = 0.10
 		monthly_towards_tazik = 0.10
 	}
-	revoke_privilege_cost_modifier = 1.0
+
 }
 
 mustawfi_al_mamalik = {
@@ -154,7 +154,7 @@ diwan_mavajib_cash_pay = {
 		monthly_towards_centralization = 0.10
 		monthly_towards_tazik = 0.10
 	}
-	revoke_privilege_cost_modifier = 1.0
+
 }
 
 # === RIVALRY — visibility ===
@@ -292,7 +292,7 @@ mulk_protection_charter = {
 
 		global_diwan_estate_power = -0.10
 	}
-	revoke_privilege_cost_modifier = 2.0
+
 }
 
 # === The Tazik Command of Arms ===
@@ -326,7 +326,6 @@ diwan_tazik_command_of_arms = {
 		amirs_estate_target_satisfaction = -0.10
 		global_amirs_estate_power = -0.15
 	}
-	revoke_privilege_cost_modifier = 1.5
 }
 
 # === RIVALRY — who judges ===

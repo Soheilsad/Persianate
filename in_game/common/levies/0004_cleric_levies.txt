@@ -1,0 +1,14 @@
+levy_ghazi_volunteers = {
+	size = 0.2
+	allowed_pop_type = clergy
+	allow = {
+		location ?= {
+			has_building_with_at_least_one_level = mutatawwia       
+		}
+		owner ?= {
+				has_reform = government_reform:dar_al_jihad
+
+		}
+	}
+	unit = a_ghazi_volunteers
+}

@@ -119,8 +119,8 @@
  diwan_persian_bureaucratic_tradition_desc: "The ancient traditions of statecraft ensure a highly centralized and stable administration."
  diwan_waqf_administration: "Waqf Administration"
  diwan_waqf_administration_desc: "State oversight of religious endowments ensures revenue is not lost to clerical corruption."
- diwan_ghulam_administration: "Ghulam Administration"
- diwan_ghulam_administration_desc: "Direct administration of the slave-soldier corps reduces reliance on tribal levies."
+ # diwan_ghulam_administration loc moved to eranzamin_matters_l_english.yml
+ # (privilege now lives in 08_ghulam_privileges.txt as "Dīwān al-ʿArḍ")
  diwan_royal_workshops: "Royal Workshops (Karkhana)"
  diwan_royal_workshops_desc: "State-run manufactories produce high-quality goods for the court and export, bypassing the guilds."
  diwan_collective_responsibility: "Collective Responsibility"

@@ -25,7 +25,7 @@ iranian_town = {
 	glass_guild = 1
 	jewelry_guild = 1
 	marketplace = 2
-	castle = 1
+	stockade = 1
 	tannery = 1
     dyes_guild = 1
     charcoal_maker = 1
@@ -36,13 +36,15 @@ khorasani_town = {
 	copy_from = iranian_town
 	paper_guild = 1                # Khurasani / Samarqandi paper — named export grades
 	pottery_guild = 1              # Nishapur slip-painted ware tradition
+	caravanserai = 1                # Khorasan was the caravanserai heartland
 }
 
 iranian_caravan_town = {
 	copy_from = iranian_town
 	marketplace = 1                # caravan transit, monetized economy
 	granary = 1                    # provisioning stop
-	castle = 1                     # caravanserai-fort proxy
+	stockade = 1                     # caravanserai-fort proxy
+	caravanserai = 2
 }
 
 iranian_pilgrimage_town = {
@@ -51,6 +53,7 @@ iranian_pilgrimage_town = {
 	scriptorium = 2                # religious scholarship + manuscript copying
 	paper_guild = 2                # ziyarat-nama, ijaza, devotional texts
 	marketplace = 1                # pilgrim economy
+	caravanserai = 1
 }
 
 iranian_kashi_town = {
@@ -86,7 +89,7 @@ tiny_iranian_town = {
 	mason = 1
 	pottery_guild = 1
 	marketplace = 1
-	castle = 1
+
 	tannery = 1
 	dyes_guild = 1                 # rural indigo, madder, saffron, kermes
 	charcoal_maker = 1
@@ -96,7 +99,8 @@ tiny_iranian_caravan_town = {
 	copy_from = tiny_iranian_town
 	marketplace = 1                # caravan transit, monetized economy
 	granary = 1                    # provisioning stop
-	castle = 1                     # caravanserai-fort proxy
+                   # caravanserai-fort proxy
+	caravanserai = 1
 }
 
 tiny_iranian_fortified_town = {
@@ -108,6 +112,7 @@ tiny_iranian_fortified_town = {
 # City setups
 # ============================================================
 iranian_city = {
+	caravanserai = 1
 	temple = 1
 	tools_guild = 2
 	weapon_guild = 2
@@ -123,7 +128,7 @@ iranian_city = {
 	jewelry_guild = 2
 	dyes_guild = 2
 	marketplace = 2
-	castle = 1
+	city_walls = 1
 	tannery = 1
 	slave_market = 1
 }
@@ -133,6 +138,7 @@ khorasani_city = {
 	copy_from = iranian_city
 	paper_guild = 1                # Khurasani paper — premier export grade
 	pottery_guild = 1              # Nishapur / Herat ceramic traditions
+	caravanserai = 1
 }
 
 iranian_pilgrimage_city = {

@@ -109,6 +109,11 @@ locations = {
 	# === Jochid steppe-edge / Talas ===
 	talas = { rank = town town_setup = tiny_iranian_caravan_town }         # Taraz
 	sighnaq = { rank = town town_setup = tiny_iranian_fortified_town }
+
+
+	## shirvan
+	shamakhi = { rank = city town_setup = iranian_city } 
+	baku = { rank = town town_setup = iranian_town }
 }
 
 

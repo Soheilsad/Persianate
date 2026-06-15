@@ -52,7 +52,7 @@ ayyar_militia_recognition = {
 		fort_maintenance_cost = -0.10
 		pop_join_rebel_threshold = -0.02
 		monthly_towards_mysticism = 0.05
-		burghers_estate_levy_size = 0.15
+		burghers_estate_levy_size = 0.25
 	}
 }
 
@@ -101,7 +101,7 @@ malik_al_tujjar = {
 # Persianate state — Rashid al-Din's coin reform is the case in point.
 # Re-declared with original modifier sets intact; only potential is added.
 
-treasury_rights = {
+REPLACE:treasury_rights = {
 	estate = burghers_estate
 
 	potential = {
@@ -117,7 +117,7 @@ treasury_rights = {
 	}
 }
 
-control_over_monetary_policy = {
+REPLACE:control_over_monetary_policy = {
 	estate = burghers_estate
 
 	potential = {
@@ -133,7 +133,7 @@ control_over_monetary_policy = {
 	}
 }
 
-control_over_the_coinage = {
+REPLACE:control_over_the_coinage = {
 	estate = burghers_estate
 
 	potential = {

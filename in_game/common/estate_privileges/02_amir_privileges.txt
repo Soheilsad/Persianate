@@ -11,7 +11,8 @@ amirs_iqta_grant = {
 		### this is actually a CORE privilege of the whole system.
 		amirs_estate_levy_size = 0.50
 		amirs_estate_max_tax = -0.1
-		global_nobles_rural_desired_pop_scaled = 0.01 # adding some rural population due to small scale iqtas being embedded into this privilege.
+		global_nobles_rural_desired_pop_scaled = 0.015 # adding some rural population due to small scale iqtas being embedded into this privilege.
+
 
 	}
 }
@@ -45,7 +46,7 @@ amirs_hereditary_tuyul = {
 		global_max_urban_control = ez_amir_urban_malus_big
 		monthly_towards_turk = 0.2
 	}
-	revoke_privilege_cost_modifier = 2.0
+	
 }
 
 amirs_frontier_autonomy = {
@@ -112,9 +113,16 @@ amirs_audit_exemption = {
 
 amirs_tribal_hosts = {
 	estate = amirs_estate
-	
+
+	# Matter of Tork: a realm that expelled or eradicated its Türk
+	# military class has no tribal hosts to recognize — the old
+	# charter cannot be re-granted (the dehqan set replaces it).
+	potential = {
+		NOT = { has_variable = matter_turk_dissolved }
+	}
+
 	country_modifier = {
-		amirs_estate_target_satisfaction = 0.08
+		amirs_estate_target_satisfaction = 0.075
 		global_amirs_estate_power = 0.80
 		army_heavy_cavalry_power = 0.15
 		army_light_cavalry_power = 0.15
@@ -122,8 +130,8 @@ amirs_tribal_hosts = {
 		peasants_estate_target_satisfaction = -0.05
 		monthly_towards_turk = 0.15
 		block_tribal_promotion = yes
-		tribes_estate_levy_size = 0.15
-		amirs_estate_levy_size = 0.30
+		tribes_estate_levy_size = 0.1
+		amirs_estate_levy_size = 0.2
 		# Tribal hosts camp in the pasture, not the bazaar. Big rural
 		# hit; only a light urban touch from the host-amir's presence
 		# in the regional capital he draws from.
@@ -153,6 +161,12 @@ amirs_conquest_assignments = {
 
 amirs_tribal_autonomy_rights = {
 	estate = amirs_estate
+
+	# Matter of Tork: see amirs_tribal_hosts — the old charter is
+	# foreclosed once the Türk constituency is dissolved.
+	potential = {
+		NOT = { has_variable = matter_turk_dissolved }
+	}
 
 	country_modifier = {
 		amirs_estate_target_satisfaction = 0.05

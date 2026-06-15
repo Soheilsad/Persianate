@@ -21,21 +21,19 @@ mazalim_events.1 = {
 		}
 		
 		# High Corruption Context
-		diwan_estate_power > 0.6
+		"estate_power(estate_type:diwan_estate)" > 0.4
 		
-		# The Trigger: The State fails to find resources
+		# The Trigger: The State fails to find resources. 
 		OR = {
 			manpower_percentage < 0.25
-			monthly_income < 0
-			treasury < 50
+			monthly_income_total < 0
+			gold < 50
 		}
 		
 		NOT = { has_variable = rast_ravshan_conspiracy }
 	}
 	
-	mean_time_to_happen = {
-		months = 240
-	}
+
 	
 	immediate = {
 		set_variable = { name = rast_ravshan_conspiracy years = 20 }
@@ -80,8 +78,12 @@ mazalim_events.2 = {
 	
 	option = {
 		name = mazalim_events.2.a # "The Vizier is the dog..."
+		scope:actor = {
+			ruler = {
+				add_character_modifier = { modifier = hunting_trip years = 0.5 }
+			}
+		}
 		
-		add_ruler_modifier = { modifier = hunting_trip years = 0.5 }
 		
 		trigger_event_non_silently= { 
 			id = mazalim_events.3
@@ -129,7 +131,7 @@ mazalim_events.3 = {
 		add_stability = -10
 		
 		scope:traitor_vizier = {
-			add_loyalty = 20
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.2 }
 		}
 		
 		add_country_modifier = {
@@ -165,14 +167,14 @@ mazalim_events.4 = {
 		
 		scope:traitor_vizier = { death = { reason = death_reason:execution } }
 		
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = -40 }
-		add_estate_satisfaction = { type = estate_type:amirs_estate value = -40 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.20 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.20 }
 		
 		# Refund Victims (Cost 1 Year Income)
-		add_gold = { value = monthly_income multiply = -12 }
+		add_gold = { value = monthly_income_total multiply = -12 }
 		
 		# Massive Political Capital Gain
-		change_parliament_issue_support = 150
+		change_parliament_issue_support = 1.75
 		
 		add_stability = 15
 		add_legitimacy = 20
@@ -199,12 +201,12 @@ mazalim_events.4 = {
 		
 		scope:traitor_vizier = { death = { reason = death_reason:execution } }
 		
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = -50 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.50 }
 		
 		# Keep Confiscated Wealth (Gain 6 Months Income)
-		add_gold = { value = monthly_income multiply = 6 }
+		add_gold = { value = monthly_income_total multiply = 6 }
 		
-		change_parliament_issue_support = 60
+		change_parliament_issue_support = 0.60
 		
 		add_stability = 5
 		add_legitimacy = 10
@@ -223,14 +225,14 @@ mazalim_events.4 = {
 		}
 		add_army_tradition = -20
 		
-		add_estate_satisfaction = { type = estate_type:amirs_estate value = -50 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.50 }
 		
 		scope:traitor_vizier = { death = { reason = death_reason:execution } }
 		
 		# Keep Confiscated Wealth (Gain 6 Months Income)
-		add_gold = { value = monthly_income multiply = 6 }
+		add_gold = { value = monthly_income_total multiply = 6 }
 		
-		change_parliament_issue_support = 60
+		change_parliament_issue_support = 0.60
 		
 		add_stability = 5
 		add_legitimacy = 10

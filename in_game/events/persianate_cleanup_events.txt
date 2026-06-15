@@ -45,7 +45,8 @@ persianate_cleanup.1 = {
 		
 		## mzf muzaffarids, killing the original to avoid duplicates. The mf is a major character with a long reign and many interactions, so it's worth the effort to rewrite him as a _pw character with proper flavor and traits.
 		character:mzf_mubariz_al_din_muhammad ?= { kill_character_silently = this }
-		character:mzf_shah_shuja ?= { kill_character_silently = this}
+		character:mzf_shah_shoja ?= { kill_character_silently = this}
+		character:grg_togha_temur ?= { kill_character_silently = this }
 
 
 		## demote rey
@@ -138,6 +139,39 @@ persianate_cleanup.1 = {
 				age = { 16 25 }
 				female = yes
 			}
+
+			### now, we also want to add the pastures.
+			every_owned_rural_location = {
+
+				limit = {
+					OR = {
+						region = region:persia_region
+						region = region:khorasan_region
+						region = region:crescent_region
+						region = region:anatolia_region
+						region = region:caucasus_region
+					}
+					OR = {
+						climate = arid
+						climate = cold_arid
+						climate = continental
+					}
+					OR = {
+						vegetation = grasslands
+						vegetation = seasonal_irrigated ## will stress it less
+					}
+					num_pop_type:tribesmen > 10.0
+					local_control < 0.4
+				}
+				construct_building = {
+					building_type = building_type:tribal_pasture
+					cost_multiplier = 0
+					demand_multiplier = 0
+					instant = yes
+				}
+
+			}
+
 		}
 
 	}

@@ -42,7 +42,7 @@ soyurghal_grants = {
 		monthly_towards_turk = 0.10
 		monthly_towards_decentralization = 0.10
 	}
-	revoke_privilege_cost_modifier = 5.0
+
 }
 
 amir_al_umara = {
@@ -60,7 +60,7 @@ amir_al_umara = {
 	country_modifier = {
 		amirs_estate_target_satisfaction = ez_priv_sat_major
 		global_amirs_estate_power = ez_priv_power_major
-		army_tradition_from_battles = 0.25
+		army_tradition_from_battle = 0.25
 		land_morale = 0.05
 		army_heavy_cavalry_power = 0.10
 		army_light_cavalry_power = 0.10
@@ -124,7 +124,7 @@ universal_tarkhan = {
 		monthly_towards_turk = 0.15
 		monthly_towards_decentralization = 0.20
 	}
-	revoke_privilege_cost_modifier = 5.0
+
 }
 
 
@@ -164,6 +164,9 @@ amirs_umara_at_the_diwan = {
 
 	potential = {
 		government_type = government_type:persianate_sultanate
+		# Matter of Tork: foreclosed once the Türk military class is
+		# dissolved — the umara this licenses no longer exist.
+		NOT = { has_variable = matter_turk_dissolved }
 	}
 
 	# Türk amīrs holding administrative posts is the bête noire of
@@ -183,7 +186,7 @@ amirs_umara_at_the_diwan = {
 		diwan_estate_target_satisfaction = -0.10
 		global_diwan_estate_power = -0.15
 	}
-	revoke_privilege_cost_modifier = 1.5
+
 }
 
 # === RIVALRY — judicial autonomy ===

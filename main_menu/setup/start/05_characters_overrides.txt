@@ -3,7 +3,7 @@ character_db = {
 		first_name = { name = name_hasan }
 		nickname = { name = name_kuchek }
 		culture = mongolian_culture
-		religion = shia
+		religion = sunni
 		adm = 61 dip = 90 mil = 74
 		birth_date = 1319.1.1
 		birth = kayseri
@@ -18,7 +18,7 @@ character_db = {
 	chb_chupan_pw = { #Founder of the Dynasty
 		first_name = { name = name_chupan }
 		culture = mongolian_culture
-		religion = shia
+		religion = sunni
 		adm = 75 dip = 80 mil = 85
 		birth_date = 1262.1.1
 		birth = diyarbekir
@@ -31,7 +31,7 @@ character_db = {
 	chb_timurtash_pw = { #Father of the ruler
 		first_name = { name = name_timur.name_tash }
 		culture = mongolian_culture
-		religion = shia
+		religion = sunni
 		adm = 45 dip = 30 mil = 75
 		birth_date = 1298.1.1
 		birth = soltaniyeh
@@ -45,7 +45,7 @@ character_db = {
 	chb_malek_ashraf_pw = {
 		first_name = { name = name_malik.name_ashraf }
 		culture = mongolian_culture
-		religion = shia
+		religion = sunni
 		adm = 35 dip = 25 mil = 75
 		birth_date = 1320.1.1
 		birth = kayseri
@@ -60,7 +60,7 @@ character_db = {
 	chb_demasq_kaja_pw = {
 		first_name = { name = name_damascus.name_xwaja }
 		culture = mongolian_culture
-		religion = shia
+		religion = sunni
 		adm = 50 dip = 60 mil = 55
 		birth_date = 1299.1.1
 		birth = soltaniyeh
@@ -265,5 +265,19 @@ character_db = {
 		dynasty = muzaffarid_dynasty
 		tag = MZF
 		child_trait = child_prodigy ## the mf memorized the quran at 9 fully, acted as literary critique for hafiz and savoj. 
+	}
+	grg_togha_temur_pw = {
+		first_name = { name = name_togha.name_timur }
+		culture = mongolian_culture
+		religion = sunni
+		adm = 35 dip = 30 mil = 50
+		birth_date = 1300.1.1 #Unknown
+		birth = gorgan
+		dynasty = borjigin_dynasty
+		father = suri_borjigin
+		spouse = "random"
+		tag = GRG
+		ruler_trait = well_connected
+		ruler_trait = naive
 	}
 }

@@ -195,7 +195,7 @@ farr_proof.20 = {
 		add_legitimacy = 2
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.05 }
 		random_owned_location = {
-			add_unrest = 3
+			add_location_modifier = { modifier = ez_unrest_3 years = 3 }
 		}
 	}
 
@@ -751,18 +751,18 @@ farr_proof.306 = {
 
 	option = {
 		name = farr_proof.306.a
-		add_legitimacy = 0.5
+		add_legitimacy = 1
 	}
 
 	option = {
 		name = farr_proof.306.b
 		set_variable = farr_silence_province_gained
-		add_legitimacy = 0.5
+		add_legitimacy = 1
 	}
 
 	option = {
 		name = farr_proof.306.c
 		set_variable = farr_silence_all
-		add_legitimacy = 0.5
+		add_legitimacy = 1
 	}
 }

@@ -16,10 +16,10 @@ is_eranzamin_contender = {
 	}
 
 	# Must be a relevant state
-	OR = {
-		country_rank_level > 1
-		num_locations_owned_or_owned_by_subjects_or_below > 10
-	}
+	# OR = {
+	# 	country_rank_level > 1
+	# 	num_locations_owned_or_owned_by_subjects_or_below > 10
+	# }
 }
 
 controls_eranzamin_key_cities = {

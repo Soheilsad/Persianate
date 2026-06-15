@@ -74,6 +74,9 @@ on_ghazi_burden_battle_win = {
 		scope:actor = {
 			owner = { has_variable = ghazi_burden_fired }
 		}
+		scope:target = {
+			is_rebel_country = no
+		}
 	}
 	effect = {
 		scope:actor.owner = {
@@ -116,6 +119,9 @@ ghazi_burden_on_battle_lost = {
 		scope:actor = {
 			owner = { has_variable = ghazi_burden_fired }
 		}
+		scope:target = {
+			is_rebel_country = no
+		}
 	}
 	effect = {
 		scope:actor.owner = {
@@ -147,6 +153,9 @@ ghazi_burden_on_winning_war = {
 		scope:winner = {
 			has_variable = ghazi_burden_fired
 		}
+		scope:loser = {
+			is_rebel_country = no
+		}
 	}
 	effect = {
 		scope:winner = {
@@ -176,6 +185,9 @@ ghazi_burden_on_losing_war = {
 	trigger = {
 		scope:loser = {
 			has_variable = ghazi_burden_fired
+		}
+		scope:winner = {
+			is_rebel_country = no
 		}
 	}
 	effect = {
@@ -211,6 +223,9 @@ ghazi_burden_on_location_changed_owner_loss = {
 	trigger = {
 		scope:loser = {
 			has_variable = ghazi_burden_fired
+		}
+		scope:winner = {
+			is_rebel_country = no
 		}
 	}
 	effect = {
@@ -269,6 +284,9 @@ ghazi_burden_on_location_changed_owner_win = {
 	trigger = {
 		scope:winner = {
 			has_variable = ghazi_burden_fired
+		}
+		scope:loser = {
+			is_rebel_country = no
 		}
 	}
 	effect = {

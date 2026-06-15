@@ -61,48 +61,48 @@ on_seed_mod_estates = {
 		}
 
 		# Commonwealth of Martyrs estate seeding
-		every_country = {
-			limit = {
-				government_type = government_type:commonwealth_of_martyrs
-			}
-			# Sufyānī notables — urban malik-aristocratic faction
-			create_character = {
-				estate = estate_type:sufyani_notables_estate
-				age = { min = 30 max = 50 }
-				culture = root.culture
-				religion = root.religion
-				adm = { 40 70 }
-				dip = { 40 70 }
-				mil = { 20 50 }
-			}
-			create_character = {
-				estate = estate_type:sufyani_notables_estate
-				age = { min = 20 max = 30 }
-				culture = root.culture
-				religion = root.religion
-				adm = { 30 60 }
-				dip = { 30 60 }
-				mil = { 20 50 }
-			}
-			# Shaykhī dervishes — mystical-militant order, the polity's fighting arm
-			create_character = {
-				estate = estate_type:shaykhi_dervishes_estate
-				age = { min = 30 max = 50 }
-				culture = root.culture
-				religion = root.religion
-				adm = { 10 40 }
-				dip = { 30 60 }
-				mil = { 50 80 }
-			}
-			create_character = {
-				estate = estate_type:shaykhi_dervishes_estate
-				age = { min = 20 max = 30 }
-				culture = root.culture
-				religion = root.religion
-				adm = { 10 30 }
-				dip = { 30 60 }
-				mil = { 40 70 }
-			}
-		}
+		# every_country = {
+		# 	limit = {
+		# 		government_type = government_type:commonwealth_of_martyrs
+		# 	}
+		# 	# Sufyānī notables — urban malik-aristocratic faction
+		# 	create_character = {
+		# 		estate = estate_type:sufyani_notables_estate
+		# 		age = { min = 30 max = 50 }
+		# 		culture = root.culture
+		# 		religion = root.religion
+		# 		adm = { 40 70 }
+		# 		dip = { 40 70 }
+		# 		mil = { 20 50 }
+		# 	}
+		# 	create_character = {
+		# 		estate = estate_type:sufyani_notables_estate
+		# 		age = { min = 20 max = 30 }
+		# 		culture = root.culture
+		# 		religion = root.religion
+		# 		adm = { 30 60 }
+		# 		dip = { 30 60 }
+		# 		mil = { 20 50 }
+		# 	}
+		# 	# Shaykhī dervishes — mystical-militant order, the polity's fighting arm
+		# 	create_character = {
+		# 		estate = estate_type:shaykhi_dervishes_estate
+		# 		age = { min = 30 max = 50 }
+		# 		culture = root.culture
+		# 		religion = root.religion
+		# 		adm = { 10 40 }
+		# 		dip = { 30 60 }
+		# 		mil = { 50 80 }
+		# 	}
+		# 	create_character = {
+		# 		estate = estate_type:shaykhi_dervishes_estate
+		# 		age = { min = 20 max = 30 }
+		# 		culture = root.culture
+		# 		religion = root.religion
+		# 		adm = { 10 30 }
+		# 		dip = { 30 60 }
+		# 		mil = { 40 70 }
+		# 	}
+		# }
 	}
 }

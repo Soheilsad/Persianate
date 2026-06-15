@@ -36,6 +36,7 @@ central_diwan = {
 		is_capital = yes
 	}
 	raw_modifier = {
+		local_diwan_estate_power = 1.0 ## the diwan estate is the chancery's resident interest group, and the building is its power base. The local presence of the Dīwān al-Mamālik boosts the estate's power in the capital, where it can directly access the machinery of government.
 		local_nobles_desired_pop_scaled = 0.01 ## attracts nobility to the capital, where they can staff the chancery or associate themselves with it.
 		local_clergy_desired_pop_scaled = 0.025 ## attracts clerics to the capital, where they can staff the chancery or associate themselves with it.
 		local_burghers_desired_pop_scaled = 0.05 ## attracts burghers to the capital, where they can staff the chancery or associate themselves with it.
@@ -67,8 +68,9 @@ central_diwan = {
 	capital_country_modifier = {
 		global_max_control = 0.04
 		global_crown_estate_power = 0.20
-		global_diwan_estate_power = 0.40
+		global_diwan_estate_power = 0.5
 		tax_income_efficiency = 0.04
+		
 	}
 
 	unique_production_methods = {
@@ -198,12 +200,7 @@ regional_diwan = {
 		}
 	}
 
-	construction_demand = {
-		lumber = 2
-		tools = 2
-		masonry = 2
-		category = building_construction
-	}
+	construction_demand = local_governor_construction
 }
 
 
