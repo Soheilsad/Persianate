@@ -21,7 +21,7 @@ mazalim_events.1 = {
 		}
 		
 		# High Corruption Context
-		"estate_power(estate_type:diwan_estate)" > 0.6
+		"estate_power(estate_type:diwan_estate)" > 0.4
 		
 		# The Trigger: The State fails to find resources. 
 		OR = {
@@ -33,9 +33,7 @@ mazalim_events.1 = {
 		NOT = { has_variable = rast_ravshan_conspiracy }
 	}
 	
-	mean_time_to_happen = {
-		months = 240
-	}
+
 	
 	immediate = {
 		set_variable = { name = rast_ravshan_conspiracy years = 20 }

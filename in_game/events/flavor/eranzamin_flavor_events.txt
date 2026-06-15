@@ -133,6 +133,8 @@ eranzamin_flavor.2 = {
 			capital = { region = region:persia_region }
 			capital = { region = region:khorasan_region }
 			capital = { region = region:caucasus_region }
+			capital = { area = area:iraq_arabi_area }
+			capital = { area = area:jazira_area }
 		}
 	}
 
@@ -235,8 +237,8 @@ eranzamin_flavor.4 = {
 
 	trigger = {
 		OR = {
-			culture ?= { has_culture_group = culture_group:mongol_group }
-			culture = culture:turkoman
+			culture ?= { has_culture_group = culture_group:mongolian_group }
+			culture ?= { has_culture_group = culture_group:turkic_group }
 		}
 		religion ?= { group = religion_group:muslim }
 	}
@@ -502,10 +504,10 @@ eranzamin_flavor.10 = {
 
 	trigger = {
 		OR = {
-			any_neighbor_country = { culture = culture:lur }
-			any_neighbor_country = { culture = culture:kurdish }
-			any_owned_location = { culture = culture:lur }
-			any_owned_location = { culture = culture:kurdish }
+			any_neighbor_country = { culture = culture:lur_culture }
+			any_neighbor_country = { culture = culture:kurdish_culture }
+			any_owned_location = { culture = culture:lur_culture }
+			any_owned_location = { culture = culture:kurdish_culture }
 		}
 	}
 

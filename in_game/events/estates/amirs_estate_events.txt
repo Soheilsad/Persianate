@@ -9,7 +9,7 @@ amirs_estate_events.1 = {
 	trigger = {
 		country_has_estate = estate_type:amirs_estate
 		"estate_power(estate_type:amirs_estate)" >= 0.25
-		NOT = { has_estate_privilege = estate_privilege:noble_leaders_only } # Can use vanilla privilege or clone
+		NOT = { has_estate_privilege = estate_privilege:amir_al_umara } # Can use vanilla privilege or clone
 	}
 
 	illustration_tags = {
@@ -24,7 +24,8 @@ amirs_estate_events.1 = {
 	option = {
 		name = amirs_estate_events.1.a
 		add_estate_satisfaction = { type = estate_type:amirs_estate value = estate_satisfaction_severe_bonus }
-		grant_estate_privilege = estate_privilege:noble_leaders_only
+		grant_estate_privilege = estate_privilege:amir_al_umara
+		
 	}
 	option = {
 		name = amirs_estate_events.1.b

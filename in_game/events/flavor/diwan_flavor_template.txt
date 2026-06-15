@@ -24,7 +24,7 @@ diwan_flavor.template_1 = {
 	option = {
 		name = diwan_flavor.template_1.a
 		
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = 10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.10 }
 		
 		# Push towards Bureaucracy
 		change_societal_value = { type = turk_vs_tazik value = 5 }
@@ -37,7 +37,7 @@ diwan_flavor.template_1 = {
 	option = {
 		name = diwan_flavor.template_1.b
 		
-		add_estate_satisfaction = { type = estate_type:amirs_estate value = 10 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.10 }
 		
 		# Push towards Military Aristocracy
 		change_societal_value = { type = turk_vs_tazik value = -5 }
@@ -69,7 +69,7 @@ diwan_flavor.template_2 = {
 	option = {
 		name = diwan_flavor.template_2.a
 		
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = -20 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.20 }
 		add_gold = 100
 		change_corruption = -1
 		
@@ -81,7 +81,7 @@ diwan_flavor.template_2 = {
 	option = {
 		name = diwan_flavor.template_2.b
 		
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = 10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.10 }
 		change_corruption = 0.5
 		
 		change_societal_value = { type = turk_vs_tazik value = -5 }
@@ -110,8 +110,8 @@ diwan_flavor.template_3 = {
 	option = {
 		name = diwan_flavor.template_3.a
 		
-		add_estate_satisfaction = { type = estate_type:amirs_estate value = 15 }
-		add_estate_satisfaction = { type = estate_type:clergy_estate value = -15 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.15 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.15 }
 		
 		change_societal_value = { type = turk_vs_tazik value = -10 }
 	}
@@ -120,8 +120,8 @@ diwan_flavor.template_3 = {
 	option = {
 		name = diwan_flavor.template_3.b
 		
-		add_estate_satisfaction = { type = estate_type:amirs_estate value = -15 }
-		add_estate_satisfaction = { type = estate_type:clergy_estate value = 15 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.15 }
 		
 		change_societal_value = { type = turk_vs_tazik value = 10 }
 	}

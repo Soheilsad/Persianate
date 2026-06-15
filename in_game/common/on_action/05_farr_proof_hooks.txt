@@ -268,7 +268,7 @@ farr_on_location_changed_owner_win = {
 					trigger_event_non_silently = farr_proof.306
 				}
 				else = {
-					add_legitimacy = 0.5
+					add_legitimacy = 1
 				}
 			}
 		}

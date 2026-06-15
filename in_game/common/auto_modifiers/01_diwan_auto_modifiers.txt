@@ -1,7 +1,7 @@
 # Base values for the Diwan Estate
 diwan_base_values = {
     potential_trigger = {
-        country_has_estate = estate_type:diwan_estate
+        government_type = government_type:persianate_sultanate
     }
     
     # Base Satisfaction (similar to other estates having ~30-50%)
@@ -14,7 +14,7 @@ diwan_base_values = {
 
 amirs_base_values = {
     potential_trigger = {
-        country_has_estate = estate_type:amirs_estate
+        government_type = government_type:persianate_sultanate
     }
 
     # Base Satisfaction (similar to other estates having ~30-50%)
