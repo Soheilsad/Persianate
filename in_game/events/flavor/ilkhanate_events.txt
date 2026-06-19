@@ -420,7 +420,7 @@ ilkhanate_flavor.10 = {
 	desc = {
 		first_valid = {
 			triggered_desc = {
-				trigger = { culture ?= { has_culture_group = culture_group:iranian_group } }
+				trigger = { societal_value:turk_vs_tazik >= 0 }
 				desc = ilkhanate_flavor.10.desc_persian
 			}
 			triggered_desc = {
@@ -428,61 +428,71 @@ ilkhanate_flavor.10 = {
 			}
 		}
 	}
-	
+
 	illustration_tags = {
 		10 = exterior
 		10 = happy
 	}
-	
-	# OPTION A: MONGOL RESTORATION (Default/Turkic)
+
+	# Victory is not a menu. One resolution. The dividend below falls to
+	# EVERY victor; only the cabinet tool unlocked at the end depends on
+	# how the realm actually leans on the Türk–Tāzīk axis (§3).
 	option = {
 		name = ilkhanate_flavor.10.a
-		trigger = { NOT = { culture ?= { has_culture_group = culture_group:iranian_group } } }
-		
-		add_prestige = 50
+
+		# -- 0. The interregnum ends. Prestige and legitimacy for the
+		#       one who closed the question, the imperial seat reclaimed,
+		#       and a one-time coring dividend: a quarter of the land
+		#       still held only by garrison across Iranshahr snaps to
+		#       core, the realm recognising its victor. --
+		add_prestige = 100
 		add_legitimacy = 50
-		
-		# Mandate of the Khan
-		add_country_modifier = {
-			modifier = great_khans_mandate
-			years = -1
-		}
-		
-		# Shift to Turk
-		change_societal_value = {
-			type = turk_vs_tazik
-			value = -50
-		}
-		
-		# Restore IO
-		# (Mechanic to restore IO would go here, simplified as a modifier for now)
-	}
-	
-	# OPTION B: PERSIAN RESURGENCE
-	option = {
-		name = ilkhanate_flavor.10.b
-		trigger = { culture ?= { has_culture_group = culture_group:iranian_group } }
-		
-		add_prestige = 50
-		add_legitimacy = 50
-		
-		# Shahanshah Title
 		set_country_rank = country_rank:rank_empire
-		
-		# Throw out the Mongols
-		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.50 }
-		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.50 }
-		
-		# Restoration of Eran
+
+		every_owned_location = {
+			limit = {
+				is_iranshahr_province = yes
+				NOT = { integration_level = core }
+			}
+			random = {
+				chance = 25
+				change_integration_level = core
+			}
+		}
+
+		# -- 1. The permanent identity of a United Iran. --
 		add_country_modifier = {
-			modifier = restoration_of_eran
+			modifier = united_iran
 			years = -1
 		}
-		
-		# Shift to Tazik
-		change_societal_value = {
-			type = turk_vs_tazik
-			value = 50
+
+		# -- 2. The half-century Recovery boom. --
+		add_country_modifier = {
+			modifier = eranzamin_recovery
+			years = 50
+		}
+
+		# -- 3. The victory tool, by disposition. --
+		if = {
+			limit = { societal_value:turk_vs_tazik >= 0 }
+			# Tāzīk triumph: the Shahanshah's chancery completes the
+			# conquest on paper. Unlocks "Integrate into the Dīwān".
+			add_country_modifier = {
+				modifier = restoration_of_eran
+				years = -1
+			}
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.25 }
+			set_variable = united_iran_diwan_unlocked
+		}
+		else = {
+			# Türk triumph: the restored Khanate completes the conquest
+			# by settlement. Unlocks "Invite Turkic Settlers".
+			add_country_modifier = {
+				modifier = great_khans_mandate
+				years = -1
+			}
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.25 }
+			set_variable = united_iran_turk_unlocked
 		}
 	}
 }

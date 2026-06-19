@@ -20,6 +20,7 @@ eranzamin_succession_region_modifier = {
 	}
 
 	local_defensive = -0.66 # Forts are neglected
+	local_supply_limit_modifier = 0.5
 	local_monthly_prosperity = -0.0020 # The breakdown of order and the rise of warlordism disrupts trade and agriculture, but the militarization of society keeps the economy limping along.
 	local_levy_size_modifier = 0.1 # But breeds warriors
 	local_pop_food_consumption = -0.1 ## the land is being ravaged, and the people are being extracted from.

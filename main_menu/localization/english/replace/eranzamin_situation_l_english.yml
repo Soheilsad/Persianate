@@ -71,10 +71,10 @@
  # Borjigin puppet — the courtier-khan spawned by option A.
  name_sulayman_khan: "Sulaymān Khān"
  borjigin_dynasty: "Borjigin"
- ilkhanate_flavor.10.title: "The New Ilkhan"
- ilkhanate_flavor.10.desc_persian: "The long night of the steppe is over. By the grace of God and the strength of our arms, we have reunited the realm. But we do not restore the rule of the Mongol warlords. Instead, we reclaim the ancient title of Shahanshah. The Men of the Pen have triumphed over the Men of the Sword."
- ilkhanate_flavor.10.desc_mongol: "The legacy of Hulagu is secure. Through blood and iron, we have crushed the pretenders and restored the Ilkhanate. The soft ways of the Persians are rejected; the sword of the steppe will rule for another century."
- ilkhanate_flavor.10.a: "Long live the Great Khan!"
+ ilkhanate_flavor.10.title: "Fatḥ-nāma — The Proclamation of Victory"
+ ilkhanate_flavor.10.desc_persian: "In the name of God, the Merciful, the Compassionate.\n\nA new spring has dawned upon the lands of Iran, and lo, in this most auspicious year the Homāy of prosperity and fortune has returned to cast its shadow once more upon the throne of the Kayānids. Verily His Imperial Majesty — Shāhanshāh, King of Kings, the Shadow of God upon the earth, the just Sulṭān-i ghāzī whose justice revives the memory of Anūshīrvān the Just — has gathered the scattered provinces of Erānzamīn into a single hand.\n\nThe usurpers who seized authority without right are pacified; the rebels who spread corruption upon the earth are brought low. Now the men of the pen take up the registers anew: the ruined cities shall be made to flourish, the qanāts dug out and the caravans set running, that the raʿiyyat — the common people of Iran — may know peace and plenty. Let the khuṭba be read and the sikka struck in the name of the Shāhanshāh, and let the world be told: Iran is whole again."
+ ilkhanate_flavor.10.desc_mongol: "In the name of God, the Merciful, the Compassionate.\n\nBy the favour of the Eternal Heaven and the strength of the sword, the ulus is gathered once more. His Majesty — Khan of Khans, Sulṭān-i ghāzī, lord of the tent and of the throne alike — has crushed the pretenders who dared raise rival banners, and has bound the quarrelling amirs again beneath a single yarlïgh.\n\nYet he reigns from Tabrīz as the Īlkhāns reigned before him: the dīwān keeps his registers, the dabīrs draft his decrees, and the chancery proclaims in the high Persian tongue that the Homāy of fortune has alighted again upon these lands. The cities shall be restored and the people made secure — though it is the bow and the swift horse, not the reed-pen alone, that hold Iran together. Let the khuṭba be read in the Khan's name, from Khurāsān to the gates of the Caucasus."
+ ilkhanate_flavor.10.a: "Iran is whole again."
  ilkhanate_flavor.10.b: "Long live the Shahanshah!"
  ilkhanate_flavor.99.title: "The Dream Dies"
  ilkhanate_flavor.99.desc: "Decades of war have left the realm broken. No single power has been able to claim the legacy of the Ilkhanate. The dream of unity is dead, replaced by a patchwork of petty tyrants and local warlords."
@@ -94,5 +94,33 @@
  opinion_betrayed_genghis: "Ignored the Hallowed bloodline of Genghis Khan"
  the_refuge_of_religion.tt: "Levies, manpower and legitimacy bonuses while at war with an infidel or heretic."
  opinion_own_khutbah: "Read khutbah in his own name"
+
+ # --- United Iran victory (ilkhanate_flavor.10) ---
+ STATIC_MODIFIER_NAME_united_iran: "United Iran"
+ STATIC_MODIFIER_DESC_united_iran: "The interregnum is over and the realm of Iran is one again. A reunited empire can hold many peoples and rests on a lawful, settled seat — but the grand imperial court is a costly thing to keep."
+ STATIC_MODIFIER_NAME_eranzamin_recovery: "The Recovery"
+ STATIC_MODIFIER_DESC_eranzamin_recovery: "The half-century of reconstruction that follows the succession wars. The qanats are dug out, the caravans run again, and the registers fill: prosperity, food, and development all surge."
+
+ # --- Victory cabinet action: Integrate into the Dīwān (Tāzīk) ---
+ integrate_into_diwan: "Integrate into the Dīwān"
+ integrate_into_diwan_desc: "The Shahanshah's chancery completes the conquest on paper. Where a provincial dīwān office already stands, the cadastre and the qāḍī reach all the way in, coring the province five times faster than the unaided pace."
+ integrate_into_diwan_active: "Integrating into the Dīwān"
+ integrate_into_diwan_action: "Integrate [target.GetName] into the Dīwān"
+ integrate_into_diwan_action_progress: "Integration"
+ integrate_into_diwan_action_progress_wordier: "Integrating [target.GetName]"
+ integrate_into_diwan_action_progress_tooltip: "The chancery extends into [target.GetName]."
+ integrate_into_diwan_select_province: "Select a province to integrate"
+ integrate_into_diwan_no_provinces: "No Iranshahr province with a local dīwān still awaits integration."
+
+ # --- Victory cabinet action: Invite Turkic Settlers (Türk) ---
+ invite_turkic_settlers: "Invite Turkic Settlers"
+ invite_turkic_settlers_desc: "The restored Khanate completes the conquest by changing who lives on the land. A wave of settlers of the ruling people arrives, and the province thereafter integrates at double pace."
+ invite_turkic_settlers_active: "Settling the Province"
+ invite_turkic_settlers_action: "Invite settlers to [target.GetName]"
+ invite_turkic_settlers_action_progress: "Settlement"
+ invite_turkic_settlers_action_progress_wordier: "Settling [target.GetName]"
+ invite_turkic_settlers_action_progress_tooltip: "Settlers of our people take root in [target.GetName]."
+ invite_turkic_settlers_select_province: "Select a province to settle"
+ invite_turkic_settlers_no_provinces: "No Iranshahr province has a foothold of our people awaiting settlement."
  
  

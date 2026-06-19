@@ -74,8 +74,192 @@
 # 		local_unrest = 2
 # 		local_amirs_estate_power = -0.10
 # 	}
-	
+
 # 	map_marker = {
 # 		show_for_owner = yes
 # 	}
 # }
+
+# =====================================================================
+# VICTORY CABINET ACTIONS — unlocked by the Erānzamīn victory event
+# (ilkhanate_flavor.10). Each victor unlocks exactly ONE, gated on a
+# country variable set at the moment of triumph:
+#   - united_iran_diwan_unlocked  → Integrate into the Dīwān  (Tāzīk win)
+#   - united_iran_turk_unlocked   → Invite Turkic Settlers     (Türk win)
+# Both run as persistent cabinet tasks: they hold a cabinet slot,
+# accelerate the province's ongoing integration, and auto-cease once
+# the province is fully cored (is_finished).
+# =====================================================================
+
+# The Shahanshah's chancery completes the conquest on paper. A settled,
+# legitimate dīwān registers and cores a province FIVE TIMES faster than
+# the unaided pace (base 1x + local_integration_speed_modifier 4 = 5x).
+# Requires a provincial dīwān office already on the ground — the cadastre
+# only extends where the secretariat has a foothold — and the province
+# must sit in Iranshahr proper.
+integrate_into_diwan = {
+	ability = adm
+	icon = taluqdar_tax_collection
+
+	potential = {
+		has_variable = united_iran_diwan_unlocked
+	}
+
+	select_trigger = {
+		looking_for_a = province
+		source = actor
+		target_flag = target
+
+		name = "integrate_into_diwan_select_province"
+		none_available_msg_key = "integrate_into_diwan_no_provinces"
+
+		column = { data = name }
+		column = { data = population }
+		column = { data = province_tax_base }
+
+		visible = {
+			is_iranshahr_province = yes
+			# A provincial chancery office must already stand here.
+			any_location_in_province = {
+				has_building = building_type:local_diwan
+			}
+			# There must be owned, not-yet-cored land left to register.
+			any_location_in_province = {
+				owner = scope:actor
+				NOT = { integration_level = core }
+			}
+			NOT = {
+				cabinet_already_performing_same_task_on_target = {
+					cabinet_action = integrate_into_diwan
+					interaction_target = target
+				}
+			}
+		}
+	}
+
+	location_modifier = {
+		local_integration_speed_modifier = 4 # base 1x + 4 = ~5x
+	}
+
+	# Cease automatically once nothing owned here is left below core.
+	is_finished = {
+		scope:target = {
+			any_location_in_province = {
+				OR = {
+					integration_level = integrated
+					integration_level = core
+				}
+				count = all
+			}
+		}
+	}
+
+	map_marker = {
+		show_for_owner = yes
+	}
+
+	ai_will_do = {
+		value = 100
+		# Strongly preferred where the province is large and rich.
+		modifier = {
+			factor = 1.5
+			scope:target = { province_tax_base > 20 }
+		}
+	}
+}
+
+# The restored Khanate completes the conquest by changing who lives on
+# the land. A wave of settlers of the ruling people arrives (on_activate),
+# and thereafter the province integrates at DOUBLE pace (base 1x +
+# local_integration_speed_modifier 1 = 2x). The weaker, demographic
+# counterpart to the dīwān route — modelled on invite_turkic_migration,
+# but without the situation scaffolding. Requires an existing foothold of
+# the ruler's culture (settlers go where kin already are) that has not yet
+# become the local majority.
+invite_turkic_settlers = {
+	ability = mil
+	icon = settle_tribesmen
+
+	potential = {
+		has_variable = united_iran_turk_unlocked
+	}
+
+	select_trigger = {
+		looking_for_a = province
+		source = actor
+		target_flag = target
+
+		name = "invite_turkic_settlers_select_province"
+		none_available_msg_key = "invite_turkic_settlers_no_provinces"
+
+		column = { data = name }
+		column = { data = population }
+		column = { data = province_culture_percentage }
+
+		visible = {
+			is_iranshahr_province = yes
+
+			any_location_in_province = {
+				owner = scope:actor
+				integration_level = conquered
+			}
+			NOT = {
+				cabinet_already_performing_same_task_on_target = {
+					cabinet_action = invite_turkic_settlers
+					interaction_target = target
+				}
+			}
+		}
+	}
+
+	# The settlers arrive the moment the invitation is issued: a tenth of
+	# each non-kin pop in the province is resettled as the ruling culture.
+	on_activate = {
+		scope:target = {
+			every_location_in_province = {
+				limit = { owner = scope:actor }
+				every_pop = {
+					limit = { NOT = { culture = scope:actor.culture } }
+					split_pop = {
+						fraction = 0.10
+						culture = scope:actor.culture
+					}
+				}
+			}
+		}
+	}
+
+	location_modifier = {
+		local_integration_speed_modifier = 1 # base 1x + 1 = 2x
+	}
+
+	is_finished = {
+		scope:target = {
+			any_location_in_province = {
+				OR = {
+					integration_level = integrated
+					integration_level = core
+				}
+				count = all
+			}
+		}
+	}
+
+	map_marker = {
+		show_for_owner = yes
+	}
+
+	ai_will_do = {
+		value = 100
+		# Prefer provinces where our people already hold a real foothold.
+		modifier = {
+			factor = 1.5
+			scope:target = {
+				culture_percentage = {
+					culture = scope:actor.culture
+					value > 0.25
+				}
+			}
+		}
+	}
+}

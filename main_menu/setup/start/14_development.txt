@@ -90,8 +90,8 @@ development = {
 	## changed
 	persia_region = 22
 	khorasan_region = 18
-	crescent_region = 22 # game seems to think it's 1258.
-	arabia_region   10 -> 12
+	crescent_region = 18 # game seems to think it's 1258.
+	arabia_region = 12
 
 
 	west_siberia_region = 0

@@ -117,9 +117,12 @@ persianate_cleanup.1 = {
 
 			limit = {
 				OR = {
-					capital = { region = region:persia_region }
-					capital = { region = region:khorasan_region }
-					capital = { region = region:crescent_region }
+					region = region:persia_region
+					region = region:khorasan_region
+					region = region:caucasus_region
+					area = area:cappadocia_area
+					area = area:iraq_arabi_area # Baghdad/Iraq
+					area = area:jazira_area # Mosul and surroundings
 				}
 			}
 			save_scope_as = persianate_country

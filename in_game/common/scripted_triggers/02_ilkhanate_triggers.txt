@@ -9,6 +9,22 @@ is_eranzamin_region_province = {
 	}
 }
 
+# Iranshahr proper — the heartland of a United Iran, used by the
+# Erānzamīn victory dividend and the two victory cabinet actions.
+# Deliberately NARROWER than is_eranzamin_region_province: it drops
+# Cappadocia (Anatolia is contested ground, not Iranshahr) and keeps
+# only the plateau, Khurasan, the Caucasus, and the two Iraqi/Jaziran
+# arcs. Resolves from both location and province scope.
+is_iranshahr_province = {
+	OR = {
+		region = region:persia_region
+		region = region:khorasan_region
+		region = region:caucasus_region
+		area = area:iraq_arabi_area
+		area = area:jazira_area
+	}
+}
+
 is_eranzamin_contender = {
 	is_subject = no
 	capital = {

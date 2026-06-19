@@ -11,6 +11,7 @@
 monthly_country_pulse = {
 	on_actions = {
 		custody_governorate_pulse
+		peasant_non_levying_pulse
 	}
 }
 
@@ -36,4 +37,29 @@ custody_governorate_pulse = {
 		100 = 0
 		10 = custody.30
 	}
+}
+
+
+peasant_non_levying_pulse = {
+	trigger = {
+		## run ONLY for persianate sultanates which are at war.
+		government_type = government_type:persianate_sultanate
+		at_war = yes
+		any_owned_location = {
+			has_location_modifier = raised_levies
+		}
+	}
+	effect = {
+		every_owned_location ={
+			limit = {
+				has_location_modifier = raised_levies
+			}
+			remove_location_modifier = raised_levies
+
+		}
+		### later on, we can add something that actually represents Tribes and Amirs being levied. 
+
+	}
+
+
 }

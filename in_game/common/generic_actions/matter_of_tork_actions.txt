@@ -525,6 +525,7 @@ matter_tork_endow_khanqah = {
 	}
 
 	effect = {
+		change_societal_value = { type = mysticism_vs_jurisprudence value = -5 }
 		if = {
 			limit = { exists = scope:target }
 			scope:target = {
@@ -861,6 +862,7 @@ matter_tork_invite_shaykhs = {
 				dip = { 60 90 }
 				mil = { 10 40 }
 			}
+			change_societal_value = { type = mysticism_vs_jurisprudence value = -7.5 }
 			add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.05 }
 		}
 	}

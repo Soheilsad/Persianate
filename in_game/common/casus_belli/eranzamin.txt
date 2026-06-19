@@ -40,7 +40,17 @@ cb_ghozva = {
 		NOT = { religion.group = scope:target.religion.group } 
 	}
 	declare_enabled = {
-		NOT = { religion.group = scope:target.religion.group } 
+		OR = {
+			NOT = { religion.group = scope:target.religion.group } 
+			AND = {
+				has_variable = ghazi_fatwa_acquired
+				scope:target = {
+					has_policy = mongol_law_policy
+				}
+			}
+
+		}
+		
 	}
 	
 	#scopes are actor/recipient for countries, while root = province checked.
