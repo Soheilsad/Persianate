@@ -551,6 +551,13 @@ matter_of_tork.70 = {
 		change_religion = religion:shia
 		ruler = {change_character_religion = religion:shia}
 		heir = {change_character_religion = religion:shia}
+		every_character = {
+			limit = {
+				dynasty = root.ruler.dynasty
+				NOT = { religion = religion:shia }
+			}
+			change_character_religion = religion:shia
+		}
 		add_stability = -10
 		add_legitimacy = -20
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.20 }

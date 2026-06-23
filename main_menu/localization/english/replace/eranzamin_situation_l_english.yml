@@ -39,6 +39,8 @@
  cb_eranzamin_succession_desc: "We are a contender for the throne of Erānzamīn, and so is our enemy. Only one claimant can sit on Hulagu's seat — the legitimacy of the Khans does not divide."
  cb_ghozva: "Ghozva Holy War"
  cb_ghozva_desc: "A holy war declared against enemies of the faith by a Ghazi"
+ cb_unite_iran: "Unite Iran"
+ cb_unite_iran_desc: "Re-establish the Authority of the King of Kings over all of Iran, as righteousness demands"
  ERANZAMIN_SUCCESSION_WAR_NAME: "$ATTACKER$'s Succession War against $DEFENDER$"
  rally_turkic_tribes: "Rally Turkic Tribes"
  rally_turkic_tribes_desc: "Send the bitikchis out to the ulus — call the Türkmen lineages in to the muster. Tribesmen and their amir layer arrive in the chosen rural location, scaled to the rank of the realm. The diwan, the burghers, and the peasantry are alienated by the influx; the steppe will not be summoned by a court that has gone Tāzīk."
@@ -103,7 +105,7 @@
 
  # --- Victory cabinet action: Integrate into the Dīwān (Tāzīk) ---
  integrate_into_diwan: "Integrate into the Dīwān"
- integrate_into_diwan_desc: "The Shahanshah's chancery completes the conquest on paper. Where a provincial dīwān office already stands, the cadastre and the qāḍī reach all the way in, coring the province five times faster than the unaided pace."
+ integrate_into_diwan_desc: "The Shahanshah's chancery completes the conquest on paper. Where a provincial dīwān office already stands, the cadastre and the qāḍī reach all the way in, integrating the province far faster than the unaided pace."
  integrate_into_diwan_active: "Integrating into the Dīwān"
  integrate_into_diwan_action: "Integrate [target.GetName] into the Dīwān"
  integrate_into_diwan_action_progress: "Integration"
@@ -114,7 +116,7 @@
 
  # --- Victory cabinet action: Invite Turkic Settlers (Türk) ---
  invite_turkic_settlers: "Invite Turkic Settlers"
- invite_turkic_settlers_desc: "The restored Khanate completes the conquest by changing who lives on the land. A wave of settlers of the ruling people arrives, and the province thereafter integrates at double pace."
+ invite_turkic_settlers_desc: "The restored Khanate completes the conquest by changing who lives on the land. A wave of Türkmen settlers migrates in from the Turkic heartlands, and the province thereafter integrates far faster."
  invite_turkic_settlers_active: "Settling the Province"
  invite_turkic_settlers_action: "Invite settlers to [target.GetName]"
  invite_turkic_settlers_action_progress: "Settlement"

@@ -46,7 +46,9 @@ kashi_guild = {
 	# religion group as the simplest proxy for the Islamic craft
 	# world; widen or narrow as the map demands.
 	country_potential = {
-		is_member_of_international_organization = international_organization:eranzamin
+		capital = {
+			region = region:persia_region
+		}
 	}
 
 	unique_production_methods = {
@@ -78,7 +80,9 @@ kashi_manufactory = {
 	build_time = manufactory_build_time
 
 	country_potential = {
-		is_member_of_international_organization = international_organization:eranzamin
+		capital = {
+			region = region:persia_region
+		}
 	}
 
 	unique_production_methods = {

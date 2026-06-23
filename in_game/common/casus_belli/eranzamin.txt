@@ -25,7 +25,7 @@ cb_eranzamin_succession = {
 		}
 	}
 
-	speed = 10
+	speed = 20
 
 	war_goal_type = eranzamin_succession_wargoal
 }
@@ -60,7 +60,57 @@ cb_ghozva = {
 		}
 	}
 	custom_tags = { religious_casus_belli }
-
+	speed = 20
 	war_goal_type = religious_conquer_province
 }
 
+
+
+cb_eranzamin_succession = {
+
+	create_visible = {
+		is_member_of_international_organization = international_organization:eranzamin
+		scope:target = {
+			is_member_of_international_organization = international_organization:eranzamin
+		}
+	}
+
+	declare_enabled = {
+		is_member_of_international_organization = international_organization:eranzamin
+		scope:target = {
+			is_member_of_international_organization = international_organization:eranzamin
+		}
+	}
+
+	speed = 20
+
+	war_goal_type = eranzamin_succession_wargoal
+}
+
+
+cb_unite_iran = {
+	create_visible = {
+		root = c:IRA
+	}
+
+	declare_enabled = {
+		root = c:IRA
+		scope:target = {
+			capital = {
+				OR = {
+					region = region:persia_region
+					region = region:khorasan_region
+					region = region:caucasus_region
+					area = area:iraq_arabi_area # Baghdad/Iraq
+					area = area:jazira_area # Mosul and surroundings
+					area = area:cappadocia_area
+				}
+
+			}
+		}
+	}
+
+	speed = 20
+
+	war_goal_type = eranzamin_succession_wargoal
+}

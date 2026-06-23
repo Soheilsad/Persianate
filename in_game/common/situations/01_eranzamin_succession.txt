@@ -31,10 +31,7 @@ eranzamin_succession = {
 			# Plus the territorial gate (key cities + 150+ locations).
 			any_country = {
 				has_variable = eranzamin_contender
-				num_locations_owned_or_owned_by_subjects_or_below > 400
-				controls_eranzamin_key_cities = yes
-				is_subject = no
-				eranzamin_end_condition_met = yes
+				has_variable = eranzamin_succession_victor
 			}
 
 			# Timeout: ~50-100 years of war (Path 6, the historical Timurid sweep)
@@ -130,7 +127,7 @@ eranzamin_succession = {
 				is_subject = no
 				eranzamin_end_condition_met = yes
 			}
-			trigger_event_non_silently= ilkhanate_flavor.10
+			set_variable = eranzamin_succession_victor
 		}
 
 		# Timeout check
@@ -147,15 +144,16 @@ eranzamin_succession = {
 	}
 
 	on_ended = {
-		every_province = {
-			limit = { is_eranzamin_region_province = yes }
-			remove_province_modifier = eranzamin_succession_region_modifier
-		}
+		remove_succession_mod_effect = yes
 		every_country = {
 			limit = { has_variable = eranzamin_contender }
 			remove_variable = eranzamin_contender
 		}
 		remove_global_variable = start_eranzamin_succession
+		every_country = {
+			limit = { has_variable = eranzamin_succession_victor }
+			trigger_event_non_silently= ilkhanate_flavor.10
+		}
 	}
 
 	map_color = {

@@ -113,7 +113,7 @@ custody_demand_fealty = {
 
 	cooldown = {
 		type = custody_demand_fealty
-		months = 3
+		months = 18
 	}
 
 	allow = {
@@ -144,6 +144,8 @@ custody_demand_fealty = {
 							NOT = { this = scope:actor }
 							has_reform = government_reform:ilkhanate_governorate
 							is_subject = no
+							
+							
 						}
 						add_to_list = source
 					}

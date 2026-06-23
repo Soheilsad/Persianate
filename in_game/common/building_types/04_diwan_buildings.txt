@@ -138,12 +138,40 @@ regional_diwan = {
 	build_time = government_build_time
 
 	location_potential = {
-		is_capital = yes
+		OR = {
+			is_capital = yes
+			AND = {
+				country_rank_level >= 4
+				any_location_in_area = {
+					NOT = {
+						has_building = building_type:regional_diwan
+						has_building = building_type:central_diwan
+					}
+				}
+			}
+		}
+		
 	}
 	raw_modifier = {
 		local_nobles_desired_pop_scaled = 0.0075
 		local_clergy_desired_pop_scaled = 0.02
 		local_burghers_desired_pop_scaled = 0.04
+	}
+	modifier = {
+		# The local diwan is a parallel proximity source — the chancery's
+		# writ runs outward from it, exactly as a governor's seat
+		# projects the crown's. ~40% of a local_governor's reach (80),
+		# matching the dīwān's role as auxiliary, not principal, node.
+		local_proximity_source = 66
+
+		# The chancery culture lifts both layers it touches: the noble
+		# secretariat that fills the office, and the burgher scribal
+		# class that promotes into it.
+		local_nobles_max_literacy = 10
+		local_burghers_max_literacy = 10
+
+		# Local presence of the diwan estate's machinery.
+		local_diwan_estate_power = 0.33
 	}
 	country_potential = {
 		government_type = government_type:persianate_sultanate
@@ -159,7 +187,10 @@ regional_diwan = {
 	# build*, not for keeping it.
 	remove_if = {
 		OR = {
-			is_no_longer_capital = yes
+			AND = {
+				is_no_longer_capital = yes
+				country_rank_level < 4
+			}
 			location.owner ?= {
 				government_type != government_type:persianate_sultanate
 			}

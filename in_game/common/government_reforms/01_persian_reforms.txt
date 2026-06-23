@@ -317,6 +317,8 @@ amir_sultanate = {
 	potential = {
 		NOT = { has_reform = government_reform:chinggisid_regency }
 		NOT = { has_reform = government_reform:farr_i_izadi }
+		NOT = { has_reform = government_reform:dar_al_jihad }
+		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
 	}
@@ -416,6 +418,9 @@ timurid_synthesis = {
 	potential = {
 		NOT = { has_reform = government_reform:turkmen_confederation }
 		NOT = { has_reform = government_reform:iranian_kingship }
+		NOT = { has_reform = government_reform:dar_al_jihad }
+		NOT = { has_reform = government_reform:iranian_kingship }
+
 	}
 
 	country_modifier = {
@@ -444,6 +449,7 @@ turkmen_confederation = {
 	potential = {
 		NOT = { has_reform = government_reform:timurid_synthesis }
 		NOT = { has_reform = government_reform:iranian_kingship }
+		NOT = { has_reform = government_reform:dar_al_jihad }
 	}
 
 	country_modifier = {
@@ -480,6 +486,7 @@ iranian_kingship = {
 		NOT = { has_reform = government_reform:turkmen_confederation }
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
+		NOT = { has_reform = government_reform:turkmen_confederation }
 		OR = {
 			has_variable = farr_proof_vindicated_permanent
 			has_variable = farr_was_endured

@@ -35,6 +35,7 @@ ilkhanate_flavor.1 = {
 		name = ilkhanate_flavor.1.a
 		trigger = {
 				NOT = {has_reform = government_reform:chinggisid_regency }
+				is_subject = no
 			}
 		ai_chance = {
 			factor = 25
@@ -442,9 +443,12 @@ ilkhanate_flavor.10 = {
 
 		# -- 0. The interregnum ends. Prestige and legitimacy for the
 		#       one who closed the question, the imperial seat reclaimed,
-		#       and a one-time coring dividend: a quarter of the land
-		#       still held only by garrison across Iranshahr snaps to
-		#       core, the realm recognising its victor. --
+		#       and a one-time integration dividend: a quarter of the land
+		#       still held only by garrison (conquered) across Iranshahr
+		#       rises to the integrated tier, the realm recognising its
+		#       victor. This is the administrative track only — core is a
+		#       separate culture-system status (assimilate or accept the
+		#       local culture) and is not granted here. --
 		add_prestige = 100
 		add_legitimacy = 50
 		set_country_rank = country_rank:rank_empire
@@ -452,14 +456,14 @@ ilkhanate_flavor.10 = {
 		every_owned_location = {
 			limit = {
 				is_iranshahr_province = yes
-				NOT = { integration_level = core }
+				integration_level = conquered
 			}
 			random = {
 				chance = 25
-				change_integration_level = core
+				change_integration_level = integrated
 			}
 		}
-
+		
 		# -- 1. The permanent identity of a United Iran. --
 		add_country_modifier = {
 			modifier = united_iran
@@ -471,6 +475,37 @@ ilkhanate_flavor.10 = {
 			modifier = eranzamin_recovery
 			years = 50
 		}
+		every_country = {
+			limit = {
+				
+					capital = {
+						OR = {
+							region = region:persia_region
+							region = region:khorasan_region
+							region = region:caucasus_region
+							area = area:iraq_arabi_area # Baghdad/Iraq
+							area = area:jazira_area # Mosul and surroundings
+							area = area:cappadocia_area
+						}
+					}
+					
+			}
+			add_to_list = usurpers
+
+
+		}
+		every_in_list = {
+			list = usurpers
+			save_scope_as = usurper
+			c:IRA = {
+				add_casus_belli = {
+					type = casus_belli:cb_unite_iran
+					target = scope:usurper
+					days = -1
+				}
+			}
+		}
+
 
 		# -- 3. The victory tool, by disposition. --
 		if = {
@@ -520,7 +555,7 @@ ilkhanate_flavor.99 = {
 			limit = { is_eranzamin_region_province = yes }
 			add_province_modifier = {
 				modifier = shattered_administration_mod
-				years = -1
+				years = 50
 			}
 		}
 	}

@@ -45,7 +45,9 @@ naqshband_guild = {
 	build_time = guild_build_time
 
 	country_potential = {
-		is_member_of_international_organization = international_organization:eranzamin
+		capital = {
+			region = region:persia_region
+		}
 	}
 
 	unique_production_methods = {
