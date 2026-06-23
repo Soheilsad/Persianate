@@ -191,7 +191,7 @@ character_db = {
 		culture = farsi_culture
 		religion = sunni
 		adm = 45 dip = 45 mil = 50
-		birth_date = 1280.1.1 #Unknown
+		birth_date = 1300.1.1 #Unknown, but no one should be 40+ at the start of the game UNLESS they have children already. 
 		birth = hamadan
 		dynasty = qutlugh_dynasty
 		spouse = "random"
