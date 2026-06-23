@@ -8,7 +8,7 @@ promote_castle_building = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		has_advance = castle_advance
 		NOR = {
 			has_advance = bastion_advance
@@ -83,7 +83,7 @@ promote_bastion_building = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		has_advance = bastion_advance
 		NOR = {
 			has_advance = star_fort_advance
@@ -155,7 +155,7 @@ promote_star_fort_building = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		has_advance = star_fort_advance
 		NOT = {
 			has_advance = fortress_advance
@@ -226,7 +226,7 @@ promote_fortress_building = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		has_advance = fortress_advance
 		NOT = {
 			has_country_modifier = fortification_works_modifier
@@ -294,7 +294,7 @@ sponsor_a_opera_house = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		num_locations > 0
 		OR = {
 			parliament_type = parliament_type:estate_parliament
@@ -397,7 +397,7 @@ gravel_road_development = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		OR = {
 			parliament_type = parliament_type:assembly
 			parliament_type = parliament_type:council
@@ -451,7 +451,7 @@ paved_road_development = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		OR = {
 			parliament_type = parliament_type:estate_parliament
 			parliament_type = parliament_type:dutch_parliament
@@ -506,7 +506,7 @@ expand_farming_operations = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		has_any_rgo_of_goods_method = farming
 		any_owned_location = {
 			raw_material = {
@@ -572,7 +572,7 @@ promote_integration = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		OR = {
 			parliament_type = parliament_type:council
 			parliament_type = parliament_type:estate_parliament
@@ -642,7 +642,7 @@ back_the_war_effort = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		at_war = yes
 	}
 	chance = {
@@ -686,7 +686,7 @@ finance_the_armory = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		num_locations > 0
 		OR = {
 			parliament_type = parliament_type:council
@@ -785,7 +785,7 @@ expand_barracks = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		num_locations > 0
 		OR = {
 			parliament_type = parliament_type:council
@@ -877,7 +877,7 @@ host_army_excercises = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		at_war = no
 		OR = {
 			parliament_type = parliament_type:estate_parliament
@@ -933,7 +933,7 @@ promote_noble_officers = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		OR = {
 			parliament_type = parliament_type:estate_parliament
 			parliament_type = parliament_type:dutch_parliament
@@ -995,7 +995,7 @@ support_noble_cabinet = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		OR = {
 			parliament_type = parliament_type:council
 			parliament_type = parliament_type:estate_parliament
@@ -1067,7 +1067,7 @@ expand_diplomatic_corps_minors = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		OR = {
 			current_age = age_1_traditions
 			current_age = age_2_renaissance
@@ -1167,7 +1167,7 @@ support_nobles_art = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		OR = {
 			current_age = age_2_renaissance
 			current_age = age_3_discovery
@@ -1242,7 +1242,7 @@ support_noble_sponsored_armies = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		OR = {
 			current_age = age_4_reformation
 			current_age = age_5_absolutism
@@ -1377,7 +1377,7 @@ promote_pike_and_shot_tactics = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		has_advance = pike_and_shot_advance
 		NOT = {
 			has_advance = artillery_institution_advance
@@ -1433,7 +1433,7 @@ promote_artillery_doctrine = {
 	}
 
 	allow = {
-		NOT = { government_type = government_type:persianate_sultanate }
+		NOT = { parliament_type = parliament_type:diwan_council }
 		has_advance = artillery_institution_advance
 	}
 
