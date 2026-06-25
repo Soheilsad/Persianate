@@ -27,3 +27,20 @@
  STATIC_MODIFIER_DESC_hunting_trip: "The Shah is away from the capital, hunting and contemplating the state of the realm."
  STATIC_MODIFIER_NAME_ignored_corruption: "Shadow of Corruption"
  STATIC_MODIFIER_DESC_ignored_corruption: "The people know that the Shah turned a blind eye to injustice, and faith in the throne has been shaken."
+
+ # --- Muṣādara: the king's right of confiscation, exercised in the maẓālim ---
+ enact_musadara: "Muṣādara"
+ enact_musadara_desc: "Pronounce a confiscation in the court of grievances. Seize the greater part of an estate's coffers into the treasury at the cost of political capital and the estate's goodwill. Turned upon the dīwān — the usual mark, sheltered from open tax but never from the king's hand — it carries the Ilkhanid risk: the vizier may pay with his head. Once every five years."
+ enact_musadara_select_estate: "Confiscate the wealth of which estate?"
+
+ # --- The desperation muṣādara (musadara.1) ---
+ musadara.1.title: "The Treasury Runs Dry"
+ musadara.1.desc: "The registers are a wall of red. Loan upon loan has been signed, and still the vaults of the dīwān, the houses of the bazaar, and the great endowments groan with gold that never reaches the treasury. The Grand Vizier counsels patience; the captains counsel otherwise. There remains one road that needs no lender's leave — the king's own hand laid upon the wealth of his servants. And the doctors of the law will call it justice, if it is asked of them rightly."
+ musadara.1.a: "Declare maṣlaḥa — what we have taken was for the good of the realm."
+ musadara.1.b: "The Circle of Justice needs greasing."
+ musadara.1.c: "Nay! For confiscation is the evil that destroys the realm."
+
+ STATIC_MODIFIER_NAME_recent_musadara: "Recent Muṣādara"
+ STATIC_MODIFIER_DESC_recent_musadara: "The crown has lately laid hands on the wealth of its elites. They remember, and the productive order draws in on itself — the very chill the waqf was built to flee."
+ STATIC_MODIFIER_NAME_recent_musadara_severe: "The Great Confiscation"
+ STATIC_MODIFIER_DESC_recent_musadara_severe: "The crown has stripped its elites to the bone in a single desperate season. The memory is bitter and long, and every coffer in the realm slams shut."

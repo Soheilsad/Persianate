@@ -20,7 +20,7 @@ Below the legitimacy-contenders sits a third tier: the realm that does **not** c
 | `province_integration_speed` | −0.20 | no reach |
 | `diplomatic_reputation` | −1 | |
 
-AI weighting at the stance event heavily favours deferral for the weak: a realm with `country_total_army_levy_size < 5` is ten times likelier to choose it. A realm that cannot field an army has no business claiming the ulus.
+AI weighting at the stance event heavily favours deferral for the weak: a realm with `military_strength < 5` is ten times likelier to choose it. A realm that cannot field an army has no business claiming the ulus.
 
 ## Declaring fealty
 

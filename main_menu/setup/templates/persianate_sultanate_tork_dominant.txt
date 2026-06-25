@@ -48,7 +48,7 @@ government = {
 		# Clergy
 		clerical_advisory_council
 		clergy_land_rights
-
+		diwan_musadara_confiscation
 		# Burghers
 		market_fairs
 
@@ -73,7 +73,7 @@ government = {
 		immigration_law = open_borders_law
 		# mining_law = nobles_mining_law
 		coin_laws = silver_coins ### gold was only an accounting unit.
-
+		
 		# Mod custom laws
 		recruitment_law = tribal_host_recruitment
 		persian_nobles_rights_laws = amirs_autonomy

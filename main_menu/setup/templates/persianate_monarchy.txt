@@ -18,7 +18,7 @@ government = {
 		feudal_mercenary_contracts
 		nobles_land_rights
 		noble_fortification_licenses
-		
+		diwan_musadara_confiscation
 		# Diwan
 		diwan_land_registers
 		

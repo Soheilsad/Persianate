@@ -6,6 +6,7 @@
 #
 # Usage:   ./tools/upload_workshop.sh "Your changenote here"
 # Dry run: DRY_RUN=1 ./tools/upload_workshop.sh "note"
+# DRY_RUN=0 ./tools/upload_better.sh "note"
 # -> stages everything, prints what would ship, skips steamcmd,
 # does NOT bump the version, and leaves the staging dir in place.
 # First-time real run will prompt for password + Steam Guard; credentials are

@@ -46,7 +46,7 @@ government = {
 		# Clergy
 		clerical_advisory_council
 		clergy_literacy_rights
-
+		diwan_musadara_confiscation
 		# Burghers
 		market_fairs
 		building_roads_rights

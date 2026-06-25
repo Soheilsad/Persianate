@@ -12,6 +12,9 @@ monthly_country_pulse = {
 	on_actions = {
 		custody_governorate_pulse
 		peasant_non_levying_pulse
+		peasant_non_levying_cleanup_pulse
+		correct_existing_iqta_building
+		correct_diwan_ayyan_building
 	}
 }
 
@@ -41,21 +44,28 @@ custody_governorate_pulse = {
 
 
 peasant_non_levying_pulse = {
+
 	trigger = {
 		## run ONLY for persianate sultanates which are at war.
+		
 		government_type = government_type:persianate_sultanate
 		at_war = yes
-		any_owned_location = {
-			has_location_modifier = raised_levies
-		}
+		has_raised_levies = yes
+		## has_raised_levies
 	}
 	effect = {
-		every_owned_location ={
-			limit = {
-				has_location_modifier = raised_levies
+		every_country_sub_unit = {
+			limit = { 
+				is_levy = yes
 			}
-			remove_location_modifier = raised_levies
-
+			subunit_home = {
+				if = {
+					limit = {
+						NOT = { has_location_modifier = circle_of_justice_food_and_rgo_offset }
+					}
+					add_location_modifier = {modifier = circle_of_justice_food_and_rgo_offset days = -1 mode=add_and_extend}
+				}
+			}
 		}
 		### later on, we can add something that actually represents Tribes and Amirs being levied. 
 
@@ -63,3 +73,128 @@ peasant_non_levying_pulse = {
 
 
 }
+
+
+peasant_non_levying_cleanup_pulse = {
+
+	trigger = {
+		## run ONLY for persianate sultanates which are at war.
+		
+		government_type = government_type:persianate_sultanate
+		at_war = no
+		has_raised_levies = no
+		any_owned_location = {
+			has_location_modifier = circle_of_justice_food_and_rgo_offset
+		}
+		## has_raised_levies
+	}
+	effect = {
+		every_owned_location = {
+				limit = { 
+					has_location_modifier = circle_of_justice_food_and_rgo_offset
+				}
+				remove_location_modifier = circle_of_justice_food_and_rgo_offset
+			}
+		### later on, we can add something that actually represents Tribes and Amirs being levied. 
+
+	}
+
+
+}
+
+### adds the global variable
+correct_existing_iqta_building = {
+
+	trigger = {
+		NOT = { has_global_variable = iqta_building_fake_mod_applied }
+	}
+
+	effect = {
+		every_country = {
+			limit = {
+					government_type = government_type:persianate_sultanate
+					any_owned_location = {
+						has_building = building_type:iqta_grant
+					}
+				}
+				every_owned_location = {
+					limit = {
+						has_building = building_type:iqta_grant
+					}
+					"building(building_type:iqta_grant|owner)" = {save_scope_as = iqta_building}
+					add_location_modifier = {
+						modifier = iqta_building_fake_mod
+						years = -1
+						mode = replace
+						size = {
+							if = {
+								limit = {
+									scope:iqta_building.building_level = 1
+								}
+								value = {
+									desc = script_value_base
+									value = 1
+								}
+							}
+							else_if = {
+								limit = {
+									scope:iqta_building.building_level = 2
+								}
+								value = {
+									desc = script_value_base
+									value = 2
+								}
+							}
+							else_if = {
+								limit = {
+									scope:iqta_building.building_level = 3
+								}
+								value = {
+									desc = script_value_base
+									value = 3
+								}
+							}
+
+						}
+					}
+				}
+		}
+		set_global_variable = iqta_building_fake_mod_applied
+
+	}
+
+}
+
+
+
+### adds the global variable
+correct_diwan_ayyan_building = {
+
+	trigger = {
+		NOT = { has_global_variable = ayyan_waqf_applied }
+	}
+
+	effect = {
+		every_country = {
+			limit = {
+					government_type = government_type:persianate_sultanate
+					any_owned_location = {
+						has_building = building_type:ayyan_waqf
+					}
+				}
+
+
+			add_country_modifier = {
+				modifier = diwan_waqf_damage
+				size = { value = total_effective_building_levels:ayyan_waqf}
+				years = -1
+				mode = replace
+			}
+		}
+		set_global_variable = ayyan_waqf_applied
+
+	}
+
+}
+
+
