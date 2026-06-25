@@ -683,7 +683,7 @@ custody_declare_fealty = {
 		add = 10
 		modifier = {
 			add = 50
-			scope:actor = { country_total_army_levy_size < 5 }
+			scope:actor = { military_strength < 5 }
 		}
 		modifier = {
 			add = 30
@@ -691,7 +691,7 @@ custody_declare_fealty = {
 		}
 		modifier = {
 			add = -40
-			scope:actor = { country_total_army_levy_size > 20 }
+			scope:actor = { military_strength > 20 }
 		}
 	}
 }
@@ -737,6 +737,10 @@ custody_drop_khan = {
 
 	effect = {
 		scope:actor = {
+			set_variable = {
+				name = custody_dropped_khan
+				years = 5
+			}
 			overlord ?= {
 				cancel_subject = scope:actor
 			}
@@ -750,7 +754,11 @@ custody_drop_khan = {
 		add = 0
 		modifier = {
 			add = 30
-			scope:actor = { country_total_army_levy_size > 15 }
+			scope:actor = { military_strength > 15 }
+		}
+		modifier = {
+			add = 30
+			scope:actor = { military_strength > 30 }
 		}
 		modifier = {
 			add = 30

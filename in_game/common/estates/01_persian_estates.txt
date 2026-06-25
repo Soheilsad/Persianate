@@ -21,7 +21,7 @@ diwan_estate = {
 	}
 
 	high_power = {
-		country_cabinet_efficiency = 0.35
+		country_cabinet_efficiency = 0.25
 		
 		research_speed_modifier = 0.15
 		global_max_urban_control = 0.15

@@ -147,7 +147,7 @@ eranzamin_succession = {
 		remove_succession_mod_effect = yes
 		every_country = {
 			limit = { has_variable = eranzamin_contender }
-			remove_variable = eranzamin_contender
+			remove_variable = eranzamin_contender_modifier
 		}
 		remove_global_variable = start_eranzamin_succession
 		every_country = {

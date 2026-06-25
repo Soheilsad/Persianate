@@ -298,3 +298,63 @@ decree_imperial_audit = {
 		parliament_debate_failed_effect = yes
 	}
 }
+
+# Removing the Illegal Waqf — the crown dissolves endowments that shelter
+# wealth from the fisc, clawing a share back into taxable hands. The waqf's
+# whole defence is inviolability; so this is possible ONLY where the right
+# of muṣādara stands (access_to_musadara) AND no inviolability charter has
+# been granted to any estate. Once the endowments are made inviolable, even
+# the crown's hand is stayed — that is the charter's purpose, and the trap.
+# Strips ~20% of the realm's waqf buildings.
+purge_illegal_waqf = {
+	estate = crown_estate
+
+	modifier_when_in_debate = {
+		# The prospect of reclaimed revenue while the endowed houses tremble.
+		tax_income_efficiency = 0.05
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+		modifier:access_to_musadara = yes
+		# No endowment may be inviolable — a single charter stays the hand.
+		NOT = { has_estate_privilege = estate_privilege:ayyan_waqf_charter }
+		NOT = { has_estate_privilege = estate_privilege:urban_waqf_charter }
+		NOT = { has_estate_privilege = estate_privilege:clerical_waqf_charter }
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		# A fifth of the realm's waqf is dissolved. Each location holds at
+		# most one waqf; the non-present types simply no-op. The buildings'
+		# own on_destroyed carries the estate backlash.
+		every_owned_location = {
+			limit = {
+				OR = {
+					has_building = building_type:ayyan_waqf
+					has_building = building_type:urban_waqf
+					has_building = building_type:clerical_waqf
+					has_building = building_type:grand_ayyan_waqf
+					has_building = building_type:grand_urban_waqf
+					has_building = building_type:grand_clerical_waqf
+				}
+			}
+			random = {
+				chance = 20
+				destroy_building = "building(building_type:ayyan_waqf|prev)"
+				destroy_building = "building(building_type:urban_waqf|prev)"
+				destroy_building = "building(building_type:clerical_waqf|prev)"
+				destroy_building = "building(building_type:grand_ayyan_waqf|prev)"
+				destroy_building = "building(building_type:grand_urban_waqf|prev)"
+				destroy_building = "building(building_type:grand_clerical_waqf|prev)"
+			}
+		}
+		# The crown is seen to enforce the fisc against the dead hand.
+		add_legitimacy = 5
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}

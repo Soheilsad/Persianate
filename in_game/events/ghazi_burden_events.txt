@@ -653,6 +653,8 @@ ghazi_burden.200 = {
 			months = -1
 		}
 		set_variable = ghazi_was_sword_of_islam
+		remove_reform = government_reform:ghazi_sultanate
+		add_reform = government_reform:dar_al_jihad
 	}
 
 	option = {
@@ -747,6 +749,8 @@ ghazi_burden.202 = {
 			months = -1
 		}
 		set_variable = ghazi_was_guardian
+		remove_reform = government_reform:ghazi_sultanate
+		add_reform = government_reform:dar_al_jihad
 	}
 
 	option = {

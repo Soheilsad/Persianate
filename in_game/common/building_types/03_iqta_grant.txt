@@ -18,8 +18,9 @@ iqta_grant = {
 
 	employment_size = large_noble_employment
 
-	category = government_category
-
+	category = military_category
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
 	rural_settlement = yes
 	town = no
 	city = no
@@ -44,7 +45,7 @@ iqta_grant = {
 	}
 
 	allow = {
-		local_control < 0.5
+		local_control < 0.6
 	}
 
 	# Revoking an iqṭāʿ was historically the chancery's hardest political
@@ -61,21 +62,23 @@ iqta_grant = {
 	# while a thin rural rock supports only the amir's own kin.
 	raw_modifier = {
 		local_nobles_pop_growth = 0.10
-		local_nobles_max_literacy = -10
-		diwan_estate_target_satisfaction = -0.002 # minor reduction to reflect the amir's encroachment on the diwan's turf
+		
+		 # minor reduction to reflect the amir's encroachment on the diwan's turf
 		amirs_estate_target_satisfaction = 0.01 # minor boost to reflect the amir's increased local presence and prestige
-		local_max_control = -0.05 # the amir's authority is a substitute for the chancery's; the grant is a recognition of that fact on the chancery's part, and a formalization of it on the amir's part. The grant is a formal acknowledgment that the amir's authority in the parcel is real, and that the chancery will not contest it while the grant stands. The control hit reflects the fact that the amir's authority is not as strong as the chancery's would be, but it is still significant.
-		local_amirs_estate_power = 1 # the amir's local power is a direct function of the grant — the grant is what gives the amir his local authority, and the amir's local power is a reflection of that authority. The grant is a recognition of the amir's local power, and a formalization of it on the chancery's part. The power boost reflects the fact that the amir's local power is significant, but not overwhelming — the grant is a recognition of the amir's local power, but it does not make him a local despot.
+		 # the amir's authority is a substitute for the chancery's; the grant is a recognition of that fact on the chancery's part, and a formalization of it on the amir's part. The grant is a formal acknowledgment that the amir's authority in the parcel is real, and that the chancery will not contest it while the grant stands. The control hit reflects the fact that the amir's authority is not as strong as the chancery's would be, but it is still significant.
+		 # the amir's local power is a direct function of the grant — the grant is what gives the amir his local authority, and the amir's local power is a reflection of that authority. The grant is a recognition of the amir's local power, and a formalization of it on the chancery's part. The power boost reflects the fact that the amir's local power is significant, but not overwhelming — the grant is a recognition of the amir's local power, but it does not make him a local despot.
 		
 	}
 
 	modifier = {
 		local_nobles_desired_pop = 0.1
+		local_manpower = 0.01 #### this is FAKE, and will be offset .... a lil trick, to the AI. 
 		local_nobles_desired_pop_scaled = 0.02
 		local_levy_size_modifier = 0.2
+		pure_tooltip_entry = fake_manpower_tooltip           
+
 		}
-
-
+	
 	# The grant is a Tazik instrument with Türk consequences: the diwan
 	# resents the lost revenue, the amirs welcome the formal recognition,
 	# and the axis drifts a hair toward Türk with every parcel registered.
@@ -87,12 +90,50 @@ iqta_grant = {
 					type = pop_type:nobles
 					size = { value = 0.05 }
 			}
+			add_location_modifier = {
+				modifier = iqta_building_fake_mod
+				years = -1
+				mode = replace
+				size = {
+					if = {
+						limit = {
+							root.building_level = 1
+						}
+						value = {
+							desc = script_value_base
+							value = 1
+						}
+					}
+					else_if = {
+						limit = {
+							root.building_level = 2
+						}
+						value = {
+							desc = script_value_base
+							value = 2
+						}
+					}
+					else_if = {
+						limit = {
+							root.building_level = 3
+						}
+						value = {
+							desc = script_value_base
+							value = 3
+						}
+					}
+
+				}
+			}
+
+
 		}
 		owner = {
-			change_societal_value = { type = turk_vs_tazik value = -1 }
-			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.02 }
-			add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.01 }
+			change_societal_value = { type = turk_vs_tazik value = -0.25 }
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.005 }
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.005 }
 		}
+
 		
 	}
 
@@ -102,6 +143,7 @@ iqta_grant = {
 		owner = {
 			add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.05 }
 		}
+		remove_location_modifier = iqta_building_fake_mod
 	}
 
 	graphical_tags = { small_military }

@@ -258,3 +258,11 @@ decree_audit_mod = {
 	amirs_estate_target_satisfaction = -0.05
 	global_max_urban_control = 0.05
 }
+
+
+diwan_waqf_damage = {
+	game_data = { category = country }
+	diwan_estate_max_tax = -0.005
+	estate_enrichment = 0.005
+	monthly_loan_capacity_investment = -1.5
+}

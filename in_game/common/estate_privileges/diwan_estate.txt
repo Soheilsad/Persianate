@@ -121,7 +121,7 @@ diwan_office_sinecures = {
 
 		revoke_privilege_cost_modifier = 0.33
 		change_policy_cost_modifier = 0.15
-		global_monthly_development = -0.0035
+		global_monthly_development = -0.00025 ### tiny issue.
 		monthly_towards_tazik = 0.05
 	}
 }

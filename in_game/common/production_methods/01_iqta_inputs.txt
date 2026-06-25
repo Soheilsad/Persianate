@@ -13,14 +13,13 @@
 
 iqta_grant_maintenance = {
 	# Cavalry retinue
-	horses    = 0.20  # the herd that mounts the askar
-	weaponry  = 0.4  # sabres, lance heads, bows, mail
-	leather   = 0.4  # saddles, harness, lamellar
-	cloth     = 0.4  # uniforms, banners, tent felts
-
+	horses    = 0.1  # the herd that mounts the askar
+	weaponry  = 0.2  # sabres, lance heads, bows, mail
+	leather   = 0.2  # saddles, harness, lamellar
+	cloth     = 0.2  # uniforms, banners, tent felts
 	# Amir household
-	fine_cloth = 0.2 # khilʿa robes, family dress
-	paper      = 0.1  # chancery correspondence with the diwan
-
+	fine_cloth = 0.1 # khilʿa robes, family dress
+	paper      = 0.05  # chancery correspondence with the diwan
+	
 	category = building_maintenance
 }

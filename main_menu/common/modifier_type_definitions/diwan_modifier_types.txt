@@ -91,3 +91,26 @@ diwan_estate_max_tax={
 		category=country
 	}
 }
+
+access_to_musadara = {
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+
+diwan_estate_allowed_to_build_rgo = {
+	
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+
+diwan_estate_allowed_to_build_roads = {
+	
+	boolean=yes
+	game_data={
+		category=country
+	}
+}

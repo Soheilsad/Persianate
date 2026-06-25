@@ -71,3 +71,19 @@ amirs_estate_max_tax={
 		category=country
 	}
 }
+
+amirs_estate_allowed_to_build_rgo = {
+	
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+
+amirs_estate_allowed_to_build_roads = {
+	
+	boolean=yes
+	game_data={
+		category=country
+	}
+}

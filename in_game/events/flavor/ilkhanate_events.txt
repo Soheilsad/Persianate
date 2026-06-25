@@ -56,7 +56,7 @@ ilkhanate_flavor.1 = {
 		}
 
 		add_reform = government_reform:chinggisid_regency
-
+		set_personality = ai_personality:ai_aggressive
 		# Adoption handshake — the puppet is enthroned, the amirs get
 		# the path they prefer, the chancery accepts the fiction.
 		add_legitimacy = 10
@@ -151,7 +151,7 @@ ilkhanate_flavor.1 = {
 		}
 
 		add_reform = government_reform:ghazi_sultanate
-
+		set_personality = ai_personality:ai_aggressive
 		# The ulema bless the choice; the amirs see infidels to raid, not
 		# a chancery to be bent to.
 		add_legitimacy = 5
@@ -186,7 +186,7 @@ ilkhanate_flavor.1 = {
 			
 		}
 		add_reform = government_reform:farr_i_izadi
-
+		set_personality = ai_personality:ai_aggressive
 		# The price of premature kingship: a stability shock and a
 		# legitimacy gulf to climb back out of. The diwan and burghers
 		# rejoice; the amirs and clergy do not.
@@ -226,7 +226,7 @@ ilkhanate_flavor.1 = {
 		}
 		add_legitimacy = 5
 
-
+		set_personality = ai_personality:ai_aggressive
 		
 		character:chb_sati_beg_pw = {
 			set_variable = {
@@ -252,7 +252,7 @@ ilkhanate_flavor.1 = {
 		}
 		add_legitimacy = 5
 
-
+		set_personality = ai_personality:ai_aggressive
 		
 		character:jal_muhammad_khan_pw = {
 			set_variable = {
@@ -281,6 +281,7 @@ ilkhanate_flavor.1 = {
 		name = ilkhanate_flavor.1.f
 		trigger = {
 			NOT = { has_reform = government_reform:chinggisid_regency }
+			NOT = { has_variable = custody_dropped_khan } ## you cannot defer if you have already dropped the khan. You have to pick a side.
 		}
 		ai_chance = {
 			factor = 15
@@ -295,11 +296,12 @@ ilkhanate_flavor.1 = {
 				military_strength > 20
 			}
 			modifier = {
-				factor = 0.5
+				factor = 0.25
 				military_strength > 30
 			} ## the strong have little chance of simply deferring. They want a piece of the action.
 		}
 		add_reform = government_reform:ilkhanate_governorate
+		set_personality = ai_personality:ai_defensive
 		# The prudent administrator's choice: the diwan approves the
 		# caution, and no rival is provoked — you have claimed nothing.
 		add_legitimacy = 5

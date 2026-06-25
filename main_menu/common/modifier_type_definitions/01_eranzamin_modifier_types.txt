@@ -9,3 +9,11 @@ can_build_ghulam_barracks = {
 		category = country
 	}
 }
+
+
+levies_are_raised_flag = {
+	boolean = yes
+	game_data = {
+		category = location
+	}
+}

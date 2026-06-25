@@ -51,6 +51,7 @@ persianate_bureaucracy_reform = {
 		# Demilitarization of the Sedentary Population
 		tax_income_efficiency = 0.1
 		diwan_estate_levy_size = -0.9
+		monthly_diwan_estate_rebel_growth = -0.01 ## the Diwan do not really rebel.
 		government_size = 1
 		peasants_estate_levy_size = -0.9
 		global_max_urban_control = 0.15 # persianate states are built, at every level of their DNA, around the idea of cities as the main control centers. In persianate states, rural control collapses more readily, while urban control is more resilient.
@@ -96,6 +97,7 @@ ilkhanate_governorate = {
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:amir_sultanate }
 		NOT = { has_reform = government_reform:dar_al_jihad }
+		NOT = { has_variable = custody_dropped_khan }
 		# You cannot defer and contend at once.
 		# NOT = { has_variable = eranzamin_contender }
 	}
@@ -173,9 +175,9 @@ chinggisid_regency = {
 farr_i_izadi = {
 	age = age_1_traditions
 	government = persianate_sultanate
-	# locked = {
-	# 	always = yes
-	# }
+	locked = {
+		NOT = { has_variable = farr_was_broken_lapse }
+	}
 	potential = {
 		NOT = { has_reform = government_reform:chinggisid_regency }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
@@ -251,7 +253,9 @@ ghazi_sultanate = {
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
 	}
-
+	locked = {
+		NOT = { has_variable = ghazi_was_doctrine_lapsed }
+	}
 	country_modifier = {
 		# Caliphal sanction reads as a quiet, steady legitimacy stream —
 		# nothing like the Chinggisid pump, but real, and earned through
@@ -364,8 +368,10 @@ amir_sultanate = {
 
 		# Drift: Türk-coded, decentralized — the iqṭāʿ holders run
 		# their grants at arm's length from the capital.
-		monthly_towards_turk = 0.075
-		monthly_towards_decentralization = 0.05
+		monthly_towards_turk = 0.15
+		tax_income_efficiency = -0.1
+		### this will, eventually, cause the matter of tazik.
+		monthly_towards_decentralization = 0.15
 	}
 
 	years = 1

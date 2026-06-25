@@ -375,6 +375,8 @@ farr_proof.200 = {
 		}
 		# Mark the dynasty's vindication for the Matter to read
 		set_variable = farr_proof_vindicated_permanent
+		remove_reform = government_reform:farr_i_izadi
+		add_reform = government_reform:iranian_kingship
 	}
 
 	option = {
@@ -483,6 +485,8 @@ farr_proof.202 = {
 			months = -1
 		}
 		set_variable = farr_was_endured
+		remove_reform = government_reform:farr_i_izadi
+		add_reform = government_reform:iranian_kingship
 	}
 
 	option = {

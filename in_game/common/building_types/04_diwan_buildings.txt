@@ -327,7 +327,7 @@ local_diwan = {
 		local_burghers_max_literacy = 10
 
 		# Local presence of the diwan estate's machinery.
-		local_diwan_estate_power = 0.10
+		local_diwan_estate_power = 0.75
 	}
 
 	# A slightly larger Tāzīk push than the iqṭāʿ's −1 — the Local

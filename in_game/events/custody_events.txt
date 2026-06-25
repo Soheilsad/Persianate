@@ -36,7 +36,13 @@ custody.31 = {
 	title = custody.31.title
 	desc = custody.31.desc
 	outcome = neutral
-
+	immediate = {
+		set_variable = {
+			name = custody_demanded_recently
+			value = 1
+			months = 6
+		}
+	}
 	# Accept — enter the custodian's house. Weak and threatened
 	# governors swear readily; strong ones do not.
 	option = {
@@ -44,9 +50,9 @@ custody.31 = {
 		trigger = { exists = var:custody_demanding_lord }
 		ai_chance = {
 			factor = 20
-			modifier = { factor = 4  country_total_army_levy_size < 5 }
+			modifier = { factor = 4  military_strength < 5 }
 			modifier = { factor = 2  at_war = yes }
-			modifier = { factor = 0.2  country_total_army_levy_size > 20 }
+			modifier = { factor = 0.2  military_strength > 20 }
 		}
 		make_subject_of = {
 			target = var:custody_demanding_lord
@@ -79,7 +85,7 @@ custody.31 = {
 		name = custody.31.b
 		ai_chance = {
 			factor = 20
-			modifier = { factor = 4  country_total_army_levy_size > 15 }
+			modifier = { factor = 4  military_strength > 15 }
 		}
 		var:custody_demanding_lord ?= {
 			set_variable = { name = custody_sworn_gov value = root }
@@ -148,21 +154,21 @@ custody.30 = {
 		}
 		ordered_in_list = {
 			list = custody_steward_list
-			order_by = country_total_army_levy_size
+			order_by = military_strength
 			position = 0
 			check_range_bounds = no
 			save_scope_as = steward_1
 		}
 		ordered_in_list = {
 			list = custody_steward_list
-			order_by = country_total_army_levy_size
+			order_by = military_strength
 			position = 1
 			check_range_bounds = no
 			save_scope_as = steward_2
 		}
 		ordered_in_list = {
 			list = custody_steward_list
-			order_by = country_total_army_levy_size
+			order_by = military_strength
 			position = 2
 			check_range_bounds = no
 			save_scope_as = steward_3

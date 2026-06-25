@@ -177,6 +177,7 @@ persianate_generic.4 = {
 
 	trigger = {
 		religion ?= { group = religion_group:muslim }
+		NOT = { has_variable = generic_pers_plague_recently }  # don't fire twice in a row
 		capital = {
 			OR = {
 				region ?= region:persia_region
@@ -200,7 +201,9 @@ persianate_generic.4 = {
 			}
 		}
 	}
-
+	immediate = {
+		set_variable = { name = generic_pers_plague_recently value = 1 months = 60 }  # don't fire again for 3 years
+	}
 	# OPTION A: Quarantine the bazaar
 	option = {
 		name = persianate_generic.4.a
