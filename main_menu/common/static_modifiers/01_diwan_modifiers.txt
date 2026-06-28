@@ -27,6 +27,7 @@ border_fortification_modifier = {
 	}
 	global_defensive = 0.1
 	fort_maintenance_cost = -0.1
+	fort_maintenance_efficiency = 0.1
 }
 
 amir_cavalry_buff = {
@@ -132,6 +133,7 @@ diwan_reform_admin_efficiency = {
 diwan_reform_build_cost = {
 	game_data = { category = country }
 	global_build_buildings_cost = -0.10
+	global_build_buildings_efficiency = 0.10
 }
 diwan_reform_state_maintenance = {
 	game_data = { category = country }
@@ -204,6 +206,7 @@ decree_fiscal_mod = {
 decree_infra_mod = {
 	game_data = { category = country }
 	global_build_buildings_cost = -0.15
+	global_build_buildings_efficiency = 0.15
 	global_distance_from_capital_speed_propagation = -0.05
 }
 decree_justice_mod = {
@@ -232,6 +235,7 @@ decree_caravanserai_mod = {
 	game_data = { category = country }
 	global_monthly_prosperity = 0.002
 	global_build_buildings_cost = -0.10
+	global_build_buildings_efficiency = 0.10
 	global_distance_from_capital_speed_propagation = 0.05
 }
 
@@ -248,6 +252,8 @@ decree_pardon_mod = {
 	pop_join_rebel_threshold = -0.10
 	monthly_legitimacy = 0.3
 	stability_cost = -0.05
+	stability_cost_efficiency = 0.05
+
 }
 
 decree_audit_mod = {
@@ -260,9 +266,10 @@ decree_audit_mod = {
 }
 
 
-diwan_waqf_damage = {
-	game_data = { category = country }
-	diwan_estate_max_tax = -0.005
-	estate_enrichment = 0.005
-	monthly_loan_capacity_investment = -1.5
+
+
+collective_taxation_modifier = {
+	game_data = { category = location }
+	local_diwan_estate_power = -0.25 ### diwan gives up full vision into the village.
+	
 }

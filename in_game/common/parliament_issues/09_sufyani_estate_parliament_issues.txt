@@ -49,6 +49,7 @@ sufyani_curb_dervish_excesses = {
 
 	modifier_when_in_debate = {
 		stability_cost = -0.05
+		stability_cost_efficiency = 0.05
 	}
 
 	allow = {

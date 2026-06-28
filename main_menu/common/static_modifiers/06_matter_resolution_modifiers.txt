@@ -399,7 +399,7 @@ matter_royal_inju = {
 		category = location
 	}
 
-	local_tax_modifier = 0.05
+	local_levy_size_modifier = -0.25
 	local_max_control = 0.05
 }
 

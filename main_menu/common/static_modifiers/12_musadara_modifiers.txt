@@ -33,3 +33,25 @@ recent_musadara_severe = {
 	tax_income_efficiency = -0.10
 	global_monthly_development = -0.004
 }
+
+diwan_waqf_damage = {
+	game_data = { category = country }
+	diwan_estate_max_tax = -0.005
+	estate_enrichment = 0.005
+	monthly_loan_capacity_investment = -1.5
+	tax_income_efficiency = -0.002
+}
+
+burghers_waqf_damage = {
+	game_data = { category = country }
+	burghers_estate_max_tax = -0.005
+	estate_enrichment = 0.005
+	monthly_loan_capacity_investment = -1.5
+}
+
+clergy_waqf_damage = {
+	game_data = { category = country }
+	clergy_estate_max_tax = -0.005
+	estate_enrichment = 0.005
+	monthly_loan_capacity_investment = -1.5
+}

@@ -44,3 +44,7 @@
  STATIC_MODIFIER_DESC_recent_musadara: "The crown has lately laid hands on the wealth of its elites. They remember, and the productive order draws in on itself — the very chill the waqf was built to flee."
  STATIC_MODIFIER_NAME_recent_musadara_severe: "The Great Confiscation"
  STATIC_MODIFIER_DESC_recent_musadara_severe: "The crown has stripped its elites to the bone in a single desperate season. The memory is bitter and long, and every coffer in the realm slams shut."
+ STATIC_MODIFIER_NAME_burghers_waqf_damage: "The Bazaar Endowments"
+ STATIC_MODIFIER_DESC_burghers_waqf_damage: "The bazaars and caravanserais frozen into inalienable endowment: the burghers grow rich while the urban tax base and the realm's credit recede behind the dead hand. Scales with how much of the realm's commerce sits under waqf."
+ STATIC_MODIFIER_NAME_clergy_waqf_damage: "The Clerical Endowments"
+ STATIC_MODIFIER_DESC_clergy_waqf_damage: "Madrasa, shrine, and village endowment under the ulama's own hand, sheltered from tax and credit alike. Scales with how much of the realm's wealth the religious establishment has locked away."
