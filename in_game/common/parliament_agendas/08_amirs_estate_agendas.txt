@@ -35,18 +35,30 @@ pa_amirs_case_caravan_theft = {
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
 		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } } }
 
-		# Fine the Amirs (12 months)
+		# Fine the Amirs: a large share of their accumulated coffers, split
+		# two parts to the wronged merchants, one part to the crown.
+		# Inlined seizure (kept inline for tooltip preview).
+		"estate(estate_type:amirs_estate)" = { save_scope_as = seize_target }
+		set_variable = {
+			name = seized_pool
+			value = {
+				value = scope:seize_target.estate_gold
+				multiply = 0.40
+			}
+		}
 		add_gold_to_estate = {
 			estate_type = estate_type:amirs_estate
-			value = { value = root.monthly_income_trade_and_tax multiply = -12 }
+			value = {
+				value = var:seized_pool
+				multiply = -1
+			}
 		}
-		# Compensate Burghers (8 months)
 		add_gold_to_estate = {
 			estate_type = estate_type:burghers_estate
-			value = { value = root.monthly_income_trade_and_tax multiply = 8 }
+			value = { value = var:seized_pool multiply = 0.6667 }
 		}
-		# Crown Share (4 months)
-		add_gold = { value = root.monthly_income_trade_and_tax multiply = 4 }
+		add_gold = { value = var:seized_pool multiply = 0.3333 }
+		remove_variable = seized_pool
 
 		add_country_modifier = { modifier = amir_purge_trade_buff years = 10 }
 	}
@@ -67,22 +79,34 @@ pa_amirs_case_enslavement = {
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } } }
 		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
 
-		# Fine the Amirs (12 months)
+		# Fine the Amirs: a large share of their hoard, split evenly three
+		# ways -- clergy, freed peasants, and the crown.
+		# Inlined seizure (kept inline for tooltip preview).
+		"estate(estate_type:amirs_estate)" = { save_scope_as = seize_target }
+		set_variable = {
+			name = seized_pool
+			value = {
+				value = scope:seize_target.estate_gold
+				multiply = 0.40
+			}
+		}
 		add_gold_to_estate = {
 			estate_type = estate_type:amirs_estate
-			value = { value = root.monthly_income_trade_and_tax multiply = -12 }
+			value = {
+				value = var:seized_pool
+				multiply = -1
+			}
 		}
-		# Compensate Victims (Clergy/Peasants share)
 		add_gold_to_estate = {
 			estate_type = estate_type:clergy_estate
-			value = { value = root.monthly_income_trade_and_tax multiply = 4 }
+			value = { value = var:seized_pool multiply = 0.3333 }
 		}
 		add_gold_to_estate = {
 			estate_type = estate_type:peasants_estate
-			value = { value = root.monthly_income_trade_and_tax multiply = 4 }
+			value = { value = var:seized_pool multiply = 0.3333 }
 		}
-		# Crown Share
-		add_gold = { value = root.monthly_income_trade_and_tax multiply = 4 }
+		add_gold = { value = var:seized_pool multiply = 0.3334 }
+		remove_variable = seized_pool
 
 		add_country_modifier = { modifier = amir_purge_tolerance_buff years = 10 }
 	}
@@ -103,18 +127,30 @@ pa_amirs_case_price_fixing = {
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
 		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } } }
 
-		# Fine the Amirs (6 months)
+		# Fine the Amirs: a moderate share of their hoard, two parts restored
+		# to the merchants, one part to the crown.
+		# Inlined seizure (kept inline for tooltip preview).
+		"estate(estate_type:amirs_estate)" = { save_scope_as = seize_target }
+		set_variable = {
+			name = seized_pool
+			value = {
+				value = scope:seize_target.estate_gold
+				multiply = 0.25
+			}
+		}
 		add_gold_to_estate = {
 			estate_type = estate_type:amirs_estate
-			value = { value = root.monthly_income_trade_and_tax multiply = -6 }
+			value = {
+				value = var:seized_pool
+				multiply = -1
+			}
 		}
-		# Compensate Burghers (4 months)
 		add_gold_to_estate = {
 			estate_type = estate_type:burghers_estate
-			value = { value = root.monthly_income_trade_and_tax multiply = 4 }
+			value = { value = var:seized_pool multiply = 0.6667 }
 		}
-		# Crown Share
-		add_gold = { value = root.monthly_income_trade_and_tax multiply = 2 }
+		add_gold = { value = var:seized_pool multiply = 0.3333 }
+		remove_variable = seized_pool
 
 		add_country_modifier = { modifier = amir_purge_supply_hit years = 10 }
 	}

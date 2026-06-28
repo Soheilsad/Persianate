@@ -10,19 +10,39 @@ boneh_system = {
 		}
 	}
 	allow = { }
-	can_revoke = { }
-	
+	can_revoke = { always = yes }
+	on_fully_activated = {
+		every_owned_location = {
+			limit = {
+
+				location_rank = location_rank:rural_settlement
+				
+			}
+			add_location_modifier = {
+				modifier = collective_taxation_modifier
+				years = -1
+			}
+		}
+	}
+	on_deactivated = {
+		every_owned_location = {
+			limit = {
+
+				location_rank = location_rank:rural_settlement
+				
+			}
+			remove_location_modifier = collective_taxation_modifier
+		}
+	}
 	country_modifier = {
 		tax_income_efficiency = 0.05
-		global_amirs_estate_power = 0.10
-		
+		global_amirs_estate_power = 0.15
+		pure_tooltip_entry = boneh_and_rural_diwan_power
 		# Added: Required Estate Stats
 		peasants_estate_target_satisfaction = 0.05
 		global_peasants_estate_power = 0.05
 		
 		monthly_towards_centralization = 0.05
-		
-		# State has harder time exerting direct control inside the communal village
-		global_monthly_control = -0.0025 
+		global_max_rural_control = -0.05
 	}
 }

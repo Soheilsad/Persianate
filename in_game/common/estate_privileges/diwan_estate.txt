@@ -146,7 +146,7 @@ diwan_state_monopolies = {
 		# transactions flowed through the bazaar.
 		# TODO: replace with an estate_enrichment auto-modifier that
 		# moves wealth from burghers to diwan directly.
-		burghers_estate_max_tax = 0.05
+		burghers_estate_max_tax = 0.025
 		burghers_estate_target_satisfaction = -0.05
 		global_burghers_estate_power = -0.10
 		monthly_towards_tazik = 0.05
@@ -177,6 +177,7 @@ diwan_persian_bureaucratic_tradition = {
 		global_max_urban_control = ez_diwan_urban_bonus
 		global_max_rural_control = ez_diwan_rural_bonus
 		stability_cost = -0.10
+		stability_cost_efficiency = 0.10
 		# As the chancery becomes a self-replicating elite, the names
 		# in the registers and the names being assessed quietly drift
 		# apart. Modest signature on the foundational privilege.

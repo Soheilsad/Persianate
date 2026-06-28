@@ -43,7 +43,7 @@
 #     freezes wealth, the fisc rots at its own nervous system. ---
 ayyan_waqf = {
 	is_foreign = no
-	max_levels = 1
+	max_levels = 10
 	pop_type = nobles
 	employment_size = 0.05
 
@@ -73,17 +73,12 @@ ayyan_waqf = {
 	
 	raw_modifier = {
 		local_diwan_estate_power = 0.25
-		pure_tooltip_entry = waqf_tax_erosion  
+		pure_tooltip_entry = waqf_tax_erosion
 
 	}
-	on_built = {
-		add_country_modifier = {
-			modifier = diwan_waqf_damage
-			size = { value = total_effective_building_levels:ayyan_waqf}
-			years = -1
-			mode = replace
-		}
-	}
+	# The realm-wide damage is no longer applied here (the per-location
+	# on_built couldn't express a coherent country cost). It is recomputed
+	# on the yearly pulse — see reassess_waqf_damage.
 	# Dissolving an endowment is sacrilege and theft of the estate's shelter.
 	on_destroyed = {
 		owner = {
@@ -99,7 +94,7 @@ ayyan_waqf = {
 # which obsoletes the base waqf. Twice the drain, twice the outrage.
 grand_ayyan_waqf = {
 	is_foreign = no
-	max_levels = 1
+	max_levels = 10
 	pop_type = nobles
 	employment_size = 0.05
 
@@ -130,9 +125,13 @@ grand_ayyan_waqf = {
 	}
 
 	raw_modifier = {
+		# Country fields here are cosmetic (the realm-wide cost is applied by
+		# the yearly pulse); they stay for player-facing UX. Local power is real.
 		diwan_estate_max_tax = -0.01
 		estate_enrichment = 0.01
 		monthly_loan_capacity_investment = -2.5
+		local_diwan_estate_power = 0.25
+		pure_tooltip_entry = waqf_tax_erosion
 	}
 
 	on_destroyed = {
@@ -151,7 +150,7 @@ grand_ayyan_waqf = {
 #     commerce and urban credit. ---
 urban_waqf = {
 	is_foreign = no
-	max_levels = 1
+	max_levels = 10
 	pop_type = burghers
 	employment_size = 0.05
 
@@ -180,6 +179,8 @@ urban_waqf = {
 		burghers_estate_max_tax = -0.005
 		estate_enrichment = 0.005
 		monthly_loan_capacity_investment = -1.0
+		local_burghers_estate_power = 0.25
+		pure_tooltip_entry = waqf_tax_erosion
 	}
 
 	on_destroyed = {
@@ -194,7 +195,7 @@ urban_waqf = {
 
 grand_urban_waqf = {
 	is_foreign = no
-	max_levels = 1
+	max_levels = 10
 	pop_type = burghers
 	employment_size = 0.05
 
@@ -226,6 +227,8 @@ grand_urban_waqf = {
 		burghers_estate_max_tax = -0.01
 		estate_enrichment = 0.01
 		monthly_loan_capacity_investment = -2.5
+		local_burghers_estate_power = 0.25
+		pure_tooltip_entry = waqf_tax_erosion
 	}
 
 	on_destroyed = {
@@ -245,7 +248,7 @@ grand_urban_waqf = {
 #     the state's reach. Rural too — shrine and village endowments. ---
 clerical_waqf = {
 	is_foreign = no
-	max_levels = 1
+	max_levels = 10
 	pop_type = clergy
 	employment_size = 0.05
 
@@ -275,6 +278,8 @@ clerical_waqf = {
 		clergy_estate_max_tax = -0.005
 		estate_enrichment = 0.005
 		monthly_loan_capacity_investment = -1.0
+		local_clergy_estate_power = 0.25
+		pure_tooltip_entry = waqf_tax_erosion
 	}
 
 	# The main estate IS the clergy; dissolving a sacred endowment is the
@@ -290,7 +295,7 @@ clerical_waqf = {
 
 grand_clerical_waqf = {
 	is_foreign = no
-	max_levels = 1
+	max_levels = 10
 	pop_type = clergy
 	employment_size = 0.05
 
@@ -323,6 +328,8 @@ grand_clerical_waqf = {
 		clergy_estate_max_tax = -0.01
 		estate_enrichment = 0.01
 		monthly_loan_capacity_investment = -2.5
+		local_clergy_estate_power = 0.25
+		pure_tooltip_entry = waqf_tax_erosion
 	}
 
 	on_destroyed = {

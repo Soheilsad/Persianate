@@ -79,6 +79,7 @@ decree_infrastructure_expansion = {
 	
 	modifier_when_in_debate = {
 		global_build_buildings_cost = -0.05
+		global_build_buildings_efficiency = 0.05
 	}
 	
 	allow = {
@@ -199,6 +200,7 @@ decree_caravanserai_network = {
 
 	modifier_when_in_debate = {
 		global_build_buildings_cost = -0.05
+		global_build_buildings_efficiency = 0.05
 	}
 
 	allow = {

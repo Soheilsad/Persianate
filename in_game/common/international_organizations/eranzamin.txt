@@ -38,6 +38,7 @@ eranzamin = {
 		global_war_score_efficiency = 0.33
 		antagonism_received_modifier = -0.50
 		diplomatic_annexation_cost = -0.25
+		diplomatic_annexation_efficiency = 0.25
 		pop_join_rebel_threshold = 0.1
 		land_morale_modifier = 0.10
 	}

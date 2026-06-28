@@ -363,6 +363,7 @@ diwan_qanun_codification = {
 		country_cabinet_efficiency = 0.10
 		global_max_urban_control = ez_diwan_urban_bonus
 		stability_cost = -0.10
+		stability_cost_efficiency = 0.10
 		global_clergy_estate_power = -0.15
 		clergy_estate_target_satisfaction = -0.10
 		monthly_towards_centralization = 0.05

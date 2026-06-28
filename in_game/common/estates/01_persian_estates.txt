@@ -34,15 +34,16 @@ diwan_estate = {
 		# they shelter their own tax
 		diwan_estate_max_tax = -0.4
 		## but they gleefully squeeze others
-		burghers_estate_max_tax = 0.15
+		burghers_estate_max_tax = 0.1
 		tax_income_efficiency = 0.15
 		clergy_estate_max_tax = 0.15
-		peasants_estate_max_tax = 0.15
+		peasants_estate_max_tax = 0.05
 	}
 
 	low_power = {
 		country_cabinet_efficiency = -0.20
 		stability_cost = 0.15
+		stability_cost_efficiency = -0.2
 		global_max_urban_control = -0.05
 		global_max_rural_control = -0.10
 		### they start to get squeezed, themselves
@@ -104,7 +105,7 @@ amirs_estate = {
 	color = rgb { 180 20 20 }
 	
 	power_per_pop = 25
-	tax_per_pop = 75 # they pay far less tax than their power would suggest, as they are the military caste. they are being PAID by the state, not the other way around. However, Musadera, Pishkesh, poll taxes, etc. still exist.
+	tax_per_pop = 25 # they pay far less tax than their power would suggest, as they are the military caste. they are being PAID by the state, not the other way around. However, Musadera, Pishkesh, poll taxes, etc. still exist.
 	## each of their privileges is GOING to give a reduction in max tax
 	rival = 0
 	alliance = 0.01

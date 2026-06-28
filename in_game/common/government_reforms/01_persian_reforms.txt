@@ -108,6 +108,7 @@ ilkhanate_governorate = {
 		# place — modest legitimacy, no pump (you make no claim).
 		monthly_legitimacy = 0.1
 		stability_cost = -0.10
+		stability_cost_efficiency = 0.10
 		fort_defence = 0.20
 		land_morale = 0.05
 		tax_income_efficiency = 0.10
@@ -623,6 +624,7 @@ mushasha_messianism = {
 		clergy_estate_target_satisfaction = -0.10
 		tolerance_heretic = 2
 		stability_cost = 0.10
+		stability_cost_efficiency = -0.10
 		
 	}
 
@@ -647,6 +649,7 @@ sahib_qiran = {
 		antagonism_received_modifier = -0.05
 		monthly_war_exhaustion = -0.02
 		stability_cost = -0.05
+		stability_cost_efficiency = 0.05
 	}
 
 	years = 5
@@ -811,6 +814,7 @@ sunni_orthodoxy = {
 		global_clergy_estate_power = 0.15
 		clergy_estate_target_satisfaction = ez_priv_sat_major
 		stability_cost = -0.05
+		stability_cost_efficiency = 0.05
 		monthly_towards_centralization = 0.05
 	}
 
@@ -871,6 +875,7 @@ murshid_i_kamil = {
 		clergy_estate_target_satisfaction = -0.10
 		tolerance_own = -1
 		stability_cost = 0.10
+		stability_cost_efficiency = -0.10
 		cultural_influence_modifier = 0.05
 		monthly_towards_turk = 0.05
 	}

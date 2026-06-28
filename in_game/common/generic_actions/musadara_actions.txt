@@ -75,9 +75,11 @@ enact_musadara = {
 	# }
 
 	effect = {
+		
 		scope:actor = {
+			
 			# The political-capital cost — spent in the court.
-
+			
 			change_parliament_issue_support = {
 				value = {
 					add = modifier:parliament_request_issue_support_needed
@@ -85,23 +87,38 @@ enact_musadara = {
 				}
 				multiply = -1
 			}
-			"estate(estate_type:diwan_estate)" = { save_scope_as = target_estate }
-
-			# Seize the lion's share of the estate's coffers into the
-			# treasury. Both lines read the estate's gold before either
-			# changes it.
-
-			add_gold = {
-				value = scope:target_estate.estate_gold
-				multiply = 0.5
+			# Seize half the estate's coffers into the treasury — less
+			# whatever the diwan has sheltered in waqf, which the writ cannot
+			# reach. Inlined (not a scripted_effect call) so the maẓālim
+			# tooltip can preview the amount — a scripted_effect call resolves
+			# only after the tooltip has already rendered.
+			"estate(estate_type:diwan_estate)" = { save_scope_as = seize_target }
+			set_local_variable = {
+				name = seized_assets
+				value = {
+					value = scope:seize_target.estate_gold
+					multiply = 0.5
+				}
 			}
+
+
+			change_local_variable = {
+				name = seized_assets
+				multiply = {
+					value = 1
+					subtract = var:diwan_waqf_shelter
+				}
+			}
+			
 			add_gold_to_estate = {
 				estate_type = estate_type:diwan_estate
 				value = {
-					value = scope:target_estate.estate_gold
-					multiply = -0.5
+					value = local_var:seized_assets
+					multiply = -1
 				}
 			}
+			add_gold = { value = local_var:seized_assets }
+
 
 			# The plundered estate is bitter.
 			add_estate_satisfaction = {
@@ -109,6 +126,9 @@ enact_musadara = {
 				value = -0.4
 			}
 
+
+
+			
 			# Muṣādara of the diwan carries the Ilkhanid risk: the vizier
 			# may pay with his head. (No head-diwan member → nothing to seize
 			# but the gold.)
@@ -129,7 +149,53 @@ enact_musadara = {
 			# The aftertaste: the realm-wide chill of confiscation, felt by
 			# every elite estate. The same scar the desperation event leaves.
 			add_country_modifier = { modifier = recent_musadara years = 5 }
-
+			### diwan elite begin building waqfs to shelter their wealth.
+			custom_tooltip = waqf_buildings_tooltip_tt
+			hidden_effect = {
+				reassess_waqf_damage = yes
+				every_owned_location = {
+					limit = {
+						is_city = yes
+					}
+					random = {
+						chance = 10
+						construct_estate_building = {
+							estate_type = estate_type:diwan_estate
+							building_type = building_type:ayyan_waqf
+						}
+					}
+				}
+				capital = {
+					construct_estate_building = {
+						estate_type = estate_type:diwan_estate
+						building_type = building_type:ayyan_waqf
+					}
+				}
+				### other elite take notice, too.
+				every_owned_location = {
+					random = {
+						chance = 1
+						construct_estate_building = {
+							estate_type = estate_type:clergy_estate
+							building_type = building_type:clerical_waqf
+						}
+					}
+				}
+				every_owned_location = {
+					limit = {
+						is_city = yes
+					}
+					random = {
+						chance = 2.5
+						construct_estate_building = {
+							estate_type = estate_type:burghers_estate
+							building_type = building_type:urban_waqf
+						}
+					}
+				}
+			}
+			
+			### 
 			# Cooldown: one confiscation per five years.
 			set_variable = {
 				name = enact_musadara_recent

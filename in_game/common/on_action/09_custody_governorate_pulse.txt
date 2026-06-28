@@ -54,19 +54,15 @@ peasant_non_levying_pulse = {
 		## has_raised_levies
 	}
 	effect = {
-		every_country_sub_unit = {
-			limit = { 
-				is_levy = yes
+
+		every_owned_location = {
+			limit = {
+				modifier:levies_are_raised_flag = yes
+				NOT = { has_location_modifier = circle_of_justice_food_and_rgo_offset }
 			}
-			subunit_home = {
-				if = {
-					limit = {
-						NOT = { has_location_modifier = circle_of_justice_food_and_rgo_offset }
-					}
-					add_location_modifier = {modifier = circle_of_justice_food_and_rgo_offset days = -1 mode=add_and_extend}
-				}
-			}
+			add_location_modifier = {modifier = circle_of_justice_food_and_rgo_offset days = -1 mode=add_and_extend}
 		}
+
 		### later on, we can add something that actually represents Tribes and Amirs being levied. 
 
 	}
@@ -81,9 +77,8 @@ peasant_non_levying_cleanup_pulse = {
 		## run ONLY for persianate sultanates which are at war.
 		
 		government_type = government_type:persianate_sultanate
-		at_war = no
-		has_raised_levies = no
 		any_owned_location = {
+			modifier:levies_are_raised_flag = no
 			has_location_modifier = circle_of_justice_food_and_rgo_offset
 		}
 		## has_raised_levies
@@ -91,6 +86,7 @@ peasant_non_levying_cleanup_pulse = {
 	effect = {
 		every_owned_location = {
 				limit = { 
+					modifier:levies_are_raised_flag = no
 					has_location_modifier = circle_of_justice_food_and_rgo_offset
 				}
 				remove_location_modifier = circle_of_justice_food_and_rgo_offset
