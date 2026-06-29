@@ -1468,6 +1468,30 @@ JUR = { #Jurmanids
 		
 		capital = salameh
 	}
+	#Ispahbad - IHB
+	IHB = {
+		own_control_core = {
+			astara dulab lankaran
+		}
+
+		include = "expl_middle_east"
+		starting_technology_level = 3
+		include = "expl_mongols"
+		include = "persianate_sultanate_tazik_dominant"
+
+		government = {
+			type = persianate_sultanate
+
+			ruler = random
+
+			laws = {
+				sharia_law = zaidi_policy
+			}
+		}
+
+		religious_school = zaidi_school
+		capital = astara
+	}
 	}
 }
 

@@ -53,8 +53,7 @@ urban_waqf_charter = {
 		burghers_estate_target_satisfaction = 0.10
 		clergy_estate_target_satisfaction = 0.025
 		monthly_legitimacy = 0.025
-		global_burghers_estate_power = 0.03
-		revoke_privilege_cost_modifier = 0.5
+		global_burghers_estate_power = 0.33
 	}
 }
 
@@ -72,7 +71,6 @@ clerical_waqf_charter = {
 	country_modifier = {
 		clergy_estate_target_satisfaction = 0.10
 		monthly_legitimacy = 0.025
-		global_clergy_estate_power = 0.03
-		revoke_privilege_cost_modifier = 0.5
+		global_clergy_estate_power = 0.33
 	}
 }

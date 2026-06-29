@@ -243,7 +243,7 @@ diwan_musadara_confiscation = {
 		estate_enrichment = -0.2
 		bank_interest = 0.05 ## bank interest is higher 
 		global_monthly_development = -0.001 ###  reduces development, because less incentive to invest.
-		total_loan_capacity_modifier = -0.5 ## majorly reduces your loan capacity, because the state is taking  money away.
+		total_loan_capacity_modifier = -0.25 ## majorly reduces your loan capacity, because the state is taking  money away.
 	}
 }
 

@@ -129,7 +129,7 @@ grand_ayyan_waqf = {
 		# the yearly pulse); they stay for player-facing UX. Local power is real.
 		diwan_estate_max_tax = -0.01
 		estate_enrichment = 0.01
-		monthly_loan_capacity_investment = -2.5
+		total_loan_capacity_modifier = -0.01
 		local_diwan_estate_power = 0.25
 		pure_tooltip_entry = waqf_tax_erosion
 	}
@@ -178,7 +178,7 @@ urban_waqf = {
 	raw_modifier = {
 		burghers_estate_max_tax = -0.005
 		estate_enrichment = 0.005
-		monthly_loan_capacity_investment = -1.0
+		total_loan_capacity_modifier = -0.01
 		local_burghers_estate_power = 0.25
 		pure_tooltip_entry = waqf_tax_erosion
 	}
