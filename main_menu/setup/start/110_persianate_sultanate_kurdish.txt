@@ -22,29 +22,7 @@
 # 		religious_school = safavid_school
 # 	}
 
-# 	#Ispahbad - IHB
-# 	IHB = {
-# 		own_control_core = {
-# 			astara dulab lankaran
-# 		}
 
-# 		include = "expl_middle_east"
-# 		include = "muslim_monarchy_no_abrahamic_dhimmi"
-
-
-# 		government = {
-# 			type = monarchy
-# 			heir_selection = cognatic_primogeniture
-# 			ruler = random
-
-# 			laws = {
-# 				sharia_law = zaidi_policy
-# 			}
-# 		}
-
-# 		religious_school = zaidi_school
-# 		capital = astara
-# 	}
 
 # 	#Ardalan - ARD
 # 	ARD = {
@@ -427,3 +405,5 @@
 # 	}
 #     }
 # }
+
+
