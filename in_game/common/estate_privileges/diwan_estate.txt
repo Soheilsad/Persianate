@@ -205,6 +205,9 @@ diwan_waqf_administration = {
 		# is the textbook monument — half a million dinars of tax-immune
 		# foundation built to outlive any future confiscation.
 		diwan_estate_max_tax = -0.15
+		# The endowment that outlives confiscation is the diwan family's
+		# own redoubt — the shelter strengthens the estate it shelters.
+		global_diwan_estate_power = 0.10
 		monthly_towards_centralization = 0.05
 		monthly_towards_tazik = 0.05
 	}
@@ -227,6 +230,9 @@ diwan_royal_workshops = {
 		global_production_efficiency = 0.1
 		global_burghers_estate_power = -0.15
 		diwan_estate_target_satisfaction = 0.04
+		# State workshops put the chancery's hand directly on production —
+		# the diwan grows at the burghers' expense.
+		global_diwan_estate_power = 0.10
 		monthly_towards_mercantilism = 0.1
 		monthly_towards_tazik = 0.05
 	}

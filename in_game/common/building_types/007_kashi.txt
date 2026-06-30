@@ -58,6 +58,7 @@ kashi_guild = {
             glass = 0.2     # 0.525 — the frit, at frit scale
             coal  = 0.55    # 1.10 — still hotter than the Chinese kiln
             tools = 0.05    # 0.15
+			category = guild_input
         # →  2.55 cost / 3.0 revenue  =  15% margin. worse than the chinese variant at 20% margin.
         }
 	}

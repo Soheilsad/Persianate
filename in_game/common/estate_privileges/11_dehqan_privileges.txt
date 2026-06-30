@@ -61,6 +61,9 @@ dehqan_service_tenure_registers = {
 		# registers, not against memory. The leash, and the gentry
 		# know it is a leash.
 		global_max_rural_control = 0.05
+		# Conditional tenure is a leash: the gentry hold land against the
+		# register, and the register is the crown's, not theirs.
+		global_amirs_estate_power = -0.10
 		global_diwan_estate_power = 0.10
 		tax_income_efficiency = 0.025
 		amirs_estate_target_satisfaction = -0.025
@@ -87,6 +90,9 @@ dehqan_shahnama_endowment = {
 		monthly_legitimacy = 0.05
 		cultural_tradition_modifier = 0.10
 		amirs_estate_target_satisfaction = 0.05
+		# The endowed self-image gives the refounded gentry cohesion —
+		# the one dehqan privilege that builds rather than leashes.
+		global_amirs_estate_power = 0.05
 		monthly_towards_tazik = 0.05
 	}
 }

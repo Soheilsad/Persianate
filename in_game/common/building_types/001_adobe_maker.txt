@@ -65,14 +65,7 @@ REPLACE:lumber_mill = {
 	build_time = rural_build_time
 	
 	unique_production_methods = {
-		lumber_mill_maintenance = {
-			produced = lumber
-			output = 1
-
-			tools = 0.4
-			
-			category = building_maintenance
-		}
+		lumber_mill_maintenance
 	}
 
 	construction_demand = basic_construction_needs
