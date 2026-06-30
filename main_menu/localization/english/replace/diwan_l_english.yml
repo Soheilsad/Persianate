@@ -282,10 +282,6 @@
  STATIC_MODIFIER_NAME_decree_pardon_mod: "Yarligh-i ʿAfv"
  STATIC_MODIFIER_NAME_decree_audit_mod: "Imperial Audit"
 
- # Reforms
-
- circle_of_equity_reform: "Circle of Equity"
- circle_of_equity_reform_desc: "There is no authority without an army, no army without wealth, no wealth without subjects, and no subjects without justice."
 
  # Units
  a_nomadic_skirmisher_cavalry: "Nomadic Skirmishers"

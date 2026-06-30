@@ -665,13 +665,13 @@ sahib_qiran = {
 
 # The Türk cavalry aristocracy. Heart of early Safavid power
 # and the qizilbash khans of Anatolia and Azerbaijan.
-qizilbash_aristocracy_reform = {
+qizilbash_aristocracy = {
 	age = age_3_discovery
 	government = persianate_sultanate
 
 	potential = {
 		religion = religion:shia
-		NOT = { has_reform = government_reform:ghulam_system_reform }
+		NOT = { has_reform = government_reform:ghulam_system }
 		# Matter of Tork: a realm that dissolved, expelled, or
 		# eradicated its Türk military constituency has no qizilbash
 		# to aristocratize — the Iranization / Expulsion / Eradication
@@ -731,13 +731,13 @@ tofangchi_topchi_corps = {
 # foreclosed and (if it ran Approach 1) the corps already standing —
 # the historical Abbas move, available a century early to the realm
 # that paid for it during the Matter.
-ghulam_system_reform = {
+ghulam_system = {
 	age = age_3_discovery
 	government = persianate_sultanate
 
 	potential = {
 		religion.group = religion_group:muslim
-		NOT = { has_reform = government_reform:qizilbash_aristocracy_reform }
+		NOT = { has_reform = government_reform:qizilbash_aristocracy }
 	}
 
 	country_modifier = {
@@ -824,7 +824,7 @@ sunni_orthodoxy = {
 # The ṣadr office — state-church bureaucratized. Salaried qadis,
 # state-supervised waqf. The clergy paid by the throne is happy
 # but tamed.
-sadr_judiciary_reform = {
+sadr_judiciary = {
 	age = age_3_discovery
 	government = persianate_sultanate
 

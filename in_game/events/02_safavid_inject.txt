@@ -2,7 +2,7 @@ INJECT:flavor_ira.11 = {
 	option = {
 		name = flavor_ira.11.c
 		trigger = {
-			has_reform = government_reform:qizilbash_aristocracy_reform
+			has_reform = government_reform:qizilbash_aristocracy
 		}
 		add_estate_satisfaction = { type = estate_type:amirs_estate value = 20 }
 		

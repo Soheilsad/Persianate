@@ -107,7 +107,7 @@ matter_tork_purchase_ghulams = {
 			OR = {
 				has_estate_privilege = estate_privilege:diwan_ghulam_administration
 				has_estate_privilege = estate_privilege:amirs_ghulam_administration
-				has_reform = government_reform:ghulam_system_reform
+				has_reform = government_reform:ghulam_system
 			}
 			# The implementer.
 			has_estate_privilege = estate_privilege:ghulam_fostering_households

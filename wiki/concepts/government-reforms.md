@@ -128,7 +128,7 @@ Effects: `land_morale = +0.05`, `army_tradition_from_battles = +0.25`, `monthly_
 
 Otlukbeli (1473) and Chāldirān (1514) make the cavalry/gunpowder dilemma bleed. The qizilbāsh / ghulām pair is the central rivalry; the *tofangchi-topchi* gunpowder corps coexists with either.
 
-### `qizilbash_aristocracy_reform`
+### `qizilbash_aristocracy`
 
 The Türk cavalry aristocracy — heart of early Safavid power and the qizilbāsh *khāns* of Anatolia and Azerbaijan. **Shīʿa-only**. Mutually exclusive with `ghulam_system_reform`.
 
@@ -142,7 +142,7 @@ Effects: `army_infantry_power = +0.15`, `army_artillery_power = +0.15`, `discipl
 
 ### `ghulam_system_reform`
 
-ʿAbbās I's Caucasian slave-corps, built specifically to break qizilbāsh power. Salaried, loyal to the *shāh* alone, staffed by Georgian/Circassian/Armenian converts. **Muslim-only**, mutually exclusive with `qizilbash_aristocracy_reform`.
+ʿAbbās I's Caucasian slave-corps, built specifically to break qizilbāsh power. Salaried, loyal to the *shāh* alone, staffed by Georgian/Circassian/Armenian converts. **Muslim-only**, mutually exclusive with `qizilbash_aristocracy`.
 
 Effects: `discipline = +0.05`, `global_manpower_modifier = +0.15`, `army_maintenance_efficiency = −0.15`, **`global_amirs_estate_power = −0.25` and a further `−0.15` (cumulative malus)**, Amirs satisfaction `−0.10`, `global_diwan_estate_power = +0.20`, Dīwān satisfaction `+ez_priv_sat_major`, `monthly_towards_quality = +0.10`, `monthly_towards_centralization = +0.10`, `monthly_towards_tazik = +0.10`.
 
@@ -160,7 +160,7 @@ Institutionalized Ḥanafī orthodoxy. Muslim, non-Shīʿa, not `imami_tashayyu`
 
 Effects: `tolerance_own = +2`, `tolerance_heretic = −1`, `global_clergy_estate_power = +0.15`, Clergy satisfaction `+ez_priv_sat_major`, `stability_cost = −0.05`, `monthly_towards_centralization = +0.05`.
 
-### `sadr_judiciary_reform`
+### `sadr_judiciary`
 
 The *ṣadr* office — state-church bureaucratized. Salaried *qāḍī*s, state-supervised *waqf*. The clergy paid by the throne is happy but tamed.
 
@@ -168,7 +168,7 @@ Effects: `tolerance_own = +1`, `global_diwan_estate_power = +0.20`, **`global_cl
 
 ## Age 3 — the messianic fusion
 
-**`murshid_i_kamil`** — Ismāʿīl I as the perfect spiritual guide, commanding qizilbāsh *murīds*. Pairs with the Age 2 `mushasha_messianism`; thematically what `ghulam_system_reform` + `sadr_judiciary_reform` later supersede when they discipline the fusion.
+**`murshid_i_kamil`** — Ismāʿīl I as the perfect spiritual guide, commanding qizilbāsh *murīds*. Pairs with the Age 2 `mushasha_messianism`; thematically what `ghulam_system_reform` + `sadr_judiciary` later supersede when they discipline the fusion.
 
 Shīʿa-only, **not from chinggisid_regency**.
 
@@ -190,10 +190,10 @@ Effects: `tax_income_efficiency = +0.15`, `global_diwan_estate_power = +0.15`, D
 
 ## A reading map
 
-- **The Tīmūrid road**: Age 1 chinggisid_regency → Age 2 timurid_synthesis (+ optional sahib_qiran overlay) → Age 3 sunni_orthodoxy + sadr_judiciary_reform + ghulam_system_reform.
-- **The Safavid road**: Age 1 chinggisid_regency or ghazi_sultanate (and exit the regency at the puppet's death) → Age 2 mushasha_messianism → Age 3 murshid_i_kamil + qizilbash_aristocracy_reform + imami_tashayyu, later disciplined by ghulam_system_reform + sadr_judiciary_reform + khassa_crown_demesne.
-- **The Persian-kingship road**: Age 1 farr_i_izadi + circle_of_equity_reform → Age 2 iranian_kingship → Age 3 khassa_crown_demesne + sadr_judiciary_reform.
-- **The Türkmen road**: Age 1 chinggisid_regency → Age 2 turkmen_confederation → Age 3 qizilbash_aristocracy_reform + soyurghal_grants_reform + murshid_i_kamil.
+- **The Tīmūrid road**: Age 1 chinggisid_regency → Age 2 timurid_synthesis (+ optional sahib_qiran overlay) → Age 3 sunni_orthodoxy + sadr_judiciary + ghulam_system_reform.
+- **The Safavid road**: Age 1 chinggisid_regency or ghazi_sultanate (and exit the regency at the puppet's death) → Age 2 mushasha_messianism → Age 3 murshid_i_kamil + qizilbash_aristocracy + imami_tashayyu, later disciplined by ghulam_system_reform + sadr_judiciary + khassa_crown_demesne.
+- **The Persian-kingship road**: Age 1 farr_i_izadi + circle_of_equity_reform → Age 2 iranian_kingship → Age 3 khassa_crown_demesne + sadr_judiciary.
+- **The Türkmen road**: Age 1 chinggisid_regency → Age 2 turkmen_confederation → Age 3 qizilbash_aristocracy + soyurghal_grants_reform + murshid_i_kamil.
 
 These are sketch paths, not rails. The reform tree's branching points are real and most of them are one-way.
 

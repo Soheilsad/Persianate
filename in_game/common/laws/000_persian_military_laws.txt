@@ -25,7 +25,7 @@ INJECT:recruitment_law = {
 	}
 
 	ghulam_core_army = {
-		potential = { has_reform = government_reform:ghulam_system_reform }
+		potential = { has_reform = government_reform:ghulam_system }
 		country_modifier = {
 			discipline = 0.05
 			army_maintenance_efficiency = -0.20

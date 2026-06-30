@@ -101,7 +101,7 @@ Expulsion and Eradication don't abolish the amirs estate; they **refound** it. T
 - **Service Tenure Registers** — the gentry's land held conditional against the registers. The leash, and the gentry know it.
 - **The Shāhnāma Endowment** — the cultural charter the new class needs (Ferdowsī wrote it three centuries early).
 
-A/D/E also set `matter_turk_dissolved`, foreclosing `qizilbash_aristocracy_reform` permanently — you destroyed, removed, or dissolved the qizilbash-equivalent before it could exist. The ghulām and dehqān roads are the two armies a post-tribal realm can reach for.
+A/D/E also set `matter_turk_dissolved`, foreclosing `qizilbash_aristocracy` permanently — you destroyed, removed, or dissolved the qizilbash-equivalent before it could exist. The ghulām and dehqān roads are the two armies a post-tribal realm can reach for.
 
 ## Catastrophe
 

@@ -2,7 +2,7 @@
 
 # Gates the ghulam_barracks building (Matter of Tork, Approach 1).
 # Granted by the ghulam administration privileges (diwan or amirs)
-# and by ghulam_system_reform.
+# and by ghulam_system.
 can_build_ghulam_barracks = {
 	boolean = yes
 	game_data = {

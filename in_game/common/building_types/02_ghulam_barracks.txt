@@ -6,7 +6,7 @@
 # designed from scratch around the corps rather than inherited.
 #
 # Gated by can_build_ghulam_barracks (granted by the diwan/amirs
-# ghulam administration privileges and by ghulam_system_reform).
+# ghulam administration privileges and by ghulam_system).
 # Corps tiers are gated on built barracks: tier II needs >= 1,
 # tier III needs >= 3 (the physical apparatus, not an abstraction).
 

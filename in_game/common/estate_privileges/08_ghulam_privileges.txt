@@ -1,7 +1,7 @@
 # -----------------------------------------
 # GHULAM SYSTEM — Matter of Tork, Approach 1
 #
-# The corps needs an ADMINISTRATOR (crown via ghulam_system_reform,
+# The corps needs an ADMINISTRATOR (crown via ghulam_system,
 # OR the diwan, OR the amirs — one of the two privileges below) and
 # an IMPLEMENTER (the fostering households that raise the boys —
 # peasants privilege; a tribes variant is a planned follow-on).
@@ -25,7 +25,7 @@
 # TIMELINE (design decision 36): these privileges are the PALACE
 # form of the institution — the Samanid/Ghaznavid precedent, live
 # from the Matter (~1390s) with no reform required. The Age 3
-# ghulam_system_reform is the CONSTITUTIONAL form (Abbas's
+# ghulam_system is the CONSTITUTIONAL form (Abbas's
 # systematization); its has_reform branch below is the late root
 # for realms that never had the Matter. Nothing here needs the
 # reform before 1444.
@@ -41,7 +41,7 @@ diwan_ghulam_administration = {
 		government_type = government_type:persianate_sultanate
 		OR = {
 			has_variable = matter_tork_ghulam_program
-			has_reform = government_reform:ghulam_system_reform
+			has_reform = government_reform:ghulam_system
 		}
 		NOT = { has_estate_privilege = estate_privilege:amirs_ghulam_administration }
 	}
@@ -69,7 +69,7 @@ amirs_ghulam_administration = {
 		government_type = government_type:persianate_sultanate
 		OR = {
 			has_variable = matter_tork_ghulam_program
-			has_reform = government_reform:ghulam_system_reform
+			has_reform = government_reform:ghulam_system
 		}
 		NOT = { has_estate_privilege = estate_privilege:diwan_ghulam_administration }
 		# Foreclosed by Expulsion/Eradication: the refounding purge
@@ -98,7 +98,7 @@ ghulam_fostering_households = {
 		government_type = government_type:persianate_sultanate
 		OR = {
 			has_variable = matter_tork_ghulam_program
-			has_reform = government_reform:ghulam_system_reform
+			has_reform = government_reform:ghulam_system
 		}
 	}
 

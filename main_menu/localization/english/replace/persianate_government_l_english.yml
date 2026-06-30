@@ -61,14 +61,14 @@
  sahib_qiran_desc: "Lord of the Auspicious Conjunction — Timur's astrological claim to universal rule. A cosmic mandate distinct from both töre and farr, sitting on top of whichever state-form you have chosen."
 
  # Age 3 — Military Dilemma
- qizilbash_aristocracy_reform: "Qizilbāsh Aristocracy"
- qizilbash_aristocracy_reform_desc: "The cavalry aristocracy of the early Safavid state — the red-cap Türkmen khans of Anatolia and Azerbaijan, devoted to the shāh as their murshid. The hardest-hitting cavalry in the Persianate world; and the most centrifugal political force in it."
+ qizilbash_aristocracy: "Qizilbāsh Aristocracy"
+ qizilbash_aristocracy_desc: "The cavalry aristocracy of the early Safavid state — the red-cap Türkmen khans of Anatolia and Azerbaijan, devoted to the shāh as their murshid. The hardest-hitting cavalry in the Persianate world; and the most centrifugal political force in it."
 
  tofangchi_topchi_corps: "Tofangchī and Topchī Corps"
  tofangchi_topchi_corps_desc: "Musket-and-cannon infantry, paid and centralized. The bloody lesson of Chaldirān (1514) finally heeded — the gunpowder answer to a battlefield the qizilbāsh charge can no longer carry. Expensive, and resented by the cavalry."
 
- ghulam_system_reform: "Ghulām Corps"
- ghulam_system_reform_desc: "Abbas I's Caucasian slave-corps — Georgian, Circassian, and Armenian converts loyal to the shāh alone, raised explicitly to break qizilbāsh power. A salaried standing army; the cavalry aristocracy's gravedigger."
+ ghulam_system: "Ghulām Corps"
+ ghulam_system_desc: "Abbas I's Caucasian slave-corps — Georgian, Circassian, and Armenian converts loyal to the shāh alone, raised explicitly to break qizilbāsh power. A salaried standing army; the cavalry aristocracy's gravedigger."
 
  # Age 3 — Religious Settlement
  imami_tashayyu: "Imāmī Tashayyuʿ"
@@ -77,8 +77,8 @@
  sunni_orthodoxy: "Sunnī Orthodoxy"
  sunni_orthodoxy_desc: "Institutionalized Ḥanafī orthodoxy — the Timurid and Shaybanid road. The Sunnī ʿulamāʾ are state-backed, the qāḍīs appointed, the madrasas endowed; the realm answers to a single juridical tradition."
 
- sadr_judiciary_reform: "Ṣadr Judiciary"
- sadr_judiciary_reform_desc: "The ṣadr office is established to administer the state church — supervising waqf, appointing qāḍīs, paying the ʿulamāʾ from the treasury. The clergy are happy and tamed; the dīwān grows another arm."
+ sadr_judiciary: "Ṣadr Judiciary"
+ sadr_judiciary_desc: "The ṣadr office is established to administer the state church — supervising waqf, appointing qāḍīs, paying the ʿulamāʾ from the treasury. The clergy are happy and tamed; the dīwān grows another arm."
 
  # Age 3 — Messianic Fusion
  murshid_i_kamil: "Murshid-i Kāmil"
