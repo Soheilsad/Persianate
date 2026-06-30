@@ -59,7 +59,7 @@ ayyan_waqf = {
 	destroyable_building = yes
 
 	country_potential = {
-		government_type = government_type:persianate_sultanate
+		government_type ?= government_type:persianate_sultanate
 		country_has_estate = estate_type:diwan_estate
 		# Waqf is the shelter AGAINST muṣādara — it only exists while the
 		# crown's right of confiscation does. (Privilege defined separately.)
@@ -75,6 +75,17 @@ ayyan_waqf = {
 		local_diwan_estate_power = 0.25
 		pure_tooltip_entry = waqf_tax_erosion
 
+	}
+	remove_if = {
+		OR = {
+
+			location.owner ?= {
+				OR = {
+					NOT = {country_has_estate = estate_type:diwan_estate}
+					NOT = {government_type ?=government_type:persianate_sultanate}
+				}
+			}
+		}
 	}
 	# The realm-wide damage is no longer applied here (the per-location
 	# on_built couldn't express a coherent country cost). It is recomputed
@@ -112,10 +123,8 @@ grand_ayyan_waqf = {
 	obsolete = ayyan_waqf
 
 	country_potential = {
-		government_type = government_type:persianate_sultanate
+		government_type ?= government_type:persianate_sultanate
 		country_has_estate = estate_type:diwan_estate
-		# Waqf is the shelter AGAINST muṣādara — it only exists while the
-		# crown's right of confiscation does. (Privilege defined separately.)
 		modifier:access_to_musadara = yes
 		has_estate_privilege = estate_privilege:ayyan_waqf_charter
 	}
@@ -126,14 +135,24 @@ grand_ayyan_waqf = {
 
 	raw_modifier = {
 		# Country fields here are cosmetic (the realm-wide cost is applied by
-		# the yearly pulse); they stay for player-facing UX. Local power is real.
+		# the yearly pulse); they stay for player-facing UX. Only Local power is real.
 		diwan_estate_max_tax = -0.01
 		estate_enrichment = 0.01
 		total_loan_capacity_modifier = -0.01
 		local_diwan_estate_power = 0.25
 		pure_tooltip_entry = waqf_tax_erosion
 	}
+	remove_if = {
+		OR = {
 
+			location.owner ?= {
+				OR = {
+					NOT = {country_has_estate = estate_type:diwan_estate}
+					NOT = {government_type ?=government_type:persianate_sultanate}
+				}
+			}
+		}
+	}
 	on_destroyed = {
 		owner = {
 			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.05 }
@@ -167,7 +186,7 @@ urban_waqf = {
 	destroyable_building = yes
 
 	country_potential = {
-		government_type = government_type:persianate_sultanate
+		government_type ?= government_type:persianate_sultanate
 		country_has_estate = estate_type:burghers_estate
 		modifier:access_to_musadara = yes
 	}
@@ -214,7 +233,7 @@ grand_urban_waqf = {
 	obsolete = urban_waqf
 
 	country_potential = {
-		government_type = government_type:persianate_sultanate
+		government_type ?= government_type:persianate_sultanate
 		country_has_estate = estate_type:burghers_estate
 		modifier:access_to_musadara = yes
 		has_estate_privilege = estate_privilege:urban_waqf_charter
@@ -265,7 +284,7 @@ clerical_waqf = {
 	destroyable_building = yes
 
 	country_potential = {
-		government_type = government_type:persianate_sultanate
+		government_type ?= government_type:persianate_sultanate
 		religion.group = religion_group:muslim
 		country_has_estate = estate_type:clergy_estate
 		modifier:access_to_musadara = yes
@@ -314,7 +333,7 @@ grand_clerical_waqf = {
 	obsolete = clerical_waqf
 
 	country_potential = {
-		government_type = government_type:persianate_sultanate
+		government_type ?= government_type:persianate_sultanate
 		religion.group = religion_group:muslim
 		country_has_estate = estate_type:clergy_estate
 		modifier:access_to_musadara = yes
