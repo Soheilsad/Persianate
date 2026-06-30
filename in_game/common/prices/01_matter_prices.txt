@@ -59,3 +59,7 @@ custody_secure_household = {
 custody_sikka_everywhere = {
 	scaled_gold = 6
 }
+
+iqta_price = {
+	gold = 10
+}

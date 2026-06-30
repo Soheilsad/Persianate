@@ -84,12 +84,12 @@ REPLACE:irrigation_systems = {
 	}
 }
 
-crumbling_qanat = {
+damaged_qanat = {
 	is_foreign = no
 	pop_type = peasants
 	max_levels = 1
 
-	employment_size = 0.5        # large numbers of people are needed to work part time regardless.
+	employment_size = 2.5        # large numbers of people are needed to work part time regardless.
 
 	category = infrastructure_category       # [verify key]
 
@@ -105,7 +105,7 @@ crumbling_qanat = {
 		### two scenarios for AUTOMATIC. the location becomes thoroughly ruined. or the location auto grows enough over time. the player can also invest but that's separate (not autoamtic).
 		location = {
 			OR = {
-				development 
+				development > 50
 			}
 			
 		}
@@ -114,10 +114,13 @@ crumbling_qanat = {
 	# Cannot be demolished by its owner; ruins are not policy.
 	is_indestructible = yes
 
-	modifier = {
-		# crumbling_qanat (45 / 0.10 / 0.02 / supply 0) minus sparse (25):
-		local_population_capacity = 20
-		local_monthly_food_modifier = 0.10
+	raw_modifier = {
+		# crumbling qanat MAKES qanat worse.
+		local_population_capacity = -15
+		local_monthly_food_modifier = -0.1
+		local_monthly_development_modifier = -0.04
+		supply_limit = -1.5
+		local_max_rgo_size_modifier = -0.05
 
 	}
 }
@@ -125,11 +128,11 @@ crumbling_qanat = {
 qanat_network = {
 	is_foreign = no
 	pop_type = peasants
-	max_levels = 4
-
-	employment_size = 0.5       # [verify key] the muqanni corps and the mirab's men
-
-	category = rural_infrastructure_category       # [verify key]
+	max_levels = 3
+	obsolete = damaged_qanat
+	employment_size = 2       
+	price = small_estate_building ### not actually EXPENSIVE to start, just takes a LONG time to build. the maintenance cost is what makes it expensive to keep building + opportunity cost.
+	category = rural_infrastructure_category       
 
 	rural_settlement = yes
 	town = yes
@@ -176,10 +179,10 @@ qanat_network = {
 	modifier = {
 		# qanat_farmland (65 / 0.22 / 0.04 / rgo 0.05 / supply 2) minus sparse (25):
 		local_population_capacity = 5
-		local_monthly_food_modifier = 0.025
-		local_monthly_development_modifier = 0.01
-		local_max_rgo_size_modifier = 0.00125
-		supply_limit = 0.5
+		local_monthly_food_modifier = 0.02
+		local_monthly_development_modifier = 0.0066
+		supply_limit = 0.33
+		
 	}
 
 	# Repairing the channels is the Circle of Justice made physical:
@@ -207,3 +210,52 @@ qanat_network = {
 
 	graphical_tags = { small_economy }                          # [verify tag]
 }
+
+
+# qanat_farmland = {
+# 	color = terrain_qanat          
+# 	movement_cost = 1.15               
+# 	has_sand = yes                     
+
+# 	location_modifier = {
+# 		local_population_capacity = 65
+# 		local_monthly_food_modifier = 0.22     # strong food, slightly below farmland (0.33)
+# 		local_monthly_development_modifier = 0.04  # modest (farmland is 0.10)
+# 		local_max_rgo_size_modifier = 0.05     # modest
+# 		supply_limit = 2                       # lower than farmland (5); deserts still hurt armies
+# 	}
+
+# 	audio_tags = { masDataVegetationDensity = 0.22 }  # “not lush”
+# 	debug_color = rgb { 80 220 60 }  # distinct green
+# }
+
+# seasonal_irrigated = {
+# 	color = terrain_seasonal          # or make a new tint if you want
+# 	movement_cost = 1.05               # slightly worse than farmland
+# 	has_sand = no                     # keeps “arid” flavor (optional)
+# 	location_modifier = {
+# 		local_population_capacity = 80       # higher than qanat, below true farmland
+# 		local_monthly_food_modifier = 0.28   # close to farmland, but not Nile-tier
+# 		local_monthly_development_modifier = 0.06
+# 		local_max_rgo_size_modifier = 0.05
+# 		supply_limit = 3
+# 	}
+
+# 	audio_tags = { masDataVegetationDensity = 0.25 }
+# }
+
+# crumbling_qanat = {
+#   color = terrain_crumbling        # add tint later 
+#   movement_cost = 1.15
+#   has_sand = yes
+
+#   location_modifier = {
+#     local_population_capacity = 45        # > sparse (25), < grasslands (50) or around it
+#     local_monthly_food_modifier = 0.10    # > 0, but much < qanat
+#     local_monthly_development_modifier = 0.02
+#     supply_limit = 0
+#   }
+
+#   audio_tags = { masDataVegetationDensity = 0.15 }
+#   debug_color = rgb { 120 200 80 }
+# }

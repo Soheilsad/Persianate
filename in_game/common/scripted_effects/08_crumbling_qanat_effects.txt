@@ -1,10 +1,10 @@
-add_crumbling_qanat = {
+add_damaged_qanat = {
     location:marv_al_rudh = { 
 	construct_building = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:ghormach = { 
@@ -12,7 +12,7 @@ location:ghormach = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:jawand = { 
@@ -20,7 +20,7 @@ location:jawand = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:kusk = { 
@@ -28,7 +28,7 @@ location:kusk = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:kusk_kohneh = { 
@@ -36,7 +36,7 @@ location:kusk_kohneh = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:qala_kohistan = { 
@@ -44,7 +44,7 @@ location:qala_kohistan = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:qala_naw = { 
@@ -52,7 +52,7 @@ location:qala_naw = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:qasr_ahnaf = { 
@@ -60,7 +60,7 @@ location:qasr_ahnaf = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:bagram = { 
@@ -68,7 +68,7 @@ location:bagram = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:charikar = { 
@@ -76,7 +76,7 @@ location:charikar = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:istalif = { 
@@ -84,7 +84,7 @@ location:istalif = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:kunduz = { 
@@ -92,7 +92,7 @@ location:kunduz = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:arkhan = { 
@@ -100,7 +100,7 @@ location:arkhan = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:baghlan = { 
@@ -108,7 +108,7 @@ location:baghlan = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:maymana = { 
@@ -116,7 +116,7 @@ location:maymana = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:andkhoy = { 
@@ -124,7 +124,7 @@ location:andkhoy = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:dawlat_abad = { 
@@ -132,7 +132,7 @@ location:dawlat_abad = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:qaisar = { 
@@ -140,7 +140,7 @@ location:qaisar = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:sangcharak = { 
@@ -148,7 +148,7 @@ location:sangcharak = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:sar_pol = { 
@@ -156,7 +156,7 @@ location:sar_pol = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:sheberghan = { 
@@ -164,7 +164,7 @@ location:sheberghan = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:merv = { 
@@ -172,7 +172,7 @@ location:merv = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:bojnord = { 
@@ -180,7 +180,7 @@ location:bojnord = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:khabushan = { 
@@ -188,7 +188,7 @@ location:khabushan = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:quchan = { 
@@ -196,7 +196,7 @@ location:quchan = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:samalqan = { 
@@ -204,7 +204,7 @@ location:samalqan = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:shirvan_iran = { 
@@ -212,7 +212,7 @@ location:shirvan_iran = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:esfarayen = { 
@@ -220,7 +220,7 @@ location:esfarayen = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:azadvar = { 
@@ -228,7 +228,7 @@ location:azadvar = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:bam_esfarayen = { 
@@ -236,7 +236,7 @@ location:bam_esfarayen = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:meshkan_khorasan = { 
@@ -244,7 +244,7 @@ location:meshkan_khorasan = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:faraveh = { 
@@ -252,7 +252,7 @@ location:faraveh = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:anew = { 
@@ -260,7 +260,7 @@ location:anew = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:dargaz = { 
@@ -268,7 +268,7 @@ location:dargaz = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:durun = { 
@@ -276,7 +276,7 @@ location:durun = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:meyami = { 
@@ -284,7 +284,7 @@ location:meyami = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:torbat_e_jam = { 
@@ -292,7 +292,7 @@ location:torbat_e_jam = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:mashhad_rizeh = { 
@@ -300,7 +300,7 @@ location:mashhad_rizeh = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 location:salehabad = { 
@@ -308,9 +308,17 @@ location:salehabad = {
 							cost_multiplier = 0
 							demand_multiplier = 0
 							instant = yes
-							building_type = building_type:farming_village
+							building_type = building_type:damaged_qanat
 					}
  } 
 
+ location:fadisheh = {
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:damaged_qanat
+					}
+ }
 
 }

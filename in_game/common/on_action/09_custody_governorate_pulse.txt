@@ -14,9 +14,12 @@ monthly_country_pulse = {
 		peasant_non_levying_pulse
 		peasant_non_levying_cleanup_pulse
 		correct_existing_iqta_building
-		correct_diwan_ayyan_building
+		correct_kurdish_tribe
 	}
 }
+
+
+
 
 custody_governorate_pulse = {
 	trigger = {
@@ -164,33 +167,28 @@ correct_existing_iqta_building = {
 
 
 ### adds the global variable
-correct_diwan_ayyan_building = {
 
+
+correct_kurdish_tribe = {
 	trigger = {
-		NOT = { has_global_variable = ayyan_waqf_applied }
-	}
-
-	effect = {
-		every_country = {
-			limit = {
-					government_type = government_type:persianate_sultanate
-					any_owned_location = {
-						has_building = building_type:ayyan_waqf
-					}
-				}
-
-
-			add_country_modifier = {
-				modifier = diwan_waqf_damage
-				size = { value = total_effective_building_levels:ayyan_waqf}
-				years = -1
-				mode = replace
+		culture:kurdish_culture = {
+			any_country_in_culture = {
+				government_type = government_type:tribe
 			}
 		}
-		set_global_variable = ayyan_waqf_applied
+	}
+	effect = {
+		culture:kurdish_culture = {
 
+			every_country_in_culture = {
+				limit = {
+					government_type = government_type:tribe
+				}
+				change_government_type = government_type:iranic_tribal_polity
+				add_reform = government_reform:kurdish_emirate
+			}
+		}
 	}
 
+
 }
-
-

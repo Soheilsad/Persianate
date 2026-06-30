@@ -16,6 +16,7 @@ on_diwan_start = {
 		# revoke base communal_lands where Boneh System should rule).
 		# Needs a country root for the event scope; CHB is always present at
 		# game start and the character kills inside are absolute-scoped.
+		add_damaged_qanat = yes
 		random_country = {
 			limit = { exists = this }
 			trigger_event_silently = { id = persianate_cleanup.1 }
@@ -86,9 +87,8 @@ on_diwan_start = {
 				}
 				every_owned_location = {
 					limit = {
-						OR = {
+						NOT = {has_building = building_type:damaged_qanat}
 						vegetation = qanat_farmland
-							}
 
 					}
 					construct_building = {

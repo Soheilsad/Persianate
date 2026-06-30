@@ -27,7 +27,7 @@ iqta_grant = {
 	megalopolis = no
 	forbidden_for_estates = yes
 	build_time = estate_build_time
-
+	price = iqta_price ### extremely cheap
 	destroyable_building = yes
 
 	possible_production_methods = {
@@ -49,7 +49,7 @@ iqta_grant = {
 	}
 
 	# Revoking an iqṭāʿ was historically the chancery's hardest political
-	# act — possible only once the diwan had reasserted direct order in the
+	# act, which is to say possible only once the diwan had reasserted direct order in the
 	# parcel. Below 70 control the amir's authority is still the only
 	# authority, and the grant cannot be pulled.
 	can_destroy = {
@@ -183,7 +183,7 @@ unaudited_iqta = {
 
 	category = estate_category
 	estate = amirs_estate
-	obsolete = iqta_grant
+
 	rural_settlement = yes
 	town = no
 	city = no
@@ -217,9 +217,9 @@ unaudited_iqta = {
 	}
 
 	modifier = {
-		local_amirs_estate_power = 1.25
+		local_amirs_estate_power = 0.5
 		local_max_control = -0.15
-		local_levy_size_modifier = 0.10
+		local_levy_size_modifier = -0.1
 	}
 
 	# Slipping the audit drifts the realm Türk and stings the diwan, who have
@@ -256,7 +256,7 @@ toyul = {
 	obsolete = unaudited_iqta
 	category = estate_category
 	estate = amirs_estate
-
+	obsolete = unaudited_iqta
 	rural_settlement = yes
 	town = no
 	city = no

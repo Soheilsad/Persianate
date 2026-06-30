@@ -46,7 +46,7 @@ ayyan_waqf = {
 	max_levels = 10
 	pop_type = nobles
 	employment_size = 0.05
-
+	price = small_estate_building
 	category = estate_category
 	estate = diwan_estate
 
@@ -97,7 +97,7 @@ grand_ayyan_waqf = {
 	max_levels = 10
 	pop_type = nobles
 	employment_size = 0.05
-
+	price = expensive_estate_building
 	category = estate_category
 	estate = diwan_estate
 
@@ -161,7 +161,8 @@ urban_waqf = {
 	town = yes
 	city = yes
 	megalopolis = yes
-
+	price = small_estate_building
+	
 	build_time = estate_build_time
 	destroyable_building = yes
 
@@ -201,7 +202,7 @@ grand_urban_waqf = {
 
 	category = estate_category
 	estate = burghers_estate
-
+	price = expensive_estate_building
 	rural_settlement = no
 	town = yes
 	city = yes
@@ -251,7 +252,7 @@ clerical_waqf = {
 	max_levels = 10
 	pop_type = clergy
 	employment_size = 0.05
-
+	price = small_estate_building
 	category = estate_category
 	estate = clergy_estate
 
@@ -298,7 +299,7 @@ grand_clerical_waqf = {
 	max_levels = 10
 	pop_type = clergy
 	employment_size = 0.05
-
+	price = expensive_estate_building
 	category = estate_category
 	estate = clergy_estate
 
