@@ -357,6 +357,8 @@ diplomacy_manager = {
     dependency = { first = AYD second = INA subject_type = vassal }
     dependency = { first = BIT second = HZN subject_type = vassal }
     dependency = { first = BIT second = MUS subject_type = vassal }
+    dependency = { first = BIT second = BIN subject_type = vassal }
+    dependency = { first = BHT second = DSN subject_type = vassal }
     dependency = { first = ERE second = KBD subject_type = tributary }
     dependency = { first = ERE second = TDJ subject_type = tributary }
     dependency = { first = ERE second = HCI subject_type = tributary }
@@ -390,26 +392,17 @@ diplomacy_manager = {
     dependency = { first = MAM second = KIL subject_type = vassal }
     dependency = { first = MEN second = TVS subject_type = vassal }
     dependency = { first = SUT second = BHT subject_type = vassal }
-    dependency = { first = SUT second = BIN subject_type = vassal }
     dependency = { first = SUT second = BIT subject_type = vassal }
     dependency = { first = SUT second = CEM subject_type = vassal }
     dependency = { first = SUT second = DIL subject_type = vassal }
-    dependency = { first = SUT second = DMB subject_type = vassal }
-    dependency = { first = SUT second = DSN subject_type = vassal }
     dependency = { first = SUT second = EGL subject_type = vassal }
     dependency = { first = SUT second = HKK subject_type = vassal }
     dependency = { first = SUT second = HZR subject_type = vassal }
-    dependency = { first = SUT second = JLM subject_type = vassal }
-    dependency = { first = SUT second = MZJ subject_type = vassal }
-    dependency = { first = SUT second = SOH subject_type = vassal }
     dependency = { first = SUT second = ZRQ subject_type = vassal }
-    dependency = { first = SUT second = ZZR subject_type = vassal }
 
     scripted_mutual = { first = BYZ second = TRE type = alliance }
     #scripted_mutual = { first = MAM second = CND type = alliance }
     #scripted_mutual = { first = MAM second = KAR type = alliance }
-    scripted_mutual = { first = HBN second = KTW type = alliance }
-    scripted_mutual = { first = MKW second = ZZR type = alliance }
 
     #-------------Persia------------
     # dependency = { first = HLG second = HLL subject_type = vassal }

@@ -40,6 +40,19 @@ countries = {
 				mosul qayyarah tal_afar
 				al_anbar hit ayn_tamr karbala # which illiterate gave them to ALFADL?
 				haditha anah
+
+				# Absorbed Kurdish fictions (Iraqi-Kurdistan + Zagros): ARD HDR HNY KEL KLR KRI MZJ RKL SOH SYY ZBR
+				sulaymaniyah
+				sahrazur
+				altun_kupri chamchamal daquq kirkuk tuz_khurma
+				mawet qaladiza
+				erbil
+				rawanduz
+				bisotun holeylan kermanshah
+				javanrud qasr_shirin
+				badreh darrehshahr gilan_gharb harunabad
+				asadabad kamyaran malayer muchesh nahavand sonqor
+				sanandaj hawraman marivan
 			}
 
 			our_cores_conquered_by_others = {
@@ -90,6 +103,13 @@ countries = {
 				bijar bashqurtaran dehgolan divandarreh ghorveh sohrevard yasukand
 				goroz shusha
 				julfa nakhchivan
+
+				# Absorbed Kurdish fictions (Azerbaijan-fringe): HBN MKW SLI KTW DML
+				ujan hashtrud sain miandoab malekan
+				osnavieh
+				mahabad piranshahr
+				barza bukan sardasht
+				khoy
 			}
 			reforms = {} ### to remove base's chobanid_reforms which are incompatible with the new government type and would cause crashes. The 11_persianate redefinition of the tag will add new, appropriate reforms.
 			include = "expl_middle_east"

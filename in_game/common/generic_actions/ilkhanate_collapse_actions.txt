@@ -417,7 +417,7 @@ rally_turkic_tribes = {
 			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.25 }
 			add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.25 }
 			add_estate_satisfaction = { type = estate_type:peasants_estate value = -0.25 }
-			add_stability = -0.10
+			add_stability = -10
 			change_societal_value = {
 				type = turk_vs_tazik
 				value = -5

@@ -1,0 +1,316 @@
+add_crumbling_qanat = {
+    location:marv_al_rudh = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:ghormach = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:jawand = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:kusk = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:kusk_kohneh = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:qala_kohistan = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:qala_naw = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:qasr_ahnaf = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:bagram = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:charikar = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:istalif = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:kunduz = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:arkhan = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:baghlan = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:maymana = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:andkhoy = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:dawlat_abad = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:qaisar = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:sangcharak = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:sar_pol = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:sheberghan = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:merv = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:bojnord = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:khabushan = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:quchan = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:samalqan = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:shirvan_iran = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:esfarayen = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:azadvar = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:bam_esfarayen = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:meshkan_khorasan = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:faraveh = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:anew = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:dargaz = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:durun = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:meyami = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:torbat_e_jam = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:mashhad_rizeh = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+location:salehabad = { 
+	construct_building = {
+							cost_multiplier = 0
+							demand_multiplier = 0
+							instant = yes
+							building_type = building_type:farming_village
+					}
+ } 
+
+
+}

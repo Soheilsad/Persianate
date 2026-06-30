@@ -12,3 +12,7 @@ opinion_own_khutbah = {
 	value = -100
 	yearly_decay = 2
 }
+
+io_opinion_eranzamin = {
+	value = -50
+}

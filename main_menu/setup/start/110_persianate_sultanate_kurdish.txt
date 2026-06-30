@@ -1,409 +1,265 @@
-# countries = {
-#     countries = {
-# KKL = {
-# 		own_control_core = {
-# 			ardabil hashatjin khalkhal nir
-# 		}
-
-# 		starting_technology_level = 3
-# 		include = "expl_middle_east"
-# 		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
-# 		government = {
-# 			type = monarchy
-# 			heir_selection = cognatic_primogeniture
-# 			ruler = random
-
-# 		}
-
-# 		capital = khalkhal
-# 		tolerated_cultures = {
-# 			azeri_culture
-# 		}
-# 		religious_school = safavid_school
-# 	}
-
-
-
-# 	#Ardalan - ARD
-# 	ARD = {
-# 		own_control_core = {
-# 			sanandaj hawraman marivan
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = random
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		capital = sanandaj
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-
-# 	#Domboli - DML
-# 	DML = {
-# 		own_control_core = {
-# 			khoy
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "kurdish_yazid_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = dml_kalti
-
-# 		}
-
-# 		tolerated_cultures = {
-# 			armenian_culture
-# 		}
-
-# 		capital = khoy
-# 		dynasty = domboli_dynasty
-# 	}
-
-# 	#Hasbani - HBN
-# 	HBN = {
-# 		own_control_core = {
-# 			hashtrud malekan miandoab sain ujan
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = hbn_abdallah_ibn_shahab_al_din_zani
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		tolerated_cultures = {
-# 			adhari_culture
-# 			azeri_culture
-# 		}
-
-# 		capital = ujan
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-
-# 	#Hadhur - HDR
-# 	HDR = {
-# 		own_control_core = {
-# 			sulaymaniyah
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = hdr_taj_al_din_hadhur_bin_suleyman
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		capital = sulaymaniyah
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-
-# 	#Hasnuya - HNY
-# 	HNY = {
-# 		own_control_core = {
-# 			sahrazur
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = random
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		capital = sahrazur
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-
-# 	#Kalhor - KLR
-# 	KLR = {
-# 		own_control_core = {
-# 			badreh darrehshahr gilan_gharb harunabad
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = random
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		tolerated_cultures = {
-# 			lur_culture
-# 		}
-
-# 		capital = gilan_gharb
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-
-# 	#Kartawi - KTW
-# 	KTW = {
-# 		own_control_core = {
-# 			barza bukan sardasht
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = ktw_sayf_al_din_abu_bakr
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		capital = barza
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-
-# 	#Kelali - KEL
-# 	KEL = {
-# 		own_control_core = {
-# 			asadabad kamyaran malayer muchesh nahavand sonqor
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = random
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		tolerated_cultures = {
-# 			lur_culture
-# 		}
-
-# 		capital = nahavand
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-
-# 	#Kurani - KRI
-# 	KRI = {
-# 		own_control_core = {
-# 			javanrud qasr_shirin
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = kri_muhammed
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		capital = qasr_shirin
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-
-# 	#Merkewan - MKW
-# 	MKW = {
-# 		own_control_core = {
-# 			osnavieh
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = random
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		capital = osnavieh
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-
-# 	#Rankali - RKL
-# 	RKL = {
-# 		own_control_core = {
-# 			bisotun holeylan kermanshah
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = rkl_jamal_al_din_talan
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		tolerated_cultures = {
-# 			lur_culture
-# 		}
-
-# 		capital = kermanshah
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-
-# 	#Sabuli - SLI
-# 	SLI = {
-# 		own_control_core = {
-# 			mahabad piranshahr
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = sli_burek_ibn_izz_al_din_resu_ibn_mahmud
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		capital = mahabad
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-
-# 	#Saqiyya - SYY
-# 	SYY = {
-# 		own_control_core = {
-# 			altun_kupri chamchamal daquq kirkuk tuz_khurma
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = syy_shuja_al_din_abu_bakr_ramaki
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		capital = kirkuk
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-
-# 	#Zebari - ZBR
-# 	ZBR = {
-# 		own_control_core = {
-# 			mawet qaladiza
-# 		}
-
-# 		include = "expl_middle_east"
-# 		include = "muslim_tribe_no_coast"
-
-
-# 		government = {
-# 			type = tribe
-# 			heir_selection = tribal_oldest_male
-# 			ruler = zbr_shahab_al_din_ibn_badr_al_din
-
-# 			laws = {
-# 				sharia_law = hanafi_policy
-# 			}
-# 		}
-
-# 		capital = qaladiza
-# 		religious_school = hanafi_school
-# 		government = { mysticism_vs_jurisprudence = -15 }
-		
-# 	}
-#     }
-# }
-
-
+# =====================================================================
+# KURDISH / JAZIRA EMIRATES — the Iranic Tribal Polity layer
+#
+# Redefines the 11 KEEPER tags to the new iranic_tribal_polity government
+# (kurdish_emirate reform) instead of base-game `tribe`. Each block reproduces
+# the base definition but REPLACES the base tribe setup include
+# (muslim_tribe_no_coast / kurdish_yazid_tribe_no_coast — which carry tribe
+# values, a council, tribe privileges and tribal_*_law) with our own template
+# `iranic_tribal_polity_kurdish`, and adds `expl_mongols` so the emirate knows
+# the Ilkhanid successor world exists. Religion/culture come from the capital
+# province (the base includes never set them), so nothing is lost there.
+# The kurdish_emirate reform is set in each explicit government block.
+#
+# Paramounts: BHT (Bohtan), BIT (Bitlis), HKK (Hakkari).
+# Secondaries: HZN MUS BIN (Bitlis cluster), DSN (Bohtan), ZRQ EGL (Diyarbekir
+# belt, SUT clients), CEM HZR (Dersim/Diyarbakır, SUT clients).
+#
+# FOLDS: HKK absorbs ZZR (semdinli) + JLM (van cluster); DSN absorbs DMB (akre).
+# Those source tags are left landless and do not spawn.
+#
+# PRUNES (the central-Zagros fictions + Erbil/Soran) are reassigned to JAL/CHB
+# in 11_persianate_sultanate_overrides.txt; diplomacy/IO already scrubbed.
+# =====================================================================
+
+countries = {
+	countries = {
+
+		# --- Paramounts ---
+
+		# Bohtan / Azizan — the premier Jazira Kurdish emirate (Cizre).
+		BHT = {
+			own_control_core = {
+				cizre eruh sirnak
+			}
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "iranic_tribal_polity_kurdish"
+			government = {
+				type = iranic_tribal_polity
+				heir_selection = tribal_oldest_male
+				ruler = bht_izz_al_din
+				reforms = { kurdish_emirate }
+			}
+			tolerated_cultures = {
+				armenian_culture
+			}
+			capital = cizre
+		}
+
+		# Bitlis / Rojaki — ruler is the Rûzakî eponym Ziya al-Dīn.
+		BIT = {
+			own_control_core = {
+				bitlis tatvan
+			}
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "iranic_tribal_polity_kurdish"
+			government = {
+				type = iranic_tribal_polity
+				heir_selection = tribal_oldest_male
+				ruler = bit_dia_al_din
+				reforms = { kurdish_emirate }
+			}
+			tolerated_cultures = {
+				armenian_culture
+			}
+			capital = bitlis
+			religious_school = maturidi_school
+		}
+
+		# Hakkari — absorbs ZZR (semdinli) and JLM (the Van highland cluster).
+		HKK = {
+			own_control_core = {
+				hakkari amadiya
+				semdinli
+				van bahcesaray baskale catak hosap zakho
+			}
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "iranic_tribal_polity_kurdish"
+			government = {
+				type = iranic_tribal_polity
+				heir_selection = tribal_oldest_male
+				ruler = hkk_xars_al_din
+				reforms = { kurdish_emirate }
+			}
+			tolerated_cultures = {
+				syriac_culture
+			}
+			capital = hakkari
+			religious_school = maturidi_school
+		}
+
+		# --- Bitlis cluster ---
+
+		HZN = {
+			own_control_core = {
+				hizan
+			}
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "iranic_tribal_polity_kurdish"
+			government = {
+				type = iranic_tribal_polity
+				heir_selection = tribal_oldest_male
+				ruler = random
+				reforms = { kurdish_emirate }
+			}
+			tolerated_cultures = {
+				armenian_culture
+			}
+			capital = hizan
+			dynasty = ruzagi_dynasty
+			religious_school = maturidi_school
+		}
+
+		MUS = {
+			own_control_core = {
+				mus
+			}
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "iranic_tribal_polity_kurdish"
+			government = {
+				type = iranic_tribal_polity
+				heir_selection = tribal_oldest_male
+				ruler = mus_shams_al_din
+				reforms = { kurdish_emirate }
+			}
+			tolerated_cultures = {
+				armenian_culture
+			}
+			capital = mus
+			religious_school = maturidi_school
+		}
+
+		BIN = {
+			own_control_core = {
+				bingol genc
+			}
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "iranic_tribal_polity_kurdish"
+			government = {
+				type = iranic_tribal_polity
+				heir_selection = tribal_oldest_male
+				ruler = bin_shap
+				reforms = { kurdish_emirate }
+			}
+			tolerated_cultures = {
+				armenian_culture
+			}
+			capital = bingol
+			religious_school = maturidi_school
+		}
+
+		# --- Bohtan secondary ---
+
+		# Dasni — absorbs DMB (akre).
+		DSN = {
+			own_control_core = {
+				duhok balad
+				akre
+			}
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "iranic_tribal_polity_kurdish"
+			government = {
+				type = iranic_tribal_polity
+				heir_selection = tribal_oldest_male
+				ruler = dsn_ala_al_din_kurk_ibn_ibrahim
+				reforms = { kurdish_emirate }
+			}
+			tolerated_cultures = {
+				syriac_culture
+			}
+			capital = duhok
+		}
+
+		# --- Diyarbekir-belt clients (remain SUT vassals) ---
+
+		ZRQ = {
+			own_control_core = {
+				mayyafariqin
+			}
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "iranic_tribal_polity_kurdish"
+			government = {
+				type = iranic_tribal_polity
+				heir_selection = tribal_oldest_male
+				ruler = zrq_zeyd
+				reforms = { kurdish_emirate }
+			}
+			tolerated_cultures = {
+				armenian_culture
+			}
+			capital = mayyafariqin
+			religious_school = maturidi_school
+		}
+
+		EGL = {
+			own_control_core = {
+				sivrice egil
+			}
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "iranic_tribal_polity_kurdish"
+			government = {
+				type = iranic_tribal_polity
+				heir_selection = tribal_oldest_male
+				ruler = egl_isa
+				reforms = { kurdish_emirate }
+			}
+			tolerated_cultures = {
+				armenian_culture
+			}
+			capital = sivrice
+			religious_school = maturidi_school
+		}
+
+		CEM = {
+			own_control_core = {
+				cemisgezek kuzucan pertek
+			}
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "iranic_tribal_polity_kurdish"
+			government = {
+				type = iranic_tribal_polity
+				heir_selection = tribal_oldest_male
+				ruler = random
+				reforms = { kurdish_emirate }
+			}
+			tolerated_cultures = {
+				armenian_culture
+			}
+			capital = cemisgezek
+			dynasty = malkishi_dynasty
+			religious_school = maturidi_school
+		}
+
+		HZR = {
+			own_control_core = {
+				hazro heni kulp sason
+			}
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "iranic_tribal_polity_kurdish"
+			government = {
+				type = iranic_tribal_polity
+				heir_selection = tribal_oldest_male
+				ruler = random
+				reforms = { kurdish_emirate }
+			}
+			tolerated_cultures = {
+				armenian_culture
+			}
+			capital = hazro
+			dynasty = zraqi_dynasty
+			religious_school = maturidi_school
+		}
+
+	}
+}

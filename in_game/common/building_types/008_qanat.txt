@@ -118,7 +118,7 @@ crumbling_qanat = {
 		# crumbling_qanat (45 / 0.10 / 0.02 / supply 0) minus sparse (25):
 		local_population_capacity = 20
 		local_monthly_food_modifier = 0.10
-		local_monthly_development_modifier = 0.02
+
 	}
 }
 
@@ -136,7 +136,7 @@ qanat_network = {
 	city = yes
 
 	expensive = yes
-	build_time = large_capital_build_time          # a major qanat took years
+	build_time = 3650          # a major qanat took years
 
 	# Where qanats make sense at all: the arid plateau, not the
 	# Caspian rainforest and not the high wasteland.
@@ -177,7 +177,7 @@ qanat_network = {
 		# qanat_farmland (65 / 0.22 / 0.04 / rgo 0.05 / supply 2) minus sparse (25):
 		local_population_capacity = 5
 		local_monthly_food_modifier = 0.025
-		local_monthly_development_modifier = 0.004
+		local_monthly_development_modifier = 0.01
 		local_max_rgo_size_modifier = 0.00125
 		supply_limit = 0.5
 	}
