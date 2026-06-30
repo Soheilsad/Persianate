@@ -21,6 +21,7 @@
 # =====================================================================
 
 enact_musadara = {
+	show_message = no
 	type = parliament
 
 	potential = {

@@ -14,6 +14,7 @@
 #     Future tuning could split this (Diwan expensive, Yurt cheap).
 
 consolidate_diwan = {
+	show_message = no
 	type = situation
 
 	potential = {
@@ -114,6 +115,7 @@ consolidate_diwan = {
 }
 
 grant_the_yurt = {
+	show_message = no
 	type = situation
 
 	potential = {
@@ -200,6 +202,7 @@ grant_the_yurt = {
 }
 
 mixed_settlement = {
+	show_message = no
 	type = situation
 
 	potential = {
@@ -267,6 +270,7 @@ mixed_settlement = {
 }
 
 rally_turkic_tribes = {
+	show_message = no
 	type = situation
 
 	potential = {
@@ -435,6 +439,7 @@ rally_turkic_tribes = {
 }
 
 restore_persian_bureaucracy = {
+	show_message = no
 	type = situation
 
 	potential = {
@@ -517,6 +522,7 @@ restore_persian_bureaucracy = {
 # Chupan (and every other contender) a fast lane to war without first
 # burning treasury on intelligence operations they cannot afford.
 press_eranzamin_claim = {
+	show_message = no
 	type = situation
 
 	potential = {

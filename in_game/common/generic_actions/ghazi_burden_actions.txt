@@ -242,6 +242,7 @@ claim_sultan_of_ghazis = {
 
 
 ghazi_declare_holy_war = {
+	show_message = no
 	type = disaster
 
 	potential = {
