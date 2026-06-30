@@ -90,11 +90,11 @@ cb_eranzamin_succession = {
 
 cb_unite_iran = {
 	create_visible = {
-		root = c:IRA
+		tag = IRA
 	}
 
 	declare_enabled = {
-		root = c:IRA
+		tag = IRA
 		scope:target = {
 			capital = {
 				OR = {

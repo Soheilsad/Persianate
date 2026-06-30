@@ -59,6 +59,7 @@ ayyan_waqf = {
 	destroyable_building = yes
 
 	country_potential = {
+		exists = root
 		government_type ?= government_type:persianate_sultanate
 		country_has_estate = estate_type:diwan_estate
 		# Waqf is the shelter AGAINST muṣādara — it only exists while the
@@ -123,6 +124,7 @@ grand_ayyan_waqf = {
 	obsolete = ayyan_waqf
 
 	country_potential = {
+		exists = root
 		government_type ?= government_type:persianate_sultanate
 		country_has_estate = estate_type:diwan_estate
 		modifier:access_to_musadara = yes
