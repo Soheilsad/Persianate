@@ -15,6 +15,10 @@ monthly_country_pulse = {
 		peasant_non_levying_cleanup_pulse
 		correct_existing_iqta_building
 		correct_kurdish_tribe
+		correct_khorasani_tribe
+		correct_farsi_tribe
+		correct_tajik_tribe
+		correct_adhari_tribe
 	}
 }
 
@@ -131,4 +135,97 @@ correct_kurdish_tribe = {
 	}
 
 
+}
+
+
+
+
+correct_khorasani_tribe = {
+	### there's no such thing as a Persian, Khorasani, Adhari, Tajik 'TRIBE' government in 1337. makes no sense.
+	trigger = {
+		culture:khorasani_culture = {
+			any_country_in_culture = {
+				government_type ?= government_type:tribe
+			}
+		}
+	}
+	effect = {
+		culture:khorasani_culture = {
+
+			every_country_in_culture = {
+				limit = {
+					government_type ?= government_type:tribe
+				}
+				change_government_type = government_type:persianate_sultanate
+				add_reform = government_reform:persianate_bureaucracy_reform
+			}
+		}
+	}
+}
+
+
+correct_farsi_tribe = {
+	trigger = {
+		culture:farsi_culture = {
+			any_country_in_culture = {
+				government_type ?= government_type:tribe
+			}
+		}
+	}
+	effect = {
+		culture:farsi_culture = {
+
+			every_country_in_culture = {
+				limit = {
+					government_type ?= government_type:tribe
+				}
+				change_government_type = government_type:persianate_sultanate
+				add_reform = government_reform:persianate_bureaucracy_reform
+			}
+		}
+	}
+}
+
+correct_tajik_tribe = {
+	trigger = {
+		culture:tajik_culture = {
+			any_country_in_culture = {
+				government_type ?= government_type:tribe
+			}
+		}
+	}
+	effect = {
+		culture:tajik_culture = {
+
+			every_country_in_culture = {
+				limit = {
+					government_type ?= government_type:tribe
+				}
+				change_government_type = government_type:persianate_sultanate
+				add_reform = government_reform:persianate_bureaucracy_reform
+			}
+		}
+	}
+}
+
+correct_adhari_tribe = {
+	trigger = {
+		culture:adhari_culture = {
+			any_country_in_culture = {
+				government_type ?= government_type:tribe
+			}
+		}
+	}
+	effect = {
+		culture:adhari_culture = {
+
+			every_country_in_culture = {
+				limit = {
+					government_type ?= government_type:tribe
+				}
+				change_government_type = government_type:persianate_sultanate
+				add_reform = government_reform:persianate_bureaucracy_reform
+			}
+		}
+	}
 }
