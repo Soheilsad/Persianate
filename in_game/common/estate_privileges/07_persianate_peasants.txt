@@ -39,9 +39,16 @@ iqta_cultivator_protections = {
 	potential = {
 		OR = {
 			government_type = government_type:persianate_sultanate
-			capital = { region = region:persia_region }
-			capital = { region = region:khorasan_region }
-			capital = { region = region:mesopotamia_region }
+			capital = { 
+				OR = {
+					region = region:persia_region
+					region = region:khorasan_region
+					area = area:iraq_arabi_area # Baghdad/Iraq
+					area = area:jazira_area # Mosul and surroundings
+					area = area:cappadocia_area
+
+				}
+			}
 		}
 	}
 

@@ -20,9 +20,16 @@ naqib_al_ashraf = {
 		religion ?= { group ?= religion_group:muslim }
 		OR = {
 			government_type = government_type:persianate_sultanate
-			capital = { region = region:persia_region }
-			capital = { region = region:khorasan_region }
-			capital = { region = region:mesopotamia_region }
+			capital = { 
+				OR = {
+					region = region:persia_region
+					region = region:khorasan_region
+					area = area:iraq_arabi_area # Baghdad/Iraq
+					area = area:jazira_area # Mosul and surroundings
+					area = area:cappadocia_area
+
+				}
+			}
 		}
 	}
 
@@ -42,9 +49,16 @@ sufi_tariqa_patronage = {
 		religion ?= { group ?= religion_group:muslim }
 		OR = {
 			government_type = government_type:persianate_sultanate
-			capital = { region = region:persia_region }
-			capital = { region = region:khorasan_region }
-			capital = { region = region:mesopotamia_region }
+			capital = { 
+				OR = {
+					region = region:persia_region
+					region = region:khorasan_region
+					area = area:iraq_arabi_area # Baghdad/Iraq
+					area = area:jazira_area # Mosul and surroundings
+					area = area:cappadocia_area
+
+				}
+			}
 		}
 	}
 
@@ -65,9 +79,16 @@ madrasa_endowment = {
 		religion ?= { group ?= religion_group:muslim }
 		OR = {
 			government_type = government_type:persianate_sultanate
-			capital = { region = region:persia_region }
-			capital = { region = region:khorasan_region }
-			capital = { region = region:mesopotamia_region }
+			capital = { 
+				OR = {
+					region = region:persia_region
+					region = region:khorasan_region
+					area = area:iraq_arabi_area # Baghdad/Iraq
+					area = area:jazira_area # Mosul and surroundings
+					area = area:cappadocia_area
+
+				}
+			}
 		}
 	}
 
@@ -88,9 +109,16 @@ hajj_caravan_patronage = {
 		religion ?= { group ?= religion_group:muslim }
 		OR = {
 			government_type = government_type:persianate_sultanate
-			capital = { region = region:persia_region }
-			capital = { region = region:khorasan_region }
-			capital = { region = region:mesopotamia_region }
+			capital = { 
+				OR = {
+					region = region:persia_region
+					region = region:khorasan_region
+					area = area:iraq_arabi_area # Baghdad/Iraq
+					area = area:jazira_area # Mosul and surroundings
+					area = area:cappadocia_area
+
+				}
+			}
 		}
 	}
 
@@ -112,7 +140,7 @@ hajj_caravan_patronage = {
 # 			government_type = government_type:persianate_sultanate
 # 			capital = { region = region:persia_region }
 # 			capital = { region = region:khorasan_region }
-# 			capital = { region = region:mesopotamia_region }
+# 			capital = { region = region:crescent_region }
 # 		}
 # 	}
 
