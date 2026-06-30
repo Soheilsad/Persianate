@@ -95,7 +95,7 @@ zurkhanah = {
 
 	country_potential = {
 		religion.group = religion_group:muslim
-		has_reform = government_reform:persianate_bureaucracy
+		has_reform = government_reform:persianate_bureaucracy_reform
 		has_estate_privilege = estate_privilege:ayyar_militia_recognition
 	}
 

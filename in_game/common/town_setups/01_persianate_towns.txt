@@ -128,7 +128,7 @@ iranian_city = {
 	jewelry_guild = 2
 	dyes_guild = 2
 	marketplace = 2
-	city_walls = 1
+	stockade = 1
 	tannery = 1
 	slave_market = 1
 }

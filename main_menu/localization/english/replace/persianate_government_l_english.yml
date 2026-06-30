@@ -5,7 +5,7 @@
 
  # Government Power
  GOV_POWER_NAME_legitimacy_persianate_sultanate: "Legitimacy"
- GOV_POWER_NAME_legitimacy_persianate_sultanate_desc: "The sultan's recognized standing as a rightful ruler — sustained by [Concept('Concept_Heir', 'lineage')|E], [Concept('religion', 'religious')|E] sanction from the [Concept('ulama_estate', 'ulama')|E], conquest, and the loyal acclamation of the [Concept('amirs_estate', 'amirs')|E]."
+ GOV_POWER_NAME_legitimacy_persianate_sultanate_desc: "The sultan's recognized standing as a rightful ruler."
 
  # Templates
  persianate_sultanate_tazik_dominant: "Persianate Sultanate (Tazik-Dominant)"

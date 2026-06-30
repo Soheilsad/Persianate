@@ -8,7 +8,7 @@
 # (pop capacity 25), so the 1337 map is numerically unchanged —
 # but now the land can degrade and recover.
 #
-#   qanat_dilapidated : seeded at start on the crumbling belt.
+#   damaged_qanat : seeded at start on the crumbling belt.
 #       NOT player-buildable. Residual channels still watering a
 #       reduced population. This is what war leaves behind.
 #   qanat_network     : the maintained system. Seeded on the
@@ -20,12 +20,12 @@
 # SEEDING WORKFLOW: before converting the vegetation, dump the
 # lists with the places tool —
 #   python3 places.py filter --vegetation qanat_farmland    -> seed qanat_network
-#   python3 places.py filter --vegetation crumbling_qanat   -> seed qanat_dilapidated
+#   python3 places.py filter --vegetation crumbling_qanat   -> seed damaged_qanat
 # then write those names into building_manager and flip the
 # vegetation to sparse.
 #
 # WAR WIRING (elsewhere): hostile sack / tribal settlement events
-# should downgrade — destroy qanat_network, spawn qanat_dilapidated
+# should downgrade — destroy qanat_network, spawn damaged_qanat
 # in its place (one effect block in rally_turkic_tribes' arrival
 # effects and in any sack event). Full destruction (removing even
 # the dilapidated tier) should be rare and deliberate: that is the
@@ -191,8 +191,8 @@ qanat_network = {
 	on_built = {
 		location = {
 			if = {
-				limit = { has_building = building_type:qanat_dilapidated }
-				remove_building = building_type:qanat_dilapidated   # [verify effect name]
+				limit = { has_building = building_type:damaged_qanat }
+				destroy_building = building_type:damaged_qanat   # [verify effect name]
 			}
 		}
 		owner = {

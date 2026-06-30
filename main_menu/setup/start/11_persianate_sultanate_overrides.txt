@@ -62,7 +62,7 @@ countries = {
 				# HLG (Musa Khan rump) — historical Jalayirid claim
 				hoveyzeh
 			}
-			reforms = {}
+
 			include = "expl_middle_east"
 			include = "expl_mongols"
 			include = "persianate_sultanate_tork_dominant"
@@ -111,7 +111,6 @@ countries = {
 				barza bukan sardasht
 				khoy
 			}
-			reforms = {} ### to remove base's chobanid_reforms which are incompatible with the new government type and would cause crashes. The 11_persianate redefinition of the tag will add new, appropriate reforms.
 			include = "expl_middle_east"
 			include = "expl_mongols"
 			include = "persianate_sultanate_tork_dominant"

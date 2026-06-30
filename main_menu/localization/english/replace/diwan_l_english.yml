@@ -283,13 +283,10 @@
  STATIC_MODIFIER_NAME_decree_audit_mod: "Imperial Audit"
 
  # Reforms
- qizilbash_aristocracy_reform: "Qizilbash Aristocracy"
- qizilbash_aristocracy_reform_desc: "Empowering the militant 'Red Heads' who serve as the shock troops of the dynasty."
+
  circle_of_equity_reform: "Circle of Equity"
  circle_of_equity_reform_desc: "There is no authority without an army, no army without wealth, no wealth without subjects, and no subjects without justice."
- soyurghal_grants_reform: "Soyurghal Grants"
- soyurghal_grants_reform_desc: "Granting hereditary, tax-exempt lands to the religious and military elite to ensure their loyalty."
- 
+
  # Units
  a_nomadic_skirmisher_cavalry: "Nomadic Skirmishers"
  a_nomadic_skirmisher_cavalry_desc: "Horse archers from the steppes, relying on speed and range to harass the enemy."
@@ -386,8 +383,6 @@
  
  # Modifiers
  AUTO_MODIFIER_NAME_diwan_base_values: "Persianate Estate Base Influence" 
- persianate_bureaucracy_reform: "Persianate Bureaucracy"
- persianate_bureaucracy_reform_desc: "The integration of the ancient Persian administrative tradition into the state, emphasizing a professional scribal class and centralized fiscal oversight."
  consolidate_the_diwan_tt: "Integrates the Province immediately by incorporating existing Ilkhanate-era land registers and local legal ammendments and privileges into our own Daftar."
  grant_the_yurt_tt: "Grants the right of pasture to a tribal host, integrating the province at the price of rural and urban prosperity and our fiscal legibility"
  mixed_settlement_tt: "Recognizes local Turkic and Settled people's rights, allowing them a degree of self-rule. Integration without major benefits."

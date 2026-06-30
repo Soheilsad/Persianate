@@ -102,67 +102,7 @@ peasant_non_levying_cleanup_pulse = {
 }
 
 ### adds the global variable
-correct_existing_iqta_building = {
 
-	trigger = {
-		NOT = { has_global_variable = iqta_building_fake_mod_applied }
-	}
-
-	effect = {
-		every_country = {
-			limit = {
-					government_type = government_type:persianate_sultanate
-					any_owned_location = {
-						has_building = building_type:iqta_grant
-					}
-				}
-				every_owned_location = {
-					limit = {
-						has_building = building_type:iqta_grant
-					}
-					"building(building_type:iqta_grant|owner)" = {save_scope_as = iqta_building}
-					add_location_modifier = {
-						modifier = iqta_building_fake_mod
-						years = -1
-						mode = replace
-						size = {
-							if = {
-								limit = {
-									scope:iqta_building.building_level = 1
-								}
-								value = {
-									desc = script_value_base
-									value = 1
-								}
-							}
-							else_if = {
-								limit = {
-									scope:iqta_building.building_level = 2
-								}
-								value = {
-									desc = script_value_base
-									value = 2
-								}
-							}
-							else_if = {
-								limit = {
-									scope:iqta_building.building_level = 3
-								}
-								value = {
-									desc = script_value_base
-									value = 3
-								}
-							}
-
-						}
-					}
-				}
-		}
-		set_global_variable = iqta_building_fake_mod_applied
-
-	}
-
-}
 
 
 

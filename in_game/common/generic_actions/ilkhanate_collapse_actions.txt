@@ -719,7 +719,7 @@ custody_drop_khan = {
 	allow = {
 		scope:actor = {
 			has_reform = government_reform:ilkhanate_governorate
-			is_subject_type = subject_type:ulus_governorate
+			is_subject_type = ulus_governorate
 			NOT = { is_at_war_with = scope:actor.overlord }
 		}
 	}
@@ -736,13 +736,26 @@ custody_drop_khan = {
 	}
 
 	effect = {
+
 		scope:actor = {
 			set_variable = {
 				name = custody_dropped_khan
 				years = 5
 			}
+			remove_reform = government_reform:ilkhanate_governorate
+			trigger_event_non_silently = ilkhanate_flavor.1
 			overlord ?= {
+				add_opinion = {
+					modifier = opinion_betrayed_genghis
+					target = scope:actor
+				}
+
 				cancel_subject = scope:actor
+				remove_truce_with = scope:actor
+				add_casus_belli = {
+					target = scope:actor
+					type = casus_belli:cb_eranzamin_succession
+				}
 			}
 			add_legitimacy = 5
 		}
@@ -750,19 +763,53 @@ custody_drop_khan = {
 
 	# Walk out when strong enough to stand alone, or when the
 	# overlord is in no position to object.
+
 	ai_will_do = {
-		add = 0
-		modifier = {
-			add = 30
-			scope:actor = { military_strength > 15 }
+		value = 0
+		add = {
+			if = {
+				limit = {
+					#if we have a holy site for this religion, big incentive as we can get bonuses
+					scope:actor = { military_strength > 15 }
+				}
+				value = 30
+			}
 		}
-		modifier = {
-			add = 30
-			scope:actor = { military_strength > 30 }
+		add = {
+			if = {
+				limit = {
+					#if we have a holy site for this religion, big incentive as we can get bonuses
+					scope:actor = { military_strength > 15 }
+				}
+				value = 30
+			}
 		}
-		modifier = {
-			add = 30
-			scope:actor.overlord ?= { at_war = yes }
+		add = {
+			if = {
+				limit = {
+					#if we have a holy site for this religion, big incentive as we can get bonuses
+					scope:actor = { military_strength > 15 }
+				}
+				value = 30
+			}
+		}
+		add = {
+			if = {
+				limit = {
+					#if we have a holy site for this religion, big incentive as we can get bonuses
+					scope:actor = { military_strength > 30 }
+				}
+				value = 50
+			}
+		}
+		add = {
+			if = {
+				limit = {
+					#if we have a holy site for this religion, big incentive as we can get bonuses
+					scope:actor.military_strength > scope:actor.overlord.military_strength
+				}
+				value = 30
+			}
 		}
 	}
 }
