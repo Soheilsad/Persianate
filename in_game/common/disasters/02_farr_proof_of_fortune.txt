@@ -41,6 +41,8 @@
 
 farr_proof_of_fortune = {
 
+	image = "gfx/interface/illustrations/disaster/farr_proof_of_fortune.dds"
+
 	# Fire as soon as the reform is adopted. The can_start gate is
 	# the real filter; high spawn chance just ensures no long wait.
 	monthly_spawn_chance = 1

@@ -176,7 +176,7 @@ building_manager = {
 	tamma_garrison = { tag = MZF level = 1 location = yazd }
 
 	## jal garrisons. 
-	tamma_garrison = { tag = JAL level = 1 location = baghdad }
+	tamma_garrison = { tag = JAL level = 2 location = baghdad }
 	tamma_garrison = { tag = JAL level = 1 location = samarra }
 
 	#JKR
@@ -186,6 +186,7 @@ building_manager = {
 	tamma_garrison = { tag = SUT level = 1 location = diyarbekir }
 
 	
-	tamma_garrison = { tag = GRG level = 1 location = astarabad }
+	tamma_garrison = { tag = GRG level = 3 location = astarabad }
+	tamma_garrison = { tag = GRG level = 2 location = astarabad }
 
 } 

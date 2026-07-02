@@ -30,6 +30,8 @@
 
 matter_of_tork = {
 
+	image = "gfx/interface/illustrations/disaster/matter_of_tork.dds"
+
 	# The can_start gate is the real filter; the spawn chance just
 	# keeps the wait short once the gate opens (fires ~year 50-70
 	# in practice, when consolidation completes).

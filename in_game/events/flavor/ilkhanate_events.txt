@@ -176,12 +176,16 @@ ilkhanate_flavor.1 = {
 				}
 			}
 			modifier = {
-				factor = 1.5
+				factor = 2
 				military_strength > 40 ## this is no option for the weak.
 			}
 			modifier = {
 				factor = 0.5
 				military_strength < 25 ## this is no option for the weak.
+			}
+			modifier = {
+				factor = 3
+				"estate_power(estate_type:diwan_estate)" > 0.4
 			}
 			
 		}

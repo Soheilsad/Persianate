@@ -44,6 +44,8 @@
 
 ghazi_burden_of_sword = {
 
+	image = "gfx/interface/illustrations/disaster/ghazi_burden_of_sword.dds"
+
 	# Fire as soon as the reform is adopted. The can_start gate is
 	# the real filter; high spawn chance just ensures no long wait.
 	monthly_spawn_chance = 1

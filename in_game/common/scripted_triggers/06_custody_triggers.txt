@@ -7,8 +7,8 @@
 custody_is_rival = {
 	NOT = { this = root }
 	OR = {
-		has_reform = government_reform:chinggisid_regency
-		ruler ?= { dynasty = dynasty:borjigin_dynasty }
+		has_reform ?= government_reform:chinggisid_regency
+		ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
 	}
 }
 

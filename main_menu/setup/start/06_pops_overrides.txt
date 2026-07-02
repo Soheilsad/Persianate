@@ -10076,10 +10076,10 @@ locations = {
         define_pop = { type = peasants	size = 4.142	culture = mazanderani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.117	culture = mazanderani_culture	religion = zoroastrian }
         define_pop = { type = burghers	size = 0.588	culture = mazanderani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 2.157	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.029	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 8.631	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.117	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 14.157	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 1.09	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 4.631	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = nobles	size = 0.05	culture = mongolian_culture	religion = tengri }
     }
 
     etrek = {

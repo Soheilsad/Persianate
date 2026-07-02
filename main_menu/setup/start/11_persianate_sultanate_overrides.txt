@@ -554,7 +554,7 @@ countries = {
 				damavand eyvanekey khwar rahimabad razeqan varamin
 				abhar avaj qeydar sagzabad takestan
 				soltaniyeh
-				rudbar shahrestan_sofla shamiram sirdan
+				rudbar shahrestan_sofla shamiram sirdan astarabad tammisha
 			}
 
 			include = "expl_middle_east"
@@ -1326,25 +1326,7 @@ JUR = { #Jurmanids
 	}
 
 	ASR = { #Astarabad
-		own_control_core = {
-			astarabad tammisha
-		}
-
-		include = "expl_middle_east"
-		starting_technology_level = 3
-		include = "expl_mongols"
-		include = "persianate_sultanate_tazik_dominant"
-		government = {
-			type = persianate_sultanate
-			ruler = asr_shaikh_ali_pw
-
-			laws = {
-				sharia_law = ismaili_policy
-			}
-		}
-
-		religious_school = ismaili_school
-		capital = astarabad
+	
 	}
 
 	JKR = { #Jauni Kurban

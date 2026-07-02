@@ -32,83 +32,47 @@ waqf_reassessment_pulse = {
 iqta_reassessment_pulse = {
 
 	trigger = {
-		NOT = { has_global_variable = iqta_building_fake_mod_applied }
+		government_type = government_type:persianate_sultanate
+		any_owned_location = {
+			has_building = building_type:iqta_grant
+		}
 	}
 
 	effect = {
-		every_country = {
+		every_owned_location = {
 			limit = {
-					government_type = government_type:persianate_sultanate
-					any_owned_location = {
-						has_building = building_type:iqta_grant
+				has_building = building_type:iqta_grant
+			}
+			"building(building_type:iqta_grant|owner)" = {save_scope_as = iqta_building}
+			add_location_modifier = {
+				modifier = iqta_building_fake_mod
+				years = -1
+				mode = replace
+				size = {
+					value = "location_building_level(building_type:iqta_grant)" ## iqta grant now correctly reassess yearly
+				}
+			}
+			if = {
+				limit = {
+					OR  = {
+						AND = {
+							owner ?= {
+								months_since_war > 60
+							}
+							local_control < 0.3
+						}
+						local_control < 0.15
+					}
+					
+				}
+				random = {
+					chance = 10
+					construct_estate_building = {
+						estate_type = estate_type:amirs_estate
+						building_type = building_type:unaudited_iqta
 					}
 				}
-				every_owned_location = {
-					limit = {
-						has_building = building_type:iqta_grant
-					}
-					"building(building_type:iqta_grant|owner)" = {save_scope_as = iqta_building}
-					add_location_modifier = {
-						modifier = iqta_building_fake_mod
-						years = -1
-						mode = replace
-						size = {
-							if = {
-								limit = {
-									scope:iqta_building.building_level = 1
-								}
-								value = {
-									desc = script_value_base
-									value = 1
-								}
-							}
-							else_if = {
-								limit = {
-									scope:iqta_building.building_level = 2
-								}
-								value = {
-									desc = script_value_base
-									value = 2
-								}
-							}
-							else_if = {
-								limit = {
-									scope:iqta_building.building_level = 3
-								}
-								value = {
-									desc = script_value_base
-									value = 3
-								}
-							}
-
-						}
-					}
-					if = {
-						limit = {
-							OR  = {
-								AND = {
-									owner ?= {
-										months_since_war > 60
-									}
-									local_control < 0.3
-								}
-								local_control < 0.15
-							}
-							
-						}
-						random = {
-							chance = 10
-							construct_estate_building = {
-								estate_type = estate_type:amirs_estate
-								building_type = building_type:unaudited_iqta
-							}
-						}
-					}
-
-				}
+			}
 		}
-		set_global_variable = iqta_building_fake_mod_applied
-
 	}
-
 }

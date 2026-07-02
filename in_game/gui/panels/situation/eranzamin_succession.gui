@@ -33,7 +33,7 @@ situation_panel = {
 
 		blockoverride "one_country_header_background" {
 			background = {
-				texture = "gfx/interface/illustrations/situation/generic_war.dds" # Placeholder
+				texture = "gfx/interface/illustrations/situation/eranzamin_succession.dds" # Placeholder
 				modify_texture = {
 					texture = "gfx/interface/component_masks/mask_fade_horizontal_middle.dds"
 					texture_density = 2
@@ -44,7 +44,7 @@ situation_panel = {
 				}
 			}
 		}
-		
+
 		# We don't have a single protagonist to show, so we hide specific country context
 		blockoverride "CountryContext" {
 			visible = no

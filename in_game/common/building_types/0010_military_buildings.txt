@@ -1,7 +1,7 @@
 tamma_garrison = {
 	is_foreign = no
 	pop_type = soldiers
-	max_levels = 1
+	max_levels = 3
 	
 	category = military_category
 	forbidden_for_estates = yes
