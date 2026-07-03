@@ -34,7 +34,7 @@ diwan_persian_court_language = {
         court_language = language:persian_language
     }
 
-    diwan_estate_target_satisfaction = 0.15
+    diwan_estate_target_satisfaction = 0.05
 }
 
 amirs_war_auto_modifier = {
