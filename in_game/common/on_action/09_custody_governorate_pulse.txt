@@ -51,7 +51,10 @@ peasant_non_levying_pulse = {
 	trigger = {
 		## run ONLY for persianate sultanates which are at war.
 		
-		government_type ?= government_type:persianate_sultanate
+		OR = {
+			government_type ?= government_type:persianate_sultanate
+			government_type ?= government_type:commonwealth_of_martyrs
+		}
 		at_war = yes
 		has_raised_levies = yes
 		## has_raised_levies
@@ -79,7 +82,10 @@ peasant_non_levying_cleanup_pulse = {
 	trigger = {
 		## run ONLY for persianate sultanates which are at war.
 		
-		government_type ?= government_type:persianate_sultanate
+		OR = {
+			government_type ?= government_type:persianate_sultanate
+			government_type ?= government_type:commonwealth_of_martyrs
+		}
 		any_owned_location = {
 			modifier:levies_are_raised_flag = no
 			has_location_modifier = circle_of_justice_food_and_rgo_offset

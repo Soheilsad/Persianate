@@ -188,5 +188,8 @@ building_manager = {
 	
 	tamma_garrison = { tag = GRG level = 3 location = astarabad }
 	tamma_garrison = { tag = GRG level = 2 location = astarabad }
-
+	dervish_khanaqah = { tag = SRB level = 2 location = sabzevar }
+	dervish_khanaqah = { tag = SRB level = 1 location = haresabad }
+	dervish_khanaqah = { tag = SRB level = 1 location = beyarjomand }
+	zurkhanah = { tag = SRB level = 1 location = sabzevar }
 } 

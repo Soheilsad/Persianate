@@ -124,6 +124,27 @@ sufyani_notables_estate_tax_impact = {
 	sufyani_notables_estate_target_satisfaction = -1
 }
 
+# ---Conquest modifiers ---
+
+# Custody of the Riḍawī shrine at Mashhad — permanent (martyrs.2).
+martyrs_custodian_of_threshold = {
+	game_data = {
+		category = country
+	}
+	monthly_devotion = 0.05
+	tolerance_own = 1
+}
+
+# The Nishapur chancery under notable administration (martyrs.3.a).
+martyrs_nishapur_chancery = {
+	game_data = {
+		category = country
+	}
+	country_cabinet_efficiency = 0.05
+	tax_income_efficiency = 0.05
+	monthly_towards_centralization = 0.05
+}
+
 shaykhi_dervishes_estate_tax_impact = {
 	game_data = {
 		category = country

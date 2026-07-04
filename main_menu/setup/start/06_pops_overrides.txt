@@ -4002,6 +4002,9 @@ locations = {
         define_pop = { type = burghers	size = 56.982	culture = khorasani_culture	religion = shia }
         define_pop = { type = burghers	size = 37.976	culture = khorasani_culture	religion = sunni }
         define_pop = { type = nobles	size = 1.383	culture = khorasani_culture	religion = sunni }
+        # The dervish corps — Hasan Juri's sworn brethren, ~5,000 at peak
+        # (Smith). Soldiers pops feed the shaykhi_dervishes_estate.
+        define_pop = { type = soldiers	size = 5.000	culture = khorasani_culture	religion = shia }
     }
 
     beyarjomand = {

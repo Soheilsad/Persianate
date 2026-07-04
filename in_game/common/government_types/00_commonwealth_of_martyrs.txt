@@ -21,7 +21,9 @@ commonwealth_of_martyrs = {
 
 	# Dyarchic election is the historical Sufyānī/Shaykhī structure. Other
 	# options cover periods of factional dominance and military regency.
-	heir_selection = diarchic_election
+	# (Custom selection — base diarchic_election is Genoa's and draws from
+	# nobles/burghers, which the commonwealth suppresses/lacks.)
+	heir_selection = martyrs_dyarchic_election
 	heir_selection = oligarchic_elective
 	heir_selection = theocratic_elective
 	heir_selection = judicial_election

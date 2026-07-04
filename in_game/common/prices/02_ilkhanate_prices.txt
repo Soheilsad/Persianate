@@ -24,3 +24,17 @@ ilkhanate_bureaucracy_price = {
 	prestige = 15
 	stability = 10
 }
+
+a_dervish_corps_build = {
+
+	gold = -40
+}
+
+a_dervish_corps_maintenance = {
+	gold = -0.4
+
+}
+
+a_dervish_reinforce = {
+	gold = -2
+}

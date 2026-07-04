@@ -35,6 +35,7 @@ ilkhanate_flavor.1 = {
 		name = ilkhanate_flavor.1.a
 		trigger = {
 				NOT = {has_reform = government_reform:chinggisid_regency }
+				NOT = { government_type = government_type:commonwealth_of_martyrs }
 				is_subject = no
 			}
 		ai_chance = {
@@ -121,10 +122,11 @@ ilkhanate_flavor.1 = {
 	option = {
 		name = ilkhanate_flavor.1.b
 
-		trigger = { 
+		trigger = {
 			AND = {
-				religion.group = religion_group:muslim 
+				religion.group = religion_group:muslim
 				NOT = { has_reform = government_reform:chinggisid_regency }
+				NOT = { government_type = government_type:commonwealth_of_martyrs }
 			}
 		}
 
@@ -166,6 +168,7 @@ ilkhanate_flavor.1 = {
 
 		trigger = {
 			NOT = { has_reform = government_reform:chinggisid_regency }
+			NOT = { government_type = government_type:commonwealth_of_martyrs }
 		}
 		ai_chance = {
 			factor = 25
@@ -285,6 +288,7 @@ ilkhanate_flavor.1 = {
 		name = ilkhanate_flavor.1.f
 		trigger = {
 			NOT = { has_reform = government_reform:chinggisid_regency }
+			NOT = { government_type = government_type:commonwealth_of_martyrs }
 			NOT = { has_variable = custody_dropped_khan } ## you cannot defer if you have already dropped the khan. You have to pick a side.
 		}
 		ai_chance = {
@@ -310,6 +314,30 @@ ilkhanate_flavor.1 = {
 		# caution, and no rival is provoked — you have claimed nothing.
 		add_legitimacy = 5
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+	}
+
+	# ----- G: The Gallows' Answer — Commonwealth of Martyrs only -----
+	# The Sarbadars were founded killing a Mongol tax official; they do
+	# not choose among Chinggisid fictions. Coin is struck in the Hidden
+	# Imam's name and the throne is held in trust for Him. The one thing
+	# both wings of the dyarchy agree on. All other options are gated
+	# out for this government type; this is their only door.
+	option = {
+		name = ilkhanate_flavor.1.g
+		trigger = {
+			government_type = government_type:commonwealth_of_martyrs
+		}
+		set_personality = ai_personality:ai_defensive
+		# Defiance IS the founding devotion; both wings approve.
+		add_devotion = 10
+		add_estate_satisfaction = { type = estate_type:shaykhi_dervishes_estate value = 0.10 }
+		add_estate_satisfaction = { type = estate_type:sufyani_notables_estate value = 0.05 }
+		# The founding endowment + player introduction (Sarbadars only —
+		# the grant is Sabzavar-hardcoded).
+		if = {
+			limit = { root = c:SRB }
+			trigger_event_non_silently = martyrs.1
+		}
 	}
 
 }

@@ -21,7 +21,7 @@ sufyani_notables_estate = {
 	color = rgb { 110 90 60 }
 
 	power_per_pop = 25
-	tax_per_pop = 55
+	tax_per_pop = 100
 
 	rival = 0
 	alliance = 0.01

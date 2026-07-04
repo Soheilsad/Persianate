@@ -46,9 +46,11 @@ clergy = {
 	
 	# Clergy do not join Diwan (Separation of Religion and Bureaucracy)
 
-	# Under a Commonwealth of Martyrs polity, clergy ARE the dervish order — the
-	# khānaqāh network IS the religious establishment.
-	shaykhi_dervishes_estate = { is_shaykhi_pop = yes }
+	# Clergy stay clergy_estate even under the Commonwealth of Martyrs — the
+	# sober ulama (qadis, mosque personnel, madrasa teachers) are NOT the
+	# dervish order. The armed brethren are SOLDIERS pops (see below); this
+	# is what gives the commonwealth a real clergy estate for the Usuli arc
+	# and the Jabal ʿĀmil correspondence to work on.
 	dhimmi_estate = { is_dhimmi = yes }
 	tribes_estate = { is_gaelic_clans = yes }
 	clergy_estate = {}

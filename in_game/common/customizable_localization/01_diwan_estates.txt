@@ -15,6 +15,9 @@ amirs_estate = {
 }
 
 
+
+
+
 diwan_council = {
 	type = country
 	trigger = {

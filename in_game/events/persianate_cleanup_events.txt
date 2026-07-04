@@ -58,6 +58,22 @@ persianate_cleanup.1 = {
 		# Mirrors boneh_system's potential exactly so we only touch the same
 		# set of countries that would naturally pick up the mod privilege.
 
+		### give sarbedars their units. 
+
+
+
+		# location:sabzevar = {
+		# 	while =  {
+		# 		count = 5
+		# 		create_sub_unit_with_owner = {
+		# 			type = a_dervish_corps
+		# 			owner = c:SRB
+		# 		}
+		# 	}
+		# }
+		# c:SRB = {
+		# 	add_gold = 500
+		# }
 
 		every_country = {
 			limit = {

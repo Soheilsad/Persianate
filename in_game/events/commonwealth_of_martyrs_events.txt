@@ -1,0 +1,140 @@
+namespace = martyrs
+
+# =====================================================================
+# martyrs.1 — WHO ARE THE SARBADARS
+#
+# Fired from ilkhanate_flavor.1.g (the defiant option, the only door
+# open to the commonwealth at situation start). Player-facing
+# introduction to the polity, plus the founding endowment: the
+# liquidated wealth of the expropriated Mongol amirs (500 gold) and
+# the first muster of the dervish corps at Sabzavar (5 regiments).
+# Without this the commonwealth is prey on day one — ~1k of levies
+# with Togha Temur's ordu next door.
+# =====================================================================
+martyrs.1 = {
+	type = country_event
+	outcome = neutral
+	title = martyrs.1.title
+	desc = martyrs.1.desc
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = martyrs.1.a
+
+		# The liquidation: confiscated iqta land, the hoards of hanged
+		# Mongol notables, and ordu tribute that will never be paid again.
+		c:SRB = {
+			add_gold = 500
+		}
+		# The first muster of the sworn brethren at Sabzavar.
+		location:sabzevar = {
+			while = {
+				count = 5
+				create_sub_unit_with_owner = {
+					type = a_dervish_corps
+					owner = c:SRB
+				}
+			}
+		}
+	}
+}
+
+# =====================================================================
+# martyrs.2 — THE THRESHOLD OF THE EIGHTH IMAM (conquest of Mashhad)
+#
+# Fired from martyrs_shrine_city_conquest (14_martyrs_conquest.txt).
+# The constitutional conquest: the commonwealth that holds the throne
+# in trust for the Hidden Imam now holds the tomb of His ancestor.
+# All options grant the permanent Custodian modifier; the CHOICE is
+# the dyarchy's — who administers the shrine — plus the historical
+# third door: write to the jurist of Jabal ʿĀmil (ʿAlī-yi Muʾayyad's
+# real correspondence with Muḥammad b. Makkī, al-Shahīd al-Awwal, who
+# sent al-Lumʿa al-Dimashqiyya to Sabzavar — the first ʿĀmilī jurist
+# import, prefiguring the Safavid move by over a century; foreshadows
+# usuli_consolidation_reform).
+# =====================================================================
+martyrs.2 = {
+	type = country_event
+	outcome = positive
+	title = martyrs.2.title
+	desc = martyrs.2.desc
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	# ----- A: The notables administer the Threshold -----
+	option = {
+		name = martyrs.2.a
+		add_country_modifier = { modifier = martyrs_custodian_of_threshold years = -1 }
+		add_devotion = 25
+		add_estate_satisfaction = { type = estate_type:sufyani_notables_estate value = 0.15 }
+		add_estate_satisfaction = { type = estate_type:shaykhi_dervishes_estate value = -0.05 }
+	}
+
+	# ----- B: The brethren take custody -----
+	option = {
+		name = martyrs.2.b
+		add_country_modifier = { modifier = martyrs_custodian_of_threshold years = -1 }
+		add_devotion = 25
+		add_estate_satisfaction = { type = estate_type:shaykhi_dervishes_estate value = 0.15 }
+		add_estate_satisfaction = { type = estate_type:sufyani_notables_estate value = -0.05 }
+	}
+
+	# ----- C: Write to the jurist of Jabal ʿĀmil -----
+	option = {
+		name = martyrs.2.c
+		add_country_modifier = { modifier = martyrs_custodian_of_threshold years = -1 }
+		add_devotion = 15
+		# The jurists' star rises above both wings — the seed of the
+		# Usuli arc.
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.15 }
+		add_estate_satisfaction = { type = estate_type:shaykhi_dervishes_estate value = -0.05 }
+	}
+}
+
+# =====================================================================
+# martyrs.3 — THE OLD METROPOLIS (conquest of Nishapur)
+#
+# The political conquest: Nishapur is diminished — Mongols, earthquakes
+# — but it is still a name of names, and it is a NOTABLES' city:
+# courts, ledgers, madrasas, quarters. The dyarchy pulls two ways.
+# =====================================================================
+martyrs.3 = {
+	type = country_event
+	outcome = positive
+	title = martyrs.3.title
+	desc = martyrs.3.desc
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	# ----- A: Seat the notables in the old capital -----
+	option = {
+		name = martyrs.3.a
+		add_estate_satisfaction = { type = estate_type:sufyani_notables_estate value = 0.15 }
+		add_estate_satisfaction = { type = estate_type:shaykhi_dervishes_estate value = -0.05 }
+		add_stability = 5
+		# The metropolis pulls the commonwealth toward settled order.
+		add_country_modifier = { modifier = martyrs_nishapur_chancery years = 25 }
+	}
+
+	# ----- B: The revolutionary tribunal rides in -----
+	option = {
+		name = martyrs.3.b
+		# The Mongol-collaborator families of Nishapur meet Sarbadar
+		# justice; their estates meet the treasury.
+		add_gold = 100
+		add_devotion = 10
+		add_estate_satisfaction = { type = estate_type:shaykhi_dervishes_estate value = 0.10 }
+		add_estate_satisfaction = { type = estate_type:sufyani_notables_estate value = -0.10 }
+		add_stability = -5
+	}
+}

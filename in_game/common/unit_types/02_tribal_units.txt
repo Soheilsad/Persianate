@@ -17,6 +17,7 @@ a_nomadic_skirmisher_cavalry = {
 		sparse = 0.25
 		flatland = 0.10
 		hills = -0.10
+		mountains = -0.2
 	}
 	gfx_tags = { light_tag }
 }

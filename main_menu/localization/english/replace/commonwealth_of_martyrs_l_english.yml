@@ -160,3 +160,52 @@
  MODIFIER_TYPE_DESC_shaykhi_dervishes_estate_max_tax: "The ceiling on taxes that may be levied on the Shaykhī dervishes. The lodges hold property in common and little of it is reachable by the assessor."
  MODIFIER_TYPE_DESC_shaykhi_dervishes_estate_allowed_to_build_rgo: "Whether the Shaykhī dervishes may raise extraction buildings on their holdings."
  MODIFIER_TYPE_DESC_shaykhi_dervishes_estate_allowed_to_build_roads: "Whether the Shaykhī dervishes may lay roads on their holdings."
+ 
+
+ MODIFIER_TYPE_NAME_a_dervish_corps_build_cost_modifier: "Dervish Corps Build Cost"
+ MODIFIER_TYPE_DESC_a_dervish_corps_build_cost_modifier: "The cost of raising the dervish corps — the armed brotherhood is the commonwealth's standing army."
+ MODIFIER_TYPE_NAME_a_dervish_corps_maintenance_cost_modifier: "Dervish Corps Maintenance Cost"
+ MODIFIER_TYPE_DESC_a_dervish_corps_maintenance_cost_modifier: "The ongoing cost of maintaining the dervish corps — the armed brotherhood is the commonwealth's standing army."
+ # Auto modifiers (estate base values)
+ AUTO_MODIFIER_NAME_sufyani_base_values: "Sufyānī Base Standing"
+ AUTO_MODIFIER_DESC_sufyani_base_values: "The baseline accommodation between the commonwealth and its notable families — the floor beneath which their satisfaction does not naturally sink."
+ AUTO_MODIFIER_NAME_shaykhi_base_values: "Shaykhī Base Standing"
+ AUTO_MODIFIER_DESC_shaykhi_base_values: "The baseline accommodation between the commonwealth and the dervish order — the floor beneath which their satisfaction does not naturally sink."
+
+ # Buildings
+ dervish_khanaqah: "Dervish Khānaqāh"
+ dervish_khanaqah_desc: "The lodge of the armed brotherhood — recruiting hall, armory, and indoctrination house of the Shaykhī order, in the tradition of Shaykh Ḥasan Jūrī's network. The salaried soldiers of the commonwealth muster here, where confiscation revenue meets the martyrdom vow."
+ dervish_khanaqah_maintenance: "Khānaqāh Maintenance"
+
+ # Units
+ a_dervish_corps: "Dervish Corps"
+
+ # Heir selection
+ martyrs_dyarchic_election: "Dyarchic Election"
+ martyrs_dyarchic_election_desc: "The succession of the Commonwealth: the council elects from the two wings — the [Concept('sufyani_notables_estate', 'Sufyānī notables')|E] and the [Concept('shaykhi_dervishes_estate', 'Shaykhī dervishes')|E]. War elevates the dervish shaykh; peace favors the malik; every transition is a trial of the dyarchy. Twelve rulers in forty-five years is the historical record, and few of them died in bed."
+ HEIR_SELECTION_SHAYKHI_SWORD: "The lodges weigh the sword"
+ HEIR_SELECTION_SUFYANI_LEDGER: "The notables weigh the ledger"
+ HEIR_SELECTION_SHAYKHI_WAR: "War calls for a shaykh"
+ HEIR_SELECTION_SUFYANI_PEACE: "Peace calls for a malik"
+
+ # Intro event (martyrs.1)
+ martyrs.1.title: "Heads Pledged to the Gallows"
+ martyrs.1.desc: "In the village of Bāshtīn in Bayhaq, the Mongol tax collector demanded his due once too often, and the men of the village killed him where he stood. 'We would rather see our heads on the gallows' — sar be-dār — 'than submit.' The vow became a name, the name became a state.\n\nThe commonwealth that rose from that killing is like nothing else in Erānzamīn. There is no king: coin is struck in the name of the Hidden Imām, whose throne is held in trust until His return. Rule is shared — and contested — between two wings: the Sufyānī notables, who hold the cities, the courts, and the ledgers; and the Shaykhī dervishes of Ḥasan Jūrī's khānaqāh network, sworn craftsmen and villagers who ARE the army and preach the Imām's imminent coming. The expropriated estates of the Mongol amīrs pay a salaried soldiery no three-district state has any right to field.\n\nAround Sabzavār, the wolves are already circling: Togha Temür's ordu in Gurgān styles itself the Īlkhānate's heir; the Jauni Qurbān hold Ṭūs and Nishapur; the Kartid malik sits in Herat. Every one of them has hanged men for less than what we are.\n\nThe brethren are mustering at Sabzavār. The gallows is patient."
+ martyrs.1.a: "The amīrs' hoards will pay the men who hanged them. Muster the brethren."
+
+ # Conquest events (martyrs.2 Mashhad, martyrs.3 Nishapur)
+ martyrs.2.title: "The Threshold of the Eighth Imam"
+ martyrs.2.desc: "Mashhad is ours. The golden dome over the tomb of ʿAlī al-Riḍā — the eighth Imam, poisoned by a caliph, the only one of the Twelve who sleeps in Iranian earth — now stands within the commonwealth's walls.\n\nNo conquest could mean more to us. We mint our coin in the name of his descendant, the Hidden Imām whose throne we keep in trust; now we keep his ancestor's Threshold too. The pilgrims will come through our gates, the vows will be sworn at our shrine, and every dinar of pious offering will pass through hands we appoint.\n\nAnd there the quarrel begins. The notables see a waqf to administer — the greatest endowment in Khurāsān, wanting only honest ledgers. The brethren see the proof of the mission — the Imām's own house, in the keeping of those who wait for His son. And some in the council whisper a third counsel: write to the great jurist of Jabal ʿĀmil, in far Syria, and ask him for a book of law worthy of the Threshold — for a state that guards the Imām's tomb should judge by the Imām's jurisprudence, rightly derived."
+ martyrs.2.a: "The Threshold needs ledgers, not ecstasies. The notables will administer it."
+ martyrs.2.b: "The brethren guarded the vow; they will guard the tomb."
+ martyrs.2.c: "Write to Muḥammad b. Makkī. Ask him for the law."
+ martyrs.3.title: "The Old Metropolis"
+ martyrs.3.desc: "Nishapur has opened its gates. The Mongols wasted it and the earth itself has shaken it down more than once, but the old metropolis of Khurāsān is still a name of names — the city of Niẓām al-Mulk and ʿAṭṭār, of madrasas and qāḍī courts and quarters that remember being the center of the world.\n\nIt is, above all, a notables' city. Its surviving great families kept their ledgers under the Mongols, kept their courts under the Jauni Qurbān, and will keep them under anyone. The Sufyānī wing already speaks of Nishapur as the commonwealth's proper seat of administration.\n\nThe brethren remember differently: these same families billeted the ordu's tax-farmers and read the khuṭba for every khan who asked. There are men in Nishapur with much to answer for — and estates worth the answering."
+ martyrs.3.a: "Seat the notables. The old capital will teach us administration."
+ martyrs.3.b: "Convene the tribunal. Nishapur's collaborators owe the gallows a debt."
+
+ # Conquest static modifiers
+ STATIC_MODIFIER_NAME_martyrs_custodian_of_threshold: "Custodian of the Threshold"
+ STATIC_MODIFIER_DESC_martyrs_custodian_of_threshold: "The shrine of the eighth Imam at Mashhad lies within the commonwealth — the pilgrims, the vows, and the standing proof of the mission."
+ STATIC_MODIFIER_NAME_martyrs_nishapur_chancery: "The Nishapur Chancery"
+ STATIC_MODIFIER_DESC_martyrs_nishapur_chancery: "The old metropolis administers — its surviving families keep the commonwealth's ledgers with the habits of an imperial capital."
