@@ -59,23 +59,37 @@ ibadi = {
 	tags = { muslim_gfx abrahamic_gfx }
 }
 
-shia = { 
+shia = {
 	color = color_shia
 	group = muslim
 	language = classical_arabic_dialect
-	
-	
 
-	religious_school = ismaili_school	
-	religious_school = jafari_school
+	# Three-layer rework (docs/design/shia_rebuild_plan.md Part A):
+	# BRANCH lives in the Imamate aspect axis, MADHHAB in the sharia_law
+	# policy layer — the school slot is the ESTABLISHMENT: which network
+	# runs your religious institutions. Generic branch labels
+	# (ismaili/jafari/imamiya) detached; nizari/mustali/zaidi kept,
+	# re-read as networks (the daʿwas, the Zaydi imamate-scholar line).
+	# Aspect changes for non-Christian religions cost stability
+	# (price:change_religious_aspect_inti = 30) — recommitting your
+	# Shiism shakes the realm. No influence currency needed.
+	religious_aspects = 4
+
+	# New establishment networks
+	religious_school = hilla_hawza_school
+	religious_school = shaykhiyya_school
+	religious_school = kubrawi_school
+	religious_school = nurbakhshi_school
+	religious_school = nimatullahi_school
+
+	# Kept base schools, network reading
 	religious_school = zaidi_school
-	
-	religious_school = imamiya_school
 	religious_school = nizari_school
 	religious_school = mustali_school
 	religious_school = alevism_school
 	religious_school = alawi_school
-	
+
+	# Tariqa orders (base)
 	religious_school = bektashi_school
 	religious_school = khalwati_school
 	religious_school = mevlevi_school
@@ -90,11 +104,9 @@ shia = {
 
 		allow_mysticism_vs_jurisprudence = yes
 
-
-
 		number_of_allowed_religious_figures = 1
 	}
-	
+
 	opinions = {
 		sunni = negative
 		catholic = enemy
@@ -145,6 +157,9 @@ sunni = {
 	religious_school = suhrawardi_school
 	religious_school = din_i_ilahi_school
 	religious_school = isawiyya_school
+	# Cross-confessional Persian orders (also attached to shia)
+	religious_school = kubrawi_school
+	religious_school = nimatullahi_school
 	
 	definition_modifier = {
 

@@ -724,6 +724,22 @@ ghazi_burden.201 = {
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.15 }
 		add_estate_satisfaction = { type = estate_type:tribes_estate value = -0.20 }
 		add_legitimacy = -25
+		create_character = {
+
+			estate = estate_type:clergy_estate
+			religion = religion:shia
+			culture = root.culture
+			age = {24 40}
+			adm = {0 20} # not an administrator.
+			dip = {33 66} ## not complex, but has certain charisma
+			mil = {75 100}
+			save_scope_as = the_military_usurper_scope
+		}
+
+		
+		kill_character = ROOT.ruler
+		set_new_ruler = scope:the_military_usurper_scope
+		change_religion = religion:shia
 	}
 
 	option = {

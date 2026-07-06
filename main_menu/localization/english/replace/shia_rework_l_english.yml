@@ -1,0 +1,56 @@
+﻿l_english:
+
+ # =========================================================================
+ # Shia rework — aspects (doctrine), establishment schools (network).
+ # Branch = Imamate aspect axis; madhhab = sharia_law policy layer;
+ # school = the establishment running religious institutions.
+ # =========================================================================
+
+ # --- Imamate axis ---
+ imamate_ithna_ashari: "The Twelve Imams"
+ imamate_ithna_ashari_desc: "The Imamate passed through twelve appointed successors of the Prophet, and the last — Muḥammad al-Mahdī — lives, hidden, until God permits his return. The community waits; how it waits is the question that defines the state."
+ imamate_ismaili: "The Ismaili Imamate"
+ imamate_ismaili_desc: "The Imamate passed through Ismāʿīl b. Jaʿfar, and continues in a living line — manifest or concealed — whose word is the inner meaning of scripture. Where the Imam is present, the law has a living interpreter; where he is concealed, his daʿwa speaks."
+ imamate_zaydi: "The Zaydi Imamate"
+ imamate_zaydi_desc: "There is no hidden Imam and no waiting: the Imamate belongs to any qualified descendant of ʿAlī and Fāṭima who rises by the sword (khurūj) and rules with justice. Activist by construction, rationalist in law — the Imamate of the drawn blade and the open lecture."
+ imamate_none_hint: "A realm may hold no settled Imamate at all — ʿAlid-loyal, Sufi-saturated, confessionally ambiguous. Most of the post-Mongol world lives there."
+
+ # --- Occultation politics (Twelver) ---
+ intizar_quietism: "Quietist Awaiting"
+ intizar_quietism_desc: "The Hidden Imam will return in God's time, not ours. Until then the community keeps its head down, pays its taxes, and studies — the position of the great Ḥilla scholars. Stability, at the price of reach."
+ niyaba_amma: "The General Vicariate"
+ niyaba_amma_desc: "In the Imam's absence, qualified agents — above all the jurists — act in His name: collect His dues, judge by His law, strike His coin. The state becomes the trustee of an absent sovereign. This was the Sarbadār constitutional claim, and it is a ladder the jurists will climb."
+ messianism: "The Manifestation"
+ messianism_desc: "The waiting is over: the ruler himself is the Promised One — or His visible vessel — with a sayyid genealogy produced to order. Nothing mobilizes like the end of time, and nothing survives it gracefully: rival claimants are unforgivable, the sober are appalled, and one day the Mahdī will die."
+
+ # --- Authority of the jurist (Twelver) ---
+ usulism: "Usuli Rationalism"
+ usulism_desc: "Qualified jurists derive the law by independent reasoning (ijtihād), and the living mujtahid binds the faithful. The school of Ḥilla — and the foundation on which a hierocracy can one day be built."
+ akhbarism: "Akhbari Traditionism"
+ akhbarism_desc: "The transmitted reports of the Imams suffice; no living jurist may claim binding authority. Calmer, cheaper, and it caps the clerical hierarchy before it starts."
+
+ # --- Posture toward the majority ---
+ taqiyya: "Taqiyya"
+ taqiyya_desc: "Prudent dissimulation is not cowardice but doctrine: the community preserves itself among the majority by discretion. Coexistence, quiet networks, and a faith that survives by not being seen."
+ tabarra: "Tabarra"
+ tabarra_desc: "Public, ritual dissociation from the usurpers of the Imamate — the first three caliphs cursed from the minbar by professional criers. The confession is nailed to the door: conversion pressure at home, permanent fury abroad."
+
+ # --- Establishment schools (new) ---
+ hilla_hawza_school: "The Hilla Hawza"
+ hilla_hawza_school_desc: "The juristic network of ʿAllāma al-Ḥillī's heirs — the ḥawza: teaching circles, ijāza chains, and rational jurisprudence, later carried through Jabal ʿĀmil and Najaf. The default establishment of any settled Twelver realm."
+ shaykhiyya_school: "The Shaykhiyya"
+ shaykhiyya_school_desc: "The militant khānaqāh network of Shaykh Khalīfa and Ḥasan Jūrī — armed, mahdist, organized among craftsmen and villagers. The establishment of the Sarbadār commonwealth: the pulpit and the army are one institution."
+ kubrawi_school: "The Kubrawiyya"
+ kubrawi_school_desc: "The great Khurāsānī order of Najm al-Dīn Kubrā's line, straddling the Sunni–Shia boundary and drifting ʿAlid-ward through the age. Learned, respectable, everywhere — and parent of stranger children."
+ nurbakhshi_school: "The Nurbakhshiyya"
+ nurbakhshi_school_desc: "Muḥammad Nūrbakhsh's breakaway from the Kubrawiyya — a Sufi order carrying an explicitly messianic Shiism between the confessions, its founder proclaimed Mahdī by his own circle in 1423."
+ nimatullahi_school: "The Nimatullahiyya"
+ nimatullahi_school_desc: "Shāh Niʿmatullāh Walī's order: quietist, prosperous, courtly — the respectable face of Persian Sufism, at home on either side of the Sunni–Shia line."
+
+ # --- Kept base schools, re-read as networks ---
+ zaidi_school: "The Zaydiyya"
+ zaidi_school_desc: "The Zaydī imamate-scholar network: the ʿitra and its jurists, from the Caspian highlands to Yemen — a scholarly establishment organized around the ever-present possibility of a rising."
+ nizari_school: "The Nizari Daʿwa"
+ nizari_school_desc: "The missionary network of the Nizārī Imams after Alamūt — dāʿīs, concealed lines of allegiance, and an Imam living in satr, often in the habit of a Sufi pīr."
+ mustali_school: "The Tayyibi Daʿwa"
+ mustali_school_desc: "The Ṭayyibī missionary hierarchy — the dāʿī muṭlaq administering the community in the name of an Imam in concealment, its center of gravity in Yemen and Gujarat."

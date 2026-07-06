@@ -536,8 +536,9 @@ countries = {
 			}
 
 
-			### 
-			religious_school = jafari_school
+			### Establishment school (shia rework): the Sarbadar
+			### establishment is Hasan Juri's militant khanaqah network.
+			religious_school = shaykhiyya_school
 			capital = sabzevar
 		}
 		GRG = { #Gurgan
@@ -1026,7 +1027,7 @@ JUR = { #Jurmanids
 			farsi_culture
 		}
 
-		religious_school = jafari_school
+		religious_school = hilla_hawza_school
 		capital = kojur
 	}
 

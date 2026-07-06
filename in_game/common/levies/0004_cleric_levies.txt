@@ -15,7 +15,7 @@ levy_ghazi_volunteers = {
 
 levy_darawish = {
 	size = 0.5 ### many. the dervish LIVE to fight.
-	allowed_pop_type = clergy
+	allowed_pop_type = soldiers
 	allow = {
 
 		owner ?= {
