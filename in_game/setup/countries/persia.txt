@@ -437,7 +437,7 @@ TLM = { #Tulam
 ABL = { #Ardabil
 	color = rgb { 80 146 8 }
 
-	culture_definition = farsi_culture #Originally Kurdish, but changed to that so they are able to form Persia
-	religion_definition = shia
+	culture_definition = adhari_culture
+	religion_definition = sunni
 	is_historic = yes
 }

@@ -138,3 +138,48 @@ martyrs.3 = {
 		add_stability = -5
 	}
 }
+
+# =====================================================================
+# martyrs.4 — THE NOTABLES TAKE THE COUNCIL (Sufyani takeover)
+#
+# Fired from the sarbadar_phenomenon on_monthly when Shaykhi power
+# has been drained below 10% — usually by the commonwealth's own
+# preacher dispatches (each a stacking -5%). The revolution has
+# exported its vanguard; the men of order inherit the state. The
+# Muʾayyad arc as an emergent outcome.
+# =====================================================================
+martyrs.4 = {
+	type = country_event
+	outcome = neutral
+	title = martyrs.4.title
+	desc = martyrs.4.desc
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	# ----- A: Accept it. The commonwealth becomes a sultanate. -----
+	option = {
+		name = martyrs.4.a
+		change_government_type = government_type:persianate_sultanate
+		add_reform = government_reform:persianate_bureaucracy_reform
+		add_stability = 10
+		add_legitimacy = 20
+	}
+
+	# ----- B: The last brethren purge the council. -----
+	option = {
+		name = martyrs.4.b
+		# The vow is renewed in blood — once. The wing is still hollow.
+		add_estate_satisfaction = { type = estate_type:sufyani_notables_estate value = -0.30 }
+		add_devotion = 15
+		add_stability = -10
+		add_country_modifier = {
+			modifier = shaykhi_last_purge_mod
+			years = 10
+		}
+		# The question will be asked again.
+		remove_variable = sufyani_takeover_fired
+	}
+}

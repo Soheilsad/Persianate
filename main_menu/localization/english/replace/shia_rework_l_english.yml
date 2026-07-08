@@ -54,3 +54,43 @@
  nizari_school_desc: "The missionary network of the Nizārī Imams after Alamūt — dāʿīs, concealed lines of allegiance, and an Imam living in satr, often in the habit of a Sufi pīr."
  mustali_school: "The Tayyibi Daʿwa"
  mustali_school_desc: "The Ṭayyibī missionary hierarchy — the dāʿī muṭlaq administering the community in the name of an Imam in concealment, its center of gravity in Yemen and Gujarat."
+
+ # --- The Sarbadar Phenomenon (situation + preachers) ---
+ sarbadar_phenomenon: "The Sarbadar Phenomenon"
+ sarbadar_phenomenon_desc: "The men of Bāshtīn hanged a tax collector, swore their heads to the gallows — and the thing did not stay in Bayhaq. Ḥasan Jūrī's network was built for this: covert cells among the craftsmen, sworn brethren in the wrestling-houses, preachers moving from bazaar to bazaar with word that the Hidden Imām's cause has a state, an army, and no king. Wherever a commonwealth of the gallows stands, its message travels — and every quarter with a zurkhāna is dry tinder."
+ sarbadar_preachers: "Sarbadar Preachers"
+ sarbadar_preachers_desc: "A covert cell of the Jūrī network: a dervish preacher, a circle of sworn craftsmen, and word from Sabzavār that the Imām's cause has a state and no king. The quarter listens to the shaykh before the governor. Crushing the cell can be done — publicly, expensively, and the bazaar will remember."
+ sarbadar_preachers_present_tt: "A Sarbadar preacher cell is active in this location."
+ PRICE_remove_sarbadar_preachers: "Crush the Cell"
+
+ # --- Tariqa orders (building-countries) ---
+ tariqa_order: "Tariqa Order"
+ tariqa_order_desc: "This polity is not a realm but an order: a shaykh's house, its shrine-seat, and a web of lodges planted in other princes' cities. Its khalīfas carry allegiance across every border; its wealth is reverence; its power is reach. Princes host its lodges gladly — for now."
+ tariqa_khanaqah: "Tariqa Lodge"
+ tariqa_khanaqah_desc: "A lodge of the order in a foreign city — resident dervishes, a kitchen, a tomb or two, and a khalīfa who answers to the shrine-seat, not the governor. The order's reach is measured in lodges; whatever the order becomes, the lodges become with it."
+ tariqa_khanaqah_maintenance: "Lodge Maintenance"
+
+ # --- Network actions ---
+ dispatch_dervish_preacher: "Dispatch a Preacher"
+ dispatch_dervish_preacher_desc: "Send one of the sworn brethren down the caravan roads to plant a cell in a chosen city. The network answers only to the pulpit: the Shaykhī wing must hold real power to command it — and every preacher sent abroad is a man of the wing gone from home. Spread the revolution and you hollow it."
+ dispatch_preacher_select_city: "Choose the city"
+ dispatch_preacher_no_cities: "No suitable foreign city — the cell needs a Muslim quarter and an unclaimed pulpit."
+ patronize_tariqa_order: "Patronize the Order"
+ patronize_tariqa_order_desc: "Endow the order whose lodge stands in your city. The gold flows to the shrine-seat; the shaykh's blessing, read from the minbar, flows back — and in this age of unowned thrones, a blessing is worth more than a garrison."
+ patronize_order_select: "Choose the order"
+ patronize_order_no_orders: "No order keeps a lodge in our realm."
+ PRICE_patronize_tariqa_order: "Endowment"
+
+ # --- Sufyani takeover (martyrs.4) + modifiers ---
+ martyrs.4.title: "The Notables Take the Council"
+ martyrs.4.desc: "The ledgers have outlasted the ecstasies. Year by year the best of the brethren went down the roads — to Nishapur, to Rayy, to farther cities whose quarters now listen to our preachers — and year by year the council chamber filled with men who keep accounts, endow madrasas, and wince at the word 'imminent.' Now the Sufyānī notables hold every office that matters, and they are asking, politely, in writing, whether a state must forever be a vow.\n\nThe dervishes who remain are old, or young and unsworn. The white horse is still saddled at the gate twice a day. Fewer men each year stop to watch it."
+ martyrs.4.a: "The vow was kept as long as men could keep it. Let there be a sultanate."
+ martyrs.4.b: "Saddle the horse. Summon the brethren home. The council will remember what we are."
+ STATIC_MODIFIER_NAME_preachers_dispatched_mod: "Preachers Sent Abroad"
+ STATIC_MODIFIER_DESC_preachers_dispatched_mod: "The network's best men are planting cells in other princes' cities — and are therefore not at home, holding the wing's place in the council."
+ STATIC_MODIFIER_NAME_shaykhi_last_purge_mod: "The Last Purge"
+ STATIC_MODIFIER_DESC_shaykhi_last_purge_mod: "The vow renewed in blood: a hollowed dervish wing propped up by terror, devotion, and the memory of the gallows."
+ sarbadar_phenomenon_alert: "The Sarbadar Phenomenon spreads"
+ sarbadar_phenomenon.1.title: "The Word from Bashtin"
+ sarbadar_phenomenon.1.desc: "In Bayhaq, in Khurāsān, the men of a village called Bāshtīn have killed the Mongol tax collector and sworn — 'we would rather see our heads on the gallows than submit' — and the thing has not ended there. A state now stands at Sabzavār with no king, coin struck in the Hidden Imām's name, and an army of sworn dervishes.\n\nThat would be Khurāsān's problem, except for the roads. The brethren of Shaykh Ḥasan Jūrī's network are already moving along them — preachers who arrive with the caravans, find the wrestling-houses and the craft brotherhoods, and leave behind sworn circles that answer to no governor. Merchants repeat the story in every bazaar between Tabriz and Samarqand.\n\nWhere the quarters are restless and the futuwwa is strong, the word will find dry tinder."
+ sarbadar_phenomenon.1.a: "Watch the wrestling-houses."

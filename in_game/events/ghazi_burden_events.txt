@@ -99,8 +99,11 @@ ghazi_burden.65 = {
 
 	option = {
 		name = ghazi_burden.65.a
-		# Treasury cost: endowing the lodges.
-		add_gold = -100
+		# Treasury cost: endowing the lodges (six months' income).
+		add_gold = {
+			value = monthly_income_total
+			multiply = -6
+		}
 		# Refund: cancels the levy slice while disaster runs.
 		add_country_modifier = {
 			modifier = ghazi_ribat_network_refund
@@ -197,7 +200,10 @@ ghazi_burden.35 = {
 	# Endow the mosque — bribe the warmth back
 	option = {
 		name = ghazi_burden.35.a
-		add_gold = -75
+		add_gold = {
+			value = monthly_income_total
+			multiply = -4.5
+		}
 		add_legitimacy = 3
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.03 }
 	}
@@ -228,7 +234,10 @@ ghazi_burden.20 = {
 	# Endow a new madrasa — buy back the pulpit's warmth
 	option = {
 		name = ghazi_burden.20.b
-		add_gold = -150
+		add_gold = {
+			value = monthly_income_total
+			multiply = -9
+		}
 		add_legitimacy = 5
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 }
 	}
@@ -245,7 +254,10 @@ ghazi_burden.10 = {
 	# Stage a great muster — buy patience, not credit
 	option = {
 		name = ghazi_burden.10.a
-		add_gold = -100
+		add_gold = {
+			value = monthly_income_total
+			multiply = -6
+		}
 		add_estate_satisfaction = { type = estate_type:tribes_estate value = 0.05 }
 		add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.05 }
 		# Deliberately no legitimacy — the muster is theater;
@@ -306,7 +318,10 @@ ghazi_burden.100 = {
 	# Patronize him — buy the next sermon's warmth
 	option = {
 		name = ghazi_burden.100.a
-		add_gold = -50
+		add_gold = {
+			value = monthly_income_total
+			multiply = -3
+		}
 		random_list = {
 			60 = { add_legitimacy = 4 }
 			40 = { add_legitimacy = -3 }
@@ -342,7 +357,10 @@ ghazi_burden.101 = {
 	# Send the qāḍīs to recall the volunteers
 	option = {
 		name = ghazi_burden.101.a
-		add_gold = -75
+		add_gold = {
+			value = monthly_income_total
+			multiply = -4.5
+		}
 		add_legitimacy = -2
 	}
 
@@ -371,7 +389,10 @@ ghazi_burden.102 = {
 	# Pay the scholars — buy the dissent into silence
 	option = {
 		name = ghazi_burden.102.a
-		add_gold = -100
+		add_gold = {
+			value = monthly_income_total
+			multiply = -6
+		}
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 }
 	}
 
@@ -480,7 +501,10 @@ ghazi_burden.150 = {
 	option = {
 		name = ghazi_burden.150.b
 		set_variable = ghazi_fatwa_acquired
-		add_gold = -200
+		add_gold = {
+			value = monthly_income_total
+			multiply = -12
+		}
 		add_legitimacy = 5
 	}
 

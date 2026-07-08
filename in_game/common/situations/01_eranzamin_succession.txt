@@ -132,7 +132,7 @@ eranzamin_succession = {
 
 		# Timeout check
 		if = {
-			limit = { current_year > 1450 }
+			limit = { current_year > 1550 }
 			trigger_event_non_silently= ilkhanate_flavor.99
 		}
 	}

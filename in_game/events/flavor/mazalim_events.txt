@@ -23,11 +23,15 @@ mazalim_events.1 = {
 		# High Corruption Context
 		"estate_power(estate_type:diwan_estate)" > 0.4
 		
-		# The Trigger: The State fails to find resources. 
+		# The Trigger: The State fails to find resources.
 		OR = {
 			manpower_percentage < 0.25
 			monthly_income_total < 0
-			gold < 50
+			# Less than three months' income in the vault.
+			gold < {
+				value = monthly_income_total
+				multiply = 3
+			}
 		}
 		
 		NOT = { has_variable = rast_ravshan_conspiracy }

@@ -1494,6 +1494,33 @@ JUR = { #Jurmanids
 		religious_school = zaidi_school
 		capital = astara
 	}
+
+	ABL = { #Ardabil — the Safaviyya as a tariqa order (building-country).
+		# Landless network with its seat at the shrine of Safi al-Din:
+		# the Peruzzi-in-Florence pattern (capital in a city it does not
+		# own). type = building unlocks the tariqa_order reform; the
+		# order plants tariqa_khanaqah lodges abroad (kontor chassis).
+		# Religion stays base (Sunni) — the Shia flip is the ARC, not
+		# the start (confessional-ambiguity principle).
+		type = building
+		own_control_core = { }
+
+		starting_technology_level = 3
+		include = "expl_middle_east"
+		government = {
+			type = persianate_sultanate
+			heir_selection = cognatic_primogeniture
+			reforms = { tariqa_order }
+			laws = {
+				marriage_law = muslim_marriage
+				heir_religion_law = heir_same_religion
+			}
+		}
+		country_rank = rank_county
+		court_language = persian_language
+		religious_school = safavid_school
+		capital = ardabil
+	}
 	}
 }
 

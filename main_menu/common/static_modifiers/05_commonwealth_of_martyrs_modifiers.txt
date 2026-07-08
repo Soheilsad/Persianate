@@ -145,6 +145,26 @@ martyrs_nishapur_chancery = {
 	monthly_towards_centralization = 0.05
 }
 
+# Each preacher dispatch drains the sending wing — stacks per use
+# (dispatch_dervish_preacher, 25 years each).
+preachers_dispatched_mod = {
+	game_data = {
+		category = country
+	}
+	global_shaykhi_dervishes_estate_power = -0.05
+}
+
+# The last purge (martyrs.4.b): the vow renewed in blood — a hollow
+# wing propped up by terror for a decade.
+shaykhi_last_purge_mod = {
+	game_data = {
+		category = country
+	}
+	global_shaykhi_dervishes_estate_power = 0.15
+	monthly_devotion = 0.05
+	stability_cost = 0.10
+}
+
 shaykhi_dervishes_estate_tax_impact = {
 	game_data = {
 		category = country

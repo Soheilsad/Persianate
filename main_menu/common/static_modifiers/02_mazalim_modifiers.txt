@@ -20,7 +20,7 @@ shepherds_reward_mod = {
 	
 	local_monthly_development_modifier = 0.1
 	# local_goods_output_modifier = 0.25 # Prosperous
-	local_monthly_prosperity = 0.1
+	local_monthly_prosperity = 0.003
 }
 
 hunting_trip = {

@@ -43,7 +43,9 @@ sufyani_notables_estate = {
 		tax_income_efficiency = 0.15
 		global_max_control = 0.15
 		change_policy_cost_modifier = -0.10
-
+		a_dervish_corps_build_cost_modifier = -0.5 ### they pay way less.
+		a_dervish_corps_maintenance_cost_modifier = -0.5 ### they pay way less.
+		a_dervish_corps_reinforce_cost_modifier = -0.5 ### they pay way less.
 		# The conservative wing dampens millenarian fervor — when they
 		# dominate, the polity drifts toward conventional sultanate norms.
 		monthly_devotion = -0.05

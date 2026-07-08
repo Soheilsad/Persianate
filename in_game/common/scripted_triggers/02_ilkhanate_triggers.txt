@@ -27,6 +27,9 @@ is_iranshahr_province = {
 
 is_eranzamin_contender = {
 	is_subject = no
+	# Tariqa orders (building-countries) are not contenders — they deny
+	# the throne question entirely; no flavor.1, no warlord modifier.
+	NOT = { country_type = building }
 	capital = {
 		province = { is_eranzamin_region_province = yes }
 	}

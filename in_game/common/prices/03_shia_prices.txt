@@ -1,0 +1,14 @@
+# Crushing a Sarbadar preacher cell: informers paid, dervishes hanged,
+# and the quarter remembers — gold plus a stability knock.
+remove_sarbadar_preachers = {
+	# Three months' income: informers, gallows, and hush money.
+	scaled_gold = 3
+	stability = 10
+}
+
+# Patronizing a tariqa order: the gold flows to the shrine-seat, the
+# baraka flows back (legitimacy in a legitimacy-starved age).
+# Six months' income — an endowment, not a tip.
+patronize_tariqa_order = {
+	scaled_gold = 6
+}

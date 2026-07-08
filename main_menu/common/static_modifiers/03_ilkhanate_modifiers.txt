@@ -41,7 +41,7 @@ consolidate_diwan_mod = {
 	# The diwan reaches in — taxation, registers, courts.
 	local_max_control = 0.1
 	local_raw_material_output = 0.10
-	local_unrest = -0.5
+	local_unrest = -0.2
 }
 
 grant_the_yurt_mod = {

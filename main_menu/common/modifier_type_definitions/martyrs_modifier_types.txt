@@ -206,3 +206,10 @@ a_dervish_corps_maintenance_cost_modifier={
 		category=country
 	}
 }
+
+a_dervish_corps_reinforce_cost_modifier = {
+	percent=yes
+	game_data={
+		category=country
+	}
+}

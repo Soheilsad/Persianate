@@ -73,7 +73,7 @@ safavid_order_integrated = {
 
 safaviyya_local_zeal = {
 	game_data = { category = location }
-	local_unrest = -5
+	local_unrest = -0.1
 	local_manpower_modifier = 0.15
 }
 

@@ -61,5 +61,6 @@ custody_sikka_everywhere = {
 }
 
 iqta_price = {
-	gold = 10
+	# ~0.6 months' income by the 50→3 mapping.
+	scaled_gold = 0.5
 }

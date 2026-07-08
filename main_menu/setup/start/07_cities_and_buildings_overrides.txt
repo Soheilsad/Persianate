@@ -123,6 +123,11 @@ building_manager = {
 	central_diwan = { tag = CHB level = 1 location = tabriz }
 	regional_diwan = { tag = JAL level = 1 location = baghdad }
 
+	### The Safaviyya's starting network — Safi al-Din (d. 1334) already
+	### had devotees at the Ilkhanid court and lodges through Azerbaijan.
+	tariqa_khanaqah = { tag = ABL level = 1 location = tabriz }
+	tariqa_khanaqah = { tag = ABL level = 1 location = ahar }
+
 	### the six shrines.
 	imam_shrine = { tag = JAL level = 1 location = karbala } # Karbala of the two holy shrines
 	imam_shrine = { tag = JAL level = 1 location = baghdad } # Al Kadhimiya, the shrine of the seventh and ninth imams.
@@ -192,4 +197,5 @@ building_manager = {
 	dervish_khanaqah = { tag = SRB level = 1 location = haresabad }
 	dervish_khanaqah = { tag = SRB level = 1 location = beyarjomand }
 	zurkhanah = { tag = SRB level = 1 location = sabzevar }
+	tariqa_khanaqah = { tag = ABL level = 1 location = ardabil }
 } 

@@ -87,7 +87,10 @@ matter_of_tazik.50 = {
 		name = matter_of_tazik.50.c
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.15 }
 		change_variable = { name = matter_progress add = -15 }
-		add_gold = -100
+		add_gold = {
+			value = monthly_income_total
+			multiply = -6
+		}
 		set_variable = co_opt_track
 	}
 }

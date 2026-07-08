@@ -88,7 +88,12 @@ ghazi_can_claim_ribat_network = {
 	legitimacy >= 60
 	NOT = { has_country_modifier = ghazi_ribat_network_refund }
 	NOT = { has_country_modifier = ghazi_the_lodges_endowed }
-	gold >= 100
+	# Must be able to afford the endowment (six months' income —
+	# matches the cost in ghazi_burden.65.a).
+	gold >= {
+		value = monthly_income_total
+		multiply = 6
+	}
 }
 
 # Caliphal Investiture (4.3) — mid threshold. Diplomatic reach

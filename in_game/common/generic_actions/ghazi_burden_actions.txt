@@ -189,7 +189,11 @@ launch_internal_campaign = {
 
 	effect = {
 		scope:actor = {
-			add_gold = -50
+			# Three months' income: proclamations, whippings, lawyers.
+			add_gold = {
+				value = monthly_income_total
+				multiply = -3
+			}
 			add_legitimacy = -3
 			trigger_event_non_silently = ghazi_burden.500
 		}
