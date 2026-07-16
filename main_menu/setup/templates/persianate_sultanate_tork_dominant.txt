@@ -21,7 +21,7 @@ government = {
 	capital_economy_vs_traditional_economy = 0
 	individualism_vs_communalism = 50
 	outward_vs_inward = -20
-
+	
 	parliament = {
 		parliament_type = diwan_council
 	}

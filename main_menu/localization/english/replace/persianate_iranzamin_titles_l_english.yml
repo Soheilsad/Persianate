@@ -19,7 +19,7 @@
  rank_kingdom_persianate_iranzamin_contender_ruler_male: "Regent"
  rank_kingdom_persianate_iranzamin_contender_ruler_female: "Regent"
  rank_kingdom_persianate_iranzamin_contender_ADJ: "Faction"
-
+ rank_tariqa_iranzamin: "Tariqa"
  # ----- Kingdom rank (post-succession — a Sulṭān has emerged) -----
  rank_kingdom_persianate_iranzamin: "Sultanate"
  rank_kingdom_persianate_iranzamin_ruler_male: "Sulṭān"

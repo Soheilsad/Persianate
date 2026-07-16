@@ -671,6 +671,13 @@
 			capital = { province = { is_eranzamin_region_province = yes } }
 		}
 	}
+	text = {
+		localization_key = rank_tariqa_iranzamin
+		trigger = {
+			has_reform = government_reform:tariqa_order
+			capital = { province = { is_eranzamin_region_province = yes } }
+		}
+	}
 
 	text = {
 		localization_key = rank_kingdom_revolutionary

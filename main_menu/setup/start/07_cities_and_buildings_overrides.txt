@@ -125,6 +125,7 @@ building_manager = {
 
 	### The Safaviyya's starting network — Safi al-Din (d. 1334) already
 	### had devotees at the Ilkhanid court and lodges through Azerbaijan.
+	grand_tariqa_khanaqah = { tag = ABL level = 1 location = ardabil }
 	tariqa_khanaqah = { tag = ABL level = 1 location = tabriz }
 	tariqa_khanaqah = { tag = ABL level = 1 location = ahar }
 
@@ -197,5 +198,39 @@ building_manager = {
 	dervish_khanaqah = { tag = SRB level = 1 location = haresabad }
 	dervish_khanaqah = { tag = SRB level = 1 location = beyarjomand }
 	zurkhanah = { tag = SRB level = 1 location = sabzevar }
-	tariqa_khanaqah = { tag = ABL level = 1 location = ardabil }
-} 
+
+	### The tariqa orders of 1337 (12_tariqa_orders.txt) — each gets a
+	### grand khanaqah at the shrine-seat and satellite lodges (the ABL
+	### pattern: one central house, some reach).
+
+	## KBW Kubrawiyya — Sufiabad-Semnan, reaching into Khurasan.
+	grand_tariqa_khanaqah = { tag = KBW level = 1 location = semnan }
+	tariqa_khanaqah = { tag = KBW level = 1 location = damghan }
+	tariqa_khanaqah = { tag = KBW level = 1 location = nishapur }
+
+	## KZR Kazaruniyya — Kazarun, and the Gulf-trade lodges.
+	grand_tariqa_khanaqah = { tag = KZR level = 1 location = kazerun }
+	tariqa_khanaqah = { tag = KZR level = 1 location = shiraz }
+	tariqa_khanaqah = { tag = KZR level = 1 location = siraf }
+
+	## QAD Qadiriyya — the Jilani shrine complex and the Jazira road.
+	grand_tariqa_khanaqah = { tag = QAD level = 1 location = baghdad }
+	tariqa_khanaqah = { tag = QAD level = 1 location = mosul }
+	tariqa_khanaqah = { tag = QAD level = 1 location = samarra }
+
+	## KWJ Khwajagan — Bukhara and the oasis towns.
+	grand_tariqa_khanaqah = { tag = KWJ level = 1 location = bukhara }
+	tariqa_khanaqah = { tag = KWJ level = 1 location = samarkand }
+	tariqa_khanaqah = { tag = KWJ level = 1 location = karmana }
+
+	## YSV Yasaviyya — the Yasi shrine-town and the Syr Darya line.
+	grand_tariqa_khanaqah = { tag = YSV level = 1 location = turkestan }
+	tariqa_khanaqah = { tag = YSV level = 1 location = otrar }
+	tariqa_khanaqah = { tag = YSV level = 1 location = sawran }
+
+	## RIF Rifaiyya — Umm Abida in the marshes, and lower Iraq.
+	grand_tariqa_khanaqah = { tag = RIF level = 1 location = wasit }
+	tariqa_khanaqah = { tag = RIF level = 1 location = basra }
+	tariqa_khanaqah = { tag = RIF level = 1 location = hillah }
+
+}

@@ -46,10 +46,7 @@ sarbadar_phenomenon = {
 
 	on_start = {
 		# Introduce the phenomenon to everyone who can see it.
-		every_country = {
-			limit = { can_see_situation = root }
-			trigger_event_non_silently = sarbadar_phenomenon.1
-		}
+
 	}
 
 	on_monthly = {

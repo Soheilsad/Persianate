@@ -26,7 +26,8 @@ sarbadar_preachers = {
 	town = yes
 	city = yes
 	megalopolis = yes
-
+	conversion_religion = shia
+	
 	build_time = generic_event_building
 
 	# Nobody builds the cell by hand — the network plants it.
@@ -52,10 +53,11 @@ sarbadar_preachers = {
 
 	modifier = {
 		# The quarter listens to the shaykh before the governor.
-		local_monthly_control = -0.05
+		local_monthly_control = -0.005
 		# And it simmers: the cell recruits for the rising to come.
-		local_unrest = 0.2
+		local_unrest = 0.5
 		local_pop_join_rebel_threshold = -0.05
+		building_missionary_effort_scaled = 0.01
 	}
 
 	construction_demand = estate_construct_building

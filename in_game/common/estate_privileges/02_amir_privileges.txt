@@ -184,7 +184,7 @@ amirs_tribal_autonomy_rights = {
 		# disproportionate share of the realm's manpower from these
 		# two estates relative to the country's actual size.
 		block_tribal_promotion = yes
-		tribes_estate_levy_size = 0.20
+		tribes_estate_levy_size = 0.1
 
 		# Drawbacks — purely steppe phenomenon. Tribesmen are not in
 		# cities, and the chancery's hold on the cities is unchanged.

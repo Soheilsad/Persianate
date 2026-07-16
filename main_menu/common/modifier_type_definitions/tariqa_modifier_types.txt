@@ -7,7 +7,7 @@ allows_tariqa_buildings={
 	}
 }
 
-allows_tariqa_warrior_lodges={
+allows_tariqa_tribal_devotions={
 	boolean=yes
 	game_data={
 		category=country

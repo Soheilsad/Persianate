@@ -105,6 +105,21 @@ eranzamin_succession = {
 			}
 			trigger_event_non_silently= ilkhanate_flavor.1
 		}
+
+		# The orders watch. Tariqa building-countries in the region are
+		# NOT contenders (excluded from is_eranzamin_contender) but get
+		# the legitimacy-question event with their own answer (option H)
+		# — otherwise the AI walks them into a reform they immediately
+		# lose.
+		every_country = {
+			limit = {
+				country_type = building
+				capital ?= {
+					province = { is_eranzamin_region_province = yes }
+				}
+			}
+			trigger_event_non_silently = ilkhanate_flavor.1
+		}
 	}
 
 	on_monthly = {

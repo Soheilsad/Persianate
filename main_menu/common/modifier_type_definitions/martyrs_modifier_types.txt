@@ -193,6 +193,7 @@ shaykhi_dervishes_estate_allowed_to_build_roads={
 
 
 a_dervish_corps_build_cost_modifier={
+	color=bad
 	percent=yes
 	game_data={
 		category=country
@@ -201,6 +202,7 @@ a_dervish_corps_build_cost_modifier={
 
 
 a_dervish_corps_maintenance_cost_modifier={
+	color=bad
 	percent=yes
 	game_data={
 		category=country
@@ -208,6 +210,7 @@ a_dervish_corps_maintenance_cost_modifier={
 }
 
 a_dervish_corps_reinforce_cost_modifier = {
+	color=bad
 	percent=yes
 	game_data={
 		category=country

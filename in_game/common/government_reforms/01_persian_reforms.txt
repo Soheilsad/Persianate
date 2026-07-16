@@ -25,6 +25,9 @@
 persianate_bureaucracy_reform = {
 	age = age_1_traditions
 	government = persianate_sultanate
+	potential = {
+		NOT = { has_reform = government_reform:tariqa_order }
+	}
 	locked = {
 		always = yes
 	}
@@ -98,6 +101,8 @@ ilkhanate_governorate = {
 		NOT = { has_reform = government_reform:amir_sultanate }
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		NOT = { has_variable = custody_dropped_khan }
+		NOT = { has_reform = government_reform:tariqa_order }
+
 		# You cannot defer and contend at once.
 		# NOT = { has_variable = eranzamin_contender }
 	}
@@ -137,13 +142,14 @@ chinggisid_regency = {
 		NOT = { has_reform = government_reform:timurid_synthesis }
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
+		NOT = { has_reform = government_reform:tariqa_order }
 
 	}
 	locked = {
 		always = yes
 	}
 	country_modifier = {
-		tribes_estate_levy_size = 0.35
+		tribes_estate_levy_size = 0.15 ## reducing tribesmen a BIT 
 		global_tribesmen_pop_growth = 0.2 # tribes rally
 		global_estate_target_satisfaction = 0.075 # doesn't rock the boat. for now.
 		stability_decay = -0.0001
@@ -185,7 +191,7 @@ farr_i_izadi = {
 		NOT = { has_reform = government_reform:amir_sultanate }
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
-
+		NOT = { has_reform = government_reform:tariqa_order }
 		# Re-declaration lock: a dynasty that has tried farr and failed
 		# cannot re-declare. The attempted_farr_and_failed modifier is
 		# applied by the Broken-lapse and Broken-formal resolutions of
@@ -253,6 +259,7 @@ ghazi_sultanate = {
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
+		NOT = { has_reform = government_reform:tariqa_order }
 	}
 	locked = {
 		NOT = { has_variable = ghazi_was_doctrine_lapsed }
@@ -326,6 +333,7 @@ amir_sultanate = {
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
+		NOT = { has_reform = government_reform:tariqa_order }
 	}
 
 	country_modifier = {
@@ -394,6 +402,7 @@ circle_of_equity_reform = {
 	# Chinggisid mandate — it is the settled state's own justification.
 	potential = {
 		NOT = { has_reform = government_reform:chinggisid_regency }
+		NOT = { has_reform = government_reform:tariqa_order }
 	
 	}
 
@@ -427,6 +436,7 @@ timurid_synthesis = {
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		NOT = { has_reform = government_reform:iranian_kingship }
+		NOT = { has_reform = government_reform:tariqa_order }
 
 	}
 
@@ -457,6 +467,7 @@ turkmen_confederation = {
 		NOT = { has_reform = government_reform:timurid_synthesis }
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:dar_al_jihad }
+		NOT = { has_reform = government_reform:tariqa_order }
 	}
 
 	country_modifier = {
@@ -494,6 +505,7 @@ iranian_kingship = {
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:turkmen_confederation }
+		NOT = { has_reform = government_reform:tariqa_order }
 		OR = {
 			has_variable = farr_proof_vindicated_permanent
 			has_variable = farr_was_endured
@@ -543,6 +555,7 @@ dar_al_jihad = {
 		NOT = { has_reform = government_reform:farr_i_izadi }
 		NOT = { has_reform = government_reform:turkmen_confederation }
 		NOT = { has_reform = government_reform:iranian_kingship }
+		NOT = { has_reform = government_reform:tariqa_order }
 		OR = {
 			has_variable = ghazi_sword_of_islam
 			has_variable = ghazi_guardian_of_thughur

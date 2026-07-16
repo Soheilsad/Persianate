@@ -1510,6 +1510,7 @@ JUR = { #Jurmanids
 		government = {
 			type = persianate_sultanate
 			heir_selection = cognatic_primogeniture
+			mysticism_vs_jurisprudence = -50 ## THIS IS AN ORDER OF MYSTICS FFS
 			reforms = { tariqa_order }
 			laws = {
 				marriage_law = muslim_marriage

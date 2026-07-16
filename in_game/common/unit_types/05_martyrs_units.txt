@@ -27,11 +27,11 @@ a_dervish_corps = {
 	}
 
 	# the martyr-ethos in the line of battle:
-	morale_damage_done = 0.15          # the dhikr and the drawn sword
+	morale_damage_done = 0.3          # the dhikr and the drawn sword
 	morale_damage_taken = -0.30        # heads already pledged to the gallows
-	strength_damage_taken = 0.10       # zeal is not armor; they die where they stand
+	strength_damage_taken = 0.15       # zeal is not armor; they die where they stand
 	initiative = 2                     # they go forward willingly
-	supply_weight = -0.15              # wool cloak, barley bread, communal property
+	supply_weight = -0.3              # wool cloak, barley bread, communal property
 
 	combat = {
 		# raised and drilled in the towns and irrigated districts:

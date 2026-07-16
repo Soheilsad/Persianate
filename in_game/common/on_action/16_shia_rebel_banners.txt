@@ -1,0 +1,72 @@
+# =====================================================================
+# THE BANNERS SEEK A PIR — the new-country hook for shia risings
+#
+# When a shia rebel country forms, a Known Murshid (Two Pirs midpoint)
+# or a fully militant order with a lodge in the rebels' region is
+# offered command (tariqa.3): accept and the rebels become the
+# order's banners — their land, their war, ready or not.
+#
+# THE FORK (design D.3, the program's final step, now built): when NO
+# murshid is in reach, the rising must name itself — the Sarbadar
+# precedent (a commonwealth in the Hidden Imam's name) or the
+# Musha'sha' precedent (a mahdi and his sultanate). tariqa.5 asks the
+# rebels the founding question: in whose name is the coin minted?
+#
+# Paradox merges on_actions across files: this extends the engine
+# hook, it does not override base behavior.
+# =====================================================================
+
+# root = newly formed country
+on_new_country_formed = {
+	effect = {
+		if = {
+			limit = {
+				is_rebel_country = yes
+				religion = religion:shia
+			}
+			save_scope_as = shia_rebels
+			if = {
+				limit = {
+					any_country = {
+						country_type = building
+						has_reform = government_reform:tariqa_order
+						NOT = { has_variable = tariqa_settled }
+						OR = {
+							has_variable = tariqa_known_murshid
+							is_militant_tariqa = yes
+						}
+						any_owned_foreign_building = {
+							location ?= {
+								region = root.capital.region
+							}
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						country_type = building
+						has_reform = government_reform:tariqa_order
+						NOT = { has_variable = tariqa_settled }
+						# Known Murshid (midpoint) or completed passage.
+						OR = {
+							has_variable = tariqa_known_murshid
+							is_militant_tariqa = yes
+						}
+						# The order must actually be present in the region
+						# where the banners rose.
+						any_owned_foreign_building = {
+							location ?= {
+								region = root.capital.region
+							}
+						}
+					}
+					trigger_event_non_silently = tariqa.3
+				}
+			}
+			else = {
+				# No pir to proclaim: the rising founds its own answer.
+				trigger_event_non_silently = tariqa.5
+			}
+		}
+	}
+}

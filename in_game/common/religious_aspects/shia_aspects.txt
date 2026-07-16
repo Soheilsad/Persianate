@@ -154,6 +154,14 @@ messianism = {
 		has_religious_aspect = religious_aspect:imamate_ithna_ashari
 		NOT = { has_religious_aspect = religious_aspect:intizar_quietism }
 		NOT = { has_religious_aspect = religious_aspect:niyaba_amma }
+		# An order (building-country) cannot claim the manifestation
+		# without a circulated sayyid nasab — spread_sayyid_genealogy
+		# (Two Pirs ladder) licenses the claim. States claim freely:
+		# their genealogists were already on the payroll.
+		OR = {
+			NOT = { country_type = building }
+			has_variable = sayyid_genealogy_established
+		}
 	}
 
 	modifier = {
@@ -167,6 +175,46 @@ messianism = {
 		messianism = -20
 		intizar_quietism = -15
 		niyaba_amma = -15
+		taqiyya = -10
+	}
+}
+
+# --------------------------------------------------------------------
+# AXIS 2b — THE ZAYDI ROAD (no occultation, so no occultation politics:
+# the activist counterpart slot for those who follow the risen Imam)
+# --------------------------------------------------------------------
+
+# Qiyam bi'l-Sayf — the rising by the sword. Zaydi doctrine makes the
+# imamate itself conditional on it: the Imam is whichever qualified
+# sayyid RISES against unjust rule; a claimant who sits at home
+# forfeits the title. Doctrinally incompatible with taqiyya — the
+# Zaydis' rejection of dissimulation is precisely what made them the
+# permanently-insurgent branch.
+qiyam_bil_sayf = {
+	icon = war_sermons
+	religion = shia
+
+	enabled = {
+		has_religious_aspect = religious_aspect:imamate_zaydi
+		NOT = { has_religious_aspect = religious_aspect:taqiyya }
+		# Same nasab gate as messianism: an order claims khuruj only
+		# with the genealogy in circulation — the imamate is sayyid
+		# property, and the Two Pirs ladder is where orders forge it.
+		OR = {
+			NOT = { country_type = building }
+			has_variable = sayyid_genealogy_established
+		}
+	}
+
+	modifier = {
+		global_manpower_modifier = 0.10
+		land_morale_modifier = 0.05
+		monthly_towards_mysticism = societal_value_monthly_move
+	}
+
+	opinions = {
+		qiyam_bil_sayf = 10
+		intizar_quietism = -15
 		taqiyya = -10
 	}
 }
@@ -227,12 +275,15 @@ akhbarism = {
 # --------------------------------------------------------------------
 
 # Prudent dissimulation — coexistence as doctrine, not cowardice.
+# The Zaydis reject it outright (qiyam_bil_sayf), which is why theirs
+# is the branch that never stopped rising.
 taqiyya = {
 	icon = pacifism
 	religion = shia
 
 	enabled = {
 		NOT = { has_religious_aspect = religious_aspect:tabarra }
+		NOT = { has_religious_aspect = religious_aspect:qiyam_bil_sayf }
 	}
 
 	modifier = {
@@ -242,6 +293,7 @@ taqiyya = {
 
 	opinions = {
 		taqiyya = 5
+		qiyam_bil_sayf = -10
 	}
 }
 

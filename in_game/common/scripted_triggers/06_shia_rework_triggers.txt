@@ -8,6 +8,21 @@
 # the shia religion).
 # =====================================================================
 
+# --- Tariqa radicalization states (Two Pirs disaster, D.2) ---
+# radical  = the passage has begun or finished (declaration onward)
+# militant = the passage is COMPLETE (militant tier, khuruj, banners)
+# No shortcuts: even a Zaydi-road order was a sunni order a day ago.
+is_radical_tariqa = { #country
+	OR = {
+		has_variable = tariqa_radicalizing
+		has_variable = tariqa_radicalized
+	}
+}
+
+is_militant_tariqa = { #country
+	has_variable = tariqa_radicalized
+}
+
 is_jurisprudence_school = { #religious_school
 	OR = {
 		this = religious_school:hanafi_school

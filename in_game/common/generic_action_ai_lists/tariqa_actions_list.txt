@@ -7,5 +7,13 @@ tariqa_actions_list = {
 	actions = {
 		dispatch_dervish_preacher
 		patronize_tariqa_order
+		send_forth_the_khalifas
+		plant_the_seed
+		proclaim_the_mystery
+		spread_sayyid_genealogy
+		claim_of_the_age
+		proclaim_khuruj
+		rise_against_patron
+		capture_the_court
 	}
 }

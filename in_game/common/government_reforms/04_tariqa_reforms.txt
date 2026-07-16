@@ -31,8 +31,9 @@ tariqa_order = {
 		allows_tariqa_buildings = yes
 		# The order's currency is reverence and reach, not tax.
 		improve_relation_impact = 0.10
-		monthly_towards_mysticism = 0.1
+		monthly_towards_mysticism = 0.2 ## THIS IS mysticism
 		diplomatic_reputation = 1
+		
 	}
 	years = 2
 }
@@ -48,7 +49,8 @@ tariqa_order = {
 # =====================================================================
 
 # The Türkmen road: khalifas among the pastoral confederations —
-# armed devotee circles, the seed of a Qizilbash.
+# devotion circles in the camps. Not yet armed: the swords come only
+# with radicalization (qizilbash_lodge, Two Pirs completion).
 tariqa_tribal_base = {
 	age = age_1_traditions
 	potential = {
@@ -58,7 +60,7 @@ tariqa_tribal_base = {
 		NOT = { has_reform = government_reform:tariqa_urban_base }
 	}
 	country_modifier = {
-		allows_tariqa_warrior_lodges = yes
+		allows_tariqa_tribal_devotions = yes
 		land_morale_modifier = 0.10
 		monthly_towards_mysticism = 0.1
 	}

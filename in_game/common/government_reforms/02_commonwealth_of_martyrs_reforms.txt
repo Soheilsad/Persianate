@@ -47,8 +47,9 @@ bashtin_proclamation_reform = {
 		# a three-district state. The notables field the urban militia.
 		shaykhi_dervishes_estate_levy_size = 0.75
 		sufyani_notables_estate_levy_size = 0.25
-		# a_dervish_corps_build_cost_modifier = -0.75 ### they pay way less.
-		# a_dervish_corps_maintenance_cost_modifier = -0.75 ### they pay way less.
+		a_dervish_corps_build_cost_modifier = -0.5 ### they pay way less.
+		a_dervish_corps_maintenance_cost_modifier = -0.5 ### they pay way less.
+		a_dervish_corps_reinforce_cost_modifier = -0.5 ### they pay way less.
 		# Devotional state
 		tolerance_own = 2
 		monthly_devotion = 0.05
