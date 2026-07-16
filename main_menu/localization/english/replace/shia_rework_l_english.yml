@@ -81,6 +81,12 @@
  RIF: "Rifaiyya"
  RIF_ADJ: "Rifai"
 
+ # --- Modifier types (boolean unlocks; MODIFIER_TYPE_NAME_ prefix) ---
+ MODIFIER_TYPE_NAME_allows_tariqa_buildings: "Can Plant Tariqa Lodges"
+ MODIFIER_TYPE_NAME_allows_tariqa_tribal_devotions: "Can Raise Tribal Devotion Circles"
+ MODIFIER_TYPE_NAME_allows_tariqa_rural_zawiyas: "Can Raise Rural Zāwiyas"
+ MODIFIER_TYPE_NAME_allows_tariqa_urban_waqfs: "Can Endow Urban Waqfs"
+
  # --- Tariqa orders (building-countries) ---
  tariqa_order: "Tariqa Order"
  tariqa_order_desc: "This polity is not a realm but an order: a shaykh's house, its shrine-seat, and a web of lodges planted in other princes' cities. Its khalīfas carry allegiance across every border; its wealth is reverence; its power is reach. Princes host its lodges gladly — for now."
@@ -136,6 +142,9 @@
  two_pirs_chapters_tt: "Twenty chapters of the order's base stand across the lands."
  two_pirs_area_share_tt: "At least 15% of the shrine-seat's wider area recites with us."
  two_pirs_aspects_tt: "The confession is claimed: the Twelve Imams and the Manifestation, or the Zaydi Imamate and Qiyām bi'l-Sayf."
+ TWO_PIRS_CHAPTERS_TRACK: "The Chapter Census"
+ TWO_PIRS_PROVINCE_TRACK: "The Shrine-Seat Province Recites"
+ TWO_PIRS_AREA_TRACK: "The Wider Area Recites"
  tariqa.1.title: "The Two Pirs"
  tariqa.1.desc: "The old pir is contested. In the shrine's inner court sits the establishment's man: learned, landed, beloved of the princes who endow us — and certain that an order which draws swords will lose everything three generations built. In the guest-house sits the claimant: young, burning, back from the outer lodges where the devotees already call him the Perfect Guide — and certain that an order which only takes rents has already died.\n\nThe lodges are waiting to hear whose name to recite. The princes who host our houses are waiting too — and their patience is part of the inheritance."
  tariqa.1.a: "The young men are right. Let the recitation change."

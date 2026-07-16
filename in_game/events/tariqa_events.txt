@@ -27,6 +27,11 @@ tariqa.1 = {
 	option = {
 		name = tariqa.1.a
 		set_variable = tariqa_radicalizing
+		# Panel trackers start at zero (two_pirs.gui reads these; the
+		# disaster's on_monthly maintains them).
+		set_variable = { name = two_pirs_chapters value = 0 }
+		set_variable = { name = two_pirs_province_share value = 0 }
+		set_variable = { name = two_pirs_area_share value = 0 }
 		change_religion = religion:shia
 		add_country_modifier = {
 			modifier = tariqa_militant_zeal

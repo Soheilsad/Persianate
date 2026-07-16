@@ -156,7 +156,58 @@ two_pirs = {
 		trigger_event_non_silently = tariqa.1
 	}
 
+	# Panel bookkeeping (gui/panels/disaster/two_pirs.gui): the GUI can
+	# only read VARIABLES, so the ladder's three quantities are mirrored
+	# into country variables each month while the passage runs.
 	on_monthly = {
+		if = {
+			limit = { has_variable = tariqa_radicalizing }
+			# The chapter census (bar: /20).
+			set_variable = { name = two_pirs_chapters value = 0 }
+			every_owned_foreign_building = {
+				limit = {
+					OR = {
+						building_type = building_type:tariqa_tribal_devotions
+						building_type = building_type:tariqa_rural_zawiya
+						building_type = building_type:tariqa_urban_waqf
+					}
+				}
+				root = {
+					change_variable = { name = two_pirs_chapters add = 1 }
+				}
+			}
+			# The recitation shares: province (midpoint, 50%) and the
+			# wider area (completion, 15%), staged via a scratch var on
+			# the map scope so the data function evaluates in place.
+			capital ?= {
+				province ?= {
+					set_variable = {
+						name = two_pirs_share_tmp
+						value = "religion_percentage(religion:shia)"
+					}
+					root = {
+						set_variable = {
+							name = two_pirs_province_share
+							value = prev.var:two_pirs_share_tmp
+						}
+					}
+					remove_variable = two_pirs_share_tmp
+				}
+				area ?= {
+					set_variable = {
+						name = two_pirs_share_tmp
+						value = "religion_percentage(religion:shia)"
+					}
+					root = {
+						set_variable = {
+							name = two_pirs_area_share
+							value = prev.var:two_pirs_share_tmp
+						}
+					}
+					remove_variable = two_pirs_share_tmp
+				}
+			}
+		}
 	}
 
 	on_end = {
