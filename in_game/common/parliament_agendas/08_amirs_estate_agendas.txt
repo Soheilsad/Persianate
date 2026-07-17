@@ -39,7 +39,9 @@ pa_amirs_case_caravan_theft = {
 		# two parts to the wronged merchants, one part to the crown.
 		# Inlined seizure (kept inline for tooltip preview).
 		"estate(estate_type:amirs_estate)" = { save_scope_as = seize_target }
-		set_variable = {
+		# LOCAL variable: scopes to this effect execution, not the
+		# country entity — no residue, no cross-effect collisions.
+		set_local_variable = {
 			name = seized_pool
 			value = {
 				value = scope:seize_target.estate_gold
@@ -49,16 +51,15 @@ pa_amirs_case_caravan_theft = {
 		add_gold_to_estate = {
 			estate_type = estate_type:amirs_estate
 			value = {
-				value = var:seized_pool
+				value = local_var:seized_pool
 				multiply = -1
 			}
 		}
 		add_gold_to_estate = {
 			estate_type = estate_type:burghers_estate
-			value = { value = var:seized_pool multiply = 0.6667 }
+			value = { value = local_var:seized_pool multiply = 0.6667 }
 		}
-		add_gold = { value = var:seized_pool multiply = 0.3333 }
-		remove_variable = seized_pool
+		add_gold = { value = local_var:seized_pool multiply = 0.3333 }
 
 		add_country_modifier = { modifier = amir_purge_trade_buff years = 10 }
 	}
@@ -83,7 +84,7 @@ pa_amirs_case_enslavement = {
 		# ways -- clergy, freed peasants, and the crown.
 		# Inlined seizure (kept inline for tooltip preview).
 		"estate(estate_type:amirs_estate)" = { save_scope_as = seize_target }
-		set_variable = {
+		set_local_variable = {
 			name = seized_pool
 			value = {
 				value = scope:seize_target.estate_gold
@@ -93,20 +94,19 @@ pa_amirs_case_enslavement = {
 		add_gold_to_estate = {
 			estate_type = estate_type:amirs_estate
 			value = {
-				value = var:seized_pool
+				value = local_var:seized_pool
 				multiply = -1
 			}
 		}
 		add_gold_to_estate = {
 			estate_type = estate_type:clergy_estate
-			value = { value = var:seized_pool multiply = 0.3333 }
+			value = { value = local_var:seized_pool multiply = 0.3333 }
 		}
 		add_gold_to_estate = {
 			estate_type = estate_type:peasants_estate
-			value = { value = var:seized_pool multiply = 0.3333 }
+			value = { value = local_var:seized_pool multiply = 0.3333 }
 		}
-		add_gold = { value = var:seized_pool multiply = 0.3334 }
-		remove_variable = seized_pool
+		add_gold = { value = local_var:seized_pool multiply = 0.3334 }
 
 		add_country_modifier = { modifier = amir_purge_tolerance_buff years = 10 }
 	}
@@ -131,7 +131,7 @@ pa_amirs_case_price_fixing = {
 		# to the merchants, one part to the crown.
 		# Inlined seizure (kept inline for tooltip preview).
 		"estate(estate_type:amirs_estate)" = { save_scope_as = seize_target }
-		set_variable = {
+		set_local_variable = {
 			name = seized_pool
 			value = {
 				value = scope:seize_target.estate_gold
@@ -141,16 +141,15 @@ pa_amirs_case_price_fixing = {
 		add_gold_to_estate = {
 			estate_type = estate_type:amirs_estate
 			value = {
-				value = var:seized_pool
+				value = local_var:seized_pool
 				multiply = -1
 			}
 		}
 		add_gold_to_estate = {
 			estate_type = estate_type:burghers_estate
-			value = { value = var:seized_pool multiply = 0.6667 }
+			value = { value = local_var:seized_pool multiply = 0.6667 }
 		}
-		add_gold = { value = var:seized_pool multiply = 0.3333 }
-		remove_variable = seized_pool
+		add_gold = { value = local_var:seized_pool multiply = 0.3333 }
 
 		add_country_modifier = { modifier = amir_purge_supply_hit years = 10 }
 	}

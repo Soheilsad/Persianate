@@ -17,7 +17,11 @@ pa_diwan_case_embezzlement = {
 		# Inlined seizure (kept inline so the tooltip can preview the amount — a
 		# scripted_effect call resolves only after the tooltip has rendered).
 		"estate(estate_type:diwan_estate)" = { save_scope_as = seize_target }
-		set_variable = {
+		# LOCAL variable: scopes to this effect execution, not the
+		# country entity — no residue, no cross-effect collisions.
+		# (diwan_waqf_shelter stays a durable country variable: it is
+		# set by the waqf-shelter mechanic and must persist.)
+		set_local_variable = {
 			name = seized_pool
 			value = {
 				value = scope:seize_target.estate_gold
@@ -26,7 +30,7 @@ pa_diwan_case_embezzlement = {
 		}
 		if = {
 			limit = { has_variable = diwan_waqf_shelter }
-			change_variable = {
+			change_local_variable = {
 				name = seized_pool
 				multiply = {
 					value = 1
@@ -37,12 +41,11 @@ pa_diwan_case_embezzlement = {
 		add_gold_to_estate = {
 			estate_type = estate_type:diwan_estate
 			value = {
-				value = var:seized_pool
+				value = local_var:seized_pool
 				multiply = -1
 			}
 		}
-		add_gold = { value = var:seized_pool }
-		remove_variable = seized_pool
+		add_gold = { value = local_var:seized_pool }
 
 		add_country_modifier = { modifier = diwan_purge_disruption years = 3 }
 		add_country_modifier = { modifier = diwan_reform_tax_efficiency years = 10 }
@@ -114,7 +117,7 @@ pa_diwan_case_inflated_costs = {
 		# Inlined seizure (kept inline so the tooltip can preview the amount — a
 		# scripted_effect call resolves only after the tooltip has rendered).
 		"estate(estate_type:diwan_estate)" = { save_scope_as = seize_target }
-		set_variable = {
+		set_local_variable = {
 			name = seized_pool
 			value = {
 				value = scope:seize_target.estate_gold
@@ -123,7 +126,7 @@ pa_diwan_case_inflated_costs = {
 		}
 		if = {
 			limit = { has_variable = diwan_waqf_shelter }
-			change_variable = {
+			change_local_variable = {
 				name = seized_pool
 				multiply = {
 					value = 1
@@ -134,12 +137,11 @@ pa_diwan_case_inflated_costs = {
 		add_gold_to_estate = {
 			estate_type = estate_type:diwan_estate
 			value = {
-				value = var:seized_pool
+				value = local_var:seized_pool
 				multiply = -1
 			}
 		}
-		add_gold = { value = var:seized_pool }
-		remove_variable = seized_pool
+		add_gold = { value = local_var:seized_pool }
 
 		add_country_modifier = { modifier = diwan_reform_build_cost years = 5 }
 	}
@@ -184,7 +186,7 @@ pa_diwan_case_fictional_positions = {
 		# Inlined seizure (kept inline so the tooltip can preview the amount — a
 		# scripted_effect call resolves only after the tooltip has rendered).
 		"estate(estate_type:diwan_estate)" = { save_scope_as = seize_target }
-		set_variable = {
+		set_local_variable = {
 			name = seized_pool
 			value = {
 				value = scope:seize_target.estate_gold
@@ -192,23 +194,28 @@ pa_diwan_case_fictional_positions = {
 			}
 		}
 
-		change_variable = {
-			name = seized_pool
-			multiply = {
-				value = 1
-				subtract = var:diwan_waqf_shelter
+		# Guard was missing here (the other two cases have it): with no
+		# waqf shelter established, var:diwan_waqf_shelter is undefined
+		# and the multiply block misbehaves.
+		if = {
+			limit = { has_variable = diwan_waqf_shelter }
+			change_local_variable = {
+				name = seized_pool
+				multiply = {
+					value = 1
+					subtract = var:diwan_waqf_shelter
+				}
 			}
 		}
-		
+
 		add_gold_to_estate = {
 			estate_type = estate_type:diwan_estate
 			value = {
-				value = var:seized_pool
+				value = local_var:seized_pool
 				multiply = -1
 			}
 		}
-		add_gold = { value = var:seized_pool }
-		remove_variable = seized_pool
+		add_gold = { value = local_var:seized_pool }
 
 		add_country_modifier = { modifier = diwan_reform_state_maintenance years = 5 }
 	}
