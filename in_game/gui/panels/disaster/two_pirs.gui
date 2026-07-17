@@ -74,6 +74,7 @@ disaster_panel = {
 						size = { 60 30 }
 						autoresize = yes
 						align = left|nobaseline
+						tooltip = "TWO_PIRS_CHAPTERS_TT"
 						text = "[DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('two_pirs_chapters').GetValue|V0]"
 					}
 
@@ -86,6 +87,7 @@ disaster_panel = {
 						using = progress_bar_red_alt
 						min = 0
 						max = 20
+						tooltip = "TWO_PIRS_CHAPTERS_TT"
 						value = "[FixedPointToFloat(DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('two_pirs_chapters').GetValue)]"
 						direction = horizontal
 					}
@@ -121,6 +123,7 @@ disaster_panel = {
 						size = { 60 30 }
 						autoresize = yes
 						align = left|nobaseline
+						tooltip = "TWO_PIRS_PROVINCE_TT"
 						text = "[DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('two_pirs_province_share').GetValue|%0]"
 					}
 
@@ -133,6 +136,7 @@ disaster_panel = {
 						using = progress_bar_red_alt
 						min = 0
 						max = 0.5
+						tooltip = "TWO_PIRS_PROVINCE_TT"
 						value = "[FixedPointToFloat(DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('two_pirs_province_share').GetValue)]"
 						direction = horizontal
 					}
@@ -168,6 +172,7 @@ disaster_panel = {
 						size = { 60 30 }
 						autoresize = yes
 						align = left|nobaseline
+						tooltip = "TWO_PIRS_AREA_TT"
 						text = "[DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('two_pirs_area_share').GetValue|%0]"
 					}
 
@@ -180,6 +185,7 @@ disaster_panel = {
 						using = progress_bar_red_alt
 						min = 0
 						max = 0.15
+						tooltip = "TWO_PIRS_AREA_TT"
 						value = "[FixedPointToFloat(DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('two_pirs_area_share').GetValue)]"
 						direction = horizontal
 					}

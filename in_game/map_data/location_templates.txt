@@ -755,7 +755,7 @@ nivelles = { topography = flatland vegetation = farmland climate = oceanic relig
 borgloon = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = low_franconian raw_material = millet }
 hasselt = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = low_franconian raw_material = livestock }
 bree = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = low_franconian raw_material = legumes }
-ghent = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = low_franconian raw_material = wool }
+ghent = { modifier = flanders_fine_cloth_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = low_franconian raw_material = wool }
 aalst = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = low_franconian raw_material = legumes }
 hulst = { topography = wetlands vegetation = farmland climate = oceanic religion = catholic culture = low_franconian raw_material = salt natural_harbor_suitability = 0.6 }
 kortriik = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = low_franconian raw_material = fiber_crops }
@@ -769,7 +769,7 @@ cassel = { topography = flatland vegetation = grasslands climate = oceanic relig
 dunkirk = { topography = flatland vegetation = farmland climate = oceanic religion = catholic culture = low_franconian raw_material = sand natural_harbor_suitability = 0.5 }
 ostend = { topography = flatland vegetation = farmland climate = oceanic religion = catholic culture = low_franconian raw_material = fish natural_harbor_suitability = 0.5 }
 veurne = { topography = flatland vegetation = farmland climate = oceanic religion = catholic culture = low_franconian raw_material = horses natural_harbor_suitability = 0.0 }
-ypres = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = low_franconian raw_material = clay }
+ypres = { modifier = flanders_fine_cloth_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = low_franconian raw_material = clay }
 emden = { topography = wetlands vegetation = grasslands climate = oceanic religion = catholic culture = frisian raw_material = salt natural_harbor_suitability = 0.75 }
 jever = { topography = wetlands vegetation = grasslands climate = oceanic religion = catholic culture = frisian raw_material = sand natural_harbor_suitability = 0.4 }
 aurich = { topography = wetlands vegetation = grasslands climate = oceanic religion = catholic culture = frisian raw_material = legumes }
@@ -1546,55 +1546,55 @@ portsmouth = { topography = flatland vegetation = woods climate = oceanic religi
 winchester = { topography = flatland vegetation = farmland climate = oceanic religion = catholic culture = english raw_material = fruit }
 lymington = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = english raw_material = salt natural_harbor_suitability = 0.25 }
 wight = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wild_game natural_harbor_suitability = 0.0 }
-basingstoke = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
+basingstoke = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
 dover = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = fish natural_harbor_suitability = 0.4 }
 canterbury = { topography = flatland vegetation = farmland climate = oceanic religion = catholic culture = english raw_material = salt natural_harbor_suitability = 0.0 }
 rochester = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = fruit natural_harbor_suitability = 0.6 }
 hythe = { topography = wetlands vegetation = woods climate = oceanic religion = catholic culture = english raw_material = livestock natural_harbor_suitability = 0.0 }
-tonbridge = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = english raw_material = wool }
+tonbridge = { modifier = england_wool_base topography = flatland vegetation = forest climate = oceanic religion = catholic culture = english raw_material = wool }
 shoreham = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = english raw_material = lumber natural_harbor_suitability = 0.25 }
 lewes = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = english raw_material = iron natural_harbor_suitability = 0.0 }
 hastings = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = english raw_material = iron natural_harbor_suitability = 0.0 }
 chichester = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = stone natural_harbor_suitability = 0.5 }
-dunstable = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
+dunstable = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
 bedford = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = legumes }
 oxford = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = medicaments }
-henley = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
-banbury = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
+henley = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
+banbury = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
 windsor = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = wild_game }
 reading = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wheat }
-abingdon = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
+abingdon = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
 buckingham = { topography = flatland vegetation = farmland climate = oceanic religion = catholic culture = english raw_material = wheat }
-aylesbury = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
+aylesbury = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
 wycombe = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wheat }
-leicester = { topography = flatland vegetation = farmland climate = oceanic religion = catholic culture = english raw_material = wheat }
+leicester = { modifier = yorkshire_cloth_base topography = flatland vegetation = farmland climate = oceanic religion = catholic culture = english raw_material = wheat }
 loughborough = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = livestock }
-bosworth = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = wool }
+bosworth = { modifier = england_wool_base topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = wool }
 rutland = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = wild_game }
 derby = { topography = flatland vegetation = farmland climate = oceanic religion = catholic culture = english raw_material = wheat }
 glossop = { topography = hills vegetation = woods climate = oceanic religion = catholic culture = english raw_material = lead }
 chesterfield = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = lead }
 nottingham = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = coal }
 newark = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = english raw_material = wild_game }
-retford = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = english raw_material = wool }
+retford = { modifier = england_wool_base topography = flatland vegetation = forest climate = oceanic religion = catholic culture = english raw_material = wool }
 lincoln = { topography = flatland vegetation = farmland climate = oceanic religion = catholic culture = english raw_material = wheat }
 boston = { topography = wetlands vegetation = sparse climate = oceanic religion = catholic culture = english raw_material = salt natural_harbor_suitability = 0.0 }
 grimsby = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = sand natural_harbor_suitability = 0.15 }
 grantham = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = livestock }
 louth = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = fish natural_harbor_suitability = 0.0 }
 spalding = { topography = wetlands vegetation = sparse climate = oceanic religion = catholic culture = english raw_material = clay natural_harbor_suitability = 0.0 }
-northampton = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
+northampton = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
 daventry = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wheat }
 kettering = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wild_game }
-coventry = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wheat }
-birmingham = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
+coventry = { modifier = yorkshire_cloth_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wheat }
+birmingham = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool }
 stratford = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = livestock }
 shrewsbury = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = english raw_material = wild_game }
 oswestry = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = livestock }
 ludlow = { topography = hills vegetation = woods climate = oceanic religion = catholic culture = english raw_material = lead }
 hereford = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = english raw_material = lumber }
 ewyas = { topography = hills vegetation = woods climate = oceanic religion = catholic culture = welsh raw_material = lumber }
-wigmore = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = wool }
+wigmore = { modifier = england_wool_base topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = wool }
 worcester = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = salt }
 kidderminster = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = lumber }
 stafford = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = beeswax }
@@ -1603,11 +1603,11 @@ tamworth = { topography = flatland vegetation = woods climate = oceanic religion
 lancaster = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = livestock natural_harbor_suitability = 0.25 }
 blackburn = { topography = hills vegetation = woods climate = oceanic religion = catholic culture = english raw_material = coal }
 liverpool = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = sand natural_harbor_suitability = 0.8 }
-preston = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool natural_harbor_suitability = 0.2 }
+preston = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = wool natural_harbor_suitability = 0.2 }
 manchester = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = coal }
 pennines_01 = { topography = hills_wasteland vegetation = sparse climate = continental }
 pennines_02 = { topography = hills_wasteland vegetation = sparse climate = continental }
-york = { topography = flatland vegetation = farmland climate = oceanic religion = catholic culture = northumbrian raw_material = wheat }
+york = { modifier = yorkshire_cloth_base topography = flatland vegetation = farmland climate = oceanic religion = catholic culture = northumbrian raw_material = wheat }
 scarborough = { topography = hills vegetation = sparse climate = oceanic religion = catholic culture = northumbrian raw_material = alum natural_harbor_suitability = 0.25 }
 bedale = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = horses }
 richmond = { topography = hills vegetation = sparse climate = oceanic religion = catholic culture = northumbrian raw_material = lead }
@@ -1616,11 +1616,11 @@ north_york_moors = { topography = hills_wasteland vegetation = sparse climate = 
 hull = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = fish natural_harbor_suitability = 0.4 }
 bridlington = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = fiber_crops natural_harbor_suitability = 0.2 }
 selby = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = horses }
-norton = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = wool }
-leeds = { topography = hills vegetation = woods climate = oceanic religion = catholic culture = english raw_material = iron }
-pontefract = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = wool }
-skipton = { topography = flatland vegetation = sparse climate = oceanic religion = catholic culture = northumbrian raw_material = wool }
-wakefield = { topography = flatland vegetation = sparse climate = oceanic religion = catholic culture = english raw_material = stone }
+norton = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = wool }
+leeds = { modifier = yorkshire_cloth_base topography = hills vegetation = woods climate = oceanic religion = catholic culture = english raw_material = iron }
+pontefract = { modifier = england_wool_base topography = flatland vegetation = woods climate = oceanic religion = catholic culture = english raw_material = wool }
+skipton = { modifier = england_wool_base topography = flatland vegetation = sparse climate = oceanic religion = catholic culture = northumbrian raw_material = wool }
+wakefield = { modifier = yorkshire_cloth_base topography = flatland vegetation = sparse climate = oceanic religion = catholic culture = english raw_material = stone }
 doncaster = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = english raw_material = iron }
 ripon = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = beeswax }
 pennines_04 = { topography = hills_wasteland vegetation = sparse climate = continental }
@@ -1628,17 +1628,17 @@ pennines_05 = { topography = hills_wasteland vegetation = sparse climate = conti
 pennines_06 = { topography = hills_wasteland vegetation = sparse climate = oceanic }
 newcastle = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = coal natural_harbor_suitability = 0.5 }
 hexham = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = northumbrian raw_material = coal }
-alnwick = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = wool natural_harbor_suitability = 0.0 }
-morpeth = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = wool natural_harbor_suitability = 0.0 }
+alnwick = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = wool natural_harbor_suitability = 0.0 }
+morpeth = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = wool natural_harbor_suitability = 0.0 }
 billingham = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = northumbrian raw_material = wild_game }
 carlisle = { topography = flatland vegetation = woods climate = oceanic religion = catholic culture = northumbrian raw_material = clay natural_harbor_suitability = 0.5 }
 cockermouth = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = northumbrian raw_material = lead natural_harbor_suitability = 0.0 }
 penrith = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = northumbrian raw_material = copper }
-egremont = { topography = flatland vegetation = forest climate = oceanic religion = catholic culture = northumbrian raw_material = wool natural_harbor_suitability = 0.0 }
+egremont = { modifier = england_wool_base topography = flatland vegetation = forest climate = oceanic religion = catholic culture = northumbrian raw_material = wool natural_harbor_suitability = 0.0 }
 derwent_water = { topography = lakes climate = oceanic }
 kendal = { topography = wetlands vegetation = woods climate = oceanic religion = catholic culture = northumbrian raw_material = iron natural_harbor_suitability = 0.0 }
 appleby = { topography = flatland vegetation = sparse climate = oceanic religion = catholic culture = northumbrian raw_material = clay }
-durham = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = wool natural_harbor_suitability = 0.0 }
+durham = { modifier = england_wool_base topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = wool natural_harbor_suitability = 0.0 }
 darlington = { topography = hills vegetation = sparse climate = oceanic religion = catholic culture = northumbrian raw_material = coal }
 stockton = { topography = flatland vegetation = grasslands climate = oceanic religion = catholic culture = northumbrian raw_material = wool natural_harbor_suitability = 0.3 }
 pennines_03 = { topography = hills_wasteland vegetation = sparse climate = continental }
@@ -2607,7 +2607,7 @@ vitoria = { topography = plateau vegetation = woods climate = oceanic religion =
 anana = { topography = plateau vegetation = grasslands climate = oceanic religion = catholic culture = basque raw_material = salt }
 laguardia = { topography = hills vegetation = woods climate = oceanic religion = catholic culture = basque raw_material = wine }
 salvatierra = { topography = plateau vegetation = woods climate = oceanic religion = catholic culture = basque raw_material = fiber_crops }
-bilbao = { topography = hills vegetation = woods climate = oceanic religion = catholic culture = basque raw_material = iron natural_harbor_suitability = 0.4 }
+bilbao = { modifier = bilbao_iron_base topography = hills vegetation = woods climate = oceanic religion = catholic culture = basque raw_material = iron natural_harbor_suitability = 0.4 }
 durango = { topography = hills vegetation = woods climate = oceanic religion = catholic culture = basque raw_material = millet }
 valmaseda = { topography = hills vegetation = woods climate = oceanic religion = catholic culture = basque raw_material = wool natural_harbor_suitability = 0.0 }
 san_sebastian = { topography = hills vegetation = woods climate = oceanic religion = catholic culture = basque raw_material = fish natural_harbor_suitability = 0.75 }
@@ -2815,7 +2815,7 @@ chinchon = { topography = plateau vegetation = grasslands climate = cold_arid re
 consuegra = { topography = plateau vegetation = grasslands climate = cold_arid religion = catholic culture = castilian raw_material = livestock }
 tomelloso = { topography = plateau vegetation = grasslands climate = cold_arid religion = catholic culture = castilian raw_material = wine }
 ucles = { topography = plateau vegetation = farmland climate = cold_arid religion = catholic culture = castilian raw_material = livestock }
-toledo = { topography = plateau vegetation = grasslands climate = cold_arid religion = catholic culture = castilian raw_material = iron }
+toledo = { modifier = toledo_weaponry_base topography = plateau vegetation = grasslands climate = cold_arid religion = catholic culture = castilian raw_material = iron }
 guadalupe = { topography = hills vegetation = woods climate = mediterranean religion = catholic culture = castilian raw_material = livestock }
 illescas = { topography = flatland vegetation = sparse climate = cold_arid religion = catholic culture = castilian raw_material = wheat }
 los_yebenes = { topography = hills vegetation = grasslands climate = cold_arid religion = catholic culture = castilian raw_material = fur }
@@ -3098,7 +3098,7 @@ clusone = { topography = mountains vegetation = forest climate = continental rel
 zogno = { topography = mountains vegetation = forest climate = continental religion = catholic culture = lombard raw_material = lead }
 lake_iseo = { topography = lakes climate = subtropical }
 rhaetian_alps6 = { topography = mountain_wasteland vegetation = sparse climate = arctic }
-brescia = { topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = lombard raw_material = marble }
+brescia = { modifier = milan_weaponry_base topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = lombard raw_material = marble }
 asola = { topography = flatland vegetation = grasslands climate = subtropical religion = catholic culture = lombard raw_material = beeswax }
 palazzolo = { topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = lombard raw_material = fruit }
 salo_ita = { topography = hills vegetation = forest climate = subtropical religion = catholic culture = lombard raw_material = wine }
@@ -3112,7 +3112,7 @@ lodi = { topography = wetlands vegetation = farmland climate = subtropical relig
 mantova = { topography = wetlands vegetation = grasslands climate = subtropical religion = catholic culture = emilian raw_material = wheat }
 goito = { topography = flatland vegetation = grasslands climate = subtropical religion = catholic culture = lombard raw_material = livestock }
 ostiglia = { topography = wetlands vegetation = grasslands climate = subtropical religion = catholic culture = emilian raw_material = clay }
-milano = { topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = lombard raw_material = wheat }
+milano = { modifier = milan_weaponry_base topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = lombard raw_material = wheat }
 legnano = { topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = lombard raw_material = wheat }
 rho = { topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = lombard raw_material = livestock }
 varese = { topography = hills vegetation = forest climate = oceanic religion = catholic culture = lombard raw_material = fruit }
@@ -3237,7 +3237,7 @@ terranovasic = { topography = flatland vegetation = sparse climate = mediterrane
 arezzo = { topography = flatland vegetation = woods climate = subtropical religion = catholic culture = tuscan raw_material = wine }
 cortona = { topography = hills vegetation = woods climate = subtropical religion = catholic culture = tuscan raw_material = wine }
 sansepolcro = { topography = hills vegetation = woods climate = oceanic religion = catholic culture = tuscan raw_material = stone }
-florence = { topography = flatland vegetation = farmland climate = mediterranean religion = catholic culture = tuscan raw_material = silk }
+florence = { modifier = tuscany_fine_cloth_base topography = flatland vegetation = farmland climate = mediterranean religion = catholic culture = tuscan raw_material = silk }
 mangona = { topography = hills vegetation = forest climate = oceanic religion = catholic culture = tuscan raw_material = wool }
 poggibonsi = { topography = flatland vegetation = farmland climate = mediterranean religion = catholic culture = tuscan raw_material = wine }
 prato = { topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = tuscan raw_material = marble }
@@ -3247,7 +3247,7 @@ grosseto = { topography = wetlands vegetation = grasslands climate = mediterrane
 massamar = { topography = hills vegetation = forest climate = oceanic religion = catholic culture = tuscan raw_material = tin }
 pitigliano = { topography = hills vegetation = grasslands climate = cold_arid religion = catholic culture = median raw_material = horses natural_harbor_suitability = 0.25 }
 piombino = { topography = flatland vegetation = farmland climate = mediterranean religion = catholic culture = tuscan raw_material = lead natural_harbor_suitability = 0.25 }
-lucca = { topography = hills vegetation = farmland climate = oceanic religion = catholic culture = tuscan raw_material = cotton natural_harbor_suitability = 0.0 }
+lucca = { modifier = tuscany_fine_cloth_base topography = hills vegetation = farmland climate = oceanic religion = catholic culture = tuscan raw_material = cotton natural_harbor_suitability = 0.0 }
 massa = { topography = mountains vegetation = forest climate = oceanic religion = catholic culture = tuscan raw_material = wine natural_harbor_suitability = 0.0 }
 fosdinovo = { topography = mountains vegetation = forest climate = oceanic religion = catholic culture = emilian raw_material = marble natural_harbor_suitability = 0.0 }
 pescia = { topography = flatland vegetation = farmland climate = mediterranean religion = catholic culture = tuscan raw_material = cotton }
@@ -3276,7 +3276,7 @@ udine = { topography = flatland vegetation = grasslands climate = subtropical re
 padova = { topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = venetian raw_material = medicaments }
 este = { topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = venetian raw_material = wheat }
 monselice = { topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = venetian raw_material = livestock }
-venice = { topography = wetlands vegetation = grasslands climate = subtropical religion = catholic culture = venetian raw_material = fish natural_harbor_suitability = 1.0 }
+venice = { modifier = venice_glass_base topography = wetlands vegetation = grasslands climate = subtropical religion = catholic culture = venetian raw_material = fish natural_harbor_suitability = 1.0 }
 mestre = { topography = wetlands vegetation = grasslands climate = subtropical religion = catholic culture = venetian raw_material = fish natural_harbor_suitability = 0.75 }
 treviso = { topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = venetian raw_material = wheat }
 castelfranco = { topography = flatland vegetation = farmland climate = subtropical religion = catholic culture = venetian raw_material = clay }
@@ -6257,7 +6257,7 @@ samangan = { topography = mountains vegetation = seasonal_irrigated climate = co
 zadian = { topography = flatland vegetation = seasonal_irrigated climate = arid religion = sunni culture = tajik_culture raw_material = fruit }
 bamyan = { topography = mountains vegetation = sparse climate = cold_arid religion = sunni culture = hazara_culture raw_material = iron }
 andarab = { topography = mountains vegetation = sparse climate = cold_arid religion = sunni culture = tajik_culture raw_material = wheat }
-bagram = { topography = mountains vegetation = qanat_farmland climate = cold_arid religion = sunni culture = tajik_culture raw_material = silver }
+bagram = { modifier = panjshir_valley_silver_mines_base topography = mountains vegetation = qanat_farmland climate = cold_arid religion = sunni culture = tajik_culture raw_material = silver }
 charikar = { topography = mountains vegetation = qanat_farmland climate = cold_arid religion = sunni culture = tajik_culture raw_material = tin }
 istalif = { topography = plateau vegetation = qanat_farmland climate = cold_arid religion = sunni culture = tajik_culture raw_material = wheat }
 kahmard = { topography = mountains vegetation = sparse climate = cold_arid religion = sunni culture = hazara_culture raw_material = stone }
@@ -6483,7 +6483,7 @@ farhadgerd = { topography = plateau vegetation = sparse climate = cold_arid reli
 mazdaran = { topography = mountains vegetation = sparse climate = cold_arid religion = shia culture = khorasani_culture raw_material = copper }
 radkan = { topography = plateau vegetation = sparse climate = cold_arid religion = shia culture = khorasani_culture raw_material = wheat }
 tus = { topography = mountains vegetation = seasonal_irrigated climate = cold_arid religion = shia culture = khorasani_culture raw_material = cotton }
-nishapur = { topography = plateau vegetation = qanat_farmland climate = cold_arid religion = shia culture = khorasani_culture raw_material = gems }
+nishapur = { modifier = nishapur_gems_mines_base topography = plateau vegetation = qanat_farmland climate = cold_arid religion = shia culture = khorasani_culture raw_material = gems }
 fadisheh = { topography = plateau vegetation = qanat_farmland climate = cold_arid religion = shia culture = khorasani_culture raw_material = wheat }
 kadkan = { topography = mountains vegetation = sparse climate = cold_arid religion = shia culture = khorasani_culture raw_material = wool }
 pivehzhan = { topography = mountains vegetation = sparse climate = cold_arid religion = shia culture = khorasani_culture raw_material = fiber_crops }
@@ -7146,7 +7146,7 @@ deir_qamar = { topography = hills vegetation = forest climate = mediterranean re
 sidon = { topography = hills vegetation = woods climate = mediterranean religion = sunni culture = levantine_culture raw_material = cotton natural_harbor_suitability = 0.25 }
 tripoli_syria = { topography = hills vegetation = forest climate = mediterranean religion = miaphysite culture = syriac_culture raw_material = fish natural_harbor_suitability = 0.25 }
 lebanon_mountains = { topography = mountain_wasteland vegetation = forest climate = continental }
-damascus = { topography = hills vegetation = farmland climate = mediterranean religion = sunni culture = levantine_culture raw_material = olives }
+damascus = { modifier = damascus_base topography = hills vegetation = farmland climate = mediterranean religion = sunni culture = levantine_culture raw_material = olives }
 burraq = { topography = flatland vegetation = sparse climate = cold_arid religion = sunni culture = levantine_culture raw_material = fruit }
 jayrud = { topography = plateau vegetation = desert climate = cold_arid religion = sunni culture = levantine_culture raw_material = beeswax }
 nabek = { topography = hills vegetation = sparse climate = cold_arid religion = miaphysite culture = syriac_culture raw_material = salt }
@@ -13617,21 +13617,21 @@ sutnga = { topography = plateau vegetation = jungle climate = subtropical religi
 bishnupur = { topography = flatland vegetation = jungle climate = subtropical religion = hindu culture = bengali raw_material = gems }
 bankura = { topography = flatland vegetation = jungle climate = subtropical religion = hindu culture = bengali raw_material = clay }
 barabhum = { topography = flatland vegetation = jungle climate = subtropical religion = hindu culture = bengali raw_material = medicaments }
-chandrakona = { topography = flatland vegetation = jungle climate = tropical religion = hindu culture = bengali raw_material = cotton }
-hijli = { topography = flatland vegetation = jungle climate = tropical religion = hindu culture = bengali raw_material = cotton }
+chandrakona = { modifier = bengal_cotton_base topography = flatland vegetation = jungle climate = tropical religion = hindu culture = bengali raw_material = cotton }
+hijli = { modifier = bengal_cotton_base topography = flatland vegetation = jungle climate = tropical religion = hindu culture = bengali raw_material = cotton }
 madaran = { topography = flatland vegetation = jungle climate = subtropical religion = hindu culture = bengali raw_material = silk }
 raipur_bengal = { topography = flatland vegetation = jungle climate = tropical religion = hindu culture = bengali raw_material = fruit }
 tamluk = { topography = wetlands vegetation = jungle climate = tropical religion = hindu culture = bengali raw_material = fish natural_harbor_suitability = 0.0 }
-bogra = { topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = cotton }
+bogra = { modifier = bengal_cotton_base topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = cotton }
 birampur = { topography = flatland vegetation = grasslands climate = subtropical religion = hindu culture = bengali raw_material = wheat }
 goraghat = { topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = silk }
 rangpur_bengal = { topography = wetlands vegetation = forest climate = subtropical religion = hindu culture = kamarupi raw_material = millet }
 shahjadpur = { topography = wetlands vegetation = grasslands climate = subtropical religion = hindu culture = bengali raw_material = sugar }
 devkot = { topography = flatland vegetation = grasslands climate = subtropical religion = hindu culture = bengali raw_material = sugar }
 barbakaabad = { topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = fruit }
-pandua_adina = { topography = flatland vegetation = grasslands climate = subtropical religion = hindu culture = bengali raw_material = cotton }
+pandua_adina = { modifier = bengal_cotton_base topography = flatland vegetation = grasslands climate = subtropical religion = hindu culture = bengali raw_material = cotton }
 siliguri = { topography = flatland vegetation = forest climate = subtropical religion = kirat_mundhum_religion culture = kirati_culture raw_material = lumber }
-tajpur = { topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = cotton }
+tajpur = { modifier = bengal_cotton_base topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = cotton }
 gaur = { topography = wetlands vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = wheat }
 godagari = { topography = flatland vegetation = forest climate = subtropical religion = hindu culture = bengali raw_material = elephants }
 naogaon = { topography = flatland vegetation = farmland climate = subtropical religion = hindu culture = bengali raw_material = dyes }
@@ -13655,7 +13655,7 @@ husaynabad = { topography = wetlands vegetation = jungle climate = tropical reli
 jaynagar = { topography = wetlands vegetation = jungle climate = tropical religion = hindu culture = bengali raw_material = fish natural_harbor_suitability = 0.0 }
 kulpi = { topography = wetlands vegetation = jungle climate = tropical religion = hindu culture = bengali raw_material = lumber natural_harbor_suitability = 0.0 }
 west_sundarban = { topography = wetlands vegetation = jungle climate = tropical religion = hindu culture = bengali raw_material = wild_game natural_harbor_suitability = 0.0 }
-mymensingh = { topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = cotton }
+mymensingh = { modifier = bengal_cotton_base topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = cotton }
 atiya = { topography = wetlands vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = rice }
 belabo = { topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = elephants }
 kapasia = { topography = flatland vegetation = grasslands climate = subtropical religion = hindu culture = bengali raw_material = wheat }
@@ -13665,17 +13665,17 @@ nadia = { topography = flatland vegetation = grasslands climate = subtropical re
 chandrabad = { topography = wetlands vegetation = forest climate = subtropical religion = hindu culture = bengali raw_material = rice }
 jessore = { topography = flatland vegetation = forest climate = subtropical religion = hindu culture = bengali raw_material = sugar }
 jhenaidah = { topography = wetlands vegetation = forest climate = subtropical religion = hindu culture = bengali raw_material = pepper }
-maheshpur = { topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = cotton }
+maheshpur = { modifier = bengal_cotton_base topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = cotton }
 pipli = { topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = dyes }
 sreepur = { topography = wetlands vegetation = farmland climate = subtropical religion = hindu culture = bengali raw_material = fiber_crops }
 pandua = { topography = flatland vegetation = grasslands climate = subtropical religion = hindu culture = bengali raw_material = rice }
 baragram = { topography = flatland vegetation = forest climate = subtropical religion = sarna_religion culture = santal_culture raw_material = dyes }
 bardhaman = { topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = coal }
-dubrajpur = { topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = cotton }
+dubrajpur = { modifier = bengal_cotton_base topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = cotton }
 ilambazar = { topography = flatland vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = sugar }
 satgaon = { topography = wetlands vegetation = farmland climate = subtropical religion = hindu culture = bengali raw_material = fruit natural_harbor_suitability = 0.0 }
 sonargaon = { topography = wetlands vegetation = farmland climate = subtropical religion = hindu culture = bengali raw_material = rice }
-bikrampur = { topography = wetlands vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = cotton }
+bikrampur = { modifier = bengal_cotton_base topography = wetlands vegetation = woods climate = subtropical religion = hindu culture = bengali raw_material = cotton }
 chandpur = { topography = wetlands vegetation = forest climate = tropical religion = hindu culture = bengali raw_material = wild_game natural_harbor_suitability = 0.0 }
 kobirhat = { topography = wetlands vegetation = jungle climate = tropical religion = hindu culture = bengali raw_material = fish natural_harbor_suitability = 0.0 }
 kumilla = { topography = wetlands vegetation = forest climate = tropical religion = hindu culture = bengali raw_material = lumber }
@@ -14116,17 +14116,17 @@ merta = { topography = flatland vegetation = sparse climate = arid religion = hi
 nagaur = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = marwari raw_material = lead }
 makrana = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = marwari raw_material = marble }
 kolayat = { topography = flatland vegetation = desert climate = arid religion = hindu culture = bagri raw_material = iron }
-dhrangadhra = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = cotton }
+dhrangadhra = { modifier = gujarat_cotton_base topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = cotton }
 limbdi = { topography = flatland vegetation = woods climate = arid religion = hindu culture = gujarati raw_material = saltpeter }
 ranpur = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = millet }
-sihor = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = cotton natural_harbor_suitability = 0.0 }
+sihor = { modifier = gujarat_cotton_base topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = cotton natural_harbor_suitability = 0.0 }
 palitana = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = sugar natural_harbor_suitability = 0.0 }
 lathi = { topography = flatland vegetation = woods climate = arid religion = hindu culture = gujarati raw_material = millet }
 nagnes = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = pearls natural_harbor_suitability = 0.0 }
 dwarka = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = fish natural_harbor_suitability = 0.0 }
 bhanvad = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = iron }
 gondal = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = millet }
-morvi = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = cotton }
+morvi = { modifier = gujarat_cotton_base topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = cotton }
 chhaya = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = millet natural_harbor_suitability = 0.0 }
 junagarh = { topography = flatland vegetation = woods climate = arid religion = hindu culture = gujarati raw_material = iron }
 somnath = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = fish natural_harbor_suitability = 0.0 }
@@ -14141,13 +14141,13 @@ little_rann_of_kutch = { topography = wetlands_wasteland vegetation = grasslands
 daman = { topography = flatland vegetation = grasslands climate = tropical religion = hindu culture = gujarati raw_material = fish natural_harbor_suitability = 0.0 }
 surat = { topography = wetlands vegetation = farmland climate = tropical religion = hindu culture = gujarati raw_material = sugar natural_harbor_suitability = 0.0 }
 rander = { topography = flatland vegetation = grasslands climate = tropical religion = hindu culture = gujarati raw_material = beeswax natural_harbor_suitability = 0.0 }
-broach = { topography = flatland vegetation = grasslands climate = arid religion = hindu culture = gujarati raw_material = cotton natural_harbor_suitability = 0.0 }
+broach = { modifier = gujarat_cotton_base topography = flatland vegetation = grasslands climate = arid religion = hindu culture = gujarati raw_material = cotton natural_harbor_suitability = 0.0 }
 baroda = { topography = flatland vegetation = grasslands climate = tropical religion = hindu culture = gujarati raw_material = rice natural_harbor_suitability = 0.0 }
 nandod = { topography = flatland vegetation = jungle climate = tropical religion = hindu culture = bhil raw_material = rice }
-danduka = { topography = wetlands vegetation = woods climate = arid religion = hindu culture = gujarati raw_material = cotton natural_harbor_suitability = 0.0 }
+danduka = { modifier = gujarat_cotton_base topography = wetlands vegetation = woods climate = arid religion = hindu culture = gujarati raw_material = cotton natural_harbor_suitability = 0.0 }
 dholka = { topography = flatland vegetation = grasslands climate = arid religion = hindu culture = gujarati raw_material = dyes }
 ashaval = { topography = flatland vegetation = grasslands climate = arid religion = hindu culture = gujarati raw_material = silk natural_harbor_suitability = 0.0 }
-khambat = { topography = flatland vegetation = grasslands climate = arid religion = hindu culture = gujarati raw_material = cotton natural_harbor_suitability = 0.0 }
+khambat = { modifier = gujarat_cotton_base topography = flatland vegetation = grasslands climate = arid religion = hindu culture = gujarati raw_material = cotton natural_harbor_suitability = 0.0 }
 modasa = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = millet }
 patan = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = dyes }
 deodar = { topography = flatland vegetation = sparse climate = arid religion = hindu culture = gujarati raw_material = millet }

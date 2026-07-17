@@ -114,9 +114,10 @@ tariqa.2 = {
 		10 = angry
 	}
 
-	option = {
-		name = tariqa.2.a
-		custom_tooltip = tariqa_militant_unlock_tt
+	# The sweep and the levy boost happen REGARDLESS — the options
+	# decide what the manifested order does with them, not whether
+	# the manifestation is real.
+	immediate = {
 		# Every chapter becomes a muster: 10x the men, sworn.
 		if = {
 			limit = { has_reform = government_reform:tariqa_tribal_base }
@@ -176,7 +177,85 @@ tariqa.2 = {
 				destroy_building = prev
 			}
 		}
+		# The manifested order raises men no mere network could.
+		add_country_modifier = {
+			modifier = tariqa_manifest_mod
+			years = -1
+		}
+	}
+
+	# ----- A: Consolidate — the rising will come on OUR terms -----
+	option = {
+		name = tariqa.2.a
+		custom_tooltip = tariqa_militant_unlock_tt
 		add_legitimacy = 10
+	}
+
+	# ----- B: The khuruj follows NOW — mobilize the provinces -----
+	# The impatient road: every militant lodge rises today. Half the
+	# war chest of a prepared khuruj (x12 vs x24) — manifestation is
+	# not the same thing as readiness.
+	option = {
+		name = tariqa.2.b
+		custom_tooltip = tariqa_rise_now_tt
+		set_variable = { name = khuruj_muster value = 0 }
+		every_owned_foreign_building = {
+			limit = {
+				OR = {
+					building_type = building_type:qizilbash_lodge
+					building_type = building_type:dervish_takiya
+					building_type = building_type:futuwwa_brotherhood
+				}
+			}
+			root = {
+				change_variable = { name = khuruj_muster add = 1 }
+			}
+			location ?= {
+				change_location_owner = root
+			}
+		}
+		change_country_type = location
+		if = {
+			limit = { has_reform = government_reform:tariqa_popular_base }
+			change_government_type = government_type:commonwealth_of_martyrs
+		}
+		else = {
+			change_government_type = government_type:persianate_sultanate
+		}
+		capital ?= {
+			while = {
+				limit = {
+					root = { var:khuruj_muster > 0 }
+				}
+				if = {
+					limit = {
+						root = { has_reform = government_reform:tariqa_tribal_base }
+					}
+					create_sub_unit_with_owner = {
+						type = a_age_1_traditions_light_cavalry
+						owner = root
+					}
+					create_sub_unit_with_owner = {
+						type = a_age_1_traditions_light_cavalry
+						owner = root
+					}
+				}
+				else = {
+					create_sub_unit_with_owner = {
+						type = a_age_1_traditions_heavy_infantry
+						owner = root
+					}
+				}
+				root = {
+					change_variable = { name = khuruj_muster subtract = 1 }
+				}
+			}
+		}
+		add_gold = {
+			value = monthly_income_total
+			multiply = 12
+		}
+		remove_variable = khuruj_muster
 	}
 }
 

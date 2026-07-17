@@ -177,34 +177,34 @@ two_pirs = {
 				}
 			}
 			# The recitation shares: province (midpoint, 50%) and the
-			# wider area (completion, 15%), staged via a scratch var on
-			# the map scope so the data function evaluates in place.
+			# wider area (completion, 15%). LOCAL variables: they scope
+			# to this effect execution, not the map entity — the data
+			# function still evaluates in place (province/area scope),
+			# but nothing is written to, or collides on, the map scope.
 			capital ?= {
 				province ?= {
-					set_variable = {
-						name = two_pirs_share_tmp
+					set_local_variable = {
+						name = tp_province_share
 						value = "religion_percentage(religion:shia)"
 					}
 					root = {
 						set_variable = {
 							name = two_pirs_province_share
-							value = prev.var:two_pirs_share_tmp
+							value = local_var:tp_province_share
 						}
 					}
-					remove_variable = two_pirs_share_tmp
 				}
 				area ?= {
-					set_variable = {
-						name = two_pirs_share_tmp
+					set_local_variable = {
+						name = tp_area_share
 						value = "religion_percentage(religion:shia)"
 					}
 					root = {
 						set_variable = {
 							name = two_pirs_area_share
-							value = prev.var:two_pirs_share_tmp
+							value = local_var:tp_area_share
 						}
 					}
-					remove_variable = two_pirs_share_tmp
 				}
 			}
 		}

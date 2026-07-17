@@ -40,3 +40,14 @@ tariqa_proofs_mod = {
 	monthly_legitimacy = 0.5
 	global_pop_conversion_speed_modifier = 0.25
 }
+
+# The Manifestation complete (tariqa.2, permanent): a confession with
+# a census raises men no mere network could — sworn devotees muster
+# where a prince would get grumbling tenants.
+tariqa_manifest_mod = {
+	game_data = {
+		category = country
+	}
+	global_levy_size_modifier = 0.25
+	land_morale_modifier = 0.05
+}

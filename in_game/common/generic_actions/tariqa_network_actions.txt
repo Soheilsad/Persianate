@@ -714,15 +714,24 @@ proclaim_the_mystery = {
 		}
 	}
 
+	# Candidate list built FROM the actor's own lodges (custody_demand_
+	# fealty pattern): has_building_with_at_least_one_level does not see
+	# the actor's foreign-owned buildings from a bare location visible,
+	# so a trigger-based select offered everyone's lodges but ours.
 	select_trigger = {
 		looking_for_a = location
+		interaction_source_list = {
+			scope:actor = {
+				every_owned_foreign_building = {
+					limit = { building_type = building_type:tariqa_khanaqah }
+					location ?= { add_to_list = source }
+				}
+			}
+		}
 		target_flag = target
 		name = "mystery_select_location"
 		none_available_msg_key = "mystery_no_locations"
 		column = { data = name }
-		visible = {
-			has_building_with_at_least_one_level = tariqa_khanaqah
-		}
 	}
 
 	effect = {

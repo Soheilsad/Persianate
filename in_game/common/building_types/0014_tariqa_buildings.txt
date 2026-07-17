@@ -40,12 +40,6 @@ tariqa_khanaqah = {
 		NOT = { is_radical_tariqa = yes }
 	}
 
-	allow = {
-		# The lodge needs a Muslim quarter to serve.
-		any_pop = {
-			religion.group = religion_group:muslim
-		}
-	}
 
 	modifier = {
 		# The lodge answers to the pir before the governor — quietly.
@@ -109,12 +103,6 @@ radical_khanaqah = {
 	country_potential = {
 		modifier:allows_tariqa_buildings = yes
 		is_radical_tariqa = yes
-	}
-
-	allow = {
-		any_pop = {
-			religion.group = religion_group:muslim
-		}
 	}
 
 	modifier = {
@@ -235,12 +223,6 @@ tariqa_tribal_devotions = {
 		modifier:allows_tariqa_tribal_devotions = yes
 	}
 
-	allow = {
-		any_pop = {
-			religion.group = religion_group:muslim
-		}
-	}
-
 	modifier = {
 		building_missionary_effort_scaled = 0.001
 		gold_to_building_owner = 0.5
@@ -280,12 +262,6 @@ tariqa_rural_zawiya = {
 
 	country_potential = {
 		modifier:allows_tariqa_rural_zawiyas = yes
-	}
-
-	allow = {
-		any_pop = {
-			religion.group = religion_group:muslim
-		}
 	}
 
 	modifier = {
@@ -346,12 +322,6 @@ tariqa_urban_waqf = {
 		modifier:allows_tariqa_urban_waqfs = yes
 	}
 
-	allow = {
-		any_pop = {
-			religion.group = religion_group:muslim
-		}
-	}
-
 	modifier = {
 		local_monthly_prosperity = 0.002
 		building_missionary_effort_scaled = 0.001
@@ -407,12 +377,6 @@ qizilbash_lodge = {
 		is_militant_tariqa = yes
 	}
 
-	allow = {
-		any_pop = {
-			religion.group = religion_group:muslim
-		}
-	}
-
 	modifier = {
 		# An armed movement wearing a lodge's clothes. Hosts know.
 		local_unrest = 0.2
@@ -456,12 +420,6 @@ dervish_takiya = {
 	country_potential = {
 		has_reform = government_reform:tariqa_popular_base
 		is_militant_tariqa = yes
-	}
-
-	allow = {
-		any_pop = {
-			religion.group = religion_group:muslim
-		}
 	}
 
 	# The Marʿashi tripwire carries over: a host that crushes a takiya
@@ -520,12 +478,6 @@ futuwwa_brotherhood = {
 	country_potential = {
 		has_reform = government_reform:tariqa_urban_base
 		is_militant_tariqa = yes
-	}
-
-	allow = {
-		any_pop = {
-			religion.group = religion_group:muslim
-		}
 	}
 
 	modifier = {
