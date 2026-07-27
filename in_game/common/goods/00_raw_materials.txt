@@ -4,7 +4,7 @@ horses = { #War Horses
 	category = raw_material
 	color = goods_horses
 	default_market_price = 3
-	transport_cost = 0.1
+	transport_cost = 0.5
 	### technically, if being transported
 	demand_add = {
 		nobles =  0.25
