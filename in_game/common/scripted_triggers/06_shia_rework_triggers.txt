@@ -8,6 +8,25 @@
 # the shia religion).
 # =====================================================================
 
+# --- Sarbadar cell rooting (02_sarbadar_phenomenon spread) ---
+# The contagion fix: every planting site must pass this. Without the
+# region gate the Pass-1 trickle CHAINED — each new cell is a carrier,
+# markets overlap, and the cells walked from Tabriz to the Black Sea
+# to Christian Europe. The dawa also needs a Muslim quarter to work.
+sarbadar_cell_can_take_root = { #location
+	is_city = yes
+	NOT = { has_building_with_at_least_one_level = sarbadar_preachers }
+	NOT = { owner ?= { government_type = government_type:commonwealth_of_martyrs } }
+	any_pop = {
+		religion.group = religion_group:muslim
+	}
+	OR = {
+		is_eranzamin_region_province = yes
+		sub_continent = sub_continent:middle_east
+		sub_continent = sub_continent:central_asia
+	}
+}
+
 # --- Tariqa radicalization states (Two Pirs disaster, D.2) ---
 # radical  = the passage has begun or finished (declaration onward)
 # militant = the passage is COMPLETE (militant tier, khuruj, banners)

@@ -313,6 +313,13 @@ ghazi_burden.100 = {
 
 	trigger = {
 		has_variable = ghazi_burden_fired
+		NOT = { has_variable = ghazi_omen_cd_preacher }
+	}
+
+	# 2-year per-omen cooldown: set here, checked in the trigger, so a
+	# pulse roll during the cooldown fires nothing and stays quiet.
+	immediate = {
+		set_variable = { name = ghazi_omen_cd_preacher value = 1 years = 2 }
 	}
 
 	# Patronize him — buy the next sermon's warmth
@@ -352,6 +359,11 @@ ghazi_burden.101 = {
 
 	trigger = {
 		has_variable = ghazi_burden_fired
+		NOT = { has_variable = ghazi_omen_cd_drift }
+	}
+
+	immediate = {
+		set_variable = { name = ghazi_omen_cd_drift value = 1 years = 2 }
 	}
 
 	# Send the qāḍīs to recall the volunteers
@@ -384,6 +396,11 @@ ghazi_burden.102 = {
 
 	trigger = {
 		has_variable = ghazi_burden_fired
+		NOT = { has_variable = ghazi_omen_cd_fatwa }
+	}
+
+	immediate = {
+		set_variable = { name = ghazi_omen_cd_fatwa value = 1 years = 2 }
 	}
 
 	# Pay the scholars — buy the dissent into silence
@@ -416,6 +433,11 @@ ghazi_burden.103 = {
 
 	trigger = {
 		has_variable = ghazi_burden_fired
+		NOT = { has_variable = ghazi_omen_cd_surge }
+	}
+
+	immediate = {
+		set_variable = { name = ghazi_omen_cd_surge value = 1 years = 2 }
 	}
 
 	# Answer the call — open the surge window
@@ -450,6 +472,11 @@ ghazi_burden.104 = {
 		has_variable = ghazi_burden_fired
 		has_country_modifier = ghazi_hisba_apparatus
 		legitimacy <= 35
+		NOT = { has_variable = ghazi_omen_cd_muhtasib }
+	}
+
+	immediate = {
+		set_variable = { name = ghazi_omen_cd_muhtasib value = 1 years = 2 }
 	}
 
 	# Submit to the audit — clergy up, ruler down
@@ -465,6 +492,161 @@ ghazi_burden.104 = {
 		name = ghazi_burden.104.b
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.10 }
 		add_legitimacy = -5
+	}
+}
+
+# ---105 THE RETURNED GHAZI ---------------------------------------
+# A famous volunteer comes home from the frontier covered in glory
+# and scars, trailing young men who repeat his stories. He expects
+# honors. The court that honors him borrows his credibility; the
+# court that snubs him teaches every zurkhana what ghaza is worth.
+ghazi_burden.105 = {
+	type = country_event
+	category = disaster_event
+	title = ghazi_burden.105.title
+	desc = ghazi_burden.105.desc
+	outcome = neutral
+
+	trigger = {
+		has_variable = ghazi_burden_fired
+		NOT = { has_variable = ghazi_omen_cd_hero }
+	}
+
+	immediate = {
+		set_variable = { name = ghazi_omen_cd_hero value = 1 years = 2 }
+	}
+
+	# Robe him, land him, seat him at the right hand
+	option = {
+		name = ghazi_burden.105.a
+		add_gold = {
+			value = monthly_income_total
+			multiply = -3
+		}
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = 0.05 }
+		add_legitimacy = 3
+	}
+
+	# A polite audience and nothing else — heroes are expensive
+	option = {
+		name = ghazi_burden.105.b
+		add_legitimacy = -4
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = -0.05 }
+	}
+}
+
+# ---106 THE NEGLECTED RIBAT --------------------------------------
+# Word from the frontier: a border lodge was overrun — its dervishes
+# dead or carried off — while the court feasted. Nobody says it was
+# the sultan's fault. Everybody knows whose burden the thughur is.
+ghazi_burden.106 = {
+	type = country_event
+	category = disaster_event
+	title = ghazi_burden.106.title
+	desc = ghazi_burden.106.desc
+	outcome = negative
+
+	trigger = {
+		has_variable = ghazi_burden_fired
+		NOT = { has_variable = ghazi_omen_cd_ribat }
+	}
+
+	immediate = {
+		set_variable = { name = ghazi_omen_cd_ribat value = 1 years = 2 }
+	}
+
+	# Rebuild it twice as strong, endow it in your own name
+	option = {
+		name = ghazi_burden.106.a
+		add_gold = {
+			value = monthly_income_total
+			multiply = -6
+		}
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 }
+		add_legitimacy = 2
+	}
+
+	# Mourn publicly, rebuild nothing — the frontier is far away
+	option = {
+		name = ghazi_burden.106.b
+		add_legitimacy = -6
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.05 }
+	}
+}
+
+# ---108 THE BANNERS FLOCK — fortune attests (positive) -----------
+# A frontier shaykh of weight has named THIS court the true seat of
+# ghaza, and the volunteers are arriving to prove him right. The
+# drift event's mirror: the zero-sum credibility flows IN for once.
+ghazi_burden.108 = {
+	type = country_event
+	category = disaster_event
+	title = ghazi_burden.108.title
+	desc = ghazi_burden.108.desc
+	outcome = positive
+
+	trigger = {
+		has_variable = ghazi_burden_fired
+		NOT = { has_variable = ghazi_omen_cd_flock }
+	}
+
+	immediate = {
+		set_variable = { name = ghazi_omen_cd_flock value = 1 years = 2 }
+	}
+
+	# Feast them, enroll them, pay their upkeep
+	option = {
+		name = ghazi_burden.108.a
+		add_gold = {
+			value = monthly_income_total
+			multiply = -1.5
+		}
+		add_legitimacy = 4
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = 0.05 }
+	}
+
+	# Bless them and point them at the frontier — cheap grace
+	option = {
+		name = ghazi_burden.108.b
+		add_legitimacy = 1
+	}
+}
+
+# ---109 THE CAPTIVES RETURN — the ransom comes home (positive) ---
+# The qadis' collection, the merchants' sureties, and a hard border
+# negotiation have brought Muslim captives home. Whoever pays the
+# balance owns the story.
+ghazi_burden.109 = {
+	type = country_event
+	category = disaster_event
+	title = ghazi_burden.109.title
+	desc = ghazi_burden.109.desc
+	outcome = positive
+
+	trigger = {
+		has_variable = ghazi_burden_fired
+		NOT = { has_variable = ghazi_omen_cd_captives }
+	}
+
+	immediate = {
+		set_variable = { name = ghazi_omen_cd_captives value = 1 years = 2 }
+	}
+
+	# Pay the balance from the treasury — the sultan's ransom
+	option = {
+		name = ghazi_burden.109.a
+		add_gold = {
+			value = monthly_income_total
+			multiply = -3
+		}
+		add_legitimacy = 5
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 }
+	}
+
+	# Let the families and the qadis carry it — piety at cost price
+	option = {
+		name = ghazi_burden.109.b
+		add_legitimacy = 1
 	}
 }
 
@@ -487,6 +669,13 @@ ghazi_burden.150 = {
 	trigger = {
 		has_variable = ghazi_burden_fired
 		NOT = { has_variable = ghazi_fatwa_acquired }
+		NOT = { has_variable = ghazi_omen_cd_yasa }
+	}
+
+	# The offer renews every two years while unclaimed, instead of
+	# pestering on every roll.
+	immediate = {
+		set_variable = { name = ghazi_omen_cd_yasa value = 1 years = 2 }
 	}
 
 	# Endorse the ruling — clergy cost, future tier-2 wars credit

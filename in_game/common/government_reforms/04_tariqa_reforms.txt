@@ -33,6 +33,7 @@ tariqa_order = {
 		improve_relation_impact = 0.10
 		monthly_towards_mysticism = 0.2 ## THIS IS mysticism
 		diplomatic_reputation = 1
+		global_levy_size_modifier = 0.5
 		
 	}
 	years = 2
@@ -63,6 +64,7 @@ tariqa_tribal_base = {
 		allows_tariqa_tribal_devotions = yes
 		land_morale_modifier = 0.10
 		monthly_towards_mysticism = 0.1
+		tribes_estate_levy_size = 0.5
 	}
 	years = 5
 }

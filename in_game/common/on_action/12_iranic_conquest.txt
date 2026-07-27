@@ -33,7 +33,7 @@ iranic_tribal_great_city_conquest = {
 	}
 	effect = {
 		scope:winner = {
-			trigger_event = { id = kurdish_emirate.1 }
+			trigger_event_non_silently = { id = kurdish_emirate.1 }
 		}
 	}
 }

@@ -67,6 +67,19 @@
  sarbadar_preachers_present_tt: "A Sarbadar preacher cell is active in this location."
  PRICE_remove_sarbadar_preachers: "Crush the Cell"
 
+ # --- Shaykh-lineage dynasties + name parts (05_characters_overrides) ---
+ mazdaqani_dynasty: "Mazdaqānī"
+ baliyani_dynasty: "Balyānī"
+ jilani_dynasty: "Jīlānī"
+ samasi_dynasty: "Sammāsī"
+ yasavi_ata_dynasty: "Ātāʾī"
+ rifai_dynasty: "Rifāʿī"
+ name_safi: "Ṣafī"
+ name_sadr: "Ṣadr"
+ name_muhyi: "Muḥyī"
+ name_izz: "ʿIzz"
+ name_ata: "Ātā"
+
  # --- The tariqa order tags (12_tariqa_orders.txt) ---
  KBW: "Kubrawiyya"
  KBW_ADJ: "Kubrawi"

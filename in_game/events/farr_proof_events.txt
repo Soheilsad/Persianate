@@ -256,6 +256,13 @@ farr_proof.100 = {
 
 	trigger = {
 		has_variable = farr_proof_fired
+		NOT = { has_variable = farr_omen_cd_comet }
+	}
+
+	# 2-year per-omen cooldown: set here, checked in the trigger, so a
+	# pulse roll during the cooldown fires nothing and stays quiet.
+	immediate = {
+		set_variable = { name = farr_omen_cd_comet value = 1 years = 2 }
 	}
 
 	# Publish the interpretation broadly — high-variance roll
@@ -287,6 +294,11 @@ farr_proof.101 = {
 
 	trigger = {
 		has_variable = farr_proof_fired
+		NOT = { has_variable = farr_omen_cd_quake }
+	}
+
+	immediate = {
+		set_variable = { name = farr_omen_cd_quake value = 1 years = 2 }
 	}
 
 	# Tour the ruins — generous relief, claim shows
@@ -323,6 +335,11 @@ farr_proof.102 = {
 
 	trigger = {
 		has_variable = farr_proof_fired
+		NOT = { has_variable = farr_omen_cd_plague }
+	}
+
+	immediate = {
+		set_variable = { name = farr_omen_cd_plague value = 1 years = 2 }
 	}
 
 	weight_multiplier = {
@@ -361,6 +378,191 @@ farr_proof.102 = {
 		name = farr_proof.102.c
 		add_legitimacy = -6
 		add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.08 }
+	}
+}
+
+# ---103 THE RAINS WITHHELD — drought as withdrawal of barakat -------
+farr_proof.103 = {
+	type = country_event
+	category = disaster_event
+	title = farr_proof.103.title
+	desc = farr_proof.103.desc
+	outcome = negative
+
+	trigger = {
+		has_variable = farr_proof_fired
+		NOT = { has_variable = farr_omen_cd_drought }
+		# The rains speak once a year, one way or the other: shared
+		# with the good-rains omen (farr_proof.106).
+		NOT = { has_variable = farr_rains_read_year }
+	}
+
+	immediate = {
+		set_variable = { name = farr_omen_cd_drought value = 1 years = 2 }
+		set_variable = { name = farr_rains_read_year value = 1 years = 1 }
+	}
+
+	# Remit the kharaj — the king carries the sky's debt himself
+	option = {
+		name = farr_proof.103.a
+		add_gold = {
+			value = monthly_income_total
+			multiply = -6
+		}
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = 0.05 }
+		random_list = {
+			70 = { add_legitimacy = 4 }
+			30 = { add_legitimacy = -2 }
+		}
+	}
+
+	# Blame the assessors — the dry year becomes a corruption case
+	option = {
+		name = farr_proof.103.b
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.08 }
+		random_list = {
+			45 = { add_legitimacy = 2 }
+			55 = { add_legitimacy = -4 }
+		}
+	}
+}
+
+# ---104 THE CONJUNCTION — the munajjims read a favorable qiran ------
+# The Saturn-Jupiter conjunction as royal fortune: the same science
+# that will one day mint sahib-qiran for Timur. A POSITIVE omen —
+# and publishing a claim on heaven makes heaven your creditor.
+farr_proof.104 = {
+	type = country_event
+	category = disaster_event
+	title = farr_proof.104.title
+	desc = farr_proof.104.desc
+	outcome = positive
+
+	trigger = {
+		has_variable = farr_proof_fired
+		NOT = { has_variable = farr_omen_cd_qiran }
+	}
+
+	immediate = {
+		set_variable = { name = farr_omen_cd_qiran value = 1 years = 2 }
+	}
+
+	# Proclaim it from the mint and the minbar — heaven in writing
+	option = {
+		name = farr_proof.104.a
+		add_legitimacy = 15
+	}
+
+	# Reward the astrologers, file the reading — quiet credit
+	option = {
+		name = farr_proof.104.b
+		add_gold = {
+			value = monthly_income_total
+			multiply = -1.5
+		}
+		add_legitimacy = 5
+	}
+}
+
+# ---106 THE GENEROUS RAINS — fortune attests ------------------------
+# The mirror-books cut both ways: when the king is just, the rains
+# fall. Shares a one-year variable with the drought (.103): the same
+# year cannot hold both readings.
+farr_proof.106 = {
+	type = country_event
+	category = disaster_event
+	title = farr_proof.106.title
+	desc = farr_proof.106.desc
+	outcome = positive
+
+	trigger = {
+		has_variable = farr_proof_fired
+		NOT = { has_variable = farr_omen_cd_good_rains }
+		NOT = { has_variable = farr_rains_read_year }
+	}
+
+	immediate = {
+		set_variable = { name = farr_omen_cd_good_rains value = 1 years = 2 }
+		set_variable = { name = farr_rains_read_year value = 1 years = 1 }
+	}
+
+	# Let the khutba say what the qanats already say
+	option = {
+		name = farr_proof.106.a
+		add_legitimacy = 4
+	}
+
+	# Tax the surplus quietly — heaven's gift, the treasury's year
+	option = {
+		name = farr_proof.106.b
+		add_gold = {
+			value = monthly_income_total
+			multiply = 3
+		}
+		add_legitimacy = 1
+	}
+}
+
+# ---107 THE HOMAY LANDS — once, ever --------------------------------
+# The bird of kingship, whose shadow makes kings and which never
+# lands. It has landed. There is no second reading of this, and no
+# second occurrence: fire_only_once.
+farr_proof.107 = {
+	type = country_event
+	category = disaster_event
+	title = farr_proof.107.title
+	desc = farr_proof.107.desc
+	outcome = positive
+	fire_only_once = yes
+
+	trigger = {
+		has_variable = farr_proof_fired
+	}
+
+	option = {
+		name = farr_proof.107.a
+		add_legitimacy = 50
+	}
+}
+
+# ---105 THE HUNT MARVEL — the king takes the lion -------------------
+# The royal hunt as fortune's audit: Bahram Gur's register. A king
+# who kills the lion before witnesses has been visibly chosen; a
+# king who stages it and is found out has been visibly desperate.
+farr_proof.105 = {
+	type = country_event
+	category = disaster_event
+	title = farr_proof.105.title
+	desc = farr_proof.105.desc
+	outcome = positive
+
+	trigger = {
+		has_variable = farr_proof_fired
+		NOT = { has_variable = farr_omen_cd_hunt }
+	}
+
+	immediate = {
+		set_variable = { name = farr_omen_cd_hunt value = 1 years = 2 }
+	}
+
+	# Parade the kill through the bazaars — fortune on a cart
+	option = {
+		name = farr_proof.105.a
+		random_list = {
+			65 = { add_legitimacy = 4 }
+			35 = { add_legitimacy = -3 }
+		}
+	}
+
+	# Feast the amirs on it — the old rite, kept in the right room
+	option = {
+		name = farr_proof.105.b
+		add_gold = {
+			value = monthly_income_total
+			multiply = -1.5
+		}
+		add_legitimacy = 2
+		add_prestige = 5
 	}
 }
 

@@ -66,13 +66,9 @@ dispatch_dervish_preacher = {
 		none_available_msg_key = "dispatch_preacher_no_cities"
 		column = { data = name }
 		visible = {
-			is_city = yes
-			NOT = { has_building_with_at_least_one_level = sarbadar_preachers }
+			# Same rooting gate as the situation's spread passes.
+			sarbadar_cell_can_take_root = yes
 			NOT = { owner ?= scope:actor }
-			NOT = { owner ?= { government_type = government_type:commonwealth_of_martyrs } }
-			any_pop = {
-				religion.group = religion_group:muslim
-			}
 		}
 	}
 
@@ -454,6 +450,15 @@ capture_the_court = {
 		# takes the ORDER's confession — whichever road it walked.
 		scope:target = {
 			change_religion = religion:shia
+			ruler = {change_character_religion = religion:shia}
+			heir = {change_character_religion = religion:shia}
+			every_character = {
+				limit = {
+					dynasty = scope:target.ruler.dynasty
+					NOT = { religion = religion:shia }
+				}
+				change_character_religion = religion:shia
+			}
 			if = {
 				limit = {
 					scope:actor = {

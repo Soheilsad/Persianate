@@ -21,6 +21,7 @@ unsettled_legitimacy_crisis = {
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
+		NOT = { has_reform = government_reform:tariqa_order }
 	}
 
 	monthly_legitimacy = -0.50

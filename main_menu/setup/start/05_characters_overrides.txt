@@ -280,4 +280,198 @@ character_db = {
 		ruler_trait = well_connected
 		ruler_trait = naive
 	}
+
+	### ============================================================
+	### The tariqa shaykh-lineages (12_tariqa_orders.txt).
+	### Shaykhs, not soldiers: high dip (the network), decent adm
+	### (the waqf ledgers), low mil — except the steppe and marsh
+	### houses, which keep swords.
+	### ============================================================
+
+	## ABL Safaviyya — the house of Safi al-Din, Ardabil.
+	abl_safi_al_din_pw = { #Founder, d. 1334 — the eponym
+		first_name = { name = name_safi.name_al_din }
+		culture = farsi_culture
+		religion = sunni
+		birth_date = 1252.1.1
+		birth = ardabil
+		death_date = 1334.9.12
+		dynasty = safavid_dynasty
+		tag = ABL
+	}
+	abl_sadr_al_din_musa_pw = { #Ruler at 1337 start, d. 1391 hist.
+		first_name = { name = Sadr.name_al_din }
+		culture = farsi_culture
+		religion = sunni
+		adm = 70 dip = 80 mil = 35
+		birth_date = 1305.1.1
+		birth = ardabil
+		father = abl_safi_al_din_pw
+		dynasty = safavid_dynasty
+		tag = ABL
+		ruler_trait = well_connected
+		ruler_trait = silver_tongue
+	}
+	abl_muhyi_al_din_pw = { #Brother
+		first_name = { name = name_muhyi.name_al_din }
+		culture = farsi_culture
+		religion = sunni
+		birth_date = 1307.1.1
+		birth = ardabil
+		father = abl_safi_al_din_pw
+		dynasty = safavid_dynasty
+		tag = ABL
+	}
+	abl_ali_pw = { #Sadr al-Din's young son — the line continues
+		first_name = { name = name_ali }
+		culture = farsi_culture
+		religion = sunni
+		birth_date = 1331.1.1
+		birth = ardabil
+		father = abl_sadr_al_din_musa_pw
+		dynasty = safavid_dynasty
+		tag = ABL
+	}
+
+	## KBW Kubrawiyya — Simnani d. Jan 1336; his khalifa Mahmud
+	## Mazdaqani holds Sufiabad (hist.: later master of Ali Hamadani).
+	kbw_mahmud_mazdaqani_pw = { #Ruler at 1337 start
+		first_name = { name = name_mahmud }
+		culture = farsi_culture
+		religion = sunni
+		adm = 60 dip = 72 mil = 25
+		birth_date = 1290.1.1 #Unknown
+		birth = semnan
+		dynasty = mazdaqani_dynasty
+		tag = KBW
+		ruler_trait = well_connected
+	}
+	kbw_taj_al_din_ahmad_pw = { #Son
+		first_name = { name = name_taj.name_al_din }
+		culture = farsi_culture
+		religion = sunni
+		birth_date = 1315.1.1
+		birth = semnan
+		father = kbw_mahmud_mazdaqani_pw
+		dynasty = mazdaqani_dynasty
+		tag = KBW
+	}
+
+	## KZR Kazaruniyya — Amin al-Din Baliyani (d. 1344 hist.), the
+	## shaykh Ibn Battuta met; the Balyani family of Kazarun.
+	kzr_amin_al_din_baliyani_pw = { #Ruler at 1337 start
+		first_name = { name = name_amin.name_al_din }
+		culture = farsi_culture
+		religion = sunni
+		adm = 68 dip = 78 mil = 20
+		birth_date = 1275.1.1
+		birth = kazerun
+		dynasty = baliyani_dynasty
+		tag = KZR
+		ruler_trait = silver_tongue
+	}
+	kzr_muhammad_baliyani_pw = { #Son
+		first_name = { name = name_muhammad }
+		culture = farsi_culture
+		religion = sunni
+		birth_date = 1302.1.1
+		birth = kazerun
+		father = kzr_amin_al_din_baliyani_pw
+		dynasty = baliyani_dynasty
+		tag = KZR
+	}
+
+	## QAD Qadiriyya — the Jilani sajjada-nishin at the Baghdad shrine.
+	qad_sharaf_al_din_ahmad_pw = { #Ruler at 1337 start
+		first_name = { name = name_sharaf.name_al_din }
+		culture = iraqi_culture
+		religion = sunni
+		adm = 66 dip = 70 mil = 25
+		birth_date = 1285.1.1 #Unknown
+		birth = baghdad
+		dynasty = jilani_dynasty
+		tag = QAD
+		ruler_trait = well_connected
+	}
+	qad_ali_jilani_pw = { #Son
+		first_name = { name = name_ali }
+		culture = iraqi_culture
+		religion = sunni
+		birth_date = 1312.1.1
+		birth = baghdad
+		father = qad_sharaf_al_din_ahmad_pw
+		dynasty = jilani_dynasty
+		tag = QAD
+	}
+
+	## KWJ Khwajagan — Muhammad Baba Samasi (d. 1354 hist.), master
+	## of Amir Kulal, who will teach Baha al-Din Naqshband.
+	kwj_muhammad_baba_samasi_pw = { #Ruler at 1337 start
+		first_name = { name = name_muhammad }
+		culture = farsi_culture
+		religion = sunni
+		adm = 72 dip = 68 mil = 15
+		birth_date = 1259.1.1
+		birth = bukhara
+		dynasty = samasi_dynasty
+		tag = KWJ
+		ruler_trait = well_connected
+	}
+	kwj_mahmud_samasi_pw = { #Son
+		first_name = { name = name_mahmud }
+		culture = farsi_culture
+		religion = sunni
+		birth_date = 1298.1.1
+		birth = bukhara
+		father = kwj_muhammad_baba_samasi_pw
+		dynasty = samasi_dynasty
+		tag = KWJ
+	}
+
+	## YSV Yasaviyya — the Ata lineage keeping Ahmad Yasavi's shrine.
+	ysv_ahmad_ata_pw = { #Ruler at 1337 start
+		first_name = { name = name_ahmad }
+		nickname = { name = name_ata }
+		culture = turkish_culture
+		religion = sunni
+		adm = 55 dip = 70 mil = 45
+		birth_date = 1282.1.1 #Unknown
+		birth = turkestan
+		dynasty = yasavi_ata_dynasty
+		tag = YSV
+		ruler_trait = well_connected
+	}
+	ysv_hasan_ata_pw = { #Son
+		first_name = { name = name_hasan }
+		nickname = { name = name_ata }
+		culture = turkish_culture
+		religion = sunni
+		birth_date = 1308.1.1
+		birth = turkestan
+		father = ysv_ahmad_ata_pw
+		dynasty = yasavi_ata_dynasty
+		tag = YSV
+	}
+
+	## RIF Rifaiyya — the Izz al-Din line of Umm Abida in the marshes.
+	rif_izz_al_din_ahmad_pw = { #Ruler at 1337 start
+		first_name = { name = name_izz.name_al_din }
+		culture = iraqi_culture
+		religion = sunni
+		adm = 58 dip = 68 mil = 35
+		birth_date = 1285.1.1 #Unknown
+		birth = wasit
+		dynasty = rifai_dynasty
+		tag = RIF
+	}
+	rif_ahmad_rifai_pw = { #Son — every Rifai head is an Ahmad again
+		first_name = { name = name_ahmad }
+		culture = iraqi_culture
+		religion = sunni
+		birth_date = 1310.1.1
+		birth = wasit
+		father = rif_izz_al_din_ahmad_pw
+		dynasty = rifai_dynasty
+		tag = RIF
+	}
 }

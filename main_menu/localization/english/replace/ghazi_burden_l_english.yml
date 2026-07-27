@@ -233,6 +233,30 @@
  ghazi_burden.104.a: "Submit to the audit. The doctrine demands consistency."
  ghazi_burden.104.b: "Curb the muhtasib. Remind the office whose realm it serves."
 
+ # ----- .105 OMEN: THE RETURNED GHAZI -----
+ ghazi_burden.105.title: "The Returned Ghazi"
+ ghazi_burden.105.desc: "He came back from the frontier with two scars, one banner taken with his own hands, and a following of young men who repeat his stories in every zurkhāna in the city. The doctrine is standing in your audience hall, waiting to be honored. Whatever you give him, the young men are watching what ghaza is worth at this court — and they will price their own swords accordingly."
+ ghazi_burden.105.a: "Robe him. Land him. Seat him at the right hand, where the young men can see."
+ ghazi_burden.105.b: "A polite audience and a small purse. Heroes are expensive to keep."
+
+ # ----- .106 OMEN: THE NEGLECTED RIBAT -----
+ ghazi_burden.106.title: "The Neglected Ribat"
+ ghazi_burden.106.desc: "Word from the frontier, ten days stale: the ribāṭ at the edge of the realm was overrun in the night — its dervishes dead or carried off, its granary burned. No one says aloud that the garrison had been unpaid since winter, or that the court was feasting when the letters asking for men went unanswered. No one needs to. The thughūr is the sultan's burden; everyone at the frontier can count the days between the letter and the feast."
+ ghazi_burden.106.a: "Rebuild it twice as strong, endowed in our own name. The frontier will know we heard."
+ ghazi_burden.106.b: "Mourn publicly. The frontier is far, and the treasury is near."
+
+ # ----- .108 OMEN: THE BANNERS FLOCK (positive) -----
+ ghazi_burden.108.title: "The Banners Flock"
+ ghazi_burden.108.desc: "A frontier shaykh whose word carries from the ribāṭs to the wrestling-houses has preached it in the open: THIS court is the true seat of ghaza in the age — its wars real wars, its designations kept, its sultan a sultan of the thughūr and not of the banquet. And the young men believed him. They are arriving now, in bands of ten and twenty, dusty, armed, and expecting to be fed. Credibility among the ghazis is zero-sum; today the flow runs toward you."
+ ghazi_burden.108.a: "Feast them and enroll them. Let every rival court hear where the volunteers went."
+ ghazi_burden.108.b: "Bless them and point them at the frontier. Grace, at cost price."
+
+ # ----- .109 OMEN: THE CAPTIVES RETURN (positive) -----
+ ghazi_burden.109.title: "The Captives Return"
+ ghazi_burden.109.desc: "Two years of the qāḍīs' collections, the merchants' sureties, and a border negotiation conducted in three languages have done it: the column came through the pass this morning — Muslim captives, ransomed home, some of them men given up for dead since before your reign began. The balance of the ransom is still owed. Whoever pays it owns the story, and the story will be told in every mosque in the realm on Friday."
+ ghazi_burden.109.a: "The treasury pays the balance. The sultan ransoms his own."
+ ghazi_burden.109.b: "The families and the qāḍīs have carried it this far. Let them finish."
+
  # ----- .150 FATWA CHAIN -----
  ghazi_burden.150.title: "The Scholar Proposes a Ruling"
  ghazi_burden.150.desc: "A scholar at court — Damascene-trained, sharp, ambitious — proposes a ruling: a Muslim prince who governs by the yasa rather than the sharīʿa has not entered the law. Fighting him is not only permitted but obligatory. The ruling, if adopted, would name your tier-2 wars as ghaza in full."

@@ -46,6 +46,14 @@ sarbadar_preachers = {
 					situation_has_ended = yes
 				}
 			}
+			# Save-cleaner: a cell with no Muslim quarter to preach to
+			# dissolves. Retroactively removes cells that leaked into
+			# Christian Europe before the region gate existed.
+			NOT = {
+				any_pop = {
+					religion.group = religion_group:muslim
+				}
+			}
 		}
 	}
 

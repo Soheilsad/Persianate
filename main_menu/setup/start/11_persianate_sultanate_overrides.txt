@@ -1512,6 +1512,7 @@ JUR = { #Jurmanids
 			heir_selection = cognatic_primogeniture
 			mysticism_vs_jurisprudence = -50 ## THIS IS AN ORDER OF MYSTICS FFS
 			reforms = { tariqa_order }
+			ruler = abl_sadr_al_din_musa_pw
 			laws = {
 				marriage_law = muslim_marriage
 				heir_religion_law = heir_same_religion

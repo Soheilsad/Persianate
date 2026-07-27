@@ -7,3 +7,11 @@ ghulam_purchase_demand = {
 	hidden = yes
 	category = special_demands
 }
+
+khanqah_building_demand = {
+	masonry = 0.2
+	glass = 0.1
+	cloth = 0.2
+	fine_cloth = 0.1
+	category = building_construction
+}

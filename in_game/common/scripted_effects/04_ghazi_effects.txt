@@ -102,26 +102,39 @@ ghazi_burden_erosion_dispatch = {
 # Random juridical-communal pulses. Each option is roughly 1%/mo
 # average; the silent zero block keeps the pulse mostly quiet.
 
+# Per-event 2-year cooldowns live EVENT-SIDE (trigger checks the
+# variable, immediate sets it): a rolled event whose trigger fails
+# simply doesn't fire, and the month stays quiet. The same preacher
+# cannot turn every season.
 ghazi_burden_omen_pulse = {
 	random_list = {
 		1000 = {}
 		# A famous preacher's sermon turns
-		10 = { trigger_event_silently = ghazi_burden.100 }
+		10 = { trigger_event_non_silently = ghazi_burden.100 }
 		# The volunteers drift (to a rival)
-		10 = { trigger_event_silently = ghazi_burden.101 }
+		10 = { trigger_event_non_silently = ghazi_burden.101 }
 		# A fatwa arrives questioning your wars (fires when Sunni-vs-
 		# Sunni wars have happened; gated event-side too)
-		8  = { trigger_event_silently = ghazi_burden.102 }
+		8  = { trigger_event_non_silently = ghazi_burden.102 }
 		# News of infidel victory — surge window opens
-		6  = { trigger_event_silently = ghazi_burden.103 }
+		6  = { trigger_event_non_silently = ghazi_burden.103 }
 		# Muhtasib turns on the court (only with hisba apparatus +
 		# sustained low legitimacy)
-		6  = { trigger_event_silently = ghazi_burden.104 }
+		6  = { trigger_event_non_silently = ghazi_burden.104 }
 		# A scholar at court proposes the yasa-fatwa. Multi-option
 		# event — fired non-silently. The event-side trigger gates on
-		# NOT ghazi_fatwa_acquired so subsequent rolls re-fire only
-		# while the fatwa is still unclaimed.
+		# NOT ghazi_fatwa_acquired; its cooldown renews the offer
+		# every two years instead of pestering.
 		8  = { trigger_event_non_silently = ghazi_burden.150 }
+		# The returned ghazi — a hero comes home expecting honors
+		8  = { trigger_event_non_silently = ghazi_burden.105 }
+		# The neglected ribat — a border lodge falls while the court fed
+		6  = { trigger_event_non_silently = ghazi_burden.106 }
+		# The banners flock — a frontier shaykh names THIS court the
+		# true seat of ghaza (positive)
+		6  = { trigger_event_non_silently = ghazi_burden.108 }
+		# The captives return — a ransom exchange comes home (positive)
+		6  = { trigger_event_non_silently = ghazi_burden.109 }
 	}
 }
 

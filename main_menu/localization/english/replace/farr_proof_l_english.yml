@@ -97,6 +97,35 @@
  farr_proof.102.b: "Open the granaries. Material relief, fiscal cost."
  farr_proof.102.c: "Withdraw to the citadel. Preserve the dynasty. Lose the city."
 
+ # --- .103 The rains withheld
+ farr_proof.103.title: "The Rains Are Withheld"
+ farr_proof.103.desc: "The spring rains did not come. The qanāts run low, the assessors are already arguing over what the villages can bear, and in the bazaars they are saying what the mirror-books say: when the king is just, the rains fall. The sky has opened a case against your kingship, and the realm is the jury."
+ farr_proof.103.a: "Remit the kharāj for the year. If heaven has a debt against us, the king pays it himself."
+ farr_proof.103.b: "The rains fell — the assessors stole the difference. Open THEIR books."
+
+ # --- .104 The conjunction
+ farr_proof.104.title: "The Stars Incline"
+ farr_proof.104.desc: "The munajjims have finished their tables and asked for an audience, which they never do when the news is bad. A conjunction of the two felicities approaches — Jupiter and Saturn in a royal sign — and by every canon of the science it inclines toward this throne. A king may put such a reading on his coins and in his khuṭba. He should first ask what happens to a king whom the stars endorsed and events did not."
+ farr_proof.104.a: "Strike it on the dirhams. Let heaven cosign in silver."
+ farr_proof.104.b: "Reward the astrologers and file the tables. Credit, quietly."
+
+ # --- .105 The hunt marvel
+ farr_proof.105.title: "The King Takes the Lion"
+ farr_proof.105.desc: "On the third day of the hunt the beaters started a lion — and before the amīrs could close, the king had ridden in alone and killed it with the short spear, in the old way, witnessed by every man whose opinion of the dynasty matters. The Bahrām Gūr stories are being retold at the fires tonight. Fortune has performed. The question is how loudly to applaud."
+ farr_proof.105.a: "Parade the skin through the bazaars. Fortune on a cart, for every quarter to see."
+ farr_proof.105.b: "Feast the amīrs on the kill. The old rite, kept in the right room."
+
+ # --- .106 The generous rains
+ farr_proof.106.title: "The Rains Are Generous"
+ farr_proof.106.desc: "The spring came early and stayed long. The qanāts run full, the assessors are quietly revising their registers upward, and the same mirror-books that would have blamed you for a drought are being read aloud in your favor: when the king is just, the rains fall. They fell. Every preacher in the realm has noticed on whose head."
+ farr_proof.106.a: "Let the khuṭba say what the qanāts already say."
+ farr_proof.106.b: "Tax the surplus and say little. Heaven's gift, the treasury's year."
+
+ # --- .107 The Homay lands
+ farr_proof.107.title: "The Homay Lands on the King's Shoulder"
+ farr_proof.107.desc: "Every child of this land knows the bird: the Homāy, whose passing shadow makes kings, and which never, ever lands. At the reviewing of the hunt this morning, before the assembled amīrs, the falconers, two qāḍīs, and several hundred soldiers who will repeat this story for the rest of their lives, a wild Homāy came down out of an empty sky and sat upon the king's shoulder.\n\nIt stayed while a man could count to thirty. No one breathed. Then it rose and was gone.\n\nThere is nothing to decide. There is only what everyone saw."
+ farr_proof.107.a: "God has spoken in the oldest language this land knows. Write down the names of the witnesses."
+
  # ============================================================
  # RESOLUTION EVENTS
  # ============================================================

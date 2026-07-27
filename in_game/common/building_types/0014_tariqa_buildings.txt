@@ -62,7 +62,7 @@ tariqa_khanaqah = {
 			category = building_maintenance
 		}
 	}
-	construction_demand = town_building_construction
+	construction_demand = khanqah_building_demand
 }
 
 
@@ -120,7 +120,7 @@ radical_khanaqah = {
 			category = building_maintenance
 		}
 	}
-	construction_demand = town_building_construction
+	construction_demand = khanqah_building_demand
 }
 
 
@@ -234,7 +234,7 @@ tariqa_tribal_devotions = {
 			category = building_maintenance
 		}
 	}
-	construction_demand = town_building_construction
+	construction_demand = khanqah_building_demand
 }
 
 # --- Popular base: the rural zawiya --------------------------------
@@ -291,7 +291,7 @@ tariqa_rural_zawiya = {
 			category = building_maintenance
 		}
 	}
-	construction_demand = town_building_construction
+	construction_demand = khanqah_building_demand
 }
 
 # --- Urban base: the endowed waqf ----------------------------------
@@ -335,7 +335,7 @@ tariqa_urban_waqf = {
 			category = building_maintenance
 		}
 	}
-	construction_demand = town_building_construction
+	construction_demand = khanqah_building_demand
 }
 
 

@@ -81,13 +81,16 @@ sarbadar_phenomenon = {
 					}
 				}
 				market ?= {
+					# ALL planting passes go through sarbadar_cell_can_take_root
+					# (06_shia_rework_triggers): Muslim quarter + inside the
+					# region's world. Without it the trickle chained market to
+					# market all the way into Christian Europe.
+
 					# The receptive vessel first: the zurkhāna crowd.
 					random_location_in_market = {
 						limit = {
-							is_city = yes
+							sarbadar_cell_can_take_root = yes
 							has_building_with_at_least_one_level = zurkhanah
-							NOT = { has_building_with_at_least_one_level = sarbadar_preachers }
-							NOT = { owner ?= { government_type = government_type:commonwealth_of_martyrs } }
 						}
 						random = {
 							chance = 6
@@ -102,12 +105,10 @@ sarbadar_phenomenon = {
 					# guild brotherhoods gave the network room to grow.
 					random_location_in_market = {
 						limit = {
-							is_city = yes
+							sarbadar_cell_can_take_root = yes
 							owner ?= {
 								has_estate_privilege = estate_privilege:asnaf_futuwwa_compact
-								NOT = { government_type = government_type:commonwealth_of_martyrs }
 							}
-							NOT = { has_building_with_at_least_one_level = sarbadar_preachers }
 						}
 						random = {
 							chance = 4
@@ -121,9 +122,7 @@ sarbadar_phenomenon = {
 					# The base trickle.
 					random_location_in_market = {
 						limit = {
-							is_city = yes
-							NOT = { has_building_with_at_least_one_level = sarbadar_preachers }
-							NOT = { owner ?= { government_type = government_type:commonwealth_of_martyrs } }
+							sarbadar_cell_can_take_root = yes
 						}
 						random = {
 							chance = 2
@@ -164,9 +163,11 @@ sarbadar_phenomenon = {
 					}
 				}
 				random_owned_location = {
+					# Location-level gate too: a Middle-East-capital country
+					# with European holdings (the Horde) must not receive
+					# cells in its European cities.
 					limit = {
-						is_city = yes
-						NOT = { has_building_with_at_least_one_level = sarbadar_preachers }
+						sarbadar_cell_can_take_root = yes
 					}
 					random = {
 						chance = 2

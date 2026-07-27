@@ -33,6 +33,15 @@ tariqa.1 = {
 		set_variable = { name = two_pirs_province_share value = 0 }
 		set_variable = { name = two_pirs_area_share value = 0 }
 		change_religion = religion:shia
+		ruler = {change_character_religion = religion:shia}
+		heir = {change_character_religion = religion:shia}
+		every_character = {
+			limit = {
+				dynasty = root.ruler.dynasty
+				NOT = { religion = religion:shia }
+			}
+			change_character_religion = religion:shia
+		}
 		add_country_modifier = {
 			modifier = tariqa_militant_zeal
 			years = -1
