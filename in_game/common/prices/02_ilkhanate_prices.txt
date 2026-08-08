@@ -35,6 +35,6 @@ a_dervish_corps_maintenance = {
 
 }
 
-a_dervish_reinforce = {
+a_dervish_corps_reinforce = {
 	gold = -2.25
 }

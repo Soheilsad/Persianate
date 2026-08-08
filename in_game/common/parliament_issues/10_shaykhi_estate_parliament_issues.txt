@@ -18,7 +18,7 @@ shaykhi_proclaim_jihad = {
 
 	allow = {
 		government_type = government_type:commonwealth_of_martyrs
-		parliament_type = parliament_type:council
+		parliament_type = parliament_type:sarbadar_council
 		at_war = no
 		NOT = { has_country_modifier = shaykhi_jihad_proclaimed_mod }
 	}
@@ -53,7 +53,7 @@ shaykhi_purge_remaining_amirs = {
 
 	allow = {
 		government_type = government_type:commonwealth_of_martyrs
-		parliament_type = parliament_type:council
+		parliament_type = parliament_type:sarbadar_council
 	}
 
 	chance = {
@@ -87,7 +87,7 @@ shaykhi_mobilize_dervish_corps = {
 
 	allow = {
 		government_type = government_type:commonwealth_of_martyrs
-		parliament_type = parliament_type:council
+		parliament_type = parliament_type:sarbadar_council
 		NOT = { has_country_modifier = shaykhi_dervish_mobilization_mod }
 	}
 
@@ -120,7 +120,7 @@ shaykhi_proclaim_imminent_mahdi = {
 
 	allow = {
 		government_type = government_type:commonwealth_of_martyrs
-		parliament_type = parliament_type:council
+		parliament_type = parliament_type:sarbadar_council
 		NOT = { has_country_modifier = shaykhi_mahdi_imminent_mod }
 	}
 
@@ -156,7 +156,7 @@ shaykhi_excommunicate_compromisers = {
 
 	allow = {
 		government_type = government_type:commonwealth_of_martyrs
-		parliament_type = parliament_type:council
+		parliament_type = parliament_type:sarbadar_council
 		"estate_power(estate_type:sufyani_notables_estate)" > 0.5
 	}
 

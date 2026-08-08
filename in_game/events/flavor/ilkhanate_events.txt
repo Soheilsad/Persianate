@@ -38,6 +38,8 @@ ilkhanate_flavor.1 = {
 				NOT = { government_type = government_type:commonwealth_of_martyrs }
 				NOT = { country_type = building }
 				is_subject = no
+				NOT = { root = c:GRG }
+				NOT = {root = c:HLG }
 			}
 		ai_chance = {
 			factor = 25
@@ -129,6 +131,8 @@ ilkhanate_flavor.1 = {
 				NOT = { has_reform = government_reform:chinggisid_regency }
 				NOT = { government_type = government_type:commonwealth_of_martyrs }
 				NOT = { country_type = building }
+				NOT = { root = c:GRG }
+				NOT = { root = c:HLG }
 			}
 		}
 
@@ -172,6 +176,8 @@ ilkhanate_flavor.1 = {
 			NOT = { has_reform = government_reform:chinggisid_regency }
 			NOT = { government_type = government_type:commonwealth_of_martyrs }
 			NOT = { country_type = building }
+		 	NOT = { root = c:GRG }
+			NOT = {root = c:HLG }
 		}
 		ai_chance = {
 			factor = 25
@@ -294,6 +300,8 @@ ilkhanate_flavor.1 = {
 			NOT = { government_type = government_type:commonwealth_of_martyrs }
 			NOT = { country_type = building }
 			NOT = { has_variable = custody_dropped_khan } ## you cannot defer if you have already dropped the khan. You have to pick a side.
+		 	NOT = { root = c:GRG }
+			NOT = {root = c:HLG }		
 		}
 		ai_chance = {
 			factor = 15
@@ -355,6 +363,20 @@ ilkhanate_flavor.1 = {
 			limit = { root = c:SRB }
 			trigger_event_non_silently = martyrs.1
 		}
+	}
+	option = {
+		name = ilkhanate_flavor.1.i
+		trigger = {
+			OR = {
+				root = c:GRG
+				root = c:HLG
+			}
+			
+		}
+		add_legitimacy = 15
+
+		set_personality = ai_personality:ai_aggressive
+
 	}
 
 }

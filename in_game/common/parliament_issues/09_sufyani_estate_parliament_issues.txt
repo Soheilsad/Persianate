@@ -19,7 +19,7 @@ sufyani_codify_qadi_courts = {
 
 	allow = {
 		government_type = government_type:commonwealth_of_martyrs
-		parliament_type = parliament_type:council
+		parliament_type = parliament_type:sarbadar_council
 		NOT = { has_country_modifier = sufyani_codified_courts_mod }
 	}
 
@@ -54,7 +54,7 @@ sufyani_curb_dervish_excesses = {
 
 	allow = {
 		government_type = government_type:commonwealth_of_martyrs
-		parliament_type = parliament_type:council
+		parliament_type = parliament_type:sarbadar_council
 		"estate_power(estate_type:shaykhi_dervishes_estate)" > 0.55
 	}
 
@@ -89,7 +89,7 @@ sufyani_negotiate_amir_reconciliation = {
 
 	allow = {
 		government_type = government_type:commonwealth_of_martyrs
-		parliament_type = parliament_type:council
+		parliament_type = parliament_type:sarbadar_council
 		NOT = { has_country_modifier = sufyani_amir_settlement_mod }
 	}
 
@@ -115,7 +115,7 @@ sufyani_endow_great_madrasa = {
 
 	allow = {
 		government_type = government_type:commonwealth_of_martyrs
-		parliament_type = parliament_type:council
+		parliament_type = parliament_type:sarbadar_council
 		NOT = { has_country_modifier = sufyani_endowed_madrasa_mod }
 	}
 
@@ -140,7 +140,7 @@ sufyani_subsidize_bazaar_caravan = {
 
 	allow = {
 		government_type = government_type:commonwealth_of_martyrs
-		parliament_type = parliament_type:council
+		parliament_type = parliament_type:sarbadar_council
 		NOT = { has_country_modifier = sufyani_bazaar_subsidy_mod }
 	}
 

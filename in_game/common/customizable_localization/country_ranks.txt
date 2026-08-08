@@ -102,6 +102,24 @@
 	}
 
 	text = {
+		localization_key = country_rank_sarbadars
+		trigger = {
+			government_type = government_type:commonwealth_of_martyrs
+		}
+	}
+
+	text = {
+		localization_key = country_rank_governor
+		trigger = {
+			OR = {
+				has_reform = government_reform:soyurghal_governor_reform
+				has_reform = government_reform:soyurghal_governor_banished_reform
+				has_reform = government_reform:soyurghal_governor_effective_governor_reform
+			}
+		}
+	}
+
+	text = {
 		localization_key = rank_empire_revolutionary
 		trigger = {
 

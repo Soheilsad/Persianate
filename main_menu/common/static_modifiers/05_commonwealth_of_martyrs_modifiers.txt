@@ -95,7 +95,6 @@ shaykhi_dervish_mobilization_mod = {
 	}
 
 	global_manpower_modifier = 0.20
-	global_manpower_modifier = 0.15
 	land_morale_modifier = 0.10
 }
 
@@ -110,6 +109,68 @@ shaykhi_mahdi_imminent_mod = {
 	monthly_war_exhaustion = -0.025
 	stability_cost = 0.15
 	country_cabinet_efficiency = -0.10
+}
+
+# ---Maẓālim verdicts (parliament agendas, 09/10_*_estate_agendas) ---
+# Sufyānī verdicts recover property and civic order; Shaykhī verdicts trade
+# devotion (paid at the agenda site) for the peace of the propertied benches.
+
+sufyani_verdict_granaries_opened = {
+	game_data = { category = country }
+	global_monthly_prosperity = 0.002
+	pop_join_rebel_threshold = 0.05
+}
+
+sufyani_verdict_confiscated_iqta = {
+	game_data = { category = country }
+	tax_income_efficiency = 0.05
+}
+
+sufyani_verdict_clean_bench = {
+	game_data = { category = country }
+	global_max_control = 0.05
+	pop_join_rebel_threshold = 0.05
+}
+
+sufyani_verdict_waqf_audit = {
+	game_data = { category = country }
+	research_speed_modifier = 0.03
+	tax_income_efficiency = 0.02
+}
+
+sufyani_verdict_treason_purge = {
+	game_data = { category = country }
+	global_sufyani_notables_estate_power = -0.10
+	monthly_devotion = 0.05
+}
+
+shaykhi_verdict_bazaar_peace = {
+	game_data = { category = country }
+	global_merchant_power = 0.05
+	trade_income = 0.05
+}
+
+shaykhi_verdict_due_process = {
+	game_data = { category = country }
+	global_max_control = 0.05
+	stability_cost = -0.05
+}
+
+shaykhi_verdict_fields_restored = {
+	game_data = { category = location }
+	local_raw_material_output = 0.15
+}
+
+shaykhi_verdict_property_assured = {
+	game_data = { category = country }
+	global_build_buildings_cost = -0.05
+	global_build_buildings_efficiency = 0.05
+}
+
+shaykhi_verdict_ulama_reconciled = {
+	game_data = { category = country }
+	tolerance_own = 1
+	global_clergy_estate_power = 0.05
 }
 
 # ---Estate plumbing ---

@@ -36,12 +36,14 @@ bashtin_proclamation_reform = {
 		# Dyarchic estate participation enabled
 		sufyani_notables_estate_allowed_in_cabinet = yes
 		shaykhi_dervishes_estate_allowed_in_cabinet = yes
-
+		sufyani_notables_estate_can_participate_in_parliament = yes
+		shaykhi_dervishes_estate_can_participate_in_parliament = yes
 		# The polity's military profile: heavy infantry + urban militia +
 		# dervish corps. NO peasant infantry levies; peasants are taxbase
 		# (and occasional mobilization base in crisis), not standing levy.
 		peasants_estate_levy_size = -0.50
 		burghers_estate_levy_size = 0.25
+		global_max_control = 0.1
 		tribes_estate_levy_size = -0.80   # Sarbedārs reject tribal-cavalry warfare
 		# The dervish corps IS the army — ~5,000 armed brethren at peak from
 		# a three-district state. The notables field the urban militia.
@@ -50,10 +52,12 @@ bashtin_proclamation_reform = {
 		a_dervish_corps_build_cost_modifier = -0.5 ### they pay way less.
 		a_dervish_corps_maintenance_cost_modifier = -0.5 ### they pay way less.
 		a_dervish_corps_reinforce_cost_modifier = -0.5 ### they pay way less.
+		global_pop_promotion_speed_modifier = 1.5 ### there is no nobility.
+		global_peasant_enfranchisment = 1
 		# Devotional state
 		tolerance_own = 2
 		monthly_devotion = 0.05
-		global_manpower_modifier = 0.10
+		global_manpower_modifier = 0.25
 		land_morale_modifier = 0.10
 
 		# Commonwealth structure: decentralized, low control ceiling,

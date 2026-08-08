@@ -49,3 +49,10 @@
  rank_county_persianate_iranzamin_turk_ruler_male: "Tūman-bāshī"
  rank_county_persianate_iranzamin_turk_ruler_female: "Tūman-bāshī"
  rank_county_persianate_iranzamin_turk_ADJ: "Tūmān"
+ 
+ 
+ country_rank_sarbadars: "Commonwealth"
+ country_rank_sarbadars_ruler_male: "Khwāja"
+ country_rank_sarbadars_ruler_female: " "
+ country_rank_sarbadars_ADJ: "Commonwealth"
+

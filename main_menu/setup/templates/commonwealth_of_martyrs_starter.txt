@@ -13,7 +13,7 @@ starting_technology_level = 3
 
 government = {
 	type = commonwealth_of_martyrs
-	heir_selection = diarchic_election
+	heir_selection = martyrs_dyarchic_election
 
 	# Societal value sliders — commonwealth, anti-aristocratic, spiritualist,
 	# militant, communal, inward-turned (mahdī-awaiting).
@@ -31,7 +31,7 @@ government = {
 	outward_vs_inward = -40
 
 	parliament = {
-		parliament_type = council
+		parliament_type = sarbadar_council
 	}
 
 	reforms = {

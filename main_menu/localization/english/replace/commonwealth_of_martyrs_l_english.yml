@@ -81,15 +81,15 @@
  shaykhi_excommunicate_compromisers_desc: "Named Sufyānī notables are publicly declared enemies of the Imām's cause and stripped of their religious standing. A direct strike against the dyarchic partner — and unmistakable proof of which faction holds the pulpit."
 
  # Country modifier names (granted by parliament debates)
- sufyani_codified_courts_mod: "Codified Qāḍī Courts"
- sufyani_curbed_dervishes_mod: "Curbed Dervish Excesses"
- sufyani_amir_settlement_mod: "Amīr Settlement"
- sufyani_endowed_madrasa_mod: "Endowed Madrasa"
- sufyani_bazaar_subsidy_mod: "Bazaar Caravan Subsidy"
- shaykhi_jihad_proclaimed_mod: "Jihād Proclaimed"
- shaykhi_amir_purge_mod: "Amīr Purge"
- shaykhi_dervish_mobilization_mod: "Dervish Corps Mobilized"
- shaykhi_mahdi_imminent_mod: "Imām's Return Proclaimed Imminent"
+ STATIC_MODIFIER_NAME_sufyani_codified_courts_mod: "Codified Qāḍī Courts"
+ STATIC_MODIFIER_NAME_sufyani_curbed_dervishes_mod: "Curbed Dervish Excesses"
+ STATIC_MODIFIER_NAME_sufyani_amir_settlement_mod: "Amīr Settlement"
+ STATIC_MODIFIER_NAME_sufyani_endowed_madrasa_mod: "Endowed Madrasa"
+ STATIC_MODIFIER_NAME_sufyani_bazaar_subsidy_mod: "Bazaar Caravan Subsidy"
+ STATIC_MODIFIER_NAME_shaykhi_jihad_proclaimed_mod: "Jihād Proclaimed"
+ STATIC_MODIFIER_NAME_shaykhi_amir_purge_mod: "Amīr Purge"
+ STATIC_MODIFIER_NAME_shaykhi_dervish_mobilization_mod: "Dervish Corps Mobilized"
+ STATIC_MODIFIER_NAME_shaykhi_mahdi_imminent_mod: "Imām's Return Proclaimed Imminent"
 
  # Estate stat labels
  sufyani_notables_estate_satisfaction: "Sufyānī Satisfaction"
@@ -166,6 +166,8 @@
  MODIFIER_TYPE_DESC_a_dervish_corps_build_cost_modifier: "The cost of raising the dervish corps — the armed brotherhood is the commonwealth's standing army."
  MODIFIER_TYPE_NAME_a_dervish_corps_maintenance_cost_modifier: "Dervish Corps Maintenance Cost"
  MODIFIER_TYPE_DESC_a_dervish_corps_maintenance_cost_modifier: "The ongoing cost of maintaining the dervish corps — the armed brotherhood is the commonwealth's standing army."
+ MODIFIER_TYPE_NAME_a_dervish_corps_reinforce_cost_modifier: "Dervish Corps Reinforce Cost"
+ MODIFIER_TYPE_DESC_a_dervish_corps_reinforce_cost_modifier: "The cost of reinforcing the dervish corps — the armed brotherhood is the commonwealth's standing army."
  # Auto modifiers (estate base values)
  AUTO_MODIFIER_NAME_sufyani_base_values: "Sufyānī Base Standing"
  AUTO_MODIFIER_DESC_sufyani_base_values: "The baseline accommodation between the commonwealth and its notable families — the floor beneath which their satisfaction does not naturally sink."
@@ -209,3 +211,39 @@
  STATIC_MODIFIER_DESC_martyrs_custodian_of_threshold: "The shrine of the eighth Imam at Mashhad lies within the commonwealth — the pilgrims, the vows, and the standing proof of the mission."
  STATIC_MODIFIER_NAME_martyrs_nishapur_chancery: "The Nishapur Chancery"
  STATIC_MODIFIER_DESC_martyrs_nishapur_chancery: "The old metropolis administers — its surviving families keep the commonwealth's ledgers with the habits of an imperial capital."
+
+ # Maẓālim cases against the Sufyānī notables (parliament agendas)
+ pa_sufyani_case_grain_hoarding: "Case: Engrossment of the Grain Supply"
+ pa_sufyani_case_grain_hoarding_desc: "Notable houses bought the harvest cheap and locked the granaries until the price of bread trebled."
+ pa_sufyani_case_sheltered_amir_estates: "Case: Sheltered Amīr Estates"
+ pa_sufyani_case_sheltered_amir_estates_desc: "Confiscated Mongol lands quietly bought back through intermediaries, their old-regime clients shielded from the tribunals."
+ pa_sufyani_case_bought_verdicts: "Case: Verdicts Bought in the Qāḍī Courts"
+ pa_sufyani_case_bought_verdicts_desc: "The notable families staff the bench and the bench remembers its patrons."
+ pa_sufyani_case_waqf_embezzlement: "Case: Embezzlement of the Endowments"
+ pa_sufyani_case_waqf_embezzlement_desc: "Family-administered waqfs paying stipends to the founders' kin while the mosques and madrasas go unrepaired."
+ pa_sufyani_case_secret_correspondence: "Case: Secret Correspondence with the Enemy"
+ pa_sufyani_case_secret_correspondence_desc: "Letters under notable seals found in the saddlebags of riders bound for the enemy's camp."
+
+ # Maẓālim cases against the Shaykhī dervishes (parliament agendas)
+ pa_shaykhi_case_bazaar_extortion: "Case: Extortion in the Bazaar"
+ pa_shaykhi_case_bazaar_extortion_desc: "Alms for the Imām's war, collected stall by stall with a hand on the knife."
+ pa_shaykhi_case_street_takfir: "Case: Killings Without Trial"
+ pa_shaykhi_case_street_takfir_desc: "Men denounced as hypocrites and hanged by dervish bands before any qāḍī heard their names."
+ pa_shaykhi_case_commandeered_harvest: "Case: The Commandeered Harvest"
+ pa_shaykhi_case_commandeered_harvest_desc: "Villagers marched from the fields to jihād drills at the lodges while the grain stood rotting."
+ pa_shaykhi_case_spoils_of_the_imam: "Case: Spoils Taken in the Imām's Name"
+ pa_shaykhi_case_spoils_of_the_imam_desc: "Shops and houses of accused enemies of the cause seized as war spoils inside the commonwealth's own walls."
+ pa_shaykhi_case_shrine_desecration: "Case: The Desecrated Shrines"
+ pa_shaykhi_case_shrine_desecration_desc: "Tombs of rival shaykhs broken open and scholars of the law harassed in the street as men of half-faith."
+
+ # Maẓālim verdict modifiers (parliament agendas)
+ STATIC_MODIFIER_NAME_sufyani_verdict_granaries_opened: "Granaries Opened"
+ STATIC_MODIFIER_NAME_sufyani_verdict_confiscated_iqta: "Completed Confiscations"
+ STATIC_MODIFIER_NAME_sufyani_verdict_clean_bench: "A Clean Bench"
+ STATIC_MODIFIER_NAME_sufyani_verdict_waqf_audit: "Audited Endowments"
+ STATIC_MODIFIER_NAME_sufyani_verdict_treason_purge: "Treason Trials"
+ STATIC_MODIFIER_NAME_shaykhi_verdict_bazaar_peace: "Peace of the Bazaar"
+ STATIC_MODIFIER_NAME_shaykhi_verdict_due_process: "The Qāḍī's Writ Restored"
+ STATIC_MODIFIER_NAME_shaykhi_verdict_fields_restored: "Returned to the Fields"
+ STATIC_MODIFIER_NAME_shaykhi_verdict_property_assured: "Property Assured"
+ STATIC_MODIFIER_NAME_shaykhi_verdict_ulama_reconciled: "The ʿUlamāʾ Reconciled"

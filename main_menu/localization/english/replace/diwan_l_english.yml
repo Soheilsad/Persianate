@@ -307,6 +307,8 @@
  diwan_council: "Majlis-e Mazalim"
  diwan_council_desc: "The Majlis-e Mazalim is not a parliament of peers, but a court of royal justice. Here, the Shadow of God sits in judgment over his servants, hearing the grievances of the oppressed and curbing the tyranny of the powerful. It is through the performance of Absolute Justice (Adl)—not consensus—that the Shah asserts his authority over the Men of the Sword and the Men of the Pen."
  
+ sarbadar_council: "Sarbadar Council"
+ sarbadar_council_desc: "The Sarbadars convnene to decide the direction of the Revolution. They are a council of the people, representing the interests of the common folk against the tyranny of the powerful. Their decisions are guided by principles of justice and equity, seeking to balance the needs of the many against the ambitions of the few."
  # Issues
  commission_cadastre: "Commission Cadastre"
  commission_cadastre_desc: "The Diwan demands a new survey of taxable lands to update the Deftar and reduce local graft."
