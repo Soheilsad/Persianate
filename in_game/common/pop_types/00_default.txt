@@ -16,8 +16,13 @@ nobles = {
 	diwan_estate = { is_diwan_pop = yes }
 	amirs_estate = { is_amir_pop = yes }
 
-
-	dhimmi_estate = { is_dhimmi = yes }
+	# NO dhimmi rung for noble pops: a non-Muslim LORD is not his
+	# community's protected commoner — he is a hereditary rights holder.
+	# Rajas and taluqdars (India), meliks (Caucasus), Tengri noyans all
+	# land in the nobles estate; their priests, merchants, and peasants
+	# still flow to the dhimmi estate via their own pop types. This is
+	# what makes peasant/dhimmi disenfranchisement (→ nobles_estate)
+	# land on the right ledger in India.
 	tribes_estate = { is_gaelic_clans = yes }
 	nobles_estate = {}
 	promotion_factor = 0.1

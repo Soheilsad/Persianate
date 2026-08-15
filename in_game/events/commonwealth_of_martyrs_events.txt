@@ -29,6 +29,13 @@ martyrs.1 = {
 		# Mongol notables, and ordu tribute that will never be paid again.
 		c:SRB = {
 			add_gold = 500
+			# One generation of mobilized young men. Decays to nothing
+			# by the early 1360s — the campaign question is what you
+			# convert it into before it is gone.
+			add_country_modifier = {
+				modifier = revolutionary_zeal
+				years = 25
+			}
 		}
 		# The first muster of the sworn brethren at Sabzavar.
 		location:sabzevar = {
@@ -181,5 +188,55 @@ martyrs.4 = {
 		}
 		# The question will be asked again.
 		remove_variable = sufyani_takeover_fired
+	}
+}
+
+# =====================================================================
+# martyrs.10 — ʿĀSHŪRĀʾ (annual commemoration pulse)
+#
+# Fired from martyrs_flavor_pulse (17_martyrs_engines via the
+# government_flavor_pulse fall-through). The Karbala paradigm renewed
+# each Muharram — the choice is WHO owns the commemoration this year:
+# the dervish procession (hot: devotion, wing balance to the Shaykhi)
+# or the notable-sponsored majlis (orderly: less fire, bazaar calm).
+# One-year in-event cooldown keeps it roughly annual.
+# =====================================================================
+martyrs.10 = {
+	type = country_event
+	outcome = neutral
+	title = martyrs.10.title
+	desc = martyrs.10.desc
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		NOT = { has_variable = martyrs_ashura_cd }
+	}
+
+	immediate = {
+		set_variable = {
+			name = martyrs_ashura_cd
+			value = 1
+			years = 1
+		}
+	}
+
+	# ----- A: The procession. The brethren own the day. -----
+	option = {
+		name = martyrs.10.a
+		add_devotion = 5
+		add_estate_satisfaction = { type = estate_type:shaykhi_dervishes_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:sufyani_notables_estate value = -0.03 }
+	}
+
+	# ----- B: The majlis. The notables sponsor a seemly grief. -----
+	option = {
+		name = martyrs.10.b
+		add_devotion = 2
+		add_estate_satisfaction = { type = estate_type:sufyani_notables_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = 0.03 }
 	}
 }

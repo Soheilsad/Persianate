@@ -90,3 +90,11 @@
 
  khassa_crown_demesne: "Khāṣṣa Crown Demesne"
  khassa_crown_demesne_desc: "Abbas I's conversion of provincial mamālik land into khāṣṣa — crown demesne administered directly by ghulām officials. The countryside the qizilbāsh held is taken back into the central fisc, and the throne's rural reach grows."
+
+ # The chancery flag (apparatus gate)
+ MODIFIER_TYPE_NAME_has_nizam_ul_mulk_chancery: "Niẓām al-Mulk Chancery"
+ MODIFIER_TYPE_DESC_has_nizam_ul_mulk_chancery: "The polity runs the classical Persianate apparatus: a chancery class keeping the registers, an iqṭāʿ military fisc, and the diwan and amir estates that staff them. Iran, Cairo, and Delhi each wear it in their own dress; the frontier does not wear it at all."
+
+ # Periphery starter reforms
+ indian_sultanate_reform: "The Delhi Dispensation"
+ indian_sultanate_reform_desc: "The subcontinent's Persianate order: a Turco-Persian cavalry elite paid through iqṭāʿ, a chancery whose revenue registers reach further than any in the Islamic world, and garrison cities holding down a countryside that has never fully consented. Harder extraction than the Iranian norm — the fiscal delta that keeps the sultanates coming."

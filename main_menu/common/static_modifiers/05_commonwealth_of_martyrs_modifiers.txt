@@ -111,6 +111,32 @@ shaykhi_mahdi_imminent_mod = {
 	country_cabinet_efficiency = -0.10
 }
 
+# ---Revolutionary Zeal (the opening clock) ---
+# One generation of mobilized young men. Granted for 25 years at the
+# founding (martyrs.1) and at every new commonwealth formation
+# (tariqa events) — decaying = yes bleeds it linearly to nothing by
+# the early 1360s, the historical normalization window. The campaign
+# question it sets: what do you convert this into before it is gone?
+# The defensive-war surge lives in auto_modifiers/04_commonwealth_zeal.
+
+revolutionary_zeal = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	global_manpower_modifier = 0.50
+	army_maintenance_efficiency = 0.25
+	regiment_reinforcement_speed = 0.25
+	land_morale_modifier = 0.20
+	land_morale_recovery = 0.10
+	# The Cause economy: contribution without coercion.
+	tax_income_efficiency = 0.10
+	# The war economy consumes the surplus; the young men are at the
+	# front, not in the workshops.
+	global_monthly_prosperity = -0.001
+	global_monthly_development = -0.001
+}
+
 # ---Maẓālim verdicts (parliament agendas, 09/10_*_estate_agendas) ---
 # Sufyānī verdicts recover property and civic order; Shaykhī verdicts trade
 # devotion (paid at the agenda site) for the peace of the propertied benches.

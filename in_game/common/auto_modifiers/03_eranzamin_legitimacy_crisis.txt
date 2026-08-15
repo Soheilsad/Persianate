@@ -22,6 +22,10 @@ unsettled_legitimacy_crisis = {
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
 		NOT = { has_reform = government_reform:tariqa_order }
+		# Periphery starter reforms answer the khuṭba question their own
+		# way — Cairo's caliph (Mamluks), the Delhi dispensation (India).
+		NOT = { has_reform = government_reform:mamluk_government }
+		NOT = { has_reform = government_reform:indian_sultanate_reform }
 		NOT = {
 			ruler ?= { dynasty = dynasty:borjigin_dynasty }				
 		}

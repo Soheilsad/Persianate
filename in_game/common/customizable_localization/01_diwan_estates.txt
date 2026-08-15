@@ -21,7 +21,7 @@ amirs_estate = {
 diwan_council = {
 	type = country
 	trigger = {
-		has_reform = government_reform:persianate_bureaucracy_reform
+		modifier:has_nizam_ul_mulk_chancery = yes
 	}
 	text = {
 		localization_key = diwan_council

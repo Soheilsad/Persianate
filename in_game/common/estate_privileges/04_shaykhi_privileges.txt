@@ -140,3 +140,65 @@ shaykhi_jihad_authority = {
 		stability_cost = 0.05
 	}
 }
+
+shaykhi_saddled_horse_vigil = {
+	estate = shaykhi_dervishes_estate
+
+	potential = { }
+	allow = { }
+	can_revoke = { }
+
+	country_modifier = {
+		shaykhi_dervishes_estate_target_satisfaction = 0.04
+		global_shaykhi_dervishes_estate_power = 0.30
+
+		# Every dawn a saddled, bridled white horse is led out of the
+		# gate to await the Imām's arrival. The main devotional engine —
+		# and a city that lives on the edge of the eschaton does not
+		# settle easily into ordinary administration.
+		monthly_devotion = 0.10
+		stability_cost = 0.05
+	}
+}
+
+shaykhi_martyrs_rolls = {
+	estate = shaykhi_dervishes_estate
+
+	potential = { }
+	allow = { }
+	can_revoke = { }
+
+	country_modifier = {
+		shaykhi_dervishes_estate_target_satisfaction = 0.03
+		global_shaykhi_dervishes_estate_power = 0.30
+
+		# The lodges keep the rolls of the fallen: every great battle
+		# against the ordu enters names, and the names feed the cause
+		# (devotion per battle via 17_martyrs_engines on_actions — a
+		# lost field fills more pages than a won one).
+		monthly_devotion = 0.02
+		land_morale_modifier = 0.05
+	}
+}
+
+shaykhi_common_table = {
+	estate = shaykhi_dervishes_estate
+
+	potential = { }
+	allow = { }
+	can_revoke = { }
+
+	country_modifier = {
+		shaykhi_dervishes_estate_target_satisfaction = 0.04
+		global_shaykhi_dervishes_estate_power = 0.30
+
+		# The rulers eat with the brethren and wear wool. The egalitarian
+		# refusal as standing policy: the low rise fast, the notables
+		# seethe at the indignity.
+		global_pop_promotion_speed_modifier = 0.25
+		peasants_estate_target_satisfaction = 0.05
+		burghers_estate_target_satisfaction = 0.03
+		sufyani_notables_estate_target_satisfaction = -0.05
+		monthly_devotion = 0.02
+	}
+}

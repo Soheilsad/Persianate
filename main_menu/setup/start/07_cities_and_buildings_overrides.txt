@@ -233,4 +233,31 @@ building_manager = {
 	tariqa_khanaqah = { tag = RIF level = 1 location = basra }
 	tariqa_khanaqah = { tag = RIF level = 1 location = hillah }
 
+	### Pre-existing iqṭāʿ networks (persianate_periphery_plan.md) — the
+	### Mamluk rawk-registered assignments and the Delhi assignment
+	### system are standing facts in 1337, not something the player
+	### builds from zero. Deliberately sparse (no iqta saturation);
+	### rural parcels only (the building is rural_settlement-gated).
+
+	## MAM — Egypt (Delta and valley parcels) and the Syrian niyābas.
+	iqta_grant = { tag = MAM level = 2 location = kafr_saqr }
+	iqta_grant = { tag = MAM level = 1 location = tarrana }
+	iqta_grant = { tag = MAM level = 1 location = faqus }
+	iqta_grant = { tag = MAM level = 1 location = ushmum_tannah }
+	iqta_grant = { tag = MAM level = 1 location = tahna }
+	iqta_grant = { tag = MAM level = 1 location = el_buwit }
+	iqta_grant = { tag = MAM level = 2 location = dabiq }
+	iqta_grant = { tag = MAM level = 1 location = zardana }
+	iqta_grant = { tag = MAM level = 1 location = madaba }
+
+	## DLH — the Doab core and the Punjab military belt.
+	iqta_grant = { tag = DLH level = 2 location = jansath }
+	iqta_grant = { tag = DLH level = 1 location = korra }
+	iqta_grant = { tag = DLH level = 1 location = asni }
+	iqta_grant = { tag = DLH level = 1 location = chandwar }
+	iqta_grant = { tag = DLH level = 2 location = dadri }
+	iqta_grant = { tag = DLH level = 1 location = gugera }
+	iqta_grant = { tag = DLH level = 1 location = pindi_bhattian }
+	iqta_grant = { tag = DLH level = 1 location = sunam }
+
 }

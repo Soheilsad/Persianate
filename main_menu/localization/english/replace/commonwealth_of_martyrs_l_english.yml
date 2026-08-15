@@ -236,6 +236,44 @@
  pa_shaykhi_case_shrine_desecration: "Case: The Desecrated Shrines"
  pa_shaykhi_case_shrine_desecration_desc: "Tombs of rival shaykhs broken open and scholars of the law harassed in the street as men of half-faith."
 
+ # Revolutionary Zeal (the opening clock)
+ STATIC_MODIFIER_NAME_revolutionary_zeal: "Revolutionary Zeal"
+ STATIC_MODIFIER_DESC_revolutionary_zeal: "The generation that swore the vow at Bāshtīn is young, armed, and certain. Everyone contributes to the cause; no locks are needed on the doors. It cannot last forever — one generation is what you have."
+ AUTO_MODIFIER_NAME_zeal_defensive_surge: "The Vow Besieged"
+ AUTO_MODIFIER_DESC_zeal_defensive_surge: "They have come to hang us at last. Every man who swore the vow remembers what it was sworn against — the commonwealth at bay fights like 1337 again."
+
+ # Devotion engine privileges — Shaykhī
+ shaykhi_saddled_horse_vigil: "The Saddled Horse Vigil"
+ shaykhi_saddled_horse_vigil_desc: "Every dawn a saddled, bridled white horse is led out of the gate, so that when the Imām appears He shall not wait a single hour for His mount. The city lives on the edge of the eschaton."
+ shaykhi_martyrs_rolls: "The Martyrs' Rolls"
+ shaykhi_martyrs_rolls_desc: "The lodges keep the register of the fallen, read aloud at the vigils. Every field against the ordu enters names, and the names feed the cause. A lost field fills more pages than a won one."
+ shaykhi_common_table: "The Common Table"
+ shaykhi_common_table_desc: "The malik eats what the brethren eat, at the same board, in the same wool. There is no high seat at the table of the Imām's servants — and the notables choke on every shared loaf."
+
+ # Entrenchment privileges — Sufyānī
+ sufyani_chancery_of_the_vow: "Chancery of the Vow"
+ sufyani_chancery_of_the_vow_desc: "Nishapur has taught us administration. The ledger serves the trust now: a chancery of the commonwealth, keeping accounts in the name of a sovereign who is absent."
+ sufyani_fixed_tax_register: "The Fixed Tax Register"
+ sufyani_fixed_tax_register_desc: "The assessment is fixed, written, and read aloud in the bazaar. No farmer of taxes may demand a dinar beyond it. This is the justice the villages will remember of Sabzavār."
+ sufyani_collaborator_scribes: "The Collaborators' Pens"
+ sufyani_collaborator_scribes_desc: "The families who kept the ordu's ledgers keep ours now. The chancery hums with borrowed skill — and the brethren ask, quietly, what exactly was fought for."
+
+ # Mission of the Liberated (building)
+ mission_of_the_liberated: "Mission of the Liberated"
+ mission_of_the_liberated_desc: "The dawa in the open: a lodge, a soup-kitchen, and a preacher for the quarters the vow has freed. The lower orders come first — the laborer hears the Imām's claim before the notable does."
+
+ # Charter of the Liberated (cabinet action)
+ charter_of_the_liberated: "Charter of the Liberated"
+ charter_of_the_liberated_desc: "A province that recites with us is not a conquest but a homecoming. The council issues its charter and the land enters the commonwealth at a pace no sultanate could match."
+ charter_of_the_liberated_select_province: "Charter a liberated province"
+ charter_of_the_liberated_no_provinces: "No owned province is both Shia-majority and still unintegrated."
+
+ # ʿĀshūrāʾ (martyrs.10)
+ martyrs.10.title: "The Tenth of Muḥarram"
+ martyrs.10.desc: "The drums begin before dawn. Today the commonwealth mourns its first martyr and patron — Ḥusayn at Karbalāʾ, thirsty among his dead — and in mourning him it explains itself to itself: this is what power does to the Imām's house, and this is why the throne stands empty in trust.\n\nThe question, as every year, is who owns the day. The brethren would take the streets — the procession, the chains, the names of the fallen read from the rolls until grief becomes vow. The notables would sponsor a seemly majlis — the elegies sung indoors, the bazaar shuttered in dignity, the passion honored without the fire."
+ martyrs.10.a: "The streets. Read the rolls until grief becomes vow."
+ martyrs.10.b: "The majlis. Grief with its collar straight."
+
  # Maẓālim verdict modifiers (parliament agendas)
  STATIC_MODIFIER_NAME_sufyani_verdict_granaries_opened: "Granaries Opened"
  STATIC_MODIFIER_NAME_sufyani_verdict_confiscated_iqta: "Completed Confiscations"

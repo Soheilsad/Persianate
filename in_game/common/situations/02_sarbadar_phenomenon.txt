@@ -199,6 +199,44 @@ sarbadar_phenomenon = {
 			}
 		}
 
+		# --- The missions work (owned-territory dawa) ----------------
+		# Where the commonwealth has planted a Mission of the Liberated,
+		# the lower orders tip first — laborers, peasants, tribesmen.
+		# The notables convert last and resentfully (engine conversion
+		# on the building handles the rest of the population at the
+		# slow rate; this pass is the bottom-up surge).
+		every_country = {
+			limit = {
+				government_type = government_type:commonwealth_of_martyrs
+				any_owned_location = {
+					has_building_with_at_least_one_level = mission_of_the_liberated
+				}
+			}
+			every_owned_location = {
+				limit = {
+					has_building_with_at_least_one_level = mission_of_the_liberated
+				}
+				every_pop = {
+					limit = {
+						religion = religion:sunni
+						OR = {
+							pop_type = pop_type:laborers
+							pop_type = pop_type:peasants
+							pop_type = pop_type:tribesmen
+						}
+					}
+					random = {
+						chance = 2
+						change_pop_religion = religion:shia
+						split_pop = {
+							fraction = 0.5
+							religion = religion:sunni
+						}
+					}
+				}
+			}
+		}
+
 		# --- The cells work -----------------------------------------
 		# Where a cell stands, the message moves through the bazaars:
 		# Sunni artisan pops tip toward the Imam's cause (half converts,

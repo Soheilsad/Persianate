@@ -88,13 +88,10 @@ is_diwan_pop = {
 			culture = { has_culture_group = culture_group:arabic_group }
 		}
 		pop_literacy > 30
-		OR = {
-			owner ?= {
-				government_type = government_type:persianate_sultanate
-			}
-			owner ?= {
-				has_reform = government_reform:persianate_bureaucracy_reform
-			}
+		# Apparatus flag only — the chancery makes the pop class, not the
+		# government form (a beylik sultanate has no diwan to join).
+		owner ?= {
+			modifier:has_nizam_ul_mulk_chancery = yes
 		}
 
 		OR = {
@@ -113,18 +110,20 @@ is_diwan_pop = {
 }
 
 is_amir_pop = {
-	OR = {
-		owner ?= {
-			OR = {
-				government_type = government_type:persianate_sultanate
-				government_type = government_type:commonwealth_of_martyrs
-			}
-			
-		}
-		owner ?= {
-			has_reform = government_reform:persianate_bureaucracy_reform
-		}
+	# Apparatus flag only (was gov-type OR): NOTE this removes the
+	# commonwealth arm — the vow-state's military class is the dervish
+	# corps, not amirs (08_martyrs_auto_modifiers deliberately withholds
+	# amirs_base_values from it). Amir pops return to any polity the
+	# moment it acquires the chancery.
+	owner ?= {
+		modifier:has_nizam_ul_mulk_chancery = yes
 	}
+	# The umara is a closed MUSLIM service order — revocable iqṭāʿ rank,
+	# not hereditary right (Barani's khan–malik–amir ladder; conversion
+	# was the entry ticket). Non-Muslim hereditary lords — rajas, meliks,
+	# Tengri noyans — fall through to the NOBLES estate: immunity holders
+	# by descent, the feudal-rights pole of the tripartite system.
+	religion.group = religion_group:muslim
 }
 
 is_burgher_diwan_pop = {
@@ -136,13 +135,10 @@ is_burgher_diwan_pop = {
 			# Requires highly capitalized economy to allow merchants into the high bureaucracy
 			societal_value:capital_economy_vs_traditional_economy < -75
 		}
-		OR = {
-			owner ?= {
-				government_type = government_type:persianate_sultanate
-			}
-			owner ?= {
-				has_reform = government_reform:persianate_bureaucracy_reform
-			}
+		# Apparatus flag only — the chancery makes the pop class, not the
+		# government form (a beylik sultanate has no diwan to join).
+		owner ?= {
+			modifier:has_nizam_ul_mulk_chancery = yes
 		}
 		location ?= {
 			OR = {

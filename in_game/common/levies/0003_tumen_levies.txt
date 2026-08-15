@@ -2,7 +2,7 @@ levy_tumen_cavalry = {
 	size = 0.75
 	allowed_pop_type = soldiers
 	country_allow = {
-		has_reform = government_reform:persianate_bureaucracy_reform
+		modifier:has_nizam_ul_mulk_chancery = yes
 	}
 	allow = {
 		current_age = age_1_traditions

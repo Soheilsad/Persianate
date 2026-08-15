@@ -227,6 +227,12 @@ tariqa.2 = {
 		if = {
 			limit = { has_reform = government_reform:tariqa_popular_base }
 			change_government_type = government_type:commonwealth_of_martyrs
+			# A new commonwealth is born hot: fresh zeal, a full
+			# quarter-century of it.
+			add_country_modifier = {
+				modifier = revolutionary_zeal
+				years = 25
+			}
 		}
 		else = {
 			change_government_type = government_type:persianate_sultanate
@@ -303,6 +309,12 @@ tariqa.3 = {
 		if = {
 			limit = { has_reform = government_reform:tariqa_popular_base }
 			change_government_type = government_type:commonwealth_of_martyrs
+			# A new commonwealth is born hot: fresh zeal, a full
+			# quarter-century of it.
+			add_country_modifier = {
+				modifier = revolutionary_zeal
+				years = 25
+			}
 		}
 		else = {
 			change_government_type = government_type:persianate_sultanate
@@ -447,6 +459,11 @@ tariqa.5 = {
 			}
 		}
 		change_government_type = government_type:commonwealth_of_martyrs
+		# Born hot: fresh zeal, a full quarter-century of it.
+		add_country_modifier = {
+			modifier = revolutionary_zeal
+			years = 25
+		}
 		add_religious_aspect = religious_aspect:imamate_ithna_ashari
 		add_religious_aspect = religious_aspect:niyaba_amma
 		set_religious_school = religious_school:shaykhiyya_school

@@ -9,6 +9,9 @@
 government_flavor_pulse = {
 	first_valid_on_action = {
 		persianate_flavor_pulse
+		# Falls through when the sultanate gate fails — the commonwealth
+		# branch (defined in 17_martyrs_engines.txt).
+		martyrs_flavor_pulse
 	}
 }
 

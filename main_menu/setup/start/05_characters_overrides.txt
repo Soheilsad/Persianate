@@ -474,4 +474,54 @@ character_db = {
 		dynasty = rifai_dynasty
 		tag = RIF
 	}
+
+	### Periphery chancery characters — the diwan estates of Cairo and
+	### Delhi need named men at start (new generation defaults to the
+	### diwan via the government type, but the pool starts empty).
+
+	# Ibn Faḍl Allāh al-ʿUmarī — the great chancery encyclopedist
+	# (al-Taʿrīf, Masālik al-abṣār), of the Damascene dynasty of kātib
+	# al-sirrs. b. 1301, serving in Cairo in 1337.
+	mam_ibn_fadl_allah_umari_pw = {
+		first_name = { name = name_ahmad }
+		culture = levantine_culture
+		religion = sunni
+		adm = 85 dip = 70 mil = 15
+		birth_date = 1301.6.1
+		birth = damascus
+		tag = MAM
+	}
+	# ʿAlāʾ al-Dīn ibn Faḍl Allāh — his brother, likewise of the kātib
+	# al-sirr house.
+	mam_ala_al_din_fadl_pw = {
+		first_name = { name = name_ali }
+		culture = levantine_culture
+		religion = sunni
+		adm = 75 dip = 65 mil = 15
+		birth_date = 1304.1.1
+		birth = damascus
+		tag = MAM
+	}
+	# Khwāja Jahān Aḥmad Ayāz — Muhammad bin Tughluq's wazir, the man
+	# who kept the ledgers through the experiments.
+	dlh_khwaja_jahan_ayaz_pw = {
+		first_name = { name = name_ahmad }
+		culture = dehlavi
+		religion = sunni
+		adm = 80 dip = 55 mil = 40
+		birth_date = 1290.1.1
+		birth = delhi
+		tag = DLH
+	}
+	# Ziyāʾ al-Dīn Baranī — of Baran, courtier and the age's historian;
+	# the complaint literature of the service class in one man.
+	dlh_ziya_al_din_barani_pw = {
+		first_name = { name = name_ziya.name_al_din }
+		culture = dehlavi
+		religion = sunni
+		adm = 65 dip = 60 mil = 10
+		birth_date = 1285.1.1
+		birth = baran
+		tag = DLH
+	}
 }

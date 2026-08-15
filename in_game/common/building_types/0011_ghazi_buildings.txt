@@ -97,7 +97,7 @@ zurkhanah = {
 		religion.group = religion_group:muslim
 		OR = {
 			AND = {
-				has_reform = government_reform:persianate_bureaucracy_reform
+				modifier:has_nizam_ul_mulk_chancery = yes
 				has_estate_privilege = estate_privilege:ayyar_militia_recognition
 			}
 			government_type = government_type:commonwealth_of_martyrs

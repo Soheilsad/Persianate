@@ -2,7 +2,7 @@ levy_nomadic_tribes = {
 	size = 0.1 ## these tribes are really tolerated for their military contribution.
 	allowed_pop_type = tribesmen
 	country_allow = {
-		has_reform = government_reform:persianate_bureaucracy_reform
+		modifier:has_nizam_ul_mulk_chancery = yes
 	}
 	allow = {
 		current_age = age_1_traditions
@@ -18,7 +18,7 @@ levy_turkoman_tribes = {
 	size = 0.1
 	allowed_pop_type = tribesmen
 	country_allow = {
-		has_reform = government_reform:persianate_bureaucracy_reform
+		modifier:has_nizam_ul_mulk_chancery = yes
 	}
 	allow = {
 		current_age = age_2_renaissance
@@ -30,7 +30,7 @@ levy_qizilbash_tribes = {
 	size = 0.1 ## these tribes are really tolerated for their military contribution.
 	allowed_pop_type = tribesmen
 	country_allow = {
-		has_reform = government_reform:persianate_bureaucracy_reform
+		modifier:has_nizam_ul_mulk_chancery = yes
 	}
 	allow = {
 		current_age = age_3_discovery

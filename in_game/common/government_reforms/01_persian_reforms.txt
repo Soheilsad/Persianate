@@ -27,11 +27,18 @@ persianate_bureaucracy_reform = {
 	government = persianate_sultanate
 	potential = {
 		NOT = { has_reform = government_reform:tariqa_order }
+		# The Iranian chancery chassis — exclusive with the Egyptian and
+		# Indian dress of the same apparatus.
+		NOT = { has_reform = government_reform:mamluk_government }
+		NOT = { has_reform = government_reform:indian_sultanate_reform }
 	}
 	locked = {
 		always = yes
 	}
 	country_modifier = {
+		# The apparatus flag: everything downstream (estate pop gates,
+		# levy structures, diwan flavor) keys on this, not the reform.
+		has_nizam_ul_mulk_chancery = yes
 		country_cabinet_efficiency = 0.1
 		diwan_estate_target_satisfaction = 0.05
 		global_diwan_estate_power = 0.25
@@ -135,6 +142,7 @@ chinggisid_regency = {
 	government = persianate_sultanate
 
 	potential = {
+		is_member_of_international_organization = international_organization:eranzamin
 		NOT = { has_reform = government_reform:farr_i_izadi }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:amir_sultanate }
@@ -186,6 +194,7 @@ farr_i_izadi = {
 		NOT = { has_variable = farr_was_broken_lapse }
 	}
 	potential = {
+		is_member_of_international_organization = international_organization:eranzamin
 		NOT = { has_reform = government_reform:chinggisid_regency }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:amir_sultanate }
@@ -260,6 +269,8 @@ ghazi_sultanate = {
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
 		NOT = { has_reform = government_reform:tariqa_order }
+		NOT = { has_reform = government_reform:mamluk_government }
+		NOT = { has_reform = government_reform:indian_sultanate_reform }
 	}
 	locked = {
 		NOT = { has_variable = ghazi_was_doctrine_lapsed }
@@ -334,6 +345,8 @@ amir_sultanate = {
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
 		NOT = { has_reform = government_reform:tariqa_order }
+		NOT = { has_reform = government_reform:mamluk_government }
+		NOT = { has_reform = government_reform:indian_sultanate_reform }
 	}
 
 	country_modifier = {
@@ -395,7 +408,7 @@ amir_sultanate = {
 # =========================================================
 
 circle_of_equity_reform = {
-	age = age_1_traditions
+	age = age_2_renaissance
 	government = persianate_sultanate
 
 	# The dāʾira-yi ʿadālat does not sit comfortably with a borrowed

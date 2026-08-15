@@ -1,5 +1,5 @@
 amirs_power_from_tribes = {
-	potential_trigger = { has_reform = government_reform:persianate_bureaucracy_reform }
+	potential_trigger = { modifier:has_nizam_ul_mulk_chancery = yes }
 	scales_with = {
 		value = val_tribal_percentage
 	}
@@ -7,7 +7,7 @@ amirs_power_from_tribes = {
 }
 
 diwan_power_from_sedentary = {
-	potential_trigger = { has_reform = government_reform:persianate_bureaucracy_reform }
+	potential_trigger = { modifier:has_nizam_ul_mulk_chancery = yes }
 	scales_with = {
 		value = val_sedentary_percentage
 	}
@@ -15,7 +15,7 @@ diwan_power_from_sedentary = {
 }
 
 diwan_base_values = {
-	potential_trigger = { has_reform = government_reform:persianate_bureaucracy_reform }
+	potential_trigger = { modifier:has_nizam_ul_mulk_chancery = yes }
 	modifier = {
 		global_diwan_estate_power = 0.30
 		global_amirs_estate_power = 0.30
