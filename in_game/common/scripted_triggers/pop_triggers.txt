@@ -86,8 +86,17 @@ is_diwan_pop = {
 		OR = {
 			culture = { has_culture_group = culture_group:iranian_group }
 			culture = { has_culture_group = culture_group:arabic_group }
+			# The indigenous scribal class of the sultanate world — the
+			# Indian Muslim clerks whose rise into the diwan is what
+			# Baranī's complaint literature is complaining about. (The
+			# Khurasani émigrés live at the CHARACTER level: estate
+			# seeding hardcodes farsi diwan characters.)
+			AND = {
+				culture = { has_culture_group = culture_group:indian_group }
+				religion.group = religion_group:muslim
+			}
 		}
-		pop_literacy > 30
+		pop_literacy > 20
 		# Apparatus flag only — the chancery makes the pop class, not the
 		# government form (a beylik sultanate has no diwan to join).
 		owner ?= {
@@ -118,12 +127,24 @@ is_amir_pop = {
 	owner ?= {
 		modifier:has_nizam_ul_mulk_chancery = yes
 	}
-	# The umara is a closed MUSLIM service order — revocable iqṭāʿ rank,
-	# not hereditary right (Barani's khan–malik–amir ladder; conversion
-	# was the entry ticket). Non-Muslim hereditary lords — rajas, meliks,
-	# Tengri noyans — fall through to the NOBLES estate: immunity holders
-	# by descent, the feudal-rights pole of the tripartite system.
-	religion.group = religion_group:muslim
+	# The umara is a closed MUSLIM service order in 1337 — revocable
+	# iqṭāʿ rank, not hereditary right (Barani's khan–malik–amir ladder;
+	# conversion was the entry ticket: Harihara and Bukka passed through
+	# it at Kampili). Non-Muslim hereditary lords — rajas, meliks, Tengri
+	# noyans — fall through to the NOBLES estate: immunity holders by
+	# descent, the feudal-rights pole of the tripartite system.
+	#
+	# BUT the closure is a decision, not a law of nature: the Open
+	# Muster Rolls privilege (amirs_open_muster_rolls) is the historical
+	# opening — Maratha silahdars in Deccani service, Shahji Bhonsle's
+	# jagirs, the Rajput mansabdars. Grant it and the corps takes any
+	# creed.
+	OR = {
+		religion.group = religion_group:muslim
+		owner ?= {
+			has_estate_privilege = estate_privilege:amirs_open_muster_rolls
+		}
+	}
 }
 
 is_burgher_diwan_pop = {

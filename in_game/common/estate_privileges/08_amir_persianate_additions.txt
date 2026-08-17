@@ -158,6 +158,33 @@ quriltai_convocation = {
 # against exactly this in the Siyāsatnāma — the pen and the sword
 # in the same hand ruins the registers — and the diwan responds
 # accordingly.
+amirs_open_muster_rolls = {
+	estate = amirs_estate
+	content_priority = 600
+
+	potential = {
+		government_type = government_type:persianate_sultanate
+	}
+	allow = { }
+	can_revoke = { }
+
+	# The corps opens to any creed: non-Muslim military men enter the
+	# amirs estate as service cavalry rather than sitting outside it as
+	# hereditary lords (is_amir_pop reads this privilege). Historical
+	# arc: the Deccan sultanates enrolling Maratha silahdars, Shahji
+	# Bhonsle's jagirs, the Rajput mansabdars — manpower necessity made
+	# constitutional practice, over the ulama's standing objection.
+	country_modifier = {
+		amirs_estate_target_satisfaction = 0.03
+		# The recruitment pool widens dramatically.
+		global_amirs_estate_power = 0.20
+		global_manpower_modifier = 0.10
+		# The ulama do not forget which order the realm is supposed to
+		# uphold.
+		clergy_estate_target_satisfaction = -0.05
+	}
+}
+
 amirs_umara_at_the_diwan = {
 	estate = amirs_estate
 	content_priority = 600

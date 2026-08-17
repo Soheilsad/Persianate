@@ -95,6 +95,17 @@
  MODIFIER_TYPE_NAME_has_nizam_ul_mulk_chancery: "Niẓām al-Mulk Chancery"
  MODIFIER_TYPE_DESC_has_nizam_ul_mulk_chancery: "The polity runs the classical Persianate apparatus: a chancery class keeping the registers, an iqṭāʿ military fisc, and the diwan and amir estates that staff them. Iran, Cairo, and Delhi each wear it in their own dress; the frontier does not wear it at all."
 
+ # Delhi breakaway correction (fires silently; loc for safety)
+ periphery.1.title: "The Governor's Khutba"
+ periphery.1.desc: "The Friday sermon in the provincial capital is read in a new name — the governor's own. The registers, the iqṭāʿ rolls, and the Persian of the chancery all continue exactly as before; only the sovereign has changed. Every amputation of Delhi is performed with Delhi's own instruments."
+ periphery.1.a: "The dispensation continues."
+
+ # The Khusraw Khan protocol (periphery.2)
+ periphery.2.title: "The Faith of the Realm"
+ periphery.2.desc: "The khutba has faltered. The throne of the sultanate no longer stands in the faith the dispensation was built for, and every amīr in the realm remembers what that means, because the ruling house itself was founded on the answer. In 1320 a convert-usurper sat this same kind of throne and dreamed of restoration; within the year the men of the sword had killed him and his line and found a believer. The registers, the iqṭāʿ rolls, the qāḍī courts, and truly, the whole apparatus rests on the dispensation. Either the dispensation ends, honestly and whole, or the amīrs write the old answer again in blood."
+ periphery.2.a: "The dispensation is ended. Let the realm be what its people are."
+ periphery.2.b: "The amīrs remember Khusraw Khan. Kill the apostate; find a believer."
+
  # Periphery starter reforms
  indian_sultanate_reform: "The Delhi Dispensation"
  indian_sultanate_reform_desc: "The subcontinent's Persianate order: a Turco-Persian cavalry elite paid through iqṭāʿ, a chancery whose revenue registers reach further than any in the Islamic world, and garrison cities holding down a countryside that has never fully consented. Harder extraction than the Iranian norm — the fiscal delta that keeps the sultanates coming."
