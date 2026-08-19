@@ -176,7 +176,6 @@ diwan_persian_bureaucratic_tradition = {
 		# where the tradition lives; the countryside follows.
 		global_max_urban_control = ez_diwan_urban_bonus
 		global_max_rural_control = ez_diwan_rural_bonus
-		stability_cost = -0.10
 		stability_cost_efficiency = 0.10
 		# As the chancery becomes a self-replicating elite, the names
 		# in the registers and the names being assessed quietly drift

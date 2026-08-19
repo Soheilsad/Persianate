@@ -19,7 +19,7 @@ sufyani_civic_assembly = {
 
 		# Formal participation channels the conservatives' energy into
 		# council politics rather than street violence.
-		stability_cost = -0.05
+		stability_cost_efficiency = 0.05
 		country_cabinet_efficiency = 0.05
 		monthly_towards_tazik = 0.05
 		monthly_towards_centralization = 0.05
@@ -61,7 +61,7 @@ sufyani_judicial_office = {
 		# Lay-notable control of qāḍī appointments rather than dervish-led
 		# revolutionary tribunals.
 		global_max_control = 0.10
-		stability_cost = -0.08
+		stability_cost_efficiency = 0.08
 		# Slight push toward Usulī jurisprudence (qualified-jurist tradition
 		# requires formal courts to operate)
 		monthly_towards_centralization = 0.10

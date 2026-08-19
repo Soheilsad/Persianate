@@ -524,4 +524,43 @@ character_db = {
 		birth = baran
 		tag = DLH
 	}
+
+
+	### delhi
+
+	dlh_muhammad_bin_tughluq_pw = {
+		first_name = { name = name_muhammad }
+		culture = dehlavi
+		religion = sunni
+		birth = delhi
+		birth_date = 1290.1.1
+		father = dlh_ghiyasuddin_tughlaq
+		dynasty = tughlaq_dynasty
+		adm = 74
+		dip = 30
+		mil = 78
+		ruler_trait = scholar
+		ruler_trait = tolerant
+		ruler_trait = cruel
+		ruler_trait = obsessive_perfectionist
+		tag = DLH
+	}
+
+	dlh_firuz_shah_tughlaq_pw = {
+		first_name = { name = name_firuz.name_shah }
+		culture = dehlavi
+		religion = sunni
+		birth_date = 1309.1.1
+		birth = delhi
+		father = dlh_rajab
+		mother = dlh_naila
+		dynasty = tughlaq_dynasty
+		adm = 72
+		dip = 60
+		mil = 20
+		ruler_trait = pious
+		ruler_trait = architectural_visionary
+		ruler_trait = benevolent
+		tag = DLH
+	}
 }

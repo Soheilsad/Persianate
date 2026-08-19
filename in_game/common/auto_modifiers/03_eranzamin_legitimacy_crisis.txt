@@ -26,6 +26,17 @@ unsettled_legitimacy_crisis = {
 		# way — Cairo's caliph (Mamluks), the Delhi dispensation (India).
 		NOT = { has_reform = government_reform:mamluk_government }
 		NOT = { has_reform = government_reform:indian_sultanate_reform }
+		# The Ṣāḥib-Qirān's answer is built into his reform: puppet khan,
+		# gurkan title, and the conjunction itself. Nothing gnaws at him.
+		NOT = { has_reform = government_reform:timurid_empire }
+		# Shattered Rum: a MARCH has no khutba problem — a beg's
+		# legitimacy is his sword and his father's tents. The question
+		# becomes acute only when he claims more than a march, and both
+		# claims (the Seljuk custody and its vindicated crown) carry
+		# their own answer.
+		NOT = { has_reform = government_reform:anatolian_beylik }
+		NOT = { has_reform = government_reform:seljuk_claimant }
+		NOT = { has_reform = government_reform:sultanate_of_rum }
 		NOT = {
 			ruler ?= { dynasty = dynasty:borjigin_dynasty }				
 		}

@@ -42,7 +42,6 @@ diwan_estate = {
 
 	low_power = {
 		country_cabinet_efficiency = -0.20
-		stability_cost = 0.15
 		stability_cost_efficiency = -0.2
 		global_max_urban_control = -0.05
 		global_max_rural_control = -0.10

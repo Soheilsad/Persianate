@@ -1,0 +1,96 @@
+﻿l_english:
+ # =========================================================
+ # SHATTERED RUM — situation rename + Anatolian legitimacy arc
+ # =========================================================
+ rise_of_the_ottomans: "Shattered Rum"
+ rise_of_the_ottomans_desc: "The Sultanate of Rum is dead, and now the Ilkhans who kept its corpse in order are dead too. What remains is a land of marches without an overlord: begs who hold their valleys by the sword, ghazis who raid the shrinking Roman coast, and in Konya an empty dar al-mulk where the khutba waits for a name.\n\nEvery beylik in [ShowRegionName('anatolia_region')] now runs the same race — muster, tax, subjugate — but strength alone founds nothing. A beg who would be more than a beg must answer the question the dead sultanate left behind: by what right? Some will answer with the sword of the faith, proven on the frontier until Cairo itself confirms the title. Some will answer with Konya — custody of the old capital, the old coin, the old registers, a sultanate rebuilt from paperwork upward.\n\nMost will answer nothing, and be absorbed."
+ 
+ # ----- reforms -----
+ seljuk_claimant: "Claimant of the Seljuk Inheritance"
+ seljuk_claimant_desc: "The House of Seljuk died in 1308 and left no heir — so the claim is not blood, it is custody, and custody must be built: take Konya, strike the coin, reopen the roads, keep the registers as the sultans kept them, and the land will judge whether the word holds. Declaring makes every beg in Anatolia your rival: they did not agree to be subjects, and they will watch you bleed."
+ sultanate_of_rum: "Sultanate of Rum"
+ sultanate_of_rum_desc: "The custody is proven. The coin bears your name, the caravans move on the trunk road under your protection, and the diwan of Rum keeps registers in Konya as it did under Kayqubad — the claim survived its audit, and the begs who refused it have bent the knee. What the House of Seljuk left, your house has taken up."
+ 
+ # ----- disaster -----
+ seljuk_inheritance: "The Seljuk Inheritance"
+ seljuk_inheritance_desc: "The claim of Konya is declared, and now the land audits it. A claimant without blood must prove custody the only way custody can be proven: coin struck in his own name, roads that caravans trust, registers kept by a chancery that answers to him. Until the apparatus stands, the claim is a boast — and every month it stands unproven, it costs."
+ rum_inheritance_not_completed_tt: "The Seljuk Inheritance has not yet run its course"
+ rum_inheritance_not_fired_tt: "The Seljuk Inheritance has not yet begun"
+ rum_inheritance_end_vindicated_tt: "#G Vindicated#! — the apparatus stands, the realm dominates: the Sultanate of Rum"
+ rum_inheritance_end_broken_tt: "#R Broken#! — the claim collapsed"
+ rum_inheritance_end_abandoned_tt: "The claim was abandoned"
+ 
+ # ----- disaster actions -----
+ rum_strike_the_sikka: "Strike the Sikka"
+ rum_strike_the_sikka_desc: "Withdraw the Ilkhanid coin and strike dirhams in your own name at Konya. Whose name is on the coin is the first question every bazaar asks about a would-be sultan."
+ rum_reopen_trunk_road: "Reopen the Trunk Road"
+ rum_reopen_trunk_road_desc: "Garrison and rebuild the caravanserais along the Konya–Sivas spine. The old sultanate was, before anything else, a road that merchants trusted."
+ rum_restore_the_diwan: "Restore the Diwan of Rum"
+ rum_restore_the_diwan_desc: "Recall the scribes, reopen the registers, and constitute a chancery in the Persian manner — the apparatus the Seljuks ran and every claimant since has only imitated. The begs will not thank you for it."
+ 
+ # ----- situation actions (ghazi road) -----
+ endow_chancery_of_rum: "Endow a Chancery"
+ endow_chancery_of_rum_desc: "The sword conquered Anatolia; now someone must govern it. Import the scribes, buy the registers, and pay full price for the apparatus the claimant of Konya built cheap through years of patient bleeding."
+ petition_caliph_for_rum: "Petition the Caliph for Rum"
+ petition_caliph_for_rum_desc: "Send an embassy to the Abbasid shadow in Cairo with gifts worthy of an investiture, and ask for the title the frontier already uses: Sultan of Rum. A functioning sultanate petitions; a war camp does not."
+ rum_petition_strongest_tt: "You must be the strongest power of Shattered Rum"
+ rum_two_doors_tt: "You hold a completed claim to Rum: the vindicated Seljuk Inheritance, or the Caliph's investiture"
+ 
+ # ----- static modifiers -----
+ STATIC_MODIFIER_NAME_rum_sikka_struck_mod: "The Sikka of Konya"
+ STATIC_MODIFIER_DESC_rum_sikka_struck_mod: "Coin struck in the ruler's own name at the old capital — the first and most public apparatus of a sultan."
+ STATIC_MODIFIER_NAME_rum_trunk_road_mod: "The Trunk Road Reopened"
+ STATIC_MODIFIER_DESC_rum_trunk_road_mod: "The Konya–Sivas caravan spine works again under the claimant's protection."
+ STATIC_MODIFIER_NAME_rum_diwan_restored_mod: "The Diwan of Rum"
+ STATIC_MODIFIER_DESC_rum_diwan_restored_mod: "The claimant keeps registers as the sultans kept them."
+ 
+ # ----- events -----
+ rum.1.title: "The Khutba at Konya"
+ rum.1.desc: "In the great mosque of Konya — Kayqubad's mosque — the khatib pauses where the sultan's name belongs, and then reads ours. It has been done. Thirty years of an empty dar al-mulk are ended by a sentence.\n\nNow comes the audit. Our patents ran from the Ilkhan's chancery, and we have just declared the Ilkhan's order dead; until we strike coin, guard roads, and keep registers like a sultanate, we are a beylik with a large word in its mouth. The begs heard the khutba too. They are not smiling."
+ rum.1.a: "The word is spoken. Now we make it true."
+ rum.10.title: "The Sikka Struck"
+ rum.10.desc: "The first dirhams come off the dies at Konya — our name, our mint mark, the old sultanate's weight standard. The moneychangers of the bazaar test them, shrug, and accept them, which is the only ceremony that matters. In every purse that carries our coin, the claim travels."
+ rum.10.a: "Let it pass from hand to hand."
+ rum.11.title: "The Road Holds"
+ rum.11.desc: "A caravan out of Tabriz has crossed to Konya by the trunk road, paid our tolls at our caravanserais, and lost nothing to bandits on the way. The merchants talk. The road is the sultanate's oldest argument for itself: safer under one hand than under twelve."
+ rum.11.a: "Safer under one hand."
+ rum.12.title: "The Diwan of Rum"
+ rum.12.desc: "The chancery is constituted. Scribes trained in the Persian manner take custody of the registers — the tax rolls, the land grants, the muster lists that the begs have kept in their own houses since the sultanate fell. A beg's holding, measured and recorded by a clerk, is no longer quite his own. They understand this perfectly, which is why the registers had to come with the claim and not after it."
+ rum.12.a: "What is written can be ruled."
+ rum.20.title: "The Inheritance Proven"
+ rum.20.desc: "The audit is over. The coin passes, the road holds, the diwan keeps the registers, and the begs who swore we would break have instead bent the knee — some at sword-point, some at the sight of the others doing it. In the mosque of Kayqubad the khatib reads the name of a Sultan of Rum, and this time no one in Anatolia laughs.\n\nWhat the House of Seljuk left, our house has taken up."
+ rum.20.a: "The Sultanate of Rum lives again — and it is ours."
+ rum.21.title: "The Claim Breaks"
+ rum.21.desc: "It is finished, and not in our favor. The word we spoke in Kayqubad's mosque could not be made true — the coin, the road, the registers, the obedience: somewhere the apparatus failed, and a claim that cannot be administered is only a boast that everyone remembers.\n\nThe begs will not forget that we reached for the crown and dropped it. No one of our house will speak that khutba again."
+ rum.21.a: "We reached too far. It will be remembered."
+ rum.2.title: "The Marches Without a Master"
+ rum.2.desc: "The couriers no longer come. The Ilkhan's chancery, which confirmed our fathers in their marches and took its tithe of our raids, has stopped answering — because it has stopped existing. Every beg in Anatolia holds today exactly what his sword holds, and not an acre more.\n\nThe begs of the frontier say the answer is written on the border itself: press the ghaza, and let Cairo confirm what the sword has already proven. The old qadi families of the interior say otherwise — that Anatolia has been a sultanate before, that the registers and the roads remember Konya, and that whoever takes up that inheritance takes up a crown. And the oldest men in the tents say what they have always said: that a beg who reaches past his march loses the march too."
+ rum.2.a: "The frontier is our patent. Press the ghaza."
+ rum.2.b: "The inheritance of the House of Seljuk waits at Konya. We claim it."
+ rum.2.c: "Our fathers were begs. Their tents are enough."
+ RUM_INHERITANCE_PROGRAM_TRACK: "The Program of the Inheritance"
+ # ----- base start events, reframed (the .1 desc is shared by .2) -----
+ rise_of_the_ottomans.1.title: "The Strongest of the Marches"
+ rise_of_the_ottomans.1.desc: "The Ilkhan's order is dead, and Rum lies masterless — a land of marches where every beg holds what his sword holds. No crown sits over Anatolia; the question of who will forge one is now open, and every muster and every tax register is an argument in that dispute.\n\nToday the strongest of the marches is [target_country.GetName], under [target_character.GetName]. Today. The begs keep their own count, and the count changes with every campaign season: strength in Shattered Rum is a position, not a possession.\n\nBut strength alone founds nothing. Whichever house would be more than a march must answer the question the dead sultanate left behind — by what right? — and the land will audit whatever answer it gives."
+ rise_of_the_ottomans.1.a: "A beg is not a sultan. Someone should remind them of that."
+ rise_of_the_ottomans.2.title: "Primacy Among the Marches"
+ rise_of_the_ottomans.2.a: "Primacy today. The crown when we have earned one."
+ RUM_INHERITANCE_HIGH_TRACK: "The Vindication Clock"
+ STATIC_MODIFIER_NAME_rum_old_capital_mod: "The Old Capital"
+ STATIC_MODIFIER_DESC_rum_old_capital_mod: "Konya, the dar al-mulk of the House of Seljuk, is held — and held is the entire content of the word: lose the city and lose the claim's first proof."
+ STATIC_MODIFIER_NAME_rum_program_relief_mod: "The Claim Advances"
+ STATIC_MODIFIER_DESC_rum_program_relief_mod: "A step of the Inheritance program stands complete, and for a while the doubters have less to say."
+ STATIC_MODIFIER_NAME_rum_conquest_glory: "Glory of the Claimant's Arms"
+ STATIC_MODIFIER_DESC_rum_conquest_glory: "A war won under the claim — the land takes victorious arms as evidence in the audit."
+ STATIC_MODIFIER_NAME_rum_defeat_shame: "Shame of the Claimant's Arms"
+ STATIC_MODIFIER_DESC_rum_defeat_shame: "A war lost under the claim — a would-be sultan who cannot hold the field cannot hold the word."
+ rum.13.title: "The Old Capital"
+ rum.13.desc: "Konya is ours. The dar al-mulk of the House of Seljuk — the palace, the mosque of Kayqubad, the tombs of the sultans whose inheritance we claim — sits under our garrison, and the khutba in the great mosque now carries our name to the one congregation in Anatolia whose hearing matters.\n\nThe first proof of custody is possession. We possess."
+ rum.13.a: "The seat is taken. Now the work."
+ rum.14.title: "The Old Capital Lost"
+ rum.14.desc: "Konya has fallen out of our hands — and with it, the first proof of everything we have claimed. A custodian who cannot hold the dar al-mulk is not a custodian; the begs say it in their tents, the qadis think it behind their beards, and the coin we struck there passes with a smirk attached.\n\nThe claim is not dead. But it is naked until the city is ours again."
+ rum.14.a: "Retake it. Nothing else repairs this."
+ # Base string uses Country.GetTownsAndCities, a data promote removed in
+ # 1.2.0 — it throws "FetchData failed" whenever the end conditions render.
+ # Overridden without the dead promote.
+ strongest_beylik_has_over_75_locations: "[SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('strongest_beylik_variable').GetCountry.GetName] owns at least 500 [locations|e] (currently: [SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('strongest_beylik_variable').GetCountry.GetOwnedLocationCount]) and 50 [towns_or_cities|e]."

@@ -115,3 +115,15 @@ cloistered_khan = {
 	}
 	blocked_from_character_interactions = yes
 }
+
+
+consolidation_opportunistic_acquisition = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+	
+	tribes_estate_levy_size = -0.5
+	# local_goods_output_modifier = 0.25 # Prosperous
+	amirs_estate_levy_size = -0.25
+}

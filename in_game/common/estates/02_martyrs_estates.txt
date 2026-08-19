@@ -35,7 +35,7 @@ sufyani_notables_estate = {
 		country_cabinet_efficiency = 0.12
 		tax_income_efficiency = 0.08
 		global_max_control = 0.10
-		stability_cost = -0.05
+		stability_cost_efficiency = 0.05
 	}
 
 	high_power = {
@@ -55,7 +55,7 @@ sufyani_notables_estate = {
 		# but devotional intensity spikes.
 		country_cabinet_efficiency = -0.30
 		tax_income_efficiency = -0.20
-		stability_cost = 0.15
+		stability_cost_efficiency = -0.15
 		monthly_devotion = 0.08
 	}
 
@@ -149,7 +149,7 @@ shaykhi_dervishes_estate = {
 		tax_income_efficiency = -0.20
 
 		# Mahdist enthusiasm doesn't sit well with stability
-		stability_cost = 0.10
+		stability_cost_efficiency = -0.1
 
 		# Pushes hard toward decentralization (each dervish lodge is its own
 		# authority node)

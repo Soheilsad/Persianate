@@ -1,0 +1,18 @@
+# ============================================================
+# Seljuk Inheritance — at-war offset (mirrors farr_proof_at_war_bonus)
+#
+# The ambient bleed is -1.0/mo; at war the claimant nets -0.7
+# before conquest glory. A claim to the dead sultanate is proven
+# in the field as much as in the registers — perpetual stalemate
+# still bleeds; the claimant who wins decisively breaks even and
+# climbs. The begs (nobles estate) respect a claimant at war.
+# ============================================================
+
+rum_claim_at_war = {
+	potential_trigger = {
+		has_variable = rum_inheritance_fired
+		at_war = yes
+	}
+	nobles_estate_target_satisfaction = 0.075
+	monthly_legitimacy = 0.3
+}

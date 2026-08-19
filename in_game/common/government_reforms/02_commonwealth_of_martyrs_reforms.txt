@@ -63,7 +63,7 @@ bashtin_proclamation_reform = {
 		# Commonwealth structure: decentralized, low control ceiling,
 		# permanent internal Sufyānī/Shaykhī tension
 		global_max_control = -0.15
-		stability_cost = 0.10
+		stability_cost_efficiency = -0.1
 
 		# Coin in the Hidden Imām's name — legitimacy of conventional
 		# sultanic kind is rejected
@@ -95,7 +95,7 @@ usuli_consolidation_reform = {
 		country_cabinet_efficiency = 0.15
 		global_max_control = 0.10
 		research_speed_modifier = 0.10
-		stability_cost = -0.05
+		stability_cost_efficiency = 0.05
 
 		# The Shaykhī mahdist wing chafes — their charismatic authority is
 		# now bounded by the jurists' textual authority.
@@ -135,7 +135,7 @@ marjaiyya_reform = {
 		monthly_devotion = 0.05
 		tolerance_own = 3
 		legitimacy = 0.20
-		stability_cost = -0.08
+		stability_cost_efficiency = 0.08
 
 		# Lay notables marginalized as the jurist eclipses civic leadership
 		global_sufyani_notables_estate_power = -0.25
@@ -175,7 +175,7 @@ wilayat_e_faqih_reform = {
 		global_max_control = 0.25
 		country_cabinet_efficiency = 0.25
 		monthly_towards_centralization = 0.25
-		stability_cost = -0.10
+		stability_cost_efficiency = 0.1
 
 		# But: the openness that fed Karbalāʾ-paradigm martyr mobilization
 		# is gone. Spontaneous dervish levies dry up.

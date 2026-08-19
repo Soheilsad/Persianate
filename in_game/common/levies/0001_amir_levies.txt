@@ -1,11 +1,8 @@
-levy_mailed_knights = {
-	size = levy_generic_noble_cavalry_size
-	
-	allowed_pop_type = nobles
+INJECT:levy_mailed_knights = {
+
 	country_allow = {
 		NOT = {country_has_estate = estate_type:amirs_estate}
 	}
-	unit = a_mailed_knights
 }
 
 levy_amir_cavalry = {

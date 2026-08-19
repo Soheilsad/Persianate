@@ -1,0 +1,148 @@
+# ============================================================
+# On-action hooks for the Seljuk Inheritance disaster — mirrored
+# from 05_farr_proof_hooks.txt (same economy, no notification
+# events: effects apply directly; the disaster panel and the
+# legitimacy bar tell the story).
+#
+# All hooks key on has_variable = rum_inheritance_fired, which
+# the disaster sets on_start and removes on_end.
+#
+#   battle won   +1        battle lost  -2
+#   war won      +5 + conquest glory (0.4/mo, 12mo, extends)
+#   war lost    -10 + defeat shame   (-1.0/mo, 6mo, extends)
+#   capital lost -20       province lost -3     province gained +1
+# ============================================================
+
+on_great_battle_won = {
+	on_actions = {
+		rum_on_battle_win
+	}
+}
+
+on_battle_lost = {
+	on_actions = {
+		rum_on_battle_lost
+	}
+}
+
+on_winning_war = {
+	on_actions = {
+		rum_on_winning_war
+	}
+}
+
+on_losing_war = {
+	on_actions = {
+		rum_on_losing_war
+	}
+}
+
+on_location_changed_owner = {
+	on_actions = {
+		rum_on_location_loss
+		rum_on_location_win
+	}
+}
+
+rum_on_battle_win = {
+	trigger = {
+		scope:actor = {
+			owner = { has_variable = rum_inheritance_fired }
+		}
+	}
+	effect = {
+		scope:actor.owner = {
+			add_legitimacy = 1
+		}
+	}
+}
+
+rum_on_battle_lost = {
+	trigger = {
+		scope:actor = {
+			owner = { has_variable = rum_inheritance_fired }
+		}
+	}
+	effect = {
+		scope:actor.owner = {
+			add_legitimacy = -2
+		}
+	}
+}
+
+rum_on_winning_war = {
+	trigger = {
+		scope:winner = {
+			has_variable = rum_inheritance_fired
+		}
+	}
+	effect = {
+		scope:winner = {
+			add_legitimacy = 5
+			add_country_modifier = {
+				modifier = rum_conquest_glory
+				months = 12
+				mode = add_and_extend
+			}
+		}
+	}
+}
+
+rum_on_losing_war = {
+	trigger = {
+		scope:loser = {
+			has_variable = rum_inheritance_fired
+		}
+	}
+	effect = {
+		scope:loser = {
+			add_legitimacy = -10
+			add_country_modifier = {
+				modifier = rum_defeat_shame
+				months = 6
+				mode = add_and_extend
+			}
+		}
+	}
+}
+
+# this = location; scope:winner / scope:loser = countries.
+rum_on_location_loss = {
+	trigger = {
+		scope:loser = {
+			has_variable = rum_inheritance_fired
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				scope:loser ?= {
+					capital = root
+				}
+			}
+			scope:loser = {
+				add_legitimacy = -20
+			}
+		}
+		else = {
+			scope:loser = {
+				add_legitimacy = -3
+			}
+		}
+		# Konya itself: the Old Capital watcher in the disaster's
+		# on_monthly handles the step revocation and its own -15.
+	}
+}
+
+rum_on_location_win = {
+	trigger = {
+		scope:winner = {
+			has_variable = rum_inheritance_fired
+		}
+	}
+	effect = {
+		scope:winner = {
+			add_legitimacy = 1
+		}
+	}
+}

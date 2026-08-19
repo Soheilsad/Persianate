@@ -41,7 +41,7 @@ shattered_administration_mod = {
 # regardless of whether the win was Tāzīk or Türk. The empire can hold
 # many peoples (cultures_capacity) and rests on a steady, lawful seat
 # (monthly_legitimacy, slow prestige decay) — but the grand imperial
-# court is expensive to keep (court_spending_cost_modifier is a malus).
+# court is expensive to keep (court_spending_efficiency malus).
 # ----------------------------------------------------------------------
 united_iran = {
 	game_data = {
@@ -51,7 +51,7 @@ united_iran = {
 	cultures_capacity = 2
 	monthly_legitimacy = 0.2
 	prestige_decay = -0.2
-	court_spending_cost_modifier = 0.10
+	court_spending_efficiency = -0.10
 }
 
 # ----------------------------------------------------------------------

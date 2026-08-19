@@ -68,7 +68,7 @@ shaykhi_mahdist_proclamation = {
 		monthly_war_exhaustion = -0.025
 		amount_looted_modifier = 0.30
 
-		stability_cost = 0.15
+		stability_cost_efficiency = -0.15
 		global_sufyani_notables_estate_power = -0.20
 		monthly_devotion = 0.10
 	}
@@ -137,7 +137,7 @@ shaykhi_jihad_authority = {
 		monthly_devotion = 0.07
 		# Pushes belligerent
 		global_sufyani_notables_estate_power = -0.10
-		stability_cost = 0.05
+		stability_cost_efficiency = -0.05
 	}
 }
 
@@ -157,7 +157,7 @@ shaykhi_saddled_horse_vigil = {
 		# and a city that lives on the edge of the eschaton does not
 		# settle easily into ordinary administration.
 		monthly_devotion = 0.10
-		stability_cost = 0.05
+		stability_cost_efficiency = -0.05
 	}
 }
 

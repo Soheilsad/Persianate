@@ -61,7 +61,7 @@ turk_vs_tazik = {
 		# High Persianate Court Standards
 		cultural_tradition_modifier = -0.15
 		cultural_influence_modifier = 0.15
-		court_spending_cost_modifier = 0.10
+		court_spending_efficiency = -0.10
 		
 		# Suppresses Tribal Growth (Sedentarization)
 		global_tribesmen_rural_desired_pop_scaled = -0.50

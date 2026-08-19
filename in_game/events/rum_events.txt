@@ -1,0 +1,285 @@
+namespace = rum
+
+# =====================================================================
+# THE SELJUK INHERITANCE — event set
+#
+# rum.1  — declaration (disaster start)
+# rum.10 — the sikka struck (program action 1)
+# rum.11 — the trunk road reopened (program action 2)
+# rum.12 — the diwan restored (program action 3 — grants the reform)
+# rum.20 — Vindicated: sultanate_of_rum, kingdom rank
+# rum.21 — Broken: claim stripped, permanent re-declaration lock
+# =====================================================================
+
+rum.1 = {
+	type = country_event
+	outcome = neutral
+	title = rum.1.title
+	desc = rum.1.desc
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	option = {
+		name = rum.1.a
+	}
+}
+
+# =====================================================================
+# rum.2 — THE FORK (mirrors ilkhanate_flavor.1)
+#
+# Fires once on every eligible beylik at situation start, five days
+# after the government switch. The constitutional choice of Shattered
+# Rum, up front:
+#   A. Ghazi Sultanate — the western-march default. The Burden of
+#      the Sword disaster fires on adoption.
+#   B. Claimant of the Seljuk Inheritance — Konya's owner only
+#      (Karaman, unless the map has already moved). The Seljuk
+#      Inheritance disaster fires on adoption.
+#   C. Remain a march — no claim, no audit, no crisis (the
+#      anatolian_beylik exemption). Both reforms stay pickable
+#      later through the government screen; deferral is a choice,
+#      not a dead end.
+# =====================================================================
+rum.2 = {
+	type = country_event
+	outcome = neutral
+	title = rum.2.title
+	desc = rum.2.desc
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		has_reform = government_reform:anatolian_beylik
+		NOT = { has_reform = government_reform:ghazi_sultanate }
+		NOT = { has_reform = government_reform:seljuk_claimant }
+	}
+
+	# ----- A: the sword of the faith -----
+	option = {
+		name = rum.2.a
+		ai_chance = {
+			factor = 40
+			# The doctrine is a frontier doctrine: a beg with infidel
+			# neighbors can feed it; an inland beg cannot.
+			modifier = {
+				factor = 2
+				any_neighbor_country = {
+					NOT = { religion.group = religion_group:muslim }
+				}
+			}
+			modifier = {
+				factor = 0.25
+				NOT = {
+					any_neighbor_country = {
+						NOT = { religion.group = religion_group:muslim }
+					}
+				}
+			}
+		}
+
+		add_reform = government_reform:ghazi_sultanate
+		# The adoption handshake: the qadis read the khutba gladly.
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.10 }
+		add_legitimacy = 5
+	}
+
+	# ----- B: the empty seat at Konya -----
+	# Open to every beylik: the claim is a program, not a possession
+	# — taking Konya is its first step. Holding it already just makes
+	# the word far more natural in your mouth.
+	option = {
+		name = rum.2.b
+		trigger = {
+			capital ?= { region = region:anatolia_region }
+		}
+		ai_chance = {
+			factor = 15
+			# Konya's owner declaring is the Karamanid century begun.
+			modifier = {
+				factor = 10
+				owns = location:konya
+			}
+			# A beg with infidel neighbors has a cheaper road to a
+			# crown — the frontier is right there.
+			modifier = {
+				factor = 0.5
+				any_neighbor_country = {
+					NOT = { religion.group = religion_group:muslim }
+				}
+			}
+		}
+
+		add_reform = government_reform:seljuk_claimant
+	}
+
+	# ----- C: the tents are enough -----
+	option = {
+		name = rum.2.c
+		ai_chance = {
+			factor = 40
+			# The strong dare; the small keep their valleys.
+			modifier = {
+				factor = 2
+				num_locations < 15
+			}
+		}
+
+		add_stability = 5
+	}
+}
+
+rum.10 = {
+	type = country_event
+	outcome = positive
+	title = rum.10.title
+	desc = rum.10.desc
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	option = {
+		name = rum.10.a
+		add_prestige = 5
+	}
+}
+
+rum.11 = {
+	type = country_event
+	outcome = positive
+	title = rum.11.title
+	desc = rum.11.desc
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = rum.11.a
+		add_prestige = 5
+	}
+}
+
+rum.12 = {
+	type = country_event
+	outcome = positive
+	title = rum.12.title
+	desc = rum.12.desc
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	option = {
+		name = rum.12.a
+		add_reform = government_reform:persianate_bureaucracy_reform
+		add_country_modifier = {
+			modifier = rum_diwan_restored_mod
+			years = -1
+		}
+		# The certain cost: the begs watch Persian clerks take custody
+		# of the registers — of THEIR registers.
+		add_stability = -10
+	}
+}
+
+# Old Capital gained — the watcher in the disaster's on_monthly has
+# already set the step, the standing modifier, and the relief pulse;
+# this is the announcement.
+rum.13 = {
+	type = country_event
+	outcome = positive
+	title = rum.13.title
+	desc = rum.13.desc
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = rum.13.a
+		add_prestige = 10
+	}
+}
+
+# Old Capital lost — step revoked, modifier revoked, -15 legitimacy
+# (all applied by the watcher). The claim survives, humiliated.
+rum.14 = {
+	type = country_event
+	outcome = negative
+	title = rum.14.title
+	desc = rum.14.desc
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = rum.14.a
+		add_prestige = -10
+	}
+}
+
+rum.20 = {
+	type = country_event
+	outcome = positive
+	title = rum.20.title
+	desc = rum.20.desc
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	trigger = {
+		has_variable = rum_seljuk_vindicated
+	}
+
+	option = {
+		name = rum.20.a
+		remove_reform = government_reform:seljuk_claimant
+		# The bureaucracy reform built by Restore the Diwan stays —
+		# it IS the chancery; sultanate_of_rum is the crown on top
+		# (two-reform stack, the Iranian pattern).
+		add_reform = government_reform:sultanate_of_rum
+		add_legitimacy = 25
+		add_prestige = 15
+	}
+}
+
+rum.21 = {
+	type = country_event
+	outcome = negative
+	title = rum.21.title
+	desc = rum.21.desc
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		has_variable = rum_seljuk_broken
+	}
+
+	option = {
+		name = rum.21.a
+		remove_reform = government_reform:seljuk_claimant
+		# The Karamanid fate: the house that claimed and could not
+		# hold. No second declaration, ever.
+		set_variable = rum_claim_broken
+		add_legitimacy = -25
+		add_prestige = -25
+	}
+}

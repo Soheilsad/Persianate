@@ -27,10 +27,15 @@ persianate_bureaucracy_reform = {
 	government = persianate_sultanate
 	potential = {
 		NOT = { has_reform = government_reform:tariqa_order }
-		# The Iranian chancery chassis — exclusive with the Egyptian and
-		# Indian dress of the same apparatus.
+		# The Iranian chancery chassis — exclusive with the Egyptian,
+		# Indian, and Timurid dress of the same apparatus. NOTE
+		# deliberately NOT exclusive with seljuk_claimant or
+		# sultanate_of_rum: the Rum roads run the two-reform stack —
+		# this reform IS their chancery (built by Restore the Diwan or
+		# endow_chancery_of_rum), with the claim/crown layered on top.
 		NOT = { has_reform = government_reform:mamluk_government }
 		NOT = { has_reform = government_reform:indian_sultanate_reform }
+		NOT = { has_reform = government_reform:timurid_empire }
 	}
 	locked = {
 		always = yes
@@ -119,7 +124,6 @@ ilkhanate_governorate = {
 		# solvent, and unthreatening. A recognized governor's lawful
 		# place — modest legitimacy, no pump (you make no claim).
 		monthly_legitimacy = 0.1
-		stability_cost = -0.10
 		stability_cost_efficiency = 0.10
 		fort_defence = 0.20
 		land_morale = 0.05
@@ -271,6 +275,11 @@ ghazi_sultanate = {
 		NOT = { has_reform = government_reform:tariqa_order }
 		NOT = { has_reform = government_reform:mamluk_government }
 		NOT = { has_reform = government_reform:indian_sultanate_reform }
+		NOT = { has_reform = government_reform:timurid_empire }
+		# The two Rum roads are exclusive: you answer with the sword
+		# OR with Konya's registers, not both at once.
+		NOT = { has_reform = government_reform:seljuk_claimant }
+		NOT = { has_reform = government_reform:sultanate_of_rum }
 	}
 	locked = {
 		NOT = { has_variable = ghazi_was_doctrine_lapsed }
@@ -347,6 +356,7 @@ amir_sultanate = {
 		NOT = { has_reform = government_reform:tariqa_order }
 		NOT = { has_reform = government_reform:mamluk_government }
 		NOT = { has_reform = government_reform:indian_sultanate_reform }
+		NOT = { has_reform = government_reform:timurid_empire }
 	}
 
 	country_modifier = {
@@ -422,7 +432,7 @@ circle_of_equity_reform = {
 	country_modifier = {
 		tax_income_efficiency = 0.15
 		global_manpower_modifier = 0.10
-		court_spending_cost_modifier = 0.10
+		court_spending_efficiency = -0.10
 		peasants_estate_target_satisfaction = 0.05
 		monthly_towards_centralization = 0.05
 	}
@@ -577,6 +587,13 @@ dar_al_jihad = {
 	on_activate = {
 
 		add_stability = 15 ## refunds most of the cost for the change.
+		# The King title: a vindicated ghazi doctrine is a crown —
+		# both Rum roads and the Iranian one pass through kingship
+		# before anyone reaches for empire.
+		if = {
+			limit = { country_rank_level < 3 }
+			set_country_rank = country_rank:rank_kingdom
+		}
 	}
 	country_modifier = {
 		# The wager is won. The doctrine is no longer under audit;
@@ -649,7 +666,6 @@ mushasha_messianism = {
 		global_clergy_estate_power = -0.15
 		clergy_estate_target_satisfaction = -0.10
 		tolerance_heretic = 2
-		stability_cost = 0.10
 		stability_cost_efficiency = -0.10
 		
 	}
@@ -674,7 +690,6 @@ sahib_qiran = {
 		monthly_legitimacy = ez_reform_legitimacy_minor
 		antagonism_received_modifier = -0.05
 		monthly_war_exhaustion = -0.02
-		stability_cost = -0.05
 		stability_cost_efficiency = 0.05
 	}
 
@@ -839,7 +854,6 @@ sunni_orthodoxy = {
 		tolerance_heretic = -1
 		global_clergy_estate_power = 0.15
 		clergy_estate_target_satisfaction = ez_priv_sat_major
-		stability_cost = -0.05
 		stability_cost_efficiency = 0.05
 		monthly_towards_centralization = 0.05
 	}
@@ -900,7 +914,6 @@ murshid_i_kamil = {
 		global_clergy_estate_power = -0.15
 		clergy_estate_target_satisfaction = -0.10
 		tolerance_own = -1
-		stability_cost = 0.10
 		stability_cost_efficiency = -0.10
 		cultural_influence_modifier = 0.05
 		monthly_towards_turk = 0.05

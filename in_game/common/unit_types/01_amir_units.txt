@@ -1,5 +1,5 @@
 a_amir_cavalry = {
-	category = army_cavalry
+	category = army_heavy_cavalry
 	
 	copy_from = a_age_1_traditions_heavy_cavalry
 
@@ -27,7 +27,7 @@ a_amir_cavalry = {
 }
 
 a_frontier_amir_cavalry = {
-	category = army_cavalry
+	category = army_heavy_cavalry
 	
 	copy_from = a_age_2_renaissance_heavy_cavalry
 
@@ -55,7 +55,7 @@ a_frontier_amir_cavalry = {
 
 
 a_reformed_amir_cavalry = {
-	category = army_cavalry
+	category = army_heavy_cavalry
 	
 	copy_from = a_age_3_discovery_heavy_cavalry
 

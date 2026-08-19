@@ -279,7 +279,8 @@ countries = {
 			heir_selection = favorite_son_elective_succession
 			ruler_term = { character = dlh_ghiyasuddin_tughlaq start_date = 1320.9.8 end_date = 1325.1.2 regnal_number = 0 }
 			ruler_term = { character = dlh_muhammad_bin_tughluq start_date = 1325.1.2 regnal_number = 0 }
-			ruler = dlh_muhammad_bin_tughluq
+			ruler = dlh_muhammad_bin_tughluq_pw
+			heir = dlh_firuz_shah_tughlaq_pw
 			nobles_estate = { satisfaction = 0.3 }
 			clergy_estate = { satisfaction = 0.25 }
 			burghers_estate = { satisfaction = 0.25 }

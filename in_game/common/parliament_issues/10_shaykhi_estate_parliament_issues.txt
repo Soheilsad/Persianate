@@ -67,7 +67,7 @@ shaykhi_purge_remaining_amirs = {
 	}
 
 	on_debate_passed = {
-		add_estate_loyalty = { type = estate_type:sufyani_notables_estate loyalty = -10 }
+		add_estate_satisfaction = { type = estate_type:sufyani_notables_estate value = -0.10 }
 		add_estate_satisfaction = { type = estate_type:shaykhi_dervishes_estate value = 0.10 }
 		add_country_modifier = { modifier = shaykhi_amir_purge_mod years = 8 }
 		change_societal_value = { type = turk_vs_tazik value = 5 }
@@ -171,7 +171,7 @@ shaykhi_excommunicate_compromisers = {
 	}
 
 	on_debate_passed = {
-		add_estate_loyalty = { type = estate_type:sufyani_notables_estate loyalty = -20 }
+		add_estate_satisfaction = { type = estate_type:sufyani_notables_estate value = -0.20 }
 		add_estate_satisfaction = { type = estate_type:shaykhi_dervishes_estate value = 0.15 }
 		add_devotion = 10
 		add_stability = -1

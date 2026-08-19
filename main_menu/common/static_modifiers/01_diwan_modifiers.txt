@@ -251,7 +251,6 @@ decree_pardon_mod = {
 	game_data = { category = country }
 	pop_join_rebel_threshold = -0.10
 	monthly_legitimacy = 0.3
-	stability_cost = -0.05
 	stability_cost_efficiency = 0.05
 
 }

@@ -90,6 +90,8 @@
  STATIC_MODIFIER_DESC_shattered_administration_mod: "The administrative links that once bound this region have completely collapsed."
  STATIC_MODIFIER_NAME_cloistered_khan: "Puppet Khan"
  STATIC_MODIFIER_DESC_cloistered_khan: "Puppet Khan For Greater Powers"
+ STATIC_MODIFIER_NAME_consolidation_opportunistic_acquisition: "Consolidating Opportunistic Acquisition"
+ STATIC_MODIFIER_DESC_consolidation_opportunistic_acquisition: "We acquired these lands in a moment of our enemies' weakness. Our rule here is not yet fully respected by those within the military elite who didn't support the late Amir Chupan."
  AUTO_MODIFIER_NAME_unsettled_legitimacy_crisis: "Unsettled Legitimacy"
  AUTO_MODIFIER_NAME_ghazi_lord_at_war: "Fighting against Infidels, Heretics or Corruption on Earth"
  AUTO_MODIFIER_NAME_ghazi_lord_at_war_yasa: "Fighting Against Muslims who Cling to Primitive Law"

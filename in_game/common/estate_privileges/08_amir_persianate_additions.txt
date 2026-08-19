@@ -243,7 +243,6 @@ amirs_tribal_urf_jurisdiction = {
 		amirs_estate_max_tax = -0.05
 		global_diwan_estate_power = -0.15
 		diwan_estate_target_satisfaction = -0.10
-		stability_cost = 0.10
 		stability_cost_efficiency = -0.10
 		province_integration_speed = -0.10
 		monthly_towards_decentralization = 0.05

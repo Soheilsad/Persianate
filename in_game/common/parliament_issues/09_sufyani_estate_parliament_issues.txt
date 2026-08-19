@@ -48,7 +48,6 @@ sufyani_curb_dervish_excesses = {
 	estate = sufyani_notables_estate
 
 	modifier_when_in_debate = {
-		stability_cost = -0.05
 		stability_cost_efficiency = 0.05
 	}
 
@@ -69,7 +68,7 @@ sufyani_curb_dervish_excesses = {
 	}
 
 	on_debate_passed = {
-		add_estate_loyalty = { type = estate_type:shaykhi_dervishes_estate loyalty = -15 }
+		add_estate_satisfaction = { type = estate_type:shaykhi_dervishes_estate value = -0.15 }
 		add_estate_satisfaction = { type = estate_type:sufyani_notables_estate value = 0.15 }
 		add_country_modifier = { modifier = sufyani_curbed_dervishes_mod years = 8 }
 		add_stability = 1
@@ -97,7 +96,7 @@ sufyani_negotiate_amir_reconciliation = {
 
 	on_debate_passed = {
 		add_country_modifier = { modifier = sufyani_amir_settlement_mod years = 15 }
-		add_estate_loyalty = { type = estate_type:shaykhi_dervishes_estate loyalty = -10 }
+		add_estate_satisfaction = { type = estate_type:shaykhi_dervishes_estate value = -0.10 }
 		add_legitimacy = 5
 	}
 
