@@ -184,7 +184,7 @@ rum_restore_the_diwan = {
 				mode = add_and_extend
 			}
 
-
+			set_court_language = culture:farsi_culture.dialect
 			grant_estate_privilege = estate_privilege:diwan_land_registers
 			grant_estate_privilege = estate_privilege:diwan_musadara_confiscation
 			grant_estate_privilege = estate_privilege:amirs_iqta_grant
@@ -407,6 +407,7 @@ endow_chancery_of_rum = {
 			grant_estate_privilege = estate_privilege:diwan_musadara_confiscation
 			grant_estate_privilege = estate_privilege:amirs_iqta_grant
 			grant_estate_privilege = estate_privilege:amirs_personal_retinues
+			set_court_language = culture:farsi_culture.dialect
 		}
 	}
 
