@@ -2,6 +2,12 @@
 # calibrate against matter prices (6 = routine program step, 12 = a
 # founding act).
 
+# The proclamation ceremony at Konya — the khutba, the robes, the
+# assembled qadis. Cheap in gold; the real price is legitimacy.
+rum_proclaim_price = {
+	scaled_gold = 3
+}
+
 # Recoining at Konya — dies cut, moneyers hired, the old Ilkhanid
 # stock withdrawn.
 rum_sikka_price = {
@@ -13,16 +19,19 @@ rum_trunk_road_price = {
 	scaled_gold = 8
 }
 
-# The chancery, disaster-discounted: the claimant has been bleeding
-# legitimacy for years — that WAS the price.
+# The chancery, disaster-discounted: ONE YEAR of income (scaled_gold
+# is monthly), plus the 30 legitimacy / 5 stability paid in the
+# effect. The claimant has also been bleeding for years — that too
+# was the price.
 rum_restore_diwan_price = {
-	scaled_gold = 10
+	scaled_gold = 12
 }
 
-# The chancery at full market rate: the ghazi conqueror hiring the
-# apparatus he never built, scribes and registers imported wholesale.
+# The chancery at full market rate: THREE YEARS of income, plus 40
+# legitimacy / 20 stability in the effect — the ghazi conqueror
+# hiring wholesale the apparatus the claimant built patiently.
 rum_endow_chancery_price = {
-	scaled_gold = 18
+	scaled_gold = 36
 }
 
 # The embassy to Cairo — gifts worthy of a sultan's investiture

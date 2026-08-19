@@ -50,6 +50,18 @@ seljuk_claimant = {
 		NOT = { has_variable = rum_claim_broken }
 	}
 
+	# Unremovable while the audit runs: the claim can be VINDICATED
+	# or BROKEN, never quietly shelved (the AI was dropping it the
+	# moment the disaster bit). The resolution variables are set
+	# before rum.20/rum.21 fire, so script removal in those events
+	# passes the lock.
+	locked = {
+		NOR = {
+			has_variable = rum_seljuk_broken
+			has_variable = rum_seljuk_vindicated
+		}
+	}
+
 	country_modifier = {
 		# The claim is a boast: every beg who refused it is now your
 		# rival, and the world watches whether you can be a state.
@@ -171,6 +183,12 @@ REPLACE:anatolian_beylik = {
 			}
 			change_government_type = government_type:persianate_sultanate
 			change_heir_selection = heir_selection:favorite_son_elective_succession
+		}
+		# A march is a duchy, not a county (rank parity with the
+		# game-start correction in 20_rum_hooks.txt).
+		if = {
+			limit = { country_rank_level < 2 }
+			set_country_rank = country_rank:rank_duchy
 		}
 	}
 	years = 2

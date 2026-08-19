@@ -121,6 +121,7 @@ locations = {
 
 building_manager = {
 	central_diwan = { tag = CHB level = 1 location = tabriz }
+	central_diwan = {tag = DLH level = 1 location = delhi}
 	regional_diwan = { tag = JAL level = 1 location = baghdad }
 
 	### The Safaviyya's starting network — Safi al-Din (d. 1334) already
@@ -259,5 +260,25 @@ building_manager = {
 	iqta_grant = { tag = DLH level = 1 location = gugera }
 	iqta_grant = { tag = DLH level = 1 location = pindi_bhattian }
 	iqta_grant = { tag = DLH level = 1 location = sunam }
+
+	## MAM — the rawk state's chancery, physically present. Cairo's
+	## Citadel complex (diwan al-jaysh + diwan al-kharaj, the 1315
+	## rawk al-Nasiri's registers); Damascus as the niyabat al-Sham's
+	## own full chancery; Aleppo (niyabat Halab) and Alexandria (the
+	## thaghr's customs diwan) as local offices.
+	central_diwan = { tag = MAM level = 1 location = cairo }
+	regional_diwan = { tag = MAM level = 1 location = damascus }
+	local_diwan = { tag = MAM level = 1 location = aleppo }
+	local_diwan = { tag = MAM level = 1 location = alexandria }
+
+	## DLH — central_diwan at Delhi already placed above. The two
+	## regional wings of the Tughluq apparatus: Daulatabad (the
+	## southern pole — the WHOLE POINT of Muhammad's transfer project
+	## was building a second administrative capital) and Multan (the
+	## old Punjab-Sind frontier chancery). NO Bengal office,
+	## deliberately: Lakhnauti's autonomy is already real in 1337 —
+	## it revolts outright in 1338.
+	regional_diwan = { tag = DLH level = 1 location = daulatabad }
+	regional_diwan = { tag = DLH level = 1 location = multan }
 
 }

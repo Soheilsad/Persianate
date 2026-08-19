@@ -10,5 +10,7 @@ shattered_rum_list = {
 	actions = {
 		endow_chancery_of_rum
 		petition_caliph_for_rum
+		rum_summon_to_obedience
+		rum_consolidate_the_conquest
 	}
 }

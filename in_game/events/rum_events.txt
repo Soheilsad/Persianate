@@ -231,6 +231,225 @@ rum.14 = {
 	}
 }
 
+# ===============================================================
+# HOOK NOTIFICATIONS (rum.30–36) — farr_proof.300–306 pattern.
+# Option a = acknowledge, b = silence this type, c = silence all.
+# The hook checks BOTH rum_silence_<type> and rum_silence_all; if
+# either is set it applies the effect directly and skips the event.
+# ===============================================================
+
+# ---30 BATTLE WON ---------------------------------------------------
+rum.30 = {
+	type = country_event
+	category = disaster_event
+	title = rum.30.title
+	desc = rum.30.desc
+	outcome = positive
+
+	option = {
+		name = rum.30.a
+		add_legitimacy = 1
+	}
+
+	option = {
+		name = rum.30.b
+		set_variable = rum_silence_battle_won
+		add_legitimacy = 1
+	}
+
+	option = {
+		name = rum.30.c
+		set_variable = rum_silence_all
+		add_legitimacy = 1
+	}
+}
+
+# ---31 BATTLE LOST --------------------------------------------------
+rum.31 = {
+	type = country_event
+	category = disaster_event
+	title = rum.31.title
+	desc = rum.31.desc
+	outcome = negative
+
+	option = {
+		name = rum.31.a
+		add_legitimacy = -2
+	}
+
+	option = {
+		name = rum.31.b
+		set_variable = rum_silence_battle_lost
+		add_legitimacy = -2
+	}
+
+	option = {
+		name = rum.31.c
+		set_variable = rum_silence_all
+		add_legitimacy = -2
+	}
+}
+
+# ---32 WAR WON ------------------------------------------------------
+rum.32 = {
+	type = country_event
+	category = disaster_event
+	title = rum.32.title
+	desc = rum.32.desc
+	outcome = positive
+
+	option = {
+		name = rum.32.a
+		add_legitimacy = 5
+		add_country_modifier = {
+			modifier = rum_conquest_glory
+			months = 12
+			mode = add_and_extend
+		}
+	}
+
+	option = {
+		name = rum.32.b
+		set_variable = rum_silence_war_won
+		add_legitimacy = 5
+		add_country_modifier = {
+			modifier = rum_conquest_glory
+			months = 12
+			mode = add_and_extend
+		}
+	}
+
+	option = {
+		name = rum.32.c
+		set_variable = rum_silence_all
+		add_legitimacy = 5
+		add_country_modifier = {
+			modifier = rum_conquest_glory
+			months = 12
+			mode = add_and_extend
+		}
+	}
+}
+
+# ---33 WAR LOST -----------------------------------------------------
+rum.33 = {
+	type = country_event
+	category = disaster_event
+	title = rum.33.title
+	desc = rum.33.desc
+	outcome = negative
+
+	option = {
+		name = rum.33.a
+		add_legitimacy = -10
+		add_country_modifier = {
+			modifier = rum_defeat_shame
+			months = 6
+			mode = add_and_extend
+		}
+	}
+
+	option = {
+		name = rum.33.b
+		set_variable = rum_silence_war_lost
+		add_legitimacy = -10
+		add_country_modifier = {
+			modifier = rum_defeat_shame
+			months = 6
+			mode = add_and_extend
+		}
+	}
+
+	option = {
+		name = rum.33.c
+		set_variable = rum_silence_all
+		add_legitimacy = -10
+		add_country_modifier = {
+			modifier = rum_defeat_shame
+			months = 6
+			mode = add_and_extend
+		}
+	}
+}
+
+# ---34 CAPITAL LOST -------------------------------------------------
+rum.34 = {
+	type = country_event
+	category = disaster_event
+	title = rum.34.title
+	desc = rum.34.desc
+	outcome = negative
+
+	option = {
+		name = rum.34.a
+		add_legitimacy = -20
+	}
+
+	option = {
+		name = rum.34.b
+		set_variable = rum_silence_capital_lost
+		add_legitimacy = -20
+	}
+
+	option = {
+		name = rum.34.c
+		set_variable = rum_silence_all
+		add_legitimacy = -20
+	}
+}
+
+# ---35 PROVINCE LOST ------------------------------------------------
+rum.35 = {
+	type = country_event
+	category = disaster_event
+	title = rum.35.title
+	desc = rum.35.desc
+	outcome = negative
+
+	option = {
+		name = rum.35.a
+		add_legitimacy = -3
+	}
+
+	option = {
+		name = rum.35.b
+		set_variable = rum_silence_province_lost
+		add_legitimacy = -3
+	}
+
+	option = {
+		name = rum.35.c
+		set_variable = rum_silence_all
+		add_legitimacy = -3
+	}
+}
+
+# ---36 PROVINCE GAINED ----------------------------------------------
+rum.36 = {
+	type = country_event
+	category = disaster_event
+	title = rum.36.title
+	desc = rum.36.desc
+	outcome = positive
+
+	option = {
+		name = rum.36.a
+		add_legitimacy = 1
+	}
+
+	option = {
+		name = rum.36.b
+		set_variable = rum_silence_province_gained
+		add_legitimacy = 1
+	}
+
+	option = {
+		name = rum.36.c
+		set_variable = rum_silence_all
+		add_legitimacy = 1
+	}
+}
+
 rum.20 = {
 	type = country_event
 	outcome = positive

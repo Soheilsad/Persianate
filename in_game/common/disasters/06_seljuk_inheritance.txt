@@ -10,18 +10,27 @@
 #              05_rum_auto.txt), conquest glory +0.4/mo per won war
 #              (12mo, stacking), battle/province ticks — all via
 #              20_rum_hooks.txt, mirrored from the farr hooks.
-#   BUILD    — the four-step program. Each step buys a PERMANENT
+#   BUILD    — the four-step program, ALL panel actions, with
+#              ESCALATING legitimacy prices (farr structure: each
+#              rung dearer than the last), each buying a PERMANENT
 #              standing offset plus a 5-year RELIEF pulse (+0.5/mo,
 #              extends):
-#                1. The Old Capital — OWN Konya. Not an action: taken
-#                   by treaty or sword, tracked by the monthly watcher
-#                   below. Karaman starts one step ahead — that is its
-#                   entire head start. Lost Konya = step lost, standing
-#                   modifier revoked, -15 legitimacy.
-#                2. Strike the Sikka   (action; requires Konya)
-#                3. Reopen Trunk Road  (action; Konya + Sivas)
-#                4. Restore the Diwan  (action; grants bureaucracy
+#                1. Proclaim Custody of the Old Capital (-10 leg;
+#                   requires owning Konya — Karaman's entire head
+#                   start). Losing Konya REVOKES the step (monthly
+#                   watcher below: -15 legitimacy, modifier
+#                   stripped) until retaken and re-proclaimed.
+#                   Proclaiming also unlocks the
+#                   rum_summon_to_obedience SITUATION action:
+#                   -5 legitimacy per use, grants cb_rum_custody
+#                   (Anatolia-fenced conquest CB) on a neighbor.
+#                2. Strike the Sikka   (-20 leg; step 1 + Konya)
+#                3. Restore the Diwan  (-30 leg, -5 stability, one
+#                   year's income; step 2 + a Regional Diwan and
+#                   two Local Diwans built; grants bureaucracy
 #                   reform = the chancery)
+#                4. Reopen Trunk Road  (-40 leg; step 3 + Konya +
+#                   Sivas)
 #   RESOLVE  — polled monthly:
 #              Vindicated: all four steps standing + 36 cumulative
 #                months at legitimacy >= 60 + dominance (60+ locations
@@ -107,29 +116,12 @@ seljuk_inheritance = {
 	}
 
 	on_monthly = {
-		# --- The Old Capital watcher: step 1 is possession, not an
-		#     action. Gained → step, standing modifier, relief pulse.
-		#     Lost → step revoked, modifier revoked, the land watches
-		#     you fumble the crown's own seat. ---
+		# --- The Old Capital watcher: the step is CLAIMED via the
+		#     rum_proclaim_old_capital disaster action (needs Konya);
+		#     this watcher only handles the LOSS — step revoked,
+		#     modifier revoked, the land watches you fumble the
+		#     crown's own seat. ---
 		if = {
-			limit = {
-				owns = location:konya
-				NOT = { has_variable = rum_old_capital }
-			}
-			set_variable = rum_old_capital
-			change_variable = { name = rum_program_steps add = 1 }
-			add_country_modifier = {
-				modifier = rum_old_capital_mod
-				years = -1
-			}
-			add_country_modifier = {
-				modifier = rum_program_relief_mod
-				years = 5
-				mode = add_and_extend
-			}
-			trigger_event_non_silently = rum.13
-		}
-		else_if = {
 			limit = {
 				NOT = { owns = location:konya }
 				has_variable = rum_old_capital

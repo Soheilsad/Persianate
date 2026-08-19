@@ -95,13 +95,24 @@ is_diwan_pop = {
 				culture = { has_culture_group = culture_group:indian_group }
 				religion.group = religion_group:muslim
 			}
+
+			AND = {
+				culture = { has_culture_group = culture_group:turkic_group }
+				location = {
+					owner = { has_reform = government_reform:sultanate_of_rum }
+				}
+				religion.group = religion_group:muslim
+			}
 		}
 		pop_literacy > 20
 		# Apparatus flag only — the chancery makes the pop class, not the
 		# government form (a beylik sultanate has no diwan to join).
-		owner ?= {
-			modifier:has_nizam_ul_mulk_chancery = yes
+		location = {
+			owner ?= {
+				modifier:has_nizam_ul_mulk_chancery = yes
+			}
 		}
+
 
 		OR = {
 			location ?= {

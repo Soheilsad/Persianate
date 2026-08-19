@@ -119,6 +119,7 @@ REPLACE:indian_sultanate_reform = {
 		# its day: empire-wide revenue registers, harder extraction than
 		# the Iranian norm. THIS is the delta that kept the subcontinent
 		# sultanate country.
+		global_nobles_estate_power = -0.6 # nobles are stronger here, because it's india.
 		country_cabinet_efficiency = 0.1
 		tax_income_efficiency = 0.1
 		global_estate_max_tax = 0.15

@@ -15,6 +15,64 @@
 #     variable REPLACE:RUM_f reads.
 # =====================================================================
 
+# Step 1 — the proclamation. Requires holding Konya; the step the
+# Karamanids start able to take on day one. Like the farr apparatus
+# claims, proclaiming COSTS legitimacy up front (the begs hear the
+# word and bristle) and pays it back through the standing modifier.
+rum_proclaim_old_capital = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 1
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	price = price:rum_proclaim_price
+
+	allow = {
+		scope:actor = {
+			owns = location:konya
+			NOT = { has_variable = rum_old_capital }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = {
+			data = name
+		}
+		visible = {
+			disaster_type = disaster_type:seljuk_inheritance
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = rum_old_capital
+			change_variable = { name = rum_program_steps add = 1 }
+			add_legitimacy = -10
+			add_country_modifier = {
+				modifier = rum_old_capital_mod
+				years = -1
+			}
+			add_country_modifier = {
+				modifier = rum_program_relief_mod
+				years = 5
+				mode = add_and_extend
+			}
+			trigger_event_non_silently = rum.13
+		}
+	}
+
+	ai_will_do = {
+		add = 100
+	}
+}
+
 rum_strike_the_sikka = {
 	type = disaster
 	show_message = no
@@ -28,6 +86,7 @@ rum_strike_the_sikka = {
 
 	allow = {
 		scope:actor = {
+			has_variable = rum_old_capital
 			owns = location:konya
 			NOT = { has_variable = rum_sikka_struck }
 		}
@@ -50,6 +109,7 @@ rum_strike_the_sikka = {
 		scope:actor = {
 			set_variable = rum_sikka_struck
 			change_variable = { name = rum_program_steps add = 1 }
+			add_legitimacy = -20
 			add_country_modifier = {
 				modifier = rum_sikka_struck_mod
 				years = -1
@@ -60,6 +120,76 @@ rum_strike_the_sikka = {
 				mode = add_and_extend
 			}
 			trigger_event_non_silently = rum.10
+		}
+	}
+
+	ai_will_do = {
+		add = 100
+	}
+}
+
+rum_restore_the_diwan = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 1
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	price = price:rum_restore_diwan_price
+
+	allow = {
+		scope:actor = {
+			has_variable = rum_sikka_struck
+			NOT = { has_variable = rum_diwan_restored }
+			modifier:has_nizam_ul_mulk_chancery = no
+			# The chancery needs offices to move into: a Regional Diwan
+			# and two Local Diwans already standing.
+			custom_tooltip = {
+				text = rum_diwan_buildings_tt
+				any_owned_location = {
+					has_building = building_type:regional_diwan
+				}
+				any_owned_location = {
+					has_building = building_type:local_diwan
+					count >= 2
+				}
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = {
+			data = name
+		}
+		visible = {
+			disaster_type = disaster_type:seljuk_inheritance
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = rum_diwan_restored
+			change_variable = { name = rum_program_steps add = 1 }
+			add_legitimacy = -30
+			add_stability = -5
+			add_country_modifier = {
+				modifier = rum_program_relief_mod
+				years = 5
+				mode = add_and_extend
+			}
+
+
+			grant_estate_privilege = estate_privilege:diwan_land_registers
+			grant_estate_privilege = estate_privilege:diwan_musadara_confiscation
+			grant_estate_privilege = estate_privilege:amirs_iqta_grant
+			grant_estate_privilege = estate_privilege:amirs_personal_retinues
+			trigger_event_non_silently = rum.12
 		}
 	}
 
@@ -81,7 +211,7 @@ rum_reopen_trunk_road = {
 
 	allow = {
 		scope:actor = {
-			has_variable = rum_sikka_struck
+			has_variable = rum_diwan_restored
 			owns = location:konya
 			owns = location:sivas
 			NOT = { has_variable = rum_trunk_road_open }
@@ -105,6 +235,7 @@ rum_reopen_trunk_road = {
 		scope:actor = {
 			set_variable = rum_trunk_road_open
 			change_variable = { name = rum_program_steps add = 1 }
+			add_legitimacy = -40
 			add_country_modifier = {
 				modifier = rum_trunk_road_mod
 				years = -1
@@ -123,60 +254,96 @@ rum_reopen_trunk_road = {
 	}
 }
 
-rum_restore_the_diwan = {
-	type = disaster
+
+# ---------------------------------------------------------------------
+# Situation actions
+# ---------------------------------------------------------------------
+
+# The custodian's summons: proclaimed custody of the Old Capital
+# entitles the claimant to demand the other marches' obedience — and
+# to take it by the sword when refused. Modeled on
+# press_eranzamin_claim: costs 5 legitimacy (each summons spends the
+# claim's own currency), grants cb_rum_custody (Anatolia-limited
+# wargoal) on the chosen beylik. Unlocked by rum_proclaim_old_capital.
+rum_summon_to_obedience = {
 	show_message = no
+	type = situation
+
+	potential = {
+		scope:actor = {
+			has_variable = rum_old_capital
+		}
+	}
 
 	ai_tick = monthly
-	ai_tick_frequency = 1
-	automation_tick = never
-	automation_tick_frequency = 12
+	ai_tick_frequency = 3
 
-	price = price:rum_restore_diwan_price
+	cooldown = {
+		type = rum_summon_to_obedience
+		months = 6
+	}
 
-	allow = {
-		scope:actor = {
-			has_variable = rum_sikka_struck
-			has_variable = rum_trunk_road_open
-			NOT = { has_variable = rum_diwan_restored }
-			modifier:has_nizam_ul_mulk_chancery = no
+	select_trigger = {
+		looking_for_a = situation
+		target_flag = recipient
+		name = "choose_situation"
+		visible = {
+			situation:rise_of_the_ottomans = this
+			situation_is_active = yes
 		}
 	}
 
 	select_trigger = {
-		looking_for_a = disaster
-		name = "choose_disaster"
-		target_flag = recipient
-		column = {
-			data = name
+		looking_for_a = country
+		interaction_source_list = {
+			scope:actor = {
+				every_neighbor_country = {
+					add_to_list = source
+				}
+			}
 		}
+		target_flag = target
+		name = "rum_summon_select_country"
+		none_available_msg_key = "rum_summon_no_countries"
+		column = { data = name }
+		column = { data = expected_army_size }
 		visible = {
-			disaster_type = disaster_type:seljuk_inheritance
-			disaster_is_active = yes
+			is_real_country = yes
+			OR = {
+				has_reform = government_reform:anatolian_beylik
+				capital ?= { region = region:anatolia_region }
+			}
+			scope:actor = {
+				can_declare_war_on = root
+				NOT = { has_truce_with = root }
+				NOT = { is_allied_with = { target = root } }
+			}
 		}
 	}
 
 	effect = {
 		scope:actor = {
-			set_variable = rum_diwan_restored
-			change_variable = { name = rum_program_steps add = 1 }
-			add_country_modifier = {
-				modifier = rum_program_relief_mod
-				years = 5
-				mode = add_and_extend
+			add_legitimacy = -5
+			if = {
+				limit = { exists = scope:target }
+				add_casus_belli = {
+					target = scope:target
+					type = casus_belli:cb_rum_custody
+				}
 			}
-			trigger_event_non_silently = rum.12
 		}
 	}
 
 	ai_will_do = {
-		add = 100
+		value = 100
+		modifier = {
+			factor = 0
+			at_war = yes
+		}
 	}
 }
 
-# ---------------------------------------------------------------------
-# Situation actions — the ghazi road's late doors
-# ---------------------------------------------------------------------
+# --- the ghazi road's late doors ---
 
 endow_chancery_of_rum = {
 	type = situation
@@ -202,6 +369,14 @@ endow_chancery_of_rum = {
 			at_war = no
 			modifier:has_nizam_ul_mulk_chancery = no
 			NOT = { has_reform = government_reform:persianate_bureaucracy_reform }
+			# Even bought wholesale, the apparatus needs a house: a
+			# Regional Diwan must already stand.
+			custom_tooltip = {
+				text = rum_chancery_building_tt
+				any_owned_location = {
+					has_building = building_type:regional_diwan
+				}
+			}
 		}
 	}
 
@@ -220,10 +395,18 @@ endow_chancery_of_rum = {
 
 	effect = {
 		scope:actor = {
+			set_variable = rum_diwan_restored
 			add_reform = government_reform:persianate_bureaucracy_reform
 			# Scribes imported into a war camp: the begs watch Persian
-			# clerks take over the registers of what they conquered.
-			add_stability = -10
+			# clerks take over the registers of what they conquered —
+			# and the full market rate is brutal (the claimant's
+			# disaster-discounted diwan cost 30/5/one year's income).
+			add_legitimacy = -40
+			add_stability = -20
+			grant_estate_privilege = estate_privilege:diwan_land_registers
+			grant_estate_privilege = estate_privilege:diwan_musadara_confiscation
+			grant_estate_privilege = estate_privilege:amirs_iqta_grant
+			grant_estate_privilege = estate_privilege:amirs_personal_retinues
 		}
 	}
 
@@ -285,5 +468,77 @@ petition_caliph_for_rum = {
 
 	ai_will_do = {
 		add = 200
+	}
+}
+
+# The custodian's consolidation — Erānzamīn's consolidate_diwan
+# pattern, march-sized: pay in the claim's own currencies (5
+# legitimacy, 5 stability) to fully integrate a conquered Anatolian
+# province at a stroke.
+rum_consolidate_the_conquest = {
+	show_message = no
+	type = situation
+
+	potential = {
+		scope:actor = {
+			has_reform = government_reform:anatolian_beylik
+		}
+	}
+
+	ai_tick = monthly
+	ai_tick_frequency = 3
+
+	cooldown = {
+		years = 1
+		type = rum_consolidate_the_conquest
+	}
+
+	select_trigger = {
+		looking_for_a = situation
+		target_flag = recipient
+		name = "choose_situation"
+		visible = {
+			situation:rise_of_the_ottomans = this
+			situation_is_active = yes
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = province
+		target_flag = target
+		name = "rum_consolidate_select_province"
+		none_available_msg_key = "rum_consolidate_no_provinces"
+		column = { data = name }
+		column = { data = population }
+		visible = {
+			any_location_in_province = {
+				region = region:anatolia_region
+			}
+			any_location_in_province = {
+				owner = scope:actor
+				integration_level = conquered
+			}
+		}
+	}
+
+	effect = {
+		scope:target = {
+			every_location_in_province = {
+				limit = { owner = scope:actor }
+				change_integration_level = core
+			}
+		}
+		scope:actor = {
+			add_legitimacy = -5
+			add_stability = -5
+		}
+	}
+
+	ai_will_do = {
+		value = 100
+		modifier = {
+			factor = 0
+			at_war = yes
+		}
 	}
 }

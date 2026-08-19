@@ -50,6 +50,7 @@ central_diwan = {
 		OR = {
 			societal_value:turk_vs_tazik >= 50
 			has_variable = restored_persian_bureaucracy
+			country_rank_level >= 4 ### a persianate empire can seat the Dīwān al-Mamālik even if it has not yet drifted to the Tāzīk pole, because the empire is large enough to require a full chancery.
 		}
 	}
 

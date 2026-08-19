@@ -96,8 +96,8 @@ countries = {
 				# sits in the nobles estate until the estate surgery lands.
 				feudal_mercenary_contracts
 				nobles_land_rights
-				primacy_of_nobility
-				noble_marriage_rights
+				
+				
 				dhimmi_abrahamic_communities
 				clergy_literacy_rights
 				clerical_advisory_council
@@ -313,12 +313,7 @@ countries = {
 			privilege = {
 				# indian_muslim_monarchy template set
 				nobles_land_rights
-				auxilium_et_consilium
 				noble_serfdom_rights
-				noble_marriage_rights
-				primacy_of_nobility
-				elaborate_court_ceremonies
-				nobility_council
 				clergy_literacy_rights
 				clergy_land_rights
 				clerical_advisory_council

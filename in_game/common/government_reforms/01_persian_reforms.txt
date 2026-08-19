@@ -36,6 +36,23 @@ persianate_bureaucracy_reform = {
 		NOT = { has_reform = government_reform:mamluk_government }
 		NOT = { has_reform = government_reform:indian_sultanate_reform }
 		NOT = { has_reform = government_reform:timurid_empire }
+		# The marches cannot simply TAKE the chancery — it must be
+		# built (Restore the Diwan) or bought (Endow a Chancery), both
+		# of which set rum_diwan_restored BEFORE their add_reform
+		# (add_reform checks this potential), or INHERITED via
+		# Erānzamīn membership (the Eretnid case: the Ilkhanid
+		# provincial apparatus of Rum kept running). Blocked only when
+		# a beylik has NONE of these; Iranian realms (no beylik
+		# reform) are untouched by this clause.
+		NOT = {
+			AND = {
+				has_reform = government_reform:anatolian_beylik
+				NOR = {
+					has_variable = rum_diwan_restored
+					is_member_of_international_organization = international_organization:eranzamin
+				}
+			}
+		}
 	}
 	locked = {
 		always = yes
@@ -52,6 +69,7 @@ persianate_bureaucracy_reform = {
 		amirs_estate_allowed_in_cabinet = no
 		nobles_estate_allowed_in_cabinet = no
 		burghers_estate_allowed_in_cabinet = no
+		global_nobles_estate_power = -0.9 ## nobles are not the Persianate sultanate's aristocracy — they are a tribal and infidel elite, not a landed gentry.
 		global_nobles_food_consumption = -0.3 ## MANY of the nobles are really just tribal elite, not lavish city-dwellers. This is a nod to the fact that the Persianate sultanate's landed aristocracy is not a class of great lords, but a class of rural tax-farmers and militia commanders.
 		# Command of the field armies is the amirs' exclusive prerogative
 		# in a baseline Persianate sultanate. The diwan may unlock its own
@@ -357,6 +375,16 @@ amir_sultanate = {
 		NOT = { has_reform = government_reform:mamluk_government }
 		NOT = { has_reform = government_reform:indian_sultanate_reform }
 		NOT = { has_reform = government_reform:timurid_empire }
+		NOT = {
+			AND = {
+				has_reform = government_reform:anatolian_beylik
+				NOR = {
+					has_variable = rum_diwan_restored
+					has_reform = government_reform:sultanate_of_rum
+					is_member_of_international_organization = international_organization:eranzamin
+				}
+			}
+		}
 	}
 
 	country_modifier = {

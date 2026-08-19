@@ -65,8 +65,11 @@ disaster_panel = {
 			blockoverride "common_header_icon_texture" {
 				texture = "gfx/interface/icons/disasters/end_requirements_green.dds"
 			}
-			blockoverride "common_header_text" {
-				text = "RUM_INHERITANCE_PROGRAM_TRACK"
+			blockoverride "common_header_text_full" {
+				text_single = {
+					text = "RUM_INHERITANCE_PROGRAM_TRACK"
+					tooltip = "RUM_INHERITANCE_PROGRAM_TRACK_TT"
+				}
 			}
 			blockoverride "common_bottom_content" {
 				hbox = {
@@ -113,8 +116,11 @@ disaster_panel = {
 			blockoverride "common_header_icon_texture" {
 				texture = "gfx/interface/icons/disasters/end_requirements_green.dds"
 			}
-			blockoverride "common_header_text" {
-				text = "RUM_INHERITANCE_HIGH_TRACK"
+			blockoverride "common_header_text_full" {
+				text_single = {
+					text = "RUM_INHERITANCE_HIGH_TRACK"
+					tooltip = "RUM_INHERITANCE_HIGH_TRACK_TT"
+				}
 			}
 			blockoverride "common_bottom_content" {
 				hbox = {
