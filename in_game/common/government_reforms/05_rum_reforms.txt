@@ -160,6 +160,12 @@ REPLACE:anatolian_beylik = {
 		government_size = 1
 		government_reform_slots = 1
 		allow_tributary_subject = yes
+		# Beg squabbles are background noise to Christendom and Cairo
+		# alike — playtest showed a beylik conquering HALF of western
+		# Anatolia drawing a coalition of the entire Balkans plus
+		# Venice, Genoa and the Mamluks. Nobody crusaded over which
+		# march held Denizli.
+		antagonism_received_modifier = -0.30
 	}
 
 	on_activate = {
@@ -190,6 +196,40 @@ REPLACE:anatolian_beylik = {
 			limit = { country_rank_level < 2 }
 			set_country_rank = country_rank:rank_duchy
 		}
+	}
+	years = 2
+}
+
+# REPLACE: base legacy_of_osman (country_specific.txt:1257) — one-line
+# potential fix for a base quirk we flagged and playtest confirmed:
+# the reform is granted by rise_of_the_ottomans.2 to WHOEVER is the
+# strongest beylik at situation start (the event sets
+# tur_rise_of_ottoman_flag on them), but base's potential also
+# demanded has_or_had_tag = TUR — so a non-Ottoman leader's grant
+# silently failed and they never got the -0.33 antagonism package
+# base balanced the whole race around. Tag requirement dropped;
+# content verbatim.
+REPLACE:legacy_of_osman = {
+	unique = yes
+	potential = {
+		has_variable = tur_rise_of_ottoman_flag
+	}
+
+	locked = {
+		is_locked_mechanic = {
+			mechanic = government_reform
+			type = legacy_of_osman
+		}
+	}
+
+	country_modifier = {
+
+		global_integration_speed_modifier = 0.25
+		government_size = 1
+		antagonism_received_modifier = -0.33
+		auto_slave_raid_different_religion = yes
+		government_reform_slots = 1
+		global_monthly_control = 0.05
 	}
 	years = 2
 }

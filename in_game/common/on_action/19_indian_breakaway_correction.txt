@@ -27,6 +27,44 @@ on_new_country_formed = {
 	}
 }
 
+# The Indian minors batch: base gives MAB, RJR, SMA, SND, HNV the
+# indian_sultanate_reform (so our REPLACE already hands them the
+# chancery flag) but leaves them on their base government types —
+# an inconsistent half-state. Align them at game start: the same
+# persianate_sultanate chassis as Delhi, same succession, Persian
+# court. change_government_type can drop reforms, so the reform is
+# re-granted after the switch (idempotent if it survived).
+on_game_start = {
+	on_actions = {
+		indian_minors_persianate_start
+	}
+}
+
+indian_minors_persianate_start = {
+	effect = {
+		every_country = {
+			limit = {
+				OR = {
+					tag = MAB
+					tag = RJR
+					tag = SMA
+					tag = SND
+					tag = HNV
+				}
+			}
+			if = {
+				limit = {
+					NOT = { government_type = government_type:persianate_sultanate }
+				}
+				change_government_type = government_type:persianate_sultanate
+				change_heir_selection = heir_selection:favorite_son_elective_succession
+			}
+			add_reform = government_reform:indian_sultanate_reform
+			set_court_language = culture:farsi_culture.dialect
+		}
+	}
+}
+
 # The Khusraw Khan protocol: an Indian sultanate leaving Islam is a
 # constitutional crisis, not a paint change — the amirs' legitimacy IS
 # the dispensation. Muslim-internal changes (sunni→shia, the later

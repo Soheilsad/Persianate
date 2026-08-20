@@ -40,6 +40,11 @@ periphery.1 = {
 
 		change_government_type = government_type:persianate_sultanate
 		add_reform = government_reform:indian_sultanate_reform
+		# Succession stays inside the (Muslim) dynasty — without this,
+		# breakaways drew heirs from the general character pool, where
+		# the Hindu taluqdar nobility now dominates (the Bahmani
+		# Hindu-ruler bug).
+		change_heir_selection = heir_selection:favorite_son_elective_succession
 		set_court_language = culture:farsi_culture.dialect
 
 		# Culture surgery: create_country_from_location hands the state
@@ -134,8 +139,13 @@ periphery.2 = {
 			factor = 5
 		}
 		remove_reform = government_reform:indian_sultanate_reform
-		add_stability = 100
-		add_legitimacy = 100
+		# The COST of the road never taken (sign bug fixed: this was
+		# +100/+100, which made apostasy the AI's favorite outcome).
+		# Shedding the dispensation means shedding everything built on
+		# it — the state that walks away walks away naked, and usually
+		# into the arms of whoever rises against it.
+		add_stability = -100
+		add_legitimacy = -100
 	}
 
 	# ----- B: The amirs remember Khusraw Khan. -----

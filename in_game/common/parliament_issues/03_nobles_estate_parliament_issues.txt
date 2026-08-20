@@ -3,7 +3,7 @@ promote_castle_building = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
-		global_fort_build_buildings_cost = -0.5
+		global_fort_build_buildings_efficiency = 0.5
 		global_fort_build_buildings_efficiency = 0.5
 		monthly_towards_defensive = societal_value_huge_monthly_move #moves value by 3 over the duration
 	}
@@ -79,7 +79,7 @@ promote_bastion_building = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
-		global_fort_build_buildings_cost = -0.5
+		global_fort_build_buildings_efficiency = 0.5
 		global_fort_build_buildings_efficiency = 0.5
 		monthly_towards_defensive = societal_value_huge_monthly_move #moves value by 3 over the duration
 	}
@@ -152,7 +152,7 @@ promote_star_fort_building = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
-		global_fort_build_buildings_cost = -0.5
+		global_fort_build_buildings_efficiency = 0.5
 		global_fort_build_buildings_efficiency = 0.5
 		monthly_towards_defensive = societal_value_huge_monthly_move #moves value by 3 over the duration
 	}
@@ -224,7 +224,7 @@ promote_fortress_building = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
-		global_fort_build_buildings_cost = -0.5
+		global_fort_build_buildings_efficiency = 0.5
 		global_fort_build_buildings_efficiency = 0.5
 		monthly_towards_defensive = societal_value_huge_monthly_move #moves value by 3 over the duration
 	}

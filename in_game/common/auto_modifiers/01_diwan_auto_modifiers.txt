@@ -1,18 +1,21 @@
-# Base values for the Diwan Estate
+# Base values for the Diwan Estate — MERGED definition (the former
+# duplicate in 01_diwan_power_balance.txt is retired). Gate moved
+# from government types to the chancery flag: the flag is the master
+# switch of the whole architecture, and every diwan-bearing polity
+# (Iranian, Mamluk, Indian, Timurid, Rum-vindicated, commonwealth —
+# whose formation grants the bureaucracy reform) carries it.
 diwan_base_values = {
     potential_trigger = {
-        OR = {
-        government_type = government_type:persianate_sultanate
-        government_type = government_type:commonwealth_of_martyrs
-        }
-
+        modifier:has_nizam_ul_mulk_chancery = yes
     }
-    
+
     # Base Satisfaction (similar to other estates having ~30-50%)
     diwan_estate_target_satisfaction = 0.40
-    
-    # Base Power (if needed to ensure they exist)
-    global_diwan_estate_power = 0.05
+
+    # Base power floors for BOTH service estates — the power_balance
+    # file's scaling engines (sedentary% / tribal%) stack on top.
+    global_diwan_estate_power = 0.30
+    global_amirs_estate_power = 0.30
 }
 
 

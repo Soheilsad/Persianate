@@ -78,7 +78,7 @@ decree_infrastructure_expansion = {
 	estate = crown_estate
 	
 	modifier_when_in_debate = {
-		global_build_buildings_cost = -0.05
+		global_build_buildings_efficiency = 0.05
 		global_build_buildings_efficiency = 0.05
 	}
 	
@@ -199,7 +199,7 @@ decree_caravanserai_network = {
 	estate = crown_estate
 
 	modifier_when_in_debate = {
-		global_build_buildings_cost = -0.05
+		global_build_buildings_efficiency = 0.05
 		global_build_buildings_efficiency = 0.05
 	}
 
