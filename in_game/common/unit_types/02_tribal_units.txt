@@ -1,5 +1,5 @@
 a_nomadic_skirmisher_cavalry = {
-	category = army_cavalry
+	category = army_light_cavalry
 	copy_from = a_age_1_traditions_light_cavalry
 	
 	maneuver = 2
@@ -25,12 +25,13 @@ a_nomadic_skirmisher_cavalry = {
 }
 
 a_turkoman_light_cavalry = {
-	category = army_cavalry
+	category = army_light_cavalry
 	copy_from = a_age_2_renaissance_light_cavalry
 	
 	maneuver = 2
 	fire_damage_dealt = 0.10
 	shock_damage_dealt = 0.05
+	supply_weight = -0.15 ## they carry their own supplies
 	mercenaries_per_location = {
 		pop_type = tribesmen
 		multiply = 0.3
@@ -47,7 +48,7 @@ a_turkoman_light_cavalry = {
 }
 
 a_qizilbash_cavalry = {
-	category = army_cavalry
+	category = army_heavy_cavalry
 	copy_from = a_age_3_discovery_heavy_cavalry
 	
 	maneuver = 1

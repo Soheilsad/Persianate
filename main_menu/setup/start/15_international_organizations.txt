@@ -509,6 +509,18 @@ international_organization_manager = {
 
 	}
 
+	#################################################################
+	# 				The Sarbadār Movement							#
+	#################################################################
+	# The vow as an organization: SRB is the sole founding member —
+	# the movement starts decentralized and grows by rising (new
+	# commonwealths join at formation via the tariqa events).
+	add_international_organization = {
+		type = sarbadar_movement
+		creation_date = 1337.1.1
+		members = { SRB }
+	}
+
 	 #################################################################
 	# 				Tatar Yoke										#
 	#################################################################

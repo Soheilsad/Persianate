@@ -207,6 +207,19 @@ tariqa.2 = {
 	option = {
 		name = tariqa.2.b
 		custom_tooltip = tariqa_rise_now_tt
+		custom_tooltip = tariqa_khuruj_muster_tt
+
+		# The books close; the sword opens. The age reads mystically.
+		change_societal_value = { type = mysticism_vs_jurisprudence value = -100 }
+
+		# Capture the base type BEFORE the government flip destroys the
+		# tariqa reforms — the muster branches on it below.
+		if = {
+			limit = { has_reform = government_reform:tariqa_tribal_base }
+			set_variable = tariqa_khuruj_tribal
+		}
+
+		# The lodge census: every militant chapter musters.
 		set_variable = { name = khuruj_muster value = 0 }
 		every_owned_foreign_building = {
 			limit = {
@@ -219,24 +232,34 @@ tariqa.2 = {
 			root = {
 				change_variable = { name = khuruj_muster add = 1 }
 			}
-			location ?= {
-				change_location_owner = root
+		}
+
+		# The order takes the field: an ARMY first, a state only if it
+		# wins. (Debugged sequencing: the army flip is landless-legal;
+		# the settled flip waits for the coronation, tariqa.6, so no
+		# tick ever passes on a landless location-country.)
+		change_country_type = army
+		set_variable = tariqa_khuruj_underway
+		change_government_type = government_type:persianate_sultanate
+		add_reform = government_reform:khuruj_rising_reform
+		ruler ?= {
+			add_character_modifier = {
+				modifier = ilkhanate_warlord
+				years = -1
+				mode = add_and_extend
 			}
 		}
-		change_country_type = location
-		if = {
-			limit = { has_reform = government_reform:tariqa_popular_base }
-			change_government_type = government_type:commonwealth_of_martyrs
-			# A new commonwealth is born hot: fresh zeal, a full
-			# quarter-century of it.
-			add_country_modifier = {
-				modifier = revolutionary_zeal
-				years = 25
+		heir ?= {
+			add_character_modifier = {
+				modifier = ilkhanate_warlord
+				years = -1
+				mode = add_and_extend
 			}
 		}
-		else = {
-			change_government_type = government_type:persianate_sultanate
-		}
+
+		# The devotee army musters at the shrine-seat: two regiments per
+		# five lodges (a blanket network must not field six figures of
+		# fanatics — tooltip explains the scale to the player).
 		capital ?= {
 			while = {
 				limit = {
@@ -244,33 +267,62 @@ tariqa.2 = {
 				}
 				if = {
 					limit = {
-						root = { has_reform = government_reform:tariqa_tribal_base }
+						root = { has_variable = tariqa_khuruj_tribal }
 					}
 					create_sub_unit_with_owner = {
-						type = a_age_1_traditions_light_cavalry
+						type = a_turkoman_light_cavalry
 						owner = root
 					}
 					create_sub_unit_with_owner = {
-						type = a_age_1_traditions_light_cavalry
+						type = a_turkoman_light_cavalry
 						owner = root
 					}
 				}
 				else = {
 					create_sub_unit_with_owner = {
-						type = a_age_1_traditions_heavy_infantry
+						type = a_dervish_corps
+						owner = root
+					}
+					create_sub_unit_with_owner = {
+						type = a_dervish_corps
 						owner = root
 					}
 				}
+				add_manpower = 0.5
 				root = {
-					change_variable = { name = khuruj_muster subtract = 1 }
+					change_variable = { name = khuruj_muster add = -5 }
 				}
 			}
 		}
+
+		# The war chest: a generation of futūḥ, spent at once.
 		add_gold = {
 			value = monthly_income_total
-			multiply = 12
+			multiply = 24
 		}
+
+		# The khurūj is against the neighborhood, not a neighbor.
+		every_country = {
+			limit = {
+				capital ?= {
+					area = root.capital.area
+				}
+				NOT = { this = root }
+			}
+			save_scope_as = neighbour
+			root = {
+				declare_war_with_cb = {
+					target = scope:neighbour
+					type = casus_belli:cb_eranzamin_succession
+				}
+			}
+		}
+
 		remove_variable = khuruj_muster
+		if = {
+			limit = { has_variable = tariqa_khuruj_tribal }
+			remove_variable = tariqa_khuruj_tribal
+		}
 	}
 }
 
@@ -300,24 +352,136 @@ tariqa.3 = {
 	}
 
 	# ----- A: Take command — they become our banners -----
+	# The FULL KHURŪJ, same transformation as tariqa.2.b: the order
+	# takes the field as an army, annexes the rising (debugged
+	# sequencing: annex only works AFTER the type flip), and inherits
+	# its war. The coronation (tariqa.6) settles it later.
 	option = {
 		name = tariqa.3.a
 		custom_tooltip = tariqa_banners_war_tt
-		annex_country = { country = scope:shia_rebels }
-		# The order lands: a network no more.
-		change_country_type = location
+		custom_tooltip = tariqa_khuruj_muster_tt
+
+		# The books close; the sword opens.
+		change_societal_value = { type = mysticism_vs_jurisprudence value = -100 }
+
+		# Capture the base type BEFORE the government flip destroys the
+		# tariqa reforms — the muster branches on it below.
 		if = {
-			limit = { has_reform = government_reform:tariqa_popular_base }
-			change_government_type = government_type:commonwealth_of_martyrs
-			# A new commonwealth is born hot: fresh zeal, a full
-			# quarter-century of it.
-			add_country_modifier = {
-				modifier = revolutionary_zeal
-				years = 25
+			limit = { has_reform = government_reform:tariqa_tribal_base }
+			set_variable = tariqa_khuruj_tribal
+		}
+
+		# The lodge census: every militant chapter musters.
+		set_variable = { name = khuruj_muster value = 0 }
+		every_owned_foreign_building = {
+			limit = {
+				OR = {
+					building_type = building_type:qizilbash_lodge
+					building_type = building_type:dervish_takiya
+					building_type = building_type:futuwwa_brotherhood
+				}
+			}
+			root = {
+				change_variable = { name = khuruj_muster add = 1 }
 			}
 		}
-		else = {
-			change_government_type = government_type:persianate_sultanate
+
+		change_country_type = army
+		set_variable = tariqa_khuruj_underway
+		change_government_type = government_type:persianate_sultanate
+		add_reform = government_reform:khuruj_rising_reform
+		ruler ?= {
+			add_character_modifier = {
+				modifier = ilkhanate_warlord
+				years = -1
+				mode = add_and_extend
+			}
+		}
+		heir ?= {
+			add_character_modifier = {
+				modifier = ilkhanate_warlord
+				years = -1
+				mode = add_and_extend
+			}
+		}
+
+		# The banners come over: their land, their dead, their war.
+		annex_country = { country = scope:shia_rebels }
+
+		# The devotee army musters at the shrine-seat: two regiments
+		# per five lodges.
+		capital ?= {
+			while = {
+				limit = {
+					root = { var:khuruj_muster > 0 }
+				}
+				if = {
+					limit = {
+						root = { has_variable = tariqa_khuruj_tribal }
+					}
+					create_sub_unit_with_owner = {
+						type = a_turkoman_light_cavalry
+						owner = root
+					}
+					create_sub_unit_with_owner = {
+						type = a_turkoman_light_cavalry
+						owner = root
+					}
+				}
+				else = {
+					create_sub_unit_with_owner = {
+						type = a_dervish_corps
+						owner = root
+					}
+					create_sub_unit_with_owner = {
+						type = a_dervish_corps
+						owner = root
+					}
+				}
+				add_manpower = 0.5 ## 500 manpower, as reserves.
+				root = {
+					change_variable = { name = khuruj_muster add = -5 }
+				}
+			}
+		}
+
+		# The war chest: a generation of futūḥ, spent at once.
+		add_gold = {
+			value = monthly_income_total
+			multiply = 24
+		}
+
+		# The rising's war is ours now — the host first, then the
+		# neighborhood. Annexing the rebels ended their civil war;
+		# the pir re-declares it as his own.
+		if = {
+			limit = { exists = scope:banner_host }
+			declare_war_with_cb = {
+				target = scope:banner_host
+				type = casus_belli:cb_eranzamin_succession
+			}
+		}
+		every_country = {
+			limit = {
+				capital ?= {
+					area = root.capital.area
+				}
+				NOT = { this = root }
+				NOT = { this ?= scope:banner_host }
+			}
+			save_scope_as = neighbour
+			root = {
+				declare_war_with_cb = {
+					target = scope:neighbour
+					type = casus_belli:cb_eranzamin_succession
+				}
+			}
+		}
+
+		remove_variable = khuruj_muster
+		if = {
+			limit = { has_variable = tariqa_khuruj_tribal }
+			remove_variable = tariqa_khuruj_tribal
 		}
 	}
 
@@ -459,10 +623,14 @@ tariqa.5 = {
 			}
 		}
 		change_government_type = government_type:commonwealth_of_martyrs
-		# Born hot: fresh zeal, a full quarter-century of it.
+		# Born hot: fresh zeal, a full quarter-century of it — and it
+		# joins the movement.
 		add_country_modifier = {
 			modifier = revolutionary_zeal
 			years = 25
+		}
+		international_organization:sarbadar_movement ?= {
+			add_country_to_international_organization = root
 		}
 		add_religious_aspect = religious_aspect:imamate_ithna_ashari
 		add_religious_aspect = religious_aspect:niyaba_amma
@@ -484,5 +652,57 @@ tariqa.5 = {
 		add_religious_aspect = religious_aspect:imamate_ithna_ashari
 		add_religious_aspect = religious_aspect:messianism
 		set_religious_school = religious_school:nurbakhshi_school
+	}
+}
+
+# =====================================================================
+# tariqa.6 — THE CORONATION (the khurūj takes a great city)
+#
+# Fired from 18_khuruj_coronation when the rising order takes Tabriz,
+# Isfahan, Baghdad, Nishapur, Shiraz, or Herat. The template is the
+# 1501 Tabriz coronation without the name: the young pir crowned in
+# the conquered metropolis, the khuṭba of the Twelve read from its
+# pulpit, the sword shown to whoever objects. The army becomes a
+# kingdom: settled country type (safe — the army owns its conquests
+# and the coronation city becomes the capital in the same tick), the
+# Rising reform retired for the chancery and the crowned murshid.
+# =====================================================================
+tariqa.6 = {
+	type = country_event
+	outcome = positive
+	title = tariqa.6.title
+	desc = tariqa.6.desc
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	trigger = {
+		has_reform = government_reform:khuruj_rising_reform
+		has_variable = khuruj_coronation_city
+	}
+
+	immediate = {
+		# Licenses murshid_i_kamil_reform (its potential gate). Never
+		# removed: the coronation happened.
+		set_variable = tariqa_crowned_murshid
+	}
+
+	option = {
+		name = tariqa.6.a
+		# The coronation city is the seat now — owned by the army that
+		# took it, so the settled flip below is safe.
+		set_capital = var:khuruj_coronation_city
+		change_country_type = location
+		remove_reform = government_reform:khuruj_rising_reform
+		add_reform = government_reform:persianate_bureaucracy_reform
+		add_reform = government_reform:crowned_murshid_reform
+		set_country_rank = country_rank:rank_kingdom
+		# The crown is the answer to the question the khurūj kept open.
+		add_legitimacy = 100
+		# The conquest phase ends; the warlords sheathe.
+
+		remove_variable = tariqa_khuruj_underway
 	}
 }

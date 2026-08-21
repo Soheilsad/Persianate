@@ -264,3 +264,21 @@
  sarbadar_phenomenon.1.title: "The Word from Bashtin"
  sarbadar_phenomenon.1.desc: "In Bayhaq, in Khurāsān, the men of a village called Bāshtīn have killed the Mongol tax collector and sworn — 'we would rather see our heads on the gallows than submit' — and the thing has not ended there. A state now stands at Sabzavār with no king, coin struck in the Hidden Imām's name, and an army of sworn dervishes.\n\nThat would be Khurāsān's problem, except for the roads. The brethren of Shaykh Ḥasan Jūrī's network are already moving along them — preachers who arrive with the caravans, find the wrestling-houses and the craft brotherhoods, and leave behind sworn circles that answer to no governor. Merchants repeat the story in every bazaar between Tabriz and Samarqand.\n\nWhere the quarters are restless and the futuwwa is strong, the word will find dry tinder."
  sarbadar_phenomenon.1.a: "Watch the wrestling-houses."
+
+ # ███ DEBUG KIT — remove with zz_debug_two_pirs.txt before release ███
+ debug_tp_seed_network: "DEBUG: Seed the Network"
+ debug_tp_seed_network_desc: "TEST TOOL. Plants base-type chapters across the entire capital region (past both the 5- and 20-chapter gates), tops up gold, legitimacy, and stability, and makes the Two Pirs spawn certain on the next monthly roll. Then declare via tariqa.1."
+ debug_tp_turn_recitation: "DEBUG: Turn the Recitation"
+ debug_tp_turn_recitation_desc: "TEST TOOL. Converts the shrine-seat province to roughly 60% Shia and the wider area to roughly 30% — the midpoint (50% province) and completion (15% area) shares both pass. Claim the midpoint with the real action."
+ debug_tp_license_claims: "DEBUG: License the Claims"
+ debug_tp_license_claims_desc: "TEST TOOL. Establishes the sayyid genealogy and tops up legitimacy, stability, and gold so the aspect pair and remaining ladder prices are payable. Claim the aspects in the religion panel, then the passage can complete."
+
+ # The khurūj in arms (tariqa.2.b rework, reforms, coronation)
+ tariqa_khuruj_muster_tt: "Every #bold five#! risen lodges muster #bold two regiments#! of the devotee army at the shrine-seat. The order becomes an #bold army#! — landless, at war with its whole neighborhood — and will not be a settled state again until it takes a great city and crowns its pir."
+ khuruj_rising_reform: "The Khurūj"
+ khuruj_rising_reform_desc: "The rising in arms. The order has poured itself out of the lodges and into the field: an army of sworn devotees who eat little, march far, and believe the age itself fights beside them. Every town the brethren ever preached in holds bread for the column. It cannot last — a rising is not a state, and every month without a crown bleeds the claim — but while it lasts, nothing in Erānzamīn charges like it."
+ crowned_murshid_reform: "The Crowned Murshid"
+ crowned_murshid_reform_desc: "The pir, crowned. The disciple owes the master obedience; the master owes the disciple the Truth; and the master now sits a throne, so the army is a brotherhood and the kingdom is an order writ large. It holds only while the age itself reads mystically — let the jurists claw the schools back and the crown loses the Path, keeping merely the throne."
+ tariqa.6.title: "The Khuṭba of the Twelve"
+ tariqa.6.desc: "The city has opened its gates and the murīds fill it like water filling a cistern — bazaars shuttered, garrison fled, the great families waiting behind their doors to learn what has conquered them.\n\nOn Friday the young pir rides to the congregational mosque. He climbs the pulpit of a metropolis that has heard the khuṭba read for caliphs, for sultans, for il-khans — and has it read in the names of the Twelve Imams. To the packed and silent hall he says only this: that the recitation is changed, and whoever objects may look to the sword.\n\nNo one objects. Outside, the murīds are weeping and firing their bows into the sky. What entered the city was an order. What comes down from the pulpit is a king."
+ tariqa.6.a: "The vow has a throne now. God save the Murshid."
