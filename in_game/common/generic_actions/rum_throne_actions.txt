@@ -143,7 +143,12 @@ rum_restore_the_diwan = {
 		scope:actor = {
 			has_variable = rum_sikka_struck
 			NOT = { has_variable = rum_diwan_restored }
-			modifier:has_nizam_ul_mulk_chancery = no
+			# NO chancery-absence requirement: the Eretnids START with
+			# persianate_bureaucracy_reform (the inherited Ilkhanid
+			# provincial apparatus), and this step must stay completable
+			# for them — the Vindicated check reads rum_diwan_restored.
+			# For a chancery-holder the act is re-dedicating a working
+			# diwan to the claim, priced accordingly in the effect.
 			# The chancery needs offices to move into: a Regional Diwan
 			# and two Local Diwans already standing.
 			custom_tooltip = {
@@ -176,8 +181,22 @@ rum_restore_the_diwan = {
 		scope:actor = {
 			set_variable = rum_diwan_restored
 			change_variable = { name = rum_program_steps add = 1 }
-			add_legitimacy = -30
-			add_stability = -5
+			# An existing chancery (the Eretnid start) makes this a
+			# re-dedication, not a reconstruction: the scribes already
+			# draw pay, the registers already exist. A fraction of the
+			# upheaval.
+			if = {
+				limit = { has_reform = government_reform:persianate_bureaucracy_reform }
+				add_legitimacy = -10
+			}
+			else = {
+				add_legitimacy = -30
+				add_stability = -5
+				grant_estate_privilege = estate_privilege:diwan_land_registers
+				grant_estate_privilege = estate_privilege:diwan_musadara_confiscation
+				grant_estate_privilege = estate_privilege:amirs_iqta_grant
+				grant_estate_privilege = estate_privilege:amirs_personal_retinues
+			}
 			add_country_modifier = {
 				modifier = rum_program_relief_mod
 				years = 5
@@ -185,10 +204,7 @@ rum_restore_the_diwan = {
 			}
 
 			set_court_language = culture:farsi_culture.dialect
-			grant_estate_privilege = estate_privilege:diwan_land_registers
-			grant_estate_privilege = estate_privilege:diwan_musadara_confiscation
-			grant_estate_privilege = estate_privilege:amirs_iqta_grant
-			grant_estate_privilege = estate_privilege:amirs_personal_retinues
+
 			trigger_event_non_silently = rum.12
 		}
 	}

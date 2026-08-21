@@ -44,7 +44,7 @@
 
 seljuk_inheritance = {
 
-	image = "gfx/interface/illustrations/disaster/coup_attempt.dds"
+	image = "gfx/interface/illustrations/disaster/seljuk_inheritance.dds"
 
 	monthly_spawn_chance = 1
 

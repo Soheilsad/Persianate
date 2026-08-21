@@ -35,7 +35,7 @@
 
 two_pirs = {
 
-	image = "gfx/interface/illustrations/disaster/ghazi_burden_of_sword.dds" # Placeholder
+	image = "gfx/interface/illustrations/disaster/two_pirs.dds"
 
 	# 2.5% a month once the preconditions exist (base scale: 1 = certain).
 	monthly_spawn_chance = 0.025

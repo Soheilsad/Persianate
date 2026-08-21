@@ -26,7 +26,7 @@
  rum_reopen_trunk_road: "Reopen the Trunk Road"
  rum_reopen_trunk_road_desc: "Garrison the great caravanserais between Konya and Sivas, the Sultan Hans that Kayqubad raised a day's ride apart. Merchants paid the old sultans gladly, because a caravan robbed on the trunk road was repaid from the treasury."
  rum_restore_the_diwan: "Restore the Diwan of Rum"
- rum_restore_the_diwan_desc: "Recall the scribes and reopen the registers in the Persian manner of the old chancery. Requires a #Y Regional Diwan#! and #Y two Local Diwans#! standing; costs #R -30#! [legitimacy|e], #R -5#! [stability|e], and one year's income. The begs know exactly what a register means for them."
+ rum_restore_the_diwan_desc: "Recall the scribes and reopen the registers in the Persian manner of the old chancery. Requires a #Y Regional Diwan#! and #Y two Local Diwans#! standing; costs #R -30#! [legitimacy|e], #R -5#! [stability|e], and one year's income. If your court already keeps a Persian chancery, the scribes need only new orders: #R -10#! [legitimacy|e] and the year's income, nothing more. The begs know exactly what a register means for them."
  
  # ----- situation actions (ghazi road) -----
  endow_chancery_of_rum: "Endow a Chancery"

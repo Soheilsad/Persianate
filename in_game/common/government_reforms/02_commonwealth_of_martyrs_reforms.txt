@@ -76,13 +76,49 @@ bashtin_proclamation_reform = {
 	days = 0
 }
 
-usuli_consolidation_reform = {
+# The Niyāba ʿĀmma Charter — the ledger becomes lawful.
+# The commonwealth's entry into the chancery world (design doc §7):
+# with Nishapur's chancery privilege established, the council charters
+# a diwan in the absent Imām's name — the general vicariate given an
+# administrative body. Grants has_nizam_ul_mulk_chancery, THE
+# apparatus gate of the Persianate world (02_chancery_modifier_types),
+# and cancels the Bāshtīn diwan suppression. The Usūlī line now hangs
+# off this: jurisprudential consolidation presupposes a chancery to
+# consolidate INTO.
+niyaba_amma_charter_reform = {
 	age = age_2_renaissance
 	government = commonwealth_of_martyrs
 
 	potential = {
 		religion = religion:shia
 		has_reform = government_reform:bashtin_proclamation_reform
+		has_estate_privilege = estate_privilege:sufyani_chancery_of_the_vow
+	}
+
+	country_modifier = {
+		has_nizam_ul_mulk_chancery = yes
+
+		# The ledger serves the trust: the Bāshtīn diwan suppression
+		# (-0.30) is cancelled.
+		global_diwan_estate_power = 0.30
+		country_cabinet_efficiency = 0.10
+		global_max_control = 0.05
+		tax_income_efficiency = 0.05
+
+		monthly_towards_centralization = 0.10
+		monthly_towards_tazik = 0.05
+	}
+
+	years = 5
+}
+
+usuli_consolidation_reform = {
+	age = age_2_renaissance
+	government = commonwealth_of_martyrs
+
+	potential = {
+		religion = religion:shia
+		has_reform = government_reform:niyaba_amma_charter_reform
 	}
 
 	country_modifier = {
