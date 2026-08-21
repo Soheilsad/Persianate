@@ -362,6 +362,7 @@ rum_summon_to_obedience = {
 # --- the ghazi road's late doors ---
 
 endow_chancery_of_rum = {
+	show_message = no
 	type = situation
 
 	automation_tick = never
@@ -433,6 +434,7 @@ endow_chancery_of_rum = {
 }
 
 petition_caliph_for_rum = {
+	show_message = no
 	type = situation
 
 	automation_tick = never

@@ -1,4 +1,4 @@
-﻿l_english:
+l_english:
 
  # =========================================================================
  # Log-fix loc batch — silences the TODO / MISSING keys from the game log.
@@ -113,3 +113,18 @@
  eranzamin_flavor.3.entry: "Dilshād Khātūn, Abū Saʿīd's widow, arrives at our court."
  eranzamin_flavor.11.entry: "The Türkmen confederations move their pastures through the Jazira."
  eranzamin_flavor.12.entry: "An Anatolian beg offers to ride under our banner."
+
+ # Log-driven fixes (0.4 cleanup pass)
+ khanqah_building_demand: "Khānaqāh construction"
+ a_dervish_corps: "Dervish Corps"
+ a_dervish_corps_desc: "The sworn brethren under arms: craftsmen and villagers of the khānaqāh network who are the army, because there is no other. They eat little, march far, and believe the age itself fights beside them."
+ persian_caravanserai_advance: "Caravanserai Network"
+ persian_caravanserai_advance_desc: "Endowed way-stations a day's march apart on the trunk roads, with water, fodder, and an armed warden. The realm's peace, made brick by brick."
+ matter_of_tork_breakaway_country: "The Türkmen Begs"
+ matter_of_tork_breakaway_country_adjective: "Türkmen"
+ matter_of_tazik_breakaway_country: "The Tazik Notables"
+ matter_of_tazik_breakaway_country_adjective: "Tazik"
+ diwan_of_hafiz_desc: "The ghazals of the age's greatest lyric voice, gathered at last into a single dīwān. Every literate court from Rum to Bengal will copy it within a generation."
+ safavid_qizilbash_rally_tt: "The Qizilbāsh rally to our banner."
+ STATIC_MODIFIER_NAME_borjigin_puppet_sequestered: "Sequestered Khan"
+ STATIC_MODIFIER_DESC_borjigin_puppet_sequestered: "A khan enthroned and kept. The patron's chancery answers his correspondence, and no ambassador reaches him without an escort."

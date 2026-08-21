@@ -1,0 +1,69 @@
+# Persianate-world AI evaluation list — every mod action the engine
+# flagged as "not explicitly listed in an ai list" (performance
+# warning; unlisted actions make the AI fall back to scanning).
+# Covers the custody, legitimacy-path claim, ghazi, matter-of-tork,
+# musadara, and rum action families (tariqa actions live in
+# tariqa_actions_list; the two shattered-rum situation actions in
+# shattered_rum_list).
+#
+# Gate kept cheap and broad: these actors are Muslim rulers or
+# powers whose capital sits in the Erānzamīn world.
+persianate_actions_list = {
+	potential = {
+		OR = {
+			religion.group = religion_group:muslim
+			capital ?= { is_eranzamin_region_province = yes }
+		}
+	}
+	actions = {
+		# Custody of the Ulus
+		custody_press_claim
+		custody_demand_fealty
+		custody_proclaim_true
+		custody_secure_household
+		custody_sikka_everywhere
+		custody_summon_kuriltai
+		custody_drop_khan
+		# Legitimacy-path claims
+		claim_sikka
+		claim_khutba
+		proclaim_hunt_and_nawruz
+		assume_padishah
+		claim_jihad_within
+		claim_ribat_network
+		claim_caliphal_investiture
+		launch_internal_campaign
+		claim_sultan_of_ghazis
+		ghazi_declare_holy_war
+		consolidate_diwan
+		grant_the_yurt
+		mixed_settlement
+		rally_turkic_tribes
+		restore_persian_bureaucracy
+		press_eranzamin_claim
+		# Matter of Tork program
+		matter_tork_purchase_ghulams
+		matter_tork_declare_inju
+		matter_tork_institutionalize_caravans
+		matter_tork_sponsor_qanat
+		matter_tork_endow_khanqah
+		matter_tork_dhikr_festivals
+		matter_tork_endow_madrasa
+		matter_tork_shahnama_recension
+		matter_tork_great_raid
+		matter_tork_yurt_charters
+		matter_tork_invite_shaykhs
+		matter_tork_iranization
+		matter_tork_release_march
+		claim_murid_bond
+		claim_expulsion
+		claim_eradication
+		# Musadara
+		enact_musadara
+		# Shattered Rum throne actions
+		rum_proclaim_old_capital
+		rum_strike_the_sikka
+		rum_restore_the_diwan
+		rum_reopen_trunk_road
+	}
+}

@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # THE SARBADAR PHENOMENON — insurgent Shiism as regional weather
 #
 # Active while any Commonwealth of Martyrs exists. The Jūrī-network
@@ -97,6 +97,7 @@ sarbadar_phenomenon = {
 							construct_building = {
 								building_type = building_type:sarbadar_preachers
 								cost_multiplier = 0
+								cost_multiplier_reason = "game_concept_event"
 								instant = yes
 							}
 						}
@@ -115,6 +116,7 @@ sarbadar_phenomenon = {
 							construct_building = {
 								building_type = building_type:sarbadar_preachers
 								cost_multiplier = 0
+								cost_multiplier_reason = "game_concept_event"
 								instant = yes
 							}
 						}
@@ -129,6 +131,7 @@ sarbadar_phenomenon = {
 							construct_building = {
 								building_type = building_type:sarbadar_preachers
 								cost_multiplier = 0
+								cost_multiplier_reason = "game_concept_event"
 								instant = yes
 							}
 						}
@@ -174,6 +177,7 @@ sarbadar_phenomenon = {
 						construct_building = {
 							building_type = building_type:sarbadar_preachers
 							cost_multiplier = 0
+							cost_multiplier_reason = "game_concept_event"
 							instant = yes
 						}
 					}

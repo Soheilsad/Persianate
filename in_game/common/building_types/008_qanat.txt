@@ -158,7 +158,7 @@ qanat_network = {
 		location = {
 			if = {
 				limit = { has_building = building_type:damaged_qanat }
-				destroy_building = building_type:damaged_qanat   # [verify effect name]
+				destroy_building = "building(building_type:damaged_qanat|this)"
 			}
 		}
 		owner = {

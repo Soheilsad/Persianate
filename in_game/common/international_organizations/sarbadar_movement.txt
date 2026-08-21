@@ -52,7 +52,7 @@ sarbadar_movement = {
 
 	# Members may extend the oath to fellow commonwealths.
 	invite_visible_trigger = {
-		scope:target = {
+		scope:target ?= {
 			government_type = government_type:commonwealth_of_martyrs
 		}
 	}

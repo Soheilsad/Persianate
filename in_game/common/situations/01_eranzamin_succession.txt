@@ -145,10 +145,16 @@ eranzamin_succession = {
 			set_variable = eranzamin_succession_victor
 		}
 
-		# Timeout check
+		# Timeout check. The situation's on_monthly runs in SITUATION
+		# scope — the event needs a country, so fan out over the IO's
+		# members (log fix: "expected scope 'country', got 'situation'").
 		if = {
 			limit = { current_year > 1550 }
-			trigger_event_non_silently= ilkhanate_flavor.99
+			international_organization:eranzamin ?= {
+				every_international_organization_member = {
+					trigger_event_non_silently = ilkhanate_flavor.99
+				}
+			}
 		}
 	}
 

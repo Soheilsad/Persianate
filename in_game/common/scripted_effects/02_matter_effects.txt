@@ -709,26 +709,27 @@ spawn_urban_breakaway = {
 		name = matter_breakaway_ref
 		value = scope:matter_breakaway_scope
 	}
-	every_province = {
+	# Per urban location (country scope: every_owned_location — the
+	# old every_province/every_controlled_location nesting was scope-
+	# confused and the engine dropped the inner effect entirely).
+	every_owned_location = {
 		limit = { is_urban_diwan_capable_location = yes }
 		random = {
 			chance = 40
-			every_controlled_location = {
-				every_pop = {
-					limit = {
-						OR = {
-							pop_type = pop_type:burghers
-							pop_type = pop_type:clergy
-							AND = {
-								pop_type = pop_type:nobles
-								culture ?= {
-									has_culture_group = culture_group:iranic_group
-								}
+			every_pop = {
+				limit = {
+					OR = {
+						pop_type = pop_type:burghers
+						pop_type = pop_type:clergy
+						AND = {
+							pop_type = pop_type:nobles
+							culture ?= {
+								has_culture_group = culture_group:iranic_group
 							}
 						}
 					}
-					change_pop_allegiance = scope:matter_breakaway_scope
 				}
+				change_pop_allegiance = scope:matter_breakaway_scope
 			}
 		}
 	}

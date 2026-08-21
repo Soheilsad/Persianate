@@ -48,8 +48,15 @@ is_eranzamin_territorial_gate_met = {
 is_eranzamin_consolidation_sustained = {
 	# Held the territorial gate for 24 months continuous.
 	is_eranzamin_territorial_gate_met = yes
-	has_variable = eranzamin_consolidation_months
-	var:eranzamin_consolidation_months >= 24
+	# trigger_if: plain AND members do not short-circuit, so the var
+	# read logged errors on countries that never set the counter.
+	trigger_if = {
+		limit = { has_variable = eranzamin_consolidation_months }
+		var:eranzamin_consolidation_months >= 24
+	}
+	trigger_else = {
+		always = no
+	}
 }
 
 # ---Matter trigger gates --------------------------------------------------

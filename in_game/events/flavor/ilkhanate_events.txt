@@ -93,7 +93,7 @@ ilkhanate_flavor.1 = {
 				value = root
 			}
 			add_character_modifier = {
-				modifier = blocked_from_character_interactions
+				modifier = borjigin_puppet_sequestered
 				years = -1
 				mode = add_and_extend
 			}
@@ -254,7 +254,7 @@ ilkhanate_flavor.1 = {
 				value = root
 			}
 			add_character_modifier = {
-				modifier = blocked_from_character_interactions
+				modifier = borjigin_puppet_sequestered
 				years = -1
 				mode = add_and_extend
 			}
@@ -280,7 +280,7 @@ ilkhanate_flavor.1 = {
 				value = root
 			}
 			add_character_modifier = {
-				modifier = blocked_from_character_interactions
+				modifier = borjigin_puppet_sequestered
 				years = -1
 				mode = add_and_extend
 			}

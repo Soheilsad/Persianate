@@ -1,4 +1,4 @@
-﻿namespace = tariqa
+namespace = tariqa
 
 # =====================================================================
 # tariqa.1 — THE TWO PIRS (disaster resolution choice)
@@ -62,6 +62,7 @@ tariqa.1 = {
 					building_type = building_type:radical_khanaqah
 					owner = root
 					cost_multiplier = 0
+					cost_multiplier_reason = "game_concept_event"
 					instant = yes
 				}
 				destroy_building = prev
@@ -137,6 +138,7 @@ tariqa.2 = {
 						building_type = building_type:qizilbash_lodge
 						owner = root
 						cost_multiplier = 0
+						cost_multiplier_reason = "game_concept_event"
 						instant = yes
 					}
 					destroy_building = prev
@@ -152,6 +154,7 @@ tariqa.2 = {
 						building_type = building_type:dervish_takiya
 						owner = root
 						cost_multiplier = 0
+						cost_multiplier_reason = "game_concept_event"
 						instant = yes
 					}
 					destroy_building = prev
@@ -167,6 +170,7 @@ tariqa.2 = {
 						building_type = building_type:futuwwa_brotherhood
 						owner = root
 						cost_multiplier = 0
+						cost_multiplier_reason = "game_concept_event"
 						instant = yes
 					}
 					destroy_building = prev
@@ -181,6 +185,7 @@ tariqa.2 = {
 					building_type = building_type:radical_khanaqah
 					owner = root
 					cost_multiplier = 0
+					cost_multiplier_reason = "game_concept_event"
 					instant = yes
 				}
 				destroy_building = prev

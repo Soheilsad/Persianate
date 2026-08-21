@@ -21,6 +21,6 @@ INJECT:flavor_ira.11 = {
 			}
 		}
 		
-		custom_tooltip = "The Qizilbash rally to our banner."
+		custom_tooltip = safavid_qizilbash_rally_tt
 	}
 }

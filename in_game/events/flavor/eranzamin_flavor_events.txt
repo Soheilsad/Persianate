@@ -506,8 +506,28 @@ eranzamin_flavor.10 = {
 		OR = {
 			any_neighbor_country = { culture = culture:lur_culture }
 			any_neighbor_country = { culture = culture:kurdish_culture }
-			any_owned_location = { culture = culture:lur_culture }
-			any_owned_location = { culture = culture:kurdish_culture }
+			any_owned_location = { 
+				OR = {
+					culture_percentage = {
+						culture = culture:lur_culture
+						value > 0.4
+					}
+					culture_percentage = {
+						culture = culture:kurdish_culture
+						value > 0.4
+					}
+					AND = {
+						culture_percentage = {
+							culture = culture:lur_culture
+							value > 0.2
+						}
+						culture_percentage = {
+							culture = culture:kurdish_culture
+							value > 0.2
+						}
+					}
+				}
+			 }
 		}
 	}
 

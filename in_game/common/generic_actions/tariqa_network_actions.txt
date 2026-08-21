@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # NETWORK ACTIONS — the preacher dispatch and the patronage flow
 #
 # dispatch_dervish_preacher (Commonwealth of Martyrs):
@@ -77,6 +77,7 @@ dispatch_dervish_preacher = {
 			construct_building = {
 				building_type = building_type:sarbadar_preachers
 				cost_multiplier = 0
+				cost_multiplier_reason = "game_concept_event"
 				instant = yes
 			}
 		}
@@ -482,6 +483,7 @@ capture_the_court = {
 						building_type = building_type:grand_tariqa_khanaqah
 						owner = scope:actor
 						cost_multiplier = 0
+						cost_multiplier_reason = "game_concept_event"
 					}
 				}
 			}
@@ -568,6 +570,7 @@ send_forth_the_khalifas = {
 					building_type = building_type:tariqa_tribal_devotions
 					owner = scope:actor
 					cost_multiplier = 0
+					cost_multiplier_reason = "game_concept_event"
 					instant = yes
 				}
 			}
@@ -579,6 +582,7 @@ send_forth_the_khalifas = {
 					building_type = building_type:tariqa_rural_zawiya
 					owner = scope:actor
 					cost_multiplier = 0
+					cost_multiplier_reason = "game_concept_event"
 					instant = yes
 				}
 			}
@@ -590,6 +594,7 @@ send_forth_the_khalifas = {
 					building_type = building_type:tariqa_urban_waqf
 					owner = scope:actor
 					cost_multiplier = 0
+					cost_multiplier_reason = "game_concept_event"
 					instant = yes
 				}
 			}
@@ -752,6 +757,7 @@ proclaim_the_mystery = {
 						building_type = building_type:radical_khanaqah
 						owner = scope:actor
 						cost_multiplier = 0
+						cost_multiplier_reason = "game_concept_event"
 						instant = yes
 					}
 					destroy_building = prev

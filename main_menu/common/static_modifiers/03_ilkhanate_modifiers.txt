@@ -127,3 +127,10 @@ consolidation_opportunistic_acquisition = {
 	# local_goods_output_modifier = 0.25 # Prosperous
 	amirs_estate_levy_size = -0.25
 }
+# The kept khan: enthroned, honored, and answered for. Grants the
+# engine's blocked_from_character_interactions flag (a modifier TYPE,
+# not a database modifier — the event needs this wrapper).
+borjigin_puppet_sequestered = {
+	game_data = { category = character }
+	blocked_from_character_interactions = yes
+}

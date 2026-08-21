@@ -395,7 +395,7 @@ REPLACE:promote_chivalric_orders = {
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
 
-		modifier:has_chivalric_order = yes
+		has_chivalric_order = yes
 	}
 
 	chance = {
