@@ -1,4 +1,4 @@
-# -----------------------------------------
+﻿# -----------------------------------------
 # GHULAM SYSTEM — Matter of Tork, Approach 1
 #
 # The corps needs an ADMINISTRATOR (crown via ghulam_system,

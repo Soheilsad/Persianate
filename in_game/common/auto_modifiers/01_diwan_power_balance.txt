@@ -1,4 +1,4 @@
-amirs_power_from_tribes = {
+﻿amirs_power_from_tribes = {
 	potential_trigger = { modifier:has_nizam_ul_mulk_chancery = yes }
 	scales_with = {
 		value = val_tribal_percentage

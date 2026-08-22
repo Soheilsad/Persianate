@@ -1,4 +1,4 @@
-pa_diwan_case_embezzlement = {
+﻿pa_diwan_case_embezzlement = {
 	type = country
 	estate = diwan_estate
 	importance = 2.5

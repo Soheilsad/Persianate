@@ -1,4 +1,4 @@
-### overriding islam. Ban imports of wine and beer is not real. that's a hisba policy, not a simple result of being muslim.
+﻿### overriding islam. Ban imports of wine and beer is not real. that's a hisba policy, not a simple result of being muslim.
 ibadi = { 
 	color = color_ibadi
 	group = muslim

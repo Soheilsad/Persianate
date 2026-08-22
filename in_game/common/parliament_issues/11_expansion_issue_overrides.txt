@@ -1,4 +1,4 @@
-
+﻿
 #####################################################################
 ## New Generic Parliament Issues – 1.2 Expansion
 ## Covers Crown, Nobles, Clergy, Burghers, Peasants, Wartime, Proximity

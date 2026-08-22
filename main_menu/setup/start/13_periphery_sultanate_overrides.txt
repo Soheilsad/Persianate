@@ -1,4 +1,4 @@
-# =====================================================================
+﻿# =====================================================================
 # PERSIANATE PERIPHERY - country overrides (persianate_periphery_plan.md)
 #
 # MAM and DLH become persianate_sultanate. Full-block redefinitions

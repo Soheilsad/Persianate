@@ -1,4 +1,4 @@
-diwan_council = {
+﻿diwan_council = {
 	type = country
 	potential = {
 		modifier:allow_council_parliament = yes

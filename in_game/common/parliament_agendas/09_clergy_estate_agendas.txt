@@ -1,4 +1,4 @@
-pa_clergy_case_illegal_waqf = {
+﻿pa_clergy_case_illegal_waqf = {
 	type = country
 	estate = clergy_estate
 	importance = 2.5

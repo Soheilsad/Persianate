@@ -1,4 +1,4 @@
-a_nomadic_skirmisher_cavalry = {
+﻿a_nomadic_skirmisher_cavalry = {
 	category = army_light_cavalry
 	copy_from = a_age_1_traditions_light_cavalry
 	

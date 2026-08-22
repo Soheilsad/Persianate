@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # Seljuk Inheritance — at-war offset (mirrors farr_proof_at_war_bonus)
 #
 # The ambient bleed is -1.0/mo; at war the claimant nets -0.7

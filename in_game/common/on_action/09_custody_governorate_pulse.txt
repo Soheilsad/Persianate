@@ -1,4 +1,4 @@
-# Custody of the Ulus — the governorate's fealty pulse.
+﻿# Custody of the Ulus — the governorate's fealty pulse.
 #
 # Paradox merges on_actions, so re-declaring monthly_country_pulse
 # EXTENDS it. A non-subject Ilkhanate governorate, with at least one

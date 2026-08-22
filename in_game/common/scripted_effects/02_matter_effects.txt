@@ -1,4 +1,4 @@
-# Scripted effects for the Matter of Tork / Matter of Tazik disasters.
+﻿# Scripted effects for the Matter of Tork / Matter of Tazik disasters.
 # Design spec: docs/design/eranzamin_plan.md §19.7 (firing structure).
 #
 # Pattern: pre-defined dormant breakaway tags (BTC, BUR — see country

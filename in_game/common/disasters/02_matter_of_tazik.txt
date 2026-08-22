@@ -1,4 +1,4 @@
-# # Matter of Tazik — Türk-coded contender close to consolidation faces
+﻿# # Matter of Tazik — Türk-coded contender close to consolidation faces
 # # an urban / sayyid / dervish backlash.
 # #
 # # Design spec: docs/design/eranzamin_plan.md §19 (mechanic), §20.4

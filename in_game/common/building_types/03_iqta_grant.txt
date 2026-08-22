@@ -1,4 +1,4 @@
-# Iqṭāʿ Grant — a chancery-registered fiscal grant assigning the revenue of
+﻿# Iqṭāʿ Grant — a chancery-registered fiscal grant assigning the revenue of
 # a rural parcel to an amir in exchange for the upkeep of his retinue.
 # Mechanically: the amir physically settles, his clan and lieutenants with
 # him, and the local noble pop grows toward a larger cap. Because the new

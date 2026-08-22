@@ -1,4 +1,4 @@
-# Triggers for the Matter of Tork / Matter of Tazik consolidation disasters.
+﻿# Triggers for the Matter of Tork / Matter of Tazik consolidation disasters.
 # Design spec: docs/design/eranzamin_plan.md §19 (mechanic), §20 (END gate).
 #
 # The territorial-gate-held-24-months requirement is implemented via a

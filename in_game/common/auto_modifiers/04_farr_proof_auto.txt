@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # Auto-modifier: at-war bonus during Farr Proof of Fortune.
 #
 # While the farr_proof disaster is active and the realm is at

@@ -1,4 +1,4 @@
-levy_nomadic_tribes = {
+﻿levy_nomadic_tribes = {
 	size = 0.1 ## these tribes are really tolerated for their military contribution.
 	allowed_pop_type = tribesmen
 	country_allow = {

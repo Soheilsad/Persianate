@@ -1,4 +1,4 @@
-namespace = diwan_character_events
+﻿namespace = diwan_character_events
 
 # Spawn Diwan Character (Bureaucrat)
 diwan_character_events.1 = {

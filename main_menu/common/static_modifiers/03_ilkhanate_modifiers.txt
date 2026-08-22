@@ -1,4 +1,4 @@
-eranzamin_contender_modifier = {
+﻿eranzamin_contender_modifier = {
 	game_data = {
 		category = country
 		decaying = no

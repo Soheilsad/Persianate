@@ -1,4 +1,4 @@
-# Wargoal for cb_eranzamin_succession.
+﻿# Wargoal for cb_eranzamin_succession.
 #
 # Modeled on superiority_claim_china — superiority type with
 # allowed_locations gating annexable territory to the contested region.

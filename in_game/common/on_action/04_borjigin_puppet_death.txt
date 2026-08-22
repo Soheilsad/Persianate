@@ -1,4 +1,4 @@
-on_character_death = {
+﻿on_character_death = {
 	on_actions = {
 		on_borjigin_puppet_death
 	}

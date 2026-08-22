@@ -1,4 +1,4 @@
-namespace = eranzamin_flavor
+﻿namespace = eranzamin_flavor
 
 # ============================================================================
 # 1. The Poet's Patron — Hafez of Shiraz

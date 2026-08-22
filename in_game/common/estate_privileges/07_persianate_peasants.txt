@@ -1,4 +1,4 @@
-# -----------------------------------------
+﻿# -----------------------------------------
 # PEASANTS — Persianate additions and override
 #
 # Persianate rural life ran on smallholder cultivation under iqta'

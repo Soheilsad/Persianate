@@ -1,4 +1,4 @@
-# amirs_fortify_borders = {
+﻿# amirs_fortify_borders = {
 # 	estate = amirs_estate
 # 	modifier_when_in_debate = {
 # 		global_defensive = 0.05

@@ -1,4 +1,4 @@
-yearly_country_pulse = {
+﻿yearly_country_pulse = {
 	events = {
 		diwan_character_events.1
 		diwan_character_events.2

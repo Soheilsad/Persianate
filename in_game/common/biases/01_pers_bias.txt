@@ -1,4 +1,4 @@
-opinion_betrayed_genghis = {
+﻿opinion_betrayed_genghis = {
 	value = -150 ## yeah, the mongols ain't gonna accept this shit lil bro
 	yearly_decay = 1
 }

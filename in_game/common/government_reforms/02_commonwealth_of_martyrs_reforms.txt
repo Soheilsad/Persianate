@@ -1,4 +1,4 @@
-# -----------------------------------------------------------------------------
+﻿# -----------------------------------------------------------------------------
 # Reform tree for the Commonwealth of Martyrs
 #
 # Starter: Bāshtīn Proclamation — auto-applies at game start to any

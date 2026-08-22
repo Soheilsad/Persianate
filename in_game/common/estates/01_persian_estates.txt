@@ -1,4 +1,4 @@
-diwan_estate = {
+﻿diwan_estate = {
 	color = estate_diwan
 
 	power_per_pop = 35

@@ -1,4 +1,4 @@
-INJECT:levy_mailed_knights = {
+﻿INJECT:levy_mailed_knights = {
 
 	country_allow = {
 		NOT = {country_has_estate = estate_type:amirs_estate}

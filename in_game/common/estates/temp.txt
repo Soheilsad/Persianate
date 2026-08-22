@@ -1,4 +1,4 @@
-# crown_estate = {
+﻿# crown_estate = {
 # 	color = estate_crown
 # 	power_per_pop = 0
 # 	tax_per_pop = 0

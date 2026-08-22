@@ -1,4 +1,4 @@
-amirs_iqta_grant = {
+﻿amirs_iqta_grant = {
 	estate = amirs_estate
 
 	# The basic iqtāʿ — service-conditioned, theoretically revocable

@@ -1,4 +1,4 @@
-# =====================================================================
+﻿# =====================================================================
 # Shia rework — base scripted-trigger overrides
 #
 # is_jurisprudence_school: redefines the base trigger (same key

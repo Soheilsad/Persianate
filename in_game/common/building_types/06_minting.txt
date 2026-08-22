@@ -1,4 +1,4 @@
-ilkhanid_mint = {
+﻿ilkhanid_mint = {
       is_special = yes                                                          
       pop_type = burghers
       max_levels = 1                                                            

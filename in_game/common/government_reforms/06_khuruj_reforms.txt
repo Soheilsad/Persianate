@@ -1,4 +1,4 @@
-# =====================================================================
+﻿# =====================================================================
 # THE KHURŪJ — the order in arms, and the crown that ends it
 #
 # Script-only reforms (potential gates on variables no player action

@@ -1,4 +1,4 @@
-# Triggers for the Custody of the Ulus disaster (Chinggisid Regency).
+﻿# Triggers for the Custody of the Ulus disaster (Chinggisid Regency).
 # Design: docs/design/custody_of_the_ulus_design.md
 
 # A rival custody: any other Eranzamin member that either runs its

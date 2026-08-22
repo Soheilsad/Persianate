@@ -1,4 +1,4 @@
-# ----------------------------------------------------------------------
+﻿# ----------------------------------------------------------------------
 # MUṢĀDARA — the aftertaste of confiscation
 #
 # Applied (years = 5) by BOTH the standing maẓālim action (enact_musadara)

@@ -1,4 +1,4 @@
-country_history = {
+﻿country_history = {
 	type = country
 	text = { localization_key = country_history_CHB trigger = { tag = CHB } } # Chobanids
 	text = { localization_key = country_history_ERE trigger = { tag = ERE } } # Eretna

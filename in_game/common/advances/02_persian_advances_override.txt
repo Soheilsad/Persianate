@@ -1,4 +1,4 @@
-
+﻿
 
 REPLACE:nobles_rights_laws_advance = {
 	age = age_2_renaissance

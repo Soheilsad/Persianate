@@ -1,4 +1,4 @@
-adobe_maker = {
+﻿adobe_maker = {
 	is_foreign = no
 	max_levels = rural_building_cap
 	pop_type = laborers

@@ -82,7 +82,8 @@ rum.2 = {
 				}
 			}
 		}
-
+		set_personality = ai_personality:ai_aggressive
+		add_area_preference = ottoman_expansion_anatolia
 		add_reform = government_reform:ghazi_sultanate
 		# The adoption handshake: the qadis read the khutba gladly.
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.10 }
@@ -114,7 +115,8 @@ rum.2 = {
 				}
 			}
 		}
-
+		set_personality = ai_personality:ai_aggressive
+		add_area_preference = ottoman_expansion_anatolia
 		add_reform = government_reform:seljuk_claimant
 	}
 

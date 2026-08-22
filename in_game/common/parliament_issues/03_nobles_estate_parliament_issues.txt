@@ -1,4 +1,4 @@
-
+﻿
 promote_castle_building = {
 	estate = nobles_estate
 

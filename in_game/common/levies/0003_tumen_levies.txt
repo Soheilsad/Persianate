@@ -1,4 +1,4 @@
-levy_tumen_cavalry = {
+﻿levy_tumen_cavalry = {
 	size = 0.75
 	allowed_pop_type = soldiers
 	country_allow = {

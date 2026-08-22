@@ -1,4 +1,4 @@
-namespace = persianate_cleanup
+﻿namespace = persianate_cleanup
 
 # One-shot game-start cleanup. Two jobs:
 #  1. Kill the base-game versions of characters we have re-authored as _pw

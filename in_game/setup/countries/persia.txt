@@ -1,4 +1,4 @@
-CHB = { #Chobanids
+﻿CHB = { #Chobanids
 	color = map_CHB
 	color2 = rgb { 16 41 202 }
 

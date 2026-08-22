@@ -1,4 +1,4 @@
-is_dhimmi = {
+﻿is_dhimmi = {
 	OR = {	
 		religion.group = religion_group:buddhist
 		religion.group = religion_group:christian

@@ -1,4 +1,4 @@
-# Cabinet "Change Societal Values" requires a <side>_progress_cabinet_efficiency
+﻿# Cabinet "Change Societal Values" requires a <side>_progress_cabinet_efficiency
 # static modifier to exist for each side of a societal value, or it refuses to
 # push that side (societal_values.cpp:296/300). turk_vs_tazik is already moved in
 # play by change_societal_value effects and the monthly_towards_turk/tazik

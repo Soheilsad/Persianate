@@ -1,4 +1,4 @@
-# Rebalanced Islamic Schools for Historical Authenticity
+﻿# Rebalanced Islamic Schools for Historical Authenticity
 
 # Hanafi: The school of reason (Ra'y) and statecraft, favored by the Abbasids, Seljuks, Ottomans, and Mughals for its flexibility.
 hanafi_school = {

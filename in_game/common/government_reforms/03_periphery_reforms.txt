@@ -1,4 +1,4 @@
-# =====================================================================
+﻿# =====================================================================
 # PERSIANATE PERIPHERY — starter reforms (persianate_periphery_plan.md)
 #
 # REPLACE:mamluk_government — modified version of the base reform

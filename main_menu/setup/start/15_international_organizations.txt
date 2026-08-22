@@ -1,4 +1,4 @@
-# Erānzamīn — the succession-contender IO.
+﻿# Erānzamīn — the succession-contender IO.
 #
 # Seeds the eight major polities physically present in 1337 that
 # could claim the Ilkhanid mantle in some form. Each is wired with

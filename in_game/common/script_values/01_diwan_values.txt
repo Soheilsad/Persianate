@@ -1,4 +1,4 @@
-val_tribal_percentage = {
+﻿val_tribal_percentage = {
 	value = percentage_pop_type_in_country:tribesmen
 }
 

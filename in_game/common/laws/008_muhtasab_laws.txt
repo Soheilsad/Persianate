@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # ERANZAMIN — hisba_law: enforcement of public morals (hisba)
 #
 # The axis is MOBILIZED vs MONETIZED piety. Strict enforcement

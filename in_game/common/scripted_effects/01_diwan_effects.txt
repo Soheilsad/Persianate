@@ -1,4 +1,4 @@
-add_justice_capital_small = {
+﻿add_justice_capital_small = {
 	add_legitimacy = 5
 	add_country_modifier = { modifier = justice_capital_small years = 5 }
 }

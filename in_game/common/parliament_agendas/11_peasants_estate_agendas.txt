@@ -1,4 +1,4 @@
-pa_peasants_case_tax_evasion = {
+﻿pa_peasants_case_tax_evasion = {
 	type = country
 	estate = peasants_estate
 	importance = 1.25

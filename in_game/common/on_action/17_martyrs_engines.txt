@@ -1,4 +1,4 @@
-# =====================================================================
+﻿# =====================================================================
 # Commonwealth of Martyrs — devotion engines
 #
 # 1. MARTYRS' ROLLS (privilege-gated): the Karbala paradigm as a

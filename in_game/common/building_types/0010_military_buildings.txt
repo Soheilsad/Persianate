@@ -1,4 +1,4 @@
-tamma_garrison = {
+﻿tamma_garrison = {
 	is_foreign = no
 	pop_type = soldiers
 	max_levels = 3

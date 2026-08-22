@@ -1,4 +1,4 @@
-persian_nobles_rights_laws = {
+﻿persian_nobles_rights_laws = {
 	# Option 1: Centralize Power (Diwan Preference)
 	curtail_umara_rights = {
 		potential = { country_has_estate = estate_type:amirs_estate }

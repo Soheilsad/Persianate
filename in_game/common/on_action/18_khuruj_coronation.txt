@@ -1,4 +1,4 @@
-# =====================================================================
+﻿# =====================================================================
 # THE CORONATION HOOK — the khurūj ends where the great cities are
 #
 # A rising order (khuruj_rising_reform) that takes any of the six

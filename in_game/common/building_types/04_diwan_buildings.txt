@@ -1,4 +1,4 @@
-# Dīwān al-Mamālik — the realm-grand chancery, seated in the capital.
+﻿# Dīwān al-Mamālik — the realm-grand chancery, seated in the capital.
 # Buyid in origin, Saljuq in systematization, Ilkhanid in scale: the
 # Juvaynīs and Rashīd al-Dīn ran their empires from this office, and
 # Mustawfī of Qazvīn audited them out of it. Mechanically: one per

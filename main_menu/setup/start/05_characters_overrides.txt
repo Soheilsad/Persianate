@@ -1,4 +1,4 @@
-character_db = {
+﻿character_db = {
 	chb_hasan_kuchak_pw = {	#Ruler at 1337 start
 		first_name = { name = name_hasan }
 		nickname = { name = name_kuchek }

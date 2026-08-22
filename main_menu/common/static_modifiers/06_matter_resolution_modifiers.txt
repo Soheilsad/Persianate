@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # Matter of Tork — disposition modifiers
 # Design: docs/design/matter_of_tork_design.md
 #

@@ -1,4 +1,4 @@
-namespace = tariqa
+﻿namespace = tariqa
 
 # =====================================================================
 # tariqa.1 — THE TWO PIRS (disaster resolution choice)

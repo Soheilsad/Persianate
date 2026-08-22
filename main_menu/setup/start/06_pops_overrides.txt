@@ -1,4 +1,4 @@
-locations = {
+﻿locations = {
 
     amadiya = {
         define_pop = { type = clergy	size = 0.082	culture = kurdish_culture	religion = sunni }

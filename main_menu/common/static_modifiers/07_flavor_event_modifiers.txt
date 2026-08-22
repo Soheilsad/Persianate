@@ -1,4 +1,4 @@
-# Static modifiers attached to flavor-event outcomes.
+﻿# Static modifiers attached to flavor-event outcomes.
 # Short-lived (5-25y), small bonuses. Outcome-effects of one-shot choices.
 
 # ---Generic local unrest (add_unrest does not exist as an effect;

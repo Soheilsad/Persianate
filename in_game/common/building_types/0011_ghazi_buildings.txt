@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # Ghazi — military infrastructure of the volunteer and the city
 #
 # Two buildings:

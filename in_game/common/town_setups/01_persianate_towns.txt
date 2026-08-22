@@ -1,4 +1,4 @@
-# Iranian / Persianate town and city setups.
+﻿# Iranian / Persianate town and city setups.
 # All numbers are ADDITIVE on top of copy_from, not replacements.
 # Persian distinctives layered on the levant baseline:
 #   - paper + scriptorium bumped (Iran was the paper heartland; literacy infrastructure followed)

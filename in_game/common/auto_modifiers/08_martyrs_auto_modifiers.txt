@@ -1,4 +1,4 @@
-# Base values for the Commonwealth of Martyrs estates — mirrors
+﻿# Base values for the Commonwealth of Martyrs estates — mirrors
 # diwan_base_values / amirs_base_values in 01_diwan_auto_modifiers.txt.
 # Without a base target satisfaction the estates start hyper-rebellious
 # and can be neither levied nor taxed.

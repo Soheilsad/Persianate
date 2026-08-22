@@ -1,4 +1,4 @@
-# =====================================================================
+﻿# =====================================================================
 # has_nizam_ul_mulk_chancery — THE apparatus gate of the Persianate world
 #
 # Boolean country modifier (pattern: base allow_council_parliament).

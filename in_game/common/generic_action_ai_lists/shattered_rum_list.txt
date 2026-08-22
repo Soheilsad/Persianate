@@ -1,4 +1,4 @@
-# Shattered Rum — AI evaluation list for the two situation-panel
+﻿# Shattered Rum — AI evaluation list for the two situation-panel
 # actions (the ghazi road's late doors). Without a list entry the AI
 # never ticks situation actions (disaster actions self-tick via
 # inline ai_tick — the farr pattern — so the three Inheritance

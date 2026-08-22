@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # ERANZAMIN — Religious buildings, 1337 set
 #
 # Design logic: religious infrastructure is not neutral. The

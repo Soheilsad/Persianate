@@ -1,4 +1,4 @@
-# Matter of Tork, Approach 1 — the ghulam barracks.
+﻿# Matter of Tork, Approach 1 — the ghulam barracks.
 #
 # Modeled on the base mamluk_barracks, which is the inherited
 # 'classical' institution (Mamluk Egypt et al. start with it).

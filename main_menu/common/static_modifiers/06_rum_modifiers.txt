@@ -1,4 +1,4 @@
-# =====================================================================
+﻿# =====================================================================
 # SHATTERED RUM — program-step modifiers (Seljuk Inheritance)
 #
 # Each program step buys a permanent standing offset against the

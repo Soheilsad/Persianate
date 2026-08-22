@@ -1,4 +1,4 @@
-# =====================================================================
+﻿# =====================================================================
 # WAQF DAMAGE — the yearly reassessment
 #
 # The per-location building modifier cannot express a coherent realm-wide

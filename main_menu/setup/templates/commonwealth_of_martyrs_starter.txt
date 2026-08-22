@@ -1,4 +1,4 @@
-# -----------------------------------------------------------------------------
+﻿# -----------------------------------------------------------------------------
 # Setup template: Commonwealth of Martyrs starter
 #
 # Applied to the Sarbedārs (SRB) at game start. Composes the

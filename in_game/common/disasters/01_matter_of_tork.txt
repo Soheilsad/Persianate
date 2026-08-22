@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # The Matter of Tork — "The Place of the Sword"
 #
 # NOT a legitimacy disaster. By the time it fires, legitimacy is

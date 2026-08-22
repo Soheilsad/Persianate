@@ -1,4 +1,4 @@
-# -----------------------------------------------------------------------------
+﻿# -----------------------------------------------------------------------------
 # SUFYĀNĪ NOTABLES — privileges
 #
 # Privileges granted to the Sufyānī urban-aristocratic faction. Each privilege

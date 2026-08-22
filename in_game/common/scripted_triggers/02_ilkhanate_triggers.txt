@@ -1,4 +1,4 @@
-is_eranzamin_region_province = {
+﻿is_eranzamin_region_province = {
 	OR = {
 		region = region:persia_region
 		region = region:khorasan_region

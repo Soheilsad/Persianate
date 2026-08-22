@@ -1,4 +1,4 @@
-namespace = kurdish_emirate
+﻿namespace = kurdish_emirate
 
 # =====================================================================
 # THE CHANCERY OFFERED — a mîr takes a great seat of empire

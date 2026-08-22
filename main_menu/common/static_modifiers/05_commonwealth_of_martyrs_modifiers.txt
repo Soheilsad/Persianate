@@ -1,4 +1,4 @@
-# -----------------------------------------------------------------------------
+﻿# -----------------------------------------------------------------------------
 # Country modifiers granted by Commonwealth of Martyrs parliament debates.
 #
 # Each is the temporary policy outcome of a dyarchic council resolution —

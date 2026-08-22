@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # Ulus Governorate — the deferring administrator's vassalage.
 #
 # What an ilkhanate_governorate becomes when it declares fealty for

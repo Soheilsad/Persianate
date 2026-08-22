@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # On-action hooks for the Ghazi: Burden of the Sword disaster.
 #
 # Paradox merges on_actions across files. Re-declaring an engine

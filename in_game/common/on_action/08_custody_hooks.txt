@@ -1,4 +1,4 @@
-# Custody of the Ulus — kill credit.
+﻿# Custody of the Ulus — kill credit.
 #
 # Paradox merges on_actions across files, so re-declaring the engine
 # on_military_annex here EXTENDS it (does not override). Fired before

@@ -1,4 +1,4 @@
-#Shaykh-lineages of the tariqa orders (12_tariqa_orders.txt).
+﻿#Shaykh-lineages of the tariqa orders (12_tariqa_orders.txt).
 #The shrine families ARE dynasties: sajjada-nishin succession is
 #hereditary in every one of these houses by 1337.
 dynasty_manager = {

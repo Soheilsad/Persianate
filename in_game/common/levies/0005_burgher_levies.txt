@@ -1,4 +1,4 @@
-levy_shahr_militia = {
+﻿levy_shahr_militia = {
 	size = 0.1              
 	allowed_pop_type = burghers
 	allow = {

@@ -1,4 +1,4 @@
-# =====================================================================
+﻿# =====================================================================
 # KURDISH EMIRATE — the defensive levy
 #
 # The tribal host turns out in full ONLY in defense of the mountains. When the

@@ -1,4 +1,4 @@
-# =====================================================================
+﻿# =====================================================================
 # Revolutionary Zeal — the defensive surge
 #
 # While the founding generation still stands (revolutionary_zeal

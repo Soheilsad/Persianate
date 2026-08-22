@@ -1,4 +1,4 @@
-iqta_building_fake_mod = {
+﻿iqta_building_fake_mod = {
 	game_data = {
 		category = location
 	}

@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # ERANZAMIN — The naqshband chain: the Persian drawloom
 #
 # Naqshband = "pattern-binder": the master craftsman who ties
