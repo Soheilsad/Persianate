@@ -1,4 +1,4 @@
-﻿pa_burghers_case_price_gouging = {
+pa_burghers_case_price_gouging = {
 	type = country
 	estate = burghers_estate
 	importance = 2.5

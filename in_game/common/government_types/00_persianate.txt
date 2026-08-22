@@ -1,4 +1,4 @@
-﻿persianate_sultanate = {
+persianate_sultanate = {
 	use_regnal_number = yes
 	generate_consorts = yes
 

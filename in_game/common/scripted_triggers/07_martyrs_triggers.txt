@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # Commonwealth of Martyrs — shared triggers
 #
 # is_turco_mongol_polity: the standing enemy of the vow. RULER-CULTURE

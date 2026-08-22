@@ -1,4 +1,4 @@
-﻿# Erānzamīn — the operative IO for the post-Ilkhanid succession contest.
+# Erānzamīn — the operative IO for the post-Ilkhanid succession contest.
 #
 # Replaces the base ilkhanate IO as the real driver. Design:
 #   -Flat federation: no leader, no engine-driven claimant promotion.

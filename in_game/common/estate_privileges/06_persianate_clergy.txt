@@ -1,4 +1,4 @@
-﻿# -----------------------------------------
+# -----------------------------------------
 # CLERGY (ulama) — Persianate additions and overrides
 #
 # The Persianate Sunni clergy is the ulama: qadis, mudarrisin,

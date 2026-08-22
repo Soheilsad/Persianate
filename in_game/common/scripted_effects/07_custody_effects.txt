@@ -1,4 +1,4 @@
-﻿# Scripted effects for the Custody of the Ulus disaster.
+# Scripted effects for the Custody of the Ulus disaster.
 # Design: docs/design/custody_of_the_ulus_design.md
 #
 # Reuses the EXISTING charade machinery (decision 3): charade_counter

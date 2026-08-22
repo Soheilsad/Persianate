@@ -1,4 +1,4 @@
-﻿namespace = persianate_generic
+namespace = persianate_generic
 
 # Generic flavor events for any Persianate polity (Iran / Khurasan / Caucasus
 # capital). NOT restricted to Erānzamīn contenders. Builds out the lived

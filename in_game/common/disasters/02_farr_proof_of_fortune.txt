@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # Farr Proof of Fortune — the boast under test
 #
 # Declaring farr-i īzadī converts legitimacy from a status into

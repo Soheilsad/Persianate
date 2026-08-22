@@ -1,4 +1,4 @@
-﻿namespace = farr_proof
+namespace = farr_proof
 
 # ============================================================
 # Farr Proof of Fortune — events

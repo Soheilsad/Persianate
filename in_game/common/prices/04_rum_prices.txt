@@ -1,4 +1,4 @@
-﻿# Shattered Rum action prices. scaled_gold is MONTHLY-income-scaled;
+# Shattered Rum action prices. scaled_gold is MONTHLY-income-scaled;
 # calibrate against matter prices (6 = routine program step, 12 = a
 # founding act).
 

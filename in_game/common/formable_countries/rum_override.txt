@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # REPLACE: base RUM_f (00_formable_countries.txt:3487) — the two-door
 # gate. Base required only the race victory (winner variable); now the
 # crown of Rum needs a LEGITIMACY answer as well:

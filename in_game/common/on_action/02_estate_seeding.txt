@@ -1,4 +1,4 @@
-﻿# Seeds initial characters into the mod's custom estates at game start so they
+# Seeds initial characters into the mod's custom estates at game start so they
 # can exert power and provide bonuses before natural promotion + generation
 # catches up. Without this, estates start empty for the first few years.
 #

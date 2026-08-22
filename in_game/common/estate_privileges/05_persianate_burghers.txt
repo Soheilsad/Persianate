@@ -1,4 +1,4 @@
-﻿# -----------------------------------------
+# -----------------------------------------
 # BURGHERS — Persianate additions and overrides
 #
 # The Persianate urban estate isn't the Latin burgher of a chartered

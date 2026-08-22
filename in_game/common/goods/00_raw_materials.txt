@@ -1,4 +1,4 @@
-﻿
+
 horses = { #War Horses
 	method = farming
 	category = raw_material

@@ -1,4 +1,4 @@
-﻿boneh_system = {
+boneh_system = {
 	estate = peasants_estate
 	
 	potential = {

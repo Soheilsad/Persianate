@@ -1,4 +1,4 @@
-﻿# Script values for Erānzamīn flavor events.
+# Script values for Erānzamīn flavor events.
 # Single tuning point — adjust here, not in event scripts.
 
 # === Axis pushes (turk_vs_tazik: + = Tazik, -= Tork) ===

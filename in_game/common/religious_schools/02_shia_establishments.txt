@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # SHIA ESTABLISHMENT SCHOOLS — the network that runs your religious
 # institutions. Replaces the branch labels (jafari/imamiya/ismaili) in
 # the shia school slot; branches now live in the Imamate aspect axis,

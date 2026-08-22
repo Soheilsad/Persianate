@@ -1,4 +1,4 @@
-﻿tar = {
+tar = {
 	category = produced
 	color = goods_tar
 	default_market_price = 2

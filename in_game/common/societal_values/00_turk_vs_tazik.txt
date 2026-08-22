@@ -1,4 +1,4 @@
-﻿turk_vs_tazik = {
+turk_vs_tazik = {
 	
 	allow = {
 		# Available to ALL nations in the Iranic/Turkic sphere

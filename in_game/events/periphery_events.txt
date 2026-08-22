@@ -1,4 +1,4 @@
-﻿namespace = periphery
+namespace = periphery
 
 # =====================================================================
 # periphery.1 — THE GOVERNOR'S KHUTBA (Delhi breakaway correction)

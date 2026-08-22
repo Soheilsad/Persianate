@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # Ghazi: Burden of the Sword — scripted effects
 #
 # Counters (set on init, ticked monthly, cleared on disaster end):

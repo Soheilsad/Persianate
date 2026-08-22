@@ -1,4 +1,4 @@
-﻿locations = {
+locations = {
 
 	tabriz = { rank = megalopolis town_setup = tabriz_city }
 

@@ -1,4 +1,4 @@
-﻿# -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # SHAYKHĪ DERVISHES — privileges
 #
 # Privileges granted to the Shaykhī armed-religious-order faction. Each

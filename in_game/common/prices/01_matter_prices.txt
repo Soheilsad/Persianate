@@ -1,4 +1,4 @@
-﻿# Matter of Tork action prices.
+# Matter of Tork action prices.
 
 # One corps tier per purchase; three purchases to tier III.
 # Calibrate against a year-50 consolidated Iran's treasury

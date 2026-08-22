@@ -1,4 +1,4 @@
-﻿recent_cadastre_modifier = {
+recent_cadastre_modifier = {
 	game_data = {
 		category = country
 	}

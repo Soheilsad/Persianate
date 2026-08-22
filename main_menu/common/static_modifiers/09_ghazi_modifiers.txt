@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # Ghazi: Burden of the Sword — static modifiers
 #
 # Three layers (per the design guide §4):

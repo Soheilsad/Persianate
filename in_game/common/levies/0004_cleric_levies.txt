@@ -1,4 +1,4 @@
-﻿levy_ghazi_volunteers = {
+levy_ghazi_volunteers = {
 	size = 0.2
 	allowed_pop_type = clergy
 	allow = {

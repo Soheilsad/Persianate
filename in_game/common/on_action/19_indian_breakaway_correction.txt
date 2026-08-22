@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # INDIAN BREAKAWAY CORRECTION (persianate_periphery_plan.md)
 #
 # Base's Fall of Delhi creates breakaways two ways:

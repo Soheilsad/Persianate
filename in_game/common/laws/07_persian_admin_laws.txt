@@ -1,4 +1,4 @@
-﻿persian_bureaucracy_law = {
+persian_bureaucracy_law = {
 	diwan_administration = {
 		potential = { country_has_estate = estate_type:diwan_estate }
 		country_modifier = {

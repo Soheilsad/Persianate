@@ -1,4 +1,4 @@
-﻿# -----------------------------------------
+# -----------------------------------------
 # BEACON OF CIVILIZATION — Matter of Tork, Approach 2
 #
 # Two registers of co-optation, split by estate (decision 26):

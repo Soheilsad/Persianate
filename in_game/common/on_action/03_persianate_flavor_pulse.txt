@@ -1,4 +1,4 @@
-﻿# Persianate flavor pulse — hosts the non-DHE generic and eranzamin flavor
+# Persianate flavor pulse — hosts the non-DHE generic and eranzamin flavor
 # events. Piggybacks on religion_flavor_pulse so it runs on the engine's
 # religion-pulse cadence (which the muslim sub-pulse already uses).
 #

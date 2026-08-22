@@ -1,4 +1,4 @@
-﻿# Building Types
+# Building Types
 #
 # ATTRIBUTES
 # - build_time: <integer> building time in days

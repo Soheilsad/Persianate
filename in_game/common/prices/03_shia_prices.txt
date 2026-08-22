@@ -1,4 +1,4 @@
-﻿# Crushing a Sarbadar preacher cell: informers paid, dervishes hanged,
+# Crushing a Sarbadar preacher cell: informers paid, dervishes hanged,
 # and the quarter remembers — gold plus a stability knock.
 remove_sarbadar_preachers = {
 	# Three months' income: informers, gallows, and hush money.

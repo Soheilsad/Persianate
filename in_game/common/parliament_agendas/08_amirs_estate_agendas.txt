@@ -1,4 +1,4 @@
-﻿pa_amirs_case_land_seizure = {
+pa_amirs_case_land_seizure = {
 	type = country
 	estate = amirs_estate
 	importance = 2.5

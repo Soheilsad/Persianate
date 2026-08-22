@@ -1,4 +1,4 @@
-﻿namespace = sarbadar_phenomenon
+namespace = sarbadar_phenomenon
 
 # =====================================================================
 # sarbadar_phenomenon.1 — THE WORD FROM BASHTIN (situation start)

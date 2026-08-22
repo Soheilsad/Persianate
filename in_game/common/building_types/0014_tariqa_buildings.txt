@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # TARIQA KHANAQAH — the order's lodge in another realm's city
 #
 # The extraterritorial building of a tariqa_order country (kontor

@@ -1,4 +1,4 @@
-﻿# Inert override of the base game's ilkhanate IO.
+# Inert override of the base game's ilkhanate IO.
 #
 # The base IO has 9 hardcoded references in the game (custom localization,
 # formable_countries, generic_actions, peace_treaties, casus_belli,

@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # TIMURID EMPIRE — chancery rebuild
 #
 # REPLACE: base ships timurid_empire (country_specific.txt:3420) as a

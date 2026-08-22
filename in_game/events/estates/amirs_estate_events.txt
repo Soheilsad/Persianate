@@ -1,4 +1,4 @@
-﻿namespace = amirs_estate_events
+namespace = amirs_estate_events
 
 # Amirs demand military leadership
 amirs_estate_events.1 = {

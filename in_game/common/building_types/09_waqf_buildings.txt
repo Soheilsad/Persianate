@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # ERANZAMIN — The Waqf pathology: the dead hand
 #
 # The structural rot the pen otherwise lacks. A waqf permanently
@@ -69,7 +69,7 @@ ayyan_waqf = {
 
 	# Inviolable once the charter stands — the whole point of the privilege.
 	can_destroy = {
-		NOT = { has_estate_privilege = estate_privilege:ayyan_waqf_charter }
+		owner ?= { NOT = { has_estate_privilege = estate_privilege:ayyan_waqf_charter } }
 	}
 	
 	raw_modifier = {
@@ -132,7 +132,7 @@ grand_ayyan_waqf = {
 	}
 
 	can_destroy = {
-		NOT = { has_estate_privilege = estate_privilege:ayyan_waqf_charter }
+		owner ?= { NOT = { has_estate_privilege = estate_privilege:ayyan_waqf_charter } }
 	}
 
 	raw_modifier = {
@@ -194,7 +194,7 @@ urban_waqf = {
 	}
 
 	can_destroy = {
-		NOT = { has_estate_privilege = estate_privilege:urban_waqf_charter }
+		owner ?= { NOT = { has_estate_privilege = estate_privilege:urban_waqf_charter } }
 	}
 
 	raw_modifier = {
@@ -242,7 +242,7 @@ grand_urban_waqf = {
 	}
 
 	can_destroy = {
-		NOT = { has_estate_privilege = estate_privilege:urban_waqf_charter }
+		owner ?= { NOT = { has_estate_privilege = estate_privilege:urban_waqf_charter } }
 	}
 
 	raw_modifier = {
@@ -293,7 +293,7 @@ clerical_waqf = {
 	}
 
 	can_destroy = {
-		NOT = { has_estate_privilege = estate_privilege:clerical_waqf_charter }
+		owner ?= { NOT = { has_estate_privilege = estate_privilege:clerical_waqf_charter } }
 	}
 
 	raw_modifier = {
@@ -343,7 +343,7 @@ grand_clerical_waqf = {
 	}
 
 	can_destroy = {
-		NOT = { has_estate_privilege = estate_privilege:clerical_waqf_charter }
+		owner ?= { NOT = { has_estate_privilege = estate_privilege:clerical_waqf_charter } }
 	}
 
 	raw_modifier = {

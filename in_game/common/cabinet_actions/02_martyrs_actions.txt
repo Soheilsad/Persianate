@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # Commonwealth of Martyrs — cabinet actions
 #
 # charter_of_the_liberated: the integration fast-lane. A province the

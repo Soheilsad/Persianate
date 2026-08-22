@@ -1,4 +1,4 @@
-﻿ennoble = {
+ennoble = {
 	
 	sound = UI_action_character_ennoble
 

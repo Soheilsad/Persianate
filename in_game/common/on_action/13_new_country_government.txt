@@ -1,4 +1,4 @@
-﻿on_new_country_formed = {
+on_new_country_formed = {
 	on_actions = {
 		correct_kurdish_tribe_newly_formed
         correct_sedentary_iranic_tribe

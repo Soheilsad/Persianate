@@ -1,4 +1,4 @@
-﻿# AI evaluation list for the network actions (base black_death_list
+# AI evaluation list for the network actions (base black_death_list
 # pattern) — the AI only evaluates these when the gate passes.
 tariqa_actions_list = {
 	potential = {

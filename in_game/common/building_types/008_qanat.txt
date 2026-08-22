@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 # ERANZAMIN — The qanat pair
 #
 # Replaces the qanat vegetation types. All former qanat_farmland /
@@ -98,7 +98,7 @@ qanat_network = {
 	obsolete = damaged_qanat
 	employment_size = 2       
 	price = small_estate_building ### not actually EXPENSIVE to start, just takes a LONG time to build. the maintenance cost is what makes it expensive to keep building + opportunity cost.
-	category = rural_infrastructure_category       
+	category = infrastructure_category
 
 	rural_settlement = yes
 	town = yes
@@ -167,12 +167,6 @@ qanat_network = {
 		}
 	}
 
-	construction_demand = {
-		lumber = 2
-		tools = 2
-		masonry = 2
-		category = building_construction
-	}   
 
 	graphical_tags = { small_economy }                          # [verify tag]
 }

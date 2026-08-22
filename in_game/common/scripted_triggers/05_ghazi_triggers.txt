@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # Ghazi: Burden of the Sword — scripted triggers
 #
 # Tier classification (§6 of design doc):

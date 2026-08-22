@@ -1,4 +1,4 @@
-﻿# Modifier types for the tariqa building-country system.
+# Modifier types for the tariqa building-country system.
 
 allows_tariqa_buildings={
 	boolean=yes

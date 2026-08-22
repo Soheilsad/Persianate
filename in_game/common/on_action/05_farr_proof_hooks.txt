@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # On-action hooks for the Farr Proof of Fortune disaster.
 #
 # Paradox merges on_actions across files. Re-declaring an engine

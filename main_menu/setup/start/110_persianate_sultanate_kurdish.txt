@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # KURDISH / JAZIRA EMIRATES — the Iranic Tribal Polity layer
 #
 # Redefines the 11 KEEPER tags to the new iranic_tribal_polity government

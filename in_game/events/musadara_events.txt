@@ -1,4 +1,4 @@
-﻿namespace = musadara
+namespace = musadara
 
 # =====================================================================
 # THE DESPERATION MUṢĀDARA — option 2 of the muṣādara system

@@ -1,4 +1,4 @@
-﻿slaves_goods = {
+slaves_goods = {
 	category = produced
 	color = goods_slaves
 

@@ -1,4 +1,4 @@
-﻿
+
 decree_centralize_administration = {
 	estate = crown_estate
 	

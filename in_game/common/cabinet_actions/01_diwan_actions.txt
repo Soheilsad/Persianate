@@ -1,4 +1,4 @@
-﻿# encourage_pastoralism = {
+# encourage_pastoralism = {
 # 	ability = mil
 # 	icon = settle_tribesmen
 	

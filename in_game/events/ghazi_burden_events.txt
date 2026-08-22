@@ -1,4 +1,4 @@
-﻿namespace = ghazi_burden
+namespace = ghazi_burden
 
 # ============================================================
 # Ghazi: Burden of the Sword — events

@@ -1,4 +1,4 @@
-﻿remove_succession_mod_effect = {
+remove_succession_mod_effect = {
 
     every_location_in_the_world = {
         limit = {

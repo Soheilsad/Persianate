@@ -1,4 +1,4 @@
-﻿# Coats of arms for the six tariqa order tags (12_tariqa_orders.txt).
+# Coats of arms for the six tariqa order tags (12_tariqa_orders.txt).
 # Simple solid fields + crescent: lodge banners, not dynastic heraldry.
 
 KBW = { # Kubrawiyya — black and gold of the Khurasani khanaqahs

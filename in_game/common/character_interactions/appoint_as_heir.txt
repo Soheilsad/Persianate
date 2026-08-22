@@ -1,4 +1,4 @@
-﻿appoint_as_heir = {
+appoint_as_heir = {
 	
 	message = yes
 	on_own_nation = yes

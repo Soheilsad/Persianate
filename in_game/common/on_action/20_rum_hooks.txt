@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # On-action hooks for the Seljuk Inheritance disaster — mirrored
 # from 05_farr_proof_hooks.txt, INCLUDING the notification system:
 #

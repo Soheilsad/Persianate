@@ -1,4 +1,4 @@
-﻿move_child_to_court = { 
+move_child_to_court = { 
 	on_other_nation = yes
 	message = yes
 	

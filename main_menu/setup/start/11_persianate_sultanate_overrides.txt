@@ -1,4 +1,4 @@
-﻿# Persianate Sultanate template wiring.
+# Persianate Sultanate template wiring.
 # Redefines 6 base-game country entries to use the new persianate_sultanate
 # government type (via tazik_dominant / tork_dominant templates) instead of
 # base muslim_monarchy_* / eurasian_horde / turkish_beylik_* templates.

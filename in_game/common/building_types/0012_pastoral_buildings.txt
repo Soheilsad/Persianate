@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # Pastoral buildings — the īl, the amīr, and the horse
 #
 # The base game's horse_breeder is locked to Mediterranean and

@@ -1,4 +1,4 @@
-﻿namespace = diwan_flavor
+namespace = diwan_flavor
 
 # ==============================================================================
 # TEMPLATE 1: THE VIZIER'S PARABLE (Siyasatnameh Style)

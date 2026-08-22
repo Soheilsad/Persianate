@@ -1,4 +1,4 @@
-﻿government = {
+government = {
 	# Societal Values
 	turk_vs_tazik = 0
 	

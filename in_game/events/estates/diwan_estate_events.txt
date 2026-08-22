@@ -1,4 +1,4 @@
-﻿namespace = diwan_estate_events
+namespace = diwan_estate_events
 
 # Diwan demand administrative control
 diwan_estate_events.1 = {

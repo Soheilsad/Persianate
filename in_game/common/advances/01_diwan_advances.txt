@@ -1,4 +1,4 @@
-persian_caravanserai_advance = {
+﻿persian_caravanserai_advance = {
 	age = age_1_traditions
 	
 	potential = {
@@ -11,9 +11,6 @@ persian_caravanserai_advance = {
 		}
 	}
 	
-	# Assuming 'beyond_the_sun' is a valid starting tech or accessible one. 
-	# If not, we can remove 'requires' or pick another.
-	requires = beyond_the_sun 
 	trade_land_efficiency = 0.66
 	unlock_building = caravanserai
 }

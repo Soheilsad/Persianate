@@ -1,4 +1,4 @@
-﻿colors = {
+colors = {
 	# Estate Colors
 	estate_diwan = rgb { 128 0 128 } # Purple for Bureaucracy
 	

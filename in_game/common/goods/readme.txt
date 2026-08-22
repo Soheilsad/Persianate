@@ -1,4 +1,4 @@
-﻿#<goods id> = {
+#<goods id> = {
 #	is_slaves = yes/no									#Defaults to no, mark that good as a slave good
 #	block_rgo_upgrade = yes/no							#Defaults to no, blocks the expansion of the rgo for this good
 #	inflation = yes/no									#Defaults to no, will cause inflation when produced

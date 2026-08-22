@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # Ghazi: The Burden of the Sword — the claim under audit
 #
 # Declaring ghazi_sultanate converts "sword of the faith" from a

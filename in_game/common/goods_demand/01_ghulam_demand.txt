@@ -1,4 +1,4 @@
-﻿# Matter of Tork, Approach 1 — slave demand created by ghulam
+# Matter of Tork, Approach 1 — slave demand created by ghulam
 # purchases (applied via add_temporary_demand in the purchase action).
 
 ghulam_purchase_demand = {

@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # MISSION OF THE LIBERATED — the commonwealth's owned-territory dawa
 #
 # The overt counterpart of sarbadar_preachers (which is the COVERT

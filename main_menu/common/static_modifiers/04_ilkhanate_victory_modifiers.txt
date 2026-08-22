@@ -1,4 +1,4 @@
-﻿great_khans_mandate = {
+great_khans_mandate = {
 	game_data = {
 		category = country
 

@@ -1,4 +1,4 @@
-﻿
+
 wool = {
 	method = farming
 	category = raw_material

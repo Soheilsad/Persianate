@@ -1,4 +1,4 @@
-﻿ilkhanate_integration_price = {
+ilkhanate_integration_price = {
 	scaled_gold = 3.0
 	government_power = 5
 }

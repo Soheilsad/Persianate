@@ -1,4 +1,4 @@
-﻿nobles = {
+nobles = {
 	color = pop_nobles
 	
 	editor = 0.05

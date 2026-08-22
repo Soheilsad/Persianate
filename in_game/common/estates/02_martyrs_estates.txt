@@ -1,4 +1,4 @@
-# -----------------------------------------------------------------------------
+﻿# -----------------------------------------------------------------------------
 # Estates of the Commonwealth of Martyrs
 #
 # Two novel estates that replace the standard Diwan/Amirs duality for
@@ -122,7 +122,7 @@ shaykhi_dervishes_estate = {
 	alliance = 0.015
 
 	revolt_court_language = common_language
-	characters_have_dynasty = no    # Individual charisma, not lineage
+	characters_have_dynasty = never    # Individual charisma, not lineage
 	can_generate_mercenary_leaders = yes
 	bank = no
 

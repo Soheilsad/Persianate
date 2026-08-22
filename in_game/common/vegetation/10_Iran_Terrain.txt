@@ -1,4 +1,4 @@
-﻿qanat_farmland = {
+qanat_farmland = {
 	color = terrain_qanat          
 	movement_cost = 1.15               
 	has_sand = yes                     

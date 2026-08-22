@@ -1,4 +1,4 @@
-﻿# Custom modifier types for the Persianate World mod.
+# Custom modifier types for the Persianate World mod.
 
 # Gates the ghulam_barracks building (Matter of Tork, Approach 1).
 # Granted by the ghulam administration privileges (diwan or amirs)

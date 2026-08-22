@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # SHIA RELIGIOUS ASPECTS — doctrine as contested positions
 #
 # Three-layer architecture (see docs/design/shia_rebuild_plan.md Part A):

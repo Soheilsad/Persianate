@@ -1,4 +1,4 @@
-﻿# -----------------------------------------
+# -----------------------------------------
 # DIWAN — Persianate additions
 #
 # Eight diwan privileges. Four are flavor capstones (Ṣāḥib-Dīwān,

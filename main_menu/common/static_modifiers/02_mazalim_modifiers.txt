@@ -1,4 +1,4 @@
-﻿reign_of_justice = {
+reign_of_justice = {
 	game_data = {
 		category = country
 		decaying = yes

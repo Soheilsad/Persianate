@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # Scripted triggers for the Farr Proof of Fortune disaster.
 #
 # Sustained-zone resolutions: the player must hold high or low

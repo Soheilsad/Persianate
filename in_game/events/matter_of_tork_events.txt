@@ -1,4 +1,4 @@
-﻿namespace = matter_of_tork
+namespace = matter_of_tork
 
 # ============================================================
 # The Matter of Tork — "The Place of the Sword"

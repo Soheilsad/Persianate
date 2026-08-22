@@ -1,4 +1,4 @@
-﻿diwan_estate = {
+diwan_estate = {
 	type = country
 	text = {
 		localization_key = diwan_estate

@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # MARTYRS DYARCHIC ELECTION — succession of the Commonwealth of Martyrs
 #
 # Base-game diarchic_election is Genoa's: it draws candidates from

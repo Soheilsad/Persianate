@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # SHATTERED RUM (persianate_periphery_plan.md §3)
 #
 # REPLACE: base rise_of_the_ottomans (situations/rise_of_the_ottomans.txt)

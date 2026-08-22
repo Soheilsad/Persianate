@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # MUṢĀDARA HOOKS — the desperation prompt on the loan on_actions
 #
 # Engine on_actions (re-declared here; Paradox merges, so this EXTENDS

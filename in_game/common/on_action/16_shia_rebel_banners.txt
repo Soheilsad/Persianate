@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # THE BANNERS SEEK A PIR — the civil-war hook for shia risings
 #
 # Playtest finding: shia rebels are coded as a CIVIL WAR (the rising

@@ -1,4 +1,4 @@
-﻿# Maintenance production methods for the Iranic religious building set.
+# Maintenance production methods for the Iranic religious building set.
 # Scaling notes:
 #   imam_shrine ≈ central_diwan tier (the great mashhads run as miniature
 #     state economies in their own right — Mashhad-i Rezā in Khurasan, the

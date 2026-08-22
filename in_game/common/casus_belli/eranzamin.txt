@@ -1,4 +1,4 @@
-﻿# Erānzamīn succession CB.
+# Erānzamīn succession CB.
 #
 # The primary contender-vs-contender CB. Usable when both actor and target
 # are members of the eranzamin IO. The wargoal is region-limited

@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # WAQF REASSESSMENT — yearly cadence on the monthly pulse
 #
 # Re-declaring yearly_country_pulse EXTENDS it (Paradox merges on_actions).

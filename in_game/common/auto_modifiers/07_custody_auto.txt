@@ -1,4 +1,4 @@
-﻿# The contested-custody drag (custody_contested) was converted from
+# The contested-custody drag (custody_contested) was converted from
 # a binary auto-modifier to a PER-RIVAL sized static modifier
 # (-0.1 legitimacy per rival custody standing), maintained monthly
 # by custody_monthly_tick on the charade_continues_mod pattern

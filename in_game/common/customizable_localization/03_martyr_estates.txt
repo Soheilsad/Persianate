@@ -1,4 +1,4 @@
-﻿shaykhi_dervishes_estate = {
+shaykhi_dervishes_estate = {
 	type = country
 	text = {
 		localization_key = shaykhi_dervishes_estate

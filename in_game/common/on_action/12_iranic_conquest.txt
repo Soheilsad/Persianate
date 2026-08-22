@@ -1,4 +1,4 @@
-﻿# =====================================================================
+# =====================================================================
 # IRANIC TRIBAL POLITY — the great-city conversion hook
 #
 # When a mîrnishîn seizes one of the great seats of Iranian/Iraqi empire, the

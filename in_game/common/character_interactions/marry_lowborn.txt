@@ -1,4 +1,4 @@
-﻿marry_lowborn = { 
+marry_lowborn = { 
 
 	sound = UI_action_character_marry_lowborn
 
