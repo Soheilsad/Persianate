@@ -1,7 +1,7 @@
 locations = {
 
 	tabriz = { rank = megalopolis town_setup = tabriz_city }
-
+	
 	# === Central Iran ===
 	kashan = { rank = city town_setup = iranian_kashi_city }
 	qazvin = { rank = city town_setup = iranian_city }
@@ -116,6 +116,14 @@ locations = {
 	baku = { rank = town town_setup = iranian_town }
 
 	kutaisi = { rank = town town_setup = iranian_town }
+
+
+
+	### anatolia.
+	bursa = { rank = city 		town_setup = anatolian_city } ## bursa was not ... something that special in 1337. the game represents 1460 by doing this. 
+	sivas = { rank = city 	town_setup = anatolian_major_city }
+	konya = { rank = city 	town_setup = anatolian_major_city }
+
 }
 
 

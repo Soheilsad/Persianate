@@ -317,3 +317,97 @@ custody.90 = {
 		name = custody.90.a
 	}
 }
+
+# =====================================================================
+# custody.34 — A GOVERNORATE HAS SWORN (to the custodian)
+#
+# Fired at the steward by custody_declare_fealty. Purely informative:
+# the kneeling itself is not refusable (historically right — a regent
+# does not turn away a governor who reads the khan's name in his
+# khutbah), but the custodian must at least KNOW. The war question is
+# handled separately (custody.35): swearing no longer drags him in.
+# =====================================================================
+custody.34 = {
+	type = country_event
+	outcome = neutral
+	title = custody.34.title
+	desc = custody.34.desc
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		has_variable = custody_new_sworn
+	}
+
+	immediate = {
+		var:custody_new_sworn = { save_scope_as = sworn_governorate }
+	}
+
+	option = {
+		name = custody.34.a
+		remove_variable = custody_new_sworn
+	}
+}
+
+# =====================================================================
+# custody.35 — THE GOVERNORATE CALLS FOR ITS CUSTODIAN
+#
+# Fired at the custodian from on_war_declared when a sworn governorate
+# is attacked by anyone but the custodian himself. Scopes come from
+# the hook (on_action -> event chains keep them): sworn_governorate,
+# ulus_attacker, ulus_war. Riding is a choice — refusing costs the
+# governorate's opinion and a little face.
+# =====================================================================
+custody.35 = {
+	type = country_event
+	outcome = neutral
+	title = custody.35.title
+	desc = custody.35.desc
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		exists = scope:ulus_war
+		exists = scope:sworn_governorate
+		exists = scope:ulus_attacker
+	}
+
+	# ----- A: Ride to them. -----
+	option = {
+		name = custody.35.a
+		ai_chance = {
+			factor = 70
+			# Already fighting elsewhere: the regent counts his lances.
+			modifier = {
+				factor = 0.25
+				at_war = yes
+			}
+			# A weak attacker is an easy vindication of the custody.
+			modifier = {
+				factor = 2
+				scope:ulus_attacker = { military_strength < root.military_strength }
+			}
+		}
+		join_war_as_defender = { war = scope:ulus_war }
+	}
+
+	# ----- B: Let them fend for themselves. -----
+	option = {
+		name = custody.35.b
+		ai_chance = { factor = 30 }
+		scope:sworn_governorate = {
+			add_opinion = {
+				target = root
+				modifier = opinion_refused_call_for_help_modifier
+			}
+		}
+		# A custodian who will not defend the ulus is a custodian in name.
+		add_legitimacy = -5
+	}
+}

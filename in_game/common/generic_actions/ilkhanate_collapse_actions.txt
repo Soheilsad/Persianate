@@ -678,6 +678,12 @@ custody_declare_fealty = {
 					target = scope:target_steward
 					type = subject_type:ulus_governorate
 				}
+				# The custodian learns of it (custody.34). Variable, not
+				# scope: saved scopes do not survive action -> event.
+				scope:target_steward = {
+					set_variable = { name = custody_new_sworn value = scope:actor }
+					trigger_event_non_silently = custody.34
+				}
 			}
 
 		}

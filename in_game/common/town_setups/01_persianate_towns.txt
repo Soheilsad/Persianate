@@ -155,3 +155,9 @@ iranian_kashi_city = {
     charcoal_maker = 2
     glass_guild = 1                 # frit production for tile and pottery glazing
 }
+
+anatolian_major_city = {
+	copy_from = anatolian_city
+	marketplace = 2
+	slave_market = 1
+}

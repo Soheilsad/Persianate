@@ -641,3 +641,13 @@
 
  STATIC_MODIFIER_NAME_qizilbash_synthesis: "Qizilbash Synthesis"
  STATIC_MODIFIER_DESC_qizilbash_synthesis: "The pole of mysticism and the pole of spirit have aligned. The realm is reborn under the new synthesis — sword and crown remade as one."
+
+ # custody.34 — a governorate has sworn
+ custody.34.title: "A Governor Kneels"
+ custody.34.desc: "The envoy from [SCOPE.sCountry('sworn_governorate').GetName] did not ask for an audience; he asked for the Friday sermon. His master, he said, would read the khan's name in the khuṭbah as it was read in our own mosques — the whole formula, the khan and then the custodian who speaks for him — and would hold his corner of the ulus as our governor held it under the Ilkhans.\n\nThe chancery notes what the envoy did not say: no governor kneels from love. He kneels because his neighbors are stronger, or because a war is going badly, or because he has counted our lances and decided they are the ones he would rather have on his side of the river. He brings his levies, his loyalty, and his weight in the contest for the custody. He also brings whatever quarrels he already has. What he does not bring is the right to spend our men on them — that, if he wants it, he will have to ask for."
+ custody.34.a: "Let it be read. The ulus grows by a governorate."
+ # custody.35 — the governorate calls for defense
+ custody.35.title: "The Governorate Calls"
+ custody.35.desc: "A rider from [SCOPE.sCountry('sworn_governorate').GetName], three horses dead behind him: [SCOPE.sCountry('ulus_attacker').GetName] has declared war on the governorate that reads our name in its khuṭbah, and the governor asks whether the name means anything.\n\nIt is a fair question, and the amirs are already answering it in the courtyard. Ride, and the custody is not a formula but a fact — every governor in the ulus will see what our protection is worth, and the attacker will learn whose land he has stepped on. Stay, and the lances are kept for the contest that actually decides the custody, the governor learns that he swore to a title and not to a sword, and the next governor thinking of kneeling will remember it.\n\nThe rider is waiting. So, in their way, are the others."
+ custody.35.a: "Sound the drums. The khan's name is defended where it is read."
+ custody.35.b: "He swore for the khuṭbah, not for our cavalry. Let him hold his own walls."

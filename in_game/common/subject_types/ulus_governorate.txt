@@ -31,6 +31,12 @@ ulus_governorate = {
 	}
 	join_defensive_wars_always = { always = yes }
 	will_join_independence_wars = yes
+	# The custodian is NOT auto-dragged into the governorate's wars
+	# (engine default protects subjects from external attackers — which
+	# let losing governorates kneel mid-war and hand the regent the
+	# bill; it bled CHB and JAL white). Defense is a REQUEST instead:
+	# custody.35, fired from on_war_declared (23_custody_defense_hooks).
+	overlord_protects_external = no
 
 	# The governorate chose this — it does not strain at the leash, but
 	# it keeps its own house. High autonomy, hard to annex.
