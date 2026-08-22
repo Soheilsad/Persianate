@@ -120,9 +120,35 @@ diwan_vizierate.1 = {
 						save_scope_as = dv_seated
 					}
 				}
-				add_to_cabinet = scope:dv_seated
+				# add_to_cabinet is a cabinet-SLOT effect: pick an open slot
+				# (base pattern: random_cabinet + NOT exists cabinet_member).
+				random_cabinet = {
+					limit = { NOT = { exists = cabinet_member } }
+					add_to_cabinet = scope:dv_seated
+				}
 			}
 			change_local_variable = { name = dv_surplus add = -1 }
+		}
+		# The vizierate itself: a majority that cannot name its own vizier
+		# is a half-measure (auto-modifier state 2). If no dīwān man
+		# presides, one does now — base's promote effect demotes the
+		# sitting head itself.
+		if = {
+			limit = {
+				any_cabinet_character = { has_estate = estate_type:diwan_estate }
+				NOT = {
+					any_cabinet_character = {
+						modifier:is_head_of_cabinet = yes
+						has_estate = estate_type:diwan_estate
+					}
+				}
+			}
+			clear_saved_scope = dv_vizier
+			random_cabinet_character = {
+				limit = { has_estate = estate_type:diwan_estate }
+				save_scope_as = dv_vizier
+			}
+			promote_to_head_of_cabinet_effect = { target = scope:dv_vizier }
 		}
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.10 }
 		# The princes do not forget being shown the door.
