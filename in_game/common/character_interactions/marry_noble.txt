@@ -71,8 +71,15 @@ marry_noble = {
 			data = character_info
 		}
 		visible = {
-			NOT = { is_same_gender = scope:recipient }
-			not = { is_spouse_of = scope:recipient }
+			# Null-guard: this list is built before the recipient picker
+			# binds, so a bare scope:recipient dereference logged
+			# "Could not find flag recipient" PER CANDIDATE PER TICK
+			# (~1900/s storm; it was rotating the whole error log).
+			trigger_if = {
+				limit = { exists = scope:recipient }
+				NOT = { is_same_gender = scope:recipient }
+				NOT = { is_spouse_of = scope:recipient }
+			}
 			modifier:blocked_from_character_interactions = no
 			OR = {
 				has_estate = estate_type:nobles_estate

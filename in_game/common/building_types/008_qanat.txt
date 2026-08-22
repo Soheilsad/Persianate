@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 # ERANZAMIN — The qanat pair
 #
 # Replaces the qanat vegetation types. All former qanat_farmland /

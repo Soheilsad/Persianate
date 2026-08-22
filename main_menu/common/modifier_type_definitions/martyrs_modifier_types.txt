@@ -216,3 +216,24 @@ a_dervish_corps_reinforce_cost_modifier = {
 		category=country
 	}
 }
+# Engine-derived per-estate modifier (required in DB; base defines one
+# per estate — pattern: crown_estate_satisfaction_recovery).
+shaykhi_dervishes_estate_satisfaction_recovery = {
+	color = neutral
+	percent = yes
+	game_data = {
+		category = country
+		should_show_in_modifiers_tab = no
+	}
+}
+
+# Engine-derived per-estate modifier (required in DB; base defines one
+# per estate — pattern: crown_estate_satisfaction_recovery).
+sufyani_notables_estate_satisfaction_recovery = {
+	color = neutral
+	percent = yes
+	game_data = {
+		category = country
+		should_show_in_modifiers_tab = no
+	}
+}

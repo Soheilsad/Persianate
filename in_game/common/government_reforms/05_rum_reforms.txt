@@ -160,6 +160,8 @@ REPLACE:anatolian_beylik = {
 		government_size = 1
 		government_reform_slots = 1
 		allow_tributary_subject = yes
+		global_nobles_rural_desired_pop_scaled = 0.0075
+		global_nobles_city_desired_pop_scaled = 0.005
 		# Beg squabbles are background noise to Christendom and Cairo
 		# alike — playtest showed a beylik conquering HALF of western
 		# Anatolia drawing a coalition of the entire Balkans plus

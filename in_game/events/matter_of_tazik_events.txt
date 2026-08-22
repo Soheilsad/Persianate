@@ -171,8 +171,7 @@ matter_of_tazik.200 = {
 	category = disaster_event
 	title = matter_of_tazik.200.title
 	desc = matter_of_tazik.200.desc
-	outcome = good
-
+	outcome = positive
 	trigger = {
 		has_variable = matter_synthesis_override
 		safavid_synthesis_thresholds_met = yes
@@ -202,8 +201,7 @@ matter_of_tazik.500 = {
 	category = disaster_event
 	title = matter_of_tazik.500.title
 	desc = matter_of_tazik.500.desc
-	outcome = good
-
+	outcome = positive
 	trigger = {
 		has_variable = matter_of_tazik_fired
 		in_civil_war = no
@@ -245,8 +243,7 @@ matter_of_tazik.502 = {
 	category = disaster_event
 	title = matter_of_tazik.502.title
 	desc = matter_of_tazik.502.desc
-	outcome = good
-
+	outcome = positive
 	trigger = {
 		has_variable = matter_of_tazik_fired
 		has_variable = co_opt_track

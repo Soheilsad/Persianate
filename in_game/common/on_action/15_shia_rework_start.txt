@@ -18,6 +18,23 @@
 on_game_start = {
 	on_actions = {
 		shia_rework_start
+		tariqa_lean_start
+	}
+}
+
+# The orders' confessional-temperament leans. These were setup-file
+# societal values, but the building-country setup schema rejects
+# bare societal value keys ("Malformed token" cascade that ate the
+# reforms line), so they apply here instead. KWJ leans jurisprudence:
+# the Khwajagan are the sober path of Bukhara.
+tariqa_lean_start = {
+	effect = {
+		c:KBW ?= { change_societal_value = { type = mysticism_vs_jurisprudence value = -50 } }
+		c:KZR ?= { change_societal_value = { type = mysticism_vs_jurisprudence value = -50 } }
+		c:QAD ?= { change_societal_value = { type = mysticism_vs_jurisprudence value = -50 } }
+		c:KWJ ?= { change_societal_value = { type = mysticism_vs_jurisprudence value = 20 } }
+		c:YSV ?= { change_societal_value = { type = mysticism_vs_jurisprudence value = -50 } }
+		c:RIF ?= { change_societal_value = { type = mysticism_vs_jurisprudence value = -50 } }
 	}
 }
 

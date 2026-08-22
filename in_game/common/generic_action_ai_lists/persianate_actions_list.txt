@@ -1,4 +1,4 @@
-﻿# Persianate-world AI evaluation lists — one list per action family,
+# Persianate-world AI evaluation lists — one list per action family,
 # each gate a CHEAP SUPERSET of the family's own potential/allow
 # conditions. A list's potential EXCLUDES: countries failing it never
 # evaluate the actions at all, so a too-narrow gate silently disables

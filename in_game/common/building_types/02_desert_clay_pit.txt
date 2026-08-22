@@ -1,4 +1,4 @@
-﻿desert_clay_pit = {
+desert_clay_pit = {
 	is_foreign = no
 	max_levels = rural_building_cap
 	pop_type = laborers

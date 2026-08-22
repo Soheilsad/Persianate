@@ -115,7 +115,7 @@
  integrate_into_diwan_action_progress_wordier: "Integrating [target.GetName]"
  integrate_into_diwan_action_progress_tooltip: "The chancery extends into [target.GetName]."
  integrate_into_diwan_select_province: "Select a province to integrate"
- integrate_into_diwan_no_provinces: "No Iranshahr province with a local dīwān still awaits integration."
+ integrate_into_diwan_no_provinces: "@trigger_no! No Iranshahr [province|e] with a local dīwān still awaits integration."
 
  # --- Victory cabinet action: Invite Turkic Settlers (Türk) ---
  invite_turkic_settlers: "Invite Turkic Settlers"

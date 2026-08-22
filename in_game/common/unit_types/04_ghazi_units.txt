@@ -23,7 +23,7 @@
 # THE GHAZIS — clergy light cavalry, the volunteer pole
 # ------------------------------------------------------------
 a_ghazi_volunteers = {
-	category = army_cavalry
+	category = army_light_cavalry
 	copy_from = a_age_1_traditions_light_cavalry
 
 	buildable = no
@@ -56,7 +56,7 @@ a_ghazi_volunteers = {
 # THE SHAHR MILITIA — burgher infantry, the not-running pole
 # ------------------------------------------------------------
 a_shahr_militia = {
-	category = army_infantry                       # [verify category key]
+	category = army_heavy_infantry
 	copy_from = a_age_1_traditions_heavy_infantry        # [verify base template]
 
 	buildable = no

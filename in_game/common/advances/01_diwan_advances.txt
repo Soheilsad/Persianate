@@ -1,4 +1,4 @@
-﻿persian_caravanserai_advance = {
+persian_caravanserai_advance = {
 	age = age_1_traditions
 	
 	potential = {

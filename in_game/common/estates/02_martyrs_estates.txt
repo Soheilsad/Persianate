@@ -1,4 +1,4 @@
-﻿# -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # Estates of the Commonwealth of Martyrs
 #
 # Two novel estates that replace the standard Diwan/Amirs duality for

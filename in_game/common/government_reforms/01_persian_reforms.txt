@@ -77,6 +77,8 @@ persianate_bureaucracy_reform = {
 		# at considerable cost to amir satisfaction.
 		amirs_estate_allowed_leading_military = yes
 		diwan_estate_allowed_leading_military = no
+		clergy_estate_blocked_from_cabinet = yes
+		burghers_estate_blocked_from_cabinet = yes
 		burghers_estate_allowed_leading_military = no
 		nobles_estate_allowed_leading_military = no
 		global_clergy_desired_pop_scaled = 0.01

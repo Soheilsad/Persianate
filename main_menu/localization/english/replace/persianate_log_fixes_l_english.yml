@@ -128,3 +128,20 @@
  safavid_qizilbash_rally_tt: "The Qizilbāsh rally to our banner."
  STATIC_MODIFIER_NAME_borjigin_puppet_sequestered: "Sequestered Khan"
  STATIC_MODIFIER_DESC_borjigin_puppet_sequestered: "A khan enthroned and kept. The patron's chancery answers his correspondence, and no ambassador reaches him without an escort."
+
+ # The diwan's ultimatum (diwan_vizierate.1)
+ diwan_vizierate.1.title: "The Registers Are Closed"
+ diwan_vizierate.1.desc: "The mustawfī did not bring the registers to council this month. He brought a petition, sealed by every kātib in the chancery, and read it standing.\n\nThe council, he said, is full of men who cannot read a siyāq cipher: princes, cousins, a brother-in-law. The dīwān is asked to execute what it was not asked to advise, and to find the money for decisions made by men who have never seen a tax roll. It has done so, the petition says, for the last time.\n\nThe terms are simple. The pen will hold the table — a majority of the seats, as in any properly governed realm — or the pen will stop. The registers are closed until the sultan answers. Outside the hall the princes are laughing. Inside it the money is not moving."
+ diwan_vizierate.1.a: "The sultan's kin sit where the sultan pleases. Open the registers or lose your hands."
+ diwan_vizierate.1.b: "Clear the table. Seat the pen."
+ diwan_vizierate_pen_takes_table_tt: "Non-dīwān cabinet members are #bold dismissed#! until the dīwān holds a #bold strict majority#! of seats. Kuttāb of the dīwān estate take every vacated seat — the chancery raises new men of the pen if it has none to spare."
+ STATIC_MODIFIER_NAME_diwan_spurned_by_the_throne: "The Dīwān Spurned"
+ STATIC_MODIFIER_DESC_diwan_spurned_by_the_throne: "The chancery was told, to its face, that the sultan's cousins outrank its registers. For a decade the registers are kept exactly as well as that deserves."
+
+ # The amirs demand iqta (iqta.1)
+ iqta.1.title: "The Amirs Ask for Land"
+ iqta.1.desc: "They came to the audience together, which is how you know it was rehearsed: the amīr al-umarāʾ and a dozen captains behind him, boots still dusty, standing where the petitioners usually kneel.\n\nThe speech was short. A horseman is not kept on a salary. He is kept on a parcel: a village whose harvest feeds his household, whose pasture feeds his remounts, whose young men ride behind him when the drums sound. Assign him the revenue — an iqṭāʿ, registered and sealed — and he settles there with his kin, and the sultan has heavy cavalry he never has to pay in coin.\n\nThe mustawfī, asked afterward, did not pretend to like it. Every parcel granted is a parcel whose taxes the dīwān will never see again, and the registers will grow thin where the horsemen grow thick. But he was honest about the alternative: lances cost silver, the treasury has little, and the parcels the amirs are asking for are the ones the chancery's writ barely reaches anyway. Better an amir who answers the summons than a valley that answers no one."
+ iqta.1.a: "Register three grants. Let the horsemen settle, and let them answer the drums."
+ iqta.1.b: "The registers stay whole. The amirs will ride for pay, or they will ride for someone else."
+ iqta_grant_three_tt: "Grants the amirs the #bold iqṭāʿ privilege#! if they do not hold it, then registers #bold three iqṭāʿ grants#! in rural parcels without one where local control is under 60%. Each grant settles an amir's household: more nobles, a larger levy with heavy cavalry — at the cost of the parcel's rural taxes."
+ iqta_refuse_tt: "No grants. The amirs take the refusal as the insult it is; the dīwān notes, approvingly, that the registers remain intact."

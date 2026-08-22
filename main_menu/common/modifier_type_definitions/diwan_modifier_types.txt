@@ -114,3 +114,13 @@ diwan_estate_allowed_to_build_roads = {
 		category=country
 	}
 }
+# Engine-derived per-estate modifier (required in DB; base defines one
+# per estate — pattern: crown_estate_satisfaction_recovery).
+diwan_estate_satisfaction_recovery = {
+	color = neutral
+	percent = yes
+	game_data = {
+		category = country
+		should_show_in_modifiers_tab = no
+	}
+}

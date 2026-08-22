@@ -21,6 +21,7 @@ namespace = ilkhanate_flavor
 #      the diwan and burghers rejoice, the realm shakes.
 # -----------------------------------------------------------------------------------------
 ilkhanate_flavor.1 = {
+	outcome = neutral
 	type = country_event
 	title = ilkhanate_flavor.1.title
 	desc = ilkhanate_flavor.1.desc
@@ -403,6 +404,7 @@ ilkhanate_flavor.1 = {
 #      applies charade_continues_mod, which stacks.
 # -----------------------------------------------------------------------------------------
 ilkhanate_flavor.2 = {
+	outcome = neutral
 	type = country_event
 	title = ilkhanate_flavor.2.title
 	desc = ilkhanate_flavor.2.desc
@@ -493,6 +495,7 @@ ilkhanate_flavor.2 = {
 # VICTORY EVENT (Branching)
 # -----------------------------------------------------------------------------------------
 ilkhanate_flavor.10 = {
+	outcome = neutral
 	type = country_event
 	title = ilkhanate_flavor.10.title
 	desc = {
@@ -613,6 +616,7 @@ ilkhanate_flavor.10 = {
 # FAILURE EVENT (Timeout)
 # -----------------------------------------------------------------------------------------
 ilkhanate_flavor.99 = {
+	outcome = neutral
 	type = country_event
 	title = ilkhanate_flavor.99.title
 	desc = ilkhanate_flavor.99.desc

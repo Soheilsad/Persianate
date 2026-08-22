@@ -1,5 +1,5 @@
 a_tumen_cavalry = {
-	category = army_cavalry
+	category = army_heavy_cavalry
 	
 	copy_from = a_age_1_traditions_heavy_cavalry
 
