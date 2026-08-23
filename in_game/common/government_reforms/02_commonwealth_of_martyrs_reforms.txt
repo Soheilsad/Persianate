@@ -67,7 +67,7 @@ bashtin_proclamation_reform = {
 
 		# Coin in the Hidden Imām's name — legitimacy of conventional
 		# sultanic kind is rejected
-		legitimacy = -0.10
+		monthly_legitimacy = -0.10
 
 		# Sliders push: militant, communal, spiritualist
 		monthly_towards_tazik = 0.05
@@ -170,7 +170,7 @@ marjaiyya_reform = {
 		global_max_control = 0.15
 		monthly_devotion = 0.05
 		tolerance_own = 3
-		legitimacy = 0.20
+		monthly_legitimacy = 0.20
 		stability_cost_efficiency = 0.08
 
 		# Lay notables marginalized as the jurist eclipses civic leadership
@@ -205,7 +205,7 @@ wilayat_e_faqih_reform = {
 		# Total ideological closure
 		tolerance_own = 5
 		monthly_devotion = 0.15
-		legitimacy = 0.25
+		monthly_legitimacy = 0.25
 
 		# Strong central authority
 		global_max_control = 0.25

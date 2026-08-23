@@ -79,6 +79,7 @@ persianate_bureaucracy_reform = {
 		diwan_estate_allowed_leading_military = no
 		clergy_estate_blocked_from_cabinet = yes
 		burghers_estate_blocked_from_cabinet = yes
+		nobles_estate_blocked_from_cabinet = yes
 		burghers_estate_allowed_leading_military = no
 		nobles_estate_allowed_leading_military = no
 		global_clergy_desired_pop_scaled = 0.01

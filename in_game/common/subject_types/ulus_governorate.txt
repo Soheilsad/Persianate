@@ -29,7 +29,7 @@ ulus_governorate = {
 	join_offensive_wars_always = {
 		scope:actor ?= { is_subject_of = scope:recipient }
 	}
-	join_defensive_wars_always = { always = yes }
+	join_defensive_wars_always = { always = no }
 	will_join_independence_wars = yes
 	# The custodian is NOT auto-dragged into the governorate's wars
 	# (engine default protects subjects from external attackers — which

@@ -150,15 +150,15 @@ ghazi_burden_on_battle_lost = {
 
 ghazi_burden_on_winning_war = {
 	trigger = {
-		scope:winner = {
+		scope:winner ?= {
 			has_variable = ghazi_burden_fired
 		}
-		scope:loser = {
+		scope:loser ?= {
 			is_rebel_country = no
 		}
 	}
 	effect = {
-		scope:winner = {
+		scope:winner ?= {
 			ghazi_apply_war_credit = yes
 			if = {
 				limit = {
@@ -183,15 +183,18 @@ ghazi_burden_on_winning_war = {
 
 ghazi_burden_on_losing_war = {
 	trigger = {
-		scope:loser = {
+		scope:loser ?= {
 			has_variable = ghazi_burden_fired
 		}
-		scope:winner = {
+		# A delegation is not a defeat: land handed to one's own subject
+		# (release, grant, vassal creation) is not lost.
+		NOT = { scope:winner ?= { is_subject_of = scope:loser } }
+		scope:winner ?= {
 			is_rebel_country = no
 		}
 	}
 	effect = {
-		scope:loser = {
+		scope:loser ?= {
 			if = {
 				limit = {
 					NOR = {
@@ -221,10 +224,10 @@ ghazi_burden_on_losing_war = {
 
 ghazi_burden_on_location_changed_owner_loss = {
 	trigger = {
-		scope:loser = {
+		scope:loser ?= {
 			has_variable = ghazi_burden_fired
 		}
-		scope:winner = {
+		scope:winner ?= {
 			is_rebel_country = no
 		}
 	}
@@ -237,7 +240,7 @@ ghazi_burden_on_location_changed_owner_loss = {
 					capital = root
 				}
 			}
-			scope:loser = {
+			scope:loser ?= {
 				if = {
 					limit = {
 						NOR = {
@@ -262,7 +265,7 @@ ghazi_burden_on_location_changed_owner_loss = {
 			limit = {
 				scope:loser ?= { has_variable = ghazi_burden_fired }
 			}
-			scope:loser = {
+			scope:loser ?= {
 				if = {
 					limit = {
 						NOR = {
@@ -282,10 +285,10 @@ ghazi_burden_on_location_changed_owner_loss = {
 
 ghazi_burden_on_location_changed_owner_win = {
 	trigger = {
-		scope:winner = {
+		scope:winner ?= {
 			has_variable = ghazi_burden_fired
 		}
-		scope:loser = {
+		scope:loser ?= {
 			is_rebel_country = no
 		}
 	}
@@ -294,7 +297,7 @@ ghazi_burden_on_location_changed_owner_win = {
 			limit = {
 				scope:winner ?= { has_variable = ghazi_burden_fired }
 			}
-			scope:winner = {
+			scope:winner ?= {
 				# Tier-3 consolidation bonus: always applied. The
 				# notification (event .307) is a separate branch
 				# handled by the consolidation silence variable.

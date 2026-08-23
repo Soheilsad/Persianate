@@ -19415,16 +19415,16 @@ karagol_mountains = {
 karasu_aras_mountains = {
 }
 van = {
-	define_pop = { type = burghers	size = 17.984	culture = armenian_culture	religion = miaphysite }
+	define_pop = { type = burghers	size = 7.413	culture = armenian_culture	religion = miaphysite }
 	define_pop = { type = nobles	size = 5.057	culture = armenian_culture	religion = miaphysite }
 	define_pop = { type = clergy	size = 0.310	culture = armenian_culture	religion = miaphysite }
-	define_pop = { type = peasants	size = 17.051	culture = armenian_culture	religion = miaphysite }
-	define_pop = { type = peasants	size = 2.586	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 1.717	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 27.622	culture = armenian_culture	religion = miaphysite }
+	define_pop = { type = peasants	size = 3.595	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.708	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.484	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = slaves	size = 5.083	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = tribesmen	size = 54.350	culture = armenian_culture	religion = miaphysite }
 	define_pop = { type = tribesmen	size = 5.378	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 5.083	culture = kurdish_culture	religion = yazidism }
 }
 ahlat = {
 	define_pop = { type = clergy	size = 0.025	culture = armenian_culture	religion = miaphysite }
@@ -19548,9 +19548,9 @@ kapan_armenia = {
 }
 gladzor = {
 	define_pop = { type = clergy	size = 0.021	culture = armenian_culture	religion = miaphysite }
-	define_pop = { type = peasants	size = 4.099	culture = armenian_culture	religion = miaphysite }
+	define_pop = { type = peasants	size = 5.400	culture = armenian_culture	religion = miaphysite }
 	define_pop = { type = nobles	size = 0.262	culture = armenian_culture	religion = miaphysite }
-	define_pop = { type = burghers	size = 11.982	culture = armenian_culture	religion = miaphysite }
+	define_pop = { type = burghers	size = 10.681	culture = armenian_culture	religion = miaphysite }
 }
 goris = {
 	define_pop = { type = clergy	size = 0.046	culture = armenian_culture	religion = miaphysite }
@@ -29025,7 +29025,8 @@ urgench = {
 	define_pop = { type = peasants	size = 34.878	culture = nogai	religion = sunni }
 	define_pop = { type = burghers	size = 85.480	culture = nogai	religion = sunni }
 	define_pop = { type = nobles	size = 6.848	culture = nogai	religion = sunni }
-	define_pop = { type = slaves	size = 68.446	culture = nogai	religion = tengri }
+	define_pop = { type = slaves	size = 38.759	culture = nogai	religion = tengri }
+	define_pop = { type = peasants	size = 29.687	culture = nogai	religion = tengri }
 }
 kyat_kala = {
 	define_pop = { type = peasants	size = 19.035	culture = nogai	religion = sunni }
@@ -29740,12 +29741,12 @@ hissar_mountains2 = {
 hissar_mountains3 = {
 }
 sighnaq = {
-	define_pop = { type = peasants	size = 0.594	culture = tajik_culture	religion = sunni }
+	define_pop = { type = peasants	size = 3.306	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.160	culture = tajik_culture	religion = sunni }
-	define_pop = { type = burghers	size = 5.683	culture = tajik_culture	religion = sunni }
-	define_pop = { type = peasants	size = 0.098	culture = tajik_culture	religion = tengri }
+	define_pop = { type = burghers	size = 2.971	culture = tajik_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.544	culture = tajik_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.026	culture = tajik_culture	religion = tengri }
-	define_pop = { type = burghers	size = 0.934	culture = tajik_culture	religion = tengri }
+	define_pop = { type = burghers	size = 0.488	culture = tajik_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 1.135	culture = uzbek_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.013	culture = uzbek_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 2.990	culture = uzbek_culture	religion = tengri }
@@ -29953,9 +29954,9 @@ bam_esfarayen = {
 }
 jajarm = {
 	define_pop = { type = clergy	size = 0.021	culture = khorasani_culture	religion = shia }
-	define_pop = { type = peasants	size = 1.017	culture = khorasani_culture	religion = shia }
+	define_pop = { type = peasants	size = 2.491	culture = khorasani_culture	religion = shia }
 	define_pop = { type = nobles	size = 0.121	culture = khorasani_culture	religion = shia }
-	define_pop = { type = burghers	size = 6.388	culture = khorasani_culture	religion = shia }
+	define_pop = { type = burghers	size = 4.914	culture = khorasani_culture	religion = shia }
 }
 meshkan_khorasan = {
 	define_pop = { type = clergy	size = 0.019	culture = khorasani_culture	religion = shia }
@@ -30125,13 +30126,14 @@ tus = {
 	define_pop = { type = nobles	size = 0.149	culture = mongolian_culture	religion = tengri }
 }
 nishapur = {
-	define_pop = { type = burghers	size = 84.971	culture = khorasani_culture	religion = shia }
+	define_pop = { type = burghers	size = 42.071	culture = khorasani_culture	religion = shia }
 	define_pop = { type = nobles	size = 4.686	culture = khorasani_culture	religion = shia }
 	define_pop = { type = clergy	size = 1.176	culture = khorasani_culture	religion = shia }
 	define_pop = { type = tribesmen	size = 7.438	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.389	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 29.779	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = nobles	size = 1.561	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 42.900	culture = khorasani_culture	religion = shia }
 }
 fadisheh = {
 	define_pop = { type = clergy	size = 0.028	culture = khorasani_culture	religion = shia }
@@ -30161,12 +30163,12 @@ khorasan_mountains2 = {
 sabzevar = {
 	define_pop = { type = clergy	size = 0.364	culture = khorasani_culture	religion = shia }
 	define_pop = { type = nobles	size = 2.251	culture = khorasani_culture	religion = shia }
-	define_pop = { type = burghers	size = 56.982	culture = khorasani_culture	religion = shia }
-	define_pop = { type = burghers	size = 37.976	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = burghers	size = 36.396	culture = khorasani_culture	religion = shia }
+	define_pop = { type = burghers	size = 24.256	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = nobles	size = 1.383	culture = khorasani_culture	religion = sunni }
-	# The dervish corps — Hasan Juri's sworn brethren, ~5,000 at peak
-	# (Smith). Soldiers pops feed the shaykhi_dervishes_estate.
 	define_pop = { type = soldiers	size = 5.000	culture = khorasani_culture	religion = shia }
+	define_pop = { type = peasants	size = 20.586	culture = khorasani_culture	religion = shia }
+	define_pop = { type = peasants	size = 13.720	culture = khorasani_culture	religion = sunni }
 }
 beyarjomand = {
 	define_pop = { type = clergy	size = 0.073	culture = khorasani_culture	religion = sunni }
@@ -30214,9 +30216,9 @@ tejend = {
 }
 abiward = {
 	define_pop = { type = clergy	size = 0.021	culture = khorasani_culture	religion = sunni }
-	define_pop = { type = peasants	size = 1.353	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = peasants	size = 8.938	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.434	culture = khorasani_culture	religion = sunni }
-	define_pop = { type = burghers	size = 11.933	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = burghers	size = 4.348	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 1.606	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.014	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 6.441	culture = mongolian_culture	religion = tengri }
@@ -30263,12 +30265,13 @@ torbat_e_jam = {
 }
 bakharz = {
 	define_pop = { type = clergy	size = 0.003	culture = khorasani_culture	religion = shia }
-	define_pop = { type = burghers	size = 6.080	culture = khorasani_culture	religion = shia }
+	define_pop = { type = burghers	size = 3.147	culture = khorasani_culture	religion = shia }
 	define_pop = { type = nobles	size = 0.142	culture = khorasani_culture	religion = shia }
 	define_pop = { type = tribesmen	size = 0.523	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.007	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 2.105	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.028	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 2.933	culture = khorasani_culture	religion = shia }
 }
 fariman = {
 	define_pop = { type = clergy	size = 0.003	culture = khorasani_culture	religion = shia }
@@ -30404,11 +30407,11 @@ wusun = {
 almaty = {
 	define_pop = { type = nobles	size = 0.012	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = burghers	size = 2.910	culture = kyrgyz_culture	religion = tengri }
+	define_pop = { type = burghers	size = 0.766	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.272	culture = kyrgyz_culture	religion = tengri }
-	define_pop = { type = peasants	size = 0.094	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = burghers	size = 0.109	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 2.341	culture = kyrgyz_culture	religion = tengri }
+	define_pop = { type = peasants	size = 0.174	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = burghers	size = 0.029	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 4.485	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 0.309	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 8.063	culture = kyrgyz_culture	religion = tengri }
 }
@@ -30467,13 +30470,16 @@ tian_shan10 = {
 balasagun = {
 	define_pop = { type = nobles	size = 0.024	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = clergy	size = 0.026	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = burghers	size = 3.002	culture = kyrgyz_culture	religion = tengri }
+	define_pop = { type = burghers	size = 0.917	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.144	culture = kyrgyz_culture	religion = tengri }
-	define_pop = { type = burghers	size = 0.509	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = burghers	size = 2.192	culture = kyrgyz_culture	religion = nestorianism }
+	define_pop = { type = burghers	size = 0.156	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = burghers	size = 0.670	culture = kyrgyz_culture	religion = nestorianism }
 	define_pop = { type = nobles	size = 0.074	culture = kyrgyz_culture	religion = nestorianism }
 	define_pop = { type = tribesmen	size = 0.601	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 5.429	culture = kyrgyz_culture	religion = tengri }
+	define_pop = { type = peasants	size = 2.085	culture = kyrgyz_culture	religion = tengri }
+	define_pop = { type = peasants	size = 0.353	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.522	culture = kyrgyz_culture	religion = nestorianism }
 }
 dzhul = {
 	define_pop = { type = clergy	size = 0.000	culture = mongolian_culture	religion = tengri }
@@ -30780,11 +30786,13 @@ tasty = {
 moiynkum_desert = {
 }
 talas = {
-	define_pop = { type = burghers	size = 0.595	culture = uzbek_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.188	culture = uzbek_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.020	culture = uzbek_culture	religion = sunni }
-	define_pop = { type = burghers	size = 0.593	culture = uzbek_culture	religion = tengri }
+	define_pop = { type = burghers	size = 0.188	culture = uzbek_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.029	culture = uzbek_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 1.223	culture = uzbek_culture	religion = tengri }
+	define_pop = { type = peasants	size = 0.407	culture = uzbek_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.405	culture = uzbek_culture	religion = tengri }
 }
 dzhulsub = {
 	define_pop = { type = peasants	size = 0.183	culture = uzbek_culture	religion = sunni }
@@ -32748,16 +32756,21 @@ basra = {
 	define_pop = { type = clergy	size = 0.908	culture = iraqi_culture	religion = shia }
 	define_pop = { type = clergy	size = 0.182	culture = mandean_culture	religion = mandeaism }
 	define_pop = { type = clergy	size = 0.091	culture = syriac_culture	religion = nestorianism }
-	define_pop = { type = burghers	size = 22.916	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 8.702	culture = iraqi_culture	religion = shia }
-	define_pop = { type = burghers	size = 2.176	culture = mandean_culture	religion = mandeaism }
+	define_pop = { type = burghers	size = 15.736	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 5.975	culture = iraqi_culture	religion = shia }
+	define_pop = { type = burghers	size = 1.494	culture = mandean_culture	religion = mandeaism }
 	define_pop = { type = nobles	size = 0.095	culture = mandean_culture	religion = mandeaism }
-	define_pop = { type = burghers	size = 1.305	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = burghers	size = 0.896	culture = syriac_culture	religion = nestorianism }
 	define_pop = { type = nobles	size = 0.057	culture = syriac_culture	religion = nestorianism }
-	define_pop = { type = burghers	size = 0.696	culture = mizrahi	religion = judaism }
+	define_pop = { type = burghers	size = 0.478	culture = mizrahi	religion = judaism }
 	define_pop = { type = nobles	size = 0.031	culture = mizrahi	religion = judaism }
-	define_pop = { type = slaves	size = 2.271	culture = gonga_culture	religion = omo_religion }
-	define_pop = { type = slaves	size = 1.363	culture = circassian_culture	religion = orthodox }
+	define_pop = { type = peasants	size = 2.271	culture = gonga_culture	religion = omo_religion }
+	define_pop = { type = peasants	size = 1.363	culture = circassian_culture	religion = orthodox }
+	define_pop = { type = peasants	size = 7.180	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 2.727	culture = iraqi_culture	religion = shia }
+	define_pop = { type = peasants	size = 0.682	culture = mandean_culture	religion = mandeaism }
+	define_pop = { type = peasants	size = 0.409	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 0.218	culture = mizrahi	religion = judaism }
 }
 abadan = {
 	define_pop = { type = clergy	size = 0.006	culture = iraqi_culture	religion = sunni }
@@ -33010,9 +33023,11 @@ hillah = {
 	define_pop = { type = nobles	size = 0.197	culture = iraqi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 6.135	culture = iraqi_culture	religion = shia }
 	define_pop = { type = clergy	size = 0.263	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 17.819	culture = iraqi_culture	religion = shia }
-	define_pop = { type = burghers	size = 2.502	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = slaves	size = 1.315	culture = circassian_culture	religion = orthodox }
+	define_pop = { type = burghers	size = 10.413	culture = iraqi_culture	religion = shia }
+	define_pop = { type = burghers	size = 1.462	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.315	culture = circassian_culture	religion = orthodox }
+	define_pop = { type = peasants	size = 7.406	culture = iraqi_culture	religion = shia }
+	define_pop = { type = peasants	size = 1.040	culture = iraqi_culture	religion = sunni }
 }
 karbala = {
 	define_pop = { type = nobles	size = 2.012	culture = iraqi_culture	religion = shia }
@@ -33023,7 +33038,8 @@ karbala = {
 	define_pop = { type = nobles	size = 0.136	culture = iraqi_culture	religion = sunni }
 	define_pop = { type = peasants	size = 20.585	culture = iraqi_culture	religion = shia }
 	define_pop = { type = peasants	size = 2.573	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = slaves	size = 2.954	culture = circassian_culture	religion = orthodox }
+	define_pop = { type = slaves	size = 0.084	culture = circassian_culture	religion = orthodox }
+	define_pop = { type = peasants	size = 2.870	culture = circassian_culture	religion = orthodox }
 }
 qadisiyyah = {
 	define_pop = { type = clergy	size = 0.002	culture = iraqi_culture	religion = shia }
@@ -33035,11 +33051,11 @@ qadisiyyah = {
 }
 kirkuk = {
 	define_pop = { type = clergy	size = 0.004	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 0.272	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.112	culture = iraqi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.024	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 1.554	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.640	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.134	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 0.514	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = burghers	size = 0.212	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = nobles	size = 0.042	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = tribesmen	size = 1.345	culture = oirat_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.010	culture = oirat_culture	religion = tengri }
@@ -33048,7 +33064,10 @@ kirkuk = {
 	define_pop = { type = tribesmen	size = 0.549	culture = iraqi_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 2.967	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 0.712	culture = kurdish_culture	religion = yazidism }
-	define_pop = { type = slaves	size = 2.115	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 2.115	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 0.160	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.914	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.302	culture = kurdish_culture	religion = yazidism }
 }
 altun_kupri = {
 	define_pop = { type = peasants	size = 0.787	culture = iraqi_culture	religion = sunni }
@@ -33084,9 +33103,9 @@ chamchamal = {
 }
 daquq = {
 	define_pop = { type = clergy	size = 0.005	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 1.628	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.649	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.102	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 0.466	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = burghers	size = 0.186	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = nobles	size = 0.030	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = tribesmen	size = 0.887	culture = oirat_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.007	culture = oirat_culture	religion = tengri }
@@ -33094,15 +33113,17 @@ daquq = {
 	define_pop = { type = nobles	size = 0.002	culture = oirat_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 1.955	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 0.637	culture = kurdish_culture	religion = yazidism }
-	define_pop = { type = slaves	size = 1.047	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 1.047	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 0.979	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.280	culture = kurdish_culture	religion = yazidism }
 }
 erbil = {
 	define_pop = { type = clergy	size = 0.008	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 0.439	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.202	culture = iraqi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.093	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 3.371	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = burghers	size = 1.554	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.618	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 0.784	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = burghers	size = 0.361	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = nobles	size = 0.153	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = tribesmen	size = 2.367	culture = oirat_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.070	culture = oirat_culture	religion = tengri }
@@ -33111,7 +33132,10 @@ erbil = {
 	define_pop = { type = tribesmen	size = 0.989	culture = iraqi_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 4.384	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 1.344	culture = kurdish_culture	religion = yazidism }
-	define_pop = { type = slaves	size = 3.805	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 3.805	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 0.237	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.817	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.423	culture = kurdish_culture	religion = yazidism }
 }
 tuz_khurma = {
 	define_pop = { type = peasants	size = 1.311	culture = kurdish_culture	religion = sunni }
@@ -33128,11 +33152,12 @@ tuz_khurma = {
 }
 samarra = {
 	define_pop = { type = clergy	size = 0.011	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 10.713	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 5.785	culture = iraqi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.333	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = slaves	size = 1.947	culture = syriac_culture	religion = nestorianism }
 	define_pop = { type = nobles	size = 0.323	culture = oirat_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 7.506	culture = oirat_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.947	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 4.928	culture = iraqi_culture	religion = sunni }
 }
 al_anbar = {
 	define_pop = { type = clergy	size = 0.003	culture = iraqi_culture	religion = sunni }
@@ -33150,19 +33175,19 @@ ar_rabb = {
 }
 hit = {
 	define_pop = { type = clergy	size = 0.007	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = peasants	size = 0.014	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.502	culture = iraqi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.133	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 6.931	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = slaves	size = 1.248	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = burghers	size = 5.443	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.248	culture = syriac_culture	religion = nestorianism }
 }
 tikrit = {
 	define_pop = { type = clergy	size = 0.016	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = peasants	size = 0.624	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 4.056	culture = iraqi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.333	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 10.323	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = slaves	size = 2.819	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = burghers	size = 6.891	culture = iraqi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.296	culture = oirat_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 6.423	culture = oirat_culture	religion = sunni }
+	define_pop = { type = peasants	size = 2.819	culture = syriac_culture	religion = nestorianism }
 }
 ukbara = {
 	define_pop = { type = clergy	size = 0.008	culture = iraqi_culture	religion = sunni }
@@ -33244,8 +33269,9 @@ urfa = {
 	define_pop = { type = nobles	size = 0.659	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = peasants	size = 9.031	culture = syriac_culture	religion = nestorianism }
 	define_pop = { type = peasants	size = 4.515	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = slaves	size = 4.838	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = slaves	size = 0.150	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = tribesmen	size = 2.171	culture = turkoman_culture	religion = sunni }
+	define_pop = { type = peasants	size = 4.688	culture = kurdish_culture	religion = yazidism }
 }
 birecik = {
 	define_pop = { type = clergy	size = 0.009	culture = syriac_culture	religion = miaphysite }
@@ -33315,19 +33341,21 @@ diyarbekir = {
 	define_pop = { type = nobles	size = 1.773	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.789	culture = turkoman_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.152	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 17.793	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 1.007	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = burghers	size = 11.434	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.647	culture = syriac_culture	religion = nestorianism }
 	define_pop = { type = nobles	size = 0.100	culture = syriac_culture	religion = nestorianism }
-	define_pop = { type = burghers	size = 0.670	culture = armenian_culture	religion = miaphysite }
+	define_pop = { type = burghers	size = 0.431	culture = armenian_culture	religion = miaphysite }
 	define_pop = { type = nobles	size = 0.067	culture = armenian_culture	religion = miaphysite }
-	define_pop = { type = burghers	size = 6.042	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = burghers	size = 3.883	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = nobles	size = 0.601	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = tribesmen	size = 2.721	culture = oirat_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.104	culture = oirat_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 6.349	culture = oirat_culture	religion = sunni }
-	define_pop = { type = slaves	size = 9.257	culture = syriac_culture	religion = nestorianism }
-	define_pop = { type = slaves	size = 5.554	culture = armenian_culture	religion = miaphysite }
 	define_pop = { type = tribesmen	size = 19.261	culture = turkoman_culture	religion = sunni }
+	define_pop = { type = peasants	size = 9.617	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 5.793	culture = armenian_culture	religion = miaphysite }
+	define_pop = { type = peasants	size = 6.359	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 2.159	culture = kurdish_culture	religion = yazidism }
 }
 egil = {
 	define_pop = { type = peasants	size = 0.292	culture = kurdish_culture	religion = sunni }
@@ -33411,11 +33439,12 @@ karacadag = {
 }
 anah = {
 	define_pop = { type = clergy	size = 0.005	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 6.430	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 4.707	culture = iraqi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.140	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = slaves	size = 1.159	culture = syriac_culture	religion = nestorianism }
 	define_pop = { type = tribesmen	size = 0.965	culture = turkoman_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.035	culture = turkoman_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.159	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 1.723	culture = iraqi_culture	religion = sunni }
 }
 abu_kemal = {
 	define_pop = { type = clergy	size = 0.006	culture = iraqi_culture	religion = sunni }
@@ -33464,9 +33493,10 @@ kozluk = {
 	define_pop = { type = peasants	size = 1.307	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = nobles	size = 0.067	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = burghers	size = 1.836	culture = kurdish_culture	religion = yazidism }
-	define_pop = { type = slaves	size = 4.280	culture = armenian_culture	religion = miaphysite }
+	define_pop = { type = slaves	size = 3.852	culture = armenian_culture	religion = miaphysite }
 	define_pop = { type = tribesmen	size = 0.910	culture = turkoman_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.090	culture = turkoman_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.428	culture = armenian_culture	religion = miaphysite }
 }
 kulp = {
 	define_pop = { type = clergy	size = 0.003	culture = kurdish_culture	religion = sunni }
@@ -33521,12 +33551,14 @@ mardin = {
 	define_pop = { type = nobles	size = 0.018	culture = turkish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.147	culture = turkoman_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.014	culture = turkish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 6.519	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = burghers	size = 5.121	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.340	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 2.444	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = burghers	size = 1.920	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = nobles	size = 0.127	culture = kurdish_culture	religion = yazidism }
-	define_pop = { type = slaves	size = 7.717	culture = syriac_culture	religion = nestorianism }
 	define_pop = { type = tribesmen	size = 11.883	culture = turkoman_culture	religion = sunni }
+	define_pop = { type = peasants	size = 7.717	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 1.398	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.524	culture = kurdish_culture	religion = yazidism }
 }
 hasakah = {
 	define_pop = { type = clergy	size = 0.009	culture = iraqi_culture	religion = sunni }
@@ -33581,19 +33613,22 @@ mosul = {
 	define_pop = { type = nobles	size = 0.906	culture = iraqi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.719	culture = turkoman_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.141	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 9.239	culture = iraqi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 1.017	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = burghers	size = 5.786	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.637	culture = syriac_culture	religion = nestorianism }
 	define_pop = { type = nobles	size = 0.098	culture = syriac_culture	religion = nestorianism }
-	define_pop = { type = burghers	size = 9.578	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = burghers	size = 5.998	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.921	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 2.740	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = burghers	size = 1.716	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = nobles	size = 0.263	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = tribesmen	size = 2.032	culture = oirat_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.078	culture = oirat_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 4.742	culture = oirat_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.183	culture = oirat_culture	religion = sunni }
-	define_pop = { type = slaves	size = 12.028	culture = syriac_culture	religion = nestorianism }
 	define_pop = { type = tribesmen	size = 17.331	culture = turkoman_culture	religion = sunni }
+	define_pop = { type = peasants	size = 12.408	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 3.453	culture = iraqi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 3.580	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.024	culture = kurdish_culture	religion = yazidism }
 }
 al_sinn = {
 	define_pop = { type = clergy	size = 0.005	culture = syriac_culture	religion = nestorianism }
@@ -33684,10 +33719,12 @@ nusaybin = {
 	define_pop = { type = burghers	size = 1.346	culture = syriac_culture	religion = nestorianism }
 	define_pop = { type = burghers	size = 0.577	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.546	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = slaves	size = 19.390	culture = kurdish_culture	religion = yazidism }
-	define_pop = { type = slaves	size = 23.699	culture = syriac_culture	religion = nestorianism }
+	define_pop = { type = slaves	size = 11.669	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = slaves	size = 14.262	culture = syriac_culture	religion = nestorianism }
 	define_pop = { type = tribesmen	size = 4.220	culture = turkoman_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.780	culture = turkoman_culture	religion = sunni }
+	define_pop = { type = peasants	size = 7.721	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = peasants	size = 9.437	culture = syriac_culture	religion = nestorianism }
 }
 bara_iraq = {
 	define_pop = { type = clergy	size = 0.009	culture = kurdish_culture	religion = sunni }
@@ -36695,17 +36732,16 @@ zagros_mountains4 = {
 khoy = {
 	define_pop = { type = clergy	size = 0.323	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = clergy	size = 0.168	culture = hui_muslim_culture	religion = sunni }
-	define_pop = { type = peasants	size = 0.579	culture = hui_muslim_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.583	culture = hui_muslim_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.271	culture = hui_muslim_culture	religion = sunni }
-	define_pop = { type = burghers	size = 2.401	culture = hui_muslim_culture	religion = sunni }
+	define_pop = { type = burghers	size = 2.397	culture = hui_muslim_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.174	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = peasants	size = 0.602	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.606	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.278	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 2.497	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = peasants	size = 1.074	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = burghers	size = 2.493	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.081	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = nobles	size = 0.453	culture = kurdish_culture	religion = yazidism }
-	define_pop = { type = burghers	size = 4.456	culture = kurdish_culture	religion = yazidism }
-	define_pop = { type = slaves	size = 15.034	culture = armenian_culture	religion = miaphysite }
+	define_pop = { type = burghers	size = 4.449	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = tribesmen	size = 7.104	culture = hui_muslim_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 6.972	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 7.740	culture = kurdish_culture	religion = yazidism }
@@ -36713,6 +36749,7 @@ khoy = {
 	define_pop = { type = tribesmen	size = 0.974	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 0.443	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 0.082	culture = azeri_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 15.034	culture = armenian_culture	religion = miaphysite }
 }
 bayazit = {
 	define_pop = { type = clergy	size = 0.100	culture = kurdish_culture	religion = sunni }
@@ -36750,12 +36787,13 @@ marand = {
 	define_pop = { type = peasants	size = 8.583	culture = adhari_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.718	culture = adhari_culture	religion = sunni }
 	define_pop = { type = burghers	size = 9.620	culture = adhari_culture	religion = sunni }
-	define_pop = { type = slaves	size = 15.698	culture = armenian_culture	religion = miaphysite }
+	define_pop = { type = slaves	size = 8.708	culture = armenian_culture	religion = miaphysite }
 	define_pop = { type = tribesmen	size = 9.863	culture = azeri_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.180	culture = azeri_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 0.974	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 0.443	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 0.082	culture = azeri_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 6.990	culture = armenian_culture	religion = miaphysite }
 }
 nazok_olya = {
 	define_pop = { type = clergy	size = 0.151	culture = adhari_culture	religion = sunni }
@@ -36802,7 +36840,7 @@ miyaneh = {
 	define_pop = { type = peasants	size = 11.083	culture = adhari_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.545	culture = adhari_culture	religion = sunni }
 	define_pop = { type = burghers	size = 9.745	culture = adhari_culture	religion = sunni }
-	define_pop = { type = slaves	size = 3.400	culture = adhari_culture	religion = zoroastrian }
+	define_pop = { type = slaves	size = 2.479	culture = adhari_culture	religion = zoroastrian }
 	define_pop = { type = tribesmen	size = 5.488	culture = azeri_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.079	culture = azeri_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 1.112	culture = mongolian_culture	religion = sunni }
@@ -36810,6 +36848,7 @@ miyaneh = {
 	define_pop = { type = tribesmen	size = 3.653	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.045	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 0.082	culture = azeri_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 0.921	culture = adhari_culture	religion = zoroastrian }
 }
 aghkand = {
 	define_pop = { type = clergy	size = 0.431	culture = adhari_culture	religion = sunni }
@@ -36895,10 +36934,10 @@ heris = {
 }
 maragheh = {
 	define_pop = { type = clergy	size = 15.134	culture = adhari_culture	religion = sunni }
-	define_pop = { type = burghers	size = 127.999	culture = adhari_culture	religion = sunni }
+	define_pop = { type = burghers	size = 69.800	culture = adhari_culture	religion = sunni }
 	define_pop = { type = nobles	size = 7.127	culture = adhari_culture	religion = sunni }
 	define_pop = { type = clergy	size = 2.408	culture = adhari_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 20.524	culture = adhari_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 11.192	culture = adhari_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 1.141	culture = adhari_culture	religion = zoroastrian }
 	define_pop = { type = tribesmen	size = 11.474	culture = azeri_culture	religion = sunni }
 	define_pop = { type = nobles	size = 1.517	culture = azeri_culture	religion = sunni }
@@ -36906,6 +36945,8 @@ maragheh = {
 	define_pop = { type = nobles	size = 0.405	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 12.244	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = nobles	size = 1.621	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 58.199	culture = adhari_culture	religion = sunni }
+	define_pop = { type = peasants	size = 9.332	culture = adhari_culture	religion = zoroastrian }
 }
 sarab = {
 	define_pop = { type = clergy	size = 0.490	culture = adhari_culture	religion = sunni }
@@ -36937,10 +36978,10 @@ tufarqan = {
 }
 ujan = {
 	define_pop = { type = clergy	size = 2.018	culture = adhari_culture	religion = sunni }
-	define_pop = { type = burghers	size = 34.415	culture = adhari_culture	religion = sunni }
+	define_pop = { type = burghers	size = 8.056	culture = adhari_culture	religion = sunni }
 	define_pop = { type = nobles	size = 2.278	culture = adhari_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.441	culture = adhari_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 7.873	culture = adhari_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 1.843	culture = adhari_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.526	culture = adhari_culture	religion = zoroastrian }
 	define_pop = { type = tribesmen	size = 24.193	culture = azeri_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 4.535	culture = azeri_culture	religion = zoroastrian }
@@ -36949,6 +36990,8 @@ ujan = {
 	define_pop = { type = nobles	size = 0.054	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 17.221	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.218	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 26.359	culture = adhari_culture	religion = sunni }
+	define_pop = { type = peasants	size = 6.030	culture = adhari_culture	religion = zoroastrian }
 }
 qaradagh_mountains3 = {
 }
@@ -36984,13 +37027,13 @@ khameneh = {
 mahabad = {
 	define_pop = { type = clergy	size = 0.330	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.152	culture = adhari_culture	religion = sunni }
-	define_pop = { type = burghers	size = 2.721	culture = adhari_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.161	culture = adhari_culture	religion = sunni }
-	define_pop = { type = burghers	size = 5.849	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.428	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 8.040	culture = azeri_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.046	culture = azeri_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 14.058	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 2.721	culture = adhari_culture	religion = sunni }
+	define_pop = { type = peasants	size = 5.849	culture = kurdish_culture	religion = sunni }
 }
 osnavieh = {
 	define_pop = { type = clergy	size = 0.052	culture = adhari_culture	religion = sunni }
@@ -37397,19 +37440,19 @@ sarbaz = {
 }
 quetta = {
 	define_pop = { type = clergy	size = 0.867	culture = afghan_culture	religion = sunni }
-	define_pop = { type = burghers	size = 1.614	culture = afghan_culture	religion = sunni }
+	define_pop = { type = burghers	size = 1.148	culture = afghan_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.419	culture = afghan_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.192	culture = brahui_culture	religion = sunni }
-	define_pop = { type = burghers	size = 0.361	culture = brahui_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.257	culture = brahui_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.094	culture = brahui_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.079	culture = dehwar_culture	religion = sunni }
-	define_pop = { type = burghers	size = 0.148	culture = dehwar_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.105	culture = dehwar_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.038	culture = dehwar_culture	religion = sunni }
-	define_pop = { type = peasants	size = 5.206	culture = afghan_culture	religion = sunni }
+	define_pop = { type = peasants	size = 5.672	culture = afghan_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 9.084	culture = afghan_culture	religion = sunni }
-	define_pop = { type = peasants	size = 1.163	culture = brahui_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.267	culture = brahui_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 2.029	culture = brahui_culture	religion = sunni }
-	define_pop = { type = peasants	size = 0.478	culture = dehwar_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.521	culture = dehwar_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 0.835	culture = dehwar_culture	religion = sunni }
 }
 gulistan = {
@@ -37729,15 +37772,17 @@ suq = {
 }
 darab = {
 	define_pop = { type = clergy	size = 0.248	culture = farsi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 4.128	culture = farsi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 2.020	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.102	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.055	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 1.026	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 0.502	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.025	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = tribesmen	size = 0.471	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.006	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 1.890	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.026	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 2.108	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.524	culture = farsi_culture	religion = zoroastrian }
 }
 hajjiabad_zarrindasht = {
 	define_pop = { type = clergy	size = 0.072	culture = farsi_culture	religion = sunni }
@@ -37876,19 +37921,22 @@ bandar_lengeh = {
 	define_pop = { type = slaves	size = 0.633	culture = achomi_culture	religion = zoroastrian }
 }
 hormuz = {
-	define_pop = { type = burghers	size = 36.201	culture = farsi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 28.769	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 2.130	culture = farsi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 8.206	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 6.521	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.393	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 4.519	culture = kalimi	religion = judaism }
+	define_pop = { type = burghers	size = 3.591	culture = kalimi	religion = judaism }
 	define_pop = { type = nobles	size = 0.217	culture = kalimi	religion = judaism }
-	define_pop = { type = burghers	size = 7.465	culture = sindhi	religion = hindu }
+	define_pop = { type = burghers	size = 5.932	culture = sindhi	religion = hindu }
 	define_pop = { type = nobles	size = 0.358	culture = sindhi	religion = hindu }
 	define_pop = { type = clergy	size = 3.245	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.437	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = clergy	size = 0.091	culture = kalimi	religion = judaism }
-	define_pop = { type = slaves	size = 4.788	culture = gonga_culture	religion = omo_religion }
-	define_pop = { type = slaves	size = 9.092	culture = sindhi	religion = hindu }
+	define_pop = { type = peasants	size = 4.788	culture = gonga_culture	religion = omo_religion }
+	define_pop = { type = peasants	size = 10.625	culture = sindhi	religion = hindu }
+	define_pop = { type = peasants	size = 7.432	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.685	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 0.928	culture = kalimi	religion = judaism }
 }
 harat = {
 	define_pop = { type = clergy	size = 0.134	culture = farsi_culture	religion = sunni }
@@ -37994,13 +38042,15 @@ jahrom = {
 }
 fasa = {
 	define_pop = { type = clergy	size = 0.163	culture = farsi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 2.430	culture = farsi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.157	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.136	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.027	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 0.490	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 0.032	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.029	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = tribesmen	size = 3.900	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 1.100	culture = kurdish_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 2.273	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.458	culture = farsi_culture	religion = zoroastrian }
 }
 ij_iran = {
 	define_pop = { type = clergy	size = 0.098	culture = farsi_culture	religion = sunni }
@@ -38170,17 +38220,17 @@ zagros_mountains16 = {
 lar = {
 	define_pop = { type = clergy	size = 0.492	culture = achomi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.186	culture = achomi_culture	religion = sunni }
-	define_pop = { type = peasants	size = 1.754	culture = achomi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 6.892	culture = achomi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 2.880	culture = achomi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 5.766	culture = achomi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.081	culture = achomi_culture	religion = zoroastrian }
-	define_pop = { type = peasants	size = 0.309	culture = achomi_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 0.507	culture = achomi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.027	culture = achomi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 1.212	culture = achomi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 1.014	culture = achomi_culture	religion = zoroastrian }
 	define_pop = { type = clergy	size = 0.116	culture = farsi_culture	religion = sunni }
-	define_pop = { type = peasants	size = 0.438	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.719	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.038	culture = farsi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 1.722	culture = farsi_culture	religion = sunni }
-	define_pop = { type = slaves	size = 0.406	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 1.441	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.406	culture = farsi_culture	religion = zoroastrian }
 }
 darz = {
 	define_pop = { type = clergy	size = 0.202	culture = farsi_culture	religion = sunni }
@@ -38316,13 +38366,13 @@ kherameh = {
 }
 neyriz = {
 	define_pop = { type = clergy	size = 2.664	culture = farsi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 3.034	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 1.865	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.533	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 9.472	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.503	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = tribesmen	size = 17.661	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 12.787	culture = kurdish_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 3.034	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 9.472	culture = farsi_culture	religion = zoroastrian }
 }
 sarvestan = {
 	define_pop = { type = clergy	size = 0.592	culture = farsi_culture	religion = sunni }
@@ -38349,17 +38399,20 @@ lake_tashk = {
 siraf = {
 	define_pop = { type = clergy	size = 0.231	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.072	culture = achomi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 1.302	culture = achomi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.143	culture = achomi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.075	culture = achomi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 3.673	culture = farsi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.403	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.215	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.022	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 0.395	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 0.043	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.023	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = slaves	size = 0.390	culture = achomi_culture	religion = zoroastrian }
 	define_pop = { type = tribesmen	size = 2.067	culture = achomi_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 6.474	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 0.729	culture = kurdish_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 0.390	culture = achomi_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 1.159	culture = achomi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 3.270	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.352	culture = farsi_culture	religion = zoroastrian }
 }
 ahel = {
 	define_pop = { type = clergy	size = 0.123	culture = achomi_culture	religion = sunni }
@@ -38468,13 +38521,13 @@ zavareh = {
 }
 golpayegan = {
 	define_pop = { type = clergy	size = 0.591	culture = farsi_culture	religion = sunni }
-	define_pop = { type = peasants	size = 2.631	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 3.717	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.180	culture = farsi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 7.867	culture = farsi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 6.781	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.140	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = peasants	size = 0.657	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 0.928	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.045	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 1.965	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 1.694	culture = farsi_culture	religion = zoroastrian }
 }
 delijan = {
 	define_pop = { type = clergy	size = 0.387	culture = farsi_culture	religion = sunni }
@@ -38533,7 +38586,8 @@ hamadan = {
 	define_pop = { type = peasants	size = 4.810	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = burghers	size = 4.656	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.344	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = slaves	size = 7.264	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = slaves	size = 7.036	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = peasants	size = 0.228	culture = kurdish_culture	religion = yazidism }
 }
 karaj_abi_dulaf = {
 	define_pop = { type = clergy	size = 0.371	culture = farsi_culture	religion = sunni }
@@ -38653,17 +38707,19 @@ zagros_mountains14 = {
 }
 qazvin = {
 	define_pop = { type = clergy	size = 4.345	culture = adhari_culture	religion = sunni }
-	define_pop = { type = burghers	size = 35.276	culture = adhari_culture	religion = sunni }
+	define_pop = { type = burghers	size = 17.981	culture = adhari_culture	religion = sunni }
 	define_pop = { type = nobles	size = 3.320	culture = adhari_culture	religion = sunni }
 	define_pop = { type = clergy	size = 2.859	culture = farsi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 23.519	culture = farsi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 11.988	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 2.213	culture = farsi_culture	religion = sunni }
-	define_pop = { type = slaves	size = 10.715	culture = adhari_culture	religion = zoroastrian }
-	define_pop = { type = slaves	size = 12.634	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = tribesmen	size = 12.169	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.474	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 48.687	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = nobles	size = 1.897	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 10.715	culture = adhari_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 12.634	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 17.295	culture = adhari_culture	religion = sunni }
+	define_pop = { type = peasants	size = 11.531	culture = farsi_culture	religion = sunni }
 }
 abhar = {
 	define_pop = { type = clergy	size = 0.220	culture = adhari_culture	religion = sunni }
@@ -38783,11 +38839,13 @@ kahak = {
 }
 kashan = {
 	define_pop = { type = clergy	size = 2.634	culture = farsi_culture	religion = shia }
-	define_pop = { type = burghers	size = 22.533	culture = farsi_culture	religion = shia }
+	define_pop = { type = burghers	size = 13.929	culture = farsi_culture	religion = shia }
 	define_pop = { type = nobles	size = 0.913	culture = farsi_culture	religion = shia }
 	define_pop = { type = clergy	size = 0.651	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 5.631	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 3.481	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.228	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 8.604	culture = farsi_culture	religion = shia }
+	define_pop = { type = peasants	size = 2.150	culture = farsi_culture	religion = zoroastrian }
 }
 maranjab = {
 	define_pop = { type = clergy	size = 0.098	culture = farsi_culture	religion = sunni }
@@ -38974,15 +39032,18 @@ varamin = {
 	define_pop = { type = burghers	size = 1.479	culture = farsi_culture	religion = zoroastrian }
 }
 yazd = {
-	define_pop = { type = burghers	size = 121.084	culture = farsi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 76.008	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 5.378	culture = farsi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 50.948	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 31.981	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 2.264	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 10.994	culture = kalimi	religion = judaism }
+	define_pop = { type = burghers	size = 6.901	culture = kalimi	religion = judaism }
 	define_pop = { type = nobles	size = 0.436	culture = kalimi	religion = judaism }
 	define_pop = { type = clergy	size = 11.082	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 3.926	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = clergy	size = 0.359	culture = kalimi	religion = judaism }
+	define_pop = { type = peasants	size = 45.076	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 18.967	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 4.093	culture = kalimi	religion = judaism }
 }
 ardakan = {
 	define_pop = { type = clergy	size = 0.116	culture = farsi_culture	religion = sunni }
@@ -38994,11 +39055,13 @@ ardakan = {
 }
 meybod = {
 	define_pop = { type = clergy	size = 0.868	culture = farsi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 14.782	culture = farsi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 9.540	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.254	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.264	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 4.923	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 3.177	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.085	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 5.242	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.746	culture = farsi_culture	religion = zoroastrian }
 }
 nadushan = {
 	define_pop = { type = clergy	size = 0.120	culture = farsi_culture	religion = sunni }
@@ -39075,11 +39138,11 @@ sojas = {
 	define_pop = { type = nobles	size = 0.072	culture = mongolian_culture	religion = tengri }
 }
 soltaniyeh = {
-	define_pop = { type = burghers	size = 31.669	culture = adhari_culture	religion = sunni }
+	define_pop = { type = burghers	size = 12.057	culture = adhari_culture	religion = sunni }
 	define_pop = { type = nobles	size = 2.342	culture = adhari_culture	religion = sunni }
-	define_pop = { type = burghers	size = 10.708	culture = adhari_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 4.077	culture = adhari_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.704	culture = adhari_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 4.383	culture = kalimi	religion = judaism }
+	define_pop = { type = burghers	size = 1.669	culture = kalimi	religion = judaism }
 	define_pop = { type = nobles	size = 0.289	culture = kalimi	religion = judaism }
 	define_pop = { type = clergy	size = 2.504	culture = adhari_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.467	culture = adhari_culture	religion = zoroastrian }
@@ -39088,6 +39151,9 @@ soltaniyeh = {
 	define_pop = { type = nobles	size = 0.264	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 26.575	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = nobles	size = 1.053	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 19.612	culture = adhari_culture	religion = sunni }
+	define_pop = { type = peasants	size = 6.631	culture = adhari_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 2.714	culture = kalimi	religion = judaism }
 }
 elburz_mountains4 = {
 }
@@ -39155,11 +39221,13 @@ dasht_lut2 = {
 }
 jiroft = {
 	define_pop = { type = clergy	size = 0.253	culture = farsi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 4.182	culture = farsi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 2.696	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.072	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.039	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 0.732	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 0.472	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.013	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 1.486	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.260	culture = farsi_culture	religion = zoroastrian }
 }
 baft = {
 	define_pop = { type = clergy	size = 0.222	culture = farsi_culture	religion = sunni }
@@ -39274,11 +39342,13 @@ ghobeyra = {
 }
 mahan = {
 	define_pop = { type = clergy	size = 0.323	culture = farsi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 5.483	culture = farsi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 3.538	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.094	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.098	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 1.828	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 1.180	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.031	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 1.945	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.648	culture = farsi_culture	religion = zoroastrian }
 }
 shahdad = {
 	define_pop = { type = clergy	size = 0.839	culture = farsi_culture	religion = sunni }
@@ -39398,13 +39468,13 @@ bahreman = {
 }
 bardsir = {
 	define_pop = { type = clergy	size = 0.453	culture = farsi_culture	religion = sunni }
-	define_pop = { type = peasants	size = 0.057	culture = farsi_culture	religion = sunni }
+	define_pop = { type = peasants	size = 2.807	culture = farsi_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.136	culture = farsi_culture	religion = sunni }
-	define_pop = { type = burghers	size = 7.866	culture = farsi_culture	religion = sunni }
+	define_pop = { type = burghers	size = 5.116	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.106	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = peasants	size = 0.014	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 0.701	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.034	culture = farsi_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 1.965	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 1.278	culture = farsi_culture	religion = zoroastrian }
 }
 dehaj = {
 	define_pop = { type = clergy	size = 0.103	culture = farsi_culture	religion = sunni }
@@ -39992,17 +40062,20 @@ yasukand = {
 	define_pop = { type = nobles	size = 0.011	culture = kurdish_culture	religion = sunni }
 }
 kermanshah = {
-	define_pop = { type = burghers	size = 2.877	culture = kalimi	religion = judaism }
+	define_pop = { type = burghers	size = 0.744	culture = kalimi	religion = judaism }
 	define_pop = { type = nobles	size = 0.226	culture = kalimi	religion = judaism }
-	define_pop = { type = burghers	size = 25.843	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = burghers	size = 6.684	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 3.053	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = clergy	size = 2.184	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.180	culture = kalimi	religion = judaism }
 	define_pop = { type = clergy	size = 0.590	culture = kurdish_culture	religion = yazidism }
-	define_pop = { type = burghers	size = 4.920	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = burghers	size = 1.273	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = nobles	size = 0.578	culture = kurdish_culture	religion = yazidism }
 	define_pop = { type = tribesmen	size = 29.201	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 5.920	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = peasants	size = 2.133	culture = kalimi	religion = judaism }
+	define_pop = { type = peasants	size = 19.159	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 3.647	culture = kurdish_culture	religion = yazidism }
 }
 badreh = {
 	define_pop = { type = clergy	size = 0.094	culture = lur_culture	religion = shia }
@@ -40051,15 +40124,15 @@ kamyaran = {
 nahavand = {
 	define_pop = { type = clergy	size = 1.543	culture = lur_culture	religion = shia }
 	define_pop = { type = clergy	size = 0.199	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = peasants	size = 2.376	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 2.733	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.219	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 1.268	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = peasants	size = 17.884	culture = lur_culture	religion = shia }
+	define_pop = { type = burghers	size = 0.911	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 20.569	culture = lur_culture	religion = shia }
 	define_pop = { type = nobles	size = 1.445	culture = lur_culture	religion = shia }
-	define_pop = { type = burghers	size = 9.540	culture = lur_culture	religion = shia }
-	define_pop = { type = slaves	size = 4.155	culture = kurdish_culture	religion = yazidism }
+	define_pop = { type = burghers	size = 6.855	culture = lur_culture	religion = shia }
 	define_pop = { type = tribesmen	size = 8.405	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 36.167	culture = lur_culture	religion = shia }
+	define_pop = { type = peasants	size = 4.155	culture = kurdish_culture	religion = yazidism }
 }
 asadabad = {
 	define_pop = { type = clergy	size = 0.166	culture = kurdish_culture	religion = sunni }
@@ -40162,9 +40235,10 @@ qasr_shirin = {
 }
 sanandaj = {
 	define_pop = { type = clergy	size = 0.484	culture = kurdish_culture	religion = sunni }
-	define_pop = { type = burghers	size = 8.255	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = burghers	size = 1.573	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.405	culture = kurdish_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 11.105	culture = kurdish_culture	religion = sunni }
+	define_pop = { type = peasants	size = 6.682	culture = kurdish_culture	religion = sunni }
 }
 sulaymaniyah = {
 	define_pop = { type = clergy	size = 0.254	culture = kurdish_culture	religion = sunni }
@@ -40178,15 +40252,18 @@ sulaymaniyah = {
 }
 damghan = {
 	define_pop = { type = clergy	size = 0.961	culture = khorasani_culture	religion = sunni }
-	define_pop = { type = burghers	size = 16.398	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = burghers	size = 11.061	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.294	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.220	culture = khorasani_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 4.092	culture = khorasani_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 2.760	culture = khorasani_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.074	culture = khorasani_culture	religion = zoroastrian }
 	define_pop = { type = clergy	size = 0.220	culture = semnani_culture	religion = shia }
-	define_pop = { type = burghers	size = 4.092	culture = semnani_culture	religion = shia }
+	define_pop = { type = burghers	size = 2.760	culture = semnani_culture	religion = shia }
 	define_pop = { type = nobles	size = 0.074	culture = semnani_culture	religion = shia }
-	define_pop = { type = slaves	size = 1.075	culture = semnani_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 1.075	culture = semnani_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 5.337	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.332	culture = khorasani_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 1.332	culture = semnani_culture	religion = shia }
 }
 bastam = {
 	define_pop = { type = clergy	size = 1.142	culture = khorasani_culture	religion = sunni }
@@ -40220,13 +40297,13 @@ qumis = {
 }
 semnan = {
 	define_pop = { type = clergy	size = 1.149	culture = semnani_culture	religion = shia }
-	define_pop = { type = peasants	size = 6.383	culture = semnani_culture	religion = shia }
+	define_pop = { type = peasants	size = 7.260	culture = semnani_culture	religion = shia }
 	define_pop = { type = nobles	size = 0.352	culture = semnani_culture	religion = shia }
-	define_pop = { type = burghers	size = 14.126	culture = semnani_culture	religion = shia }
+	define_pop = { type = burghers	size = 13.249	culture = semnani_culture	religion = shia }
 	define_pop = { type = clergy	size = 0.275	culture = semnani_culture	religion = zoroastrian }
-	define_pop = { type = peasants	size = 1.595	culture = semnani_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 1.814	culture = semnani_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.088	culture = semnani_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 3.531	culture = semnani_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 3.312	culture = semnani_culture	religion = zoroastrian }
 }
 elburz_mountains9 = {
 }
@@ -40703,15 +40780,17 @@ dasht_lut3 = {
 }
 gonabad = {
 	define_pop = { type = clergy	size = 0.201	culture = khorasani_culture	religion = shia }
-	define_pop = { type = burghers	size = 3.725	culture = khorasani_culture	religion = shia }
+	define_pop = { type = burghers	size = 1.831	culture = khorasani_culture	religion = shia }
 	define_pop = { type = nobles	size = 0.092	culture = khorasani_culture	religion = shia }
 	define_pop = { type = clergy	size = 0.302	culture = khorasani_culture	religion = sunni }
-	define_pop = { type = burghers	size = 5.593	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = burghers	size = 2.749	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.138	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 0.847	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.011	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 3.404	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.046	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.894	culture = khorasani_culture	religion = shia }
+	define_pop = { type = peasants	size = 2.844	culture = khorasani_culture	religion = sunni }
 }
 azghand = {
 	define_pop = { type = clergy	size = 0.115	culture = khorasani_culture	religion = shia }
@@ -40764,12 +40843,12 @@ zaveh = {
 qaen = {
 	define_pop = { type = clergy	size = 0.636	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.064	culture = khorasani_culture	religion = zoroastrian }
-	define_pop = { type = peasants	size = 1.253	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = peasants	size = 5.132	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.249	culture = khorasani_culture	religion = sunni }
-	define_pop = { type = burghers	size = 8.786	culture = khorasani_culture	religion = sunni }
-	define_pop = { type = peasants	size = 0.139	culture = khorasani_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 4.907	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.568	culture = khorasani_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.028	culture = khorasani_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 0.972	culture = khorasani_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 0.543	culture = khorasani_culture	religion = zoroastrian }
 	define_pop = { type = tribesmen	size = 1.010	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.014	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 4.066	culture = mongolian_culture	religion = tengri }
@@ -40865,11 +40944,13 @@ dasht_khaf2 = {
 }
 tabas_al_tamr = {
 	define_pop = { type = clergy	size = 0.321	culture = khorasani_culture	religion = sunni }
-	define_pop = { type = burghers	size = 5.456	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = burghers	size = 3.520	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.094	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.051	culture = khorasani_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 0.960	culture = khorasani_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 0.619	culture = khorasani_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.017	culture = khorasani_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 1.936	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.341	culture = khorasani_culture	religion = zoroastrian }
 }
 dastgerdan = {
 	define_pop = { type = clergy	size = 0.057	culture = khorasani_culture	religion = sunni }
@@ -40966,12 +41047,12 @@ boshruyeh = {
 kashmar = {
 	define_pop = { type = clergy	size = 0.545	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.352	culture = khorasani_culture	religion = shia }
-	define_pop = { type = peasants	size = 2.622	culture = khorasani_culture	religion = shia }
+	define_pop = { type = peasants	size = 3.317	culture = khorasani_culture	religion = shia }
 	define_pop = { type = nobles	size = 0.161	culture = khorasani_culture	religion = shia }
-	define_pop = { type = burghers	size = 3.901	culture = khorasani_culture	religion = shia }
-	define_pop = { type = peasants	size = 3.937	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = burghers	size = 3.206	culture = khorasani_culture	religion = shia }
+	define_pop = { type = peasants	size = 4.981	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.242	culture = khorasani_culture	religion = sunni }
-	define_pop = { type = burghers	size = 5.858	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = burghers	size = 4.814	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 1.481	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.020	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 5.948	culture = mongolian_culture	religion = tengri }
@@ -40991,15 +41072,17 @@ sarayan = {
 }
 tun = {
 	define_pop = { type = clergy	size = 0.463	culture = khorasani_culture	religion = sunni }
-	define_pop = { type = burghers	size = 7.287	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = burghers	size = 3.563	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.181	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.043	culture = khorasani_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 0.804	culture = khorasani_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 0.393	culture = khorasani_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.020	culture = khorasani_culture	religion = zoroastrian }
 	define_pop = { type = tribesmen	size = 0.732	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.010	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 2.949	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.040	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 3.724	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.411	culture = khorasani_culture	religion = zoroastrian }
 }
 adraskan = {
 	define_pop = { type = clergy	size = 0.040	culture = afghan_culture	religion = sunni }
@@ -41178,20 +41261,20 @@ sarbisheh = {
 shahr_sabz = {
 	define_pop = { type = clergy	size = 0.316	culture = afghan_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.035	culture = afghan_culture	religion = zoroastrian }
-	define_pop = { type = peasants	size = 0.425	culture = afghan_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.942	culture = afghan_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.095	culture = afghan_culture	religion = sunni }
-	define_pop = { type = burghers	size = 4.862	culture = afghan_culture	religion = sunni }
-	define_pop = { type = peasants	size = 0.048	culture = afghan_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 3.345	culture = afghan_culture	religion = sunni }
+	define_pop = { type = peasants	size = 0.216	culture = afghan_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.011	culture = afghan_culture	religion = zoroastrian }
-	define_pop = { type = burghers	size = 0.539	culture = afghan_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 0.371	culture = afghan_culture	religion = zoroastrian }
 	define_pop = { type = clergy	size = 0.189	culture = khorasani_culture	religion = sunni }
-	define_pop = { type = peasants	size = 0.283	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.295	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.063	culture = khorasani_culture	religion = sunni }
-	define_pop = { type = burghers	size = 3.243	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = burghers	size = 2.231	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 0.177	culture = mongolian_culture	religion = zoroastrian }
 	define_pop = { type = tribesmen	size = 0.177	culture = afghan_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.042	culture = khorasani_culture	religion = zoroastrian }
-	define_pop = { type = slaves	size = 0.021	culture = khorasani_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 0.021	culture = khorasani_culture	religion = zoroastrian }
 }
 garmsir = {
 	define_pop = { type = clergy	size = 0.268	culture = afghan_culture	religion = sunni }
@@ -41234,16 +41317,17 @@ pangvay = {
 dasht_registan = {
 }
 ghazni = {
-	define_pop = { type = burghers	size = 18.461	culture = afghan_culture	religion = sunni }
+	define_pop = { type = burghers	size = 12.235	culture = afghan_culture	religion = sunni }
 	define_pop = { type = nobles	size = 1.926	culture = afghan_culture	religion = sunni }
-	define_pop = { type = burghers	size = 0.652	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.432	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.067	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = clergy	size = 3.337	culture = afghan_culture	religion = sunni }
-	define_pop = { type = peasants	size = 12.117	culture = afghan_culture	religion = sunni }
+	define_pop = { type = peasants	size = 18.343	culture = afghan_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 3.768	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.169	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 15.079	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.675	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 0.220	culture = khorasani_culture	religion = sunni }
 }
 gardez = {
 	define_pop = { type = clergy	size = 0.008	culture = tajik_culture	religion = sunni }
@@ -41456,15 +41540,17 @@ zaranj = {
 	define_pop = { type = clergy	size = 0.009	culture = khorasani_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.455	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.257	culture = afghan_culture	religion = sunni }
-	define_pop = { type = burghers	size = 4.805	culture = afghan_culture	religion = sunni }
+	define_pop = { type = burghers	size = 2.923	culture = afghan_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.092	culture = afghan_culture	religion = sunni }
-	define_pop = { type = burghers	size = 14.877	culture = khorasani_culture	religion = sunni }
+	define_pop = { type = burghers	size = 9.051	culture = khorasani_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 1.373	culture = afghan_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.029	culture = afghan_culture	religion = zoroastrian }
-	define_pop = { type = slaves	size = 0.034	culture = afghan_culture	religion = zoroastrian }
 	define_pop = { type = tribesmen	size = 0.744	culture = mongolian_culture	religion = zoroastrian }
 	define_pop = { type = nobles	size = 0.068	culture = khorasani_culture	religion = zoroastrian }
-	define_pop = { type = slaves	size = 0.081	culture = khorasani_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 0.034	culture = afghan_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 0.081	culture = khorasani_culture	religion = zoroastrian }
+	define_pop = { type = peasants	size = 1.882	culture = afghan_culture	religion = sunni }
+	define_pop = { type = peasants	size = 5.826	culture = khorasani_culture	religion = sunni }
 }
 bahramchah = {
 	define_pop = { type = clergy	size = 0.139	culture = tajik_culture	religion = sunni }

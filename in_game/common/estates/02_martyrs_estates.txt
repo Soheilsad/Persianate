@@ -116,7 +116,7 @@ shaykhi_dervishes_estate = {
 	color = rgb { 35 35 100 }
 
 	power_per_pop = 30
-	tax_per_pop = 0           # Dervishes don't pay tax — they serve as soldiers
+	tax_per_pop = 3           # Dervishes only pay Khoms
 
 	rival = 0
 	alliance = 0.015

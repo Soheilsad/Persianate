@@ -24,14 +24,16 @@ eranzamin_succession = {
 
 	can_end = {
 		OR = {
-			# §20 END gate — three clauses:
-			#  A) Tazik Triumph: axis ≥+75 + Matter of Tork resolved
-			#  B) Türk  Triumph: axis ≤-75 + Matter of Tazik resolved
-			#  C) Safavid Synthesis: 75/75/0.80 thresholds met
-			# Plus the territorial gate (key cities + 150+ locations).
+			
+
 			any_country = {
+
 				has_variable = eranzamin_contender
 				has_variable = eranzamin_succession_victor
+				num_locations_owned_or_owned_by_subjects_or_below > 400
+				controls_eranzamin_key_cities = yes
+				is_subject = no
+				eranzamin_end_condition_met = yes
 			}
 
 			# Timeout: ~50-100 years of war (Path 6, the historical Timurid sweep)
@@ -141,6 +143,7 @@ eranzamin_succession = {
 				controls_eranzamin_key_cities = yes
 				is_subject = no
 				eranzamin_end_condition_met = yes
+
 			}
 			set_variable = eranzamin_succession_victor
 		}

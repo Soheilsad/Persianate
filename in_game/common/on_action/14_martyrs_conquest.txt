@@ -24,29 +24,29 @@ on_location_changed_owner = {
 
 martyrs_shrine_city_conquest = {
 	trigger = {
-		scope:winner = { government_type = government_type:commonwealth_of_martyrs }
+		scope:winner ?= { government_type = government_type:commonwealth_of_martyrs }
 		OR = {
 			AND = {
 				this = location:mashhad
-				scope:winner = { NOT = { has_variable = martyrs_mashhad_fired } }
+				scope:winner ?= { NOT = { has_variable = martyrs_mashhad_fired } }
 			}
 			AND = {
 				this = location:nishapur
-				scope:winner = { NOT = { has_variable = martyrs_nishapur_fired } }
+				scope:winner ?= { NOT = { has_variable = martyrs_nishapur_fired } }
 			}
 		}
 	}
 	effect = {
 		if = {
 			limit = { root = location:mashhad }
-			scope:winner = {
+			scope:winner ?= {
 				set_variable = martyrs_mashhad_fired
 				trigger_event_non_silently = martyrs.2
 			}
 		}
 		if = {
 			limit = { root = location:nishapur }
-			scope:winner = {
+			scope:winner ?= {
 				set_variable = martyrs_nishapur_fired
 				trigger_event_non_silently = martyrs.3
 			}

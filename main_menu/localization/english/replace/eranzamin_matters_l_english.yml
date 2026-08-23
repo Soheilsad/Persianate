@@ -651,3 +651,7 @@
  custody.35.desc: "A rider from [SCOPE.sCountry('sworn_governorate').GetName], three horses dead behind him: [SCOPE.sCountry('ulus_attacker').GetName] has declared war on the governorate that reads our name in its khuṭbah, and the governor asks whether the name means anything.\n\nIt is a fair question, and the amirs are already answering it in the courtyard. Ride, and the custody is not a formula but a fact — every governor in the ulus will see what our protection is worth, and the attacker will learn whose land he has stepped on. Stay, and the lances are kept for the contest that actually decides the custody, the governor learns that he swore to a title and not to a sword, and the next governor thinking of kneeling will remember it.\n\nThe rider is waiting. So, in their way, are the others."
  custody.35.a: "Sound the drums. The khan's name is defended where it is read."
  custody.35.b: "He swore for the khuṭbah, not for our cavalry. Let him hold his own walls."
+
+ # Iran o Toran formable (IOT_f — tag ILK reborn under the Turk victory)
+ IOT_NAME: "Iran o Toran"
+ IOT_ADJ: "Irano-Turanian"

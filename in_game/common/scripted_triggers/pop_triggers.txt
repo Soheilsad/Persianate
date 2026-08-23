@@ -99,7 +99,7 @@ is_diwan_pop = {
 			AND = {
 				culture = { has_culture_group = culture_group:turkic_group }
 				location = {
-					owner = { has_reform = government_reform:sultanate_of_rum }
+					owner ?= { has_reform = government_reform:sultanate_of_rum }
 				}
 				religion.group = religion_group:muslim
 			}

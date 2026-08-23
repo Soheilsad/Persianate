@@ -49,9 +49,14 @@ sarbadar_preachers = {
 			# Save-cleaner: a cell with no Muslim quarter to preach to
 			# dissolves. Retroactively removes cells that leaked into
 			# Christian Europe before the region gate existed.
+			# remove_if runs in BUILDING scope: the pops live on the
+			# location link (a bare any_pop here found nothing and
+			# dissolved every cell the day it was planted).
 			NOT = {
-				any_pop = {
-					religion.group = religion_group:muslim
+				location = {
+					any_pop = {
+						religion.group = religion_group:muslim
+					}
 				}
 			}
 		}

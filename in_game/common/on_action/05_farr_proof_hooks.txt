@@ -122,12 +122,12 @@ farr_on_battle_lost = {
 
 farr_on_winning_war = {
 	trigger = {
-		scope:winner = {
+		scope:winner ?= {
 			has_variable = farr_proof_fired
 		}
 	}
 	effect = {
-		scope:winner = {
+		scope:winner ?= {
 			if = {
 				limit = {
 					NOR = {
@@ -155,12 +155,15 @@ farr_on_winning_war = {
 
 farr_on_losing_war = {
 	trigger = {
-		scope:loser = {
+		scope:loser ?= {
 			has_variable = farr_proof_fired
 		}
+		# A delegation is not a defeat: land handed to one's own subject
+		# (release, grant, vassal creation) is not lost.
+		NOT = { scope:winner ?= { is_subject_of = scope:loser } }
 	}
 	effect = {
-		scope:loser = {
+		scope:loser ?= {
 			if = {
 				limit = {
 					NOR = {
@@ -190,7 +193,7 @@ farr_on_losing_war = {
 
 farr_on_location_changed_owner_loss = {
 	trigger = {
-		scope:loser = {
+		scope:loser ?= {
 			has_variable = farr_proof_fired
 		}
 	}
@@ -203,7 +206,7 @@ farr_on_location_changed_owner_loss = {
 					capital = root
 				}
 			}
-			scope:loser = {
+			scope:loser ?= {
 				if = {
 					limit = {
 						NOR = {
@@ -228,7 +231,7 @@ farr_on_location_changed_owner_loss = {
 			limit = {
 				scope:loser ?= { has_variable = farr_proof_fired }
 			}
-			scope:loser = {
+			scope:loser ?= {
 				if = {
 					limit = {
 						NOR = {
@@ -248,7 +251,7 @@ farr_on_location_changed_owner_loss = {
 
 farr_on_location_changed_owner_win = {
 	trigger = {
-		scope:winner = {
+		scope:winner ?= {
 			has_variable = farr_proof_fired
 		}
 	}
@@ -257,7 +260,7 @@ farr_on_location_changed_owner_win = {
 			limit = {
 				scope:winner ?= { has_variable = farr_proof_fired }
 			}
-			scope:winner = {
+			scope:winner ?= {
 				if = {
 					limit = {
 						NOR = {

@@ -139,6 +139,7 @@ regional_diwan = {
 	build_time = government_build_time
 
 	location_potential = {
+		   
 		OR = {
 			is_capital = yes
 			AND = {
@@ -164,7 +165,7 @@ regional_diwan = {
 		# projects the crown's. ~40% of a local_governor's reach (80),
 		# matching the dīwān's role as auxiliary, not principal, node.
 		local_proximity_source = 66
-
+		pure_tooltip_entry = regional_diwan_tooltip
 		# The chancery culture lifts both layers it touches: the noble
 		# secretariat that fills the office, and the burgher scribal
 		# class that promotes into it.

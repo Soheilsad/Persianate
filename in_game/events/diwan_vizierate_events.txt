@@ -47,7 +47,7 @@ diwan_vizierate.1 = {
 	}
 
 	immediate = {
-		set_variable = { name = diwan_ultimatum_cd value = 1 years = 8 }
+		set_variable = { name = diwan_ultimatum_cd value = 1 years = 5 }
 	}
 
 	# ----- A: Keep the princes. The dīwān is spurned. -----

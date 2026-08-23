@@ -246,7 +246,7 @@ eranzamin_end_condition_met = {
 		# Clause B — Türk Triumph
 		AND = {
 			is_axis_tork_triumph = yes
-			matter_of_tazik_resolved_trigger = yes
+			#matter_of_tazik_resolved_trigger = yes
 		}
 		# Clause C — Safavid Synthesis
 		safavid_synthesis_thresholds_met = yes

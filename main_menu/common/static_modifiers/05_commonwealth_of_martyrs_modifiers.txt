@@ -189,8 +189,9 @@ shaykhi_verdict_fields_restored = {
 
 shaykhi_verdict_property_assured = {
 	game_data = { category = country }
-	global_build_buildings_cost = -0.05
-	global_build_buildings_efficiency = 0.05
+	# (no realm-wide building COST key exists in base; intent folded
+	# into efficiency — property assured = the builders actually build)
+	global_build_buildings_efficiency = 0.10
 }
 
 shaykhi_verdict_ulama_reconciled = {

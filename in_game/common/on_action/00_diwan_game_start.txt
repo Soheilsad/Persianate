@@ -32,16 +32,18 @@ on_diwan_start = {
 						vegetation = qanat_farmland
 						vegetation = seasonal_irrigated
 						vegetation = crumbling_qanat
+						raw_material ?= { is_food = yes } 
 						}
 
 					}
 					construct_building = {
 						cost_multiplier = 0
 						cost_multiplier_reason = "game_concept_event"
-						
 						instant = yes
 						building_type = building_type:farming_village
 					}
+					
+					
 				}
 				every_owned_location = {
 					limit = {
@@ -49,22 +51,24 @@ on_diwan_start = {
 						vegetation = farmland
 						vegetation = qanat_farmland
 						vegetation = seasonal_irrigated
+						raw_material ?= { is_food = yes } 
 						}
 
 					}
 					construct_building = {
 						cost_multiplier = 0
 						cost_multiplier_reason = "game_concept_event"
-						
 						instant = yes
 						building_type = building_type:farming_village
 					}
+					change_max_raw_material_workers = 1
 				}
 				every_owned_location = {
 					limit = {
 						OR = {
 						vegetation = farmland
 						vegetation = seasonal_irrigated
+						raw_material ?= { is_food = yes } 
 						}
 
 					}
@@ -75,11 +79,13 @@ on_diwan_start = {
 						instant = yes
 						building_type = building_type:farming_village
 					}
+					change_max_raw_material_workers = 1
 				}
 				every_owned_location = {
 					limit = {
 						OR = {
 						vegetation = farmland
+						raw_material ?= { is_food = yes } 
 						}
 
 					}
@@ -90,6 +96,7 @@ on_diwan_start = {
 						instant = yes
 						building_type = building_type:farming_village
 					}
+					change_max_raw_material_workers = 1
 				}
 				every_owned_location = {
 					limit = {

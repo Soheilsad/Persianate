@@ -33,7 +33,7 @@ khuruj_coronation_hook = {
 		}
 	}
 	effect = {
-		scope:winner = {
+		scope:winner ?= {
 			set_variable = {
 				name = khuruj_coronation_city
 				value = root

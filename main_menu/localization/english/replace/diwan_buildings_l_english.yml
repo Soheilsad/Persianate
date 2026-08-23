@@ -20,3 +20,4 @@
  local_diwan_maintenance_desc: "The walī's scribal office: paper for the registers, books for the law and the precedent, fine cloth for the office's dignitaries, and a small purse of coin for the clerks' monthly wage."
 
  local_diwan_one_per_province_tt: "Only one Local Dīwān may exist per province."
+ regional_diwan_tooltip: "The Regional Dīwān can only be built in the capital of a duchy-rank or Kingdom rank Persianate Sultanate, or once per Area for an Empire rank Persianate Sultanate."

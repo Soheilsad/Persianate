@@ -84,7 +84,7 @@ martyrs_conquest_devotion = {
 		}
 	}
 	effect = {
-		scope:winner = {
+		scope:winner ?= {
 			add_devotion = 1
 		}
 	}

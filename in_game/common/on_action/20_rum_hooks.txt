@@ -103,12 +103,12 @@ rum_on_battle_lost = {
 
 rum_on_winning_war = {
 	trigger = {
-		scope:winner = {
+		scope:winner ?= {
 			has_variable = rum_inheritance_fired
 		}
 	}
 	effect = {
-		scope:winner = {
+		scope:winner ?= {
 			if = {
 				limit = {
 					NOR = {
@@ -132,12 +132,15 @@ rum_on_winning_war = {
 
 rum_on_losing_war = {
 	trigger = {
-		scope:loser = {
+		scope:loser ?= {
 			has_variable = rum_inheritance_fired
 		}
+		# A delegation is not a defeat: land handed to one's own subject
+		# (release, grant, vassal creation) is not lost.
+		NOT = { scope:winner ?= { is_subject_of = scope:loser } }
 	}
 	effect = {
-		scope:loser = {
+		scope:loser ?= {
 			if = {
 				limit = {
 					NOR = {
@@ -162,7 +165,7 @@ rum_on_losing_war = {
 # this = location; scope:winner / scope:loser = countries.
 rum_on_location_loss = {
 	trigger = {
-		scope:loser = {
+		scope:loser ?= {
 			has_variable = rum_inheritance_fired
 		}
 	}
@@ -174,7 +177,7 @@ rum_on_location_loss = {
 					capital = root
 				}
 			}
-			scope:loser = {
+			scope:loser ?= {
 				if = {
 					limit = {
 						NOR = {
@@ -193,7 +196,7 @@ rum_on_location_loss = {
 		# through the Old Capital watcher in the disaster's on_monthly:
 		# step revoked, modifier stripped, -15.)
 		else = {
-			scope:loser = {
+			scope:loser ?= {
 				if = {
 					limit = {
 						NOR = {
@@ -213,12 +216,12 @@ rum_on_location_loss = {
 
 rum_on_location_win = {
 	trigger = {
-		scope:winner = {
+		scope:winner ?= {
 			has_variable = rum_inheritance_fired
 		}
 	}
 	effect = {
-		scope:winner = {
+		scope:winner ?= {
 			if = {
 				limit = {
 					NOR = {

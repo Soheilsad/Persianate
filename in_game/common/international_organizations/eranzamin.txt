@@ -53,7 +53,7 @@ eranzamin = {
 	# because the latter let Mamluk-style outsiders qualify off a single
 	# foothold in Anatolia or the Crescent.
 	invite_visible_trigger = {
-		scope:target = {
+		scope:target ?= {
 			capital = { is_eranzamin_region_province = yes }
 		}
 		

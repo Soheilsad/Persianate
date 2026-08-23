@@ -20,7 +20,7 @@ on_location_changed_owner = {
 
 iranic_tribal_great_city_conquest = {
 	trigger = {
-		scope:winner = { government_type = government_type:iranic_tribal_polity }
+		scope:winner ?= { government_type = government_type:iranic_tribal_polity }
 		# root = the conquered location. One of the great seats of empire.
 		OR = {
 			this = location:tabriz
@@ -32,7 +32,7 @@ iranic_tribal_great_city_conquest = {
 		}
 	}
 	effect = {
-		scope:winner = {
+		scope:winner ?= {
 			trigger_event_non_silently = { id = kurdish_emirate.1 }
 		}
 	}
