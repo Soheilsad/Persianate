@@ -59,7 +59,12 @@ custody_of_the_ulus = {
 			}
 			custom_tooltip = {
 				text = custody_end_expired_tt
-				has_variable = custody_expired
+				AND = {
+					NOT = { has_reform = government_reform:chinggisid_regency }
+					has_variable = custody_expired
+				}
+				
+				
 			}
 		}
 	}

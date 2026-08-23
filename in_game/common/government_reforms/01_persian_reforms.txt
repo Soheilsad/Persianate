@@ -84,6 +84,8 @@ persianate_bureaucracy_reform = {
 		nobles_estate_allowed_leading_military = no
 		global_clergy_desired_pop_scaled = 0.01
 		cultures_capacity = 2
+		### I really don't want to add this, but if not, dumb little cultural revolts destroy the regencies. 
+
 		# Demilitarization of the Sedentary Population
 		tax_income_efficiency = 0.1
 		diwan_estate_levy_size = -0.9
@@ -194,6 +196,9 @@ chinggisid_regency = {
 		country_cabinet_efficiency = ez_reform_cabinet_malus
 		monthly_towards_decentralization = ez_reform_decentralization_push
 		monthly_towards_turk = 0.1
+		### I am kind of forced to add this. 
+		tolerated_culture_maintenance_cost_modifier = -0.66
+		accepted_culture_maintenance_cost_modifier = -0.66
 	}
 
 	years = 0 # this is ... trivially easy to do, after all.

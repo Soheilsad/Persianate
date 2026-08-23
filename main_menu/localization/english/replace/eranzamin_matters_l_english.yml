@@ -21,8 +21,8 @@
 
  custody_not_yet_fired_tt: "The Custody has not yet come under audit"
  custody_not_yet_completed_tt: "The Custody has not already been settled in this realm's history"
- custody_end_quiet_crown_tt: "The Quiet Crown — the fiction dropped on your own terms, from Sole Custody"
- custody_end_yarliq_tt: "The Restored Yarliq — the khanate made real; the khan is your house now"
+ custody_end_quiet_crown_tt: "The Quiet Crown — the fiction dropped on your own terms, from Sole Custody. You need sole custody for 24 months, and then the First option in the Kurultai decision."
+ custody_end_yarliq_tt: "The Restored Yarliq — the khanate made real; the khan is your house now. You need sole custody for 24 months, and then the Second option in the Kurultai decision."
  custody_end_endured_tt: "Endured — three hundred months and two successions survived with the fiction intact"
  custody_end_expired_tt: "The Fiction Expired — the mask came off in public, and what stood behind it was an army"
  custody_kuriltai_gate_tt: "Sole Custody held for 24 months — no rival regency and no Borjigin sovereign standing in Erānzamīn"
