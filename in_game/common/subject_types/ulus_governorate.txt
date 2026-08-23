@@ -27,9 +27,11 @@ ulus_governorate = {
 
 	# Sworn for the war the steward is fighting — they march together.
 	join_offensive_wars_always = {
-		scope:actor ?= { is_subject_of = scope:recipient }
+		always = no
 	}
 	join_defensive_wars_always = { always = no }
+	join_offensive_wars_can_call = { always = yes }
+	join_defensive_wars_can_call = { always = yes }
 	will_join_independence_wars = yes
 	# The custodian is NOT auto-dragged into the governorate's wars
 	# (engine default protects subjects from external attackers — which
