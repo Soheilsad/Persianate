@@ -41,10 +41,9 @@ martyrs_rolls_battle_won = {
 			government_type = government_type:commonwealth_of_martyrs
 			has_estate_privilege = estate_privilege:shaykhi_martyrs_rolls
 		}
-		scope:target = {
-			is_rebel_country = no
-		}
 		scope:target.owner ?= {
+			# unit scope -> owner: is_rebel_country is a country trigger.
+			is_rebel_country = no
 			is_turco_mongol_polity = yes
 		}
 	}
@@ -61,10 +60,9 @@ martyrs_rolls_battle_lost = {
 			government_type = government_type:commonwealth_of_martyrs
 			has_estate_privilege = estate_privilege:shaykhi_martyrs_rolls
 		}
-		scope:target = {
-			is_rebel_country = no
-		}
 		scope:target.owner ?= {
+			# unit scope -> owner: is_rebel_country is a country trigger.
+			is_rebel_country = no
 			is_turco_mongol_polity = yes
 		}
 	}

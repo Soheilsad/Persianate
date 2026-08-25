@@ -22,6 +22,8 @@ IOT_f = {
 			has_reform = government_reform:chinggisid_regency
 			has_reform = government_reform:gurkani_regime
 			has_reform = government_reform:amir_sultanate
+			has_reform = government_reform:timurid_empire
+			has_reform = government_reform:timurid_synthesis
 		}
 
 	}
@@ -40,13 +42,13 @@ IOT_f = {
 
 	regions = {
 		persia_region
-		khorasan_region
 		caucasus_region
 	}
 	areas = {
 		cappadocia_area
 		iraq_arabi_area
 		jazira_area
+		western_khorasan_area
 	}
 
 	form_effect = {

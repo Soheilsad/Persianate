@@ -696,7 +696,22 @@ matter_tork_shahnama_recension = {
 }
 
 # ---Approach 4: Proclaim the Great Raid --------------------------------------
-# The hosts pointed outward, formally: a decade of license.
+# The hosts pointed outward AT A NAMED THEATER. Designating a region:
+#   - grants the decade of license (the old modifier) and the raid CB
+#     (cb_great_raid, visible against any owner of theater land),
+#   - stamps an inert indicator modifier on the theater's locations,
+#   - opens the monthly migration engine (02_matter_effects.txt): once
+#     you hold a beachhead there, the homeland's hosts start riding to
+#     it — the migration follows the victories, it does not precede
+#     them,
+#   - sets the release gate: matter_tork_raid_need = 20% of the
+#     theater's locations (Release the March also wants 80% of the
+#     seat's area).
+# Re-running (15y cooldown) re-points the raid: old markers swept,
+# counters rebuilt. The theater blacklist is
+# is_great_raid_designatable_region (03_matter_triggers.txt): the
+# Islamic heartlands and Anatolia are out; Georgia, Hindustan, the
+# steppe, and the enterprising player's China are in.
 
 matter_tork_great_raid = {
 	type = disaster
@@ -730,8 +745,59 @@ matter_tork_great_raid = {
 		}
 	}
 
+	# The theater (columbian_exchange.txt:90 pattern).
+	select_trigger = {
+		looking_for_a = region
+		source = actor
+		target_flag = target_region
+		name = "choose_a_region"
+		none_available_msg_key = "no_regions_available"
+		column = { data = name }
+		visible = {
+			is_great_raid_designatable_region = yes
+		}
+	}
+
 	effect = {
 		scope:actor = {
+			# Re-designation: sweep the old theater first.
+			if = {
+				limit = { has_variable = matter_tork_raid_region }
+				var:matter_tork_raid_region ?= {
+					every_location_in_region = {
+						limit = { has_location_modifier = matter_raid_designated }
+						remove_location_modifier = matter_raid_designated
+					}
+				}
+				matter_raid_clear_pairings = yes
+				remove_variable = matter_tork_raid_region
+				remove_variable = matter_tork_raid_need
+				remove_variable = matter_tork_raid_owned
+			}
+
+			set_variable = { name = matter_tork_raid_region value = scope:target_region }
+			set_variable = { name = matter_tork_raid_owned value = 0 }
+
+			# Count the theater once; the release gate reads 20% of it.
+			set_local_variable = { name = raid_total value = 0 }
+			scope:target_region = {
+				every_location_in_region = {
+					scope:actor = {
+						change_local_variable = { name = raid_total add = 1 }
+					}
+				}
+			}
+			set_variable = { name = matter_tork_raid_need value = local_var:raid_total }
+			change_variable = { name = matter_tork_raid_need multiply = 0.2 }
+
+			# The banner planted on the map: inert marker, tooltip only.
+			scope:target_region = {
+				every_location_in_region = {
+					add_location_modifier = { modifier = matter_raid_designated years = -1 }
+				}
+			}
+
+			# The decade of license, as before.
 			add_country_modifier = { modifier = matter_great_raid years = 10 }
 			add_estate_satisfaction = { type = estate_type:tribes_estate value = 0.05 }
 		}
@@ -742,9 +808,16 @@ matter_tork_great_raid = {
 	}
 }
 
-# ---Approach 4: Grant the Yurt Charters --------------------------------------
-# Formalize pasture rights in the prospective march zone. TODO:
-# couple chartered locations to march strength/loyalty at release.
+# ---Approach 4: Grant the Yurt --------------------------------------
+# The il transplant. Requires a designated theater (Great Raid) AND a
+# beachhead in it. One stroke moves the whole social organism from the
+# homeland's single richest pastoral reservoir to your largest holding
+# in the theater: ~75% of its tribesmen over a year on the road, AND
+# the begs who own them — a yurt granted by yarligh names the beg, and
+# what moves is tents, herds, fighting men, and their aristocracy
+# together. The source quiets, the theater turns Turkic, and the power
+# center you moved now stands where you put it. That is the point, and
+# the danger.
 
 matter_tork_yurt_charters = {
 	type = disaster
@@ -766,6 +839,14 @@ matter_tork_yurt_charters = {
 		scope:actor = {
 			has_variable = matter_tork_approach
 			var:matter_tork_approach = 4
+			has_variable = matter_tork_raid_region
+			# A beachhead: the il does not ride to land you do not hold.
+			custom_tooltip = {
+				text = matter_tork_yurt_beachhead_tt
+				var:matter_tork_raid_region ?= {
+					any_location_in_region = { owner = scope:actor }
+				}
+			}
 		}
 	}
 
@@ -780,34 +861,97 @@ matter_tork_yurt_charters = {
 		}
 	}
 
-	select_trigger = {
-		looking_for_a = location
-		interaction_source_list = {
-			scope:actor = {
-				every_owned_location = {
-					limit = { is_tribal_pastoral_location = yes }
-					add_to_list = source
+	effect = {
+		scope:actor = {
+			# The grant: your largest holding in the theater.
+			var:matter_tork_raid_region ?= {
+				ordered_location_in_region = {
+					limit = { 
+						owner = scope:actor
+						NOT = { has_location_modifier = matter_yurt_charter}
+						 }
+					order_by = population
+					max = 1
+					save_scope_as = yurt_dest
 				}
 			}
-		}
-		target_flag = target
-		name = "choose_location"
-		none_available_msg_key = "no_locations_available"
-		column = { data = name }
-		column = { data = population }
-		visible = {
-			NOT = { has_location_modifier = matter_yurt_charter }
-		}
-	}
-
-	effect = {
-		if = {
-			limit = { exists = scope:target }
-			scope:target = {
-				add_location_modifier = { modifier = matter_yurt_charter years = -1 }
-			}
-			scope:actor = {
-				add_estate_satisfaction = { type = estate_type:tribes_estate value = 0.025 }
+			if = {
+				limit = { exists = scope:yurt_dest }
+				# The il: the single largest Turkic/Tatar/Mongol tribal
+				# pop of the homeland, wherever it sits (no pastoral
+				# gate - city tribesmen ride too). 75% of it, a year on
+				# the road, under its own culture.
+				ordered_pop = {
+					limit = {
+						pop_type = pop_type:tribesmen
+						location = {
+							is_eranzamin_region_province = yes
+							# Caucasus theaters overlap Eranzamin: the
+							# il never rides from the theater to itself.
+							NOT = { has_location_modifier = matter_raid_designated }
+						}
+						OR = {
+							culture = { has_culture_group = culture_group:turkic_group }
+							culture = { has_culture_group = culture_group:tatar_group }
+							culture = { has_culture_group = culture_group:mongolian_group }
+						}
+					}
+					order_by = pop_size
+					max = 3
+					if = {
+						limit = { pop_size > 1 }
+						location = { save_scope_as = yurt_source }
+						add_migration = {
+							owner = scope:actor
+							from = this.location.province_definition
+							to = scope:yurt_dest.province_definition
+							culture = this.culture
+							type = pop_type:tribesmen
+							amount = {
+								value = this.pop_size
+								multiply = 0.07
+							}
+							months = 10
+						}
+						# An il on the road is spoken for: the monthly
+						# engine will not pair this reservoir again.
+						location = { set_variable = raid_feeder_source }
+					}
+				}
+				if = {
+					limit = { exists = scope:yurt_source }
+					# The begs ride with their people: 75% of the
+					# source's Turco-Mongol nobles, each under its own
+					# culture.
+					every_pop = {
+						limit = {
+							pop_type = pop_type:nobles
+							location = { this = scope:yurt_source }
+							OR = {
+								culture = { has_culture_group = culture_group:turkic_group }
+								culture = { has_culture_group = culture_group:tatar_group }
+								culture = { has_culture_group = culture_group:mongolian_group }
+							}
+						}
+						add_migration = {
+							owner = scope:actor
+							from = scope:yurt_source.province_definition
+							to = scope:yurt_dest.province_definition
+							culture = this.culture
+							type = pop_type:nobles
+							amount = {
+								value = this.pop_size
+								multiply = 0.07
+							}
+							months = 10
+						}
+					}
+					# Pasture rights written into the registers, at the grant.
+					scope:yurt_dest = {
+						add_location_modifier = { modifier = matter_yurt_charter years = -1 }
+					}
+					add_estate_satisfaction = { type = estate_type:tribes_estate value = 0.025 }
+				}
 			}
 		}
 	}
@@ -913,14 +1057,17 @@ claim_iranization = {
 }
 
 # ---B. Release the March (disposition B, consummated by the act) -------
-# The march is EARNED by conquest, not auto-transferred (design
-# decision 19; create_uc_bey is the engine-native template). The
-# player picks a seat among owned tribal-pastoral locations whose
-# AREA passes the checks: >= 8 owned locations [verify: count = N in
-# any_* iterators] and a border with at least one country that is
-# neither us nor our subject — someone to be unleashed upon.
-# TODO v1.1: a pop-capacity floor on the zone (useful land, not
-# desert margins) once the right location-scope trigger is settled.
+# The march is EARNED by conquest IN THE DESIGNATED THEATER (Great
+# Raid designates; the migration engine and the Yurt grants fill).
+# Gates: >= 20% of the theater's locations held (matter_tork_raid_need,
+# counted at designation; matter_tork_raid_owned recounted monthly),
+# a seat whose AREA is at least ~80% yours (at most one foreign
+# location in it), and peace. Release hands the march EVERY holding
+# you have in the theater — the hosts you drove there, their begs,
+# and the land they took, cut loose as one march pointed away from
+# you. The interior release is gone: this is the Seljuk play proper,
+# the uc planted on the dar al-harb frontier, not carved from your
+# own Fars pastures.
 # TODO v1.5: custom marcher_confederation subject type (uc_bey-like
 # contract) instead of plain march — the ticking bomb in the terms.
 
@@ -939,6 +1086,12 @@ matter_tork_release_march = {
 			var:matter_tork_approach = 4
 			matter_tork_no_disposition_yet = yes
 			at_war = no
+			has_variable = matter_tork_raid_region
+			# The theater is won: a fifth of it flies your banner.
+			custom_tooltip = {
+				text = matter_tork_release_need_tt
+				var:matter_tork_raid_owned >= var:matter_tork_raid_need
+			}
 		}
 	}
 
@@ -957,9 +1110,11 @@ matter_tork_release_march = {
 		looking_for_a = location
 		interaction_source_list = {
 			scope:actor = {
-				every_owned_location = {
-					limit = { is_tribal_pastoral_location = yes }
-					add_to_list = source
+				var:matter_tork_raid_region ?= {
+					every_location_in_region = {
+						limit = { owner = scope:actor }
+						add_to_list = source
+					}
 				}
 			}
 		}
@@ -969,23 +1124,13 @@ matter_tork_release_march = {
 		column = { data = name }
 		column = { data = population }
 		visible = {
-			is_tribal_pastoral_location = yes
+			# The seat's area is consolidated: at most ONE location of
+			# it in foreign hands (~80% for a typical 8-location area).
 			area = {
-				# Big enough to be a real march.
-				any_location_in_area = {
-					count = 8
-					owner = scope:actor
-				}
-				# Pointed at someone — the zone must touch a country
-				# that is neither us nor ours.
-				any_location_in_area = {
-					owner = scope:actor
-					any_neighbor_location = {
-						exists = owner
+				NOT = {
+					any_location_in_area = {
+						count >= 2
 						NOT = { owner = scope:actor }
-						owner = {
-							NOT = { is_subject_of = scope:actor }
-						}
 					}
 				}
 			}
@@ -1003,15 +1148,23 @@ matter_tork_release_march = {
 					save_scope_as = matter_march_country
 				}
 			}
-			# The rest of the zone rides out with the seat.
-			scope:matter_march_seat.area = {
-				every_location_in_area = {
-					limit = { owner = scope:actor }
-					change_location_owner = scope:matter_march_country
-				}
-			}
+			# Everything you hold in the theater rides out with the seat.
 			scope:actor = {
-				# The interior hosts ride out to join the march.
+				var:matter_tork_raid_region ?= {
+					every_location_in_region = {
+						limit = { owner = scope:actor }
+						change_location_owner = scope:matter_march_country
+					}
+					# The banner comes down: the raid is consummated.
+					every_location_in_region = {
+						limit = { has_location_modifier = matter_raid_designated }
+						remove_location_modifier = matter_raid_designated
+					}
+				}
+				matter_raid_clear_pairings = yes
+				remove_variable = matter_tork_raid_region
+				remove_variable = matter_tork_raid_need
+				remove_variable = matter_tork_raid_owned
 				set_variable = matter_tork_disposition_chosen
 				set_variable = matter_tork_marcher_claimed
 				# The compact ceremony — modifiers + resolution.

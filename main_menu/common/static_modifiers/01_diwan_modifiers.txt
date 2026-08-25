@@ -26,7 +26,6 @@ border_fortification_modifier = {
 		category = country
 	}
 	global_defensive = 0.1
-	fort_maintenance_cost = -0.1
 	fort_maintenance_efficiency = 0.1
 }
 
@@ -131,7 +130,6 @@ diwan_reform_admin_efficiency = {
 }
 diwan_reform_build_cost = {
 	game_data = { category = country }
-	global_build_buildings_cost = -0.10
 	global_build_buildings_efficiency = 0.10
 }
 diwan_reform_state_maintenance = {
@@ -204,7 +202,6 @@ decree_fiscal_mod = {
 }
 decree_infra_mod = {
 	game_data = { category = country }
-	global_build_buildings_cost = -0.15
 	global_build_buildings_efficiency = 0.15
 	global_distance_from_capital_speed_propagation = -0.05
 }
@@ -233,7 +230,6 @@ decree_renew_khutba_mod = {
 decree_caravanserai_mod = {
 	game_data = { category = country }
 	global_monthly_prosperity = 0.002
-	global_build_buildings_cost = -0.10
 	global_build_buildings_efficiency = 0.10
 	global_distance_from_capital_speed_propagation = 0.05
 }

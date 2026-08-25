@@ -511,6 +511,8 @@ timurid_synthesis = {
 		monthly_towards_turk = 0.025
 		monthly_towards_tazik = 0.025
 		monthly_towards_centralization = 0.05
+		tolerated_culture_maintenance_cost_modifier = -0.66
+		accepted_culture_maintenance_cost_modifier = -0.66
 	}
 
 	years = 10

@@ -129,5 +129,6 @@ ghazi_burden_of_sword = {
 		# only where re-declaration is allowed (Sword keeps the
 		# floor; Guardian allows none; Broken outcomes lock).
 		set_variable = ghazi_burden_completed
+		remove_variable = ghazi_burden_fired
 	}
 }

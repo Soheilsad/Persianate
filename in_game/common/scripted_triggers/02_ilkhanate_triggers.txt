@@ -30,9 +30,10 @@ is_eranzamin_contender = {
 	# Tariqa orders (building-countries) are not contenders — they deny
 	# the throne question entirely; no flavor.1, no warlord modifier.
 	NOT = { country_type = building }
-	capital = {
-		province = { is_eranzamin_region_province = yes }
-	}
+	# Straight off the capital LOCATION (region/area resolve there too):
+	# the province link returned unset scopes for some countries in the
+	# any_country sweeps (error.log 2026-08-25).
+	capital ?= { is_eranzamin_region_province = yes }
 
 	# Must be a relevant state
 	# OR = {

@@ -82,7 +82,8 @@ on_ghazi_burden_battle_win = {
 		scope:actor = {
 			owner = { has_variable = ghazi_burden_fired }
 		}
-		scope:target = {
+		# scope:target is a UNIT here — is_rebel_country needs the country.
+		scope:target.owner ?= {
 			is_rebel_country = no
 		}
 	}
@@ -127,7 +128,8 @@ ghazi_burden_on_battle_lost = {
 		scope:actor = {
 			owner = { has_variable = ghazi_burden_fired }
 		}
-		scope:target = {
+		# scope:target is a UNIT here — is_rebel_country needs the country.
+		scope:target.owner ?= {
 			is_rebel_country = no
 		}
 	}

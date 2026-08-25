@@ -42,7 +42,7 @@ is_eranzamin_territorial_gate_met = {
 	# this for the exact 60% threshold.
 	num_locations_owned_or_owned_by_subjects_or_below > 240
 	is_subject = no
-	capital = { province = { is_eranzamin_region_province = yes } }
+	capital ?= { is_eranzamin_region_province = yes }
 }
 
 is_eranzamin_consolidation_sustained = {
@@ -308,5 +308,49 @@ is_urban_diwan_capable_location = {
 				culture ?= { has_culture_group = culture_group:mashriqi_group }
 			}
 		}
+	}
+}
+
+# ---The Great Raid: designatable theaters (region scope) ------------------
+# BLACKLIST, not whitelist (design 2026-08-25): the enterprising player
+# who expanded fast may point the hosts at Ethiopia, China, the Balkans
+# or the Ruslands. Excluded: Iran proper (persia/khorasan — note
+# khorasan_region also contains Transoxiana, so Mavarannahr is covered),
+# Anatolia (Shattered Rum's theater), and the Islamic heartlands
+# (arabia, crescent = Iraq/Syria, egypt, maghreb, somalia, sahel).
+# The Caucasus stays IN: Georgia was the most-raided target of the
+# whole era (Timur went eight times). The steppe stays IN despite
+# Özbeg's nominal Islam — Timur vs Tokhtamysh is period truth.
+# Old World only: the hosts ride, they do not sail.
+is_great_raid_designatable_region = {
+	NOT = { this = region:persia_region }
+	NOT = { this = region:khorasan_region }
+	NOT = { this = region:anatolia_region }
+	NOT = { this = region:arabia_region }
+	NOT = { this = region:crescent_region }
+	NOT = { this = region:egypt_region }
+	NOT = { this = region:maghreb_region }
+	NOT = { this = region:somalia_region }
+	NOT = { this = region:sahel_region }
+	# Land the hosts can actually reach and hold: an ownable Old World
+	# location exists in the region (also filters the ocean regions).
+	any_ownable_location_in_region = {
+		OR = {
+			continent = continent:asia
+			continent = continent:europe
+			continent = continent:africa
+		}
+	}
+}
+
+# ---Culture scope: the hosts of the Matter --------------------------------
+# Mirrors is_turco_mongol_polity's group list (07_martyrs_triggers.txt),
+# callable on a culture directly — used by the Great Raid migration
+# engine's per-pop filters.
+is_turco_mongol_culture = {
+	OR = {
+		has_culture_group = culture_group:turkic_group
+		has_culture_group = culture_group:mongolian_group
+		has_culture_group = culture_group:tatar_group
 	}
 }

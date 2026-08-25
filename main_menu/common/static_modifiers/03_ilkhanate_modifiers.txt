@@ -3,10 +3,8 @@ eranzamin_contender_modifier = {
 		category = country
 		decaying = no
 	}
-	pure_tooltip_entry = eranzamin_contender_auto_conquest_tooltip
 	global_war_score_efficiency = 0.33
 	antagonism_received_modifier = -0.50 # "Antagonism" analogue
-	diplomatic_annexation_cost = -0.25
 	diplomatic_annexation_efficiency = 0.25
 	aggressiveness_modifier = 1
 	carefulness_modifier = -0.4

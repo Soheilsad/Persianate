@@ -458,8 +458,8 @@ matter_yurt_charter = {
 	game_data = {
 		category = location
 	}
-
-	local_unrest = -0.05
+	local_peasant_enfranchisment = -0.25
+	local_unrest = 0.25
 	local_manpower = 0.005
 }
 
@@ -621,4 +621,27 @@ qizilbash_synthesis = {
 	amirs_estate_target_satisfaction = 0.05
 	diwan_estate_target_satisfaction = 0.05
 	stability_investment = 0.02
+}
+
+matter_raid_designated = {
+	# The Great Raid's banner on the designated theater. Shows the
+	# player where the hosts are pointed, and PRESERVES the payload:
+	# while the banner stands, tribesmen here do not promote,
+	# assimilate, or convert — the transplanted il keeps its tents,
+	# its tongue, and its rite until the march is released. Note the
+	# stamp covers the WHOLE theater, native tribal pops included,
+	# friend and enemy alike, for as long as the designation stands.
+	game_data = {
+		category = location
+	}
+	local_tribal_promotion = -5
+	local_tribesmen_assimilation_blocked = yes
+	local_tribesmen_conversion_blocked = yes
+	local_manpower = 0.001
+	local_tribesmen_desired_pop_scaled = 0.4
+	local_tribesmen_migration_allowed = no
+	local_tribesmen_pop_growth = 0.1 ##they multiply in the virgin territory
+	local_tribes_estate_power = 1.0
+	local_peasant_enfranchisment = -0.25
+	local_unrest = 0.25
 }

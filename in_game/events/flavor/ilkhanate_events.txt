@@ -531,7 +531,7 @@ ilkhanate_flavor.10 = {
 		#       local culture) and is not granted here. --
 		add_prestige = 100
 		add_legitimacy = 50
-		set_country_rank = country_rank:rank_empire
+		# set_country_rank = country_rank:rank_empire
 
 		every_owned_location = {
 			limit = {

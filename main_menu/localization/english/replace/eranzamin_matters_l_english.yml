@@ -420,7 +420,7 @@
 
  # --- Approach 4: the march, earned ---------------------------------
  matter_tork_release_march: "Release the March"
- matter_tork_release_march_desc: "Carve the zone and let the hosts hold it. Pick a seat among your tribal pasturelands: its area must be at least eight owned locations and must border a realm that is neither us nor ours — someone to be unleashed upon. The area rides out as a March: militarily formidable, fiscally poor, unruly by construction. Releasing it seals the compact and settles the Matter."
+ matter_tork_release_march_desc: "Cut the conquest loose as a march of the sword. Requires a proclaimed Great Raid, a fifth of the theater under your banner, peace, and a seat whose area is nearly all yours. Every holding in the theater rides out with the seat: the hosts you sent, the begs who lead them, and the land they took, a subject march pointed away from you. Militarily formidable, fiscally poor, unruly by construction. Releasing it seals the compact and settles the Matter."
 
  matter_of_tork.85.title: "The Begs Quarrel Over the Vanguard"
  matter_of_tork.85.desc: "Word of the coming march has reached every encampment, and the begs have begun to position themselves — gifts to the court, raids to advertise prowess, a knife-fight at a wedding. Whoever leads the march will found a house. They all know it. So do we."
@@ -449,12 +449,19 @@
 
  # --- Approach 4: raid & charter actions -----------------------------
  matter_tork_great_raid: "Proclaim the Great Raid"
- matter_tork_great_raid_desc: "A decade of license: the hosts pointed outward with the throne's blessing. They ride larger and prouder — at someone else's expense."
- matter_tork_yurt_charters: "Grant the Yurt Charters"
- matter_tork_yurt_charters_desc: "Pasture rights written into the registers for the zone the march will hold. The hosts see their future formalized — and the land they are promised quiets."
+ matter_tork_great_raid_desc: "Name the theater and point the hosts at it. The proclamation grants a decade of license, a war claim against every ruler holding land there, and sets the hosts in motion: once you hold ground in the theater, tribesmen from your greatest pasturelands begin riding to it every month. Conquer a fifth of the theater and you may release your holdings there as a march. The lands of the Prophet's community are no theater for a raid; nearly everywhere else is."
+ matter_tork_yurt_charters: "Grant the Yurt"
+ matter_tork_yurt_charters_desc: "Move a whole il by yarligh. Your richest tribal reservoir sends three quarters of its hosts to your largest holding in the raid theater, a year on the road, and the begs ride with their people. Pasture rights are written into the registers where they arrive. The homeland quiets by exactly as much as the frontier hardens."
 
  STATIC_MODIFIER_NAME_matter_madrasa_registers: "The Madrasa of the Registers"
  STATIC_MODIFIER_DESC_matter_madrasa_registers: "The cabinet is teaching, not administering. The long work, paid for in the coin of government."
+ matter_tork_yurt_beachhead_tt: "You hold at least one location in the designated raid theater"
+ matter_tork_release_need_tt: "At least a fifth of the theater's locations fly your banner"
+ STATIC_MODIFIER_NAME_matter_raid_designated: "Theater of the Great Raid"
+ STATIC_MODIFIER_DESC_matter_raid_designated: "The hosts of a distant throne are pointed here. Conquest in this region feeds their migration, and enough of it lets their ruler release his holdings here as a march. While the banner stands, the tribes of this land keep their tents, their tongue, and their rite: no settling, no melting into the villages, no new prayers."
+ cb_great_raid: "The Great Raid"
+ cb_great_raid_desc: "The raid was proclaimed and this realm holds land in its theater. The hosts do not ask twice."
+ GREAT_RAID_WAR_NAME: "$ORDER$$ATTACKER.GetAdjectiveWithFlag$ Great Raid on $DEFENDER.GetNameWithFlagNoTooltip$"
  STATIC_MODIFIER_NAME_matter_great_raid: "The Great Raid"
  STATIC_MODIFIER_DESC_matter_great_raid: "The hosts ride outward under the throne's blessing — larger, prouder, and pointed away."
  STATIC_MODIFIER_NAME_matter_yurt_charter: "Yurt Charter"
