@@ -773,6 +773,7 @@ matter_tork_great_raid = {
 				remove_variable = matter_tork_raid_region
 				remove_variable = matter_tork_raid_need
 				remove_variable = matter_tork_raid_owned
+				remove_variable = matter_tork_raid_tribes
 			}
 
 			set_variable = { name = matter_tork_raid_region value = scope:target_region }
@@ -1092,6 +1093,17 @@ matter_tork_release_march = {
 				text = matter_tork_release_need_tt
 				var:matter_tork_raid_owned >= var:matter_tork_raid_need
 			}
+			# And it is a REAL march, not a strip: at least 25 holdings.
+			custom_tooltip = {
+				text = matter_tork_release_size_tt
+				var:matter_tork_raid_owned >= 25
+			}
+			# And the hosts have actually arrived: half a million
+			# tribesmen on the ground. A march is people, not lines.
+			custom_tooltip = {
+				text = matter_tork_release_tribes_tt
+				var:matter_tork_raid_tribes >= 500
+			}
 		}
 	}
 
@@ -1126,6 +1138,7 @@ matter_tork_release_march = {
 		visible = {
 			# The seat's area is consolidated: at most ONE location of
 			# it in foreign hands (~80% for a typical 8-location area).
+			is_city = yes
 			area = {
 				NOT = {
 					any_location_in_area = {
@@ -1142,9 +1155,19 @@ matter_tork_release_march = {
 			limit = { exists = scope:target }
 			scope:target = {
 				save_scope_as = matter_march_seat
+				add_pop = {
+					culture = culture:farsi_culture
+					religion = root.owner.religion
+					type = pop_type:nobles
+					size = { value = 2 }
+					literacy = 40
+				}
 				create_country_from_location = {
-					change_country_name = MATTER_TORK_MARCH
-					make_subject_of = { target = scope:actor type = subject_type:march }
+					# change_country_name = MATTER_TORK_MARCH
+					# Tributary, NOT march: the released hosts must be
+					# able to wage their own offensive wars — that is
+					# the entire point of pointing them outward.
+					make_subject_of = { target = scope:actor type = subject_type:tributary }
 					save_scope_as = matter_march_country
 				}
 			}
@@ -1165,10 +1188,72 @@ matter_tork_release_march = {
 				remove_variable = matter_tork_raid_region
 				remove_variable = matter_tork_raid_need
 				remove_variable = matter_tork_raid_owned
+				remove_variable = matter_tork_raid_tribes
 				set_variable = matter_tork_disposition_chosen
 				set_variable = matter_tork_marcher_claimed
 				# The compact ceremony — modifiers + resolution.
 				trigger_event_non_silently = matter_of_tork.20
+			}
+			# ---The constitution of the march -------------------------
+			# A Persianate amir-sultanate under a Muslim beg of the
+			# hosts' own greatest people: the released il gets the
+			# government its historical models (Danishmendids,
+			# Artuqids, the house of Osman) actually built.
+			scope:matter_march_country ?= {
+				set_variable = tributary_march_released_by_legitimate_ruler
+				# The greatest single host of the march names its people.
+				ordered_pop = {
+					limit = {
+						OR = {
+							culture = { has_culture_group = culture_group:turkic_group }
+							culture = { has_culture_group = culture_group:tatar_group }
+							culture = { has_culture_group = culture_group:mongolian_group }
+						}
+					}
+					order_by = pop_size
+					max = 1
+					save_scope_as = march_top_pop
+				}
+				change_government_type = government_type:persianate_sultanate
+				change_heir_selection = heir_selection:favorite_son_elective_succession
+				if = {
+					limit = { exists = scope:march_top_pop }
+					change_primary_culture = scope:march_top_pop.culture
+				}
+				# The compact is Islamic: the releaser's rite if he is
+				# Muslim, the sunna otherwise.
+				if = {
+					limit = {
+						scope:actor = { religion.group = religion_group:muslim }
+					}
+					change_religion = scope:actor.religion
+				}
+				else = {
+					change_religion = religion:sunni
+				}
+				# AFTER the government switch (the reform requires the
+				# type; add_reform silently fails on a false potential).
+				add_reform = government_reform:persianate_bureaucracy_reform
+				add_reform = government_reform:amir_sultanate
+				set_court_language = culture:farsi_culture.dialect
+				grant_estate_privilege = estate_privilege:diwan_land_registers
+				grant_estate_privilege = estate_privilege:diwan_musadara_confiscation
+				grant_estate_privilege = estate_privilege:amirs_iqta_grant
+				grant_estate_privilege = estate_privilege:amirs_personal_retinues
+				grant_estate_privilege = estate_privilege:amirs_frontier_autonomy
+				# The beg: a Muslim amir of the march's own greatest
+				# people, a soldier before anything else.
+				create_character = {
+					estate = estate_type:amirs_estate
+					age = { min = 28 max = 45 }
+					culture = scope:march_top_pop.culture
+					religion = scope:matter_march_country.religion
+					adm = { 50 100 }
+					dip = { 50 100 }
+					mil = { 70 100 }
+					save_scope_as = march_amir
+				}
+				set_new_ruler = scope:march_amir
 			}
 		}
 	}

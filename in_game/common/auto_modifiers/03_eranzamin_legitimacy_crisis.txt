@@ -22,6 +22,15 @@ unsettled_legitimacy_crisis = {
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
+		# The Ghaznavid template IS an answer: the sword holds the realm
+		# and Cairo's diploma names it lawful. (Also the constitution of
+		# released Great Raid marches — they must not be born bleeding.)
+		NOT = { 
+			AND = {
+				has_reform = government_reform:amir_sultanate
+				has_variable = tributary_march_released_by_legitimate_ruler
+			}
+		}
 		NOT = { has_reform = government_reform:tariqa_order }
 		# The crowned murshid IS an answer to the khuṭba question — the
 		# coronation (tariqa.6) settles the claim. The khurūj-in-arms

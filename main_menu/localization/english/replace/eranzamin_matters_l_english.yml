@@ -135,7 +135,7 @@
  MATTER_TORK_EXPULSION_TRACK: "Expulsion — the hosts moved on"
 
  # --- Matter of Tork: created tags --------------------------------
- MATTER_TORK_MARCH: "Marches of the Sword"
+ MATTER_TORK_MARCH: "Uç Beylik"
  MATTER_TORK_EXILE_HOST: "The Exiled Hosts"
 
  # --- Matter of Tork: disposition claim buttons --------------------
@@ -420,7 +420,7 @@
 
  # --- Approach 4: the march, earned ---------------------------------
  matter_tork_release_march: "Release the March"
- matter_tork_release_march_desc: "Cut the conquest loose as a march of the sword. Requires a proclaimed Great Raid, a fifth of the theater under your banner, peace, and a seat whose area is nearly all yours. Every holding in the theater rides out with the seat: the hosts you sent, the begs who lead them, and the land they took, a subject march pointed away from you. Militarily formidable, fiscally poor, unruly by construction. Releasing it seals the compact and settles the Matter."
+ matter_tork_release_march_desc: "Cut the conquest loose as a march of the sword. Requires a proclaimed Great Raid, a fifth of the theater and no fewer than 25 locations under your banner, half a million tribesmen settled in your holdings there, peace, and a seat whose area is nearly all yours. Every holding in the theater rides out with the seat: the hosts you sent, the begs who lead them, and the land they took, a tributary sultanate under a beg of their own greatest people, free to wage its own wars, pointed away from you. Militarily formidable, fiscally poor, unruly by construction. Releasing it seals the compact and settles the Matter."
 
  matter_of_tork.85.title: "The Begs Quarrel Over the Vanguard"
  matter_of_tork.85.desc: "Word of the coming march has reached every encampment, and the begs have begun to position themselves — gifts to the court, raids to advertise prowess, a knife-fight at a wedding. Whoever leads the march will found a house. They all know it. So do we."
@@ -457,6 +457,8 @@
  STATIC_MODIFIER_DESC_matter_madrasa_registers: "The cabinet is teaching, not administering. The long work, paid for in the coin of government."
  matter_tork_yurt_beachhead_tt: "You hold at least one location in the designated raid theater"
  matter_tork_release_need_tt: "At least a fifth of the theater's locations fly your banner"
+ matter_tork_release_size_tt: "You hold at least #Y 25 locations#! in the theater"
+ matter_tork_release_tribes_tt: "At least #Y 500,000 tribesmen#! live in your theater holdings"
  STATIC_MODIFIER_NAME_matter_raid_designated: "Theater of the Great Raid"
  STATIC_MODIFIER_DESC_matter_raid_designated: "The hosts of a distant throne are pointed here. Conquest in this region feeds their migration, and enough of it lets their ruler release his holdings here as a march. While the banner stands, the tribes of this land keep their tents, their tongue, and their rite: no settling, no melting into the villages, no new prayers."
  cb_great_raid: "The Great Raid"

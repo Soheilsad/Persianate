@@ -222,15 +222,27 @@ matter_tork_monthly_tick = {
 	if = {
 		limit = { has_variable = matter_tork_raid_region }
 		set_local_variable = { name = raid_owned value = 0 }
+		set_local_variable = { name = raid_tribes value = 0 }
 		var:matter_tork_raid_region ?= {
 			every_location_in_region = {
 				limit = { owner = root }
 				root = {
 					change_local_variable = { name = raid_owned add = 1 }
 				}
+				# The hosts in place: total tribesmen across the
+				# holdings, of any culture — the march needs PEOPLE,
+				# and by release day they are overwhelmingly the ils
+				# you sent (the banner blocks assimilation).
+				every_pop = {
+					limit = { pop_type = pop_type:tribesmen }
+					root = {
+						change_local_variable = { name = raid_tribes add = prev.pop_size }
+					}
+				}
 			}
 		}
 		set_variable = { name = matter_tork_raid_owned value = local_var:raid_owned }
+		set_variable = { name = matter_tork_raid_tribes value = local_var:raid_tribes }
 		if = {
 			limit = { var:matter_tork_raid_owned >= 1 }
 			# The fullest holding that still has feeder capacity (< 2).
