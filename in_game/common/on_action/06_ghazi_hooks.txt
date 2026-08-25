@@ -32,7 +32,11 @@
 # does not work on multi-option events. The event therefore fires
 # REPEATEDLY until the player silences it (per-type or all).
 # ============================================================
-
+on_battle_won = {
+	on_actions = {
+		on_ghazi_burden_battle_win
+	}
+}
 on_great_battle_won = {
 	on_actions = {
 		on_ghazi_burden_battle_win
@@ -44,7 +48,11 @@ on_battle_lost = {
 		ghazi_burden_on_battle_lost
 	}
 }
-
+on_great_battle_lost = {
+	on_actions = {
+		ghazi_burden_on_battle_lost
+	}
+}
 on_winning_war = {
 	on_actions = {
 		ghazi_burden_on_winning_war

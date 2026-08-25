@@ -18,7 +18,12 @@ IOT_f = {
 	required_locations_fraction = 0.75
 	rule = historical
 	potential = {
-		has_reform = government_reform:chinggisid_regency
+		OR = {
+			has_reform = government_reform:chinggisid_regency
+			has_reform = government_reform:gurkani_regime
+			has_reform = government_reform:amir_sultanate
+		}
+
 	}
 	allow = {
 		custom_tooltip = {
@@ -27,7 +32,7 @@ IOT_f = {
 		}
 	}
 
-	name = IOT_NAME
+	name = IOT
 	flag = ILK
 	adjective = IOT_ADJ
 	tag = ILK

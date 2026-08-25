@@ -27,9 +27,13 @@ eranzamin_succession = {
 			
 
 			any_country = {
-
-				has_variable = eranzamin_contender
-				has_variable = eranzamin_succession_victor
+				is_eranzamin_contender = yes
+				custom_tooltip = {
+					text = eranzamin_contender_tt
+					has_variable = eranzamin_succession_victor
+					has_variable = eranzamin_contender
+				}
+				
 				num_locations_owned_or_owned_by_subjects_or_below > 400
 				controls_eranzamin_key_cities = yes
 				is_subject = no
@@ -77,29 +81,17 @@ eranzamin_succession = {
 		# flag used by generic_actions and tooltip gates.
 		#
 		# The ruler also gets the ilkhanate_warlord character modifier
-		# (auto_conquer_at_war + force_allow_as_leader) — this is the
-		# "Mongol-style warlord prerogative" that lets contenders fight
-		# the succession at speed. The blanket mutual-core grant from
+		# (force_allow_as_leader; conquest-on-occupation is scripted off
+		# this modifier in on_action/24_warlord_conquest_hooks.txt) —
+		# this is the "Mongol-style warlord prerogative" that lets
+		# contenders fight the succession at speed. The blanket mutual-core grant from
 		# the old civil-war event is GONE — integration is now player-
 		# driven via the Consolidate Diwan / Grant the Yurt / Mixed
 		# Settlement actions (design §7).
 		every_country = {
 			limit = { is_eranzamin_contender = yes }
 			set_variable = { name = eranzamin_contender value = yes }
-			ruler = {
-				add_character_modifier = {
-					modifier = ilkhanate_warlord
-					years = -1
-					mode = add_and_extend
-				}
-			}
-			heir = {
-				add_character_modifier = {
-					modifier = ilkhanate_warlord
-					years = -1
-					mode = add_and_extend
-				}
-			}
+			
 			add_country_modifier = {
 				modifier = eranzamin_contender_modifier
 				years = -1
@@ -132,8 +124,17 @@ eranzamin_succession = {
 		every_country = {
 			limit = { has_variable = eranzamin_contender }
 			eranzamin_maintain_consolidation_counter = yes
-		}
 
+		}
+		every_country = {
+			limit = { 
+				NOT = { has_variable = eranzamin_contender }
+				is_eranzamin_contender = yes
+				
+
+			}
+			set_variable = eranzamin_contender
+		}
 		# Provisional victory check — fire winner event the moment the
 		# size + key-cities + END-clause gate is crossed by any contender.
 		every_country = {
@@ -171,7 +172,8 @@ eranzamin_succession = {
 		remove_succession_mod_effect = yes
 		every_country = {
 			limit = { has_variable = eranzamin_contender }
-			remove_variable = eranzamin_contender_modifier
+			remove_variable = eranzamin_contender
+			remove_country_modifier = eranzamin_contender_modifier
 		}
 		remove_global_variable = start_eranzamin_succession
 		every_country = {

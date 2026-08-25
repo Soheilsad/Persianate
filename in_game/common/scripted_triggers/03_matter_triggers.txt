@@ -270,11 +270,10 @@ is_tribal_pastoral_location = {
 			pop_type = pop_type:tribesmen
 			pop_size >= 2.5
 		}
-		### need a compare system here later.
+		
 		any_pop = {
 			pop_type = pop_type:nobles
 			pop_size > 0.2
-			estate_type = estate_type:amirs_estate
 			AND = {
 				NOT = { culture = culture:farsi_culture }
 				NOT = { culture = culture:iraqi_culture }

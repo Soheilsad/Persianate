@@ -39,15 +39,14 @@ amir_cavalry_buff = {
 	land_morale_modifier = 0.25
 }
 
-ilkhanate_civil_war_mode = {
-	auto_conquer_at_war = yes
-}
-
+# Conquest-on-occupation is no longer the hardcoded auto_conquer_at_war flag —
+# it is scripted in on_action/24_warlord_conquest_hooks.txt (on_siege_won +
+# on_location_occupied), keyed to this modifier, so defenders can later be
+# made immune (iranian_kingship, dar_al_jihad, settled custody legitimacy).
 ilkhanate_warlord = {
 	game_data = {
 		category = character
 	}
-	auto_conquer_at_war = yes
 	force_allow_as_leader = yes
 }
 

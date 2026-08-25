@@ -249,6 +249,8 @@ custody.40 = {
 	option = {
 		name = custody.40.b
 		set_variable = custody_restored_yarliq
+		remove_reform = government_reform:chinggisid_regency
+		add_reform = government_reform:gurkani_regime
 		add_country_modifier = { modifier = custody_restored_yarliq_mod months = -1 }
 		add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.10 }
 		add_estate_satisfaction = { type = estate_type:tribes_estate value = 0.10 }

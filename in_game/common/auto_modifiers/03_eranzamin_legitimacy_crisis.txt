@@ -16,6 +16,7 @@ unsettled_legitimacy_crisis = {
 	potential_trigger = {
 		government_type = government_type:persianate_sultanate
 		NOT = { has_reform = government_reform:chinggisid_regency }
+		NOT = { has_reform = government_reform:gurkani_regime }
 		NOT = { has_reform = government_reform:ghazi_sultanate }
 		NOT = { has_reform = government_reform:farr_i_izadi }
 		NOT = { has_reform = government_reform:dar_al_jihad }

@@ -1035,7 +1035,11 @@ gurkani_regime = {
 	government = persianate_sultanate
 
 	potential = {
-		has_variable = custody_endured
+		OR = {
+			has_variable = custody_endured
+			has_variable = custody_restored_yarliq
+		}
+		
 		NOT = { has_reform = government_reform:chinggisid_regency }
 	}
 
@@ -1050,6 +1054,8 @@ gurkani_regime = {
 		global_max_control = -0.02
 		country_cabinet_efficiency = ez_reform_cabinet_malus
 		monthly_towards_turk = 0.05
+		tolerated_culture_maintenance_cost_modifier = -0.66
+		accepted_culture_maintenance_cost_modifier = -0.66
 	}
 
 	years = 2
