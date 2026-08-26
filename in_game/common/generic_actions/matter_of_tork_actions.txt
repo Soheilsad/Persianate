@@ -761,19 +761,23 @@ matter_tork_great_raid = {
 	effect = {
 		scope:actor = {
 			# Re-designation: sweep the old theater first.
-			if = {
-				limit = { has_variable = matter_tork_raid_region }
-				var:matter_tork_raid_region ?= {
-					every_location_in_region = {
-						limit = { has_location_modifier = matter_raid_designated }
-						remove_location_modifier = matter_raid_designated
+			custom_tooltip = designation_of_region_tt
+			hidden_effect = {
+				if = {
+					limit = { has_variable = matter_tork_raid_region }
+					var:matter_tork_raid_region ?= {
+						
+						every_location_in_region = {
+							limit = { has_location_modifier = matter_raid_designated }
+							remove_location_modifier = matter_raid_designated
+						}
 					}
+					matter_raid_clear_pairings = yes
+					remove_variable = matter_tork_raid_region
+					remove_variable = matter_tork_raid_need
+					remove_variable = matter_tork_raid_owned
+					remove_variable = matter_tork_raid_tribes
 				}
-				matter_raid_clear_pairings = yes
-				remove_variable = matter_tork_raid_region
-				remove_variable = matter_tork_raid_need
-				remove_variable = matter_tork_raid_owned
-				remove_variable = matter_tork_raid_tribes
 			}
 
 			set_variable = { name = matter_tork_raid_region value = scope:target_region }
@@ -792,11 +796,14 @@ matter_tork_great_raid = {
 			change_variable = { name = matter_tork_raid_need multiply = 0.2 }
 
 			# The banner planted on the map: inert marker, tooltip only.
-			scope:target_region = {
-				every_location_in_region = {
-					add_location_modifier = { modifier = matter_raid_designated years = -1 }
+			hidden_effect = {
+				scope:target_region = {
+					every_location_in_region = {
+						add_location_modifier = { modifier = matter_raid_designated years = -1 }
+					}
 				}
 			}
+
 
 			# The decade of license, as before.
 			add_country_modifier = { modifier = matter_great_raid years = 10 }
@@ -833,7 +840,7 @@ matter_tork_yurt_charters = {
 
 	cooldown = {
 		type = matter_tork_yurt_charters
-		years = 2
+		years = 1
 	}
 
 	allow = {
@@ -1177,6 +1184,7 @@ matter_tork_release_march = {
 					every_location_in_region = {
 						limit = { owner = scope:actor }
 						change_location_owner = scope:matter_march_country
+						change_integration_level = core
 					}
 					# The banner comes down: the raid is consummated.
 					every_location_in_region = {
@@ -1200,6 +1208,11 @@ matter_tork_release_march = {
 			# government its historical models (Danishmendids,
 			# Artuqids, the house of Osman) actually built.
 			scope:matter_march_country ?= {
+				### should be aggressive. 
+				set_personality = ai_personality:ai_aggressive
+
+
+
 				set_variable = tributary_march_released_by_legitimate_ruler
 				# The greatest single host of the march names its people.
 				ordered_pop = {
@@ -1214,11 +1227,12 @@ matter_tork_release_march = {
 					max = 1
 					save_scope_as = march_top_pop
 				}
+				
 				change_government_type = government_type:persianate_sultanate
 				change_heir_selection = heir_selection:favorite_son_elective_succession
 				if = {
 					limit = { exists = scope:march_top_pop }
-					change_primary_culture = scope:march_top_pop.culture
+					change_culture = scope:march_top_pop.culture
 				}
 				# The compact is Islamic: the releaser's rite if he is
 				# Muslim, the sunna otherwise.
@@ -1241,6 +1255,11 @@ matter_tork_release_march = {
 				grant_estate_privilege = estate_privilege:amirs_iqta_grant
 				grant_estate_privilege = estate_privilege:amirs_personal_retinues
 				grant_estate_privilege = estate_privilege:amirs_frontier_autonomy
+				set_country_rank = country_rank:rank_duchy
+				add_policy = policy:muslim_marriage
+				add_policy = policy:mongol_law_policy
+				add_policy = policy:strict_hisba_enforcement
+				### should set a country disposition for him afterwards
 				# The beg: a Muslim amir of the march's own greatest
 				# people, a soldier before anything else.
 				create_character = {
