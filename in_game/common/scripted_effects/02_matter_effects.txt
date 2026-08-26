@@ -827,7 +827,7 @@ spawn_urban_breakaway = {
 						AND = {
 							pop_type = pop_type:nobles
 							culture ?= {
-								has_culture_group = culture_group:iranic_group
+								has_culture_group = culture_group:iranian_group
 							}
 						}
 					}

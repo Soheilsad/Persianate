@@ -301,7 +301,7 @@ is_urban_diwan_capable_location = {
 		OR = {
 			AND = {
 				pop_type = pop_type:burghers
-				culture ?= { has_culture_group = culture_group:iranic_group }
+				culture ?= { has_culture_group = culture_group:iranian_group }
 			}
 			AND = {
 				pop_type = pop_type:burghers

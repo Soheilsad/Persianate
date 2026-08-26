@@ -36,7 +36,9 @@ a_zagros_skirmishers = {
 
 		hills = 0.3
 		mountains = 0.3
-		seasonal_irrigated = 0.2
+		# (seasonal_irrigated is not a combat terrain key; the valley
+		# half of the transhumant year is the plateau basins)
+		plateau = 0.15
 
 	}
 }
@@ -57,6 +59,8 @@ a_tofang_levies = {
 	combat = {
 		hills = 0.3
 		mountains = 0.3
-		seasonal_irrigated = 0.2
+		# (seasonal_irrigated is not a combat terrain key; the valley
+		# half of the transhumant year is the plateau basins)
+		plateau = 0.15
 	}
 }

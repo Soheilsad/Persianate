@@ -124,7 +124,7 @@ levy_iranic_tribal_foot = {
 			current_age = age_2_renaissance
 		}
 		culture = {
-			has_culture_group = culture_group:iranic_group
+			has_culture_group = culture_group:iranian_group
 		}
 	}
 	unit = a_zagros_skirmishers
@@ -147,7 +147,7 @@ levy_iranic_tribal_tofang = {
 		NOT = { current_age = age_1_traditions }
 		NOT = { current_age = age_2_renaissance }
 		culture = {
-			has_culture_group = culture_group:iranic_group
+			has_culture_group = culture_group:iranian_group
 		}
 	}
 	unit = a_tofang_levies
@@ -171,7 +171,7 @@ levy_iranic_tribal_retinue = {
 	}
 	allow = {
 		culture = {
-			has_culture_group = culture_group:iranic_group
+			has_culture_group = culture_group:iranian_group
 		}
 	}
 	unit = a_frontier_amir_cavalry
