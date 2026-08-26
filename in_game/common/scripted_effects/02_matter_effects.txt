@@ -295,11 +295,11 @@ matter_tork_monthly_tick = {
 							}
 							months = 120
 						}
-						location = { set_variable = raid_feeder_source }
+						location = { set_variable = { name = raid_feeder_source value = 10 } }
 						scope:raid_dest = {
 							if = {
 								limit = { NOT = { has_variable = raid_feeders } }
-								set_variable = { name = raid_feeders value = 0 }
+								set_variable = { name = raid_feeders value = 0  years = 10 }
 							}
 							change_variable = { name = raid_feeders add = 1 }
 						}

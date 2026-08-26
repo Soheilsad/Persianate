@@ -64,7 +64,22 @@ eranzamin_warlord_auto_conquest = {
 	}
 	effect = {
 		scope:target = {
-			change_location_owner = root
+			if = {
+				limit = {
+					is_province_capital = yes
+				}
+				province = {
+					every_location_in_province = {
+						change_location_owner = root
+					}
+				}
+
+
+			}
+			else = {
+				change_location_owner = root
+			}
+			
 		}
 	}
 }

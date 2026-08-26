@@ -117,6 +117,13 @@
  # Log-driven fixes (0.4 cleanup pass)
  khanqah_building_demand: "Khānaqāh construction"
  a_dervish_corps: "Dervish Corps"
+ a_zagros_skirmishers: "Zagros Skirmishers"
+ a_zagros_skirmishers_desc: "The mountain levy of the Iranic tribes. Javelin and bow, the high ground, and country that kills cavalry. The Hazaraspids held Luristan for two centuries with men like these."
+ a_tofang_levies: "Tofang Levies"
+ a_tofang_levies_desc: "The same mountain men, now carrying firearms. Lur, Kurdish and Bakhtiyari tofang-men became the best musket infantry in Iran, and every army that could hire them did."
+ levy_iranic_tribal_foot: "Zagros Tribal Levy"
+ levy_iranic_tribal_tofang: "Tofang Tribal Levy"
+ levy_iranic_tribal_retinue: "Retinue of the Mir"
  a_dervish_corps_desc: "The sworn brethren under arms: craftsmen and villagers of the khānaqāh network who are the army, because there is no other. They eat little, march far, and believe the age itself fights beside them."
  persian_caravanserai_advance: "Caravanserai Network"
  persian_caravanserai_advance_desc: "Endowed way-stations a day's march apart on the trunk roads, with water, fodder, and an armed warden. The realm's peace, made brick by brick."

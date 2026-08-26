@@ -84,6 +84,7 @@ persianate_bureaucracy_reform = {
 		nobles_estate_allowed_leading_military = no
 		global_clergy_desired_pop_scaled = 0.01
 		cultures_capacity = 2
+		allow_tributary_subject = yes
 		### I really don't want to add this, but if not, dumb little cultural revolts destroy the regencies. 
 
 		# Demilitarization of the Sedentary Population
