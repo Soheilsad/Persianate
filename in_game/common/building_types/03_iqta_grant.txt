@@ -229,6 +229,12 @@ unaudited_iqta = {
 			change_societal_value = { type = turk_vs_tazik value = -0.25 }
 			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.01 }
 			add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.01 }
+			# First one in the realm: tell the player what just changed.
+			if = {
+				limit = { NOT = { has_variable = first_unaudited_iqta_seen } }
+				set_variable = first_unaudited_iqta_seen
+				trigger_event_non_silently = institutions.1
+			}
 		}
 	}
 

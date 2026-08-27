@@ -1,0 +1,12 @@
+﻿l_english:
+ # =====================================================================
+ # Institution indicator events (institutions.1/.2) — one-shot teachers
+ # =====================================================================
+
+ institutions.1.title: "The Audit That Never Came"
+ institutions.1.desc: "A note in the margin of this year's assessment rolls, in a junior scribe's careful hand: the amir holding the parcel did not present his accounts at the istifa, and no assessor rode out to demand them. His father held the same grant, and his son expects to. In the village they have stopped asking which clerk to pay. The mustawfi read the note, said nothing, and moved to the next line.\n\n#Y What this means:#! an amir has slipped the chancery's audit and his iqta is now #R de facto hereditary#!. On that parcel: local Amirs power rises sharply, maximum [control|e] falls, and its levy shrinks. Realm-wide: the [amirs_estate|e] are pleased, the [diwan_estate|e] is stung, and the realm drifts toward the #Y Türk#!. The chancery can force the audit back open by demolishing the holding, but only once [control|e] in the location has been restored above #Y 70%#!. Expect more of these wherever control is weak. The estate builds them on its own."
+ institutions.1.a: "Note it in the rolls."
+
+ institutions.2.title: "Given to God, Forever"
+ institutions.2.desc: "Witnesses were called after Friday prayer and the deed was read aloud: the orchards, the row of shops, the bathhouse and its takings, given to God for the upkeep of what the founder names, administered by whom the founder names, on the terms the founder names, until the end of days. The qadi pressed his seal. The founder wept, and was much admired. The revenues of every parcel named in the deed will never again appear in a tax register.\n\n#Y What this means:#! wealth has passed into a #Y waqf#!, a pious endowment outside your fisc. Each endowment shelters its estate's wealth from taxation (the ceiling on what you can tax that estate falls, reassessed yearly), enriches the estate, raises its local power where it stands, and weakens the realm's capacity to borrow. Endowments multiply on their own as estates seek shelter. If the estate wins its endowment charter privilege, its waqfs become #R inviolable#! while the privilege stands, and tearing one down is sacrilege the clergy and the founding estate will not forgive. Confiscations and angering estates will make the estate build more waqfs."
+ institutions.2.a: "The qadi has sealed it."

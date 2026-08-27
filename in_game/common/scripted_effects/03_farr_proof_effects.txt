@@ -114,16 +114,16 @@ farr_proof_erosion_dispatch = {
 # year-window boost.)
 farr_proof_omen_pulse = {
 	random_list = {
-		90 = {}
+		9000 = {}
 		# comet
-		3 = { trigger_event_non_silently = farr_proof.100 }
+		300 = { trigger_event_non_silently = farr_proof.100 }
 		# earthquake
-		3 = { trigger_event_non_silently = farr_proof.101 }
+		300 = { trigger_event_non_silently = farr_proof.101 }
 		# plague — base weight...
-		4 = { trigger_event_non_silently = farr_proof.102 }
+		400 = { trigger_event_non_silently = farr_proof.102 }
 		# ...plus a Black-Death-window bonus entry (in-list trigger:
 		# the base-cited form), tripling the plague's weight 1346-50.
-		8 = {
+		800 = {
 			trigger = {
 				current_year >= 1346
 				current_year <= 1350
@@ -131,15 +131,15 @@ farr_proof_omen_pulse = {
 			trigger_event_non_silently = farr_proof.102
 		}
 		# the rains withheld — drought read as withdrawal of barakat
-		3 = { trigger_event_non_silently = farr_proof.103 }
+		300 = { trigger_event_non_silently = farr_proof.103 }
 		# the conjunction — the munajjims read a favorable qiran
-		2 = { trigger_event_non_silently = farr_proof.104 }
+		200 = { trigger_event_non_silently = farr_proof.104 }
 		# the hunt marvel — the king takes the lion
-		2 = { trigger_event_non_silently = farr_proof.105 }
+		200 = { trigger_event_non_silently = farr_proof.105 }
 		# the generous rains — fortune attests (2/3 the drought's odds;
 		# shares a one-year variable with it: no year holds both)
-		2 = { trigger_event_non_silently = farr_proof.106 }
-		# the Homay lands on the king's shoulder — once, ever
+		200 = { trigger_event_non_silently = farr_proof.106 }
+		# the Homay lands on the king's shoulder — once, ever. Made genuinely rare: ~0.009% per month (1/10,901), ~1.1% per decade of active disaster.
 		1 = { trigger_event_non_silently = farr_proof.107 }
 	}
 }

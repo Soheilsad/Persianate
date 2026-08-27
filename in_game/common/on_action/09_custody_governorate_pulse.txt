@@ -14,6 +14,7 @@ monthly_country_pulse = {
 		peasant_non_levying_pulse
 		peasant_non_levying_cleanup_pulse
 		correct_existing_iqta_building
+		waqf_estate_income_hook
 
 	}
 }
@@ -114,3 +115,16 @@ peasant_non_levying_cleanup_pulse = {
 
 ### adds the global variable
 
+
+
+# The waqf stipends: pays each estate from its endowments' income
+# counters (maintained yearly by reassess_waqf_damage; paid monthly).
+waqf_estate_income_hook = {
+	trigger = {
+		government_type = government_type:persianate_sultanate
+		has_variable = ayyan_income_levels
+	}
+	effect = {
+		waqf_estate_income_pulse = yes
+	}
+}

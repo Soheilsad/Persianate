@@ -1,0 +1,45 @@
+namespace = institutions
+
+# =====================================================================
+# INSTITUTION INDICATOR EVENTS — one-shot, no choices.
+#
+# Fired from the buildings' own on_built hooks (03_iqta_grant.txt,
+# 09_waqf_buildings.txt), guarded by a per-country variable so each
+# fires exactly once per realm. These exist to TEACH: the estates
+# build these on their own, and the first time it happens the player
+# must understand what has quietly changed underneath them.
+# =====================================================================
+
+# ---The first unaudited iqta -----------------------------------------
+institutions.1 = {
+	type = country_event
+	outcome = negative
+	title = institutions.1.title
+	desc = institutions.1.desc
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = institutions.1.a
+	}
+}
+
+# ---The first waqf ---------------------------------------------------
+institutions.2 = {
+	type = country_event
+	outcome = negative
+	title = institutions.2.title
+	desc = institutions.2.desc
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	option = {
+		name = institutions.2.a
+	}
+}

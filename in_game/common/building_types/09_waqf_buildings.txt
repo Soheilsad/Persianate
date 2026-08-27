@@ -75,6 +75,7 @@ ayyan_waqf = {
 	raw_modifier = {
 		local_diwan_estate_power = 0.25
 		pure_tooltip_entry = waqf_tax_erosion
+		
 
 	}
 	remove_if = {
@@ -92,6 +93,25 @@ ayyan_waqf = {
 	# on_built couldn't express a coherent country cost). It is recomputed
 	# on the yearly pulse — see reassess_waqf_damage.
 	# Dissolving an endowment is sacrilege and theft of the estate's shelter.
+	on_built = {
+		owner = {
+			# First endowment in the realm: the indicator event.
+			if = {
+				limit = { NOT = { has_variable = first_waqf_seen } }
+				set_variable = first_waqf_seen
+				trigger_event_non_silently = institutions.2
+			}
+		}
+	}
+	modifier = {
+		# COSMETIC: gold_to_building_owner is a foreign-building field
+		# and no-ops on domestic estate buildings — it is kept here,
+		# level-scaled, purely so the player SEES what the endowment
+		# pays. The real payment is waqf_estate_income_pulse
+		# (10_waqf_effects.txt, add_gold_to_estate): 0.1/level small,
+		# 0.2/level grand. Keep these numbers in sync with the pulse.
+		gold_to_building_owner = 0.1
+	}
 	on_destroyed = {
 		owner = {
 			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.025 }
@@ -155,6 +175,23 @@ grand_ayyan_waqf = {
 			}
 		}
 	}
+	on_built = {
+		owner = {
+			# First endowment in the realm: the indicator event.
+			if = {
+				limit = { NOT = { has_variable = first_waqf_seen } }
+				set_variable = first_waqf_seen
+				trigger_event_non_silently = institutions.2
+			}
+		}
+	}
+
+	modifier = {
+		# COSMETIC (see ayyan_waqf): shows the stipend; the real
+		# payment is waqf_estate_income_pulse.
+		gold_to_building_owner = 0.2
+	}
+
 	on_destroyed = {
 		owner = {
 			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.05 }
@@ -205,6 +242,23 @@ urban_waqf = {
 		pure_tooltip_entry = waqf_tax_erosion
 	}
 
+	on_built = {
+		owner = {
+			# First endowment in the realm: the indicator event.
+			if = {
+				limit = { NOT = { has_variable = first_waqf_seen } }
+				set_variable = first_waqf_seen
+				trigger_event_non_silently = institutions.2
+			}
+		}
+	}
+
+	modifier = {
+		# COSMETIC (see ayyan_waqf): shows the stipend; the real
+		# payment is waqf_estate_income_pulse.
+		gold_to_building_owner = 0.1
+	}
+
 	on_destroyed = {
 		owner = {
 			add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.025 }
@@ -251,6 +305,23 @@ grand_urban_waqf = {
 		monthly_loan_capacity_investment = -2.5
 		local_burghers_estate_power = 0.25
 		pure_tooltip_entry = waqf_tax_erosion
+	}
+
+	on_built = {
+		owner = {
+			# First endowment in the realm: the indicator event.
+			if = {
+				limit = { NOT = { has_variable = first_waqf_seen } }
+				set_variable = first_waqf_seen
+				trigger_event_non_silently = institutions.2
+			}
+		}
+	}
+
+	modifier = {
+		# COSMETIC (see ayyan_waqf): shows the stipend; the real
+		# payment is waqf_estate_income_pulse.
+		gold_to_building_owner = 0.2
 	}
 
 	on_destroyed = {
@@ -306,6 +377,23 @@ clerical_waqf = {
 
 	# The main estate IS the clergy; dissolving a sacred endowment is the
 	# gravest of the three.
+	on_built = {
+		owner = {
+			# First endowment in the realm: the indicator event.
+			if = {
+				limit = { NOT = { has_variable = first_waqf_seen } }
+				set_variable = first_waqf_seen
+				trigger_event_non_silently = institutions.2
+			}
+		}
+	}
+
+	modifier = {
+		# COSMETIC (see ayyan_waqf): shows the stipend; the real
+		# payment is waqf_estate_income_pulse.
+		gold_to_building_owner = 0.1
+	}
+
 	on_destroyed = {
 		owner = {
 			add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.025 }
@@ -352,6 +440,23 @@ grand_clerical_waqf = {
 		monthly_loan_capacity_investment = -2.5
 		local_clergy_estate_power = 0.25
 		pure_tooltip_entry = waqf_tax_erosion
+	}
+
+	on_built = {
+		owner = {
+			# First endowment in the realm: the indicator event.
+			if = {
+				limit = { NOT = { has_variable = first_waqf_seen } }
+				set_variable = first_waqf_seen
+				trigger_event_non_silently = institutions.2
+			}
+		}
+	}
+
+	modifier = {
+		# COSMETIC (see ayyan_waqf): shows the stipend; the real
+		# payment is waqf_estate_income_pulse.
+		gold_to_building_owner = 0.2
 	}
 
 	on_destroyed = {

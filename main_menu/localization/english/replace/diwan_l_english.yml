@@ -420,4 +420,4 @@
  CIVILWAR_FACTION_diwan_estate_NAME: "Pretender"
  STATIC_MODIFIER_NAME_diwan_waqf_damage: "Tax Lost to Waqf Exemptions"
  STATIC_MODIFIER_DESC_diwan_waqf_damage: "The Waqf are Religious Endowments that are exempt from taxation."
- waqf_tax_erosion: "Waqf endowments are exempt from taxation, reducing the state's revenue and limiting its ability to fund public works and military campaigns."
+ waqf_tax_erosion: "Waqf endowments are exempt from taxation, reducing the state's revenue and limiting its ability to fund public works and military campaigns. The custodian estate draws a tax exempt salary from the endowment, and the endowment's wealth is locked away from the state's credit. The dead hand of the Waqf is a permanent drag on the fisc."

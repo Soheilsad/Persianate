@@ -27,6 +27,7 @@ reassess_waqf_damage = {
 
 	# --- Aʿyān Waqf (Diwan) ---
 	set_variable = { name = ayyan_count value = 0 }
+	set_variable = { name = ayyan_income_levels value = 0 }
 	every_owned_location = {
 		limit = {
 			OR = {
@@ -51,6 +52,7 @@ reassess_waqf_damage = {
 						multiply = { value = local_var:loc_power  multiply = local_var:waqf_level }
 					}
 				}
+				change_variable = { name = ayyan_income_levels add = local_var:waqf_level }
 			}
 		}
 		else = {
@@ -62,6 +64,10 @@ reassess_waqf_damage = {
 						value = local_var:loc_taxbase
 						multiply = { value = local_var:loc_power  multiply = { value = local_var:grand_waqf_level  multiply = 2 } }
 					}
+				}
+				change_variable = {
+					name = ayyan_income_levels
+					add = { value = local_var:grand_waqf_level multiply = 2 }
 				}
 			}
 		}
@@ -91,6 +97,7 @@ reassess_waqf_damage = {
 
 	# --- Urban Waqf (Burghers) ---
 	set_variable = { name = urban_waqf_count value = 0 }
+	set_variable = { name = urban_income_levels value = 0 }
 	every_owned_location = {
 		limit = {
 			OR = {
@@ -114,6 +121,7 @@ reassess_waqf_damage = {
 						multiply = { value = local_var:loc_power  multiply = local_var:waqf_level }
 					}
 				}
+				change_variable = { name = urban_income_levels add = local_var:waqf_level }
 			}
 		}
 		else = {
@@ -125,6 +133,10 @@ reassess_waqf_damage = {
 						value = local_var:loc_taxbase
 						multiply = { value = local_var:loc_power  multiply = { value = local_var:grand_waqf_level  multiply = 2 } }
 					}
+				}
+				change_variable = {
+					name = urban_income_levels
+					add = { value = local_var:grand_waqf_level multiply = 2 }
 				}
 			}
 		}
@@ -149,6 +161,7 @@ reassess_waqf_damage = {
 	}
 	# --- Clerical Waqf (Clergy) ---
 	set_variable = { name = clerical_waqf_count value = 0 }
+	set_variable = { name = clerical_income_levels value = 0 }
 	every_owned_location = {
 		limit = {
 			OR = {
@@ -172,6 +185,7 @@ reassess_waqf_damage = {
 						multiply = { value = local_var:loc_power  multiply = local_var:waqf_level }
 					}
 				}
+				change_variable = { name = clerical_income_levels add = local_var:waqf_level }
 			}
 		}
 		else = {
@@ -183,6 +197,10 @@ reassess_waqf_damage = {
 						value = local_var:loc_taxbase
 						multiply = { value = local_var:loc_power  multiply = { value = local_var:grand_waqf_level  multiply = 2 } }
 					}
+				}
+				change_variable = {
+					name = clerical_income_levels
+					add = { value = local_var:grand_waqf_level multiply = 2 }
 				}
 			}
 		}
@@ -202,6 +220,55 @@ reassess_waqf_damage = {
 			divide = 100
 			min = { value = 0 }
 			max = { value = 0.9 }
+		}
+	}
+}
+
+
+# =====================================================================
+# WAQF ESTATE INCOME — the endowments PAY their estates, monthly.
+#
+# gold_to_building_owner is a foreign-building field (it pays the
+# owning COUNTRY — correct for the tariqa lodges, a no-op for domestic
+# estate buildings): an estate is never a building "owner". The right
+# instrument is add_gold_to_estate (base precedent: fall_of_delhi.txt
+# Share of Power seizures). Rates read from the income-level counters
+# maintained by reassess_waqf_damage (yearly): each small waqf level
+# pays 0.1/month to its estate, each grand level 0.2. The mutawalli
+# draws his stipend whether the crown likes it or not.
+# =====================================================================
+waqf_estate_income_pulse = {
+	if = {
+		limit = {
+			has_variable = ayyan_income_levels
+			var:ayyan_income_levels > 0
+			country_has_estate = estate_type:diwan_estate
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:diwan_estate
+			value = { value = var:ayyan_income_levels multiply = 0.1 }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = urban_income_levels
+			var:urban_income_levels > 0
+			country_has_estate = estate_type:burghers_estate
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:burghers_estate
+			value = { value = var:urban_income_levels multiply = 0.1 }
+		}
+	}
+	if = {
+		limit = {
+			has_variable = clerical_income_levels
+			var:clerical_income_levels > 0
+			country_has_estate = estate_type:clergy_estate
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:clergy_estate
+			value = { value = var:clerical_income_levels multiply = 0.1 }
 		}
 	}
 }
