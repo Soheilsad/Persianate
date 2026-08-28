@@ -1093,6 +1093,7 @@ matter_tork_release_march = {
 			has_variable = matter_tork_approach
 			var:matter_tork_approach = 4
 			matter_tork_no_disposition_yet = yes
+			NOT = { has_variable = matter_tork_marcher_claimed }
 			at_war = no
 			has_variable = matter_tork_raid_region
 			# The theater is won: a fifth of it flies your banner.
@@ -1417,5 +1418,82 @@ claim_eradication = {
 	# Extreme risk, deferred payoff — effectively never for the AI.
 	ai_will_do = {
 		add = 0
+	}
+}
+
+
+# ---THE ANSWER IS GIVEN -----------------------------------------------
+# The proclamation that closes the Matter. Paths STACK (2026-08-28):
+# complete any set of dissolve / march / murid / expulsion, then press
+# this — each finished path adds its recognition (.95). Pressing with
+# EMPTY HANDS is legal and catastrophic (.96): the hosts asked their
+# place for years and the throne announced it had no answer.
+# Eradication never reaches this button: the purge resolves itself.
+matter_tork_answer_is_given = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 3
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	allow = {
+		scope:actor = {
+			has_variable = matter_of_tork_fired
+			NOT = { has_variable = matter_tork_answer_given }
+			NOT = { has_variable = matter_of_tork_resolved }
+			NOT = { has_variable = matter_tork_eradication_claimed }
+			in_civil_war = no
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = { data = name }
+		visible = {
+			disaster_type = disaster_type:matter_of_tork
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = matter_tork_answer_given
+			if = {
+				limit = {
+					OR = {
+						has_variable = matter_tork_path_dissolve_done
+						has_variable = matter_tork_path_march_done
+						has_variable = matter_tork_path_murid_done
+						has_variable = matter_tork_path_expulsion_done
+					}
+				}
+				trigger_event_non_silently = matter_of_tork.95
+			}
+			else = {
+				trigger_event_non_silently = matter_of_tork.96
+			}
+		}
+	}
+
+	# The AI presses the moment it has something to say; never before.
+	ai_will_do = {
+		add = 0
+		if = {
+			limit = {
+				scope:actor = {
+					OR = {
+						has_variable = matter_tork_path_dissolve_done
+						has_variable = matter_tork_path_march_done
+						has_variable = matter_tork_path_murid_done
+						has_variable = matter_tork_path_expulsion_done
+					}
+				}
+			}
+			add = 200
+		}
 	}
 }

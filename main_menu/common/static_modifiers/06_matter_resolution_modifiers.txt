@@ -645,3 +645,21 @@ matter_raid_designated = {
 	local_peasant_enfranchisment = -0.25
 	local_unrest = 0.25
 }
+
+
+matter_hosts_of_the_state = {
+	# The Dissolve completion: the tribal compact is over, and with it
+	# the free cavalry the Iranic states were born subsidized by. The
+	# hosts serve now as the state's own — trained, salaried, counted
+	# (hosts_cantonment + a_divani_cavalry unlock on the same flag).
+	game_data = {
+		category = country
+		decaying = no
+	}
+
+	tribes_estate_levy_size = -0.75
+	amirs_estate_levy_size = -0.25
+	global_tribes_estate_power = -0.25
+	monthly_towards_tazik = 0.05
+	global_manpower_modifier = 0.10
+}

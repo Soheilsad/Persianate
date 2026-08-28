@@ -203,6 +203,18 @@ amirs_umara_at_the_diwan = {
 	# practiced it openly; the late-Timurid Herat dīwān tilted the
 	# same way under pressure from the umarāʾ. To formally license it
 	# is to repudiate the wuzarāʾ tradition, and the chancery feels it.
+	allow = {
+		# Dissolve-step gate: while the Matter of Tork runs, the estates
+		# must consent (amirs/diwan/tribes >= 50% satisfaction).
+		trigger_if = {
+			limit = {
+				has_variable = matter_of_tork_fired
+				NOT = { has_variable = matter_tork_answer_given }
+			}
+			matter_tork_estates_content = yes
+		}
+	}
+
 	country_modifier = {
 		amirs_estate_target_satisfaction = ez_priv_sat_huge
 		global_amirs_estate_power = ez_priv_power_large

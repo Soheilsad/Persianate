@@ -43,17 +43,67 @@ matter_of_tork = {
 
 	can_end = {
 		OR = {
+			# ---The proclamation route: press The Answer Is Given with
+			# at least one completed path (or the scar of the empty
+			# proclamation). The Dissolve program is shown as its four
+			# real steps so the checklist ticks as the player works.
+			AND = {
+				custom_tooltip = {
+					text = matter_tork_answer_button_tt
+					has_variable = matter_tork_answer_given
+				}
+				OR = {
+					AND = {
+						custom_tooltip = {
+							text = matter_tork_ce_step_seat_tt
+							has_variable = matter_amir_diwan_pushed
+						}
+						custom_tooltip = {
+							text = matter_tork_ce_step_pay_tt
+							has_variable = matter_tork_step_mavajib
+						}
+						custom_tooltip = {
+							text = matter_tork_ce_step_pasture_tt
+							has_variable = matter_tork_step_pastures
+						}
+						custom_tooltip = {
+							text = matter_tork_ce_step_incorporate_tt
+							has_variable = matter_tork_step_incorporate
+						}
+						custom_tooltip = {
+							text = matter_tork_ce_dissolve_done_tt
+							has_variable = matter_tork_path_dissolve_done
+						}
+					}
+					custom_tooltip = {
+						text = matter_tork_ce_march_done_tt
+						has_variable = matter_tork_path_march_done
+					}
+					custom_tooltip = {
+						text = matter_tork_ce_murid_done_tt
+						has_variable = matter_tork_path_murid_done
+					}
+					custom_tooltip = {
+						text = matter_tork_ce_expulsion_done_tt
+						has_variable = matter_tork_path_expulsion_done
+					}
+					custom_tooltip = {
+						text = matter_tork_ce_nothing_tt
+						has_country_modifier = matter_turk_defection_scar
+					}
+				}
+			}
+			# ---The blood route: an eradication attempt or a defection
+			# war has been fought to its end, whoever won.
 			custom_tooltip = {
 				text = matter_tork_end_resolved_tt
 				has_variable = matter_of_tork_resolved
 			}
-			custom_tooltip = {
-				text = matter_tork_end_synthesis_tt
-				has_variable = matter_of_tork_resolved_by_synthesis
-			}
+			# ---Lost the realm: capital driven from Eranzamin or the
+			# realm subjugated (evaluated live).
 			custom_tooltip = {
 				text = matter_tork_end_lost_realm_tt
-				NOT = { has_variable = eranzamin_contender }
+				NOT = { is_eranzamin_contender = yes }
 			}
 		}
 	}

@@ -109,7 +109,10 @@ matter_of_tork.10 = {
 		set_variable = { name = matter_tork_iranization_months value = 0 }
 		# The constituency has been told its place — the dread of NO
 		# answer ends. (The work itself still takes a generation.)
-		add_country_modifier = { modifier = matter_answer_given months = -1 }
+		if = {
+			limit = { NOT = { has_country_modifier = matter_answer_given } }
+			add_country_modifier = { modifier = matter_answer_given months = -1 }
+		}
 		add_country_modifier = { modifier = matter_iranization_underway months = -1 }
 	}
 
@@ -135,6 +138,11 @@ matter_of_tork.11 = {
 			limit = { has_country_modifier = matter_iranization_underway }
 			remove_country_modifier = matter_iranization_underway
 		}
+		set_variable = matter_tork_path_dissolve_done
+		# The hosts of the state: the free tribal levy dies with the
+		# tribal compact — what replaces it is trained, salaried, and
+		# yours (the cantonment and the divani cavalry unlock).
+		add_country_modifier = { modifier = matter_hosts_of_the_state months = -1 }
 		# The finisher: a share of the remaining tribesmen settle —
 		# into the peasantry, into the court culture.
 		every_owned_location = {
@@ -157,7 +165,7 @@ matter_of_tork.11 = {
 		# Unlocks the Īlāt Compact reform — the institutional fact of
 		# Iranized-but-still-pastoral tribes.
 		set_variable = matter_tork_iranized
-		set_variable = matter_of_tork_resolved
+		# Path complete — the disaster ends only when The Answer Is Given.
 	}
 
 	option = {
@@ -191,7 +199,11 @@ matter_of_tork.20 = {
 		else = {
 			add_country_modifier = { modifier = matter_marcher_compact_mercenary months = -1 }
 		}
-		set_variable = matter_of_tork_resolved
+		set_variable = matter_tork_path_march_done
+		if = {
+			limit = { NOT = { has_country_modifier = matter_answer_given } }
+			add_country_modifier = { modifier = matter_answer_given months = -1 }
+		}
 	}
 
 	option = {
@@ -268,8 +280,12 @@ matter_of_tork.30 = {
 		# Collapsed with the Qizilbash Synthesis END clause: the
 		# synthesis answers both questions at once.
 		set_variable = matter_of_tork_resolved_by_synthesis
+		set_variable = matter_tork_path_murid_done
+		# The oath season: the last oymaqs choose within the year
+		# (read by the dispatch when this expires).
+		set_variable = { name = murid_oath_pending years = 1 }
 		set_variable = matter_of_tazik_resolved_by_synthesis
-		set_variable = matter_of_tork_resolved
+		# Path complete — the disaster ends only when The Answer Is Given.
 	}
 
 	option = {
@@ -382,7 +398,8 @@ matter_of_tork.43 = {
 		# The estate is refounded: old charter stripped, dehqan set
 		# becomes grantable.
 		matter_tork_refound_amirs_estate = yes
-		set_variable = matter_of_tork_resolved
+		set_variable = matter_tork_path_expulsion_done
+		# Path complete — the disaster ends only when The Answer Is Given.
 	}
 
 	option = {
@@ -875,5 +892,90 @@ matter_of_tork.99 = {
 
 	option = {
 		name = matter_of_tork.99.a
+	}
+}
+
+
+# ---The oath of the oymaqs (a year after the murid bond) --------------
+matter_of_tork.31 = {
+	type = country_event
+	category = disaster_event
+	title = matter_of_tork.31.title
+	desc = matter_of_tork.31.desc
+	outcome = neutral
+
+	# ---Press the holdouts: all sworn, the jurists note the zeal.
+	option = {
+		name = matter_of_tork.31.a
+		ai_chance = { factor = 50 }
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.03 }
+	}
+	# ---Let them keep their distance: the bond holds where it holds.
+	option = {
+		name = matter_of_tork.31.b
+		ai_chance = { factor = 50 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.03 }
+	}
+}
+
+# ---THE ANSWER IS GIVEN (paths completed) -----------------------------
+# Stacked recognition: each finished path adds its line to the
+# settlement. The paths' own permanent modifiers already stand — this
+# is the proclamation that closes the question.
+matter_of_tork.95 = {
+	type = country_event
+	category = disaster_event
+	title = matter_of_tork.95.title
+	desc = matter_of_tork.95.desc
+	outcome = positive
+
+	immediate = {
+		if = {
+			limit = { has_variable = matter_tork_path_dissolve_done }
+			add_legitimacy = 10
+			add_stability = 5
+		}
+		if = {
+			limit = { has_variable = matter_tork_path_march_done }
+			add_legitimacy = 10
+			add_prestige = 5
+		}
+		if = {
+			limit = { has_variable = matter_tork_path_murid_done }
+			add_legitimacy = 10
+			add_estate_satisfaction = { type = estate_type:tribes_estate value = 0.05 }
+		}
+		if = {
+			limit = { has_variable = matter_tork_path_expulsion_done }
+			add_stability = 5
+		}
+	}
+
+	option = {
+		name = matter_of_tork.95.a
+	}
+}
+
+# ---THE ANSWER IS NOTHING (pressed with empty hands) ------------------
+# The hosts asked their place for years; the throne convened the
+# court, struck the drums, and announced that it had no answer.
+matter_of_tork.96 = {
+	type = country_event
+	category = disaster_event
+	title = matter_of_tork.96.title
+	desc = matter_of_tork.96.desc
+	outcome = negative
+
+	immediate = {
+		add_legitimacy = -50
+		add_stability = -25
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = -0.20 }
+		add_country_modifier = { modifier = matter_turk_defection_scar months = -1 }
+	}
+
+	option = {
+		name = matter_of_tork.96.a
 	}
 }

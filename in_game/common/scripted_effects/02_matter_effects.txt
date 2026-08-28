@@ -100,6 +100,15 @@ matter_tork_init = {
 	remove_variable = matter_tork_beacon_82_fired
 	remove_variable = matter_tork_unleash_months
 	remove_variable = matter_tork_unleash_85_fired
+	remove_variable = matter_tork_answer_given
+	remove_variable = matter_tork_step_mavajib
+	remove_variable = matter_tork_step_pastures
+	remove_variable = matter_tork_step_incorporate
+	remove_variable = matter_tork_path_dissolve_done
+	remove_variable = matter_tork_path_march_done
+	remove_variable = matter_tork_path_murid_done
+	remove_variable = matter_tork_path_expulsion_done
+	remove_variable = matter_tork_oath_fired
 }
 
 # ---Approach layer (the Council on the Hosts) ---------------------------
@@ -342,6 +351,54 @@ matter_tork_monthly_tick = {
 		# Seating the amirs buys patience: the clock steps back a year.
 		matter_tork_grant_time = yes
 	}
+	# ---Dissolve program step detection (each once; each buys a year) --
+	# Step 1 flag doubles as matter_amir_diwan_pushed (above).
+	# Step 2: the hosts on the chancery's salary registers.
+	if = {
+		limit = {
+			has_variable = matter_tork_iranization_underway
+			has_estate_privilege = estate_privilege:diwan_mavajib_cash_pay
+			NOT = { has_variable = matter_tork_step_mavajib }
+		}
+		set_variable = matter_tork_step_mavajib
+		change_societal_value = { type = turk_vs_tazik value = 5 }
+		matter_tork_grant_time = yes
+	}
+	# Step 3: the pasture-roads written into the registers — EVERY
+	# rural location with more than 20,000 tribesmen carries a
+	# Registered Pasture, and at least one stands.
+	if = {
+		limit = {
+			has_variable = matter_tork_iranization_underway
+			NOT = { has_variable = matter_tork_step_pastures }
+			any_owned_location = { has_building = building_type:registered_pasture }
+			NOT = {
+				any_owned_location = {
+					location_rank = location_rank:rural_settlement
+					num_pop_type:tribesmen > 20
+					NOT = { has_building = building_type:registered_pasture }
+				}
+			}
+		}
+		set_variable = matter_tork_step_pastures
+		change_societal_value = { type = turk_vs_tazik value = 5 }
+		matter_tork_grant_time = yes
+	}
+	# Step 4: the hosts' function brought fully UNDER the state —
+	# salaried riders or the pen commanding the sword.
+	if = {
+		limit = {
+			has_variable = matter_tork_iranization_underway
+			OR = {
+				has_estate_privilege = estate_privilege:salaried_pastoral_levies
+				has_estate_privilege = estate_privilege:diwan_tazik_command_of_arms
+			}
+			NOT = { has_variable = matter_tork_step_incorporate }
+		}
+		set_variable = matter_tork_step_incorporate
+		change_societal_value = { type = turk_vs_tazik value = 5 }
+		matter_tork_grant_time = yes
+	}
 	# War-observation latch: the war-end polls only arm after the
 	# civil war has actually been seen running, so the month between
 	# spawn and the war flag going up cannot false-fire a resolution.
@@ -383,18 +440,36 @@ matter_tork_monthly_tick = {
 }
 
 matter_tork_process_dispatch = {
-	# --- A. Iranization completion: 240 months of cabinet work AND
-	# the realm has ACTUALLY Iranized — axis at/past +90. Reaching 50
-	# is easy; +90 demands the full Tazik reform stack cooperating,
-	# not just the approach tools. (Design decision #31.)
+	# --- A. Dissolve completion (2026-08-28 program rework): all four
+	# institutional steps done, ten years since the claim, the drift
+	# CONFIRMED (axis >= +25, not the old unreachable +90), and the
+	# estates consenting. The steps are the program; the axis is its
+	# consequence.
 	if = {
 		limit = {
 			has_variable = matter_tork_iranization_underway
-			var:matter_tork_iranization_months >= 240
-			societal_value:turk_vs_tazik >= 90
-			NOT = { has_variable = matter_of_tork_resolved }
+			var:matter_tork_iranization_months >= 120
+			has_variable = matter_amir_diwan_pushed
+			has_variable = matter_tork_step_mavajib
+			has_variable = matter_tork_step_pastures
+			has_variable = matter_tork_step_incorporate
+			societal_value:turk_vs_tazik >= 25
+			matter_tork_estates_content = yes
+			NOT = { has_variable = matter_tork_path_dissolve_done }
 		}
 		trigger_event_non_silently = matter_of_tork.11
+	}
+	# The murid oath beat: ~a year after the bond, the last oymaqs
+	# choose (murid_oath_pending is a 1-year timed variable set at
+	# the claim; its expiry is the clock).
+	if = {
+		limit = {
+			has_variable = matter_tork_path_murid_done
+			NOT = { has_variable = murid_oath_pending }
+			NOT = { has_variable = matter_tork_oath_fired }
+		}
+		set_variable = matter_tork_oath_fired
+		trigger_event_non_silently = matter_of_tork.31
 	}
 	# --- D. Expulsion tranches at 36 / 84 / 120 months.
 	if = {
@@ -449,7 +524,7 @@ matter_tork_process_dispatch = {
 			has_variable = matter_tork_unleash_months
 			var:matter_tork_unleash_months >= 12
 			NOT = { has_variable = matter_tork_unleash_85_fired }
-			NOT = { has_variable = matter_tork_disposition_chosen }
+			NOT = { has_variable = matter_tork_marcher_claimed }
 		}
 		set_variable = matter_tork_unleash_85_fired
 		trigger_event_non_silently = matter_of_tork.85
@@ -544,7 +619,9 @@ matter_tork_process_dispatch = {
 			has_variable = matter_tork_anger_months
 			var:matter_tork_anger_months >= 48
 			NOT = { has_variable = matter_tork_defection_war }
-			NOT = { has_variable = matter_tork_disposition_chosen }
+			NOT = { has_variable = matter_tork_answer_given }
+			NOT = { has_variable = matter_of_tork_resolved }
+			NOT = { has_variable = matter_eradication_attempt }
 		}
 		set_variable = matter_tork_defection_war
 		set_variable = matter_tork_disposition_chosen
@@ -574,7 +651,11 @@ matter_tork_horizon_poll = {
 	if = {
 		limit = {
 			var:matter_tork_months >= 240
-			NOT = { has_variable = matter_tork_disposition_chosen }
+			# Only THE ANSWER disarms the clock — completed paths do
+			# not; press the button. Costly acts step the clock back.
+			NOT = { has_variable = matter_tork_answer_given }
+			NOT = { has_variable = matter_of_tork_resolved }
+			NOT = { has_variable = matter_eradication_attempt }
 			NOT = { has_variable = matter_tork_defection_war }
 		}
 		set_variable = matter_tork_defection_war

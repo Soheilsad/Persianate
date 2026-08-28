@@ -1,0 +1,22 @@
+# =====================================================================
+# DIVANI CAVALRY — the state-controlled successor of the tribal levy,
+# unlocked by completing the Dissolve path (Matter of Tork). Not
+# levied: trained and paid, the register's cavalry. The men are the
+# same hosts; the leash is new.
+# =====================================================================
+a_divani_cavalry = {
+	category = army_light_cavalry
+	copy_from = a_age_1_traditions_light_cavalry
+
+	buildable = yes
+	levy = no
+
+	country_potential = {
+		has_variable = matter_tork_path_dissolve_done
+	}
+
+	# Drilled where the levy was merely brave.
+	morale_damage_done = 0.10
+	morale_damage_taken = -0.10
+	strength_damage_taken = -0.05
+}

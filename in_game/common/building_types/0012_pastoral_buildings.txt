@@ -150,3 +150,112 @@ tribal_pasture = {
 
 # 	graphical_tags = { small_military }
 # }
+
+
+# =====================================================================
+# REGISTERED PASTURE — the qopchur register made architectural
+# (Dissolve program step 3). The il-rah routes written down, the
+# flocks counted, the pasture a taxed tenancy instead of a right.
+# Upgrade of a standing tribal_pasture: fewer horses come off the
+# range, but the land under it is governable. The tribes know what a
+# register is FOR — each one stings on the day it opens.
+# Step 3 completes when EVERY rural location with >20,000 tribesmen
+# carries one (detection in 02_matter_effects.txt).
+# =====================================================================
+registered_pasture = {
+	is_foreign = no
+	max_levels = 1
+	pop_type = tribesmen
+	employment_size = 1.0
+
+	category = rgo_building_category
+
+	rural_settlement = yes
+	town = no
+	city = no
+	megalopolis = no
+
+	build_time = estate_build_time
+	destroyable_building = yes
+
+	country_potential = {
+		government_type = government_type:persianate_sultanate
+		OR = {
+			has_variable = matter_tork_iranization_underway
+			has_variable = matter_tork_path_dissolve_done
+		}
+	}
+
+	location_potential = {
+		has_building = building_type:tribal_pasture
+	}
+
+	# A program step like the privileges: the estates must consent.
+	allow = {
+		matter_tork_estates_content = yes
+	}
+
+	unique_production_methods = {
+		registered_grazing = {
+			produced = horses
+			output = 0.5
+
+			category = building_maintenance
+		}
+	}
+
+	modifier = {
+		local_max_rural_control = 0.1
+		local_tribes_estate_power = -0.5
+		local_manpower = 0.005
+	}
+
+	on_built = {
+		owner = {
+			add_estate_satisfaction = { type = estate_type:tribes_estate value = -0.05 }
+			# The register is costly work the hosts SEE: a year back.
+			matter_tork_grant_time = yes
+		}
+	}
+
+	construction_demand = basic_construction_needs
+}
+
+# =====================================================================
+# CANTONMENT OF THE HOSTS — the Dissolve reward building. The tribal
+# levy is dead (matter_hosts_of_the_state kills it); this is what
+# replaces it: the registered hosts trained into state manpower, on
+# state pay, under state officers.
+# =====================================================================
+hosts_cantonment = {
+	is_foreign = no
+	max_levels = 2
+	pop_type = tribesmen
+	employment_size = 2.0
+
+	category = military_category
+
+	rural_settlement = yes
+	town = yes
+	city = no
+	megalopolis = no
+
+	build_time = estate_build_time
+	destroyable_building = yes
+
+	country_potential = {
+		government_type = government_type:persianate_sultanate
+		has_variable = matter_tork_path_dissolve_done
+	}
+
+	location_potential = {
+		num_pop_type:tribesmen > 5.0
+	}
+
+	modifier = {
+		local_manpower = 0.02
+		local_max_rural_control = 0.05
+	}
+
+	construction_demand = basic_construction_needs
+}
