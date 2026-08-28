@@ -293,10 +293,8 @@ locations = {
         define_pop = { type = clergy	size = 0.027	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = peasants	size = 13.333	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = nobles	size = 0.040	culture = armenian_culture	religion = miaphysite }
-        define_pop = { type = tribesmen	size = 1.287	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.032	culture = oirat_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.153	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.128	culture = oirat_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 6.440	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.160	culture = oirat_culture	religion = sunni }
     }
 
     hinis = {
@@ -306,20 +304,16 @@ locations = {
         define_pop = { type = peasants	size = 1.299	culture = kurdish_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.004	culture = kurdish_culture	religion = sunni }
         define_pop = { type = slaves	size = 0.998	culture = kurdish_culture	religion = yazidism }
-        define_pop = { type = tribesmen	size = 1.287	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.032	culture = oirat_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.153	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.128	culture = oirat_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 6.440	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.160	culture = oirat_culture	religion = sunni }
     }
 
     karakilise = {
         define_pop = { type = clergy	size = 0.060	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = peasants	size = 26.661	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = nobles	size = 0.080	culture = armenian_culture	religion = miaphysite }
-        define_pop = { type = tribesmen	size = 2.575	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.064	culture = oirat_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 10.304	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.256	culture = oirat_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 12.879	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.320	culture = oirat_culture	religion = sunni }
     }
 
     hasankale = {
@@ -341,10 +335,8 @@ locations = {
         define_pop = { type = clergy	size = 0.029	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = peasants	size = 13.331	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = nobles	size = 0.040	culture = armenian_culture	religion = miaphysite }
-        define_pop = { type = tribesmen	size = 1.287	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.032	culture = oirat_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.153	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.128	culture = oirat_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 6.440	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.160	culture = oirat_culture	religion = sunni }
     }
 
     varto = {
@@ -353,10 +345,8 @@ locations = {
         define_pop = { type = peasants	size = 1.298	culture = kurdish_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.004	culture = kurdish_culture	religion = sunni }
         define_pop = { type = slaves	size = 0.997	culture = kurdish_culture	religion = yazidism }
-        define_pop = { type = tribesmen	size = 1.285	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.032	culture = oirat_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.156	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.128	culture = oirat_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 6.441	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.160	culture = oirat_culture	religion = sunni }
     }
 
     van = {
@@ -376,10 +366,8 @@ locations = {
         define_pop = { type = clergy	size = 0.025	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = peasants	size = 12.222	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = nobles	size = 0.037	culture = armenian_culture	religion = miaphysite }
-        define_pop = { type = tribesmen	size = 1.180	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.029	culture = oirat_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.723	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.117	culture = oirat_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.903	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.146	culture = oirat_culture	religion = sunni }
     }
 
     bargiri = {
@@ -392,10 +380,8 @@ locations = {
         define_pop = { type = clergy	size = 0.024	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = peasants	size = 12.222	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = nobles	size = 0.036	culture = armenian_culture	religion = miaphysite }
-        define_pop = { type = tribesmen	size = 1.181	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.029	culture = oirat_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.724	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.117	culture = oirat_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.905	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.146	culture = oirat_culture	religion = sunni }
     }
 
     hosap = {
@@ -977,7 +963,7 @@ locations = {
         define_pop = { type = tribesmen	size = 7.498	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.064	culture = azeri_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 5.771	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.057	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.057	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 20.504	culture = mongolian_culture	religion = tengri }
         define_pop = { type = nobles	size = 0.230	culture = mongolian_culture	religion = tengri }
         define_pop = { type = tribesmen	size = 0.268	culture = azeri_culture	religion = zoroastrian }
@@ -991,10 +977,8 @@ locations = {
         define_pop = { type = nobles	size = 0.035	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 2.404	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.030	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.788	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.029	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.857	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.117	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 7.645	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.146	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.134	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1008,9 +992,8 @@ locations = {
         define_pop = { type = tribesmen	size = 3.794	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.029	culture = azeri_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 4.015	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.064	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.323	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 13.465	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.259	culture = mongolian_culture	religion = tengri }
         define_pop = { type = tribesmen	size = 0.268	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1022,10 +1005,8 @@ locations = {
         define_pop = { type = nobles	size = 0.035	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 1.988	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.013	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.442	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.032	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 8.483	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.131	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 10.925	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.163	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.134	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1037,10 +1018,8 @@ locations = {
         define_pop = { type = nobles	size = 0.036	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 2.818	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.039	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.789	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.027	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.864	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.110	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 7.653	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.137	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.134	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1052,10 +1031,8 @@ locations = {
         define_pop = { type = nobles	size = 0.035	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 2.111	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.015	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.444	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.032	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 8.481	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.129	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 10.925	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.161	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.134	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1068,8 +1045,7 @@ locations = {
         define_pop = { type = tribesmen	size = 1.706	culture = lezgin_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.149	culture = lezgin_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.311	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.375	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.170	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.545	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.032	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1083,8 +1059,7 @@ locations = {
         define_pop = { type = nobles	size = 0.061	culture = azeri_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 5.333	culture = lezgin_culture	religion = orthodox }
         define_pop = { type = nobles	size = 0.237	culture = lezgin_culture	religion = orthodox }
-        define_pop = { type = tribesmen	size = 0.749	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.341	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.090	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.063	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1097,8 +1072,7 @@ locations = {
         define_pop = { type = nobles	size = 0.006	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 1.518	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.149	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.375	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.170	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.545	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.032	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1111,8 +1085,7 @@ locations = {
         define_pop = { type = nobles	size = 0.006	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 0.748	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.148	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.375	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.170	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.545	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.032	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1125,8 +1098,7 @@ locations = {
         define_pop = { type = nobles	size = 0.006	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 1.118	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.148	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.375	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.170	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.545	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.032	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1139,8 +1111,7 @@ locations = {
         define_pop = { type = nobles	size = 0.926	culture = azeri_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 2.662	culture = lezgin_culture	religion = orthodox }
         define_pop = { type = nobles	size = 0.123	culture = lezgin_culture	religion = orthodox }
-        define_pop = { type = tribesmen	size = 0.375	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.170	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.545	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.032	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1154,9 +1125,8 @@ locations = {
         define_pop = { type = tribesmen	size = 12.899	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.156	culture = azeri_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 5.626	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.040	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.203	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 14.724	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.163	culture = mongolian_culture	religion = tengri }
         define_pop = { type = tribesmen	size = 0.803	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1171,10 +1141,8 @@ locations = {
         define_pop = { type = slaves	size = 0.458	culture = talysh_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 5.361	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.038	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.233	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.029	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 9.042	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.114	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 12.275	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.143	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.402	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1187,9 +1155,8 @@ locations = {
         define_pop = { type = tribesmen	size = 10.983	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.116	culture = azeri_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 5.619	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.049	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.244	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 14.690	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.195	culture = mongolian_culture	religion = tengri }
         define_pop = { type = tribesmen	size = 0.803	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1202,10 +1169,8 @@ locations = {
         define_pop = { type = nobles	size = 0.006	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 5.361	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.055	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.810	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.025	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 7.343	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.100	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 10.153	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.125	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.402	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1217,10 +1182,8 @@ locations = {
         define_pop = { type = nobles	size = 0.006	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 5.193	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.050	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.804	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.026	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 7.337	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.104	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 10.141	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.130	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.402	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -1233,10 +1196,8 @@ locations = {
         define_pop = { type = nobles	size = 0.006	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 6.712	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.082	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.815	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.019	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 7.364	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.078	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 10.179	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.097	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.402	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -2494,7 +2455,7 @@ locations = {
         define_pop = { type = burghers	size = 3.144	culture = tajik_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.282	culture = tajik_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.505	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.562	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.562	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.505	culture = mongolian_culture	religion = tengri }
         define_pop = { type = nobles	size = 0.562	culture = mongolian_culture	religion = tengri }
     }
@@ -3968,7 +3929,7 @@ locations = {
         define_pop = { type = nobles	size = 4.686	culture = khorasani_culture	religion = shia }
         define_pop = { type = clergy	size = 1.176	culture = khorasani_culture	religion = shia }
         define_pop = { type = tribesmen	size = 7.438	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.389	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.389	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 29.779	culture = mongolian_culture	religion = tengri }
         define_pop = { type = nobles	size = 1.561	culture = mongolian_culture	religion = tengri }
         define_pop = { type = peasants	size = 42.900	culture = khorasani_culture	religion = shia }
@@ -4721,7 +4682,7 @@ locations = {
     baghdad = {
         define_pop = { type = nobles	size = 9.130	culture = iraqi_culture	religion = sunni }
         define_pop = { type = nobles	size = 2.766	culture = iraqi_culture	religion = shia }
-        define_pop = { type = nobles	size = 5.139	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 5.139	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = clergy	size = 11.053	culture = iraqi_culture	religion = sunni }
         define_pop = { type = clergy	size = 4.145	culture = iraqi_culture	religion = shia }
         define_pop = { type = clergy	size = 0.829	culture = syriac_culture	religion = nestorianism }
@@ -4739,9 +4700,8 @@ locations = {
         define_pop = { type = peasants	size = 27.632	culture = iraqi_culture	religion = shia }
         define_pop = { type = peasants	size = 4.145	culture = syriac_culture	religion = nestorianism }
         define_pop = { type = peasants	size = 0.829	culture = mizrahi	religion = judaism }
-        define_pop = { type = tribesmen	size = 13.650	culture = oirat_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.274	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.489	culture = oirat_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 15.924	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.489	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 6.908	culture = circassian_culture	religion = orthodox }
     }
 
@@ -4771,10 +4731,8 @@ locations = {
         define_pop = { type = nobles	size = 0.032	culture = iraqi_culture	religion = sunni }
         define_pop = { type = peasants	size = 1.649	culture = iraqi_culture	religion = shia }
         define_pop = { type = nobles	size = 0.006	culture = iraqi_culture	religion = shia }
-        define_pop = { type = tribesmen	size = 0.980	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.020	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.290	culture = oirat_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 6.438	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.310	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 7.418	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 1.876	culture = syriac_culture	religion = nestorianism }
     }
 
@@ -4887,10 +4845,8 @@ locations = {
         define_pop = { type = nobles	size = 0.037	culture = iraqi_culture	religion = sunni }
         define_pop = { type = peasants	size = 7.268	culture = iraqi_culture	religion = shia }
         define_pop = { type = nobles	size = 0.017	culture = iraqi_culture	religion = shia }
-        define_pop = { type = tribesmen	size = 1.206	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.175	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.301	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.044	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.507	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.219	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 2.589	culture = syriac_culture	religion = nestorianism }
     }
 
@@ -4900,10 +4856,8 @@ locations = {
         define_pop = { type = nobles	size = 0.030	culture = iraqi_culture	religion = sunni }
         define_pop = { type = peasants	size = 2.439	culture = iraqi_culture	religion = shia }
         define_pop = { type = nobles	size = 0.008	culture = iraqi_culture	religion = shia }
-        define_pop = { type = tribesmen	size = 1.386	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.121	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.346	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.030	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.732	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.151	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 2.823	culture = syriac_culture	religion = nestorianism }
         define_pop = { type = slaves	size = 1.882	culture = mandean_culture	religion = mandeaism }
     }
@@ -4914,10 +4868,8 @@ locations = {
         define_pop = { type = nobles	size = 0.063	culture = iraqi_culture	religion = sunni }
         define_pop = { type = peasants	size = 4.627	culture = iraqi_culture	religion = shia }
         define_pop = { type = nobles	size = 0.015	culture = iraqi_culture	religion = shia }
-        define_pop = { type = tribesmen	size = 3.541	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.250	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.884	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.062	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 4.425	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.312	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 9.477	culture = syriac_culture	religion = nestorianism }
     }
 
@@ -4927,10 +4879,8 @@ locations = {
         define_pop = { type = nobles	size = 0.019	culture = iraqi_culture	religion = sunni }
         define_pop = { type = peasants	size = 1.561	culture = iraqi_culture	religion = shia }
         define_pop = { type = nobles	size = 0.004	culture = iraqi_culture	religion = shia }
-        define_pop = { type = tribesmen	size = 0.870	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.076	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.217	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.019	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.087	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.095	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 1.774	culture = syriac_culture	religion = nestorianism }
     }
 
@@ -4960,10 +4910,8 @@ locations = {
         define_pop = { type = nobles	size = 0.051	culture = kurdish_culture	religion = sunni }
         define_pop = { type = peasants	size = 0.535	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = nobles	size = 0.017	culture = kurdish_culture	religion = yazidism }
-        define_pop = { type = tribesmen	size = 1.107	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.016	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.276	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.004	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.383	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.020	culture = oirat_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 2.561	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.848	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = slaves	size = 1.749	culture = syriac_culture	religion = nestorianism }
@@ -5135,10 +5083,9 @@ locations = {
         define_pop = { type = nobles	size = 0.134	culture = kurdish_culture	religion = sunni }
         define_pop = { type = burghers	size = 0.212	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = nobles	size = 0.042	culture = kurdish_culture	religion = yazidism }
-        define_pop = { type = tribesmen	size = 1.345	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.010	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.336	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.002	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.010	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.681	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.002	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.549	culture = iraqi_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 2.967	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.712	culture = kurdish_culture	religion = yazidism }
@@ -5155,10 +5102,8 @@ locations = {
         define_pop = { type = nobles	size = 0.105	culture = kurdish_culture	religion = sunni }
         define_pop = { type = peasants	size = 1.346	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = nobles	size = 0.025	culture = kurdish_culture	religion = yazidism }
-        define_pop = { type = tribesmen	size = 0.126	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.002	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.032	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.000	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.158	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.002	culture = oirat_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.010	culture = iraqi_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 6.825	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.362	culture = kurdish_culture	religion = yazidism }
@@ -5172,10 +5117,8 @@ locations = {
         define_pop = { type = nobles	size = 0.047	culture = kurdish_culture	religion = sunni }
         define_pop = { type = peasants	size = 0.357	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = nobles	size = 0.013	culture = kurdish_culture	religion = yazidism }
-        define_pop = { type = tribesmen	size = 0.877	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.012	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.218	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.003	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.095	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.015	culture = oirat_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.441	culture = iraqi_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 2.470	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.741	culture = kurdish_culture	religion = yazidism }
@@ -5188,10 +5131,9 @@ locations = {
         define_pop = { type = nobles	size = 0.102	culture = kurdish_culture	religion = sunni }
         define_pop = { type = burghers	size = 0.186	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = nobles	size = 0.030	culture = kurdish_culture	religion = yazidism }
-        define_pop = { type = tribesmen	size = 0.887	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.007	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.221	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.002	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.007	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.108	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.002	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.955	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.637	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = peasants	size = 1.047	culture = syriac_culture	religion = nestorianism }
@@ -5207,10 +5149,9 @@ locations = {
         define_pop = { type = nobles	size = 0.618	culture = kurdish_culture	religion = sunni }
         define_pop = { type = burghers	size = 0.361	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = nobles	size = 0.153	culture = kurdish_culture	religion = yazidism }
-        define_pop = { type = tribesmen	size = 2.367	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.070	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.591	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.017	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.070	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 2.958	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.017	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.989	culture = iraqi_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 4.384	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.344	culture = kurdish_culture	religion = yazidism }
@@ -5225,10 +5166,8 @@ locations = {
         define_pop = { type = nobles	size = 0.048	culture = kurdish_culture	religion = sunni }
         define_pop = { type = peasants	size = 0.562	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = nobles	size = 0.014	culture = kurdish_culture	religion = yazidism }
-        define_pop = { type = tribesmen	size = 0.990	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.013	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.247	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.003	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.237	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.016	culture = oirat_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 2.772	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.692	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = slaves	size = 1.167	culture = syriac_culture	religion = nestorianism }
@@ -5238,7 +5177,7 @@ locations = {
         define_pop = { type = clergy	size = 0.011	culture = iraqi_culture	religion = sunni }
         define_pop = { type = burghers	size = 5.785	culture = iraqi_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.333	culture = iraqi_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.323	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.323	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 7.506	culture = oirat_culture	religion = sunni }
         define_pop = { type = peasants	size = 1.947	culture = syriac_culture	religion = nestorianism }
         define_pop = { type = peasants	size = 4.928	culture = iraqi_culture	religion = sunni }
@@ -5273,7 +5212,7 @@ locations = {
         define_pop = { type = peasants	size = 4.056	culture = iraqi_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.333	culture = iraqi_culture	religion = sunni }
         define_pop = { type = burghers	size = 6.891	culture = iraqi_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.296	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.296	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 6.423	culture = oirat_culture	religion = sunni }
         define_pop = { type = peasants	size = 2.819	culture = syriac_culture	religion = nestorianism }
     }
@@ -5284,10 +5223,8 @@ locations = {
         define_pop = { type = nobles	size = 0.068	culture = iraqi_culture	religion = sunni }
         define_pop = { type = peasants	size = 4.321	culture = iraqi_culture	religion = shia }
         define_pop = { type = nobles	size = 0.015	culture = iraqi_culture	religion = shia }
-        define_pop = { type = tribesmen	size = 2.548	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.074	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.562	culture = oirat_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 8.978	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.636	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 11.526	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 4.915	culture = syriac_culture	religion = nestorianism }
     }
 
@@ -5388,10 +5325,8 @@ locations = {
         define_pop = { type = nobles	size = 0.010	culture = kurdish_culture	religion = sunni }
         define_pop = { type = peasants	size = 11.519	culture = zaza_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.031	culture = zaza_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.180	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.220	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 12.085	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.514	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 17.265	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.734	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 1.250	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = slaves	size = 3.750	culture = zaza_culture	religion = yazidism }
         define_pop = { type = tribesmen	size = 1.918	culture = turkoman_culture	religion = sunni }
@@ -5412,10 +5347,8 @@ locations = {
         define_pop = { type = clergy	size = 0.001	culture = kurdish_culture	religion = sunni }
         define_pop = { type = peasants	size = 4.836	culture = kurdish_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.040	culture = kurdish_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.949	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.030	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 2.213	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.070	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 3.162	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.100	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 8.155	culture = syriac_culture	religion = nestorianism }
         define_pop = { type = slaves	size = 1.827	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = tribesmen	size = 1.939	culture = turkoman_culture	religion = sunni }
@@ -5436,7 +5369,7 @@ locations = {
     }
 
     diyarbekir = {
-        define_pop = { type = nobles	size = 0.272	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.272	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = nobles	size = 1.773	culture = kurdish_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.789	culture = turkoman_culture	religion = sunni }
         define_pop = { type = clergy	size = 0.152	culture = kurdish_culture	religion = sunni }
@@ -5447,9 +5380,8 @@ locations = {
         define_pop = { type = nobles	size = 0.067	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = burghers	size = 3.883	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = nobles	size = 0.601	culture = kurdish_culture	religion = yazidism }
-        define_pop = { type = tribesmen	size = 2.721	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.104	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 6.349	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.104	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 9.070	culture = oirat_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 19.261	culture = turkoman_culture	religion = sunni }
         define_pop = { type = peasants	size = 9.617	culture = syriac_culture	religion = nestorianism }
         define_pop = { type = peasants	size = 5.793	culture = armenian_culture	religion = miaphysite }
@@ -5464,10 +5396,8 @@ locations = {
         define_pop = { type = nobles	size = 0.006	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = peasants	size = 0.225	culture = zaza_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.009	culture = zaza_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.226	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.003	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.526	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.007	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.752	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.010	culture = oirat_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.576	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.296	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = tribesmen	size = 0.360	culture = zaza_culture	religion = sunni }
@@ -5484,10 +5414,8 @@ locations = {
         define_pop = { type = nobles	size = 0.001	culture = kurdish_culture	religion = sunni }
         define_pop = { type = peasants	size = 0.389	culture = zaza_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.002	culture = zaza_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.179	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.003	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.420	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.006	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.599	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.009	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 0.042	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = slaves	size = 0.126	culture = zaza_culture	religion = yazidism }
         define_pop = { type = tribesmen	size = 2.462	culture = turkoman_culture	religion = sunni }
@@ -5501,10 +5429,8 @@ locations = {
         define_pop = { type = nobles	size = 0.007	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = peasants	size = 0.270	culture = zaza_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.009	culture = zaza_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.247	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.004	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.576	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.009	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.823	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.013	culture = oirat_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.503	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.313	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = tribesmen	size = 0.372	culture = zaza_culture	religion = sunni }
@@ -5519,9 +5445,8 @@ locations = {
         define_pop = { type = nobles	size = 0.075	culture = kurdish_culture	religion = sunni }
         define_pop = { type = peasants	size = 0.557	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = nobles	size = 0.025	culture = kurdish_culture	religion = yazidism }
-        define_pop = { type = tribesmen	size = 0.837	culture = oirat_culture	religion = tengri }
         define_pop = { type = nobles	size = 0.013	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 1.952	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 2.789	culture = oirat_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.031	culture = oirat_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 2.999	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.070	culture = kurdish_culture	religion = yazidism }
@@ -5735,10 +5660,9 @@ locations = {
         define_pop = { type = nobles	size = 0.921	culture = kurdish_culture	religion = sunni }
         define_pop = { type = burghers	size = 1.716	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = nobles	size = 0.263	culture = kurdish_culture	religion = yazidism }
-        define_pop = { type = tribesmen	size = 2.032	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.078	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 4.742	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.183	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.078	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 6.774	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.183	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 17.331	culture = turkoman_culture	religion = sunni }
         define_pop = { type = peasants	size = 12.408	culture = syriac_culture	religion = nestorianism }
         define_pop = { type = peasants	size = 3.453	culture = iraqi_culture	religion = sunni }
@@ -5754,10 +5678,8 @@ locations = {
         define_pop = { type = nobles	size = 0.007	culture = kurdish_culture	religion = sunni }
         define_pop = { type = peasants	size = 4.338	culture = iraqi_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.012	culture = iraqi_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.694	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.024	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 1.617	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.057	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 2.311	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.081	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 0.746	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = tribesmen	size = 1.449	culture = turkoman_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.051	culture = turkoman_culture	religion = sunni }
@@ -5771,10 +5693,8 @@ locations = {
         define_pop = { type = nobles	size = 0.030	culture = kurdish_culture	religion = sunni }
         define_pop = { type = peasants	size = 0.910	culture = iraqi_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.031	culture = iraqi_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.656	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.008	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 1.529	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.019	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 2.185	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.027	culture = oirat_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 2.960	culture = syriac_culture	religion = nestorianism }
         define_pop = { type = tribesmen	size = 1.605	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.898	culture = iraqi_culture	religion = sunni }
@@ -5789,10 +5709,8 @@ locations = {
         define_pop = { type = nobles	size = 0.014	culture = kurdish_culture	religion = sunni }
         define_pop = { type = peasants	size = 3.148	culture = syriac_culture	religion = nestorianism }
         define_pop = { type = nobles	size = 0.081	culture = syriac_culture	religion = nestorianism }
-        define_pop = { type = tribesmen	size = 0.661	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.011	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 1.542	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.026	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 2.203	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.037	culture = oirat_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.571	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 3.250	culture = syriac_culture	religion = nestorianism }
         define_pop = { type = slaves	size = 4.200	culture = kurdish_culture	religion = yazidism }
@@ -5803,10 +5721,8 @@ locations = {
     qayyarah = {
         define_pop = { type = peasants	size = 2.662	culture = iraqi_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.018	culture = iraqi_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.372	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.012	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.868	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.028	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.240	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.040	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 4.024	culture = syriac_culture	religion = nestorianism }
         define_pop = { type = tribesmen	size = 0.968	culture = turkoman_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.032	culture = turkoman_culture	religion = sunni }
@@ -5826,10 +5742,8 @@ locations = {
         define_pop = { type = clergy	size = 0.011	culture = syriac_culture	religion = nestorianism }
         define_pop = { type = peasants	size = 5.048	culture = iraqi_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.044	culture = iraqi_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.714	culture = oirat_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.014	culture = oirat_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 1.667	culture = oirat_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.032	culture = oirat_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 2.381	culture = oirat_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.046	culture = oirat_culture	religion = sunni }
         define_pop = { type = slaves	size = 7.641	culture = syriac_culture	religion = nestorianism }
         define_pop = { type = tribesmen	size = 6.868	culture = turkoman_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.132	culture = turkoman_culture	religion = sunni }
@@ -5984,10 +5898,9 @@ locations = {
         define_pop = { type = slaves	size = 7.014	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 12.009	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.178	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.380	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.020	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.537	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.082	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 6.917	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.020	culture = persianized_mongol_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.082	culture = mongolian_culture	religion = sunni }
     }
 
     ahar = {
@@ -5998,10 +5911,9 @@ locations = {
         define_pop = { type = slaves	size = 7.006	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 4.732	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.089	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.068	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.039	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 8.273	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.155	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 10.341	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.039	culture = persianized_mongol_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.155	culture = mongolian_culture	religion = sunni }
     }
 
     aslanduz = {
@@ -6011,10 +5923,8 @@ locations = {
         define_pop = { type = slaves	size = 3.505	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 4.424	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.130	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.021	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.030	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.093	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.121	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.114	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.151	culture = mongolian_culture	religion = sunni }
     }
 
     kaleybar = {
@@ -6025,10 +5935,8 @@ locations = {
         define_pop = { type = slaves	size = 6.953	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 4.679	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.135	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.013	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.029	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.057	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.117	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.070	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.146	culture = mongolian_culture	religion = sunni }
     }
 
     khiyav = {
@@ -6038,10 +5946,8 @@ locations = {
         define_pop = { type = slaves	size = 3.503	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 4.249	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.128	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.023	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.030	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.089	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.123	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.112	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.153	culture = mongolian_culture	religion = sunni }
     }
 
     mardanaqom = {
@@ -6052,10 +5958,8 @@ locations = {
         define_pop = { type = slaves	size = 2.667	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 1.676	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.042	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.521	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.013	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.088	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.053	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 2.609	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.066	culture = mongolian_culture	religion = sunni }
     }
 
     qahqaheh = {
@@ -6065,10 +5969,8 @@ locations = {
         define_pop = { type = slaves	size = 1.348	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 1.170	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.040	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.387	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.014	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.568	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.054	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 1.955	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.068	culture = mongolian_culture	religion = sunni }
     }
 
     nir = {
@@ -6078,10 +5980,8 @@ locations = {
         define_pop = { type = slaves	size = 2.694	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 4.055	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.131	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.522	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.017	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.091	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.068	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 2.613	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.085	culture = mongolian_culture	religion = sunni }
     }
 
     barza = {
@@ -6105,10 +6005,8 @@ locations = {
         define_pop = { type = slaves	size = 4.054	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 21.913	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.160	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.798	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.010	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.208	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.040	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 4.006	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.050	culture = mongolian_culture	religion = sunni }
     }
 
     miandoab = {
@@ -6122,10 +6020,8 @@ locations = {
         define_pop = { type = tribesmen	size = 11.644	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.090	culture = azeri_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 2.814	culture = kurdish_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.941	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.012	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.772	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.050	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 4.713	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.062	culture = mongolian_culture	religion = sunni }
     }
 
     sain = {
@@ -6142,10 +6038,8 @@ locations = {
         define_pop = { type = tribesmen	size = 1.631	culture = azeri_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.075	culture = azeri_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 3.934	culture = kurdish_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.602	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.019	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 6.422	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.076	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 8.024	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.095	culture = mongolian_culture	religion = sunni }
     }
 
     santeh = {
@@ -6165,9 +6059,8 @@ locations = {
         define_pop = { type = peasants	size = 4.805	culture = kurdish_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.016	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 3.180	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.065	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.325	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 12.734	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.260	culture = mongolian_culture	religion = tengri }
     }
 
     khoy = {
@@ -6187,8 +6080,7 @@ locations = {
         define_pop = { type = tribesmen	size = 6.972	culture = kurdish_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 7.740	culture = kurdish_culture	religion = yazidism }
         define_pop = { type = tribesmen	size = 0.808	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.974	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.443	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.417	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.082	culture = azeri_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 15.034	culture = armenian_culture	religion = miaphysite }
     }
@@ -6199,8 +6091,7 @@ locations = {
         define_pop = { type = nobles	size = 0.030	culture = kurdish_culture	religion = sunni }
         define_pop = { type = slaves	size = 6.808	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 0.622	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.749	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.341	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.090	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.063	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -6210,8 +6101,7 @@ locations = {
         define_pop = { type = nobles	size = 0.048	culture = kurdish_culture	religion = sunni }
         define_pop = { type = slaves	size = 7.198	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 0.311	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.375	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.170	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.545	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.032	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -6222,8 +6112,7 @@ locations = {
         define_pop = { type = slaves	size = 6.796	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 4.255	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.156	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.375	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.170	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.545	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.032	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -6235,8 +6124,7 @@ locations = {
         define_pop = { type = slaves	size = 8.708	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 9.863	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.180	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.974	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.443	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.417	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.082	culture = azeri_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 6.990	culture = armenian_culture	religion = miaphysite }
     }
@@ -6251,8 +6139,7 @@ locations = {
         define_pop = { type = slaves	size = 7.011	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 8.042	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.281	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.974	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.443	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.417	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.082	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -6266,8 +6153,7 @@ locations = {
         define_pop = { type = slaves	size = 3.350	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 3.258	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.134	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.375	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.170	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.545	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.032	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -6277,8 +6163,7 @@ locations = {
         define_pop = { type = nobles	size = 0.041	culture = kurdish_culture	religion = sunni }
         define_pop = { type = slaves	size = 6.124	culture = armenian_culture	religion = miaphysite }
         define_pop = { type = tribesmen	size = 0.311	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.375	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 0.170	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 0.545	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.032	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -6290,10 +6175,9 @@ locations = {
         define_pop = { type = slaves	size = 2.479	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 5.488	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.079	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.112	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.011	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.653	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.045	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 4.765	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.011	culture = persianized_mongol_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.045	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.082	culture = azeri_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.921	culture = adhari_culture	religion = zoroastrian }
     }
@@ -6305,10 +6189,8 @@ locations = {
         define_pop = { type = slaves	size = 5.660	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 5.328	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.206	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.522	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.049	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.312	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.198	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 6.834	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.247	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.082	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -6319,10 +6201,8 @@ locations = {
         define_pop = { type = clergy	size = 0.039	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 3.816	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.013	culture = adhari_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 2.966	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.052	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 11.087	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.207	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 14.053	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.259	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.808	culture = azeri_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.082	culture = azeri_culture	religion = zoroastrian }
     }
@@ -6335,9 +6215,8 @@ locations = {
         define_pop = { type = tribesmen	size = 27.546	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.221	culture = azeri_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.426	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.012	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.061	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 4.905	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.049	culture = mongolian_culture	religion = tengri }
         define_pop = { type = tribesmen	size = 0.082	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -6348,10 +6227,8 @@ locations = {
         define_pop = { type = slaves	size = 6.252	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 6.980	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.254	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.646	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.049	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.785	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.198	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 7.431	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.247	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.082	culture = azeri_culture	religion = zoroastrian }
     }
 
@@ -6367,8 +6244,7 @@ locations = {
         define_pop = { type = peasants	size = 15.202	culture = hui_muslim_culture	religion = sunni }
         define_pop = { type = peasants	size = 6.757	culture = kalimi	religion = judaism }
         define_pop = { type = tribesmen	size = 4.664	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.057	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = tribesmen	size = 11.785	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = tribesmen	size = 14.842	culture = mongolian_culture	religion = sunni }
     }
 
     heris = {
@@ -6380,10 +6256,8 @@ locations = {
         define_pop = { type = nobles	size = 0.027	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 0.772	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.043	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.109	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.117	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 8.444	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.469	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 10.553	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.586	culture = mongolian_culture	religion = sunni }
     }
 
     maragheh = {
@@ -6395,10 +6269,9 @@ locations = {
         define_pop = { type = nobles	size = 1.141	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 11.474	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 1.517	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.044	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.405	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 12.244	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 1.621	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 15.288	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.405	culture = persianized_mongol_culture	religion = sunni }
+        define_pop = { type = nobles	size = 1.621	culture = mongolian_culture	religion = sunni }
         define_pop = { type = peasants	size = 58.199	culture = adhari_culture	religion = sunni }
         define_pop = { type = peasants	size = 9.332	culture = adhari_culture	religion = zoroastrian }
     }
@@ -6412,10 +6285,8 @@ locations = {
         define_pop = { type = nobles	size = 0.028	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 0.744	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.042	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.110	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.119	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 8.443	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.470	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 10.553	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.589	culture = mongolian_culture	religion = sunni }
     }
 
     tufarqan = {
@@ -6427,10 +6298,8 @@ locations = {
         define_pop = { type = nobles	size = 0.020	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 2.632	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.212	culture = azeri_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.041	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.084	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.174	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.336	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.215	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.420	culture = mongolian_culture	religion = sunni }
     }
 
     ujan = {
@@ -6444,9 +6313,9 @@ locations = {
         define_pop = { type = tribesmen	size = 4.535	culture = azeri_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.073	culture = azeri_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 4.302	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.054	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.054	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 17.221	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.218	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = nobles	size = 0.218	culture = mongolian_culture	religion = sunni }
         define_pop = { type = peasants	size = 26.359	culture = adhari_culture	religion = sunni }
         define_pop = { type = peasants	size = 6.030	culture = adhari_culture	religion = zoroastrian }
     }
@@ -6475,9 +6344,8 @@ locations = {
         define_pop = { type = tribesmen	size = 3.531	culture = azeri_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.080	culture = azeri_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 3.478	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.079	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.395	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 13.918	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.316	culture = mongolian_culture	religion = tengri }
     }
 
     mahabad = {
@@ -8298,9 +8166,9 @@ locations = {
         define_pop = { type = burghers	size = 11.988	culture = farsi_culture	religion = sunni }
         define_pop = { type = nobles	size = 2.213	culture = farsi_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 12.169	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.474	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.474	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 48.687	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 1.897	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = nobles	size = 1.897	culture = mongolian_culture	religion = sunni }
         define_pop = { type = peasants	size = 10.715	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 12.634	culture = farsi_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 17.295	culture = adhari_culture	religion = sunni }
@@ -8314,10 +8182,8 @@ locations = {
         define_pop = { type = clergy	size = 0.048	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 4.796	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.016	culture = adhari_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 3.174	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.064	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 12.707	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.259	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 15.881	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.323	culture = mongolian_culture	religion = sunni }
     }
 
     avaj = {
@@ -8332,9 +8198,8 @@ locations = {
         define_pop = { type = nobles	size = 0.013	culture = farsi_culture	religion = sunni }
         define_pop = { type = slaves	size = 1.574	culture = farsi_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 4.130	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.084	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.422	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 16.524	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.338	culture = mongolian_culture	religion = tengri }
     }
 
     qeydar = {
@@ -8344,10 +8209,8 @@ locations = {
         define_pop = { type = clergy	size = 0.049	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 4.793	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.017	culture = adhari_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 3.173	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.064	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 12.710	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.260	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 15.883	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.324	culture = mongolian_culture	religion = sunni }
     }
 
     sagzabad = {
@@ -8362,9 +8225,8 @@ locations = {
         define_pop = { type = nobles	size = 0.016	culture = farsi_culture	religion = zoroastrian }
         define_pop = { type = slaves	size = 3.150	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 4.126	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.084	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.421	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 16.514	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.337	culture = mongolian_culture	religion = tengri }
     }
 
     savojbolagh = {
@@ -8379,9 +8241,8 @@ locations = {
         define_pop = { type = nobles	size = 0.016	culture = farsi_culture	religion = zoroastrian }
         define_pop = { type = slaves	size = 3.150	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 4.128	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.084	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.421	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 16.513	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.337	culture = mongolian_culture	religion = tengri }
     }
 
     takestan = {
@@ -8392,9 +8253,8 @@ locations = {
         define_pop = { type = peasants	size = 6.233	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.021	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 4.126	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.084	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.421	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 16.521	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.337	culture = mongolian_culture	religion = tengri }
     }
 
     qom = {
@@ -8626,10 +8486,8 @@ locations = {
         define_pop = { type = peasants	size = 1.862	culture = farsi_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.007	culture = farsi_culture	religion = zoroastrian }
         define_pop = { type = slaves	size = 1.405	culture = adhari_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 1.843	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.038	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 7.378	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.151	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 9.221	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.189	culture = mongolian_culture	religion = sunni }
     }
 
     varamin = {
@@ -8712,10 +8570,8 @@ locations = {
         define_pop = { type = clergy	size = 0.027	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 2.660	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.009	culture = adhari_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 1.762	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.036	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 7.057	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.144	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 8.819	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.180	culture = mongolian_culture	religion = sunni }
     }
 
     mahneshan = {
@@ -8725,10 +8581,8 @@ locations = {
         define_pop = { type = clergy	size = 0.035	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 3.457	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.012	culture = adhari_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 2.290	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.047	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 9.169	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.187	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 11.459	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.234	culture = mongolian_culture	religion = sunni }
     }
 
     sarcham = {
@@ -8738,10 +8592,8 @@ locations = {
         define_pop = { type = clergy	size = 0.035	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 3.458	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.012	culture = adhari_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 2.289	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.047	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 9.168	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.187	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 11.457	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.234	culture = mongolian_culture	religion = sunni }
     }
 
     sojas = {
@@ -8751,10 +8603,8 @@ locations = {
         define_pop = { type = clergy	size = 0.013	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 1.330	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.004	culture = adhari_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.881	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.018	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.526	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.072	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 4.407	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.090	culture = mongolian_culture	religion = sunni }
     }
 
     soltaniyeh = {
@@ -8768,7 +8618,7 @@ locations = {
         define_pop = { type = clergy	size = 0.467	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = clergy	size = 0.153	culture = kalimi	religion = judaism }
         define_pop = { type = tribesmen	size = 6.639	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.264	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.264	culture = persianized_mongol_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 26.575	culture = mongolian_culture	religion = tengri }
         define_pop = { type = nobles	size = 1.053	culture = mongolian_culture	religion = tengri }
         define_pop = { type = peasants	size = 19.612	culture = adhari_culture	religion = sunni }
@@ -10041,10 +9891,8 @@ locations = {
         define_pop = { type = clergy	size = 0.026	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 2.549	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.009	culture = adhari_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 1.687	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.034	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 6.753	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.138	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 8.440	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.172	culture = mongolian_culture	religion = sunni }
     }
 
     sirdan = {
@@ -10054,10 +9902,8 @@ locations = {
         define_pop = { type = clergy	size = 0.035	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 3.469	culture = adhari_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.012	culture = adhari_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 2.296	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.047	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 9.199	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.188	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 11.495	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.235	culture = mongolian_culture	religion = sunni }
     }
 
     rasht = {
@@ -10169,10 +10015,8 @@ locations = {
         define_pop = { type = clergy	size = 0.008	culture = tajik_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.851	culture = tajik_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.004	culture = tajik_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 1.070	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.016	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.299	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.067	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.369	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.083	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 3.621	culture = turkmen_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.057	culture = turkmen_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.401	culture = turkmen_culture	religion = zoroastrian }
@@ -10187,9 +10031,8 @@ locations = {
         define_pop = { type = peasants	size = 2.880	culture = tajik_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.012	culture = tajik_culture	religion = zoroastrian }
         define_pop = { type = tribesmen	size = 3.434	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.056	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.281	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 13.751	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.225	culture = mongolian_culture	religion = tengri }
         define_pop = { type = tribesmen	size = 10.197	culture = turkmen_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.167	culture = turkmen_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.131	culture = turkmen_culture	religion = zoroastrian }
@@ -10203,10 +10046,8 @@ locations = {
         define_pop = { type = clergy	size = 0.025	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 2.517	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.007	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 1.062	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.029	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.258	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.117	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.320	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.146	culture = mongolian_culture	religion = sunni }
     }
 
     mubarakabad = {
@@ -10216,10 +10057,8 @@ locations = {
         define_pop = { type = clergy	size = 0.027	culture = tajik_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 2.654	culture = tajik_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.009	culture = tajik_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 2.781	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.053	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 11.142	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.211	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 13.923	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.264	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 5.472	culture = turkmen_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.103	culture = turkmen_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.607	culture = turkmen_culture	religion = zoroastrian }
@@ -10233,10 +10072,8 @@ locations = {
         define_pop = { type = clergy	size = 0.025	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 2.518	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.007	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 1.061	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.029	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.255	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.116	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.316	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.145	culture = mongolian_culture	religion = sunni }
     }
 
     tammisha = {
@@ -10423,10 +10260,8 @@ locations = {
         define_pop = { type = clergy	size = 0.011	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 1.110	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.003	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.940	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.026	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.777	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.104	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 4.717	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.130	culture = mongolian_culture	religion = sunni }
     }
 
     deyhuk = {
@@ -10436,10 +10271,8 @@ locations = {
         define_pop = { type = clergy	size = 0.008	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.782	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.002	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.444	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.012	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.784	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.049	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 2.228	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.061	culture = mongolian_culture	religion = sunni }
     }
 
     khusf = {
@@ -10449,10 +10282,8 @@ locations = {
         define_pop = { type = clergy	size = 0.007	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.654	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.002	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.557	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.015	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.228	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.061	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 2.785	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.076	culture = mongolian_culture	religion = sunni }
     }
 
     khvor = {
@@ -10462,10 +10293,8 @@ locations = {
         define_pop = { type = clergy	size = 0.012	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 1.183	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.003	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.662	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.018	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.675	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.074	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 3.337	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.092	culture = mongolian_culture	religion = sunni }
     }
 
     mazhan = {
@@ -10475,10 +10304,8 @@ locations = {
         define_pop = { type = clergy	size = 0.011	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 1.113	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.003	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.940	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.026	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.781	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.104	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 4.721	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.130	culture = mongolian_culture	religion = sunni }
     }
 
     nayband = {
@@ -10497,10 +10324,8 @@ locations = {
         define_pop = { type = clergy	size = 0.007	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.729	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.002	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.613	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.017	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.481	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.069	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 3.094	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.086	culture = mongolian_culture	religion = sunni }
     }
 
     gonabad = {
@@ -10510,10 +10335,9 @@ locations = {
         define_pop = { type = clergy	size = 0.302	culture = khorasani_culture	religion = sunni }
         define_pop = { type = burghers	size = 2.749	culture = khorasani_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.138	culture = khorasani_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.847	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.011	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.404	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.046	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 4.251	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.011	culture = persianized_mongol_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.046	culture = mongolian_culture	religion = sunni }
         define_pop = { type = peasants	size = 1.894	culture = khorasani_culture	religion = shia }
         define_pop = { type = peasants	size = 2.844	culture = khorasani_culture	religion = sunni }
     }
@@ -10522,30 +10346,24 @@ locations = {
         define_pop = { type = clergy	size = 0.115	culture = khorasani_culture	religion = shia }
         define_pop = { type = peasants	size = 10.601	culture = khorasani_culture	religion = shia }
         define_pop = { type = nobles	size = 0.031	culture = khorasani_culture	religion = shia }
-        define_pop = { type = tribesmen	size = 0.892	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.024	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.580	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.098	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 4.472	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.122	culture = mongolian_culture	religion = sunni }
     }
 
     mahvelat = {
         define_pop = { type = clergy	size = 0.160	culture = khorasani_culture	religion = shia }
         define_pop = { type = peasants	size = 14.104	culture = khorasani_culture	religion = shia }
         define_pop = { type = nobles	size = 0.041	culture = khorasani_culture	religion = shia }
-        define_pop = { type = tribesmen	size = 1.190	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.033	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.766	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.131	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.956	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.164	culture = mongolian_culture	religion = sunni }
     }
 
     roshtkhar = {
         define_pop = { type = clergy	size = 0.144	culture = khorasani_culture	religion = shia }
         define_pop = { type = peasants	size = 13.015	culture = khorasani_culture	religion = shia }
         define_pop = { type = nobles	size = 0.038	culture = khorasani_culture	religion = shia }
-        define_pop = { type = tribesmen	size = 1.094	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.030	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.394	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.121	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.488	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.151	culture = mongolian_culture	religion = sunni }
     }
 
     salameh = {
@@ -10555,20 +10373,16 @@ locations = {
         define_pop = { type = nobles	size = 0.024	culture = khorasani_culture	religion = shia }
         define_pop = { type = peasants	size = 12.581	culture = khorasani_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.036	culture = khorasani_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.764	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.048	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 7.086	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.195	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 8.850	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.243	culture = mongolian_culture	religion = sunni }
     }
 
     zaveh = {
         define_pop = { type = clergy	size = 0.212	culture = khorasani_culture	religion = shia }
         define_pop = { type = peasants	size = 18.422	culture = khorasani_culture	religion = shia }
         define_pop = { type = nobles	size = 0.053	culture = khorasani_culture	religion = shia }
-        define_pop = { type = tribesmen	size = 1.553	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.043	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 6.227	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.171	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 7.780	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.214	culture = mongolian_culture	religion = sunni }
     }
 
     qaen = {
@@ -10580,10 +10394,9 @@ locations = {
         define_pop = { type = peasants	size = 0.568	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.028	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = burghers	size = 0.543	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 1.010	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.014	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.066	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.055	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.076	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.014	culture = persianized_mongol_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.055	culture = mongolian_culture	religion = sunni }
     }
 
     abiz = {
@@ -10593,10 +10406,8 @@ locations = {
         define_pop = { type = clergy	size = 0.005	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.479	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.001	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.404	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.011	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.630	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.045	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 2.034	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.056	culture = mongolian_culture	religion = sunni }
     }
 
     khargerd = {
@@ -10606,10 +10417,8 @@ locations = {
         define_pop = { type = nobles	size = 0.011	culture = khorasani_culture	religion = shia }
         define_pop = { type = peasants	size = 5.489	culture = khorasani_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.016	culture = khorasani_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.771	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.021	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.091	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.085	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 3.862	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.106	culture = mongolian_culture	religion = sunni }
     }
 
     shahrakht = {
@@ -10619,10 +10428,8 @@ locations = {
         define_pop = { type = clergy	size = 0.005	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.496	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.001	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.419	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.012	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.699	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.047	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 2.118	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.059	culture = mongolian_culture	religion = sunni }
     }
 
     tabas_al_unnab = {
@@ -10632,10 +10439,8 @@ locations = {
         define_pop = { type = nobles	size = 0.036	culture = khorasani_culture	religion = sunni }
         define_pop = { type = peasants	size = 1.388	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.004	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 1.170	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.032	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.700	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.130	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.870	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.162	culture = mongolian_culture	religion = sunni }
     }
 
     yazduye = {
@@ -10645,10 +10450,8 @@ locations = {
         define_pop = { type = nobles	size = 0.034	culture = khorasani_culture	religion = sunni }
         define_pop = { type = peasants	size = 1.285	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.004	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 1.085	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.030	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.345	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.120	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.430	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.150	culture = mongolian_culture	religion = sunni }
     }
 
     zohan = {
@@ -10658,10 +10461,8 @@ locations = {
         define_pop = { type = clergy	size = 0.003	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.307	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.001	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.258	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.007	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.049	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.029	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 1.307	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.036	culture = mongolian_culture	religion = sunni }
     }
 
     zozan = {
@@ -10671,10 +10472,8 @@ locations = {
         define_pop = { type = clergy	size = 0.007	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.717	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.002	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.601	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.017	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.429	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.067	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 3.030	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.084	culture = mongolian_culture	religion = sunni }
     }
 
     tabas_al_tamr = {
@@ -10695,10 +10494,8 @@ locations = {
         define_pop = { type = clergy	size = 0.006	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.544	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.002	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.303	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.008	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.247	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.034	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 1.550	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.042	culture = mongolian_culture	religion = sunni }
     }
 
     jondaq = {
@@ -10744,10 +10541,8 @@ locations = {
         define_pop = { type = nobles	size = 0.022	culture = khorasani_culture	religion = shia }
         define_pop = { type = peasants	size = 11.522	culture = khorasani_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.033	culture = khorasani_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.623	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.044	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 6.493	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.178	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 8.116	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.222	culture = mongolian_culture	religion = sunni }
     }
 
     bajestan = {
@@ -10757,10 +10552,8 @@ locations = {
         define_pop = { type = nobles	size = 0.014	culture = khorasani_culture	religion = shia }
         define_pop = { type = peasants	size = 7.371	culture = khorasani_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.021	culture = khorasani_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.038	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.028	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.152	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.114	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 5.190	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.142	culture = mongolian_culture	religion = sunni }
     }
 
     boshruyeh = {
@@ -10770,10 +10563,8 @@ locations = {
         define_pop = { type = clergy	size = 0.015	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 1.498	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.004	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.839	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.023	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 3.389	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.094	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 4.228	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.117	culture = mongolian_culture	religion = sunni }
     }
 
     kashmar = {
@@ -10785,10 +10576,9 @@ locations = {
         define_pop = { type = peasants	size = 4.982	culture = khorasani_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.242	culture = khorasani_culture	religion = sunni }
         define_pop = { type = burghers	size = 4.813	culture = khorasani_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.481	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.020	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.948	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.081	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 7.429	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.020	culture = persianized_mongol_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.081	culture = mongolian_culture	religion = sunni }
     }
 
     sarayan = {
@@ -10798,10 +10588,8 @@ locations = {
         define_pop = { type = nobles	size = 0.040	culture = khorasani_culture	religion = sunni }
         define_pop = { type = peasants	size = 1.531	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.004	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 1.295	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.036	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.201	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.143	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 6.496	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.179	culture = mongolian_culture	religion = sunni }
     }
 
     tun = {
@@ -10811,10 +10599,9 @@ locations = {
         define_pop = { type = clergy	size = 0.043	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = burghers	size = 0.393	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.020	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.732	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.010	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 2.949	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.040	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 3.681	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.010	culture = persianized_mongol_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.040	culture = mongolian_culture	religion = sunni }
         define_pop = { type = peasants	size = 3.724	culture = khorasani_culture	religion = sunni }
         define_pop = { type = peasants	size = 0.411	culture = khorasani_culture	religion = zoroastrian }
     }
@@ -10885,10 +10672,8 @@ locations = {
         define_pop = { type = nobles	size = 0.005	culture = afghan_culture	religion = sunni }
         define_pop = { type = peasants	size = 9.586	culture = hazara_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.030	culture = hazara_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.204	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.028	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 4.818	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.113	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 6.022	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.141	culture = mongolian_culture	religion = sunni }
     }
 
     gereshk = {
@@ -10937,7 +10722,7 @@ locations = {
         define_pop = { type = peasants	size = 5.206	culture = khorasani_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.135	culture = khorasani_culture	religion = sunni }
         define_pop = { type = burghers	size = 2.439	culture = khorasani_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.829	culture = mongolian_culture	religion = zoroastrian }
+        define_pop = { type = tribesmen	size = 0.829	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.829	culture = afghan_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.273	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = slaves	size = 0.102	culture = khorasani_culture	religion = zoroastrian }
@@ -10953,7 +10738,7 @@ locations = {
         define_pop = { type = clergy	size = 0.009	culture = khorasani_culture	religion = sunni }
         define_pop = { type = peasants	size = 0.933	culture = khorasani_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.002	culture = khorasani_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.028	culture = mongolian_culture	religion = zoroastrian }
+        define_pop = { type = tribesmen	size = 0.028	culture = mongolian_culture	religion = tengri }
         define_pop = { type = tribesmen	size = 0.028	culture = afghan_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.042	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = slaves	size = 0.005	culture = khorasani_culture	religion = zoroastrian }
@@ -10998,10 +10783,8 @@ locations = {
         define_pop = { type = nobles	size = 0.009	culture = khorasani_culture	religion = sunni }
         define_pop = { type = peasants	size = 0.360	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.001	culture = khorasani_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.304	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.008	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.222	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.034	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 1.526	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.042	culture = mongolian_culture	religion = sunni }
     }
 
     shahr_sabz = {
@@ -11017,7 +10800,7 @@ locations = {
         define_pop = { type = peasants	size = 1.295	culture = khorasani_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.063	culture = khorasani_culture	religion = sunni }
         define_pop = { type = burghers	size = 2.231	culture = khorasani_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.177	culture = mongolian_culture	religion = zoroastrian }
+        define_pop = { type = tribesmen	size = 0.177	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.177	culture = afghan_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.042	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.021	culture = khorasani_culture	religion = zoroastrian }
@@ -11085,10 +10868,8 @@ locations = {
         define_pop = { type = clergy	size = 0.122	culture = afghan_culture	religion = sunni }
         define_pop = { type = peasants	size = 12.021	culture = afghan_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.038	culture = afghan_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.282	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.030	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.130	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.120	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 6.412	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.150	culture = mongolian_culture	religion = sunni }
     }
 
     muqur = {
@@ -11096,10 +10877,8 @@ locations = {
         define_pop = { type = clergy	size = 0.122	culture = afghan_culture	religion = sunni }
         define_pop = { type = peasants	size = 12.021	culture = afghan_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.038	culture = afghan_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.282	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.030	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.130	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.120	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 6.412	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.150	culture = mongolian_culture	religion = sunni }
     }
 
     nawah = {
@@ -11107,10 +10886,8 @@ locations = {
         define_pop = { type = clergy	size = 0.122	culture = afghan_culture	religion = sunni }
         define_pop = { type = peasants	size = 12.021	culture = afghan_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.038	culture = afghan_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.282	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.030	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.130	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.120	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 6.412	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.150	culture = mongolian_culture	religion = sunni }
     }
 
     wazakhwa = {
@@ -11125,10 +10902,8 @@ locations = {
         define_pop = { type = clergy	size = 0.122	culture = afghan_culture	religion = sunni }
         define_pop = { type = peasants	size = 12.021	culture = afghan_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.038	culture = afghan_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.282	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.030	culture = mongolian_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 5.130	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.120	culture = mongolian_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 6.412	culture = mongolian_culture	religion = sunni }
+        define_pop = { type = nobles	size = 0.150	culture = mongolian_culture	religion = sunni }
     }
 
     kabul = {
@@ -11248,7 +11023,7 @@ locations = {
         define_pop = { type = tribesmen	size = 1.565	culture = afghan_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.066	culture = afghan_culture	religion = zoroastrian }
         define_pop = { type = slaves	size = 0.041	culture = afghan_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.847	culture = mongolian_culture	religion = zoroastrian }
+        define_pop = { type = tribesmen	size = 0.847	culture = mongolian_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.157	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = slaves	size = 0.097	culture = khorasani_culture	religion = zoroastrian }
     }
@@ -11260,7 +11035,7 @@ locations = {
         define_pop = { type = clergy	size = 0.032	culture = tajik_culture	religion = sunni }
         define_pop = { type = peasants	size = 3.168	culture = tajik_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.007	culture = tajik_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.998	culture = mongolian_culture	religion = zoroastrian }
+        define_pop = { type = tribesmen	size = 0.998	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 0.998	culture = afghan_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.120	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = slaves	size = 0.111	culture = khorasani_culture	religion = zoroastrian }
@@ -11289,7 +11064,7 @@ locations = {
         define_pop = { type = clergy	size = 0.284	culture = khorasani_culture	religion = sunni }
         define_pop = { type = peasants	size = 24.868	culture = khorasani_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.056	culture = khorasani_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.214	culture = mongolian_culture	religion = zoroastrian }
+        define_pop = { type = tribesmen	size = 1.214	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.214	culture = afghan_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.224	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = slaves	size = 0.140	culture = khorasani_culture	religion = zoroastrian }
@@ -11299,7 +11074,7 @@ locations = {
         define_pop = { type = clergy	size = 0.289	culture = khorasani_culture	religion = sunni }
         define_pop = { type = peasants	size = 24.867	culture = khorasani_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.056	culture = khorasani_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 1.212	culture = mongolian_culture	religion = zoroastrian }
+        define_pop = { type = tribesmen	size = 1.212	culture = mongolian_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.212	culture = afghan_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.224	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = slaves	size = 0.139	culture = khorasani_culture	religion = zoroastrian }
@@ -11315,7 +11090,7 @@ locations = {
         define_pop = { type = burghers	size = 9.051	culture = khorasani_culture	religion = sunni }
         define_pop = { type = tribesmen	size = 1.373	culture = afghan_culture	religion = zoroastrian }
         define_pop = { type = nobles	size = 0.029	culture = afghan_culture	religion = zoroastrian }
-        define_pop = { type = tribesmen	size = 0.744	culture = mongolian_culture	religion = zoroastrian }
+        define_pop = { type = tribesmen	size = 0.744	culture = mongolian_culture	religion = sunni }
         define_pop = { type = nobles	size = 0.068	culture = khorasani_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.034	culture = afghan_culture	religion = zoroastrian }
         define_pop = { type = peasants	size = 0.081	culture = khorasani_culture	religion = zoroastrian }

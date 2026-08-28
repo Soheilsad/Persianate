@@ -18,11 +18,11 @@
 # Arlat...) and Togha Temur's GRG keep plain mongolian_culture: their
 # Iranization is the Timurid arc, not 1337 fact.
 #
-# No pops carry this culture yet (suppress_no_pops_error) — the pop
-# pass needs a location-aware split of the eranzamin pops source
-# (western military caste flips; Afghan/Khorasan-steppe hordes stay
-# Mongol) and goes through tools/pops_overrides_eranzamin.txt + the
-# generator, never 06_pops.txt directly.
+# Pops: 22 urban sunni noble/clergy pops flipped by
+# tools/persianize_mongol_pops.py (2026-08-28) — see that script for
+# the full rule set. Source of truth is
+# tools/pops_overrides_eranzamin.txt + the generator, never
+# 06_pops.txt directly.
 # =====================================================================
 
 persianized_mongol_culture = {
@@ -33,7 +33,12 @@ persianized_mongol_culture = {
 	tags = { mongol_gfx persianate_gfx central_asian_gfx middle_east_gfx }
 
 	opinions = {
-
+		mongolian_culture = positive
+		oirat_culture = positive
+		farsi_culture = positive
+		adhari_culture = positive
+		khorasani_culture = positive
+		tajik_culture = positive
 	}
 
 	culture_groups = {
@@ -42,6 +47,119 @@ persianized_mongol_culture = {
 	}
 
 	use_patronym = yes
+}
 
-	suppress_no_pops_error = yes
+INJECT:mongolian_culture = {
+
+	opinions = {
+		persianized_mongol_culture = kindred
+	}
+
+}
+
+INJECT:oirat_culture = {
+	opinions = {
+		persianized_mongol_culture = kindred
+	}
+}
+
+# =====================================================================
+# THE OPINION LATTICE — cultural attitudes of the Persianate world
+#
+# The region starts base-game with essentially no cultural attitudes
+# (while Europe has dense nets). Principles (2026-08-28):
+#  - The region's quarrels were confessional and dynastic, never
+#    ethnolinguistic: the settled ecumene gets a kindred/positive net
+#    (this also damps the ahistorical cultural-rebellion storm in the
+#    ex-Ilkhanate — ethnic separatism is a national-age phenomenon).
+#  - The REAL fault lines stay: the settled world resents the horde
+#    (negative), Khorasan HATES it (enemy — Merv/Nishapur 1220-21;
+#    the Sarbadar rising at start date IS this rage in polity form).
+#    The hatred is asymmetric: no reverse entry — the victim
+#    remembers, the perpetrator never noticed.
+#  - Kurdish/lur/gilak/mazanderani etc. left out this pass; extend
+#    the net to them if the rebellion logs show them rioting.
+# =====================================================================
+
+INJECT:farsi_culture = {
+	opinions = {
+		persianized_mongol_culture = positive
+		mongolian_culture = negative
+		oirat_culture = negative
+		adhari_culture = kindred
+		khorasani_culture = kindred
+		tajik_culture = kindred
+		iraqi_culture = positive
+	}
+}
+
+INJECT:adhari_culture = {
+	opinions = {
+		persianized_mongol_culture = positive
+		mongolian_culture = negative
+		oirat_culture = negative
+		farsi_culture = kindred
+		khorasani_culture = kindred
+		tajik_culture = kindred
+		iraqi_culture = positive
+	}
+}
+
+# Khorasan: the deepest wound in the region's memory. Enemy toward the
+# horde (from below, an Oirat IS a Mongol — the distinction is
+# invisible to the victim); merely negative toward the Persianized
+# court — the polish doesn't refund the taxes, but the Jalayirid diwan
+# also EMPLOYS Khorasanis, and enemy here would erase the very
+# distinction the Persianized culture exists to mark.
+INJECT:khorasani_culture = {
+	opinions = {
+		mongolian_culture = enemy
+		oirat_culture = enemy
+		persianized_mongol_culture = negative
+		farsi_culture = kindred
+		adhari_culture = kindred
+		tajik_culture = kindred
+		iraqi_culture = positive
+		khorezmian_culture = positive
+		uzbek_culture = negative
+		kurdish_culture = positive
+		lur_culture = positive
+		gilak_culture = positive
+		mazanderani_culture = positive
+		talysh_culture = positive
+	}
+}
+
+# Transoxiana's settled world: Bukhara remembers 1220 — and unlike the
+# west, the exposure is LIVE (still under the Chagatai horde): enemy,
+# not faded memory. The Persianized western courts are neither their
+# patron nor their extractor — neutral, distance. Khorezmians are the
+# co-resident settled Turks of the same cities (the Turko-Persian
+# urban symbiosis); Uzbeks are the Jochid steppe across the Syr Darya.
+INJECT:tajik_culture = {
+	opinions = {
+		mongolian_culture = enemy
+		oirat_culture = enemy
+		persianized_mongol_culture = neutral
+		farsi_culture = kindred
+		khorasani_culture = kindred
+		adhari_culture = kindred
+		khorezmian_culture = positive
+		uzbek_culture = negative
+	}
+}
+
+# Baghdad remembers Hulegu (1258); the Diyala remembers Ali Padshah's
+# Oirats. But the Jalayirid court IS Baghdad's court, and the Iraqi
+# scribal class shares the diwan tradition with the Iranic world
+# (positive, not kindred — the arabophone/persophone distance is real).
+INJECT:iraqi_culture = {
+	opinions = {
+		mongolian_culture = negative
+		oirat_culture = negative
+		persianized_mongol_culture = positive
+		farsi_culture = positive
+		adhari_culture = positive
+		khorasani_culture = positive
+	}
 }
