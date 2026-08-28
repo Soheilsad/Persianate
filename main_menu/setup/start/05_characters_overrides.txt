@@ -2,7 +2,7 @@ character_db = {
 	chb_hasan_kuchak_pw = {	#Ruler at 1337 start
 		first_name = { name = name_hasan }
 		nickname = { name = name_kuchek }
-		culture = mongolian_culture
+		culture = persianized_mongol_culture
 		religion = sunni
 		adm = 61 dip = 90 mil = 74
 		birth_date = 1319.1.1
@@ -17,7 +17,7 @@ character_db = {
 
 	chb_chupan_pw = { #Founder of the Dynasty
 		first_name = { name = name_chupan }
-		culture = mongolian_culture
+		culture = persianized_mongol_culture
 		religion = sunni
 		adm = 75 dip = 80 mil = 85
 		birth_date = 1262.1.1
@@ -30,7 +30,7 @@ character_db = {
 
 	chb_timurtash_pw = { #Father of the ruler
 		first_name = { name = name_timur.name_tash }
-		culture = mongolian_culture
+		culture = persianized_mongol_culture
 		religion = sunni
 		adm = 45 dip = 30 mil = 75
 		birth_date = 1298.1.1
@@ -44,7 +44,7 @@ character_db = {
 
 	chb_malek_ashraf_pw = {
 		first_name = { name = name_malik.name_ashraf }
-		culture = mongolian_culture
+		culture = persianized_mongol_culture
 		religion = sunni
 		adm = 35 dip = 25 mil = 75
 		birth_date = 1320.1.1
@@ -59,7 +59,7 @@ character_db = {
 
 	chb_demasq_kaja_pw = {
 		first_name = { name = name_damascus.name_xwaja }
-		culture = mongolian_culture
+		culture = persianized_mongol_culture
 		religion = sunni
 		adm = 50 dip = 60 mil = 55
 		birth_date = 1299.1.1
@@ -73,7 +73,7 @@ character_db = {
 
 	chb_suleiman_khan_pw = {
 		first_name = { name = name_salomon }
-		culture = mongolian_culture
+		culture = persianized_mongol_culture
 		religion = sunni
 		adm = 40 dip = 55 mil = 35
 		birth_date = 1300.1.1
@@ -85,7 +85,7 @@ character_db = {
 
 	chb_sati_beg_pw = {
 		first_name = { name = name_sati.name_beg }
-		culture = mongolian_culture
+		culture = persianized_mongol_culture
 		religion = sunni
 		female = yes
 		adm = 60 dip = 65 mil = 40
@@ -101,7 +101,7 @@ character_db = {
 
 	chb_surgan_pw = {
 		first_name = { name = name_surgan }
-		culture = mongolian_culture
+		culture = persianized_mongol_culture
 		religion = sunni
 		adm = 45 dip = 50 mil = 50
 		birth_date = 1320.1.1
@@ -218,7 +218,7 @@ character_db = {
 		dynasty = jalayirids_dynasty
 		birth = yerevan
 		birth_date = 1305.1.1
-		culture = mongolian_culture
+		culture = persianized_mongol_culture
 		religion = sunni
 		adm = 75 dip = 85 mil = 65
 		tag = JAL
@@ -229,7 +229,7 @@ character_db = {
 
 	jal_muhammad_khan_pw = {
 		first_name = { name = name_muhammad.name_khan }
-		culture = mongolian_culture
+		culture = persianized_mongol_culture
 		religion = sunni
 		birth_date = 1330.1.1 #Unknown, but known to be a child.
 		birth = soltaniyeh

@@ -36909,7 +36909,8 @@ tabriz = {
 	define_pop = { type = burghers	size = 2.637	culture = kalimi	religion = judaism }
 	define_pop = { type = clergy	size = 5.928	culture = adhari_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.190	culture = adhari_culture	religion = zoroastrian }
-	define_pop = { type = nobles	size = 2.205	culture = adhari_culture	religion = shia }
+	define_pop = { type = nobles	size = 2.205	culture = adhari_culture	religion = sunni }
+	define_pop = { type = nobles	size = 1.332	culture = mongolian_culture	religion = sunni }
 	define_pop = { type = peasants	size = 121.960	culture = adhari_culture	religion = sunni }
 	define_pop = { type = peasants	size = 19.775	culture = adhari_culture	religion = zoroastrian }
 	define_pop = { type = peasants	size = 15.202	culture = hui_muslim_culture	religion = sunni }

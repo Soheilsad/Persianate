@@ -2,7 +2,18 @@ CHB = { #Chobanids
 	color = map_CHB
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = persianized_mongol_culture
+	religion_definition = sunni
+	is_historic = yes
+}
+
+# Override of base crescent.txt JAL: the Jalayirid house is the other
+# great Persianized keshig dynasty — same culture surgery as CHB.
+JAL = { #Jalayirids
+	color = map_jalayirids
+	color2 = yellow
+
+	culture_definition = persianized_mongol_culture
 	religion_definition = sunni
 	is_historic = yes
 }
@@ -87,7 +98,13 @@ SHB = { #Shabankara
 	religion_definition = sunni
 }
 
-JUR = { #Jurmanids
+# JUR/UGH stay plain Mongol: Persianization ran THROUGH Islamization
+# (Ghazan 1295 is the gateway), and these bands are still Tengrist in
+# 1337 — the unassimilated counterexample inside Iran itself. The
+# sources keep them as predatory pastoral hordes harassing eastern
+# Fars into the Muzaffarid era; two valleys from Shiraz, culturally
+# still on the steppe.
+JUR = { #Jurmanids — Fars nomad horde (Darab), unconverted
 	color = map_JUR
 	color2 = rgb { 16 41 202 }
 
@@ -95,7 +112,7 @@ JUR = { #Jurmanids
 	religion_definition = tengri
 }
 
-UGH = { #Ughanids
+UGH = { #Ughanids — Fars nomad horde (Qatruyeh), unconverted
 	color = map_UGH
 	color2 = rgb { 16 41 202 }
 
@@ -306,11 +323,11 @@ KHF = { #Khaf
 	religion_definition = sunni
 }
 
-HLG = { #Huleguids
+HLG = { #Huleguids — the Ilkhanid house itself: the most Persianized of all
 	color = map_HLG
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = persianized_mongol_culture
 	religion_definition = sunni
 }
 

@@ -6,4 +6,7 @@ colors = {
 	terrain_qanat = rgb { 100 200 100 } # Drier green
 	terrain_seasonal = rgb { 180 200 50 } # Yellow-green
 	terrain_crumbling = rgb { 160 140 100 } # Brownish-grey
+
+	# Cultures
+	map_persianized_mongol = rgb { 115 120 205 } # Mongol blue shifted toward Persian violet
 }

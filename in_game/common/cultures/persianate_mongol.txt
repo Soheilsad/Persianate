@@ -1,0 +1,47 @@
+# =====================================================================
+# PERSIANIZED MONGOL — the Ilkhanid military aristocracy of Iran
+#
+# By 1337 the keshig houses of the west — Chobanids, Jalayirids, the
+# Fars garrison hordes, the Huleguid line itself — are three
+# generations deep in Iran: Muslim since Ghazan, Persian in chancery,
+# married into the Iranic elite, born in Soltaniyeh and Kayseri and
+# Yerevan, not Karakorum. Sharing one culture with the Mongols of
+# Mongolia (and with Togha Temur's steppe-facing horde) was flatly
+# wrong — Hasan Buzurg's grandson is Sultan Ahmad Jalayir, poet and
+# calligrapher, correspondent of Hafez.
+#
+# Dual culture_groups (mongolian + iranian) is the load-bearing move:
+# it makes accepting Persian cheap for these courts (as it should be)
+# and is the on-ramp for the future Matter of Tazik acculturation arc.
+# steppe_group is deliberately DROPPED — that is the statement of
+# settledness. The Chagatai tribal world (Barlas, Qara'unas, Suldus,
+# Arlat...) and Togha Temur's GRG keep plain mongolian_culture: their
+# Iranization is the Timurid arc, not 1337 fact.
+#
+# No pops carry this culture yet (suppress_no_pops_error) — the pop
+# pass needs a location-aware split of the eranzamin pops source
+# (western military caste flips; Afghan/Khorasan-steppe hordes stay
+# Mongol) and goes through tools/pops_overrides_eranzamin.txt + the
+# generator, never 06_pops.txt directly.
+# =====================================================================
+
+persianized_mongol_culture = {
+	language = persian_language
+
+	color = map_persianized_mongol
+
+	tags = { mongol_gfx persianate_gfx central_asian_gfx middle_east_gfx }
+
+	opinions = {
+
+	}
+
+	culture_groups = {
+		mongolian_group
+		iranian_group
+	}
+
+	use_patronym = yes
+
+	suppress_no_pops_error = yes
+}
