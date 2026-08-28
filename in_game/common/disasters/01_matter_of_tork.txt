@@ -43,64 +43,152 @@ matter_of_tork = {
 
 	can_end = {
 		OR = {
-			# ---The proclamation route: press The Answer Is Given with
-			# at least one completed path (or the scar of the empty
-			# proclamation). The Dissolve program is shown as its four
-			# real steps so the checklist ticks as the player works.
+			# ---The proclamation route. Each path renders as its LIVE
+			# underlying states (raw triggers, engine-native tooltips)
+			# ORed with its completion flag - the flag holds a finished
+			# path true even if the live state later drifts.
 			AND = {
 				custom_tooltip = {
 					text = matter_tork_answer_button_tt
 					has_variable = matter_tork_answer_given
 				}
 				OR = {
-					AND = {
-						custom_tooltip = {
-							text = matter_tork_ce_step_seat_tt
-							has_variable = matter_amir_diwan_pushed
-						}
-						custom_tooltip = {
-							text = matter_tork_ce_step_pay_tt
-							has_variable = matter_tork_step_mavajib
-						}
-						custom_tooltip = {
-							text = matter_tork_ce_step_pasture_tt
-							has_variable = matter_tork_step_pastures
-						}
-						custom_tooltip = {
-							text = matter_tork_ce_step_incorporate_tt
-							has_variable = matter_tork_step_incorporate
-						}
+					# --- A. Dissolve: the program's real states ---
+					OR = {
 						custom_tooltip = {
 							text = matter_tork_ce_dissolve_done_tt
 							has_variable = matter_tork_path_dissolve_done
 						}
+						AND = {
+							custom_tooltip = {
+								text = matter_tork_ce_dissolve_claim_tt
+								has_variable = matter_tork_iranization_claimed
+							}
+							custom_tooltip = {
+								text = matter_tork_ce_dissolve_time_tt
+								trigger_if = {
+									limit = { has_variable = matter_tork_iranization_months }
+									var:matter_tork_iranization_months >= 120
+								}
+								trigger_else = { always = no }
+							}
+							has_estate_privilege = estate_privilege:amirs_umara_at_the_diwan
+							has_estate_privilege = estate_privilege:diwan_mavajib_cash_pay
+							custom_tooltip = {
+								text = matter_tork_ce_step_pasture_tt
+								any_owned_location = { has_building = building_type:registered_pasture }
+								NOT = {
+									any_owned_location = {
+										location_rank = location_rank:rural_settlement
+										num_pop_type:tribesmen > 20
+										NOT = { has_building = building_type:registered_pasture }
+									}
+								}
+							}
+							OR = {
+								has_estate_privilege = estate_privilege:salaried_pastoral_levies
+								has_estate_privilege = estate_privilege:diwan_tazik_command_of_arms
+							}
+							societal_value:turk_vs_tazik >= 25
+							estate_satisfaction:amirs_estate >= 0.5
+							estate_satisfaction:diwan_estate >= 0.5
+							estate_satisfaction:tribes_estate >= 0.5
+						}
 					}
-					custom_tooltip = {
-						text = matter_tork_ce_march_done_tt
-						has_variable = matter_tork_path_march_done
+					# --- B. March: the theater won and released ---
+					OR = {
+						custom_tooltip = {
+							text = matter_tork_ce_march_done_tt
+							has_variable = matter_tork_path_march_done
+						}
+						AND = {
+							custom_tooltip = {
+								text = matter_tork_ce_march_theater_tt
+								has_variable = matter_tork_raid_region
+							}
+							custom_tooltip = {
+								text = matter_tork_release_need_tt
+								trigger_if = {
+									limit = { has_variable = matter_tork_raid_owned }
+									var:matter_tork_raid_owned >= var:matter_tork_raid_need
+								}
+								trigger_else = { always = no }
+							}
+							custom_tooltip = {
+								text = matter_tork_release_size_tt
+								trigger_if = {
+									limit = { has_variable = matter_tork_raid_owned }
+									var:matter_tork_raid_owned >= 25
+								}
+								trigger_else = { always = no }
+							}
+							custom_tooltip = {
+								text = matter_tork_release_tribes_tt
+								trigger_if = {
+									limit = { has_variable = matter_tork_raid_tribes }
+									var:matter_tork_raid_tribes >= 500
+								}
+								trigger_else = { always = no }
+							}
+							custom_tooltip = {
+								text = matter_tork_ce_march_release_tt
+								has_variable = matter_tork_marcher_claimed
+							}
+						}
 					}
-					custom_tooltip = {
-						text = matter_tork_ce_murid_done_tt
-						has_variable = matter_tork_path_murid_done
+					# --- C. Murid bond: the states of the synthesis ---
+					OR = {
+						custom_tooltip = {
+							text = matter_tork_ce_murid_done_tt
+							has_variable = matter_tork_path_murid_done
+						}
+						AND = {
+							societal_value:mysticism_vs_jurisprudence <= -50
+							custom_tooltip = {
+								text = matter_tork_murid_courtship_tt
+								has_variable = matter_tork_vilayat_73_fired
+							}
+							custom_tooltip = {
+								text = matter_tork_ce_murid_sworn_tt
+								has_variable = matter_tork_murid_claimed
+							}
+						}
 					}
-					custom_tooltip = {
-						text = matter_tork_ce_expulsion_done_tt
-						has_variable = matter_tork_path_expulsion_done
+					# --- D. Expulsion: claimed and run to its end ---
+					OR = {
+						custom_tooltip = {
+							text = matter_tork_ce_expulsion_done_tt
+							has_variable = matter_tork_path_expulsion_done
+						}
+						AND = {
+							custom_tooltip = {
+								text = matter_tork_ce_expulsion_claim_tt
+								has_variable = matter_tork_expulsion_underway
+							}
+							custom_tooltip = {
+								text = matter_tork_ce_expulsion_time_tt
+								trigger_if = {
+									limit = { has_variable = matter_tork_expulsion_months }
+									var:matter_tork_expulsion_months >= 120
+								}
+								trigger_else = { always = no }
+							}
+						}
 					}
+					# --- The empty proclamation: its scar stands ---
 					custom_tooltip = {
 						text = matter_tork_ce_nothing_tt
 						has_country_modifier = matter_turk_defection_scar
 					}
 				}
 			}
-			# ---The blood route: an eradication attempt or a defection
-			# war has been fought to its end, whoever won.
+			# ---The blood route: eradication or defection fought out.
 			custom_tooltip = {
 				text = matter_tork_end_resolved_tt
 				has_variable = matter_of_tork_resolved
 			}
-			# ---Lost the realm: capital driven from Eranzamin or the
-			# realm subjugated (evaluated live).
+			# ---Lost the realm (live): capital outside Eranzamin or
+			# the realm subjugated.
 			custom_tooltip = {
 				text = matter_tork_end_lost_realm_tt
 				NOT = { is_eranzamin_contender = yes }
