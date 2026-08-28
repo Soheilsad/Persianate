@@ -456,6 +456,7 @@
  STATIC_MODIFIER_NAME_matter_madrasa_registers: "The Madrasa of the Registers"
  STATIC_MODIFIER_DESC_matter_madrasa_registers: "The cabinet is teaching, not administering. The long work, paid for in the coin of government."
  matter_tork_yurt_beachhead_tt: "You hold at least one location in the designated raid theater"
+ matter_tork_host_census_tt: "At least #Y 750,000#! Turco-Mongol tribesmen live in the realm (counted yearly)"
  matter_tork_release_need_tt: "At least a fifth of the theater's locations fly your banner"
  matter_tork_release_size_tt: "You hold at least #Y 25 locations#! in the theater"
  matter_tork_release_tribes_tt: "At least #Y 500,000 tribesmen#! live in your theater holdings"

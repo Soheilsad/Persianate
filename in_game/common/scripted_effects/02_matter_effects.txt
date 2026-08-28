@@ -158,6 +158,25 @@ matter_tork_set_approach_unleash = {
 	add_country_modifier = { modifier = matter_approach_unleash months = -1 }
 }
 
+# ---More Time: the hosts see the state respond -------------------------
+# Called by costly acts inside the Matter (privileges granted, program
+# steps completed, buildings raised for them): each sets the horizon
+# clock BACK a year. The Turks are watching the state answer them;
+# patience is the reward. Floors at 0.
+matter_tork_grant_time = {
+	if = {
+		limit = {
+			has_variable = matter_tork_months
+			var:matter_tork_months >= 12
+		}
+		change_variable = { name = matter_tork_months subtract = 12 }
+	}
+	else_if = {
+		limit = { has_variable = matter_tork_months }
+		set_variable = { name = matter_tork_months value = 0 }
+	}
+}
+
 matter_tork_monthly_tick = {
 	change_variable = { name = matter_tork_months add = 1 }
 	# Process counters tick only while their disposition runs.
@@ -320,6 +339,8 @@ matter_tork_monthly_tick = {
 		}
 		set_variable = matter_amir_diwan_pushed
 		change_societal_value = { type = turk_vs_tazik value = -20 }
+		# Seating the amirs buys patience: the clock steps back a year.
+		matter_tork_grant_time = yes
 	}
 	# War-observation latch: the war-end polls only arm after the
 	# civil war has actually been seen running, so the month between
