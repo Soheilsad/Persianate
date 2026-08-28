@@ -1,43 +1,81 @@
-# amirs_fortify_borders = {
-# 	estate = amirs_estate
-# 	modifier_when_in_debate = {
-# 		global_defensive = 0.05
-# 	}
-# 	allow = {
-# 		OR = {
-# 			parliament_type = parliament_type:diwan_council
-# 			parliament_type = parliament_type:council
-# 		}
-# 	}
-# 	chance = { add = 10 }
-# 	on_debate_passed = {
-# 		add_country_modifier = {
-# 			modifier = border_fortification_modifier
-# 			years = 10
-# 		}
-# 	}
-# 	on_debate_failed = { parliament_debate_failed_effect = yes }
-# }
+# =========================================================
+# The Amirs' petitions — deliberately FEW.
+#
+# The amirs do not legislate: their politics is force and
+# privilege, and their standing in the maẓālim is mostly as
+# defendants. What they may lawfully bring before the court
+# is the sword's own business — the frontier, the horse, and
+# the pasture. Nothing else.
+# =========================================================
 
-# amirs_expand_cavalry = {
-# 	estate = amirs_estate
-# 	modifier_when_in_debate = {
-# 		army_heavy_cavalry_power = 0.05
-# 		army_light_cavalry_power = 0.05
-# 	}
-# 	allow = {
-# 		OR = {
-# 			parliament_type = parliament_type:diwan_council
-# 			parliament_type = parliament_type:council
-# 		}
-# 	}
-# 	chance = { add = 10 }
-# 	on_debate_passed = {
-# 		add_country_modifier = {
-# 			modifier = amir_cavalry_buff
-# 			years = 10
-# 		}
-# 		change_societal_value = { type = turk_vs_tazik value = -5 }
-# 	}
-# 	on_debate_failed = { parliament_debate_failed_effect = yes }
-# }
+amirs_fortify_borders = {
+	estate = amirs_estate
+	modifier_when_in_debate = {
+		global_defensive = 0.05
+	}
+	allow = {
+		OR = {
+			parliament_type = parliament_type:diwan_council
+			parliament_type = parliament_type:council
+		}
+	}
+	chance = { add = 10 }
+	on_debate_passed = {
+		add_country_modifier = {
+			modifier = border_fortification_modifier
+			years = 10
+		}
+	}
+	on_debate_failed = { parliament_debate_failed_effect = yes }
+}
+
+amirs_expand_cavalry = {
+	estate = amirs_estate
+	modifier_when_in_debate = {
+		army_heavy_cavalry_power = 0.05
+		army_light_cavalry_power = 0.05
+	}
+	allow = {
+		OR = {
+			parliament_type = parliament_type:diwan_council
+			parliament_type = parliament_type:council
+		}
+	}
+	chance = { add = 10 }
+	on_debate_passed = {
+		add_country_modifier = {
+			modifier = amir_cavalry_buff
+			years = 10
+		}
+		change_societal_value = { type = turk_vs_tazik value = -5 }
+	}
+	on_debate_failed = { parliament_debate_failed_effect = yes }
+}
+
+# The yaylaq recognized: the summer pastures and the migration
+# corridors between them written into the daftar as the tribes'
+# by right, not by trespass. The herds fatten, the levy rides —
+# and the villages along the corridors know exactly what it cost.
+amirs_yaylaq_rights = {
+	estate = amirs_estate
+	modifier_when_in_debate = {
+		global_levy_size_modifier = 0.05
+	}
+	allow = {
+		OR = {
+			parliament_type = parliament_type:diwan_council
+			parliament_type = parliament_type:council
+		}
+	}
+	chance = { add = 10 }
+	on_debate_passed = {
+		add_country_modifier = {
+			modifier = amirs_yaylaq_mod
+			years = 10
+		}
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = -0.15 }
+		change_societal_value = { type = turk_vs_tazik value = -5 }
+	}
+	on_debate_failed = { parliament_debate_failed_effect = yes }
+}

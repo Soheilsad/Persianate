@@ -1,0 +1,163 @@
+# =========================================================
+# Petitions of the realm — persianate-flavored issues for the
+# non-elite estates (clergy petitions, bazaar petitions, village
+# petitions). Base-game issue files (04/05/06) still supply the
+# generic pool; these are the forms the tradition itself names.
+# All gated to the diwan_council so they never leak westward.
+# =========================================================
+
+# --- Clergy ---
+
+# The ʿulamāʾ petition for the muḥtasib to be strengthened —
+# not a change of law, a season of zeal within it.
+clergy_hisba_campaign = {
+	estate = clergy_estate
+
+	modifier_when_in_debate = {
+		monthly_religious_influence = 0.05
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+		religion.group = religion_group:muslim
+	}
+
+	chance = { add = 10 }
+
+	on_debate_passed = {
+		add_country_modifier = { modifier = clergy_hisba_campaign_mod years = 5 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.03 }
+	}
+
+	on_debate_failed = { parliament_debate_failed_effect = yes }
+}
+
+# New madrasas endowed from the treasury — chairs for the
+# jurists, stipends for the students, prestige for the throne.
+clergy_endow_madrasas = {
+	estate = clergy_estate
+
+	modifier_when_in_debate = {
+		research_speed_modifier = 0.05
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+		religion.group = religion_group:muslim
+	}
+
+	chance = { add = 10 }
+
+	on_debate_passed = {
+		add_gold = { value = root.monthly_income_trade_and_tax multiply = -6 }
+		add_country_modifier = { modifier = clergy_madrasa_endowment_mod years = 10 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 }
+	}
+
+	on_debate_failed = { parliament_debate_failed_effect = yes }
+}
+
+# --- Burghers ---
+
+# Wakālas and funduqs raised at the great termini: lodging,
+# warehousing, and brokerage under one sealed roof.
+burghers_build_wakalas = {
+	estate = burghers_estate
+
+	modifier_when_in_debate = {
+		global_monthly_prosperity = 0.001
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = { add = 10 }
+
+	on_debate_passed = {
+		add_gold = { value = root.monthly_income_trade_and_tax multiply = -6 }
+		add_country_modifier = { modifier = burghers_wakala_mod years = 10 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = 0.05 }
+	}
+
+	on_debate_failed = { parliament_debate_failed_effect = yes }
+}
+
+# The bazaar petitions against the tamgha — the Mongol
+# commercial levy the jurists never liked and the merchants
+# never stopped protesting. Remission buys devotion and custom;
+# the treasury feels it.
+burghers_remit_tamgha = {
+	estate = burghers_estate
+
+	modifier_when_in_debate = {
+		global_monthly_prosperity = 0.001
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = { add = 10 }
+
+	on_debate_passed = {
+		add_country_modifier = { modifier = burghers_tamgha_remission_mod years = 10 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = 0.07 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.03 }
+	}
+
+	on_debate_failed = { parliament_debate_failed_effect = yes }
+}
+
+# --- Peasants ---
+
+# Taqāwī: seed grain and plough oxen advanced from the state
+# granaries against the harvest — Ghazan's instrument for
+# resettling emptied villages.
+peasants_taqavi_loans = {
+	estate = peasants_estate
+
+	modifier_when_in_debate = {
+		global_monthly_prosperity = 0.001
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = { add = 10 }
+
+	on_debate_passed = {
+		add_gold = { value = root.monthly_income_trade_and_tax multiply = -6 }
+		add_country_modifier = { modifier = peasants_taqavi_mod years = 10 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = 0.05 }
+	}
+
+	on_debate_failed = { parliament_debate_failed_effect = yes }
+}
+
+# The arrears struck from the rolls: what drought and soldiery
+# made uncollectable is forgiven rather than hunted — the just
+# king's oldest gesture toward the raʿiyyat.
+peasants_remit_arrears = {
+	estate = peasants_estate
+
+	modifier_when_in_debate = {
+		global_monthly_prosperity = 0.001
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = { add = 10 }
+
+	on_debate_passed = {
+		add_gold = { value = root.monthly_income_trade_and_tax multiply = -3 }
+		add_country_modifier = { modifier = peasants_arrears_remission_mod years = 5 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = 0.05 }
+	}
+
+	on_debate_failed = { parliament_debate_failed_effect = yes }
+}

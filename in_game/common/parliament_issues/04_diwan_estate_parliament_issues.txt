@@ -1,0 +1,252 @@
+# =========================================================
+# The Chancery's Memoranda — diwan-sponsored parliament issues
+#
+# The one elite class that legitimately GENERATES state policy
+# in the Persianate tradition is the dīwān: Rashīd al-Dīn's
+# chancery drafted Ghazan's reform program and the sovereign
+# enacted it as decrees. These issues are that form — the
+# chancery lays a memorandum before the throne; the maẓālim
+# is where it is read out and pushed through. The amirs get
+# no such instrument: their politics is force and privilege,
+# and their voice in this court is as defendants.
+#
+# Roster = the Ghazanid program (Rashīd al-Dīn, Tārīkh-i
+# Mubārak-i Ghāzānī): cadastre, fixed qānūn schedules, mint
+# reform, the yam, the qonalgha ban, salaried offices —
+# plus the secretariat and the iqṭāʿ revenue audit.
+# (commission_cadastre / expand_the_secretariat /
+# audit_iqta_holders had loc and static modifiers already;
+# this file is their implementation.)
+# =========================================================
+
+# The great survey: the daftar rewritten from the ground.
+commission_cadastre = {
+	estate = diwan_estate
+
+	modifier_when_in_debate = {
+		tax_income_efficiency = 0.05
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = 30
+
+	on_debate_passed = {
+		# The surveyors' wages — the state pays for its own eyes.
+		add_gold = { value = root.monthly_income_trade_and_tax multiply = -6 }
+		add_country_modifier = { modifier = recent_cadastre_modifier years = 10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+# More scribes, more registers, more reach for the pen.
+expand_the_secretariat = {
+	estate = diwan_estate
+
+	modifier_when_in_debate = {
+		country_cabinet_efficiency = 0.05
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		add_gold = { value = root.monthly_income_trade_and_tax multiply = -6 }
+		add_country_modifier = { modifier = expanded_secretariat_modifier years = 10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+# The revenue side of the iqṭāʿ problem: not the lapsed grants
+# (that is the crown's audit_unaudited_iqta) but the dues the
+# holders withhold. A forceful clawback from the amirs' coffers.
+audit_iqta_holders = {
+	estate = diwan_estate
+
+	modifier_when_in_debate = {
+		tax_income_efficiency = 0.05
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+		country_has_estate = estate_type:amirs_estate
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		# A fifth of the amirs' hoard is found to be the crown's.
+		# Inlined seizure (tooltip-previewable, per agenda-file idiom).
+		"estate(estate_type:amirs_estate)" = { save_scope_as = seize_target }
+		set_local_variable = {
+			name = seized_pool
+			value = {
+				value = scope:seize_target.estate_gold
+				multiply = 0.20
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:amirs_estate
+			value = {
+				value = local_var:seized_pool
+				multiply = -1
+			}
+		}
+		add_gold = { value = local_var:seized_pool }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+# The qānūn: fixed tax schedules, posted at the village, so the
+# collector can take no more than the tablet says. Ghazan's
+# signature reform — legibility for the state, protection for
+# the taxpayer, and nothing left to the collector's discretion.
+diwan_qanun_schedules = {
+	estate = diwan_estate
+
+	modifier_when_in_debate = {
+		tax_income_efficiency = 0.05
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		add_country_modifier = { modifier = diwan_purge_unrest_reduction years = 10 }
+		add_country_modifier = { modifier = diwan_reform_tax_efficiency years = 10 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = 0.05 }
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+# One dirham for the realm: standard weight, standard fineness,
+# struck in the Shah's name at every mint. Ghazan's currency
+# unification, the precondition of every other fiscal reform.
+diwan_mint_reform = {
+	estate = diwan_estate
+
+	modifier_when_in_debate = {
+		global_monthly_prosperity = 0.001
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		add_country_modifier = { modifier = diwan_mint_reform_mod years = 10 }
+		add_inflation = inflation_mild_bonus
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+# The yam set in order: post-stations provisioned by schedule
+# instead of seized from whoever lives nearest, riders licensed
+# by paiza instead of anyone with a tablet and an appetite.
+diwan_yam_reform = {
+	estate = diwan_estate
+
+	modifier_when_in_debate = {
+		global_monthly_control = 0.003
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		add_country_modifier = { modifier = diwan_yam_reform_mod years = 10 }
+		add_stability = 5
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+# The qonalgha prohibited: no amir, envoy, or rider may quarter
+# himself, his men, or his beasts on the subjects. Named, with
+# ulagh and ulufa, in Ghazan's own decrees as the abuses that
+# empty villages.
+diwan_ban_qonalgha = {
+	estate = diwan_estate
+
+	modifier_when_in_debate = {
+		global_monthly_prosperity = 0.001
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+		country_has_estate = estate_type:amirs_estate
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		add_country_modifier = { modifier = diwan_qonalgha_ban_mod years = 10 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.05 }
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+# Salaried offices: the kuttāb paid from the treasury on schedule,
+# so they need not pay themselves from the till. Expensive, and
+# the closing of the door through which most corruption walks.
+diwan_salaried_offices = {
+	estate = diwan_estate
+
+	modifier_when_in_debate = {
+		country_cabinet_efficiency = 0.05
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		add_gold = { value = root.monthly_income_trade_and_tax multiply = -12 }
+		add_country_modifier = { modifier = diwan_salaried_offices_mod years = 10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}

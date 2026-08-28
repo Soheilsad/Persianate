@@ -301,6 +301,62 @@ decree_imperial_audit = {
 	}
 }
 
+# Reopening the Audit — the istīfāʾ returns to the parcels that slipped it.
+# The unaudited iqṭāʿ is not a legal form, it is a lapse: the amir simply
+# stopped submitting his books. This decree is the chancery's answer — the
+# assessment rides out again, and a share of the lapsed grants are forced
+# back onto the register (reverting to plain, audited iqṭāʿ — the base
+# grant underneath is untouched). The toyul is past reach: hereditary,
+# lineage-locked, and legally immune — only direct order pries that loose,
+# not a decree.
+audit_unaudited_iqta = {
+	estate = crown_estate
+
+	modifier_when_in_debate = {
+		# The prospect of lapsed parcels returning to the register.
+		tax_income_efficiency = 0.05
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+		any_owned_location = { has_building = building_type:unaudited_iqta }
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		# Lawful dissolution: the audit is a judgment of the maẓālim, not a
+		# seizure — the buildings' on_destroyed reads this variable and cuts
+		# the backlash by 75%. Timer (not manual unset) so any deferred
+		# destruction resolution still sees it; it expires on its own.
+		set_variable = { name = decree_lawful_dissolution value = 1 days = 2 }
+		# A quarter of the lapsed grants are re-registered. The buildings'
+		# own on_destroyed carries the amirs' backlash per parcel.
+		every_owned_location = {
+			limit = {
+				has_building = building_type:unaudited_iqta
+				# Where the grant has already locked into the lineage, the
+				# audit finds a sealed door.
+				NOT = { has_building = building_type:toyul }
+			}
+			random = {
+				chance = 25
+				destroy_building = "building(building_type:unaudited_iqta|prev)"
+			}
+		}
+		# The register reasserted: the realm drifts back toward the Tazik
+		# order (an aggregate of the per-parcel drift the slips caused),
+		# and the chancery sees the crown enforce its own instrument.
+		change_societal_value = { type = turk_vs_tazik value = 0.5 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.05 }
+		add_legitimacy = 5
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
 # Removing the Illegal Waqf — the crown dissolves endowments that shelter
 # wealth from the fisc, clawing a share back into taxable hands. The waqf's
 # whole defence is inviolability; so this is possible ONLY where the right
@@ -328,6 +384,10 @@ purge_illegal_waqf = {
 	chance = 25
 
 	on_debate_passed = {
+		# Lawful dissolution: destroyed by decree of the maẓālim, so the
+		# waqf on_destroyed backlash is cut 75% while this variable stands.
+		# 2-day timer, self-expiring (see audit_unaudited_iqta note).
+		set_variable = { name = decree_lawful_dissolution value = 1 days = 2 }
 		# A fifth of the realm's waqf is dissolved. Each location holds at
 		# most one waqf; the non-present types simply no-op. The buildings'
 		# own on_destroyed carries the estate backlash.
@@ -353,6 +413,136 @@ purge_illegal_waqf = {
 			}
 		}
 		# The crown is seen to enforce the fisc against the dead hand.
+		add_legitimacy = 5
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+# Kārīz restoration — the crown pays for what no single village can:
+# reopening the collapsed qanāt lines. The muqannī corps is the state's
+# to command; the water that returns is legitimacy made liquid.
+decree_qanat_restoration = {
+	estate = crown_estate
+
+	modifier_when_in_debate = {
+		global_monthly_prosperity = 0.001
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		add_country_modifier = { modifier = decree_qanat_mod years = 10 }
+		add_stability = 7
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+# The royal bīmāristān — hospital, pharmacy, and teaching foundation
+# endowed in the sovereign's own name (Rabʿ-i Rashīdī writ royal).
+# Charity the ulama must bless, prestige the poets must record.
+decree_royal_bimaristan = {
+	estate = crown_estate
+
+	modifier_when_in_debate = {
+		monthly_legitimacy = 0.3
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		add_country_modifier = { modifier = decree_bimaristan_mod years = 10 }
+		add_legitimacy = 5
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+# Rāhdārī — the road-guard. Patrols posted at the passes and the
+# caravan stages, paid from the treasury, answerable to the crown:
+# the king's peace made visible at every milestone.
+decree_rahdari_patrols = {
+	estate = crown_estate
+
+	modifier_when_in_debate = {
+		global_monthly_control = 0.003
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		add_country_modifier = { modifier = decree_rahdari_mod years = 10 }
+		add_stability = 5
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+# The grand kitābkhāna — royal library and scriptorium-atelier:
+# copyists, illuminators, astronomers, and the translation of
+# whatever the realm's scholars deem worth possessing.
+decree_grand_kitabkhana = {
+	estate = crown_estate
+
+	modifier_when_in_debate = {
+		research_speed_modifier = 0.05
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		add_country_modifier = { modifier = decree_kitabkhana_mod years = 10 }
+		add_legitimacy = 5
+	}
+
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+# Nowrūz of the Realm — the new year kept at royal scale: robes of
+# honor, remitted fines, the sofre spread for high and low. The
+# oldest legitimacy technology in Iran, older than the faith itself.
+decree_nowruz_of_the_realm = {
+	estate = crown_estate
+
+	modifier_when_in_debate = {
+		monthly_legitimacy = 0.5
+	}
+
+	allow = {
+		parliament_type = parliament_type:diwan_council
+	}
+
+	chance = 25
+
+	on_debate_passed = {
+		add_country_modifier = { modifier = decree_nowruz_mod years = 2 }
 		add_legitimacy = 5
 	}
 
