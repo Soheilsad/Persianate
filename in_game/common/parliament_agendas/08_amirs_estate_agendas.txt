@@ -186,7 +186,7 @@ pa_amirs_case_urban_garrison = {
 }
 
 # =========================================================
-# Batch 2 — further cases against the sword (the abuse set
+# further cases against the sword (the abuse set
 # Ghazan's decrees name: tolls, qonalgha, false muster,
 # pasture, private justice).
 # =========================================================

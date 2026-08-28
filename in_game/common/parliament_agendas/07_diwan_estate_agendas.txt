@@ -226,7 +226,7 @@ pa_diwan_case_fictional_positions = {
 }
 
 # =========================================================
-# Batch 2 — further cases against the pen (Ghazanid abuse
+# Round 2 further cases against the Diwan (Ghazanid abuse
 # catalog: Rashid al-Din's own complaints, plus the mirab).
 # =========================================================
 
