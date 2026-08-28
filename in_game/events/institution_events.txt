@@ -43,3 +43,46 @@ institutions.2 = {
 		name = institutions.2.a
 	}
 }
+
+# ---The petition of the muster rolls ---------------------------------
+# Fired from the yearly pulse (11_assessment_pulse: 1%/year) where a
+# Persianate realm holds non-Muslim noble pops and the Open Muster
+# Rolls privilege is NOT granted: the excluded military families
+# petition the crown for admission to the service class.
+institutions.3 = {
+	type = country_event
+	outcome = neutral
+	title = institutions.3.title
+	desc = institutions.3.desc
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	# ---Grant the rolls: the privilege, and the ulama's displeasure.
+	# TODO (user, 2026-08-28): AI should also weigh the NUMBER of
+	# non-Muslim noble pops - a realm where half the nobility sits
+	# outside the corps has more to gain. Needs a pop-count modifier
+	# here when the counting surface exists.
+	option = {
+		name = institutions.3.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 3
+				trigger = { societal_value:turk_vs_tazik >= 25 }
+			}
+		}
+		grant_estate_privilege = estate_privilege:amirs_open_muster_rolls
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.03 }
+	}
+
+	# ---Refuse: the door stays shut.
+	option = {
+		name = institutions.3.b
+		ai_chance = { factor = 70 }
+		add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.03 }
+	}
+}

@@ -4,6 +4,8 @@ recent_cadastre_modifier = {
 	}
 	tax_income_efficiency = 0.15
 	global_monthly_control = 0.001
+	global_integration_speed_modifier = 0.3
+
 }
 
 expanded_secretariat_modifier = {
@@ -266,4 +268,117 @@ collective_taxation_modifier = {
 	game_data = { category = location }
 	local_diwan_estate_power = -0.25 ### diwan gives up full vision into the village.
 	
+}
+
+# === Persianate Crown Decree modifiers (parliament, batch 2) ===
+
+decree_qanat_mod = {
+	game_data = { category = country }
+	global_monthly_prosperity = 0.002
+	peasants_estate_target_satisfaction = 0.05
+	global_build_buildings_efficiency = 0.05
+}
+
+decree_bimaristan_mod = {
+	game_data = { category = country }
+	global_monthly_prosperity = 0.002
+	clergy_estate_target_satisfaction = 0.05
+	monthly_legitimacy = 0.2
+}
+
+decree_rahdari_mod = {
+	game_data = { category = country }
+	global_monthly_control = 0.003
+	global_monthly_prosperity = 0.001
+	global_merchant_power = 0.05
+}
+
+decree_kitabkhana_mod = {
+	game_data = { category = country }
+	research_speed_modifier = 0.05
+	cultural_tradition_modifier = 0.05
+	monthly_towards_tazik = 0.05
+}
+
+decree_nowruz_mod = {
+	game_data = { category = country }
+	monthly_legitimacy = 0.3
+	global_estate_target_satisfaction = 0.05
+	antagonism_received_modifier = -0.05
+}
+
+# === Chancery Memoranda modifiers (diwan parliament issues) ===
+
+diwan_mint_reform_mod = {
+	game_data = { category = country }
+	tax_income_efficiency = 0.05
+	global_monthly_prosperity = 0.001
+	burghers_estate_target_satisfaction = 0.05
+}
+
+diwan_yam_reform_mod = {
+	game_data = { category = country }
+	global_monthly_control = 0.003
+	monthly_towards_centralization = 0.1
+}
+
+diwan_qonalgha_ban_mod = {
+	game_data = { category = country }
+	peasants_estate_target_satisfaction = 0.05
+	global_monthly_prosperity = 0.001
+	# The armies may no longer live off whoever lives nearest.
+	global_supply_limit_modifier = -0.05
+}
+
+diwan_salaried_offices_mod = {
+	game_data = { category = country }
+	country_cabinet_efficiency = 0.05
+	tax_income_efficiency = 0.025
+}
+
+# === Estate petition modifiers (amirs / commons issues) ===
+
+amirs_yaylaq_mod = {
+	game_data = { category = country }
+	global_levy_size_modifier = 0.05
+	amirs_estate_target_satisfaction = 0.05
+	# Herds over crops along the corridors.
+	global_raw_material_output = -0.02
+}
+
+clergy_hisba_campaign_mod = {
+	game_data = { category = country }
+	monthly_religious_influence = 0.05
+	land_morale_modifier = 0.05
+}
+
+clergy_madrasa_endowment_mod = {
+	game_data = { category = country }
+	research_speed_modifier = 0.05
+	monthly_religious_influence = 0.05
+}
+
+burghers_wakala_mod = {
+	game_data = { category = country }
+	global_monthly_prosperity = 0.002
+	export_efficiency = 0.05
+}
+
+burghers_tamgha_remission_mod = {
+	game_data = { category = country }
+	tax_income_efficiency = -0.05
+	global_merchant_power = 0.05
+	global_monthly_prosperity = 0.002
+}
+
+peasants_taqavi_mod = {
+	game_data = { category = country }
+	global_raw_material_output = 0.03
+	peasants_estate_target_satisfaction = 0.03
+}
+
+peasants_arrears_remission_mod = {
+	game_data = { category = country }
+	peasants_estate_target_satisfaction = 0.05
+	tax_income_efficiency = -0.025
 }
