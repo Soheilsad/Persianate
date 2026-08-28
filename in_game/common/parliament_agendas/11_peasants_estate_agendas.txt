@@ -95,3 +95,99 @@ pa_peasants_case_banditry = {
 	ai_will_do = { base = 100 }
 	chance = 10
 }
+
+# =========================================================
+# Batch 2 — further cases against the village.
+# =========================================================
+
+# Registered villages abandoned in the night to evade the rolls —
+# the flight Ghazan legislated against by name.
+pa_peasants_case_land_flight = {
+	type = country
+	estate = peasants_estate
+	importance = 1.25
+	potential = {
+		government_type = government_type:persianate_sultanate
+	}
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = -0.12 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } add = 0.05 } }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		add_country_modifier = { modifier = diwan_reform_tax_efficiency years = 5 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Villages hiding the levy's runaways among their sons.
+pa_peasants_case_harboring_deserters = {
+	type = country
+	estate = peasants_estate
+	importance = 1.25
+	potential = {
+		government_type = government_type:persianate_sultanate
+	}
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = -0.12 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } add = 0.05 } }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		# The hidden men returned to the rolls.
+		add_manpower = { value = monthly_manpower multiply = 6 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# The kadkhuda collecting above the register and pocketing the
+# difference — the village's own headmen as petty tax-farmers.
+pa_peasants_case_kadkhuda_levy = {
+	type = country
+	estate = peasants_estate
+	importance = 1.25
+	potential = {
+		government_type = government_type:persianate_sultanate
+	}
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = -0.10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } add = 0.03 } }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		add_country_modifier = { modifier = diwan_purge_unrest_reduction years = 5 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Fabricated grievances flooding the mazalim itself — abusing
+# the court is also a case the court can hear.
+pa_peasants_case_false_petitions = {
+	type = country
+	estate = peasants_estate
+	importance = 1.25
+	potential = {
+		government_type = government_type:persianate_sultanate
+	}
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = -0.10 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		add_country_modifier = { modifier = justice_capital_small years = 5 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}

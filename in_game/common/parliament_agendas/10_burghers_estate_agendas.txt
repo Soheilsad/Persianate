@@ -208,3 +208,187 @@ pa_burghers_case_counterfeiting = {
 	ai_will_do = { base = 100 }
 	chance = 10
 }
+
+# =========================================================
+# Batch 2 — further cases against the bazaar.
+# =========================================================
+
+# The muhtasib's oldest quarry: the thumb on the scale.
+pa_burghers_case_false_weights = {
+	type = country
+	estate = burghers_estate
+	importance = 1.85
+	potential = {
+		government_type = government_type:persianate_sultanate
+	}
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } add = 0.05 } }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } } }
+		add_country_modifier = { modifier = burgher_purge_goods_buff years = 10 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Culling the coin: picking the full-weight silver out of
+# circulation and passing the clipped remainder.
+pa_burghers_case_coin_culling = {
+	type = country
+	estate = burghers_estate
+	importance = 1.85
+	potential = {
+		government_type = government_type:persianate_sultanate
+	}
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } add = 0.05 } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } } }
+
+		# The hoarded silver confiscated to the mint.
+		"estate(estate_type:burghers_estate)" = { save_scope_as = seize_target }
+		set_local_variable = {
+			name = seized_pool
+			value = {
+				value = scope:seize_target.estate_gold
+				multiply = 0.25
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:burghers_estate
+			value = {
+				value = local_var:seized_pool
+				multiply = -1
+			}
+		}
+		add_gold = { value = local_var:seized_pool }
+
+		add_inflation = inflation_mild_bonus
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Guild masters withholding the journeymen's wages.
+pa_burghers_case_wage_theft = {
+	type = country
+	estate = burghers_estate
+	importance = 1.25
+	potential = {
+		government_type = government_type:persianate_sultanate
+	}
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.12 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } add = 0.05 } }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } } }
+		add_country_modifier = { modifier = burgher_purge_trade_eff_buff years = 5 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Selling grain and iron across the lines while the realm bleeds.
+pa_burghers_case_war_profiteering = {
+	type = country
+	estate = burghers_estate
+	importance = 2.5
+	potential = {
+		government_type = government_type:persianate_sultanate
+	}
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.20 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } add = 0.05 } }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } } }
+
+		# The traitor-fortunes seized: half to the soldiery, half to the crown.
+		"estate(estate_type:burghers_estate)" = { save_scope_as = seize_target }
+		set_local_variable = {
+			name = seized_pool
+			value = {
+				value = scope:seize_target.estate_gold
+				multiply = 0.40
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:burghers_estate
+			value = {
+				value = local_var:seized_pool
+				multiply = -1
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:amirs_estate
+			value = { value = local_var:seized_pool multiply = 0.5 }
+		}
+		add_gold = { value = local_var:seized_pool multiply = 0.5 }
+
+		add_country_modifier = { modifier = burgher_purge_trade_eff_hit years = 3 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Illegal taverns — only where the law itself does not keep the
+# bazaar open: under lax enforcement (or the zill Allah court,
+# where the wine flows lawfully) there is no such case to bring.
+pa_burghers_case_illegal_taverns = {
+	type = country
+	estate = burghers_estate
+	importance = 1.85
+	potential = {
+		government_type = government_type:persianate_sultanate
+		NOR = {
+			has_policy = lax_hisba_enforcement
+			has_policy = zill_allah_regime
+		}
+	}
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } add = 0.10 } }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } } }
+
+		# The wine-money confiscated: a third to the mosque, the rest to the crown.
+		"estate(estate_type:burghers_estate)" = { save_scope_as = seize_target }
+		set_local_variable = {
+			name = seized_pool
+			value = {
+				value = scope:seize_target.estate_gold
+				multiply = 0.25
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:burghers_estate
+			value = {
+				value = local_var:seized_pool
+				multiply = -1
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:clergy_estate
+			value = { value = local_var:seized_pool multiply = 0.3333 }
+		}
+		add_gold = { value = local_var:seized_pool multiply = 0.6667 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
