@@ -114,8 +114,19 @@ ayyan_waqf = {
 	}
 	on_destroyed = {
 		owner = {
-			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.025 }
-			add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.01 }
+			# Dissolved as a matter of law (purge_illegal_waqf sets
+			# decree_lawful_dissolution for 2 days around the destruction):
+			# objecting to a lawful judgment is politically expensive for
+			# the estate — backlash is 75% cheaper for the crown.
+			if = {
+				limit = { has_variable = decree_lawful_dissolution }
+				add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.00625 }
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.0025 }
+			}
+			else = {
+				add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.025 }
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.01 }
+			}
 		}
 	}
 
@@ -194,8 +205,16 @@ grand_ayyan_waqf = {
 
 	on_destroyed = {
 		owner = {
-			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.05 }
-			add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.02 }
+			# Lawful dissolution discount — see base ayyan_waqf.
+			if = {
+				limit = { has_variable = decree_lawful_dissolution }
+				add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.0125 }
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.005 }
+			}
+			else = {
+				add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.05 }
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.02 }
+			}
 		}
 	}
 
@@ -261,8 +280,16 @@ urban_waqf = {
 
 	on_destroyed = {
 		owner = {
-			add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.025 }
-			add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.01 }
+			# Lawful dissolution discount — see base ayyan_waqf.
+			if = {
+				limit = { has_variable = decree_lawful_dissolution }
+				add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.00625 }
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.0025 }
+			}
+			else = {
+				add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.025 }
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.01 }
+			}
 		}
 	}
 
@@ -326,8 +353,16 @@ grand_urban_waqf = {
 
 	on_destroyed = {
 		owner = {
-			add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.05 }
-			add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.02 }
+			# Lawful dissolution discount — see base ayyan_waqf.
+			if = {
+				limit = { has_variable = decree_lawful_dissolution }
+				add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.0125 }
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.005 }
+			}
+			else = {
+				add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.05 }
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.02 }
+			}
 		}
 	}
 
@@ -396,7 +431,14 @@ clerical_waqf = {
 
 	on_destroyed = {
 		owner = {
-			add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.025 }
+			# Lawful dissolution discount — see base ayyan_waqf.
+			if = {
+				limit = { has_variable = decree_lawful_dissolution }
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.00625 }
+			}
+			else = {
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.025 }
+			}
 		}
 	}
 
@@ -461,7 +503,14 @@ grand_clerical_waqf = {
 
 	on_destroyed = {
 		owner = {
-			add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.05 }
+			# Lawful dissolution discount — see base ayyan_waqf.
+			if = {
+				limit = { has_variable = decree_lawful_dissolution }
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.0125 }
+			}
+			else = {
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.05 }
+			}
 		}
 	}
 

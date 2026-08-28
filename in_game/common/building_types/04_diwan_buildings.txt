@@ -229,7 +229,7 @@ regional_diwan = {
 			}
 		}
 		owner = {
-			change_societal_value = { type = turk_vs_tazik value = 2 }
+			change_societal_value = { type = turk_vs_tazik value = 2.5 }
 		}
 	}
 
@@ -346,7 +346,7 @@ local_diwan = {
 			}
 		}
 		owner = {
-			change_societal_value = { type = turk_vs_tazik value = 2 }
+			change_societal_value = { type = turk_vs_tazik value = 1 }
 			add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.03 }
 			add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.02 }
 		}

@@ -240,7 +240,17 @@ unaudited_iqta = {
 
 	on_destroyed = {
 		owner = {
-			add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.05 }
+			# Destroyed as a matter of law (the Reopen the Audit decree sets
+			# decree_lawful_dissolution for 2 days around the destruction):
+			# backlash against a lawful judgment is politically far more
+			# expensive for the amir to voice — 75% cheaper for the crown.
+			if = {
+				limit = { has_variable = decree_lawful_dissolution }
+				add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.0125 }
+			}
+			else = {
+				add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.05 }
+			}
 		}
 	}
 
