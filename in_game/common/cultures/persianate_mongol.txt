@@ -77,8 +77,12 @@ INJECT:oirat_culture = {
 #    the Sarbadar rising at start date IS this rage in polity form).
 #    The hatred is asymmetric: no reverse entry — the victim
 #    remembers, the perpetrator never noticed.
-#  - Kurdish/lur/gilak/mazanderani etc. left out this pass; extend
-#    the net to them if the rebellion logs show them rioting.
+#  - UNIFORMITY RULE: any non-Tazik culture that holds an opinion of
+#    one of the quartet (farsi/adhari/khorasani/tajik) holds the SAME
+#    opinion of all four. "Tazik" is the OUTSIDER'S word — the Turk,
+#    Mongol, Arab, and Kurd perceived one settled Persian-speaking
+#    mass; the four-way split is our pop-granularity artifact, and
+#    outsiders don't see through the seam.
 # =====================================================================
 
 INJECT:farsi_culture = {
@@ -90,6 +94,11 @@ INJECT:farsi_culture = {
 		khorasani_culture = kindred
 		tajik_culture = kindred
 		iraqi_culture = positive
+		kurdish_culture = positive
+		lur_culture = positive
+		gilak_culture = positive
+		mazanderani_culture = positive
+		talysh_culture = positive
 	}
 }
 
@@ -102,6 +111,11 @@ INJECT:adhari_culture = {
 		khorasani_culture = kindred
 		tajik_culture = kindred
 		iraqi_culture = positive
+		kurdish_culture = positive
+		lur_culture = positive
+		gilak_culture = positive
+		mazanderani_culture = positive
+		talysh_culture = positive
 	}
 }
 
@@ -161,5 +175,162 @@ INJECT:iraqi_culture = {
 		farsi_culture = positive
 		adhari_culture = positive
 		khorasani_culture = positive
+		kurdish_culture = positive
+		tajik_culture = positive
+	}
+}
+
+# The settled Turks of the Central Asian cities — the other half of
+# the Turko-Persian urban symbiosis. Urgench 1221 was as total as
+# Merv, but Khwarazm recovered under converted Jochid rule (Ibn
+# Battuta praises its bustle ~1333): negative, faded memory — not the
+# live enemy of still-occupied Khorasan/Transoxiana. The Uzbeks are
+# the steppe across the frontier.
+INJECT:khorezmian_culture = {
+	opinions = {
+		mongolian_culture = negative
+		uzbek_culture = negative
+		tajik_culture = positive
+		khorasani_culture = positive
+		farsi_culture = positive
+		adhari_culture = positive
+	}
+}
+
+# ---------------------------------------------------------------------
+# The second ring — the mountain and Caspian periphery. Positive toward
+# the core persophone world (the anti-rebellion direction: the accepted
+# culture's view of the accepter drives acceptance cost), negative
+# toward the horde. Their view of the Persianized court is left neutral:
+# the mountains dealt with amirs and tax collectors, not with the court
+# as a cultural fact.
+# ---------------------------------------------------------------------
+
+# Zagros: Hulegu's road to Baghdad ran through it; the Diyala Oirats
+# pasture next door.
+INJECT:kurdish_culture = {
+	opinions = {
+		mongolian_culture = negative
+		oirat_culture = negative
+		farsi_culture = positive
+		adhari_culture = positive
+		khorasani_culture = positive
+		iraqi_culture = positive
+		tajik_culture = positive
+	}
+}
+
+INJECT:lur_culture = {
+	opinions = {
+		mongolian_culture = negative
+		farsi_culture = positive
+		adhari_culture = positive
+		khorasani_culture = positive
+		tajik_culture = positive
+	}
+}
+
+# Mughan's winter pastures are on the Talysh doorstep.
+INJECT:talysh_culture = {
+	opinions = {
+		mongolian_culture = negative
+		oirat_culture = negative
+		farsi_culture = positive
+		adhari_culture = positive
+		khorasani_culture = positive
+		tajik_culture = positive
+	}
+}
+
+# Gilan repelled Oljaitu's 1307 invasion and never truly submitted —
+# defiance, not trauma. The Caspian pair are one world.
+INJECT:gilak_culture = {
+	opinions = {
+		mongolian_culture = negative
+		farsi_culture = positive
+		adhari_culture = positive
+		khorasani_culture = positive
+		mazanderani_culture = kindred
+		tajik_culture = positive
+	}
+}
+
+# Mazandaran was crushed in the 1220s and Togha Temur camps next door.
+INJECT:mazanderani_culture = {
+	opinions = {
+		mongolian_culture = negative
+		farsi_culture = positive
+		adhari_culture = positive
+		khorasani_culture = positive
+		gilak_culture = kindred
+		tajik_culture = positive
+	}
+}
+
+INJECT:baloch_culture = {
+	opinions = {
+		mongolian_culture = negative
+		khorasani_culture = positive
+		farsi_culture = positive
+		adhari_culture = positive
+		tajik_culture = positive
+	}
+}
+
+# Afghan = Pashtun here: semi-tribal Sulayman-range marchers (more
+# Kurd/Lur than Tajik — Bamyan's dead were Tajiks, not them). Their
+# Mongol grievance is the LIVE one of the southern marches: the
+# Neguderi/Qara'unas hordes raiding the Ghazni-Kandahar country.
+# Toward the adjacent settled world (Khorasani towns, Tajik markets):
+# the same mild periphery-ring positive as the Kurds and Lurs —
+# market-and-patronage contact plus a shared horde squeeze; the
+# Afghan-Tajik friction of Kabul is a 15th-16th c. story, not 1337.
+INJECT:afghan_culture = {
+	opinions = {
+		mongolian_culture = negative
+		khorasani_culture = positive
+		tajik_culture = positive
+		farsi_culture = positive
+		adhari_culture = positive
+	}
+}
+
+# ---------------------------------------------------------------------
+# Caucasus: the memory component only — negative toward the horde (the
+# Georgian chronicle's "age of wrath"; Greater Armenia's devastation).
+# Everything else about their position under Muslim rule is
+# CONFESSIONAL and belongs to the religion/tolerance layer, not here —
+# so no entry toward the Persianized court or the Iranic world.
+# ---------------------------------------------------------------------
+
+# The one nomad-descended Turkic culture inside the net — because the
+# azeri is the SETTLING Turk of Azerbaijan (the turkoman is the one
+# still moving, and stays outside with turk_vs_tazik). Pop-level
+# aspiration into the Persianate world; deliberately ASYMMETRIC — no
+# reciprocals: Turkic admiration for Persian high culture was famously
+# unreturned (the turk-i bi-adab topos). The asymmetry is also the
+# mechanically useful direction: azeri pops become cheap to accept in
+# Iranic states, damping Azerbaijan's rebellion pressure. The elite
+# version of "greedy Persianizing" (dynasties buying the chancery
+# wholesale) is turk_vs_tazik's job, not an opinion.
+INJECT:azeri_culture = {
+	opinions = {
+		farsi_culture = positive
+		adhari_culture = positive
+		persianized_mongol_culture = positive
+		khorasani_culture = positive
+		tajik_culture = positive
+	}
+}
+
+INJECT:armenian_culture = {
+	opinions = {
+		mongolian_culture = negative
+	}
+}
+
+INJECT:georgian_culture = {
+	opinions = {
+		mongolian_culture = negative
 	}
 }
