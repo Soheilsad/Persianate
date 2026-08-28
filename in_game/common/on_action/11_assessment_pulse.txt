@@ -12,6 +12,65 @@ yearly_country_pulse = {
 	on_actions = {
 		waqf_reassessment_pulse
 		iqta_reassessment_pulse
+		tork_host_census_pulse
+		muster_rolls_petition_pulse
+	}
+}
+
+# The excluded knock on the door: ~1%/year where non-Muslim noble
+# pops sit outside the service class (see institutions.3).
+muster_rolls_petition_pulse = {
+	trigger = {
+		government_type = government_type:persianate_sultanate
+		country_has_estate = estate_type:amirs_estate
+		NOT = { has_estate_privilege = estate_privilege:amirs_open_muster_rolls }
+		religion.group = religion_group:muslim
+		any_pop = {
+			pop_type = pop_type:nobles
+			NOT = { religion.group = religion_group:muslim }
+		}
+	}
+	effect = {
+		random = {
+			chance = 1
+			trigger_event_non_silently = institutions.3
+		}
+	}
+}
+
+# ---The census of the hosts -------------------------------------------
+# Yearly tally of Turco-Mongol TRIBAL population (pop_size units;
+# 1 = 1,000 people), stored as tork_host_census. Two consumers:
+#   - matter_of_tork_can_start: the Matter fires only where the Türk
+#     question actually exists. A realm that consolidated the SOUTHERN
+#     plateau holds Kurds, Lurs and Baluch — 750k tribesmen and not a
+#     Türk among them; the Place of the Sword is not their problem
+#     (and the Great Raid machinery, which moves only Turco-Mongol
+#     pops, would fire with nothing to move).
+#   - future numeric work: tranches, thresholds, the disaster GUI.
+tork_host_census_pulse = {
+	trigger = {
+		OR = {
+			has_variable = eranzamin_contender
+			has_variable = matter_of_tork_fired
+		}
+	}
+	effect = {
+		set_local_variable = { name = host_count value = 0 }
+		every_pop = {
+			limit = {
+				pop_type = pop_type:tribesmen
+				OR = {
+					culture = { has_culture_group = culture_group:turkic_group }
+					culture = { has_culture_group = culture_group:tatar_group }
+					culture = { has_culture_group = culture_group:mongolian_group }
+				}
+			}
+			root = {
+				change_local_variable = { name = host_count add = prev.pop_size }
+			}
+		}
+		set_variable = { name = tork_host_census value = local_var:host_count }
 	}
 }
 
