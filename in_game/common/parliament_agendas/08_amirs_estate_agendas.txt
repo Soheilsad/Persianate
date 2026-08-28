@@ -184,3 +184,178 @@ pa_amirs_case_urban_garrison = {
 	ai_will_do = { base = 100 }
 	chance = 10
 }
+
+# =========================================================
+# Batch 2 — further cases against the sword (the abuse set
+# Ghazan's decrees name: tolls, qonalgha, false muster,
+# pasture, private justice).
+# =========================================================
+
+# Chains across the caravan roads, and a spear-price to pass.
+pa_amirs_case_illegal_tolls = {
+	type = country
+	estate = amirs_estate
+	importance = 1.85
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } add = 0.10 } }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } } }
+
+		# The toll-chests emptied: two parts to the merchants, one to the crown.
+		"estate(estate_type:amirs_estate)" = { save_scope_as = seize_target }
+		set_local_variable = {
+			name = seized_pool
+			value = {
+				value = scope:seize_target.estate_gold
+				multiply = 0.30
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:amirs_estate
+			value = {
+				value = local_var:seized_pool
+				multiply = -1
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:burghers_estate
+			value = { value = local_var:seized_pool multiply = 0.6667 }
+		}
+		add_gold = { value = local_var:seized_pool multiply = 0.3333 }
+
+		add_country_modifier = { modifier = amir_purge_trade_buff years = 10 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Qonalgha: retinues quartered on the villages, eating them bare —
+# named in Ghazan's decrees as the abuse that empties the land.
+pa_amirs_case_qonalgha = {
+	type = country
+	estate = amirs_estate
+	importance = 2.5
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.20 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } add = 0.10 } }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+
+		# Restitution: half to the eaten-out villages, half to the crown.
+		"estate(estate_type:amirs_estate)" = { save_scope_as = seize_target }
+		set_local_variable = {
+			name = seized_pool
+			value = {
+				value = scope:seize_target.estate_gold
+				multiply = 0.25
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:amirs_estate
+			value = {
+				value = local_var:seized_pool
+				multiply = -1
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:peasants_estate
+			value = { value = local_var:seized_pool multiply = 0.5 }
+		}
+		add_gold = { value = local_var:seized_pool multiply = 0.5 }
+
+		random_owned_location = {
+			limit = { is_capital = no }
+			add_location_modifier = { modifier = amir_purge_raw_output years = 10 }
+		}
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Phantom horsemen on the muster rolls, drawing real pay.
+pa_amirs_case_phantom_muster = {
+	type = country
+	estate = amirs_estate
+	importance = 1.85
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } add = 0.05 } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } } }
+
+		# The dead men's pay recovered in full by the crown.
+		"estate(estate_type:amirs_estate)" = { save_scope_as = seize_target }
+		set_local_variable = {
+			name = seized_pool
+			value = {
+				value = scope:seize_target.estate_gold
+				multiply = 0.25
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:amirs_estate
+			value = {
+				value = local_var:seized_pool
+				multiply = -1
+			}
+		}
+		add_gold = { value = local_var:seized_pool }
+
+		# The rolls now show the army that actually exists.
+		add_army_tradition = -5
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Herds driven over standing crops on the way to the yaylaq.
+pa_amirs_case_pasture_encroachment = {
+	type = country
+	estate = amirs_estate
+	importance = 1.85
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } add = 0.10 } }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		random_owned_location = {
+			limit = { is_capital = no }
+			add_location_modifier = { modifier = amir_purge_raw_output years = 10 }
+		}
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Amirs seizing, judging, and imprisoning with no qadi's warrant —
+# a private justice that usurps both the court and the crown.
+pa_amirs_case_private_justice = {
+	type = country
+	estate = amirs_estate
+	importance = 2.5
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.20 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } add = 0.05 } }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } add = 0.05 } }
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = { add = { value = "estate_power(estate_type:diwan_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		add_country_modifier = { modifier = justice_capital_moderate years = 5 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}

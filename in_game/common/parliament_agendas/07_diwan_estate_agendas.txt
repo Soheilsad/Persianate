@@ -224,3 +224,212 @@ pa_diwan_case_fictional_positions = {
 	ai_will_do = { base = 100 }
 	chance = 10
 }
+
+# =========================================================
+# Batch 2 — further cases against the pen (Ghazanid abuse
+# catalog: Rashid al-Din's own complaints, plus the mirab).
+# =========================================================
+
+# The classic: one daftar for the crown, one for the till.
+pa_diwan_case_double_registers = {
+	type = country
+	estate = diwan_estate
+	importance = 2.5
+	potential = {
+		country_has_estate = estate_type:diwan_estate
+	}
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.18 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } } }
+
+		# The hidden ledger surrendered: a large share of the hoard,
+		# less the waqf shelter. Inlined for tooltip preview.
+		"estate(estate_type:diwan_estate)" = { save_scope_as = seize_target }
+		set_local_variable = {
+			name = seized_pool
+			value = {
+				value = scope:seize_target.estate_gold
+				multiply = 0.30
+			}
+		}
+		if = {
+			limit = { has_variable = diwan_waqf_shelter }
+			change_local_variable = {
+				name = seized_pool
+				multiply = {
+					value = 1
+					subtract = var:diwan_waqf_shelter
+				}
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:diwan_estate
+			value = {
+				value = local_var:seized_pool
+				multiply = -1
+			}
+		}
+		add_gold = { value = local_var:seized_pool }
+
+		add_country_modifier = { modifier = diwan_reform_tax_efficiency years = 10 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Collectors taking above the assessment and keeping the difference.
+pa_diwan_case_extortionate_collection = {
+	type = country
+	estate = diwan_estate
+	importance = 1.85
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } add = 0.10 } }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		add_country_modifier = { modifier = diwan_purge_unrest_reduction years = 10 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# The 'ard payroll skimmed before it reaches the horsemen — the
+# rare case where prosecuting the pen buys the sword's goodwill.
+# Only where a payroll EXISTS to skim: cash pay (mavajib) or a
+# ghulam establishment. An army paid in iqta' has no pay-chest
+# for the kuttab to shave.
+pa_diwan_case_army_pay_skimmed = {
+	type = country
+	estate = diwan_estate
+	importance = 1.85
+	potential = {
+		OR = {
+			has_estate_privilege = estate_privilege:diwan_mavajib_cash_pay
+			has_estate_privilege = estate_privilege:diwan_ghulam_administration
+			has_estate_privilege = estate_privilege:amirs_ghulam_administration
+			has_estate_privilege = estate_privilege:ghulam_fostering_households
+		}
+	}
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } add = 0.10 } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } } }
+
+		# Restitution: two parts to the cheated soldiery, one to the crown.
+		"estate(estate_type:diwan_estate)" = { save_scope_as = seize_target }
+		set_local_variable = {
+			name = seized_pool
+			value = {
+				value = scope:seize_target.estate_gold
+				multiply = 0.25
+			}
+		}
+		if = {
+			limit = { has_variable = diwan_waqf_shelter }
+			change_local_variable = {
+				name = seized_pool
+				multiply = {
+					value = 1
+					subtract = var:diwan_waqf_shelter
+				}
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:diwan_estate
+			value = {
+				value = local_var:seized_pool
+				multiply = -1
+			}
+		}
+		add_gold_to_estate = {
+			estate_type = estate_type:amirs_estate
+			value = { value = local_var:seized_pool multiply = 0.6667 }
+		}
+		add_gold = { value = local_var:seized_pool multiply = 0.3333 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Forged yarlighs and counterfeit seals — the plague Ghazan's
+# al tamgha reform existed to kill.
+pa_diwan_case_forged_yarlighs = {
+	type = country
+	estate = diwan_estate
+	importance = 2.5
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.18 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } } }
+		add_country_modifier = { modifier = diwan_purge_disruption years = 2 }
+		add_legitimacy = 5
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# Registering private wealth as waqf for a fee — the shelter
+# racket itself put on trial. Breaking it reopens the sheltered
+# share to future seizures.
+pa_diwan_case_waqf_collusion = {
+	type = country
+	estate = diwan_estate
+	importance = 1.85
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.15 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } } }
+		if = {
+			limit = { has_variable = diwan_waqf_shelter }
+			remove_variable = diwan_waqf_shelter
+		}
+		add_country_modifier = { modifier = diwan_reform_tax_efficiency years = 5 }
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
+
+# The mirab's collusion — brought by the peasantry: the water
+# master sells the qanat rotation to the big landholders and the
+# smallholders' turns run dry.
+pa_diwan_case_mirab_collusion = {
+	type = country
+	estate = diwan_estate
+	importance = 1.85
+	on_accept = {
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.12 }
+		add_estate_satisfaction = { type = estate_type:peasants_estate value = { add = { value = "estate_power(estate_type:peasants_estate)" multiply = 0.2 } add = 0.10 } }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = { add = { value = "estate_power(estate_type:amirs_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = { add = { value = "estate_power(estate_type:clergy_estate)" multiply = 0.2 } } }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = { add = { value = "estate_power(estate_type:burghers_estate)" multiply = 0.2 } } }
+		# The rotation restored: the village the mirab was starving blooms.
+		random_owned_location = {
+			limit = { is_capital = no }
+			add_location_modifier = { modifier = diwan_local_goods_boost years = 10 }
+		}
+	}
+	can_bribe = { can_bribe_default_trigger = yes }
+	on_bribe = { on_bribe_default_effect = yes }
+	ai_will_do = { base = 100 }
+	chance = 10
+}
