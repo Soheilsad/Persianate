@@ -1,4 +1,6 @@
 ﻿l_english:
+ STATIC_MODIFIER_NAME_turk_progress_cabinet_efficiency: "$CABINET_INFLUENCING$"
+ STATIC_MODIFIER_NAME_tazik_progress_cabinet_efficiency: "$CABINET_INFLUENCING$"
 
  # =========================================================================
  # Log-fix loc batch — silences the TODO / MISSING keys from the game log.

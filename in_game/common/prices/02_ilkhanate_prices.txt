@@ -1,6 +1,18 @@
 ilkhanate_integration_price = {
 	scaled_gold = 3.0
 	government_power = 5
+	### less legitimacy cost by a lot. 
+}
+
+
+ilkhanate_diwan_integration_price = {
+	scaled_gold = 3.0
+	### less legitimacy cost by a lot. 
+}
+
+ilkhanate_yurt_integration_price = {
+	government_power = 5
+	### less legitimacy cost by a lot. 
 }
 
 ilkhanate_rally_price = {

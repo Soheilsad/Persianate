@@ -43,7 +43,7 @@ consolidate_diwan = {
 		}
 	}
 
-	price = price:ilkhanate_integration_price
+	price = price:ilkhanate_diwan_integration_price
 
 	# Slow, deliberate — bureaucracy takes time to extend.
 	cooldown = {
@@ -99,9 +99,9 @@ consolidate_diwan = {
 			}
 		}
 		scope:actor = {
-			add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.10 }
-			add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.05 }
-			change_societal_value = { type = turk_vs_tazik value = 5 }
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = 0.02 }
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.01 }
+			change_societal_value = { type = turk_vs_tazik value = 1.5 }
 		}
 	}
 
@@ -133,7 +133,7 @@ grant_the_yurt = {
 		}
 	}
 
-	price = price:ilkhanate_integration_price
+	price = price:ilkhanate_yurt_integration_price
 
 	# Quick — handing land to an amir is a single audience.
 	cooldown = { 
@@ -186,9 +186,9 @@ grant_the_yurt = {
 			
 		}
 		scope:actor = {
-			add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.10 }
-			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.05 }
-			change_societal_value = { type = turk_vs_tazik value = -5 }
+			add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.02 }
+			add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.01 }
+			change_societal_value = { type = turk_vs_tazik value = -1.5 }
 		}
 	}
 
@@ -214,7 +214,7 @@ mixed_settlement = {
 	price = price:ilkhanate_integration_price
 
 	cooldown = { 
-		months = 6
+		months = 18
 		type = mixed_settlement
 	}
 

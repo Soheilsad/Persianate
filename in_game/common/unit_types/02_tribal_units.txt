@@ -2,7 +2,7 @@ a_nomadic_skirmisher_cavalry = {
 	category = army_light_cavalry
 	copy_from = a_age_1_traditions_light_cavalry
 	
-	maneuver = 2
+	initiative = 3
 	fire_damage_dealt = 0.15
 	shock_damage_dealt = -0.20
 	morale_damage_taken = 0.15
@@ -28,7 +28,9 @@ a_turkoman_light_cavalry = {
 	category = army_light_cavalry
 	copy_from = a_age_2_renaissance_light_cavalry
 	
-	maneuver = 2
+	initiative = 3
+	fire_damage_taken = 0.1 
+	shock_damage_taken = 0.1 ## lightly armored.
 	fire_damage_dealt = 0.10
 	shock_damage_dealt = 0.05
 	supply_weight = -0.15 ## they carry their own supplies
@@ -42,7 +44,8 @@ a_turkoman_light_cavalry = {
 	combat = {
 		sparse = 0.15
 		flatland = 0.10
-		hills = 0.05
+		hills = -0.10
+		mountains = -0.2
 	}
 	gfx_tags = { light_tag }
 }
@@ -51,7 +54,7 @@ a_qizilbash_cavalry = {
 	category = army_heavy_cavalry
 	copy_from = a_age_3_discovery_heavy_cavalry
 	
-	maneuver = 1
+	initiative = 2
 	fire_damage_dealt = -0.10
 	shock_damage_dealt = 0.20
 	morale_damage_dealt = 0.25
@@ -61,8 +64,10 @@ a_qizilbash_cavalry = {
 	levy = yes
 	
 	combat = {
-		hills = 0.15
+		sparse = 0.15
 		flatland = 0.10
+		hills = -0.10
+		mountains = -0.2
 	}
 	gfx_tags = { medium_tag }
 }

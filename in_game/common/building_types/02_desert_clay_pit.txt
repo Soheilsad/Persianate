@@ -21,13 +21,26 @@ desert_clay_pit = {
 
 	category = rgo_building_category
 	
+	# Economics mirror the base quarry (common_buildings.txt:295): the
+	# tooled method runs a ~+0.4 margin at equilibrium prices (0.107
+	# tools = 0.32 cost against 1.5 clay = 0.75), the hand-dug method
+	# is the no-input fallback. The old single method (0.2 tools for
+	# 1.0 clay) COST 0.6 to earn 0.5 - a building that only lived
+	# while the clay crisis lived, then shed its workers and restarted
+	# the crisis.
 	unique_production_methods = {
-		desert_clay_pit_maintenance = {
-			produced = clay
-			output = 1.0
+		tooled_clay_pit = {
+			tools = 0.107
 
-			tools = 0.2
-			
+			produced = clay
+			output = 1.5
+
+			category = building_maintenance
+		}
+		hand_dug_clay_pit = {
+			produced = clay
+			output = 0.5
+
 			category = building_maintenance
 		}
 	}

@@ -21,10 +21,16 @@ adobe_maker = {
 		}
 	}
 	
+	# Adobe is local earth, straw, and wooden molds - the poor man's
+	# brick precisely BECAUSE its inputs are nearly free. The old
+	# numbers (0.6 clay + 0.4 tools = 1.5 cost against 1.5 lumber)
+	# broke even at best and starved at Iranian clay prices. Now:
+	# 0.4 clay + 0.2 tools = 0.8 cost against 1.5 - a real margin,
+	# and still a real clay demand to keep the pits in business.
 	unique_production_methods = {
 		adobe_production = {
-			clay = 0.6
-			tools = 0.4
+			clay = 0.4
+			tools = 0.2
 			produced = lumber
 			output = 1.0
 			category = building_maintenance

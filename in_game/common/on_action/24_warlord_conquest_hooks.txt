@@ -70,14 +70,18 @@ eranzamin_warlord_auto_conquest = {
 				}
 				province = {
 					every_location_in_province = {
+						change_integration_level = conquered
 						change_location_owner = root
+						change_integration_level = conquered
 					}
 				}
 
 
 			}
 			else = {
+				change_integration_level = conquered
 				change_location_owner = root
+				change_integration_level = conquered
 			}
 			
 		}

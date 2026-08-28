@@ -23,6 +23,102 @@ on_diwan_start = {
 			limit = { exists = this }
 			trigger_event_silently = { id = persianate_cleanup.1 }
 		}
+		# ---Clay relief (2026-08-27) -----------------------------------
+		# Persia region has 3 clay RGOs in 579 locations (Fars: zero),
+		# clay cannot be imported profitably (transport_cost 2 on a 0.5
+		# good), and the mod's adobe/kashi chains draw on the clay
+		# market — playtest: clay at 4-5x Bohemian prices, processing
+		# margins crushed, Shiraz at 6 tax base against Bursa's 32.
+		# (Kashan's clay is fixed at the SOURCE now - the mod ships its
+		# own map_data/location_templates.txt with the Iranian RGO
+		# corrections: kashan clay, aveh/arzu/urmia salt. No game-start
+		# change_raw_material needed.)
+		international_organization:eranzamin = {
+			every_international_organization_member = {
+				# One clay pit everywhere the building can stand...
+				every_owned_location = {
+					limit = {
+						OR = {
+							raw_material ?= goods:clay
+							raw_material ?= goods:iron
+						}
+
+					}
+					change_max_raw_material_workers = 2
+					ordered_pop = {
+
+						max = 1
+						order_by = pop_size
+						limit = {
+							pop_type = pop_type:peasants
+						}
+						split_pop = {
+							size = 2
+							type = pop_type:laborers
+						}
+					}
+				}
+				every_owned_location = {
+					limit = {
+						NOT = { raw_material ?= goods:clay }
+						OR = {
+							vegetation = desert
+							vegetation = sparse
+							vegetation = qanat_farmland
+							vegetation = crumbling_qanat
+						}
+					}
+					construct_building = {
+						cost_multiplier = 0
+						cost_multiplier_reason = "game_concept_event"
+						instant = yes
+						building_type = building_type:desert_clay_pit
+					}
+					ordered_pop = {
+
+						max = 1
+						order_by = pop_size
+						limit = {
+							pop_type = pop_type:peasants
+						}
+						split_pop = {
+							size = 1
+							type = pop_type:laborers
+						}
+					}
+
+				}
+				# ...and a second level in the true pit country.
+				every_owned_location = {
+					limit = {
+						NOT = { raw_material ?= goods:clay }
+						OR = {
+							vegetation = desert
+							vegetation = sparse
+						}
+					}
+					construct_building = {
+						cost_multiplier = 0
+						cost_multiplier_reason = "game_concept_event"
+						instant = yes
+						building_type = building_type:desert_clay_pit
+					}
+					ordered_pop = {
+
+						max = 1
+						order_by = pop_size
+						limit = {
+							pop_type = pop_type:peasants
+						}
+						split_pop = {
+							size = 1
+							type = pop_type:laborers
+						}
+					}
+				}
+			}
+		}
+
 		international_organization:eranzamin = {
 			every_international_organization_member = {
 				every_owned_location = {
@@ -62,6 +158,18 @@ on_diwan_start = {
 						building_type = building_type:farming_village
 					}
 					change_max_raw_material_workers = 1
+					ordered_pop = {
+
+						max = 1
+						order_by = pop_size
+						limit = {
+							pop_type = pop_type:peasants
+						}
+						split_pop = {
+							size = 1
+							type = pop_type:laborers
+						}
+					}
 				}
 				every_owned_location = {
 					limit = {
@@ -80,6 +188,18 @@ on_diwan_start = {
 						building_type = building_type:farming_village
 					}
 					change_max_raw_material_workers = 1
+					ordered_pop = {
+
+						max = 1
+						order_by = pop_size
+						limit = {
+							pop_type = pop_type:peasants
+						}
+						split_pop = {
+							size = 1
+							type = pop_type:laborers
+						}
+					}
 				}
 				every_owned_location = {
 					limit = {
@@ -97,6 +217,18 @@ on_diwan_start = {
 						building_type = building_type:farming_village
 					}
 					change_max_raw_material_workers = 1
+					ordered_pop = {
+
+						max = 1
+						order_by = pop_size
+						limit = {
+							pop_type = pop_type:peasants
+						}
+						split_pop = {
+							size = 1
+							type = pop_type:laborers
+						}
+					}
 				}
 				every_owned_location = {
 					limit = {
