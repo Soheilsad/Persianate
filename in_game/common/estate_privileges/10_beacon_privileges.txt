@@ -53,8 +53,21 @@ iqta_commutation = {
 		monthly_towards_tazik = 0.05
 		monthly_towards_centralization = 0.025
 	}
+
+	# Commutation is dispossession dressed as favor: the DAY the
+	# host's obligations become a landed lease, both estates take it
+	# badly, whatever the equilibrium says later.
+	on_activate = {
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.10 }
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = -0.10 }
+	}
 }
 
+# DISTINCT from amirs_umara_at_the_diwan: the Umara privilege is a
+# general RIGHT (amirs may sit in the chancery's councils). THIS is a
+# placement program - the amirs' sons commissioned into chancery
+# seats ahead of the examination class. The beneficiaries love it;
+# everyone who passed the examinations does not.
 chancery_commissions = {
 	estate = amirs_estate
 	content_priority = 620
@@ -74,6 +87,14 @@ chancery_commissions = {
 		global_amirs_estate_power = -0.05
 		global_diwan_estate_power = 0.05
 		monthly_towards_tazik = 0.10
+	}
+
+	# The literate classes watch beg's sons take seats their own sons
+	# sat examinations for.
+	on_activate = {
+		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.08 }
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.05 }
+		add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.05 }
 	}
 }
 
@@ -98,5 +119,11 @@ salaried_pastoral_levies = {
 		global_manpower_modifier = 0.05
 		tax_income_efficiency = -0.025
 		monthly_towards_tazik = 0.05
+	}
+
+	# The day the chiefs learn their riders answer a paymaster.
+	on_activate = {
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = -0.10 }
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.05 }
 	}
 }

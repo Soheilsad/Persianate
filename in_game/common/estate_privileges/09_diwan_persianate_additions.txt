@@ -155,6 +155,14 @@ diwan_mavajib_cash_pay = {
 		monthly_towards_tazik = 0.10
 	}
 
+
+	# The registers see everything: the amir who drew pay in kind and
+	# pocketed the difference now draws a counted salary. The estate
+	# takes the grant as the insult it is (equilibrium recovers - the
+	# reliable pay is real - but the DAY of the grant stings).
+	on_activate = {
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.10 }
+	}
 }
 
 # === RIVALRY — visibility ===
