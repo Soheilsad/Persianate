@@ -1,0 +1,34 @@
+namespace = horde_reach
+
+# ============================================================================
+# THE REACH OF THE YAM — game-start explainer for the horde control model.
+#
+# Purely descriptive. The mechanic lives in the auto modifier
+# `borjigin_yam_reach` (in_game/common/auto_modifiers/09_horde_reach_auto.txt);
+# this event exists so a player opening as a horde understands WHY their
+# empire holds together, and — more importantly — where it stops holding.
+# No effects: the option must not grant anything the auto modifier is
+# already granting.
+# ============================================================================
+
+horde_reach.1 = {
+	type = country_event
+	title = horde_reach.1.title
+	desc = horde_reach.1.desc
+	outcome = positive
+	fire_only_once = yes
+
+	illustration_tags = { 10 = exterior }
+
+	trigger = {
+		government_type = government_type:steppe_horde
+		OR = {
+			ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
+			has_reform ?= government_reform:chinggisid_regency
+		}
+	}
+
+	option = {
+		name = horde_reach.1.a
+	}
+}

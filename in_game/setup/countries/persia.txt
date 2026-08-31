@@ -9,7 +9,7 @@ CHB = { #Chobanids
 
 # Override of base crescent.txt JAL: the Jalayirid house is the other
 # great Persianized keshig dynasty — same culture surgery as CHB.
-JAL = { #Jalayirids
+REPLACE:JAL = { #Jalayirids
 	color = map_jalayirids
 	color2 = yellow
 

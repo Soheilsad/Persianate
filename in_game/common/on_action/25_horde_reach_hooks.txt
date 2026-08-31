@@ -1,0 +1,93 @@
+# =====================================================================
+# Horde reach — game-start wiring for horde_reach.1.
+#
+# Paradox merges on_actions across files, so re-declaring on_game_start
+# here EXTENDS rather than overrides the mod's other start hooks
+# (00_diwan_game_start, 02_estate_seeding, 15_shia_rework_start, ...).
+#
+# Human players only: the event is an explainer for a control model the
+# player cannot see in any tooltip, and the AI gains nothing by
+# resolving it.
+# =====================================================================
+
+on_game_start = {
+	on_actions = {
+    	horde_reach_game_start
+		steppe_pasture_and_econ_seeding
+    }
+}
+
+
+horde_reach_game_start = {
+	effect = {
+		every_country = {
+			limit = {
+				government_type = government_type:steppe_horde
+				OR = {
+					ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
+					has_reform ?= government_reform:chinggisid_regency
+				}
+			}
+			trigger_event_non_silently = horde_reach.1
+		}
+	}
+}
+
+
+
+### seeding horse
+steppe_pasture_and_econ_seeding = {
+	effect = {
+		every_country = {
+			limit = {
+				government_type = government_type:steppe_horde
+				capital = {
+					region = region:steppes_region
+					region = region:khorasan_region
+				}
+
+			}
+			every_owned_rural_location = {
+				limit = {
+					OR = {
+						region = region:steppes_region
+						region = region:khorasan_region
+						
+					}
+					num_pop_type:tribesmen > 10.0
+					
+				}
+				construct_building = {
+					building_type = building_type:tribal_pasture
+					cost_multiplier = 0
+					cost_multiplier_reason = "game_concept_event"
+					instant = yes
+				}
+			}
+			every_owned_location = {
+				limit = {
+					OR = {
+						raw_material ?= goods:salt
+						raw_material ?= goods:iron
+						raw_material ?= goods:copper
+						raw_material ?= goods:goods_gold
+						raw_material ?= goods:silver
+
+					}
+					
+				}
+				change_max_raw_material_workers = 1
+				save_scope_as = this_location
+				add_pop = {
+						culture = scope:this_location.dominant_culture
+						religion = scope:this_location.dominant_religion
+						type = pop_type:laborers
+						size = { value = 1.0 }
+				}
+			}
+
+
+		}
+	}
+
+}

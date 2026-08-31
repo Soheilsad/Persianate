@@ -58,6 +58,7 @@ tribal_pasture = {
 			region = region:crescent_region
 			region = region:anatolia_region
 			region = region:caucasus_region
+			region = region:steppes_region
 		}
 		OR = {
 			climate = arid

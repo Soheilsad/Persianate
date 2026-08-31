@@ -1,0 +1,52 @@
+# =====================================================================
+# THE TÜMEN — steppe mobilisation.
+#
+# Base game gives the archetypal steppe war machine the GENERIC PEASANT
+# INFANTRY RATE:
+#
+#     levy_steppe_horde = { size = levy_generic_infantry_size ... }
+#     levy_generic_infantry_size = 0.02
+#
+# — with no allowed_pop_type at all, and with levy_tribal_cavalry
+# explicitly excluding hordes (`NOT = { government_type =
+# government_type:steppe_horde }`). So the Golden Horde mobilises at one
+# fifth the rate this mod already grants the Zagros hill tribes, whose
+# levies sit at size = 0.1 with the note "these tribes are really
+# tolerated for their military contribution." The Kipchak steppe was not
+# less martial than Luristan.
+#
+# What is missing is the decimal system — the single most important
+# military fact about the Mongol world. Tümen, minghan, jaghun: the
+# entire adult male population enrolled in a standing hierarchy, already
+# mounted, already armed, already trained by the work of herding, with
+# the herds moving alongside the army so there is no harvest to stay home
+# for and no supply train to raise. A settled agrarian society sustainably
+# fields something on the order of 1% of its people. A nomadic one fields
+# ten to twenty per cent. That gap IS the military history of the steppe,
+# and at 0.02 the game erases it.
+#
+# allowed_pop_type = tribesmen is added deliberately, and is a change of
+# COMPOSITION as well as of rate: the tümens were the nomadic population.
+# Volga Bulgar farmers and Crimean gardeners were taxpayers under the
+# khan, not horsemen for him. Base left the field blank, which let the
+# levy draw on the settled population it should never have touched.
+#
+# [TUNE ON FIRST LAUNCH: with ~1.26M tribesmen across the Jochid core
+# after the slave recoding, 0.1 implies a mobilisation ceiling of roughly
+# 120k — the right order of magnitude for maximum effort by a power that
+# invaded Ilkhanid Azerbaijan three times under Özbeg and took Tabriz
+# under Janibeg in 1357, but worth checking against the raised total
+# rather than trusting the arithmetic here.]
+# =====================================================================
+
+REPLACE:levy_steppe_horde = {
+	size = 0.1
+
+	allowed_pop_type = tribesmen
+
+	country_allow = {
+		government_type = government_type:steppe_horde
+	}
+
+	unit = a_steppe_horde
+}

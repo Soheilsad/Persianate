@@ -1,0 +1,104 @@
+# =====================================================================
+# HISTORICAL DEPOSITS — extending base's location_historical_base_values.
+#
+# WHAT THESE ARE FOR. The modifier is not a fame rating; it is a
+# CARRYING-CAPACITY CORRECTION. Base gives Falun x4 and Kutna Hora x0.25,
+# which looks incoherent until you check the ground: Falun starts at 5k
+# on arctic forest plateau and caps around 23k, so no amount of engine
+# machinery will ever make it produce like the copper mountain that
+# financed a Swedish empire. Kutna Hora starts at 37k in an urban
+# location that scales past 150k, so population times building levels
+# already does the work and a modifier would double-count.
+#
+# So the rule is: historical importance DIVIDED BY what the engine will
+# manage unaided. Rich deposit on land that cannot feed a workforce gets
+# help; rich deposit under a real city does not.
+#
+# The second half of that test is the 1337 START, not the eventual
+# ceiling. A site can have room to grow and still produce nothing in the
+# opening century because it begins with 5k people. Both halves matter.
+#
+# DELIBERATELY NOT INCLUDED:
+#  - nishapur (turquoise). Base rates it 0.5 and that is correct: it sits
+#    on qanat_farmland with 130k people. The engine handles it.
+#  - foca (alum), ergani, divrigi, hormuz, bandar_lengeh, kutahya — all
+#    on workable land with 19-77k pops. They do not need help.
+#  - the Ural and West Siberian metal belt: 50 locations carrying iron,
+#    copper and gold at 1-8k pops each. That inertness is HISTORICALLY
+#    CORRECT — Ural mining is an eighteenth-century story, and propping
+#    it up in 1337 would import the Demidov works into the Ilkhanid
+#    century. Left alone on purpose.
+#  - kargaly_aktobe. Its workings are Bronze Age, then twenty-five
+#    centuries of silence, then Russian industrialists in the 1740s.
+#    Marginal in this period is the right answer.
+#  - gumushane: handled separately.
+# =====================================================================
+
+# Sar-e Sang in the Kuran wa Munjan valley, and Shighnan across the
+# Panj. For six thousand years this was the world's ONLY significant
+# source of lapis lazuli — Sumer's, Egypt's, Rome's and China's all came
+# out of these mountains — and Kuh-i Lal nearby gave the "balas ruby",
+# the spinel Marco Polo describes. A global monopoly sitting on
+# mountains/desert at 7k and 4k people: the strongest case on the map for
+# this instrument. Fayzabad (30k) is excluded — it can carry itself.
+badakhshan_gems_base = {
+	game_data = {
+		category = location
+	}
+	local_gems_output_modifier = 3
+}
+
+# Elton: an evaporation flat, not a mine. The summer sun does the work
+# and carters rake the crust — which is why the lake supplied the whole
+# Volga trade while almost nobody lived there. flatland/sparse/cold_arid
+# at 2.5k pops is the worst ground in the region and cannot staff levels;
+# the output has to come from the deposit instead. Base rates the Sahara
+# pans at 1 and Turda at 0.5, but neither of those sits on nothing.
+elton_salt_base = {
+	game_data = {
+		category = location
+	}
+	local_salt_output_modifier = 3
+}
+
+# Or Qapi — Perekop, the Crimean salt pans that fed Poland and Ukraine
+# through the chumak salt caravans for centuries. Same evaporation model,
+# slightly less hostile ground.
+perekop_salt_base = {
+	game_data = {
+		category = location
+	}
+	local_salt_output_modifier = 1.5
+}
+
+# The Sary-Arka copper province. Medieval smelting in central Kazakhstan
+# is archaeologically attested for the Turkic and Mongol periods, not
+# only the Bronze Age, and Ulytau is the symbolic heart of the Jochid
+# steppe — Jochi's own mausoleum stands there. But it is arid upland with
+# no grain: the constraint is FOOD, not ore, which is exactly the case
+# this instrument exists for.
+sary_arka_copper_base = {
+	game_data = {
+		category = location
+	}
+	local_copper_output_modifier = 2
+}
+
+sary_arka_silver_base = {
+	game_data = {
+		category = location
+	}
+	local_silver_output_modifier = 2
+}
+
+# The Gulf pearl banks — the world's principal fishery, described by
+# every traveller who passed. Applied only to the small stations: Hormuz
+# (77k) and Bandar Lengeh (26k) are real ports that carry themselves,
+# while Kish, Jannaba and Julfar are desert coast where nothing grows and
+# the whole economy is the diving season.
+gulf_pearl_banks_base = {
+	game_data = {
+		category = location
+	}
+	local_pearls_output_modifier = 2
+}

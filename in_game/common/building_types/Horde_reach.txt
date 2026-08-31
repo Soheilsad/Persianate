@@ -1,0 +1,166 @@
+# =====================================================================
+# HORDE REACH — the khan's appointee in a settled place.
+#
+# The Jochid ulus was pluricentric in fact, not by approximation. There
+# was no single Sarai: Sarai Batu on the lower Volga, Sarai al-Jadid
+# upstream (Özbeg moved the seat there), and Saray-Jük — "little Sarai"
+# — out on the Yaik on the eastern road. They named their second and
+# third cities after the first. And the khan posted resident men to
+# hold the settled provinces: Qutlugh-Temür governed Khwarazm from
+# Urgench as Özbeg's amir, married to a Chinggisid princess; Tuluktumur
+# was the amir at Solkhat in Crimea. Ibn Battuta sat with both of them
+# in 1333–34. Behind them stands the whole darughachi / basqaq
+# institution — a resident official holding a district for the khan,
+# running the census, the assessment and the garrison liaison.
+#
+# Base game's `local_governor` models this and then locks it away from
+# hordes twice over: `city = yes` only, and `has_road_to_capital = yes`.
+# The Mongol claim is precisely that they governed without roads. This
+# is that building with the road gate removed and the rank widened to
+# town, because a darugha was posted to a district centre, not only to
+# a metropolis — and because Bulgar/Kazan, the worst-controlled place
+# in the empire at start, is rated a town.
+#
+# Deliberately NOT rural: this is the settled seat. The country between
+# seats is the yam's job, and the yam is a different institution.
+#
+# CALIBRATION: the Horde had high REACH and low DENSITY. This grants
+# proximity (reach) at 60 — below the governor's 80, because a khan's
+# appointee is not a chancery — and no max-control of its own. The
+# steppe should end up reachable, never administered.
+# =====================================================================
+
+horde_local_appointee = {
+	audio_tier = 2
+	is_foreign = no
+	pop_type = nobles
+	max_levels = 1
+	important_for_UI = yes
+
+	employment_size = large_noble_employment
+
+	category = government_category
+
+	rural_settlement = no
+	town = yes                  # FIX: Kazan and Chimgi-Tura are towns.
+	city = yes
+	megalopolis = yes
+
+	# FIX: country-scope triggers belong in country_potential. Base game
+	# does exactly this (capital_buildings.txt: `country_potential = {
+	# government_type ?= government_type:monarchy }`). In
+	# location_potential these would have been evaluated in location
+	# scope, where `government_type` and `ruler` are not valid.
+	country_potential = {
+		government_type = government_type:steppe_horde
+		OR = {
+			ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
+			has_reform ?= government_reform:chinggisid_regency
+		}
+	}
+
+	allow = {
+		# FIX: the cap must count THIS building. As written it counted
+		# `local_governor`, which a horde never builds — so the check
+		# read 0 < 1 forever and the appointee was uncapped.
+		# The three government seats share one budget; hordes get a
+		# bigger budget via `num_local_governors` on the auto modifier.
+		custom_tooltip = {
+			text = horde_local_appointee_tt
+			scope:actor = {
+				total_building_levels_including_construction:horde_local_appointee < {
+					value = modifier:num_local_governors
+					subtract = total_building_levels_including_construction:lieutenancy
+					subtract = total_building_levels_including_construction:local_governor
+					add = 4 ### a minimum
+				}
+			}
+		}
+		owner = scope:actor #not in subjects
+	}
+
+	location_potential = {
+		owner.capital != this
+	}
+
+	# The reach dies with the legitimacy that carried it — Mamai's
+	# problem after 1359: real armies, no descent, and an ulus that
+	# would not answer him. NOTE: this DESTROYS the buildings rather
+	# than suspending them; see the note at the end of this file.
+	remove_if = {
+		owner = {
+			NOR = {
+				AND = {
+					government_type = government_type:steppe_horde
+					ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
+				}
+				AND = {
+					government_type = government_type:steppe_horde
+					has_reform ?= government_reform:chinggisid_regency
+				}
+			}
+		}
+	}
+
+	expensive = yes
+
+	automation_build_allowed = no
+	ai_forbid_shutdown = yes
+	forbidden_for_estates = yes
+	important_for_AI = yes
+	ai_ignore_maintenance = yes
+
+	build_time = government_build_time
+
+	# FIX: renamed from `local_governor_maintenance`, which is already
+	# defined by base game inside `local_governor`
+	# (capital_buildings.txt:663) and carries its own global loc key in
+	# goods_l_english.yml. Production-method keys are global; reusing
+	# the name is a duplicate-definition collision.
+	unique_production_methods = {
+		# No goods_gold: a darugha is a man with a tent, a guard and a
+		# tally of who owes what — not a chancery with a treasury. The
+		# gold line was also unpayable in practice, since the steppe has
+		# no bullion RGO of its own and imports its specie.
+		horde_appointee_maintenance = {
+			tools = 0.5
+			masonry = 0.5
+			weaponry = 1
+			paper = 2
+			books = 0.5
+			furniture = 1
+			fine_cloth = 1
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = local_governor_construction
+
+	modifier = {
+		local_proximity_source = 60
+	}
+}
+
+# ---------------------------------------------------------------------
+# NOTES / OPEN DECISIONS
+#
+# 1. `remove_if` deletes rather than suspends. When the Borjigin line
+#    fails, every appointee in the realm is destroyed at once and must
+#    be rebuilt from nothing by whoever restores legitimacy. That IS
+#    the historical claim, and Tokhtamysh did have to reconstitute the
+#    Horde — but watch it during ordinary succession gaps, where a
+#    momentary non-Borjigin ruler would wipe the whole network for
+#    reasons the player will read as a bug. If that happens, the
+#    alternative is to drop `remove_if` and move the conditional
+#    benefit onto a country modifier instead.
+#
+# 2. Solkhat, Sighnaq and Majar are rated RURAL by base game and so
+#    cannot take this building. That excludes Crimea's administrative
+#    capital — Qırım gave the peninsula its name and was Tuluktumur's
+#    seat — and Sighnaq, the left wing's seat on the Syr Darya. This
+#    looks like the same class of error as Sarai al-Jadid being rated
+#    a town: a Jochid centre read as empty steppe. Either correct their
+#    rank in the mod's 07 overrides, or let the (rural-capable) yam
+#    building cover them. Left undecided on purpose.
+# ---------------------------------------------------------------------

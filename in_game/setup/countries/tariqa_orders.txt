@@ -1,0 +1,68 @@
+# =====================================================================
+# TARIQA ORDER COUNTRY DEFINITIONS — the six shrine-polities of
+# 12_tariqa_orders.txt. A tag without a setup/countries entry does not
+# exist (this was why only Ardabil ever appeared — ABL rides base's
+# own definition in base persia.txt). These are mod-NEW keys, so plain
+# form, no REPLACE:.
+#
+# Cultures match the shaykh-lineage characters in
+# 05_characters_overrides.txt. Colors carry each order's own
+# symbolism: Kubrawi light-mysticism blue (Simnani's colored subtle
+# centers), Kazaruni sea-green (patron order of Indian Ocean
+# travelers), Qadiri green banner, Khwajagan sober white, Yasavi
+# steppe ochre, Rifai fire-ritual red.
+# =====================================================================
+
+KBW = { #Kubrawiyya — Sufiabad/Semnan, Mazdaqani's khanaqah
+	color = rgb { 40 80 160 }
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = farsi_culture
+	religion_definition = sunni
+	is_historic = yes
+}
+
+KZR = { #Kazaruniyya — the Balyani house of Kazerun
+	color = rgb { 30 140 120 }
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = farsi_culture
+	religion_definition = sunni
+	is_historic = yes
+}
+
+QAD = { #Qadiriyya — the Jilani sajjada-nishin at the Baghdad shrine
+	color = rgb { 20 110 60 }
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = iraqi_culture
+	religion_definition = sunni
+	is_historic = yes
+}
+
+KWJ = { #Khwajagan — Baba Samasi's line at Bukhara
+	color = rgb { 190 190 180 }
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = tajik_culture
+	religion_definition = sunni
+	is_historic = yes
+}
+
+YSV = { #Yasaviyya — the Ata lineage at Ahmad Yasavi's shrine, Turkestan
+	color = rgb { 200 160 60 }
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = turkish_culture
+	religion_definition = sunni
+	is_historic = yes
+}
+
+RIF = { #Rifaiyya — the Izz al-Din line of Umm Abida in the marshes
+	color = rgb { 150 40 40 }
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = iraqi_culture
+	religion_definition = sunni
+	is_historic = yes
+}

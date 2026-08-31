@@ -81,7 +81,7 @@ ilkhanate_flavor.1 = {
 			dynasty = dynasty:borjigin_dynasty
 			estate = estate_type:amirs_estate
 			religion = root.religion
-			culture = culture:mongolian_culture
+			culture = culture:persianized_mongol_culture
 			age = {18 30}
 
 			save_scope_as = borjigin_puppet
@@ -459,7 +459,7 @@ ilkhanate_flavor.2 = {
 			dynasty = dynasty:borjigin_dynasty
 			estate = estate_type:amirs_estate
 			religion = root.religion
-			culture = culture:mongolian_culture
+			culture = culture:persianized_mongol_culture
 			age = {18 30}
 			save_scope_as = borjigin_puppet
 		}

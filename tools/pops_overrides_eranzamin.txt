@@ -1628,12 +1628,14 @@ locations = {
     }
 
     sayak = {
-        define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
-        define_pop = { type = peasants	size = 0.383	culture = uzbek_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.010	culture = uzbek_culture	religion = tengri }
-        define_pop = { type = peasants	size = 0.050	culture = uzbek_culture	religion = nestorianism }
-        define_pop = { type = nobles	size = 0.000	culture = uzbek_culture	religion = nestorianism }
-        define_pop = { type = tribesmen	size = 0.557	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = peasants	size = 1.700	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = peasants	size = 0.400	culture = uzbek_culture	religion = sunni }
+        define_pop = { type = peasants	size = 1.150	culture = uzbek_culture	religion = nestorianism }
+        define_pop = { type = burghers	size = 1.300	culture = uzbek_culture	religion = sunni }
+        define_pop = { type = burghers	size = 0.180	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 1.120	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = nobles	size = 0.120	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = clergy	size = 0.030	culture = uzbek_culture	religion = nestorianism }
     }
 
     baytak = {
@@ -1649,9 +1651,12 @@ locations = {
     }
 
     kargaly_aktobe = {
-        define_pop = { type = peasants	size = 0.055	culture = nogai	religion = sunni }
-        define_pop = { type = nobles	size = 0.007	culture = nogai	religion = sunni }
-        define_pop = { type = slaves	size = 3.688	culture = nogai	religion = tengri }
+        define_pop = { type = peasants	size = 3.200	culture = nogai	religion = sunni }
+        define_pop = { type = peasants	size = 1.000	culture = nogai	religion = tengri }
+        define_pop = { type = burghers	size = 0.350	culture = nogai	religion = sunni }
+        define_pop = { type = tribesmen	size = 1.200	culture = nogai	religion = tengri }
+        define_pop = { type = tribesmen	size = 0.150	culture = nogai	religion = sunni }
+        define_pop = { type = nobles	size = 0.100	culture = nogai	religion = sunni }
     }
 
     kobda = {
@@ -2101,19 +2106,23 @@ locations = {
     }
 
     baskamyr = {
-        define_pop = { type = peasants	size = 0.377	culture = uzbek_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.010	culture = uzbek_culture	religion = tengri }
-        define_pop = { type = peasants	size = 0.050	culture = uzbek_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.000	culture = uzbek_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.563	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = peasants	size = 2.200	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = peasants	size = 0.550	culture = uzbek_culture	religion = sunni }
+        define_pop = { type = burghers	size = 0.360	culture = uzbek_culture	religion = sunni }
+        define_pop = { type = burghers	size = 0.220	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 1.420	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = nobles	size = 0.150	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = clergy	size = 0.100	culture = uzbek_culture	religion = sunni }
     }
 
     ulytau = {
-        define_pop = { type = peasants	size = 0.445	culture = uzbek_culture	religion = tengri }
-        define_pop = { type = nobles	size = 0.010	culture = uzbek_culture	religion = tengri }
-        define_pop = { type = peasants	size = 0.049	culture = uzbek_culture	religion = sunni }
-        define_pop = { type = nobles	size = 0.000	culture = uzbek_culture	religion = sunni }
-        define_pop = { type = tribesmen	size = 0.495	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = peasants	size = 2.600	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = peasants	size = 0.700	culture = uzbek_culture	religion = sunni }
+        define_pop = { type = burghers	size = 0.450	culture = uzbek_culture	religion = sunni }
+        define_pop = { type = burghers	size = 0.270	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = tribesmen	size = 1.680	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = nobles	size = 0.180	culture = uzbek_culture	religion = tengri }
+        define_pop = { type = clergy	size = 0.120	culture = uzbek_culture	religion = sunni }
     }
 
     emba = {

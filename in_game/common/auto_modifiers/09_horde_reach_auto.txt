@@ -1,0 +1,74 @@
+# =====================================================================
+# THE REACH OF THE YAM — steppe control for a legitimate khan.
+#
+# The problem being fixed: base game's `steppe_horde` government type
+# (in_game/common/government_types/00_default.txt) carries NOT ONE
+# control field. It gets a looting bonus, cheap no-CB wars, cheap
+# rural downgrades and horde unity — and is then handed the standard
+# sedentary control model, in which authority radiates from a fixed
+# capital and is rebuilt with roads and offices, while being given
+# none of the roads or offices. Control therefore collapses to ~0
+# across the ulus, -100% levy size applies almost everywhere, and the
+# Golden Horde of 1337 fields six thousand men and taxes Kazan at zero.
+# Every downstream absurdity (the Rus declaring independence in year
+# one; Sarai poorer than Moscow's wooden kremlin) follows from that.
+#
+# Why this is the right shape of fix. The Jochid core was not a state
+# with provinces nor a crown with fiefs. It was the decimal military
+# organisation — tümens and minghans — holding allocated pasture, under
+# the two wings. Authority moved by three technologies a sedentary
+# chancery does not possess: the yam, the relay-post network with fresh
+# horses and paiza tablets that let a khan issue orders across six
+# thousand kilometres; the ordu itself, the khan's camp being a city
+# that MOVED, migrating between winter quarters and summer pasture
+# (Ibn Battuta rode with Özbeg's in 1334 and describes mosques carried
+# on carts); and the muster, which reached wherever the units and their
+# herds already were. So for a horde, "control" should mean the reach
+# of the muster, not the penetration of an administration — which is
+# why this is conditioned on TOPOGRAPHY rather than granted flat.
+#
+# Why conditioned on Borjigin blood. The tümens answered the lineage,
+# not the office. This is Mamai's whole problem after 1359: a Qiyat beg
+# with real armies and no descent, who had to rule through puppet khans
+# because the ulus would not muster for him otherwise. The regency
+# clause covers exactly that case — the same charade this mod already
+# models in Tabriz, running in the north a generation later.
+#
+# SIGN CONVENTION (verified against main_menu/common/static_modifiers/
+# capital_in_topography.txt): NEGATIVE reduces the distance penalty
+# across that topography. Base game gives `capital_in_flatland` a
+# -0.2, i.e. your home ground is cheaper for you to govern across.
+# This STACKS with that -0.2 for a flatland-capital horde, so Sarai
+# ends up near -0.8 total. Tuning dial: start here and watch the levy
+# numbers at Kazan / Samara / Yaransk, which read 0% control at start.
+#
+# KNOWN LIMIT: flatland is TOPOGRAPHY, not vegetation, so this cannot
+# distinguish open steppe from forested plain — the Rus forest zone is
+# also flatland and gets the same benefit. The steppe/sown line, where
+# the mode of rule actually changed from muster to tribute-and-basqaq,
+# would need a vegetation-conditioned lever (location-scoped auto
+# modifier) if it turns out to matter. Hills, plateau, mountain and
+# wetland are untouched by design: the Caucasus, the Elburz, the
+# Carpathians and the Zagros stay expensive, which is correct.
+# =====================================================================
+
+borjigin_yam_reach = {
+	potential_trigger = {
+		government_type = government_type:steppe_horde
+		OR = {
+			ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
+			has_reform ?= government_reform:chinggisid_regency
+		}
+	}
+	global_distance_from_capital_speed_propagation = 0.33
+
+	# The budget of resident appointees. Base game hands out
+	# num_local_governors almost entirely by country rank, plus one from
+	# an Age of Absolutism advance — so in the Age of Traditions an
+	# empire spanning from the Danube to the Irtysh runs on one or two
+	# viceroys. The Jochids held Urgench, Solkhat, Bulgar, Saray-Jük and
+	# Hajji Tarkhan through resident amirs simultaneously. Shared budget
+	# with local_governor and lieutenancy; the seeded nodes count against
+	# it, leaving headroom for a couple more.
+	num_local_governors = 8
+}

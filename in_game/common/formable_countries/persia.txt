@@ -1,4 +1,4 @@
-IRA_f = {
+REPLACE:IRA_f = {
 	level = 4
 	required_locations_fraction = 0.75
 	rule = historical

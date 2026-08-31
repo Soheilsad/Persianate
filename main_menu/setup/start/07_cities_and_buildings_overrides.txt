@@ -124,6 +124,21 @@ locations = {
 	sivas = { rank = city 	town_setup = anatolian_major_city }
 	konya = { rank = city 	town_setup = anatolian_major_city }
 
+
+
+	### Cities of the Golden Horde
+	astrakhan = { rank = city			town_setup = central_asian_city }
+
+	kazan = { rank = town 			town_setup = central_asian_town }
+	sarai_al_jadid = { rank = city			town_setup = sarai_city }
+	bolghar = { rank = city town_setup = bolghar_city }
+	beljamen = { rank = town town_setup = central_asian_town }
+	ukek = { rank = town town_setup = central_asian_town }
+	bilyar = { rank = town town_setup = central_asian_town }
+	cukataw = { rank = town town_setup = central_asian_town }
+	solkhat = { rank = city town_setup = central_asian_city }
+	majar = { rank = town town_setup = central_asian_town }
+	sighnaq = { rank = town town_setup = central_asian_town }
 }
 
 
@@ -288,5 +303,8 @@ building_manager = {
 	## it revolts outright in 1338.
 	regional_diwan = { tag = DLH level = 1 location = daulatabad }
 	regional_diwan = { tag = DLH level = 1 location = multan }
-
+	horde_local_appointee = { tag = GLH level = 1 location = majar }
+	horde_local_appointee = { tag = GLH level = 1 location = bolghar }
+	horde_local_appointee = { tag = GLH level = 1 location = urgench }
+	horde_local_appointee = { tag = GLH level = 1 location = solkhat }
 }

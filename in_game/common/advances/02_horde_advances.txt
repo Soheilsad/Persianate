@@ -1,0 +1,66 @@
+# =====================================================================
+# STEPPE MILITARY TRADITION IS A CULTURE, NOT A CONSTITUTION.
+#
+# Base gates both of these on `government = steppe_horde`, which makes
+# the horse and the quriltai properties of a FORM OF GOVERNMENT — so a
+# Turco-Mongol dynasty that settles, takes a sultanate's titles and rules
+# from a chancery instantly forgets how to breed and ride. That is
+# precisely backwards, and it is the same error this mod already corrects
+# on the culture side: the Ilkhanid successors kept Turco-Mongol armies,
+# the decimal organisation and the quriltai long after they had stopped
+# being hordes in any constitutional sense. Chupan and Hasan Buzurg
+# fielded tümens from Tabriz.
+#
+# Regated on culture: steppe_group covers crimean, astrakhani, nogai,
+# kazani, mishar and mongolian_culture; mongolian_group catches the rest
+# of the Mongol family, including this mod's own persianized_mongol_
+# culture — which is the point. The Chobanids and Jalayirids should keep
+# the horse. What they gradually lose is the hosts' willingness to ride
+# for them, and that belongs to the Matter, not to an advance gate.
+# =====================================================================
+
+REPLACE:horse_lords = {
+	age = age_1_traditions
+
+	potential = {
+		culture = {
+			OR = {
+				has_culture_group = culture_group:steppe_group
+				has_culture_group = culture_group:mongolian_group
+			}
+		}
+	}
+
+	requires = horse_riding_advance
+
+	army_light_cavalry_reinforce_cost_modifier = -0.33
+	army_light_cavalry_maintenance_cost_modifier = -0.33
+
+	always_allow_army_levies = yes
+
+	unlock_unit = a_steppe_horse_archers
+	unlock_unit = a_a_urughs
+}
+
+# The quriltai is the assembly that acclaims a khan — the constitutional
+# heart of the Chinggisid world, and the institution through which the
+# uluses renewed or withheld their obedience. Tying it to a government
+# type meant a Chinggisid house that took a sedentary crown could no
+# longer hold the assembly that made it legitimate in the first place.
+REPLACE:kurultai_advance = {
+	age = age_1_traditions
+
+	potential = {
+		culture = {
+			OR = {
+				has_culture_group = culture_group:steppe_group
+				has_culture_group = culture_group:mongolian_group
+			}
+		}
+	}
+
+	unlock_building = kurultai
+	levy_maintenance_modifier = -0.5
+
+	requires = horse_lords
+}

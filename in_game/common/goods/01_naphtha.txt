@@ -1,0 +1,41 @@
+# =====================================================================
+# TAR AS AN EXTRACTABLE GOOD — the naphtha of Baku.
+#
+# Base defines tar as `category = produced` with NO method, which is what
+# blocks `raw_material = tar` in location_templates: every one of the 53
+# goods usable as an RGO carries `category = raw_material` plus a method
+# (mining / farming / gathering / hunting / forestry). Being consumed or
+# produced by buildings is NOT the blocker — dyes is `raw_material` with
+# `method = farming` and still appears in production methods, as do salt,
+# copper and iron. Category and method are the gate; everything else is
+# free.
+#
+# So this adds a method and reclassifies, keeping price and colour
+# untouched. Tar remains an input to coastal boatyards, forest tanneries,
+# castle walls and port maintenance exactly as before — that chain reads
+# the good, not its category — and whatever village method produces it
+# keeps producing it.
+#
+# The history: the Absheron seeps at Baku were among the wonders of the
+# medieval world. Marco Polo describes oil "not good to eat, but good to
+# burn" carried away by the camel-load; Ibn Battuta and the Arab
+# geographers describe the eternal fires; naft was traded as fuel, as a
+# waterproofing pitch, as a medicine, and as the incendiary the naffatun
+# threw in battle. Gathering rather than mining, because that is what it
+# was: skimming seeps and hand-dug pits, not shafts.
+#
+# [VERIFY ON BOOT: if Baku still produces nothing, the remaining
+# suspect is that the engine keys RGO eligibility off something not
+# visible in the goods file, in which case the clean fallback is
+# `medicaments` — whose own comment reads "Medicinal plants, Pills,
+# Opium, Mummy Powder, etc", carries method = gathering, and has the
+# noble/clergy demand profile of an exotic. Naft sat in that basket in
+# Arabic pharmacology.]
+# =====================================================================
+
+REPLACE:tar = {
+	method = gathering
+	category = raw_material
+	color = goods_tar
+	default_market_price = 2
+}

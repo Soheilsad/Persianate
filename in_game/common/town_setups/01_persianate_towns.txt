@@ -1,13 +1,41 @@
-# Iranian / Persianate town and city setups.
-# All numbers are ADDITIVE on top of copy_from, not replacements.
-# Persian distinctives layered on the levant baseline:
-#   - paper + scriptorium bumped (Iran was the paper heartland; literacy infrastructure followed)
-#   - dyes_guild added (indigo, madder, saffron, kermes — Persian dye exports)
-# Specialty variants below add further weight by region/role.
 
-# ============================================================
-# Town setups
-# ============================================================
+REPLACE:central_asian_city = {
+	caravanserai = 1
+	temple = 1
+	tools_guild = 2
+	weapon_guild = 1
+	cloth_guild = 1
+	fine_cloth_guild = 3
+	paper_guild = 2
+	scriptorium = 2
+	mason = 2
+	pottery_guild = 2
+	furniture_guild = 1
+	granary = 2
+	glass_guild = 1
+	jewelry_guild = 1
+	marketplace = 3
+	castle = 1
+	tannery = 1
+	slave_market = 1
+	dyes_guild = 1
+}
+
+REPLACE:central_asian_town = {
+	caravanserai = 1
+	temple = 1
+	tools_guild = 1
+	granary = 1
+	marketplace = 2
+	castle = 1
+	tannery = 1
+	paper_guild = 1
+	mason = 1
+	pottery_guild = 1
+	slave_market = 1
+	dyes_guild = 1
+	
+}
 
 
 iranian_town = {
@@ -159,5 +187,93 @@ iranian_kashi_city = {
 anatolian_major_city = {
 	copy_from = anatolian_city
 	marketplace = 2
+	slave_market = 1
+}
+
+
+
+### golden horde
+
+sarai_city = {
+	caravanserai = 1
+	temple = 1
+	weapon_guild = 1
+	cloth_guild = 1
+	fine_cloth_guild = 3
+	paper_guild = 2
+	scriptorium = 2
+	mason = 2
+	pottery_guild = 2
+	furniture_guild = 1
+	granary = 2
+	glass_guild = 2
+	jewelry_guild = 1
+	marketplace = 5
+	castle = 1
+	tannery = 1
+	slave_market = 1
+	dyes_guild = 1
+	kashi_guild = 1
+}
+
+bolghar_city = {
+	caravanserai = 1
+	temple = 1
+	tools_guild = 4
+	weapon_guild = 4
+	cloth_guild = 1
+	fine_cloth_guild = 1
+	paper_guild = 1
+	scriptorium = 2
+	mason = 3
+	pottery_guild = 1
+	furniture_guild = 1
+	granary = 2
+	jewelry_guild = 3
+	marketplace = 4
+	castle = 1
+	tannery = 1
+	slave_market = 1
+}
+
+
+west_central_asian_metalworking_town = {
+	caravanserai = 1
+	temple = 1
+	tools_guild = 3
+	weapon_guild = 3
+	cloth_guild = 1
+	fine_cloth_guild = 1
+	paper_guild = 1
+	scriptorium = 2
+	granary = 1
+	mason = 1
+	pottery_guild = 1
+	furniture_guild = 1
+	jewelry_guild = 1
+	marketplace = 3
+	stockade = 1
+	tannery = 1
+    charcoal_maker = 1
+}
+west_central_asian_metalworking_city = {
+	caravanserai = 1
+	temple = 1
+	tools_guild = 4
+	weapon_guild = 4
+	cloth_guild = 1
+	fine_cloth_guild = 1
+	paper_guild = 1
+	scriptorium = 2
+	granary = 2
+	mason = 2
+	pottery_guild = 1
+	furniture_guild = 1
+	glass_guild = 1
+	jewelry_guild = 2
+	dyes_guild = 1
+	marketplace = 3
+	stockade = 1
+	tannery = 1
 	slave_market = 1
 }

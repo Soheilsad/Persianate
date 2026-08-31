@@ -99,6 +99,9 @@ INJECT:farsi_culture = {
 		gilak_culture = positive
 		mazanderani_culture = positive
 		talysh_culture = positive
+		achomi_culture = positive
+		semnani_culture = positive
+		dehwar_culture = positive
 	}
 }
 
@@ -116,6 +119,9 @@ INJECT:adhari_culture = {
 		gilak_culture = positive
 		mazanderani_culture = positive
 		talysh_culture = positive
+		achomi_culture = positive
+		semnani_culture = positive
+		dehwar_culture = positive
 	}
 }
 
@@ -141,6 +147,9 @@ INJECT:khorasani_culture = {
 		gilak_culture = positive
 		mazanderani_culture = positive
 		talysh_culture = positive
+		achomi_culture = positive
+		semnani_culture = positive
+		dehwar_culture = positive
 	}
 }
 
@@ -167,7 +176,22 @@ INJECT:tajik_culture = {
 # Oirats. But the Jalayirid court IS Baghdad's court, and the Iraqi
 # scribal class shares the diwan tradition with the Iranic world
 # (positive, not kindred — the arabophone/persophone distance is real).
+#
+# Second group: the Sawad is Persianate ground. ʿIrāq-i ʿArab and
+# ʿIrāq-i ʿAjam are one toponym split in two; Baghdad sits 30km from
+# Ctesiphon and inherited its chancery through the kuttab houses; the
+# province has been governed from or with Iran since the Buyids. Base
+# gives kalimi iranian_group + jewish_group on exactly this logic —
+# language family and host civilization are different axes. Arabic
+# stays FIRST: the madhhab-and-riḥla ecumene is not being denied.
+# [verify on boot: whether INJECT merges or replaces a list field —
+# both groups are listed so either behaviour lands correctly.]
 INJECT:iraqi_culture = {
+	culture_groups = {
+		arabic_group
+		iranian_group
+	}
+
 	opinions = {
 		mongolian_culture = negative
 		oirat_culture = negative
@@ -292,6 +316,49 @@ INJECT:afghan_culture = {
 		tajik_culture = positive
 		farsi_culture = positive
 		adhari_culture = positive
+	}
+}
+
+# ---------------------------------------------------------------------
+# The dialect islands — settled Iranic pockets the base game models at
+# full granularity. Achomi = Larestani (the Sunni deep south of Fars;
+# the KHU tag is this world — and the Jurma/Ughan garrison hordes
+# pasture just north of it). Semnani = the Komisenian pocket on the
+# 1220s devastation road. Dehwar = the Persian-speaking settled
+# peasantry of Kalat/Mastung under Baloch tribal dominance (their
+# positive toward baloch is the Kalat symbiosis — lets Baloch polities
+# accept their own ra'iyyat cheaply).
+# ---------------------------------------------------------------------
+
+INJECT:achomi_culture = {
+	opinions = {
+		mongolian_culture = negative
+		farsi_culture = positive
+		adhari_culture = positive
+		khorasani_culture = positive
+		tajik_culture = positive
+	}
+}
+
+INJECT:semnani_culture = {
+	opinions = {
+		mongolian_culture = negative
+		farsi_culture = positive
+		adhari_culture = positive
+		khorasani_culture = positive
+		tajik_culture = positive
+		mazanderani_culture = positive
+	}
+}
+
+INJECT:dehwar_culture = {
+	opinions = {
+		mongolian_culture = negative
+		farsi_culture = positive
+		adhari_culture = positive
+		khorasani_culture = positive
+		tajik_culture = positive
+		baloch_culture = positive
 	}
 }
 

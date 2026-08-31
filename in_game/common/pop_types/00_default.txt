@@ -190,6 +190,7 @@ tribesmen = {
 	color = pop_tribes
 	
 	promote_to = peasants
+
 	
 	pop_food_consumption = 0.0
 	
