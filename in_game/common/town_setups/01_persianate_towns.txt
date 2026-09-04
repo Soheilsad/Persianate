@@ -65,6 +65,7 @@ khorasani_town = {
 	paper_guild = 1                # Khurasani / Samarqandi paper — named export grades
 	pottery_guild = 1              # Nishapur slip-painted ware tradition
 	caravanserai = 1                # Khorasan was the caravanserai heartland
+
 }
 
 iranian_caravan_town = {
@@ -72,6 +73,7 @@ iranian_caravan_town = {
 	marketplace = 1                # caravan transit, monetized economy
 	granary = 1                    # provisioning stop
 	stockade = 1                     # caravanserai-fort proxy
+
 	caravanserai = 2
 }
 
@@ -90,6 +92,7 @@ iranian_kashi_town = {
 	pottery_guild = 1              # everyday earthenware
 	kashi_guild = 1                # small-scale fritware / luster center (Saveh-tier)
     charcoal_maker = 1
+
 }
 
 # ============================================================
@@ -149,7 +152,7 @@ iranian_city = {
 	paper_guild = 2
 	scriptorium = 2
 	granary = 2
-	mason = 2
+	mason = 3
 	pottery_guild = 2
 	furniture_guild = 1
 	glass_guild = 1
@@ -202,7 +205,7 @@ sarai_city = {
 	fine_cloth_guild = 3
 	paper_guild = 2
 	scriptorium = 2
-	mason = 2
+	mason = 3
 	pottery_guild = 2
 	furniture_guild = 1
 	granary = 2
@@ -247,7 +250,7 @@ west_central_asian_metalworking_town = {
 	paper_guild = 1
 	scriptorium = 2
 	granary = 1
-	mason = 1
+	mason = 2
 	pottery_guild = 1
 	furniture_guild = 1
 	jewelry_guild = 1
@@ -276,4 +279,151 @@ west_central_asian_metalworking_city = {
 	stockade = 1
 	tannery = 1
 	slave_market = 1
+}
+
+# ============================================================
+# Named great cities. Written out in full rather than copy_from,
+# since copy is additive and stacks rather than overrides.
+# ============================================================
+
+# Herat: NOT a metal city, though the metal is real — the Herat school
+# of inlaid bronze produced the Bobrinski bucket (1163), one of the most
+# famous objects in Islamic art. But Herat in 1337 is the Kartid capital
+# and the great entrepot of the Khorasan road, with the paper, the
+# textiles and the book-work to match. Metal leans in at 3/3; it does
+# not define the place.
+REPLACE:herat_city = {
+	caravanserai = 2
+	temple = 1
+	tools_guild = 3
+	weapon_guild = 3
+	cloth_guild = 1
+	fine_cloth_guild = 3
+	paper_guild = 3
+	scriptorium = 3
+	granary = 2
+	mason = 3
+	pottery_guild = 2
+	furniture_guild = 1
+	glass_guild = 1
+	jewelry_guild = 2
+	dyes_guild = 1
+	marketplace = 4
+	castle = 1
+	tannery = 1
+	slave_market = 1
+	charcoal_maker = 1
+}
+
+# Tabriz: the Ilkhanid capital and the greatest emporium between Cairo
+# and Delhi — customs and transit revenue on the order of the whole
+# French ordinary revenue. Marketplace 6, above Sarai's 5, because the
+# trade-capacity gap between them (30 against 10) is the one number in
+# this region base game got right.
+REPLACE:tabriz_city = {
+	caravanserai = 2
+	temple = 2
+	tools_guild = 2
+	weapon_guild = 2
+	cloth_guild = 2
+	fine_cloth_guild = 4
+	paper_guild = 3
+	scriptorium = 3
+	granary = 3
+	mason = 3
+	pottery_guild = 2
+	furniture_guild = 2
+	glass_guild = 2
+	jewelry_guild = 3
+	dyes_guild = 2
+	kashi_guild = 1
+	marketplace = 6
+	castle = 1
+	tannery = 1
+	slave_market = 1
+}
+
+# Shiraz: the book city. Saadi is a generation dead and Hafez is about to
+# be born here; the Shiraz school of manuscript painting and binding is
+# the finest in the Persian world, and the city's other exports are
+# textiles, wine, and rosewater. Scriptorium 4 and paper 3 carry the
+# ateliers, fine cloth 4 and dyes 3 the looms. Metal is deliberately
+# minimal — Fars worked no ore and Shiraz forged nothing anyone bought.
+# On levant_city it was being modelled as a Syrian coastal town, which
+# is a good part of why it came out poor.
+shiraz_city = {
+	caravanserai = 1
+	temple = 2
+	tools_guild = 1
+	weapon_guild = 1
+	cloth_guild = 2
+	fine_cloth_guild = 4
+	paper_guild = 3
+	scriptorium = 4
+	granary = 2
+	mason = 3
+	pottery_guild = 1
+	furniture_guild = 2
+	glass_guild = 1
+	jewelry_guild = 2
+	dyes_guild = 3
+	marketplace = 3
+	stockade = 1
+	tannery = 1
+	slave_market = 1
+}
+
+# Kerman: an arms town on Marco Polo's own testimony — he says the people
+# there "make all the harness of a warrior: bridles, saddles, spurs,
+# swords, bows, quivers and every kind of arms," and praises the
+# needlework alongside the turquoise. Ardashir I's foundation, seat of
+# the Seljuq Kermani for a century and a half, and carrying 131k people
+# while base game rated it a rural settlement by simple omission.
+kerman_city = {
+	caravanserai = 2
+	temple = 1
+	tools_guild = 3
+	weapon_guild = 4
+	cloth_guild = 1
+	fine_cloth_guild = 3
+	paper_guild = 1
+	scriptorium = 1
+	granary = 2
+	mason = 3
+	pottery_guild = 1
+	furniture_guild = 1
+	jewelry_guild = 2
+	dyes_guild = 1
+	marketplace = 2
+	stockade = 1
+	tannery = 1
+	charcoal_maker = 2
+}
+
+# Mosul: the inlaid-metalwork capital of the Islamic world. "Mosul work"
+# is a term of art in the scholarship — brass and bronze inlaid with
+# silver and gold, signed by named masters, and after the city fell in
+# 1262 its craftsmen carried the style to Damascus, Cairo and Iran. The
+# jewelry guild at 4 is not ornament: the inlay IS precious-metal work
+# laid into base metal, and it is what the city sold.
+mosul_city = {
+	caravanserai = 1
+	temple = 1
+	tools_guild = 4
+	weapon_guild = 3
+	cloth_guild = 2
+	fine_cloth_guild = 2
+	paper_guild = 1
+	scriptorium = 2
+	granary = 2
+	mason = 3
+	pottery_guild = 1
+	furniture_guild = 1
+	glass_guild = 1
+	jewelry_guild = 4
+	dyes_guild = 1
+	marketplace = 3
+	castle = 1
+	tannery = 1
+	charcoal_maker = 2
 }

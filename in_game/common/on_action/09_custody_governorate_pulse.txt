@@ -13,7 +13,6 @@ monthly_country_pulse = {
 		custody_governorate_pulse
 		peasant_non_levying_pulse
 		peasant_non_levying_cleanup_pulse
-		correct_existing_iqta_building
 		waqf_estate_income_hook
 
 	}

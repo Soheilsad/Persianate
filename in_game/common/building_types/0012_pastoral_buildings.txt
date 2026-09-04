@@ -98,6 +98,62 @@ tribal_pasture = {
 }
 
 
+### smaller, steppe variant. slightly more productive, but for thinner land.
+
+steppe_tribal_pasture = {
+	is_foreign = no
+	max_levels = 20
+	pop_type = tribesmen
+	employment_size = 1.0       # 1k tribesmen per level — a small tribal parcel, not the whole range
+
+	category = rgo_building_category
+
+
+	rural_settlement = yes
+	town = no
+	city = no
+	megalopolis = no
+
+	build_time = estate_build_time
+	destroyable_building = yes
+
+	location_potential = {
+		OR = {
+			region = region:khorasan_region
+			region = region:steppes_region
+		}
+		OR = {
+			climate = cold_arid
+			climate = continental
+		}
+		OR = {
+			vegetation = grasslands
+			vegetation = sparse 
+		}
+		num_pop_type:tribesmen > 1
+		num_pop_type:tribesmen < 5
+
+
+	}
+
+	possible_production_methods = {
+		steppe_tribal_pasture_grazing
+		steppe_tribal_livestock_production
+	}
+
+	construction_demand = estate_construct_building
+
+	modifier = {
+
+		local_population_capacity = -2.0 ### a bit more damaging to pop capacity than its cousin. but a bit more productive in horse breeding.
+		# The tribal levy: the herd IS the cavalry pool.
+		local_tribes_estate_power = 0.3
+		local_levy_size_modifier = 0.02
+	}
+
+	graphical_tags = { small_military }
+}
+
 # # --- Amīr's Herd — the organized stud ------------------------
 # amirs_herd = {
 # 	is_foreign = no

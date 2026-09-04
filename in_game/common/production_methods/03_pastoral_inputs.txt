@@ -13,8 +13,20 @@ tribal_pasture_grazing = {
 	output  = 1.8
 	category = building_maintenance
 }
+steppe_tribal_pasture_grazing = {
+	produced = horses
+	output  = 0.45
+	category = building_maintenance
+}
+
 tribal_livestock_production = {
 	produced = livestock
 	output  = 3
+	category = building_maintenance
+}
+
+steppe_tribal_livestock_production = {
+	produced = livestock
+	output  = 0.75
 	category = building_maintenance
 }

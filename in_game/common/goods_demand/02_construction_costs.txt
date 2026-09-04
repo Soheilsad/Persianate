@@ -1,0 +1,55 @@
+# =====================================================================
+# GLASS OUT OF THE UBIQUITOUS CONSTRUCTION DEMANDS.
+#
+# `town_building_construction` is shared by THIRTY-SIX building types,
+# and they are the most universal civic and religious buildings in the
+# game: temple, madrasa, hospital, slave market, sufi lodge, sufi
+# mosque, council hall, counting house, commerce center, merchants'
+# quarters, wharf, port authority, provincial chancery, grand
+# marketplace. Base requires glass to build every one of them. Glass is
+# a specialist good produced in a minority of town setups, so a good
+# that only some places make is a precondition for buildings that every
+# place needs — which strangles comparative advantage at the point where
+# it would otherwise start paying, and starves whole regions of their
+# basic civic fabric for want of an input nobody nearby makes.
+#
+# `market_center_building_construction` has the same problem at the tier
+# that matters most for trade: a market cannot be built without glass.
+#
+# The history agrees. Mosques, madrasas, caravanserais and bazaars in
+# the Persianate world were built of fired brick, timber and plaster.
+# Window glass in structural quantity is a north-European cathedral
+# technology, and that is almost certainly where this 0.2 came from.
+#
+# COST IS PRESERVED, NOT CUT. The complaint is the dependency, not the
+# price, so the removed glass is replaced by masonry of equivalent
+# market value (glass 3/unit against masonry 1/unit, so 0.2 glass = 0.6
+# masonry). These buildings cost the same as before; they just no longer
+# require a good the location cannot make. Delete the compensating
+# masonry if you would rather have the discount.
+#
+# NOT CHANGED: `bank_construction` carries an identical basket (glass
+# 0.2 + paper 0.2) across 5 buildings — left alone because it was not
+# asked for, but it is the same case and the same fix would apply.
+# Paper is deliberately kept everywhere: a market keeping ledgers and a
+# school needing paper are honest dependencies, and papermaking really
+# was a concentrated industry worth trading for.
+# =====================================================================
+
+REPLACE:town_building_construction = {
+	masonry = 1.35
+	category = building_construction
+}
+
+REPLACE:market_center_building_construction = {
+	masonry = 0.8
+	tools = 0.2
+	paper = 0.2
+	category = building_construction
+}
+REPLACE:caravanserai_building_construction = {
+	masonry = 0.4
+	livestock = 0.3
+	horses = 0.2
+	category = building_construction
+}

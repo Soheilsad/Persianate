@@ -98,7 +98,7 @@ market_manager = {
 	add_market = al_hajr
 	add_market = samarkand
 	add_market = almaty
-	add_market = sarayjuk
+
 	add_market = urgench
 	
 	# East Asia

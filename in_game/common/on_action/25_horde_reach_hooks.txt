@@ -42,8 +42,11 @@ steppe_pasture_and_econ_seeding = {
 			limit = {
 				government_type = government_type:steppe_horde
 				capital = {
-					region = region:steppes_region
-					region = region:khorasan_region
+					OR = {
+						region = region:steppes_region
+						region = region:khorasan_region
+					}
+
 				}
 
 			}
@@ -54,11 +57,12 @@ steppe_pasture_and_econ_seeding = {
 						region = region:khorasan_region
 						
 					}
-					num_pop_type:tribesmen > 10.0
+					num_pop_type:tribesmen > 1.0
+					num_pop_type:tribesmen < 10.0
 					
 				}
 				construct_building = {
-					building_type = building_type:tribal_pasture
+					building_type = building_type:steppe_tribal_pasture
 					cost_multiplier = 0
 					cost_multiplier_reason = "game_concept_event"
 					instant = yes

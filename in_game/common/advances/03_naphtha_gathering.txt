@@ -1,0 +1,38 @@
+# =====================================================================
+# NAPHTHA GATHERING — the second half of making Baku work.
+#
+# Extraction turns out to be gated TWICE, and we only found the first
+# gate at first. A good is extractable if and only if:
+#   1. its definition carries `category = raw_material` and a `method`
+#      (fixed for tar in common/goods/01_naphtha.txt), AND
+#   2. the country holds `can_extract_<good> = yes`, granted by an
+#      advance.
+#
+# `can_extract_tar` is already DEFINED as a modifier type in base and
+# even has an icon in 00_modifier_icons.txt — but nothing anywhere in
+# the game grants it. An audit of all 74 can_extract types shows 53
+# granted and 21 never granted, and all 21 are produced goods: beer,
+# books, cannons, cloth, glass, jewelry, paper, steel, tools, weaponry,
+# tar and the rest. None of the 21 is used as an RGO anywhere on the
+# map, so tar is the only case where this matters, and no other deposit
+# on the map is sitting inert for this reason.
+#
+# Placed after bronze_working at research_cost 2.0, alongside
+# fine_metals_mining, so that it is auto-unlocked at start by most
+# settled powers — naphtha was not an exotic technique. The Absheron
+# seeps had been worked since antiquity: Marco Polo describes oil "not
+# good to eat, but good to burn," carried off by the camel-load and used
+# to treat mange in animals; the Arab geographers and Ibn Battuta both
+# describe the eternal fires; the naffatun threw it in war, ships were
+# payed with it, and physicians prescribed it. Gathering, not mining,
+# because that is what it was — skimming seeps and hand-dug pits.
+# =====================================================================
+
+naphtha_gathering = {
+	age = age_1_traditions
+	icon = serbian_mining
+	requires = bronze_working
+	research_cost = 2.0
+
+	can_extract_tar = yes
+}
