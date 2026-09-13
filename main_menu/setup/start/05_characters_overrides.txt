@@ -563,4 +563,35 @@ character_db = {
 		ruler_trait = benevolent
 		tag = DLH
 	}
+
+	# =================================================================
+	# KHIDR BEG — Özbeg's third son, missing from base game.
+	#
+	# Base ships Özbeg with Jani Beg, Tini Beg and the grandson Berdi
+	# Beg, and stops there. Khidr Beg is the son who completes the
+	# story: when Özbeg died in 1341 Tini Beg took the throne, and Jani
+	# Beg then killed BOTH his brothers to take it from him — Tini Beg
+	# and Khidr Beg. The sources disagree on the order, which is itself
+	# a measure of how murky that year was.
+	#
+	# He matters mechanically as well as historically. The succession
+	# poll and the törü both count grown sons of the line, and the most
+	# famous contested accession in this mod's window is a THREE-way
+	# fight among brothers. With only two of them in the game it reads
+	# as a much tidier succession than it was.
+	#
+	# Birth date interpolated: the sources give no year. Placed between
+	# Tini Beg (1300) and the later children, consistent with him being
+	# a grown man and a credible claimant in 1341.
+	# =================================================================
+	glh_khidr_beg_borjigin = { #Son of Ruler — killed by Jani Beg, 1342
+		first_name = { name = name_khidr }
+		culture = mongolian_culture
+		religion = sunni
+		birth_date = 1303.1.1
+		birth = sarayjuk
+		father = glh_giyas_al_din_mohammed_oz_beg_borjigin
+		dynasty = borjigin_dynasty
+		tag = GLH
+	}
 }

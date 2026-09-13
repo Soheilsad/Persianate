@@ -1,0 +1,262 @@
+namespace = horde_succession
+
+# ============================================================================
+# THE QURILTAI — what actually happens when a khan dies.
+#
+# Base game answered this with one number: -50 horde unity, flat, every
+# time, against a civil war disaster that triggered in the band that number
+# put you in. This replaces it with a poll of the realm's actual condition,
+# and the thing being polled is THE CONSTITUTIONAL CHOICE THE PLAYER HAS
+# BEEN MAKING FOR TWENTY YEARS.
+#
+# A khan holds a far country one of three ways, and each builds a different
+# kind of pressure that only shows at his death:
+#
+#   ULUS to a prince of the line   -> he is Borjigin. He has legitimacy AND
+#                                     a base, so he never needs to control a
+#                                     khan; he can be one. Raises CONTEST.
+#   DARUGHA to an appointed amir   -> he can never be khan, having no blood,
+#                                     so his only road to power is to hold
+#                                     the man who is. Raises MAGNATE weight.
+#   GHULAM viceroy                 -> no kin, no tribe, no estate. Raises
+#                                     neither, and costs silver forever.
+#
+# So the branch that fires is the bill for the road taken. A ulus-heavy
+# realm partitions (Kazan, Crimea, Astrakhan, Sibir, each under a khan of
+# the blood). A darugha-heavy realm falls to its begs (Mamai from 1359,
+# Edigu from 1397, Qazaghan in Transoxiana from 1347). Ozbeg took the
+# darugha road deliberately in 1313, which is exactly why the Horde's FIRST
+# crisis was a regency and its partition came eighty years later.
+#
+# TIMING. Fires on on_new_ruler with a 30-80 day delay, not on_ruler_death.
+# The engine has already seated someone by then, and that is what we want:
+# the rivals are alive, scoped and countable, and the historical fights
+# happened AFTER an accession rather than instead of one. Tinibeg was khan
+# for under a year before Jani Beg took Sarai and killed him.
+#
+# STATUS: machinery. The poll, the routing and the four entry points are
+# real; the outcome events are stubs carrying only their unity consequence.
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# horde_succession.1 — THE POLL
+#
+# Hidden. Computes three quantities, routes to one of four outcomes, and
+# grants nothing itself.
+#
+#   local_var:blood        living adult males of the line, ulus-holding
+#                          brothers counted as well
+#   local_var:contest      credible Borjigin claimants, weighted: a landless
+#                          prince counts 1, a prince who RULES AN ULUS counts
+#                          4, because what made Nogai and Tokhtamysh
+#                          dangerous was a power base, not a good claim
+#   local_var:seats        darugha seats standing in the realm
+#
+# `estate_power(...)` is on a 0..1 scale (verified against base's
+# rise_of_the_szlachta, which tests `> 0.25` and `< 0.5`).
+# ----------------------------------------------------------------------------
+
+horde_succession.1 = {
+	type = country_event
+	hidden = yes
+
+	trigger = {
+		government_type = government_type:steppe_horde
+		is_subject = no
+		is_rebel_country = no
+	}
+
+	immediate = {
+		# --- THE KHAN'S OWN SHARE RETURNS ------------------------------------
+		# A prince who has just been raised on the felt does not go on
+		# holding his ulus of himself. The share was a portion of the
+		# patrimony held OF the khanate; the moment he becomes the
+		# khanate it has nothing left to be held of, and it folds back in.
+		#
+		# This is Tokhtamysh in 1378 — he came out of the left wing, took
+		# Sarai, and the left wing did not remain a separate ulus under
+		# him. It is also the reward for the ulus road: the shares are
+		# dangerous, but the man who wins with one brings it home.
+		#
+		# Runs BEFORE the counts below, so the poll reads the realm as it
+		# stands after the reunion rather than before it.
+		every_subject = {
+			limit = {
+				is_subject_type = ulus
+				ruler ?= root.ruler
+			}
+			save_scope_as = reclaimed_ulus
+		}
+		if = {
+			limit = { exists = scope:reclaimed_ulus }
+			annex_country = { country = scope:reclaimed_ulus }
+			add_horde_unity = 5
+		}
+
+		# --- count the blood ------------------------------------------------
+		set_local_variable = { name = blood value = 0 }
+
+		every_character = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				is_female = no
+				is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+			}
+			change_local_variable = { name = blood add = 1 }
+		}
+
+		# Brothers already holding shares are of the line too, and they are
+		# the ones who matter most.
+		every_subject = {
+			limit = {
+				is_subject_type = ulus
+				ruler ?= { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+			}
+			change_local_variable = { name = blood add = 1 }
+		}
+
+		# --- weigh the claimants --------------------------------------------
+		set_local_variable = { name = contest value = 0 }
+
+		every_character = {
+			limit = {
+				is_alive = yes
+				is_ruler = no
+				is_adult = yes
+				is_female = no
+				is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+			}
+			change_local_variable = { name = contest add = 1 }
+		}
+
+		# A brother with his own tumens is worth four landless ones.
+		every_subject = {
+			limit = {
+				is_subject_type = ulus
+				ruler ?= { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+			}
+			change_local_variable = { name = contest add = 4 }
+		}
+
+		# --- weigh the begs --------------------------------------------------
+		set_local_variable = {
+			name = seats
+			value = total_building_levels_including_construction:horde_local_appointee
+		}
+
+		# --- route ------------------------------------------------------------
+		# (d) THE BLOOD HAS FAILED. No living adult of the line anywhere, and
+		# no regency standing in for one. This is 1359, and it happened once.
+		if = {
+			limit = {
+				local_var:blood = 0
+				NOT = { has_reform = government_reform:chinggisid_regency }
+			}
+			trigger_event_non_silently = horde_succession.40
+		}
+
+		# (c) THE BEGS MAKE THEIR PLAY. Either a non-Borjigin has taken the
+		# seat outright, or the appointed aristocracy has grown heavy enough
+		# to hold whoever sits on it. Mamai's office, and Qazaghan's.
+		else_if = {
+			limit = {
+				NOT = { has_reform = government_reform:chinggisid_regency }
+				OR = {
+					NOT = { ruler ?= { is_patrilineal_descendant_of = dynasty:borjigin_dynasty } }
+					AND = {
+						local_var:seats >= 4
+						"estate_power(estate_type:nobles_estate)" > 0.35
+					}
+					AND = {
+						has_regent = yes
+						local_var:seats >= 3
+					}
+				}
+			}
+			trigger_event_non_silently = horde_succession.30
+		}
+
+		# (b) THE FIELD IS CONTESTED. Brothers with shares, or simply a great
+		# many grown princes of the line with nothing to lose.
+		else_if = {
+			limit = {
+				local_var:contest >= 4
+			}
+			trigger_event_non_silently = horde_succession.20
+		}
+
+		# (a) CLEAN. It did happen — Berke to Mengu-Timur in 1266, and Ozbeg's
+		# own twenty-eight years after 1313. Base game made this unreachable.
+		else = {
+			trigger_event_non_silently = horde_succession.10
+		}
+	}
+}
+
+
+# ----------------------------------------------------------------------------
+# STUB OUTCOMES. Each carries only its unity consequence; content pending.
+# ----------------------------------------------------------------------------
+
+# (a) A clean accession.
+horde_succession.10 = {
+	type = country_event
+	title = horde_succession.10.title
+	desc = horde_succession.10.desc
+	outcome = positive
+
+	illustration_tags = { 10 = interior }
+
+	option = {
+		name = horde_succession.10.a
+		add_horde_unity = 5
+	}
+}
+
+# (b) A contested field — the purge-or-appanage decision belongs here.
+horde_succession.20 = {
+	type = country_event
+	title = horde_succession.20.title
+	desc = horde_succession.20.desc
+	outcome = negative
+
+	illustration_tags = { 10 = angry }
+
+	option = {
+		name = horde_succession.20.a
+		add_horde_unity = -15
+	}
+}
+
+# (c) The begs make their play — the regency contest belongs here.
+horde_succession.30 = {
+	type = country_event
+	title = horde_succession.30.title
+	desc = horde_succession.30.desc
+	outcome = negative
+
+	illustration_tags = { 10 = interior }
+
+	option = {
+		name = horde_succession.30.a
+		add_horde_unity = -20
+	}
+}
+
+# (d) The blood has failed. The civil war disaster's can_start is gated on
+# exactly this condition, so it follows on its own without being started here.
+horde_succession.40 = {
+	type = country_event
+	title = horde_succession.40.title
+	desc = horde_succession.40.desc
+	outcome = negative
+
+	illustration_tags = { 10 = angry }
+
+	option = {
+		name = horde_succession.40.a
+		add_horde_unity = -50
+	}
+}

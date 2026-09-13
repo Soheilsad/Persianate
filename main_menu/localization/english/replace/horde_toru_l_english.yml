@@ -1,0 +1,20 @@
+﻿l_english:
+
+ # --- The succession law itself ---
+ horde_toru_succession: "The Törü of the Ulus"
+ horde_toru_succession_desc: "It is a type of [heir_selection|e] in which no man inherits and no man is excluded. Sons, brothers, nephews and cousins of the line all stand in the reckoning — and so, in their way, do the great begs who hold the districts, who can never be raised on the felt themselves but who have learned that they do not need to be. What settles it is not birth order but the judgement of the quriltai: the descent a man can claim, the tümens and districts he already commands, whether the old khan spoke his name before he died, and above all whether the host believes he can lead a campaign.\n\nBecause the reckoning is public, so is the ranking. A khan may read the standing of every man who might follow him, watch a brother climb it as his pastures widen or an amir climb it as the seats multiply, and know long before his own funeral what it is going to cost the realm."
+
+ # --- Tag and eligibility rule shown in the UI ---
+ horde_toru_acclamation: "Acclaimed by the quriltai"
+ horde_toru_power_rule: "• Descent from $borjigin_dynasty$ weighs heavily, but it is not required — a man who holds enough of the realm may be raised without it"
+
+ # --- Scoring terms ---
+ HORDE_TORU_OF_THE_LINE: "Of the line of $borjigin_dynasty$"
+ HORDE_TORU_SON_OF_THE_KHAN: "Son of the late khan"
+ HORDE_TORU_GRANDSON_OF_THE_KHAN: "Grandson of the late khan"
+ HORDE_TORU_NAMED_BY_THE_KHAN: "Named by the late khan before his death"
+ HORDE_TORU_HOLDS_A_SHARE: "Holds a share of the patrimony, and the tümens that ride with it"
+ HORDE_TORU_THE_DISTRICT: "Holds a district for the khan — a guard, a following, and a name the towns know"
+ HORDE_TORU_THE_POWER_OF_THE_ESTATE: "The weight his estate carries in the realm"
+ HORDE_TORU_THE_SWORD: "Reputation in the field — the host follows a man who can lead a campaign"
+ HORDE_TORU_SENIORITY: "Seniority of years"

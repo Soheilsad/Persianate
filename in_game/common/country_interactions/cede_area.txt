@@ -1,0 +1,142 @@
+# =====================================================================
+# CEDE AN AREA — hand a whole area to a subject in one act.
+#
+# Base's `give_province_to_subject` works but is painful to actually
+# use: it moves ONE province at a time, and its area filter only offers
+# provinces bordering the recipient or sitting in their capital area, so
+# enlarging a subject by anything meaningful means a dozen separate
+# clicks through a list that shrinks and re-sorts between each one.
+#
+# This does the same job at the granularity people actually think in.
+# It also gives the ulus system the thing it was missing: a khan can
+# grant a prince two areas at the founding, and afterwards ENLARGE his
+# share — which is how shares actually moved. The patrimony was
+# repeatedly re-divided as sons came of age and as new pasture was
+# conquered; Jochi's own wing grew westward for two decades after it
+# was first assigned.
+#
+# Modelled on give_province_to_subject, with three differences:
+#   - `looking_for_a = area` rather than province
+#   - the effect sweeps every location in the area that we own, so a
+#     partially-held area cedes only our part of it
+#   - no cores are granted, matching base's behaviour. Cede moves
+#     ownership; whether the recipient ever considers it home is a
+#     separate question and should stay one.
+# =====================================================================
+
+cede_area = {
+	type = subject
+	category = CATEGORY_SUBJECT_ACTIONS
+
+	use_enroute = no
+
+	potential = {
+		scope:actor = {
+			num_locations > 1
+			at_war = no
+		}
+	}
+
+	allow = {
+	}
+
+	# --- which subject ---------------------------------------------------
+	select_trigger = {
+		looking_for_a = country
+		interaction_source_list = {
+			scope:actor = {
+				every_subject = {
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = recipient
+		name = "choose_country"
+		column = {
+			data = name
+		}
+		visible = {
+			NOR = {
+				country_type = building
+				country_type = pop
+			}
+		}
+	}
+
+	# --- which area ------------------------------------------------------
+	select_trigger = {
+		looking_for_a = area
+		source = actor
+		target_flag = target_area
+		source_flags = border_or_recipients_capital_area
+		name = "select_an_area_to_cede"
+		none_available_msg_key = "cede_area_no_areas"
+		show_why_not_visible = yes
+		column = {
+			data = name
+		}
+		visible = {
+			# Never our own seat.
+			NOT = { this = scope:actor.capital.area }
+
+			# We must actually hold something here.
+			any_location_in_area = {
+				owner ?= scope:actor
+			}
+
+			# Contiguous with the recipient, or their own heartland — the
+			# same rule base applies, and for the same reason: a subject
+			# should not end up administering an exclave across the map.
+			OR = {
+				this = scope:recipient.capital.area
+				any_location_in_area = {
+					any_neighbor_location = {
+						owner ?= scope:recipient
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target_area
+			}
+			custom_tooltip = cede_area_effect_tt
+
+			scope:target_area = {
+				every_location_in_area = {
+					limit = { owner ?= scope:actor }
+					change_location_owner = scope:recipient
+				}
+			}
+		}
+		else = {
+			custom_tooltip = select_an_area_to_cede
+		}
+	}
+
+	# The AI gives away ground it does not want and cannot hold — base's
+	# own test, raised from the province to the area.
+	#
+	# NOTE: `does_owner_want_to_give_away` is a PROVINCE-scope trigger
+	# (base evaluates it on scope:target, which is a province in
+	# give_province_to_subject), so it has to be reached through
+	# `any_province_in_area` rather than any_location_in_area.
+	ai_will_do = {
+		add = -1
+
+		if = {
+			limit = {
+				scope:target_area = {
+					any_province_in_area = {
+						percent >= 0.5
+						does_owner_want_to_give_away = yes
+					}
+				}
+			}
+			add = 1000
+		}
+	}
+}

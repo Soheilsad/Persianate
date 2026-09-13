@@ -53,3 +53,12 @@ REPLACE:caravanserai_building_construction = {
 	horses = 0.2
 	category = building_construction
 }
+
+
+horde_appointee_construction = {
+	masonry = 3
+	tools = 3
+	horses = 3
+	fine_cloth = 3
+	category = building_construction
+}

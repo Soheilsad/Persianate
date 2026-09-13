@@ -1,0 +1,70 @@
+# =====================================================================
+# SUCCESSION WIRING.
+#
+# Re-declaring on_new_ruler EXTENDS base's list rather than replacing it
+# (Paradox merges on_actions across files), so this adds one delayed
+# event and disturbs nothing else in the accession cycle.
+#
+# WHY on_new_ruler AND NOT on_ruler_death:
+#
+#   on_ruler_death fires before the succession resolves and carries only
+#   scope:old_ruler. There is nothing to poll yet.
+#
+#   on_new_ruler fires with the new khan seated and every rival still
+#   alive as a scoped, countable character — which is exactly the state
+#   horde_succession.1 needs to read.
+#
+# And it is the historically correct moment. The steppe fights happened
+# AFTER an accession, not instead of one: Tinibeg succeeded Ozbeg in
+# 1341 and reigned under a year before Jani Beg took Sarai and killed
+# him. Berdibeg was already khan when he killed his brothers. The
+# 30-80 day delay is that window — long enough for the new khan to be
+# seated and for the begs and the princes to decide what they think
+# about it.
+#
+# The delay keyword applies to every event listed after it in the block.
+# =====================================================================
+
+on_new_ruler = {
+	events = {
+		delay = { days = { 30 80 } }
+		horde_succession.1
+	}
+}
+
+
+# =====================================================================
+# SEATING THE TÖRÜ — test scope: GLH only.
+#
+# The law itself (common/heir_selections/horde_toru.txt) is `locked` and
+# `potential`-gated to steppe_horde, so it is safe on any horde. It is
+# applied to the Golden Horde alone for now so its behaviour can be read
+# against one known start position — Özbeg alive, the princes purged in
+# 1313, no ulus granted and no darugha posted — rather than across every
+# steppe tag on the map at once.
+#
+# TO WIDEN: drop the `tag = GLH` line and the limit becomes every horde.
+# Chagatai is the interesting second case, since CHG starts mid-crisis
+# with seven khans in the preceding twenty-eight years.
+#
+# Re-declaring on_game_start EXTENDS the mod's other start hooks rather
+# than replacing them (see 25_horde_reach_hooks.txt).
+# =====================================================================
+
+on_game_start = {
+	on_actions = {
+		horde_toru_seating
+	}
+}
+
+horde_toru_seating = {
+	effect = {
+		every_country = {
+			limit = {
+				tag = GLH
+				government_type = government_type:steppe_horde
+			}
+			change_heir_selection = heir_selection:horde_toru_succession
+		}
+	}
+}

@@ -1,0 +1,182 @@
+# =====================================================================
+# ULUS — the prince's share.
+#
+# An ulus is not a province and not a conquest. It is a share of the
+# patrimony: households, herds and tümens assigned to a son of the line
+# while the father still lives. Chinggis divided 129,000 troops among
+# his sons before he died — four thousand each to Jochi, Chaghatay and
+# Ögedei, the homeland and the bulk of the army to Tolui as otchigin.
+# Jochi repeated it on his own sons: Orda took the left wing out on the
+# Syr Darya, Batu the right wing on the Volga. Neither killed the other.
+# The left wing kept its own khans and its own succession for a century
+# and a half, acknowledging Batuid seniority without being administered
+# by it, until Tokhtamysh came out of it in 1378 and took Sarai.
+#
+# So the ulus is the FIRST of the two ways a khan reaches a distant
+# corner of his realm, and the more dangerous one. The other is the
+# darugha — an appointed officer, no blood, no claim, who can never be
+# khan and whose only route to power is therefore to control one
+# (horde_local_appointee, and the beglerbegs Mamai and Edigü). A ulus
+# holder is Borjigin. He has legitimacy AND a base, so he never needs
+# to control a khan: he can be one.
+#
+# That is why the two paths fail differently, and it is the whole point
+# of having both. Darugha-heavy realms end in regency and puppet khans.
+# Ulus-heavy realms end in fragmentation and succession war — the
+# Jochid road, which produced Kazan, Crimea, Astrakhan and Sibir, each
+# under a khan of the line.
+#
+# NOT the ilkhanate_governorate (subject_types/ulus_governorate.txt),
+# which is a deferring administrator's vassalage sworn to a steward.
+# That one is a contract. This one is blood.
+# =====================================================================
+
+ulus = {
+	# Men, not money — the exact inverse of the Rus tributary.
+	# See common/prices/05_ulus_prices.txt.
+	subject_pays = ulus_pays
+	color = subject_appanage
+	level = 2
+	annullment_favours_required = 25
+
+	# HIGH — the top of base's range (fiefdom 10, colonial 20,
+	# hanseatic 30, secessionists 50), and far above an ordinary vassal.
+	#
+	# The record supports it. Ulus holders did not rebel against the man
+	# who granted them their share: Orda never moved against Batu and
+	# held the left wing under Batuid seniority for a lifetime; Chagatai
+	# and Tolui made no war on Ögedei while he lived; Berke handed off to
+	# Mengü-Temür without incident. The princes fought at SUCCESSIONS —
+	# 1241, 1251, 1280s, 1312, 1341, 1359 — not during reigns.
+	#
+	# The reason is that the bond is personal. The grant was made by a
+	# particular khan to a particular son, and it binds to the man, not
+	# to the seat. Which is exactly why his death detonates it.
+	#
+	# TODO (event layer): stamp the granting ruler on the subject at
+	# creation and check it at succession — loyalty should hold at this
+	# level for the grantor's whole reign and take a hard shock the day
+	# he dies. That single conditional is the entire Jochid pattern, and
+	# it cannot be expressed here in the subject type.
+	loyalty_to_overlord = 50
+
+	# Granted, never negotiated. The ulus exists only where the khan
+	# carved one out (create_country_from_location); it must never
+	# appear as an option in the diplomacy screen.
+	creation_visible = { always = no }
+	visible_through_diplomacy = { always = no }
+	visible_through_treaty = { always = no }
+	subject_creation_enabled = { always = no }
+	release_country_enabled = { always = no }
+
+	# A shareholder, not a governor. He keeps his own house, and above
+	# all his own succession — the left wing chose its own khans for a
+	# hundred and fifty years.
+	has_overlords_ruler = no
+	can_change_rank = yes
+	can_change_heir_selection = yes
+
+	# The share is of the patrimony, so it returns to the patrimony.
+	# A prince who dies without heirs does not found a dynasty; his
+	# tümens revert to the senior line.
+	overlord_inherit_if_no_heir = yes
+
+	# He holds real tümens. This is the cost of the reach — stronger
+	# than a governorate (-0.25), stronger than a French appanage
+	# (-0.40), because what he was given was an army.
+	strength_vs_overlord = -0.20
+
+	# Reunification is the back half of the campaign. Tokhtamysh did it
+	# by conquest in 1378, so it must be reachable — sooner than the
+	# governorate's 15 years, and never cheap.
+	annexation_speed = 0.75
+	annexation_min_years_before = 10
+	annexation_min_opinion = 160
+	annexation_stall_opinion = 140
+	overlord_can_cancel = yes
+	subject_can_cancel = no
+
+	# What he owes is attendance at the muster and the khan's name in
+	# the khutba — not automatic mobilization. He comes when called,
+	# and whether he answers is the loyalty question.
+	join_offensive_wars_always = { always = no }
+	join_defensive_wars_always = { always = no }
+	join_offensive_wars_can_call = { always = yes }
+	join_defensive_wars_can_call = { always = yes }
+	will_join_independence_wars = yes
+
+	# The khan is not automatically dragged into his brother's wars.
+	# (Same lesson as the governorate: engine-default protection let
+	# losing subjects kneel mid-war and hand the overlord the bill.)
+	overlord_protects_external = no
+
+	allow_declaring_wars = { always = yes }
+
+	# THE SUCCESSION WAR, and it must run in both directions.
+	#
+	# A loyal ulus is safe from the khan and the khan is safe from it.
+	# Once loyalty breaks, the seam opens both ways at once: the khan
+	# may march on his brothers (Berdibeg killed twelve of them), and a
+	# brother may march on Sarai (Tokhtamysh did). Locking the second
+	# case out — as the governorate does, where the overlord is always
+	# an illegal target — would make the whole mechanism one-directional
+	# and delete the best story it can tell.
+	can_attack = {
+		OR = {
+			NOT = { scope:defender = scope:overlord }
+			custom_tooltip = {
+				text = ulus_contest_the_khanate_tt
+				scope:subject = { subject_loyalty < MIN_SUBJECT_LOYALTY_FOR_ACTION }
+			}
+		}
+	}
+
+	has_limited_diplomacy = yes
+	diplomatic_capacity_cost_scale = 0.5
+	great_power_score_transfer = 0.5
+
+	# He administers his own corner as he always did. The khan does not
+	# reach past him into it — that is what granting it away meant.
+	can_overlord_build_roads = no
+	can_overlord_build_buildings = no
+	can_overlord_build_rgos = no
+
+	# The bond is share, not tax: military weight and cohesion flow up,
+	# money does not (subject_pays_march). While the line holds, the
+	# division of the patrimony is what STABILIZES the horde — this is
+	# the normal state of a steppe realm, not its failure state.
+	overlord_modifier = {
+		monthly_horde_unity = 0.05
+		global_levy_size_modifier = 0.05
+		global_nobles_estate_power = 0.02
+	}
+
+	# The prince rides with his own tümens and keeps almost no chancery.
+	subject_modifier = {
+		global_levy_size_modifier = 0.10
+		country_cabinet_efficiency = -0.25
+	}
+
+	# Unreachable by diplomacy in both directions — granted only.
+	diplo_chance_accept_subject = {
+		base = -9999
+	}
+	diplo_chance_accept_overlord = {
+		base = -9999
+	}
+
+	ai_wants_to_be_overlord = {
+		scope:subject = {
+			add = {
+				desc = "COALITION_GRADE_ANTAGONISM_TOWARDS_THEM_SUBJECT"
+				value = {
+					every_country_with_coalition_grade_antagonism_against_us = {
+						add = {
+							value = -10
+						}
+					}
+				}
+			}
+		}
+	}
+}

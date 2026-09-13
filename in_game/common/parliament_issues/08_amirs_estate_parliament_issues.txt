@@ -14,10 +14,9 @@ amirs_fortify_borders = {
 		global_defensive = 0.05
 	}
 	allow = {
-		OR = {
-			parliament_type = parliament_type:diwan_council
-			parliament_type = parliament_type:council
-		}
+
+		country_has_estate = estate_type:amirs_estate
+		
 	}
 	chance = { add = 10 }
 	on_debate_passed = {
@@ -36,10 +35,9 @@ amirs_expand_cavalry = {
 		army_light_cavalry_power = 0.05
 	}
 	allow = {
-		OR = {
-			parliament_type = parliament_type:diwan_council
-			parliament_type = parliament_type:council
-		}
+
+		country_has_estate = estate_type:amirs_estate
+		
 	}
 	chance = { add = 10 }
 	on_debate_passed = {
@@ -62,10 +60,9 @@ amirs_yaylaq_rights = {
 		global_levy_size_modifier = 0.05
 	}
 	allow = {
-		OR = {
-			parliament_type = parliament_type:diwan_council
-			parliament_type = parliament_type:council
-		}
+		country_has_estate = estate_type:tribes_estate
+		country_has_estate = estate_type:amirs_estate
+		
 	}
 	chance = { add = 10 }
 	on_debate_passed = {

@@ -1,0 +1,34 @@
+﻿l_english:
+
+ # --- The interaction ---
+ # Full key family, matching base's assign_governor: name, _concept, _act,
+ # _desc, _specific, _desc_specific, _past, _act_past.
+ grant_ulus_concept: "[character|e]"
+ grant_ulus_act: "$grant_ulus$"
+ grant_ulus_specific: "Grant a Share to [SCOPE.sCharacter('recipient').GetName]"
+ grant_ulus_desc_specific: "Set [SCOPE.sCharacter('recipient').GetName] over two [areas|e] of ours as an $ulus$ — the households, the herds and the tümens of them — to hold as his father's father held his. He will muster for us and read our name in the khutbah, and he will hold what we have given him against anyone, ourselves included."
+ grant_ulus_past: "[SCOPE.sCharacter('recipient').GetName] is granted a share of the ulus in [target_area_a.GetName] and [target_area_b.GetName]"
+ grant_ulus_act_past: "By the word of the [SCOPE.sCountry('actor').GetGovernment.GetRulerTitle], [SCOPE.sCharacter('recipient').GetName] has been set over [target_area_a.GetName] and [target_area_b.GetName] as a lord of the line, with his own pastures, his own law and his own succession."
+
+ # Category label for the subject type's cancel action (the ulus carries
+ # overlord_can_cancel = yes).
+ cancel_ulus_category: "Revoke a Share"
+
+ grant_ulus: "Grant a Share of the Ulus"
+ grant_ulus_desc: "Set him over a country of his own — the households, the herds and the tümens of it — to hold as his father's father held his. He will muster for you, ride at your call, and read your name in the khutbah of every town he takes.\n\nHe will also, from the day the grant is made, be a man of the line with an army, and there is only one thing such a man is ever short of."
+
+ # --- Selection stages ---
+ grant_ulus_choose_prince: "Which man of the line shall be endowed?"
+ grant_ulus_no_prince: "There is no grown man of the line to endow."
+ grant_ulus_select_seat_area: "Which country shall be his?"
+ grant_ulus_select_second_area: "And what shall he hold beside it?"
+ grant_ulus_no_area: "There is no country we hold that is fit to give away."
+ grant_ulus_no_adjacent_area: "Nothing we hold borders that country."
+
+ # --- Tooltips ---
+ grant_ulus_must_be_adjacent_tt: "Must border the first country — a share is pasture a man can ride across, not two halves of a map"
+ grant_ulus_no_darugha_here_tt: "No darugha may already hold a seat here — that country has had its answer, and it was not this one. Pull down the seat first if the intention has changed"
+ grant_ulus_not_at_war_tt: "The realm is not at war"
+ grant_ulus_must_be_borjigin_tt: "Must be a patrilineal descendant of $borjigin_dynasty$ — a share of the patrimony is the line's to divide, and no one else's to receive"
+ grant_ulus_must_be_adult_tt: "Must be a grown man — a boy cannot hold a country, and the begs would hold it for him"
+ grant_ulus_effect_tt: "The two countries and everything we hold in them pass to him as an $ulus$, held of us. He keeps his own law, his own house and his own succession; he owes us his tümens and our name on his coin.\n\nThe grant is sworn to the khan who makes it, and to no one after him."

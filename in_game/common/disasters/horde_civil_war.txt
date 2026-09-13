@@ -1,0 +1,148 @@
+# =====================================================================
+# HORDE CIVIL WAR -- same-path replacement of the base disaster.
+#
+# ONE change: can_start. Everything else (modifier, on_start, on_end,
+# can_end, spawn chance, capital conditions) is base game verbatim, so
+# a patch that touches those needs this file re-diffed.
+#
+# See in_game/events/horde_succession.txt for what replaced it.
+# =====================================================================
+
+horde_civil_war = {
+
+	image = "gfx/interface/illustrations/disaster/horde_civil_war.dds"
+
+	monthly_spawn_chance = monthly_spawn_chance_very_high
+	can_start = {
+		has_any_active_disaster = no
+		government_type = government_type:steppe_horde
+		is_rebel_country = no
+		is_subject = no
+		# RE-GATED. Base fired this on a horde unity band that a flat -50 at
+		# every ruler death dropped almost any horde into, which made a
+		# realm-shattering civil war the standard consequence of a funeral.
+		# The Jochid record does not support that: fratricide at the top was
+		# common and the ulus held anyway. Berke handed to Mengu-Timur
+		# cleanly; Ozbeg purged the princes in 1313 and reigned twenty-eight
+		# years; Jani Beg killed Tinibeg and Khidrbeg and the realm stood;
+		# Berdibeg killed his brothers and the realm still stood. The Horde
+		# came apart ONCE in a hundred and thirty years -- the bulqaq of
+		# 1359 -- and it came apart because the Batuid line ran out, not
+		# because a khan died.
+		#
+		# So this disaster now models that one case and nothing else: the
+		# blood has failed. No living adult male of the line anywhere in the
+		# realm, and no regency standing in for one. Every other succession
+		# outcome is routed by horde_succession.1 into a contest, a regency
+		# or a clean accession.
+		custom_tooltip = {
+			text = horde_civil_war_blood_has_failed_tt
+			NOT = {
+				any_character = {
+					is_alive = yes
+					is_adult = yes
+					is_female = no
+					is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+				}
+			}
+		}
+		NOT = { has_reform = government_reform:chinggisid_regency }
+		in_civil_war = no
+		OR = {
+			at_war = no
+			capital.province = {	#Capital province is at least unoccupied
+				any_location_in_province = {
+					OR = {
+						NOT = { owner = root }
+						AND = {
+							owner = root
+							controller = root
+						}
+					}
+				}
+			}
+		}
+		capital = {
+			custom_tooltip = {
+				text = horde_civil_war_capital_has_neighbor_province_tt
+				OR = {
+					any_coast_border_location = {
+						hidden_trigger = {
+							province ?= {
+								root.capital.province != this
+							}
+						}
+					}
+					any_connected_location = {
+						hidden_trigger = {
+							province ?= {
+								root.capital.province != this
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	can_end = {
+		horde_civil_war_end_trigger = yes
+	}
+	modifier = {
+		discipline = -0.1
+		global_crown_estate_power = -0.2
+		global_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+		horde_unity_hit_at_ruler_death = 50
+		monthly_horde_unity = 0.05
+		subject_loyalty = -10
+	}
+	
+	on_start = {
+		if = {
+			limit = { NOT = { has_variable = horde_civil_war_disaster_counter } }
+			set_variable = { name = horde_civil_war_disaster_counter value = 1 }
+		}
+		else = {
+			change_variable = { name = horde_civil_war_disaster_counter add = 1 }
+		}
+			trigger_event_non_silently = horde_civil_war.1
+	}
+	on_end = {
+		every_character = {
+			limit = { has_character_modifier = plotting_rebellion_modifier }
+			remove_character_modifier = plotting_rebellion_modifier
+		}
+		if = {
+			limit = { exists = var:pretender_rebel_character }
+			var:pretender_rebel_character = {
+				remove_variable = scope_horde_pretender_var
+			}
+		}
+		if = {
+			limit = { exists = var:horde_civil_war_pretender_variable }
+			destroy_rebel = var:horde_civil_war_pretender_variable
+		}
+		remove_variable = horde_civil_war_pretender_variable
+		remove_variable = pretender_rebel_character
+		trigger_event_non_silently = horde_civil_war.100
+	}
+	
+	on_monthly = {
+
+		random_list = {
+			16 = { custom_tooltip = an_event_occurs_tt }
+			84 = { custom_tooltip = no_event_occurs_tt }
+		}
+
+		hidden_effect = {
+			random_list = {
+				250 = {}
+				10 = { trigger_event_non_silently = horde_civil_war.7 }
+				5 = { trigger_event_non_silently = horde_civil_war.8 }
+				10 = { trigger_event_non_silently = horde_civil_war.9 }
+				10 = { trigger_event_non_silently = horde_civil_war.10 }
+				10 = { trigger_event_non_silently = horde_civil_war.1000 }
+			}
+			trigger_event_non_silently = horde_civil_war.11
+		}
+	}
+}

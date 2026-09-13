@@ -1,0 +1,428 @@
+# =====================================================================
+# THE TÖRÜ OF THE ULUS — succession by acclamation, scored.
+#
+# WHAT IT REPLACES. Base gives every horde `tribal_oldest_male`: the one
+# succession rule the steppe explicitly did not have. Chinggisid
+# succession was not primogeniture and not seniority. Every son was
+# eligible, brothers and nephews often were too, the quriltai had to
+# acclaim you, and the ulus was a divisible patrimony rather than an
+# indivisible throne. Özbeg, the strongest khan alive at this mod's
+# start date, was a NEPHEW who took the seat against the incumbent's own
+# line — under `tribal_oldest_male` he is not even a candidate.
+#
+# WHY SCORED AND VISIBLE. Because the contest has to be legible before
+# it resolves. With `show_candidates = yes` the player reads the field
+# ranked at all times, watches a brother climb it as his ulus grows or a
+# beg climb it as the seats multiply, and knows years ahead whether the
+# next funeral is a formality or a war.
+#
+# ---------------------------------------------------------------------
+# THE CENTRAL DESIGN CLAIM: A BEG CAN TOP THIS LIST.
+#
+# Being of the line is worth a great deal — 150, the largest single term
+# here — and it is the ONLY thing blood is worth. There is no penalty for
+# lacking it. A man with no drop of Borjigin in him accumulates power by
+# other means entirely: the districts he and his class hold for the khan,
+# and the weight his estate carries in the realm. Enough of both and he
+# outranks a prince.
+#
+# That is not a concession to gameplay. It is the whole political history
+# of the post-1350 steppe. Mamai was a Qiyat beg who ruled the western
+# Horde for two decades; Edigü a Manghit who did it again from 1397;
+# Qazaghan took Transoxiana in 1347 and Timur inherited the office. None
+# of them could ever be khan, and all of them held the khanate. If the
+# succession law cannot produce a beg at the top of the field, the
+# regency branch of horde_succession.1 can never fire on its own logic,
+# and the darugha road has no consequence at all.
+#
+# So the two roads are mirrored, deliberately:
+#
+#   A PRINCE'S power  = HOLDS A SHARE      (the ulus you granted him)
+#   A BEG'S power     = HIS DISTRICT + THE ESTATE
+#                       (the seat he personally holds, and the weight of
+#                        the aristocracy those seats have been fattening)
+#
+# Both terms are bought with the same currency — the khan's own choice
+# about how to reach a far country — and they come due at the same
+# moment, at his graveside.
+#
+# THE BEGS ARE REAL MEN, NOT A COUNTER. Every darugha seat spawns an
+# actual character with high stats (building_types/Horde_reach.txt,
+# `on_built`), and it is HE who carries the +25, not an abstraction
+# spread across every non-Borjigin in the realm. So building seats does
+# not inflate one imaginary rival; it puts more capable, ambitious men
+# into the list, each of whom must still beat a prince on merit alone.
+#
+# And that asymmetry is the point: a darugha is APPOINTED, a prince is
+# BORN. The begs spawn at mil 60-90 while a prince inherits whatever he
+# inherits. Mamai and Edigü were formidable soldiers holding office on
+# merit; the late Batuids were not. A beg carries no blood bonus at all
+# and has to make up 150 points on capability — which a good one can.
+#
+# ---------------------------------------------------------------------
+# WEIGHTS
+#
+#   Of the line (Borjigin)          +150
+#   Son of the late khan            +50
+#   Grandson of the late khan       +25
+#   Named by the late khan          +75    [my number — see note]
+#   Holds a share of the patrimony  +100   [my number — see note]
+#   Holds a darugha's district      +25             (the beg himself)
+#   Power of his estate             up to +100      (non-Borjigin only)
+#   Reputation in the field         mil x 1         [my number — see note]
+#   Seniority                       age x 1
+#
+# THREE NUMBERS ARE MINE AND SHOULD BE CHECKED. Designation and Holds A
+# Share were 150 and 175 in the first draft, set against a scale where
+# blood was worth 500; on the new scale, where the largest term is 150,
+# they were swamping everything and I brought them to 75 and 100. The
+# sword was mil x 2, but monarch stats are 0-100 in EU5, so that termed
+# out at 200 and dwarfed the blood bonus — it is now x 1, capping at 100.
+#
+# NO CHILD PENALTY and NO PENALTY FOR LACKING THE BLOOD, per the design
+# above. A boy can be raised on the felt, and frequently was; that is a
+# beglerbeg's opportunity rather than a disqualification, and the poll
+# downstream is what should treat it as one. The only surviving malus is
+# base's own `blocked_from_being_ruler`, which is a different thing — an
+# explicit unsuitability flag, not a rule about descent.
+#
+# NOT MODELLED: the otchigin right, by which the youngest son kept the
+# hearth and the bulk of the army (Tolui took 101,000 of 129,000). Birth
+# order has no clean detector here, and it may belong as a grant rather
+# than a score.
+# =====================================================================
+
+horde_toru_succession = {
+	traverse_family_tree = yes
+	allow_extended_family = yes      # nephews and cousins are candidates
+	include_ruler_siblings = yes     # brothers above all
+	all_in_country = yes             # a beg is not in the dynasty
+	through_female = no
+	allow_female = no
+	allow_male = yes
+	allow_children = yes             # eligible, and NOT penalised
+	ignore_ruler = yes
+	allow_foreign_ruler = yes        # an ulus-holding brother must qualify
+
+	# BUG FIX: was `all_in_dynasty = yes`, which pulled in every Borjigin
+	# ALIVE ON THE MAP — the Chagatai khan and every other prince of the
+	# house, anywhere. Combined with the old untightened "holds a share"
+	# term (which paid +100 to anyone holding any throne at all), foreign
+	# khans scored blood + throne and outranked Özbeg's own landless sons,
+	# then filled every candidate slot. The line of succession showed
+	# nothing but foreigners.
+	#
+	# The ulus is not the world's Borjigins. Domestic candidates come from
+	# `all_in_country` and the family tree; the only foreigners who belong
+	# on this list are the princes holding OUR OWN shares, and
+	# include_other_countries below admits exactly those and nobody else.
+	all_in_dynasty = no
+
+	show_candidates = yes            # THE POINT: the field is always visible
+
+	# BUG FIX: was 8. This is an ELECTION field — every base law with
+	# `use_election = no` sets it to 0 (guru_election, theocracy, republic),
+	# and every law with a nonzero value has `use_election = yes`. Setting
+	# it without an election was capping the visible field.
+
+
+	# A prince of ours who holds an ulus rules a foreign country, so he
+	# must be admitted from outside — but ONLY he. root = the country
+	# being considered; scope:target = the country the succession is in.
+	include_other_countries = {
+		is_subject_type = ulus
+		overlord ?= scope:target
+	}
+
+	allowed_estates = { nobles_estate }
+
+	custom_tags = { horde_toru_acclamation }
+	show_tags_in_ui = yes
+	custom_eligibility_rules = { horde_toru_power_rule }
+
+	potential = {
+		government_type = government_type:steppe_horde
+	}
+
+	allowed = {
+		government_type = government_type:steppe_horde
+	}
+
+	# The törü is not a law a khan may trade away.
+	locked = {
+		government_type = government_type:steppe_horde
+	}
+
+	heir_is_allowed = {
+	}
+
+	# -----------------------------------------------------------------
+	# Stamp how close the thing actually was, for horde_succession.1 to
+	# read eighty days later. A margin of 400 is a formality; a margin of
+	# 20 is two khans and one felt.
+	#
+	# BOOT CHECK: `scope:new_ruler.heir_score_home` as a value, and
+	# reading heir scores inside succession_effect at all, are the two
+	# unverified pieces of this file. If the margin comes back 0 every
+	# time, the poll's count-based fallback is still in place.
+	# -----------------------------------------------------------------
+	succession_effect = {
+		set_variable = { name = succession_margin value = 0 }
+
+		ordered_character = {
+			limit = {
+				is_alive = yes
+				is_adult = yes
+				is_female = no
+				NOT = { this = scope:new_ruler }
+			}
+			order_by = heir_score_home
+			max = 1
+			check_range_bounds = no
+			save_scope_as = best_rival
+		}
+
+		if = {
+			limit = { exists = scope:best_rival }
+			set_variable = {
+				name = succession_margin
+				value = {
+					value = scope:new_ruler.heir_score_home
+					subtract = scope:best_rival.heir_score_home
+				}
+			}
+		}
+
+		# The grant binds to the man, not the seat — a new khan inherits
+		# no ulus's loyalty. Stamped for the ulus loyalty shock (see
+		# subject_types/ulus.txt).
+		set_variable = { name = reign_began_unproven }
+	}
+
+	# =================================================================
+	# CANDIDATE SCORING
+	#
+	# Each block carries both branches by base's convention: the real
+	# calculation under `exists = root`, and a generic-tooltip branch so
+	# the law reads correctly in the UI before any particular candidate
+	# is being examined.
+	# =================================================================
+	calc = {
+		if = {
+			limit = { exists = root }
+
+			# --- THE BLOOD ------------------------------------------
+			# The only thing descent is worth, and there is no penalty
+			# for lacking it.
+			add = {
+				desc = "HORDE_TORU_OF_THE_LINE"
+				if = {
+					limit = { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+					value = 150
+				}
+			}
+			add = {
+				desc = "HORDE_TORU_SON_OF_THE_KHAN"
+				if = {
+					limit = { father ?= scope:target.last_valid_ruler }
+					value = 50
+				}
+			}
+			add = {
+				desc = "HORDE_TORU_GRANDSON_OF_THE_KHAN"
+				if = {
+					limit = {
+						exists = father
+						father.father ?= scope:target.last_valid_ruler
+					}
+					value = 25
+				}
+			}
+
+			# --- DESIGNATION -----------------------------------------
+			add = {
+				desc = "HORDE_TORU_NAMED_BY_THE_KHAN"
+				if = {
+					limit = { has_character_modifier = appoint_as_heir_modifier }
+					value = 75
+				}
+			}
+
+			# --- A PRINCE'S POWER: HIS SHARE -------------------------
+			# TIGHTENED (was `is_ruler = yes` alone, which paid +100 to
+			# any throne-holder anywhere and was half of why the
+			# succession list filled with foreign khans). Now it pays
+			# only for ruling a country that is OUR subject — the share
+			# this khan actually granted.
+			#
+			# Still slightly loose: it counts any subject's ruler, not
+			# strictly a subject of type `ulus`. That is harmless while
+			# ulus is the only princely subject a horde can create, and
+			# worth revisiting if hordes gain other subject types.
+			add = {
+				desc = "HORDE_TORU_HOLDS_A_SHARE"
+				if = {
+					limit = {
+						is_ruler = yes
+						owner ?= { overlord ?= scope:target }
+					}
+					value = 100
+				}
+			}
+
+			# --- A BEG'S POWER: HIS OWN DISTRICT ---------------------
+			# REWRITTEN. This was +25 per darugha seat in the realm,
+			# paid to every non-Borjigin alike — an abstraction, and one
+			# that read a country building count through `scope:target.`
+			# inside a script value, which base never does.
+			#
+			# It is now paid to THE MAN. Each seat spawns an actual beg
+			# (see building_types/Horde_reach.txt `on_built`), and it is
+			# he who carries the standing. So the seats no longer inflate
+			# one abstract rival: they put more real, capable, ambitious
+			# men into the list, each of whom must still beat a prince on
+			# merit. More seats means more chances that one of them can.
+			add = {
+				desc = "HORDE_TORU_THE_DISTRICT"
+				if = {
+					limit = { has_variable = darugha_of_the_khan }
+					value = 25
+				}
+			}
+
+			# --- A BEG'S POWER: THE ESTATE ---------------------------
+			# estate_power is 0..1 (verified against base's
+			# rise_of_the_szlachta, which tests > 0.25 and < 0.5).
+			add = {
+				desc = "HORDE_TORU_THE_POWER_OF_THE_ESTATE"
+				if = {
+					limit = {
+						NOT = { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+					}
+					value = {
+						value = "scope:target.estate_power(estate_type:nobles_estate)"
+						multiply = 100
+					}
+				}
+			}
+
+			# --- THE SWORD -------------------------------------------
+			add = {
+				desc = "HORDE_TORU_THE_SWORD"
+				value = root.mil
+			}
+
+			# --- SENIORITY -------------------------------------------
+			add = {
+				desc = "HORDE_TORU_SENIORITY"
+				value = character_age
+			}
+
+			add = {
+				desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
+				if = {
+					limit = { modifier:blocked_from_being_ruler = yes }
+					value = -1000
+				}
+			}
+		}
+
+		# --- generic tooltip branch -----------------------------------
+		else = {
+			add = { desc = "HORDE_TORU_OF_THE_LINE"              value = 150 }
+			add = { desc = "HORDE_TORU_SON_OF_THE_KHAN"          value = 50 }
+			add = { desc = "HORDE_TORU_GRANDSON_OF_THE_KHAN"     value = 25 }
+			add = { desc = "HORDE_TORU_NAMED_BY_THE_KHAN"        value = 75 }
+			add = { desc = "HORDE_TORU_HOLDS_A_SHARE"            value = 100 }
+			add = { desc = "HORDE_TORU_THE_DISTRICT"             value = 25 }
+			add = { desc = "HORDE_TORU_THE_POWER_OF_THE_ESTATE"  value = 100 }
+			add = { desc = "HORDE_TORU_THE_SWORD"                value = 1 }
+			add = { desc = "HORDE_TORU_SENIORITY"                value = 1 }
+		}
+	}
+
+	# Family-tree traversal uses the same weights, so a brother is ranked
+	# by what a brother is actually worth.
+	sibling_score = {
+		if = {
+			limit = { exists = root }
+
+			add = {
+				desc = "HORDE_TORU_OF_THE_LINE"
+				if = {
+					limit = { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+					value = 150
+				}
+			}
+			add = {
+				desc = "HORDE_TORU_SON_OF_THE_KHAN"
+				if = {
+					limit = { father ?= scope:target.last_valid_ruler }
+					value = 50
+				}
+			}
+			add = {
+				desc = "HORDE_TORU_NAMED_BY_THE_KHAN"
+				if = {
+					limit = { has_character_modifier = appoint_as_heir_modifier }
+					value = 75
+				}
+			}
+			add = {
+				desc = "HORDE_TORU_HOLDS_A_SHARE"
+				if = {
+					limit = {
+						is_ruler = yes
+						owner ?= { overlord ?= scope:target }
+					}
+					value = 100
+				}
+			}
+			add = {
+				desc = "HORDE_TORU_THE_DISTRICT"
+				if = {
+					limit = { has_variable = darugha_of_the_khan }
+					value = 25
+				}
+			}
+			add = {
+				desc = "HORDE_TORU_THE_POWER_OF_THE_ESTATE"
+				if = {
+					limit = {
+						NOT = { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+					}
+					value = {
+						value = "scope:target.estate_power(estate_type:nobles_estate)"
+						multiply = 100
+					}
+				}
+			}
+			add = {
+				desc = "HORDE_TORU_THE_SWORD"
+				value = root.mil
+			}
+			add = {
+				desc = "HORDE_TORU_SENIORITY"
+				value = character_age
+			}
+			add = {
+				desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
+				if = {
+					limit = { modifier:blocked_from_being_ruler = yes }
+					value = -1000
+				}
+			}
+		}
+
+		else = {
+			add = { desc = "HORDE_TORU_OF_THE_LINE"              value = 150 }
+			add = { desc = "HORDE_TORU_SON_OF_THE_KHAN"          value = 50 }
+			add = { desc = "HORDE_TORU_NAMED_BY_THE_KHAN"        value = 75 }
+			add = { desc = "HORDE_TORU_HOLDS_A_SHARE"            value = 100 }
+			add = { desc = "HORDE_TORU_THE_DISTRICT"             value = 25 }
+			add = { desc = "HORDE_TORU_THE_POWER_OF_THE_ESTATE"  value = 100 }
+			add = { desc = "HORDE_TORU_THE_SWORD"                value = 1 }
+			add = { desc = "HORDE_TORU_SENIORITY"                value = 1 }
+		}
+	}
+}

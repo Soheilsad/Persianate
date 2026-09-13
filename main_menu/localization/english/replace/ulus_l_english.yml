@@ -1,0 +1,20 @@
+﻿l_english:
+
+ # --- Ulus: the prince's share ---
+ ulus: "Ulus"
+ ulus_desc: "A share of the patrimony, not a province of it. The ulus is reckoned in households, herds and tümens rather than in land, and it is granted to a son of the line while his father still lives — as Chinggis parcelled out his hundred and twenty-nine thousand among Jochi, Chaghatay, Ögedei and Tolui, and as Jochi in his turn set Orda over the left wing and Batu over the right. The holder swears no tax and pays none. What he owes is his tümens at the muster, his attendance at the quriltai, and the senior khan's name struck on his coin and spoken in the khutbah. He keeps his own house, his own law and his own succession, and no man of the senior khan's rides into his pastures to count anything. A khan who divides his realm this way buys reach he could purchase no other way — and seats a rival of the blood in every corner of it."
+ LEAD_ulus: "Senior Khan"
+ AM_ulus: "Ulus"
+
+ # --- The handover modifier ---
+ STATIC_MODIFIER_NAME_recently_granted_ulus: "Newly Granted Share"
+ STATIC_MODIFIER_DESC_recently_granted_ulus: "The pastures did not arrive empty. They came with their people — the thousand-commanders and their households, mustered as they had always been mustered, handed over entire on the khan's word. Nobody here had to be conquered and nobody had to be persuaded: the giving was itself the legitimation, and the herds were being counted in the new lord's name before the ink was dry.\n\nIt will not last. Within a generation this country will hold its pastures on its own account and by its own reputation, and the man whose word delivered them will be dead."
+
+ # --- What the share owes (common/prices/05_ulus_prices.txt) ---
+ ulus_pays: "Ulus rides for the Senior Khan"
+
+ # --- The succession war ---
+ # Fires in both directions: the khan marching on his brothers, and a
+ # brother marching on the seat. Gated on loyalty, so a share held in
+ # good faith is safe from the khan and the khan is safe from it.
+ ulus_contest_the_khanate_tt: "The bond of the line has failed — the ulus and the senior khan may take the field against one another"

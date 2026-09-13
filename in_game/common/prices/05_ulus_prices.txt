@@ -1,0 +1,32 @@
+# =====================================================================
+# WHAT AN ULUS PAYS — men, not money.
+#
+# This is the exact inverse of the Rus tributary, and the contrast is
+# the point. A Rus prince held his throne by a revocable patent, paid
+# the vykhod in silver, kept his own law and a tax-exempt church, and
+# was not family. What he owed was money, and what he cared about was
+# whether the tümens would actually come if he stopped paying.
+#
+# An ulus holder owes the opposite. He is a shareholder in the
+# patrimony, not a taxpayer on it — his right to his pastures and the
+# khan's right to the seat come from the same source, the estate of the
+# line. No basqaq counts his herds and no silver goes to Sarai. What he
+# owes is his tümens at the muster and his presence at the quriltai.
+#
+# So: manpower and sailors flow up at a real rate, gold at a token one.
+# The 0.02 is not zero because a share of plunder and the customary
+# gifts did move toward the senior khan — but a khan who grants ulus to
+# solve his reach problem must not be solving his revenue problem at
+# the same time. The whole trade is meant to be reach and soldiers
+# bought with legitimacy and future civil war, never with cash.
+#
+# Compare base: subject_pays_vassal 0.2 gold, subject_pays_tributary
+# 0.2 gold + 0.05 men, subject_pays_march 0.1 gold and no men at all.
+# =====================================================================
+
+ulus_pays = {
+	scaled_gold = 0.05
+	scaled_manpower = 0.25
+	scaled_sailors = 0.1
+	ignore_inflation = yes
+}

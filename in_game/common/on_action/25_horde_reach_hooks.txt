@@ -18,6 +18,36 @@ on_game_start = {
 }
 
 
+# =====================================================================
+# THE YEARLY REACH CHECK.
+#
+# Re-declaring yearly_country_pulse EXTENDS base's list rather than
+# replacing it (same merge behaviour as on_game_start above), so this
+# adds one entry and touches nothing else in the yearly cycle.
+#
+# root = country. horde_reach.10 carries its own trigger — government
+# type, Borjigin legitimacy, a five-year cooldown, and the requirement
+# that a genuinely dark area actually exists — so the pulse itself
+# stays cheap for the ~99% of countries that are not hordes.
+#
+# Fired non-silently on purpose, AI included: this is the choice that
+# decides whether a horde ends in a regency or a partition, and an AI
+# that never makes it is an AI that never has either crisis.
+# =====================================================================
+
+yearly_country_pulse = {
+	on_actions = {
+		horde_reach_yearly_check
+	}
+}
+
+horde_reach_yearly_check = {
+	effect = {
+		trigger_event_non_silently = horde_reach.10
+	}
+}
+
+
 horde_reach_game_start = {
 	effect = {
 		every_country = {

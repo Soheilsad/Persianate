@@ -1,0 +1,18 @@
+﻿l_english:
+
+ # --- Cede an Area ---
+ cede_area: "Cede an Area"
+ cede_area_concept: "[area|e]"
+ cede_area_act: "$cede_area$"
+ cede_area_desc: "Hand a whole [area|e] of ours to one of our subjects in a single act, rather than a province at a time."
+ cede_area_specific: "Cede an Area to [SCOPE.sCountry('recipient').GetName]"
+ cede_area_desc_specific: "Hand one [area|e] of ours to [SCOPE.sCountry('recipient').GetName] entire. Everything we hold within it passes to them; anything held there by others is untouched."
+ cede_area_past: "[target_area.GetName] is ceded to [SCOPE.sCountry('recipient').GetName]"
+ cede_area_act_past: "[SCOPE.sCountry('actor').GetName] has ceded [target_area.GetName] to [SCOPE.sCountry('recipient').GetName]."
+
+ # --- Selection stage ---
+ select_an_area_to_cede: "Select an [area|e] to cede"
+ cede_area_no_areas: "@trigger_no! No [area|e] of ours borders them or lies in their heartland."
+
+ # --- Tooltip ---
+ cede_area_effect_tt: "Every location we hold in this [area|e] passes to [SCOPE.sCountry('recipient').GetName]. No [cores|e] are granted — they will own the ground, but it does not thereby become their homeland."

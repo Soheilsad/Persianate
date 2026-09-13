@@ -342,8 +342,12 @@ building_manager = {
 	## it revolts outright in 1338.
 	regional_diwan = { tag = DLH level = 1 location = daulatabad }
 	regional_diwan = { tag = DLH level = 1 location = multan }
-	horde_local_appointee = { tag = GLH level = 1 location = majar }
-	horde_local_appointee = { tag = GLH level = 1 location = bolghar }
-	horde_local_appointee = { tag = GLH level = 1 location = urgench }
-	horde_local_appointee = { tag = GLH level = 1 location = solkhat }
+	## GLH's darugha seats are NO LONGER PLACED AT START. Qutlugh-Temür
+	## at Urgench and Tuluktumur at Solkhat were real men in real posts
+	## in 1337, but seeding them here decides the khan's constitutional
+	## question before the player has been asked it. The choice between
+	## posting a darugha, granting an ulus to a prince of the line, and
+	## paying for a ghulam viceroy is now the game's, made through the
+	## Reach of the Khan event as control fails area by area.
+	## (Was: majar, bolghar, urgench, solkhat.)
 }

@@ -1,0 +1,151 @@
+# =====================================================================
+# GRANTING A SHARE.
+#
+# One effect, called from two places — the Reach of the Khan event
+# (horde_reach.10) and the Grant a Share character interaction — so the
+# two cannot drift apart.
+#
+# WHY TWO AREAS. A single area is a district; an ulus is a country. The
+# shares Chinggis handed out were reckoned in thousands of households
+# and ran across whole stretches of steppe: Jochi took everything west
+# "as far as the hooves of Mongol horses had trodden," Orda's left wing
+# ran from the Syr Darya into western Siberia. A prince given one area
+# is a governor with a fancier title, and he will never be a credible
+# claimant in the törü — which is the entire point of granting one.
+#
+# Two ADJACENT areas, because a share is contiguous pasture the prince
+# can actually ride between and muster from. Two halves of the map are
+# not an ulus, they are a bookkeeping error.
+#
+#
+# PARAMETERS
+#   $prince$  a character scope — the man receiving the share
+#   $area_a$  an area scope — the seat area, which carries his capital
+#   $area_b$  an area scope — the second, adjacent area
+#
+# MUST BE CALLED IN COUNTRY SCOPE (the granting khan's country).
+# =====================================================================
+
+grant_ulus_effect = {
+	save_scope_as = ulus_overlord
+
+	# The seat: the best-developed location we own in the first area
+	# becomes his capital, and the country is created around it.
+	$area_a$ = {
+		ordered_location_in_area = {
+			limit = { owner ?= scope:ulus_overlord }
+			order_by = development
+			max = 1
+			check_range_bounds = no
+			save_scope_as = ulus_seat
+		}
+	}
+
+	if = {
+		limit = { exists = scope:ulus_seat }
+
+		scope:ulus_seat = {
+			set_variable = reach_settled
+
+			create_country_from_location = {
+				overlord = scope:ulus_overlord
+				subject_type = subject_type:ulus
+				set_capital = prev
+				set_new_ruler = $prince$
+				save_scope_as = ulus_country
+			}
+
+			add_core = scope:ulus_country
+		}
+
+		# =============================================================
+		# WHAT THE NEW COUNTRY ACTUALLY IS.
+		#
+		# Everything here runs in the ulus's own scope. Two deliberate
+		# departures from the block as first written:
+		#
+		#   `owner = root` became `owner = scope:ulus_country`. Inside a
+		#   scripted effect called from two different contexts, root is
+		#   whatever the CALLER's root is — the granting country in the
+		#   event, something else entirely in the interaction. That is
+		#   the precise bug that made this whole effect silently do
+		#   nothing when run from the interaction, so no root here.
+		#
+		#   `change_religion = religion:sunni` was a test placeholder and
+		#   now reads the granting country's religion instead. A share is
+		#   carved out of the khan's own patrimony; it does not arrive
+		#   with a confession of its own.
+		# =============================================================
+		scope:ulus_country = {
+			change_culture = culture:mongolian_culture
+			change_religion = scope:ulus_overlord.religion
+
+			change_country_type = army
+			set_country_rank = country_rank:rank_duchy
+			change_government_type = government_type:steppe_horde
+			add_reform = government_reform:legacy_of_genghis
+			add_gold = 250 ## a khalaat style, providing initial funds for the new ulus
+			set_personality = ai_personality:ai_aggressive
+			every_owned_location = {
+				change_control = 0.2
+			}
+			capital = {
+				create_sub_unit_with_owner = {
+					type = a_steppe_horse_archers
+					owner = scope:ulus_country
+				}
+				create_sub_unit_with_owner = {
+					type = a_steppe_horse_archers
+					owner = scope:ulus_country
+				}
+			}
+
+			# A new-carved ulus inherits the khanate's control problem in
+			# miniature — a capital it has held for one day, pastures
+			# measured from a seat nobody has ever obeyed — and without
+			# help it simply goes bankrupt and stops being a factor,
+			# which defeats the entire purpose of granting one.
+			#
+			# Historically the grant came WITH its people: the prince did
+			# not have to conquer his own tümens, they were handed over
+			# with the pasture and they already knew whose son he was.
+			# This is that handover, expressed as control.
+			add_country_modifier = {
+				modifier = recently_granted_ulus
+				years = 20
+			}
+		}
+
+		# The share itself: everything we hold in both areas rides with
+		# him. `reach_settled` stops the Reach of the Khan event from
+		# ever offering this country again.
+		$area_a$ = {
+			every_location_in_area = {
+				limit = { owner ?= scope:ulus_overlord }
+				change_location_owner = scope:ulus_country
+				add_core = scope:ulus_country
+				set_variable = reach_settled
+			}
+		}
+		$area_b$ = {
+			every_location_in_area = {
+				limit = { owner ?= scope:ulus_overlord }
+				change_location_owner = scope:ulus_country
+				add_core = scope:ulus_country
+				set_variable = reach_settled
+			}
+		}
+
+		scope:ulus_country = {
+			# The grant binds to the MAN, not the seat. Stamped so the
+			# succession chain can ask, at the next khan's accession,
+			# whether this share was ever sworn to HIM — which it was
+			# not. Orda never moved against Batu; the princes fought at
+			# successions, because a new khan inherits no brother's oath.
+			set_variable = {
+				name = ulus_granted_by
+				value = scope:ulus_overlord.ruler
+			}
+		}
+	}
+}

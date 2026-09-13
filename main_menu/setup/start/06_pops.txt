@@ -36513,11 +36513,11 @@ khalkhal = {
 	define_pop = { type = tribesmen	size = 0.082	culture = azeri_culture	religion = zoroastrian }
 }
 tabriz = {
-	define_pop = { type = burghers	size = 50.233	culture = adhari_culture	religion = sunni }
-	define_pop = { type = burghers	size = 6.619	culture = adhari_culture	religion = zoroastrian }
+	define_pop = { type = burghers	size = 56.233	culture = adhari_culture	religion = sunni }
+	define_pop = { type = burghers	size = 0.619	culture = adhari_culture	religion = zoroastrian }
 	define_pop = { type = burghers	size = 2.637	culture = kalimi	religion = judaism }
 	define_pop = { type = clergy	size = 5.928	culture = adhari_culture	religion = sunni }
-	define_pop = { type = clergy	size = 0.190	culture = adhari_culture	religion = zoroastrian }
+	define_pop = { type = clergy	size = 0.190	culture = adhari_culture	religion = shia }
 	define_pop = { type = nobles	size = 2.205	culture = adhari_culture	religion = shia }
 	define_pop = { type = peasants	size = 121.960	culture = adhari_culture	religion = sunni }
 	define_pop = { type = peasants	size = 19.775	culture = adhari_culture	religion = zoroastrian }

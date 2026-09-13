@@ -1,0 +1,221 @@
+# =====================================================================
+# GRANT A SHARE — the khan endows a prince of the line.
+#
+# The decision that matters is not made at a graveside. It is made
+# twenty years earlier, by a living khan who needs a far country held
+# and must choose HOW to hold it. Post a darugha and you create an amir
+# who can never be khan and whose only road to power is therefore to
+# hold the man who is. Grant an ulus and you create a Borjigin with
+# tümens of his own, who needs no one's permission to be khan at all.
+#
+# This is the second road, made available on demand rather than only
+# when the Reach of the Khan event happens to fire. Shares were granted
+# in the father's lifetime — Chinggis parcelled out his hundred and
+# twenty-nine thousand while he lived, Jochi set Orda over the left
+# wing and Batu over the right before he died — so a khan should be
+# able to do it deliberately, at a moment of his choosing, and not only
+# when a province falls dark.
+#
+# TWO ADJACENT AREAS. See scripted_effects/00_ulus_effects.txt. A share
+# is contiguous pasture a man can ride between and muster from.
+#
+# NOT PRICED IN GOLD. The cost of an ulus is never money; it is the
+# territory itself, the taxes that leave with it, and a claimant of the
+# blood standing in the törü for the rest of the reign. Adding a gold
+# price on top would mistake the nature of the transaction.
+# =====================================================================
+
+grant_ulus = {
+	message = yes
+	on_own_nation = yes
+	on_other_nation = no
+
+	# NOTE ON `?=`. `potential` decides whether the interaction appears at
+	# all, and it is evaluated BEFORE a target has been picked — the
+	# readme lists only scope:actor as guaranteed here. A hard
+	# `scope:recipient = { ... }` therefore dereferences an unset scope
+	# and throws "Event target link 'scope' returned an unset scope",
+	# which silently suppresses the whole interaction. Base's
+	# assign_governor uses `?=` for exactly this reason. The real
+	# eligibility test lives in the character select_trigger below, where
+	# the character IS in scope.
+	potential = {
+		scope:actor = {
+			government_type = government_type:steppe_horde
+			OR = {
+				ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
+				has_reform ?= government_reform:chinggisid_regency
+			}
+		}
+		scope:recipient ?= {
+			is_female = no
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			custom_tooltip = {
+				text = grant_ulus_not_at_war_tt
+				at_war = no
+			}
+		}
+	}
+
+	# --- the prince ----------------------------------------------------
+	# Must come first: the area stages below read scope:recipient.
+	select_trigger = {
+		looking_for_a = character
+		target_flag = recipient
+		source = actor
+		name = "grant_ulus_choose_prince"
+		none_available_msg_key = "grant_ulus_no_prince"
+		show_why_not_enabled = yes
+		column = {
+			data = name
+		}
+		visible = {
+			is_alive = yes
+			is_female = no
+			is_ruler = no
+		}
+		enabled = {
+			custom_tooltip = {
+				text = grant_ulus_must_be_borjigin_tt
+				is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+			}
+			custom_tooltip = {
+				text = grant_ulus_must_be_adult_tt
+				is_adult = yes
+			}
+		}
+	}
+
+	# --- the seat area -------------------------------------------------
+	select_trigger = {
+		looking_for_a = area
+		target_flag = target_area_a
+		source = actor
+		name = "grant_ulus_select_seat_area"
+		none_available_msg_key = "grant_ulus_no_area"
+		show_why_not_visible = yes
+		column = {
+			data = name
+		}
+		visible = {
+			# Never the khan's own seat, and never a country already
+			# spoken for.
+			NOT = { this = scope:actor.capital.area }
+			any_location_in_area = {
+				percent >= 0.5
+				owner ?= scope:actor
+			}
+
+			# THE TWO ROADS ARE EXCLUSIVE ON THE SAME GROUND. A country
+			# already holding a darugha has had its answer chosen: the
+			# khan posted a man of his own there, at his own expense, and
+			# handing the same pasture to a prince a season later throws
+			# that away and makes nonsense of the choice. Destroy the
+			# seat first if the intention has changed.
+			custom_tooltip = {
+				text = grant_ulus_no_darugha_here_tt
+				NOT = {
+					any_location_in_area = {
+						has_building = building_type:horde_local_appointee
+					}
+				}
+			}
+		}
+	}
+
+	# --- the second area, which must border the first ------------------
+	select_trigger = {
+		looking_for_a = area
+		target_flag = target_area_b
+		source = actor
+		name = "grant_ulus_select_second_area"
+		none_available_msg_key = "grant_ulus_no_adjacent_area"
+		show_why_not_visible = yes
+		column = {
+			data = name
+		}
+		visible = {
+			NOT = { this = scope:actor.capital.area }
+			NOT = { this = scope:target_area_a }
+			any_location_in_area = {
+				percent >= 0.5
+				owner ?= scope:actor
+			}
+			custom_tooltip = {
+				text = grant_ulus_no_darugha_here_tt
+				NOT = {
+					any_location_in_area = {
+						has_building = building_type:horde_local_appointee
+					}
+				}
+			}
+			custom_tooltip = {
+				text = grant_ulus_must_be_adjacent_tt
+				any_neighbor_area = {
+					this = scope:target_area_a
+				}
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = grant_ulus_effect_tt
+
+		scope:actor = {
+			hidden_effect = {
+				grant_ulus_effect = {
+					prince = scope:recipient
+					area_a = scope:target_area_a
+					area_b = scope:target_area_b
+				}
+			}
+
+			# The quriltai approves: the line is seen to provide for its
+			# own, and the tümens of that country now answer a Borjigin
+			# rather than nobody at all.
+			add_horde_unity = 5
+			add_estate_satisfaction = {
+				type = estate_type:nobles_estate
+				value = 0.03
+			}
+		}
+	}
+
+	# The AI reaches for this when a corner has gone dark and it has a
+	# grown prince idle. Kept modest: the darugha is the cheaper answer
+	# and should stay the default road.
+	ai_will_do = {
+		base = 0
+
+		modifier = {
+			add = 25
+			scope:actor = {
+				any_core_location = {
+					percent >= 0.15
+					owner ?= scope:actor
+					local_control < 25
+				}
+			}
+		}
+
+		modifier = {
+			add = 20
+			scope:actor = { horde_unity < 50 }
+		}
+
+		# Do not hand out the realm one province at a time.
+		modifier = {
+			factor = 0
+			scope:actor = {
+				any_subject = {
+					count >= 3
+					is_subject_type = ulus
+				}
+			}
+		}
+	}
+}

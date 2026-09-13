@@ -120,7 +120,7 @@ peasant_non_levying_cleanup_pulse = {
 # counters (maintained yearly by reassess_waqf_damage; paid monthly).
 waqf_estate_income_hook = {
 	trigger = {
-		government_type = government_type:persianate_sultanate
+		government_type ?= government_type:persianate_sultanate
 		has_variable = ayyan_income_levels
 	}
 	effect = {

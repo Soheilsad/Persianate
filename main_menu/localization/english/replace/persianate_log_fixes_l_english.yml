@@ -98,9 +98,13 @@
  qanat_maintenance: "Qanāt Maintenance"
  desert_clay_pit_maintenance: "Clay Pit Maintenance"
 
- # --- Ulus governorate subject type ---
- LEAD_ulus_governorate: "Ulus Overlord"
- AM_ulus_governorate: "Ulus Governorate"
+ # --- Ilkhanate governorate subject type ---
+ # NOTE: the internal key stays `ulus_governorate` (it is referenced across
+ # the custody chain), but nothing player-facing should read "Ulus" — that
+ # word now belongs to the princely share in subject_types/ulus.txt. A
+ # governorate that swore fealty to a steward is a contract, not a share.
+ LEAD_ulus_governorate: "Liege of the Governorates"
+ AM_ulus_governorate: "Ilkhanate Governorate"
 
  # --- Erānzamīn international organization ---
  eranzamin: "Erānzamīn"

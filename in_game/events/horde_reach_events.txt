@@ -32,3 +32,364 @@ horde_reach.1 = {
 		name = horde_reach.1.a
 	}
 }
+
+# ============================================================================
+# THE REACH OF THE KHAN — the constitutional choice, offered area by area.
+#
+# A khan has three ways to hold a corner of the ulus he cannot reach from
+# his own ordu, and they are not variations on one answer. They are three
+# different constitutions, and each fails in its own way:
+#
+#   DARUGHA  — an appointed amir. He holds your authority, he can never be
+#              khan because he has no blood, and so his only road to power
+#              is to control the man who does. Every seat thickens the
+#              military aristocracy inside your realm. Özbeg took this road
+#              deliberately when he purged the princes in 1313, which is why
+#              the Horde's first crisis was a REGENCY — Mamai from 1359,
+#              Edigü from 1397, Qazaghan in Transoxiana from 1347.
+#
+#   ULUS     — a share granted to a son of the line, as Chinggis divided his
+#              hundred and twenty-nine thousand and as Jochi set Orda over
+#              the left wing. He is Borjigin: he has legitimacy AND a base,
+#              so he never needs to control a khan. He can be one. That road
+#              ends in PARTITION — Kazan, Crimea, Astrakhan, Sibir, each
+#              under a khan of the blood.
+#
+#   GHULAM   — a viceroy with no kin, no tribe and no estate behind him,
+#              paid a salary rather than granted an assignment. Politically
+#              inert and ruinously expensive, which is the whole trade: the
+#              states that escaped this trap escaped it by being rich enough
+#              to pay wages. A horde living on plunder never can.
+#
+# Fires yearly, and only where the khan's writ has actually failed — most of
+# an area outside the capital's own, sitting dark. The choice is therefore
+# forced by the map rather than offered as a menu, which is how it was.
+#
+# STATUS: the ghulam option is provisional. It maintains the counter
+# `ghulam_viceroys`; the auto modifier that reads that counter and cancels
+# the seat's nobles-power gain is not yet written.
+# ============================================================================
+
+horde_reach.10 = {
+	type = country_event
+	title = horde_reach.10.title
+	desc = horde_reach.10.desc
+	outcome = neutral
+
+	illustration_tags = { 10 = exterior }
+
+	trigger = {
+		government_type = government_type:steppe_horde
+		OR = {
+			ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
+			has_reform ?= government_reform:chinggisid_regency
+		}
+		NOT = { has_variable = reach_choice_cooldown }
+		any_core_location = {
+			owner ?= root
+			NOT = { has_variable = reach_settled }
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+				location_rank = location_rank:megalopolis
+			}
+			NOT = { area = root.capital.area }
+			# A country the khan has already answered with a darugha is
+			# not up for re-answering: option B would hand away an
+			# appointment already paid for, and option A cannot post a
+			# second man where one already sits. Must match the limit in
+			# `immediate` below exactly, or the event fires with no seat.
+			area = {
+				NOT = {
+					any_location_in_area = {
+						has_building = building_type:horde_local_appointee
+					}
+				}
+				any_location_in_area = {
+					percent >= 0.6
+					owner ?= root
+					local_control < 25
+				}
+			}
+		}
+	}
+
+	immediate = {
+		# The best seat in the darkest country: a district centre worth
+		# posting a man to, not the emptiest square on the map.
+		ordered_core_location = {
+			limit = {
+				owner ?= root
+				NOT = { has_variable = reach_settled }
+				OR = {
+					location_rank = location_rank:town
+					location_rank = location_rank:city
+					location_rank = location_rank:megalopolis
+				}
+				NOT = { area = root.capital.area }
+				area = {
+					NOT = {
+						any_location_in_area = {
+							has_building = building_type:horde_local_appointee
+						}
+					}
+					any_location_in_area = {
+						percent >= 0.6
+						owner ?= root
+						local_control < 25
+					}
+				}
+			}
+			order_by = development
+			max = 1
+			check_range_bounds = no
+			save_scope_as = reach_seat
+		}
+
+		# The senior man of the line who is not already on the throne.
+		ordered_character = {
+			limit = {
+				is_alive = yes
+				is_ruler = no
+				is_adult = yes
+				is_female = no
+				is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+			}
+			order_by = heir_score_home
+			max = 1
+			check_range_bounds = no
+			save_scope_as = ulus_prince
+		}
+
+		set_variable = { name = reach_choice_cooldown years = 5 }
+	}
+
+	# --- POST A DARUGHA ---------------------------------------------------
+	# Cheap, revocable, and it creates no claimant. The bill arrives later
+	# and arrives as a man, not a number.
+	option = {
+		name = horde_reach.10.a
+
+		# The default road, and Özbeg's. An AI horde should reach for the
+		# appointee first and discover the amirs later.
+		ai_chance = {
+			factor = 10
+		}
+
+		scope:reach_seat = {
+			construct_building = {
+				building_type = building_type:horde_local_appointee
+				cost_multiplier = 0.5
+				cost_multiplier_reason = "game_concept_event"
+				instant = yes
+			}
+			set_variable = reach_settled
+		}
+
+		# The amirs are pleased: a post is a living.
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = 0.05
+		}
+	}
+
+	# --- GRANT THE ULUS ---------------------------------------------------
+	# The whole area leaves your hand and comes back as tümens, cohesion and
+	# a brother with an army.
+	option = {
+		name = horde_reach.10.b
+
+		trigger = {
+			exists = scope:ulus_prince
+		}
+
+		# A khan whose realm is coming apart reaches for the blood, because
+		# the blood is the one thing that still binds. That is the trap:
+		# it works, and it is what produces the next partition.
+		ai_chance = {
+			factor = 4
+			modifier = {
+				factor = 3
+				horde_unity < 50
+			}
+		}
+
+		# Two adjacent areas — the seat's own, and the darkest neighbour
+		# we hold. A single area is a district with a fancy title; an
+		# ulus is a country, and a prince given less than one will never
+		# be a credible claimant in the törü, which is the entire reason
+		# to grant one. Shared with the Grant a Share interaction so the
+		# two paths cannot drift apart.
+		hidden_effect = {
+			scope:reach_seat.area = {
+				save_scope_as = ulus_area_a
+
+				# There is no `random_neighbor_area` — only `any_` and
+				# `every_`. The NOT-exists guard makes this take the
+				# FIRST qualifying neighbour and then stop matching,
+				# since the scope is set the moment it is saved.
+				every_neighbor_area = {
+					limit = {
+						NOT = { exists = scope:ulus_area_b }
+						NOT = { this = root.capital.area }
+						any_location_in_area = {
+							percent >= 0.5
+							owner ?= root
+						}
+						# Never hand away a country the khan has already
+						# answered the other way — a darugha sitting
+						# there is an appointment already paid for.
+						NOT = {
+							any_location_in_area = {
+								has_building = building_type:horde_local_appointee
+							}
+						}
+					}
+					save_scope_as = ulus_area_b
+				}
+			}
+
+			if = {
+				limit = { exists = scope:ulus_area_b }
+				grant_ulus_effect = {
+					prince = scope:ulus_prince
+					area_a = scope:ulus_area_a
+					area_b = scope:ulus_area_b
+				}
+			}
+			# No qualifying neighbour: grant the seat's area twice, which
+			# the effect handles harmlessly (the second sweep finds
+			# nothing left to move).
+			else = {
+				grant_ulus_effect = {
+					prince = scope:ulus_prince
+					area_a = scope:ulus_area_a
+					area_b = scope:ulus_area_a
+				}
+			}
+		}
+
+		# The line is seen to provide for its own. The quriltai approves.
+		add_horde_unity = 5
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = 0.03
+		}
+	}
+
+	# --- APPOINT A GHULAM VICEROY -----------------------------------------
+	# A man with no kin to raise and no tribe to raise them. Paid, not
+	# enfeoffed — which is exactly why he costs so much.
+	option = {
+		name = horde_reach.10.c
+
+		trigger = {
+			gold > 100
+		}
+
+		# Only the rich escape the trap, and only while they stay rich.
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 5
+				gold > 500
+			}
+		}
+
+		change_gold_effect = { scale = -3 }
+
+		scope:reach_seat = {
+			construct_building = {
+				building_type = building_type:horde_local_appointee
+				cost_multiplier = 0
+				cost_multiplier_reason = "game_concept_event"
+				instant = yes
+			}
+			set_variable = reach_settled
+		}
+
+		# TODO: the auto modifier keyed to this counter is what actually
+		# cancels the seat's +0.05 global_nobles_estate_power. Until it is
+		# written, the counter is bookkeeping and the option is a wash.
+		change_variable = {
+			name = ghulam_viceroys
+			add = 1
+		}
+
+		# The amirs watch a slave given a district that should have been
+		# a man's reward.
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = -0.05
+		}
+	}
+
+	# --- LEAVE IT DARK ----------------------------------------------------
+	# (see horde_reach.20 below for what the darugha option produces)
+	# Not a null option: a khan at war has neither the silver nor the
+	# attention, and the country stays dark for another five years.
+	option = {
+		name = horde_reach.10.d
+
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 4
+				at_war = yes
+			}
+		}
+	}
+}
+
+
+# ============================================================================
+# horde_reach.20 — A DARUGHA IS APPOINTED
+#
+# Fired from horde_local_appointee's `on_built`. Creates the man and tells
+# the khan who he is.
+#
+# This is deliberately not a silent spawn. The darugha road's whole cost is
+# that it manufactures capable men who can never be khan and therefore have
+# only one road to power — and the player should watch that happening one
+# appointment at a time, with the bill named at the moment it is incurred,
+# rather than discovering it forty years later at a graveside.
+#
+# scope:darugha_seat  the town he is posted to (saved in on_built)
+# scope:new_darugha   the man himself
+# ============================================================================
+
+horde_reach.20 = {
+	type = country_event
+	title = horde_reach.20.title
+	desc = horde_reach.20.desc
+	outcome = neutral
+
+	illustration_tags = { 10 = interior }
+
+	immediate = {
+		# Appointed, not born — and it shows in the numbers. A prince
+		# inherits whatever he inherits; a darugha is chosen because he
+		# is good at this. That asymmetry is why the begs eventually won.
+		create_character = {
+			culture = root.ruler.culture
+			religion = root.ruler.religion
+			estate = estate_type:nobles_estate
+			adm = { 40 70 }
+			dip = { 40 70 }
+			mil = { 60 90 }
+			age = 40
+			female = no
+			save_scope_as = new_darugha
+		}
+
+		# What the törü reads to give him his standing in the succession
+		# (common/heir_selections/horde_toru.txt).
+		scope:new_darugha = {
+			set_variable = darugha_of_the_khan
+		}
+	}
+
+	option = {
+		name = horde_reach.20.a
+	}
+}

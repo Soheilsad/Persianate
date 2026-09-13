@@ -135,7 +135,88 @@ horde_local_appointee = {
 		}
 	}
 
-	construction_demand = local_governor_construction
+	construction_demand = horde_appointee_construction
+
+	# =================================================================
+	# THE SEAT PRODUCES A MAN.
+	#
+	# A darugha is not an office on an organisation chart. He is a
+	# specific person with a guard, a following and a name people know:
+	# Qutlugh-Temür at Urgench, married to a Chinggisid princess and
+	# outranking every merchant on the Amu Darya; Tuluktumur at Solkhat.
+	# Ibn Battuta dined with both. So posting a seat should put an actual
+	# beg into the realm's character list, and it is HE who accumulates
+	# standing — not an abstraction.
+	#
+	# HIGH STATS ON PURPOSE. A darugha is appointed; a prince is born.
+	# That asymmetry is the entire reason the begs eventually won: Mamai
+	# and Edigü were formidable soldiers holding office on merit, while
+	# the late Batuids inherited theirs. In the törü a beg carries no
+	# blood bonus at all and must beat a prince on capability alone —
+	# which a good one can, and a bad one cannot. That is the contest
+	# the darugha road is supposed to create.
+	#
+	# `darugha_of_the_khan` is what the succession law reads to give him
+	# his standing (common/heir_selections/horde_toru.txt).
+	#
+	# NOTE: the man OUTLIVES the post. `remove_if` destroys these
+	# buildings when the Borjigin line fails, but the begs it created
+	# remain — armed, experienced, and now holding nothing of anyone.
+	# That is Mamai in 1359 exactly, and it is deliberate.
+	# =================================================================
+	# The man is created by horde_reach.20 ("A Darugha Is Appointed"),
+	# which is a visible event rather than a silent spawn — the khan
+	# should be told who he has just put in that town, and told in the
+	# same breath what such a man eventually becomes.
+	on_built = {
+		location = { save_scope_as = darugha_seat }
+		owner = {
+			if = {
+				limit = {
+					government_type = government_type:steppe_horde
+					exists = ruler
+				}
+				trigger_event_non_silently = horde_reach.20
+			}
+		}
+	}
+
+	# THE PRICE OF THE DARUGHA ROAD.
+	#
+	# A khan has two ways to hold a distant corner, and they fail
+	# differently. Grant it to a son as an ulus and you have created a
+	# Borjigin with a base, who can one day be khan himself — that road
+	# ends in fragmentation. Post a darugha and you have created an amir
+	# holding your authority who can NEVER be khan, because he has no
+	# blood. His only route to power is to control the man who does.
+	#
+	# So every seat quietly thickens the military aristocracy inside
+	# your own realm, and a khan who governs entirely through appointees
+	# eventually finds that his appointees govern him. That is not a
+	# design conceit: it is the office Mamai held after 1359, and Edigü
+	# after 1397, and Qazaghan in Transoxiana from 1347 — beglerbegs
+	# with real armies and no descent, making and unmaking khans for
+	# twenty years at a stretch. Özbeg took this road deliberately when
+	# he purged the princes in 1313, and it is why the Horde's FIRST
+	# crisis was a regency and not a partition.
+	#
+	# ARITHMETIC: 0.05 a seat, stacking per instance. The auto modifier
+	# grants hordes `num_local_governors = 8`, and the allow-block adds
+	# a floor of 4, so a fully built-out network of ~12 seats carries
+	# roughly +0.60 nobles power — major, and meant to be. Compare the
+	# mod's own laws at 0.10-0.50 and the turk_vs_tazik slider at 0.50.
+	# This is the dial if the amirs end up too strong or too tame.
+	#
+	# BOOT CHECK: raw_modifier is the block that takes country-scope
+	# fields and stacks per building instance; base only ever puts
+	# global estate power in `capital_country_modifier`, which is
+	# useless here because a darugha is never in the capital
+	# (location_potential forbids it). If the nobles-power line does not
+	# appear in the country tooltip, the fallback is a tiered auto
+	# modifier keyed to total_building_levels:horde_local_appointee.
+	raw_modifier = {
+		global_nobles_estate_power = 0.30
+	}
 
 	modifier = {
 		local_proximity_source = 60

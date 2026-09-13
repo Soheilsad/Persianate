@@ -1,0 +1,50 @@
+# =====================================================================
+# CANCELLING THE FLAT SUCCESSION PENALTY.
+#
+# Base game's `steppe_horde` government type carries
+# `horde_unity_hit_at_ruler_death = -50`, applied from
+# in_game/common/on_action/_hardcoded.txt (~line 3538):
+#
+#     if = {
+#         limit = {
+#             government_type = government_type:steppe_horde
+#             modifier:horde_unity_hit_at_ruler_death < 0
+#         }
+#         add_horde_unity = root.modifier:horde_unity_hit_at_ruler_death
+#     }
+#
+# The arithmetic makes it a certainty rather than a risk. Recovery runs
+# at `monthly_horde_unity` 0.1 in nearly every source that grants it --
+# about 1.2 a year -- so a -50 costs roughly FORTY YEARS of accumulation,
+# and khans do not reign forty years. Ozbeg's twenty-eight was the
+# longest of the whole Jochid period. Unity therefore never recovers
+# between successions; it is a one-way ratchet. And the old civil war
+# disaster triggered at unity <= 40, or <= 60 with an heir, which a -50
+# drops you into from almost any starting value. The civil war was not
+# a risk the player failed to manage. It was scheduled.
+#
+# HOW THIS TURNS IT OFF. On_actions merge rather than override, so the
+# _hardcoded block cannot be deleted from a mod. It does not need to be:
+# it guards itself with `modifier:horde_unity_hit_at_ruler_death < 0`.
+# Modifiers sum, so granting +50 here brings the net to exactly zero,
+# the guard fails, and the whole block is skipped.
+#
+# This is base game's own technique, not a trick -- the horde_civil_war
+# disaster's modifier block carries `horde_unity_hit_at_ruler_death = 50`
+# for precisely this purpose, to stop the penalty compounding while the
+# disaster is already running.
+#
+# What replaces it: horde_succession.1 polls the actual state of the
+# line at each accession and applies a unity consequence scaled to what
+# it finds -- nothing for a clean succession, a real cost for a
+# contested one, and the catastrophe reserved for the case where the
+# blood has failed. See in_game/events/horde_succession.txt.
+# =====================================================================
+
+horde_succession_no_flat_penalty = {
+	potential_trigger = {
+		government_type = government_type:steppe_horde
+	}
+
+	horde_unity_hit_at_ruler_death = 50
+}

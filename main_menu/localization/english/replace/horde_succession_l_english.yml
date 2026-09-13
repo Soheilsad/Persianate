@@ -1,0 +1,24 @@
+﻿l_english:
+
+ # --- The re-gated civil war disaster ---
+ horde_civil_war_blood_has_failed_tt: "No living man of the line remains, and no regent stands in a khan's name"
+
+ # --- (a) A clean accession ---
+ horde_succession.10.title: "The Quriltai Is of One Mind"
+ horde_succession.10.desc: "It went the way these things are supposed to go and almost never do.\n\nThe princes came in, and the begs came in, and the shamans and the qadis and the men who keep the herds counted, and by the time the kumis had gone round there was nothing left to argue about. He was lifted on the felt and the names were spoken in the proper order, and every man who might have wanted it for himself was standing close enough to be seen agreeing.\n\nThere will be a season of watching one another. There always is. But nobody has ridden out in the night, and the tümens know whose name to answer to."
+ horde_succession.10.a: "Let the coin be struck in his name."
+
+ # --- (b) A contested field ---
+ horde_succession.20.title: "Too Many Sons of the Line"
+ horde_succession.20.desc: "He is on the felt. That is not the same as being khan.\n\nThere are others of the blood with as good a claim and better men behind them, and they did not come to the quriltai to agree — they came to see how it would sit, and to count who stood where while it was sitting. Some of them hold pastures of their own and can put tümens in the field without asking anyone. One or two did not come at all, which everybody noticed and nobody said.\n\nThe old rule holds: the khanate goes to whoever the line will follow, and the line has not decided. It will decide with horses.\n\n[TODO: the purge-or-appanage choice belongs here. Ozbeg struck first in 1313 and got twenty-eight quiet years; Tinibeg did not and got one.]"
+ horde_succession.20.a: "Then it will be settled the way it is always settled."
+
+ # --- (c) The begs make their play ---
+ horde_succession.30.title: "The Amirs Have Been Counting"
+ horde_succession.30.desc: "The men who hold the districts for us have worked out that they hold the districts.\n\nNot one of them can sit on the felt — there is no drop of the line in any of them, and every tümen in the ulus knows it. That has never been the point. A beg does not need to be khan. He needs to hold the man who is: to have the registers, the garrisons and the tax roads in his hand, and a khan of the right blood standing where the khutbah can reach him.\n\nThey are not asking for the khanate. They are asking who will speak for it, and they have brought enough men to the asking that the question is close to answered.\n\n[TODO: the regency contest belongs here — the beglerbeg's terms, and what it costs to refuse them.]"
+ horde_succession.30.a: "Then let us learn what the price of their loyalty has become."
+
+ # --- (d) The blood has failed ---
+ horde_succession.40.title: "There Is No One Left to Raise"
+ horde_succession.40.desc: "We have looked, and there is nobody.\n\nNot a son, not a brother, not a cousin far enough out to be safe and near enough to be believed. The purges took some, the plagues took others, and the rest were spent on each other over ground that is now held by men who cannot inherit it. The felt is on the ground and there is no one to lift.\n\nEvery bond in this realm runs through the line. The prince holds his pastures because the khan is the senior of his house; the beg holds his district because the khan appointed him; the tribute comes up the Volga because somewhere at the top of it there is a name worth fearing. Cut the name out and none of it is attached to anything.\n\nThere will be khans. There will be a great many khans, and most of them will be somebody's creature, and they will not last."
+ horde_succession.40.a: "Then every man will take what he can hold."

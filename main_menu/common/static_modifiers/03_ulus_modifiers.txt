@@ -1,0 +1,61 @@
+# =====================================================================
+# RECENTLY GRANTED ULUS — the handover, expressed as control.
+#
+# A freshly carved ulus inherits the khanate's own control problem in
+# miniature, and worse: a capital it has held for one day, pastures
+# measured from a seat nobody in them has ever obeyed, and no
+# accumulated administration of any kind. Left to the ordinary control
+# model it collapses to near-zero extraction, cannot pay its own
+# establishment, and goes bankrupt inside a decade — at which point the
+# whole ulus mechanic has produced a derelict rather than a rival, and
+# the constitutional choice the player made means nothing.
+#
+# The history says it should not start from nothing. A share was never
+# a patch of empty ground; it came WITH its people. Chinggis handed his
+# sons tümens — four thousand households apiece to Jochi, Chaghatay and
+# Ögedei — and those households arrived already organised, already
+# mustered under their own thousand-commanders, and already knowing
+# whose son the new man was. Orda did not have to conquer the left
+# wing. He was given it, complete, and it obeyed him from the first day
+# because the giving was itself the legitimation.
+#
+# So this is not a crutch. It is the thing the engine has no other way
+# to say: that authority was TRANSFERRED along with the land, rather
+# than having to be built up from zero the way a conqueror's must be.
+#
+# Twenty years, which is about a reign — and it lapses on roughly the
+# same horizon as the khan who granted it. By the time the ulus stands
+# on its own control, the man it was sworn to is likely dead, and it is
+# holding its pastures on its own account. That is the moment it stops
+# being a gift and starts being a question.
+#
+# ---------------------------------------------------------------------
+# DECAYING, AND IT MATTERS.
+#
+# Without `decaying = yes` a timed modifier holds at FULL strength for
+# its whole duration and then vanishes in a single tick. That would give
+# the ulus twenty years to build an establishment sized to +0.3 max
+# control and then take all of it away on one day — which is precisely
+# the bankruptcy this modifier exists to prevent, merely deferred, and
+# made worse by arriving without warning.
+#
+# Decaying instead makes the two curves cross properly. The borrowed
+# authority falls away a little each year while the ulus's own control
+# accumulates underneath it, so at no point is there a cliff.
+#
+# It is also the better history. The tümens obeyed Orda on the first day
+# because Jochi had said so; forty years later they obeyed his grandson
+# because he was their khan and had been all their lives. Borrowed
+# legitimacy converts into owned legitimacy gradually — or it fails to,
+# and the ulus withers, which should also be a possible outcome.
+# =====================================================================
+
+recently_granted_ulus = {
+	game_data = {
+		category = country
+		decaying = yes
+	}
+
+	global_max_control = 0.3
+	global_monthly_control = 0.005
+}
