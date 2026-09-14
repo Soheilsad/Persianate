@@ -235,3 +235,27 @@ REPLACE:legacy_of_osman = {
 	}
 	years = 2
 }
+
+
+
+
+REPLACE:ottoman_imperial_harem = {
+	unique = yes
+	potential = {
+		has_or_had_tag = TUR
+		OR = {
+			government_type = government_type:monarchy
+			government_type = government_type:persianate_sultanate
+		}
+		
+		has_variable = ottoman_imperial_harem
+	}
+	country_modifier = {
+		clergy_estate_target_satisfaction = medium_permanent_target_satisfaction
+		cultural_tradition = 0.1
+		monthly_prestige = 0.05
+		global_slaves_max_literacy = 5
+		government_reform_slots = 1
+	}
+	years = 2
+}
