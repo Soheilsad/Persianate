@@ -1,0 +1,150 @@
+# =====================================================================
+# TENETS OF A LIVING IMAMATE — IO laws, the christian_tenets pattern.
+#
+# Doctrine is communal, so it lives on the imamate and binds every
+# member. Three questions the Zaydi tradition actually argued:
+#
+#   nass_tenet                 how an imam is made
+#     nass_explicit            designated by his predecessor — the Ja'fari
+#                              claim the Zaydis mostly rejected; adopting
+#                              it pulls the imamate toward a dynasty
+#     nass_implicit            the qualified sayyid recognised by the
+#                              scholars (the Hadawi norm; 1337 default)
+#     khuruj_only              whoever rises and holds — the Jarudi edge
+#   imamate_succession_tenet   who may be imam
+#     imamate_open_to_sayyids  any qualified Hasanid/Husaynid (default)
+#     dynastic_imamate         the imam's own house — the Qasimid drift
+#                              the reformist jurists called a betrayal
+#   companions_tenet           the first caliphs
+#     tafdil_without_sabb      'Ali was the most excellent; the others'
+#                              imamate valid but inferior (imamat
+#                              al-mafdul — Hadawi mainstream, default)
+#     sabb_of_companions       public cursing — Jarudi zeal; Sunni
+#                              relations wrecked
+#     full_acceptance          the companions' imamate accepted without
+#                              reservation — the Batri / Sunnizing road
+#
+# Prices: default / heavy / schism tiers in prices/06_imamate_prices.txt
+# (religious influence + devotion). Modifiers deliberately light; the mechanics that will read these
+# policies (dynastic succession, the Mahdist branch, proclaim_imamate)
+# come in the next pass. Country modifiers use the leader / non-leader
+# potential_trigger split base uses.
+# =====================================================================
+
+nass_tenet = {
+	type = international_organization
+	law_category = religious
+	requires_vote = no
+	potential = {
+		international_organization_type = international_organization_type:imamate_living
+	}
+	allow = {
+		leader_country ?= { can_pay_price = price:zaydi_tenet_price }
+	}
+
+	nass_explicit = {
+		years = 1
+		price = zaydi_tenet_price_heavy
+		country_modifier = {
+			potential_trigger = {
+				is_leader_of_international_organization_of_type = { type = imamate_living }
+			}
+			monthly_legitimacy = 0.05
+			clergy_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+		}
+	}
+	nass_implicit = {
+		years = 1
+		price = zaydi_tenet_price
+		country_modifier = {
+			potential_trigger = {
+				is_leader_of_international_organization_of_type = { type = imamate_living }
+			}
+			clergy_estate_target_satisfaction = small_permanent_target_satisfaction
+		}
+		country_modifier = {
+			potential_trigger = {
+				NOT = { is_leader_of_international_organization_of_type = { type = imamate_living } }
+			}
+			tolerance_own = 0.5
+		}
+	}
+	khuruj_only = {
+		years = 1
+		price = zaydi_tenet_price_heavy
+		country_modifier = {
+			land_morale_modifier = 0.05
+			global_tribes_estate_power = 0.25
+		}
+	}
+}
+
+imamate_succession_tenet = {
+	type = international_organization
+	law_category = religious
+	requires_vote = no
+	potential = {
+		international_organization_type = international_organization_type:imamate_living
+	}
+	allow = {
+		leader_country ?= { can_pay_price = price:zaydi_tenet_price }
+	}
+
+	imamate_open_to_sayyids = {
+		years = 1
+		price = zaydi_tenet_price
+		country_modifier = {
+			potential_trigger = {
+				is_leader_of_international_organization_of_type = { type = imamate_living }
+			}
+			clergy_estate_target_satisfaction = small_permanent_target_satisfaction
+		}
+	}
+	dynastic_imamate = {
+		years = 1
+		price = zaydi_tenet_price_schism
+		country_modifier = {
+			potential_trigger = {
+				is_leader_of_international_organization_of_type = { type = imamate_living }
+			}
+			monthly_legitimacy = 0.10
+			clergy_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+		}
+	}
+}
+
+companions_tenet = {
+	type = international_organization
+	law_category = religious
+	requires_vote = no
+	potential = {
+		international_organization_type = international_organization_type:imamate_living
+	}
+	allow = {
+		leader_country ?= { can_pay_price = price:zaydi_tenet_price }
+	}
+
+	tafdil_without_sabb = {
+		years = 1
+		price = zaydi_tenet_price
+		country_modifier = {
+			tolerance_heretic = 1
+		}
+	}
+	sabb_of_companions = {
+		years = 1
+		price = zaydi_tenet_price_heavy
+		country_modifier = {
+			global_pop_conversion_speed_modifier = 0.10
+			tolerance_heretic = -2
+		}
+	}
+	full_acceptance = {
+		years = 1
+		price = zaydi_tenet_price_schism
+		country_modifier = {
+			tolerance_heretic = 2
+			monthly_towards_jurisprudence = societal_value_monthly_move
+		}
+	}
+}

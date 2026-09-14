@@ -804,6 +804,8 @@ diplomacy_manager = {
     dependency = { first = ORM second = JRW subject_type = vassal }
     
     scripted_mutual = { first = QHT second = DWS type = alliance }
+    # Yemen (115_yemen_overrides.txt): the Yam of Najran hold their country by the imam's bay'a
+    dependency = { first = ZYD second = YAM subject_type = vassal }
 
     #------------Maya-------------
     #Represents the League of Mayapan for the time being

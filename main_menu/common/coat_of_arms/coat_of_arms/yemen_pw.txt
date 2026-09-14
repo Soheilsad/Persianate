@@ -1,0 +1,14 @@
+# Coats of arms for the Yemen tags (115_yemen_overrides.txt).
+
+ZYD = { # Zaydi Imamate — the green of the sayyids, the sword of the rising
+	pattern = "pattern_solid.dds"
+	color1 = "green"
+	color2 = "white"
+
+	colored_emblem = {
+		texture = "ce_sword_arabic.dds"
+		color1 = color2
+		color2 = color2
+		instance = { position = { 0.5 0.5 } scale = { 0.9 0.9 } }
+	}
+}

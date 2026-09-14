@@ -1,0 +1,20 @@
+# =====================================================================
+# YEMEN — country definitions (docs/design/yemen_setup_plan.md §8).
+#
+# ZYD is mod-NEW (plain form, no REPLACE:). A tag without a
+# setup/countries entry does not exist. YEM and YAM are base tags; their
+# start blocks are redefined in main_menu/setup/start/115_yemen_overrides.txt.
+#
+# The imamate is NOT "Qasimid" — that house is al-Qasim b. Muhammad's
+# line from 1597. In 1337 the office passes among Rassid houses; the tag
+# is the Zaydi Imamate and the ruling house is whichever imam's family
+# holds it.
+# =====================================================================
+
+ZYD = { #Zaydi Imamate — Sa'da, the seat of al-Hadi since 897
+	color = rgb { 24 96 64 }
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = yemeni_culture
+	religion_definition = shia
+}

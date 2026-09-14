@@ -55,4 +55,8 @@
  country_rank_sarbadars_ruler_male: "Khwāja"
  country_rank_sarbadars_ruler_female: " "
  country_rank_sarbadars_ADJ: "Commonwealth"
+ rank_zaydi_theocracy: "Imamate"
+ rank_zaydi_theocracy_ruler_male: "Imām"
+ rank_zaydi_theocracy_ruler_female: "Imāma"
+ rank_zaydi_theocracy_ADJ: "Imami"
 

@@ -1,0 +1,276 @@
+# =====================================================================
+# THE LIVING IMAMATE — a Zaydi (or, later, Mahdist) imamate as an
+# organization. docs/design/shia_imamates_plan.md §3.2.
+#
+# Modelled on base autocephalous_patriarchate (seat, religion variable,
+# tenets as IO laws, one-organization-per-state) with the leader read
+# off the sikhism/papacy pattern: leader_type = character, and the
+# character is the leader country's RULER, because a Zaydi imam is a
+# sovereign, not a cleric beside one.
+#
+# Membership is bay'a, and bay'a was two obligations:
+#   - answer the imam's call to arms  (join_*_wars triggers below)
+#   - pay him zakat                    (payments_implemented: zaydi_zakat)
+# A member that stops paying has, by that act, withdrawn its bay'a; the
+# maintenance slider on the payment is that withdrawal, priced.
+#
+# Not unique: Yemen in 1337 has rival imams, the Caspian its own line.
+# Bridge to the older aspect content: joining grants imamate_zaydi,
+# leaving (into no other imamate) removes it, so Two Pirs / tariqa
+# gates keep working untouched.
+# =====================================================================
+
+imamate_living = {
+	has_target = no
+	unique = no
+	custom_name = imamate_living_name
+	alert_view_tab = overview
+	expel_members_who_target_the_leader = yes
+	expel_members_who_are_targets_of_other_members = no
+	disband_if_no_leader = no
+
+	has_leader_country = yes
+	leader_title_key = "ZAYDI_IMAM"
+	override_ruler_title = yes
+	leader_type = character
+	leader = {
+		leader_country ?= {
+			ruler ?= {
+				add_to_list = leaders
+			}
+		}
+	}
+	leader_change_trigger_type = none
+	leader_change_method = none
+
+	can_declare_war = {
+		always = yes
+	}
+	gives_military_access_to_all_when_at_war = yes
+
+	# --- bay'a: the sworn answer the imam's call, and he theirs ----------
+	join_offensive_wars_can_call = {
+		scope:actor = { is_leader_of_international_organization = root }
+	}
+	join_offensive_wars_auto_call = {
+		scope:actor = { is_leader_of_international_organization = root }
+	}
+	join_defensive_wars_can_call = {
+		always = yes
+	}
+	join_defensive_wars_auto_call = {
+		always = yes
+	}
+
+	create_visible_trigger = {
+		always = no      # proclaim_imamate (khuruj) creates these — later pass
+	}
+	invite_visible_trigger = {
+		always = yes
+	}
+
+	on_creation = {
+		if = {
+			limit = { exists = scope:actor }
+			set_leader_country = scope:actor
+			if = {
+				limit = { NOR = { has_variable = seat exists = var:seat } }
+				set_variable = { name = seat value = scope:actor.capital }
+			}
+		}
+	}
+
+	modifier = {
+		tolerance_own = 1
+		monthly_religious_influence = 0.02
+	}
+
+	leader_modifier = {
+		monthly_devotion = 0.10
+		monthly_prestige = 0.05
+		monthly_religious_influence = 0.05
+	}
+
+	can_lead_trigger = {
+		religion = religion:shia
+	}
+
+	can_join_trigger = {
+		is_rebel_country = no
+		religion = religion:shia
+		trigger_if = {
+			limit = {
+				has_variable = left_imamate
+				exists = var:left_imamate
+			}
+			custom_tooltip = {
+				text = recently_left_imamate_tt
+				var:left_imamate != scope:recipient
+			}
+		}
+		custom_tooltip = {
+			text = not_already_imam_tt
+			NOT = {
+				any_international_organizations_member_of = {
+					international_organization_type = international_organization_type:imamate_living
+					leader_country ?= root
+				}
+			}
+		}
+	}
+
+	# Breaking bay'a is legal and costly (on_left); not mid-war.
+	can_leave_trigger = {
+		at_war = no
+	}
+
+	auto_leave_trigger = {
+		NOT = { religion = religion:shia }
+	}
+
+	auto_disband_trigger = {
+		always = no
+	}
+
+	on_joined = {
+		# one imamate per state
+		every_international_organizations_member_of = {
+			limit = {
+				international_organization_type = international_organization_type:imamate_living
+				NOT = { this = scope:recipient }
+			}
+			remove_country_from_international_organization = {
+				country = root
+				reason = DecidedToLeave
+			}
+		}
+		if = {
+			limit = {
+				scope:recipient = {
+					OR = {
+						NOT = { has_variable = religion }
+						NOT = { exists = var:religion }
+					}
+				}
+			}
+			scope:recipient = {
+				set_variable = { name = religion value = root.religion }
+			}
+		}
+		scope:recipient = {
+			var:religion = {
+				add_international_organization = scope:recipient
+			}
+		}
+		if = {
+			limit = {
+				scope:recipient = {
+					OR = {
+						NOT = { has_variable = seat }
+						NOT = { exists = var:seat }
+					}
+				}
+			}
+			scope:recipient = {
+				set_variable = { name = seat value = root.capital }
+			}
+		}
+		# aspect bridge
+		if = {
+			limit = { has_religious_aspect = religious_aspect:imamate_ithna_ashari }
+			remove_religious_aspect = religious_aspect:imamate_ithna_ashari
+		}
+		if = {
+			limit = { has_religious_aspect = religious_aspect:imamate_ismaili }
+			remove_religious_aspect = religious_aspect:imamate_ismaili
+		}
+		if = {
+			limit = { NOT = { has_religious_aspect = religious_aspect:imamate_zaydi } }
+			add_religious_aspect = religious_aspect:imamate_zaydi
+		}
+	}
+
+	on_left = {
+		set_variable = {
+			name = left_imamate
+			value = scope:recipient
+			years = 5
+		}
+		if = {
+			limit = {
+				country_exists = root
+				NOT = { is_member_of_international_organization_of_type = { type = imamate_living } }
+			}
+			# bay'a withdrawn
+			add_prestige = -10
+			if = {
+				limit = { has_religious_aspect = religious_aspect:imamate_zaydi }
+				remove_religious_aspect = religious_aspect:imamate_zaydi
+			}
+		}
+	}
+
+	variables = {
+		religion = {
+			format = "RELIGION_FORMAT"
+			start = religion:shia
+		}
+		seat = {
+			format = "AUTOCEPHALOUS_PATRIARCHY_SEAT_FORMAT"
+			monthly_change_hidden = yes
+		}
+	}
+
+	payments_implemented = {
+		zaydi_zakat
+	}
+
+	ai_desire_to_join = {
+		add = {
+			desc = "game_concept_opinion"
+			value = {
+				value = "root.opinion(scope:actor)"
+				divide = 4
+			}
+		}
+		if = {
+			limit = { country_rank_level > 1 }
+			subtract = {
+				desc = "game_concept_country_rank"
+				value = {
+					value = country_rank_level
+					multiply = 20
+				}
+			}
+		}
+		if = {
+			limit = {
+				exists = scope:actor
+				is_subject_of = scope:actor
+			}
+			add = {
+				desc = "IS_SUBJECT_OF_THE_IMAM"
+				value = 50
+			}
+		}
+		if = {
+			limit = {
+				any_international_organizations_member_of = {
+					international_organization_type = international_organization_type:imamate_living
+					leader_country ?= root
+				}
+			}
+			subtract = {
+				desc = "IS_LEADER_OF_AN_IMAMATE"
+				value = 1000
+			}
+		}
+	}
+
+	ai_desire_to_allow_new_member = {
+		add = {
+			desc = "WE_WANT_THE_ORGANIZATION_TO_GROW"
+			value = 20
+		}
+	}
+}

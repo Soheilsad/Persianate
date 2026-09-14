@@ -281,7 +281,7 @@ local_diwan = {
 	}
 
 	allow = {
-		local_control > 0.5
+		local_control > 0.1
 		custom_tooltip = {
 			text = local_diwan_one_per_province_tt
 			location.province = {
@@ -320,7 +320,7 @@ local_diwan = {
 		# writ runs outward from it, exactly as a governor's seat
 		# projects the crown's. ~40% of a local_governor's reach (80),
 		# matching the dīwān's role as auxiliary, not principal, node.
-		local_proximity_source = 33
+		local_proximity_source = 30
 
 		# The chancery culture lifts both layers it touches: the noble
 		# secretariat that fills the office, and the burgher scribal

@@ -1696,4 +1696,26 @@ international_organization_manager = {
 		}
 		icon = smartism
 	}
+
+	#################################################################
+	# 				The Zaydi Imamate (Yemen)						#
+	#################################################################
+	# docs/design/shia_imamates_plan.md — a living imamate: the leader
+	# country's ruler IS the Imam; members are sworn by bay'a (call to
+	# arms + zakat). Tenets seeded to the Hadawi mainstream of 1337.
+	add_international_organization = {
+		type = imamate_living
+		creation_date = 1328.1.1
+		members = { ZYD YAM }
+		leader = ZYD
+		variables = {
+			religion = religion:shia
+			seat = location:sadah
+		}
+		laws = {
+			nass_implicit
+			imamate_open_to_sayyids
+			tafdil_without_sabb
+		}
+	}
 }

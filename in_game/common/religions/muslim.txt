@@ -61,6 +61,10 @@ ibadi = {
 
 shia = {
 	color = color_shia
+	# Religious influence enabled (shia_imamates_plan.md decision 2): the
+	# imamate tenets and actions are priced in it, and the mod's existing
+	# monthly_religious_influence grants on Muslim content stop being no-ops.
+	has_religious_influence = yes
 	group = muslim
 	language = classical_arabic_dialect
 
@@ -100,6 +104,8 @@ shia = {
 	religious_school = isawiyya_school
 
 	definition_modifier = {
+		maximum_religious_influence = 400
+		monthly_religious_influence = 0.05
 		land_morale_modifier = 0.05
 
 		allow_mysticism_vs_jurisprudence = yes
@@ -130,6 +136,10 @@ shia = {
 
 sunni = { 
 	color = religion_sunni
+	# Religious influence enabled (shia_imamates_plan.md decision 2): the
+	# imamate tenets and actions are priced in it, and the mod's existing
+	# monthly_religious_influence grants on Muslim content stop being no-ops.
+	has_religious_influence = yes
 	group = muslim
 	language = classical_arabic_dialect
 	
@@ -162,6 +172,8 @@ sunni = {
 	religious_school = nimatullahi_school
 	
 	definition_modifier = {
+		maximum_religious_influence = 400
+		monthly_religious_influence = 0.05
 
 		selling_efficiency = tiny_trade_efficiency_bonus		
 

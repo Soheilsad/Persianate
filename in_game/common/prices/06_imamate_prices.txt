@@ -1,0 +1,45 @@
+# Prices for the imamate organizations (docs/design/shia_imamates_plan.md).
+#
+# Tenets cost RELIGIOUS INFLUENCE (enabled for Muslims in religions/muslim.txt)
+# and DEVOTION (government_power on a theocracy). Calibration anchors: base
+# christian tenet 50 influence, creating a patriarchate 80, Third Rome 100,
+# cap 400. Devotion (government_power) is priced far above the mod's usual
+# 20-25 ceiling on purpose: a doctrinal turn is not an action, it is the
+# community's constitution, and a dynastic imamate should cost a reign's
+# worth of devotion (user, 2026-09-14: default 15, heavy 30, dynastic 75).
+#
+#   default   the Hadawi mainstream — recognition of the qualified,
+#             open imamate, preference without cursing
+#   heavy     doctrinal turns the community will feel — explicit nass,
+#             the sword alone, cursing the companions
+#   schism    the ones the jurists called betrayal — a dynastic imamate,
+#             full acceptance of the companions (the Sunnizing road)
+
+zaydi_zakat_price = {
+	gold = 1
+}
+
+zaydi_tenet_price = {
+	religious_influence = 40
+	government_power = 15
+}
+
+zaydi_tenet_price_heavy = {
+	religious_influence = 80
+	government_power = 30
+}
+
+zaydi_tenet_price_schism = {
+	religious_influence = 120
+	government_power = 75
+	prestige = 20
+}
+
+# Stage two of the chancery road (generic_actions/zaydi_chancery_actions.txt).
+# Devotion at the scale of the dynastic tenet itself: turning the office
+# hereditary is the last thing a theocracy spends its devotion on.
+proclaim_imams_house = {
+	government_power = 50
+	prestige = 20
+	stability = 5
+}

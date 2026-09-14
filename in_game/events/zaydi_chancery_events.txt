@@ -1,0 +1,56 @@
+namespace = zaydi_chancery
+
+# =====================================================================
+# THE DIWAN OF THE LOWLANDS — the imam holds a chancery city.
+#
+# The imamate had no institutions for ruling a Shafi'i tax base with
+# registers and governors; when it took the lowlands it kept the
+# lowland apparatus whole. That is the offer here. Taking it up is the
+# Sharaf al-Din road: the imam stays elected, stays a theocracy, but now
+# employs the scribes — and the sayyid houses and the tribal north start
+# to object. Dispersing them is purity and plunder.
+# =====================================================================
+
+zaydi_chancery.1 = {
+	type = country_event
+	title = zaydi_chancery.1.t
+	desc = zaydi_chancery.1.d
+	outcome = neutral
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+	# Defensive re-check — only the imamate takes up the diwan this way.
+	trigger = {
+		government_type = government_type:theocracy
+		has_reform = government_reform:zaydi_imamate
+		NOT = { has_reform = government_reform:imams_diwan }
+	}
+
+	# A: Take up the dīwān. The imam employs the lowland scribes.
+	option = {
+		name = zaydi_chancery.1.a
+		add_reform = government_reform:imams_diwan
+		add_devotion = -20
+		add_stability = -5
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.10 }
+		add_estate_satisfaction = { type = estate_type:tribes_estate value = -0.05 }
+		ai_chance = {
+			factor = 80
+		}
+	}
+
+	# B: Disperse the scribes. The imamate stays what it was.
+	option = {
+		name = zaydi_chancery.1.b
+		add_devotion = 10
+		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 }
+		set_variable = {
+			name = dispersed_the_diwan
+			years = 20
+		}
+		ai_chance = {
+			factor = 20
+		}
+	}
+}

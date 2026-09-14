@@ -1,0 +1,11 @@
+# Character scope. The two Rassid houses scripted for 1337, plus any
+# character later marked is_sayyid (the tariqa genealogy content sets
+# sayyid_genealogy_established on COUNTRIES; a character-level mark is
+# what succession needs).
+is_sayyid_character = {
+	OR = {
+		dynasty ?= dynasty:al_hamza_dynasty
+		dynasty ?= dynasty:al_mutahhar_dynasty
+		has_variable = is_sayyid
+	}
+}

@@ -594,4 +594,31 @@ character_db = {
 		dynasty = borjigin_dynasty
 		tag = GLH
 	}
+
+	#Yemen — the Zaydi Imamate (115_yemen_overrides.txt)
+	zyd_yahya_ibn_hamza_pw = {	#Imam al-Mu'ayyad bi-llah Yahya b. Hamza, r. 1328-1346/8. The great jurist-imam, author of al-Shamil and the Tiraz.
+		first_name = { name = name_yahya }
+		nickname = { name = name_al_muayyad }
+		culture = yemeni_culture
+		religion = shia
+		estate = clergy_estate
+		adm = 90 dip = 55 mil = 35
+		birth_date = 1270.1.1
+		birth = sana_yemen
+		dynasty = al_hamza_dynasty
+		tag = ZYD
+	}
+
+	zyd_al_mutahhar_ibn_muhammad_pw = {	#Imam al-Wathiq bi-llah al-Mutahhar b. Muhammad, rival claimant from 1328; grandson of Imam al-Mahdi al-Mutahhar b. Yahya (d. 1298)
+		first_name = { name = name_mutahhar }
+		nickname = { name = name_al_wathiq }
+		culture = yemeni_culture
+		religion = shia
+		estate = clergy_estate
+		adm = 60 dip = 45 mil = 65
+		birth_date = 1290.1.1 #Unknown
+		birth = thula
+		dynasty = al_mutahhar_dynasty
+		tag = ZYD
+	}
 }

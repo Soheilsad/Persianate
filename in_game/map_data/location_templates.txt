@@ -7493,34 +7493,34 @@ bariq = { topography = hills vegetation = desert climate = arid religion = shia 
 dhi_ain = { topography = mountains vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
 muhayil = { topography = mountains vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
 rijal_almaa = { topography = mountains vegetation = grasslands climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
-al_hirda = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.0 }
-hajjah = { topography = mountains vegetation = grasslands climate = arid religion = sunni culture = yemeni_culture raw_material = livestock }
-harad_asir = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = wheat natural_harbor_suitability = 0.0 }
-khamir = { topography = mountains vegetation = grasslands climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
-shaharah = { topography = mountains vegetation = grasslands climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
+al_hirda = { topography = flatland vegetation = seasonal_irrigated climate = arid religion = sunni culture = yemeni_culture raw_material = wheat natural_harbor_suitability = 0.0 }
+hajjah = { topography = mountains vegetation = farmland climate = subtropical religion = shia culture = yemeni_culture raw_material = livestock }
+harad_asir = { topography = flatland vegetation = seasonal_irrigated climate = arid religion = sunni culture = yemeni_culture raw_material = cotton natural_harbor_suitability = 0.0 }
+khamir = { topography = mountains vegetation = grasslands climate = cold_arid religion = shia culture = yemeni_culture raw_material = fruit }
+shaharah = { topography = mountains vegetation = grasslands climate = cold_arid religion = shia culture = yemeni_culture raw_material = fruit }
 haraz_mountains1 = { topography = mountain_wasteland vegetation = sparse climate = cold_arid }
-jazan = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = pearls natural_harbor_suitability = 0.0 }
+jazan = { topography = flatland vegetation = seasonal_irrigated climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.0 }
 al_haqu = { topography = hills vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
-al_khosuf = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fruit natural_harbor_suitability = 0.0 }
-farasan = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.0 }
+al_khosuf = { topography = flatland vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = fruit natural_harbor_suitability = 0.0 }
+farasan = { topography = flatland vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = pearls natural_harbor_suitability = 0.0 }
 sabt_bani_bishr = { topography = mountains vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = stone }
-sabya = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.0 }
+sabya = { topography = flatland vegetation = seasonal_irrigated climate = arid religion = sunni culture = yemeni_culture raw_material = wheat natural_harbor_suitability = 0.0 }
 ranyah = { topography = plateau vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = wheat }
 al_abala = { topography = plateau vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = copper }
 al_amlah = { topography = plateau vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = wheat }
 ash_shaqiqah = { topography = plateau vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = fruit }
 qalat_bishah = { topography = plateau vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = fruit }
 raghdan = { topography = mountains vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = wheat }
-sana_yemen = { topography = plateau vegetation = sparse climate = arid religion = shia culture = yemeni_culture raw_material = horses }
-al_husayniyah = { topography = hills vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = wheat }
-al_mahjal = { topography = mountains vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = horses }
-dhahran = { topography = mountains vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = fruit }
-huth = { topography = hills vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = legumes }
-main = { topography = hills vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = fiber_crops }
-najran = { topography = mountains vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = silk }
-sadah = { topography = plateau vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = wheat }
-suq_al_ghinan = { topography = hills vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = fruit }
-thula = { topography = mountains vegetation = sparse climate = cold_arid religion = shia culture = yemeni_culture raw_material = fruit }
+sana_yemen = { topography = plateau vegetation = farmland climate = cold_arid religion = shia culture = yemeni_culture raw_material = gems }
+al_husayniyah = { topography = hills vegetation = sparse climate = arid religion = shia culture = yemeni_culture raw_material = wheat }
+al_mahjal = { topography = mountains vegetation = sparse climate = arid religion = shia culture = yemeni_culture raw_material = horses }
+dhahran = { topography = mountains vegetation = sparse climate = arid religion = shia culture = yemeni_culture raw_material = fruit }
+huth = { topography = hills vegetation = grasslands climate = cold_arid religion = shia culture = yemeni_culture raw_material = legumes }
+main = { topography = hills vegetation = sparse climate = arid religion = shia culture = yemeni_culture raw_material = fiber_crops }
+najran = { topography = hills vegetation = seasonal_irrigated climate = arid religion = shia culture = yemeni_culture raw_material = fiber_crops }
+sadah = { topography = plateau vegetation = grasslands climate = cold_arid religion = shia culture = yemeni_culture raw_material = iron }
+suq_al_ghinan = { topography = hills vegetation = sparse climate = cold_arid religion = shia culture = yemeni_culture raw_material = fruit }
+thula = { topography = mountains vegetation = grasslands climate = cold_arid religion = shia culture = yemeni_culture raw_material = fruit }
 haraz_mountains2 = { topography = mountain_wasteland vegetation = sparse climate = cold_arid }
 tathlith = { topography = plateau vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = goods_gold }
 al_amwah = { topography = plateau vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = wheat }
@@ -7532,73 +7532,73 @@ turbah = { topography = plateau vegetation = desert climate = arid religion = su
 abu_rakah = { topography = hills vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = livestock }
 ad_dughmiyah = { topography = plateau vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = wheat }
 barahrah = { topography = hills vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = wheat }
-adan = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = sugar natural_harbor_suitability = 0.4 }
-al_arah = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.0 }
-al_mafalis = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = wheat natural_harbor_suitability = 0.0 }
-lahj = { topography = hills vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = clay }
-zinjibar = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.0 }
+adan = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = salt natural_harbor_suitability = 0.75 }
+al_arah = { topography = flatland vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.0 }
+al_mafalis = { topography = flatland vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = wheat natural_harbor_suitability = 0.0 }
+lahj = { topography = flatland vegetation = seasonal_irrigated climate = arid religion = sunni culture = yemeni_culture raw_material = wheat }
+zinjibar = { topography = flatland vegetation = seasonal_irrigated climate = arid religion = sunni culture = yemeni_culture raw_material = wheat natural_harbor_suitability = 0.0 }
 birali = { topography = hills vegetation = desert climate = arid religion = sunni culture = hadhrami_culture raw_material = fish natural_harbor_suitability = 0.0 }
 al_mukalla = { topography = mountains vegetation = desert climate = arid religion = sunni culture = hadhrami_culture raw_material = incense natural_harbor_suitability = 0.0 }
 al_shihr = { topography = flatland vegetation = desert climate = arid religion = sunni culture = hadhrami_culture raw_material = incense natural_harbor_suitability = 0.0 }
-azzan = { topography = hills vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = wheat }
+azzan = { topography = hills vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = wheat }
 balhaf = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.0 }
-habban = { topography = hills vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = livestock }
-hajar = { topography = hills vegetation = desert climate = arid religion = sunni culture = hadhrami_culture raw_material = fruit }
-ahwar = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = incense natural_harbor_suitability = 0.0 }
-al_qara = { topography = mountains vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
+habban = { topography = hills vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = livestock }
+hajar = { topography = hills vegetation = seasonal_irrigated climate = arid religion = sunni culture = hadhrami_culture raw_material = fruit }
+ahwar = { topography = flatland vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = incense natural_harbor_suitability = 0.0 }
+al_qara = { topography = mountains vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
 jurrah = { topography = hills vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = wheat }
 lawdar = { topography = plateau vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = horses }
-shuqra = { topography = hills vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = sugar natural_harbor_suitability = 0.0 }
-shibam = { topography = hills vegetation = desert climate = arid religion = sunni culture = hadhrami_culture raw_material = incense }
-al_khuraybah = { topography = hills vegetation = desert climate = arid religion = sunni culture = hadhrami_culture raw_material = livestock }
-arrayda = { topography = plateau vegetation = desert climate = arid religion = sunni culture = hadhrami_culture raw_material = alum }
+shuqra = { topography = hills vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.0 }
+shibam = { topography = hills vegetation = seasonal_irrigated climate = arid religion = sunni culture = hadhrami_culture raw_material = fruit }
+al_khuraybah = { topography = hills vegetation = seasonal_irrigated climate = arid religion = sunni culture = hadhrami_culture raw_material = fruit }
+arrayda = { topography = plateau vegetation = sparse climate = arid religion = sunni culture = hadhrami_culture raw_material = alum }
 dha_sohis = { topography = mountains vegetation = desert climate = arid religion = sunni culture = hadhrami_culture raw_material = sand }
-huraydah = { topography = hills vegetation = desert climate = arid religion = sunni culture = hadhrami_culture raw_material = wheat }
+huraydah = { topography = hills vegetation = seasonal_irrigated climate = arid religion = sunni culture = hadhrami_culture raw_material = wheat }
 khayrij = { topography = hills vegetation = desert climate = arid religion = sunni culture = hadhrami_culture raw_material = fish natural_harbor_suitability = 0.0 }
-rakhyah = { topography = hills vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
-sayun = { topography = hills vegetation = desert climate = arid religion = sunni culture = hadhrami_culture raw_material = fruit }
-tarim = { topography = hills vegetation = desert climate = arid religion = sunni culture = hadhrami_culture raw_material = incense }
+rakhyah = { topography = hills vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
+sayun = { topography = hills vegetation = seasonal_irrigated climate = arid religion = sunni culture = hadhrami_culture raw_material = fruit }
+tarim = { topography = hills vegetation = seasonal_irrigated climate = arid religion = sunni culture = hadhrami_culture raw_material = fruit }
 rub_al_khali2 = { topography = dune_wasteland vegetation = desert climate = arid }
-hudaida = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fruit natural_harbor_suitability = 0.0 }
-al_luhayyah = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.1 }
+hudaida = { topography = flatland vegetation = seasonal_irrigated climate = arid religion = sunni culture = yemeni_culture raw_material = wheat natural_harbor_suitability = 0.0 }
+al_luhayyah = { topography = flatland vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.1 }
 as_salif = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = salt natural_harbor_suitability = 0.4 }
 kamaran_islands_wasteland = { topography = flatland vegetation = desert climate = arid }
-hutayb = { topography = mountains vegetation = grasslands climate = arid religion = sunni culture = yemeni_culture raw_material = stone }
-kawkaban = { topography = mountains vegetation = grasslands climate = arid religion = sunni culture = yemeni_culture raw_material = iron }
-ibb = { topography = mountains vegetation = woods climate = arid religion = sunni culture = yemeni_culture raw_material = lumber }
+hutayb = { topography = mountains vegetation = farmland climate = subtropical religion = shia culture = yemeni_culture raw_material = stone }
+kawkaban = { topography = mountains vegetation = grasslands climate = cold_arid religion = shia culture = yemeni_culture raw_material = iron }
+ibb = { topography = mountains vegetation = farmland climate = subtropical religion = sunni culture = yemeni_culture raw_material = wheat }
 dhafar = { topography = mountains vegetation = grasslands climate = cold_arid religion = sunni culture = yemeni_culture raw_material = wool }
-juban = { topography = mountains vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = iron }
-musaymir = { topography = hills vegetation = grasslands climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
-yahr = { topography = mountains vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = wheat }
+juban = { topography = mountains vegetation = sparse climate = cold_arid religion = sunni culture = yemeni_culture raw_material = iron }
+musaymir = { topography = hills vegetation = farmland climate = subtropical religion = sunni culture = yemeni_culture raw_material = fruit }
+yahr = { topography = mountains vegetation = grasslands climate = cold_arid religion = sunni culture = yemeni_culture raw_material = wheat }
 dhufar = { topography = flatland vegetation = sparse climate = arid religion = sunni culture = dhofari_culture raw_material = incense natural_harbor_suitability = 0.0 }
-hadibu = { topography = hills vegetation = grasslands climate = arid religion = miaphysite culture = soqotri_culture raw_material = sugar natural_harbor_suitability = 0.0 }
+hadibu = { topography = hills vegetation = grasslands climate = arid religion = miaphysite culture = soqotri_culture raw_material = medicaments natural_harbor_suitability = 0.0 }
 qulensya = { topography = mountains vegetation = grasslands climate = arid religion = miaphysite culture = soqotri_culture raw_material = fish natural_harbor_suitability = 0.0 }
 khalfut = { topography = hills vegetation = desert climate = arid religion = sunni culture = mehri_culture raw_material = fish natural_harbor_suitability = 0.0 }
 mirbat = { topography = flatland vegetation = desert climate = arid religion = sunni culture = dhofari_culture raw_material = incense natural_harbor_suitability = 0.0 }
 qishn = { topography = hills vegetation = desert climate = arid religion = sunni culture = mehri_culture raw_material = incense natural_harbor_suitability = 0.0 }
 raysut = { topography = mountains vegetation = sparse climate = arid religion = sunni culture = dhofari_culture raw_material = fish natural_harbor_suitability = 0.0 }
 abdalkuri_island = { topography = flatland_wasteland vegetation = desert climate = arid }
-marib = { topography = plateau vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = incense }
-baraqish = { topography = plateau vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = fruit }
-dhamar = { topography = mountains vegetation = grasslands climate = arid religion = sunni culture = yemeni_culture raw_material = livestock }
-harib = { topography = plateau vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = livestock }
-radaa = { topography = plateau vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = medicaments }
+marib = { topography = plateau vegetation = sparse climate = arid religion = shia culture = yemeni_culture raw_material = wheat }
+baraqish = { topography = plateau vegetation = sparse climate = arid religion = shia culture = yemeni_culture raw_material = fruit }
+dhamar = { topography = plateau vegetation = farmland climate = cold_arid religion = sunni culture = yemeni_culture raw_material = wheat }
+harib = { topography = plateau vegetation = sparse climate = arid religion = shia culture = yemeni_culture raw_material = livestock }
+radaa = { topography = plateau vegetation = grasslands climate = cold_arid religion = sunni culture = yemeni_culture raw_material = wheat }
 shabwa = { topography = plateau vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = salt }
-al_bayda_yemen = { topography = plateau vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = legumes }
-bayhan = { topography = plateau vegetation = desert climate = arid religion = shia culture = yemeni_culture raw_material = wheat }
-markha = { topography = mountains vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = livestock }
-nisab = { topography = mountains vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = medicaments }
-taizz = { topography = mountains vegetation = woods climate = cold_arid religion = sunni culture = yemeni_culture raw_material = coffee modifier = coffee_yemen_base }
+al_bayda_yemen = { topography = plateau vegetation = grasslands climate = cold_arid religion = sunni culture = yemeni_culture raw_material = legumes }
+bayhan = { topography = plateau vegetation = seasonal_irrigated climate = arid religion = shia culture = yemeni_culture raw_material = wheat }
+markha = { topography = mountains vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = livestock }
+nisab = { topography = mountains vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = medicaments }
+taizz = { topography = mountains vegetation = farmland climate = subtropical religion = sunni culture = yemeni_culture raw_material = coffee modifier = coffee_yemen_base }
 al_mandab = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = pearls natural_harbor_suitability = 0.0 }
-al_mukha = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = coffee modifier = coffee_yemen_base natural_harbor_suitability = 0.0 }
-hays = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = pearls natural_harbor_suitability = 0.0 }
-mawza = { topography = mountains vegetation = grasslands climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
+al_mukha = { topography = flatland vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = coffee modifier = coffee_yemen_base natural_harbor_suitability = 0.0 }
+hays = { topography = flatland vegetation = seasonal_irrigated climate = arid religion = sunni culture = yemeni_culture raw_material = clay natural_harbor_suitability = 0.0 }
+mawza = { topography = hills vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
 haraz_mountains3 = { topography = mountain_wasteland vegetation = sparse climate = cold_arid }
-zabid = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.0 }
-al_ghulayfiqah = { topography = flatland vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = fish natural_harbor_suitability = 0.0 }
-as_salafiyah = { topography = mountains vegetation = grasslands climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
-mikhlaf_al_hubishiyah = { topography = mountains vegetation = grasslands climate = arid religion = sunni culture = yemeni_culture raw_material = fruit }
-mudhaykirah = { topography = mountains vegetation = desert climate = arid religion = sunni culture = yemeni_culture raw_material = dyes }
+zabid = { topography = flatland vegetation = seasonal_irrigated climate = arid religion = sunni culture = yemeni_culture raw_material = dyes natural_harbor_suitability = 0.0 }
+al_ghulayfiqah = { topography = flatland vegetation = sparse climate = arid religion = sunni culture = yemeni_culture raw_material = sugar natural_harbor_suitability = 0.0 }
+as_salafiyah = { topography = mountains vegetation = farmland climate = subtropical religion = sunni culture = yemeni_culture raw_material = fruit }
+mikhlaf_al_hubishiyah = { topography = mountains vegetation = farmland climate = subtropical religion = sunni culture = yemeni_culture raw_material = fruit }
+mudhaykirah = { topography = mountains vegetation = farmland climate = subtropical religion = sunni culture = yemeni_culture raw_material = wheat }
 haraz_mountains4 = { topography = mountain_wasteland vegetation = sparse climate = cold_arid }
 abdalkuri_coast = { topography = coastal_ocean climate = arid }
 arabian_sea1 = { topography = ocean climate = arid }

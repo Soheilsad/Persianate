@@ -1,0 +1,141 @@
+# =====================================================================
+# YEMEN 1337 — start blocks (docs/design/yemen_setup_plan.md §8).
+#
+# Base ships one Rasulid tag owning everything from Jazan to Hadramawt,
+# Sa'da included, and no Zaydi imamate at all. This file:
+#   YEM  Rasulids: lose the Zaydi north (Sa'da, Huth, Shahara, Khamir,
+#        Thula, Kawkaban) and Sana'a; capital moves to Ta'izz, the
+#        administrative capital (Ibn Battuta: "the capital of the king
+#        of Yemen"); Zabid stays the winter seat and scholarly city.
+#        Rasulid cores on the Sana'a country: it was theirs within
+#        living memory and they never stopped claiming it.
+#   ZYD  Zaydi Imamate: Imam al-Mu'ayyad Yahya b. Hamza at Sa'da; the
+#        northern highlands and Sana'a. Theocracy + zaydi_imamate reform,
+#        leading the imamate_living IO. Cores on Dhamar, Hajjah, Rada'
+#        (the imams' reach when they pushed south).
+#   YAM  Yam of Najran: base makes them Ismaili — that is the 16th c.
+#        In 1337 Najran is Zaydi tribal country; Yam is a Zaydi tribe,
+#        vassal of the imam (12_diplomacy) and member of his imamate by
+#        bay'a (15_international_organizations). Sa'da, Huth, and the
+#        Jawf side (al-Mahjal, Ma'in) move to ZYD — the map has Najran
+#        and Dhahran as one cluster north of Sa'da and al-Mahjal/Ma'in as
+#        another south-east of it, so Yam keeps only the northern pair.
+#
+# Same-tag blocks in a later file override the base 10_countries entry
+# (precedent: CHB/JAL/… in 11_persianate_sultanate_overrides.txt).
+# =====================================================================
+
+countries = {
+	countries = {
+		YEM = { #Rasulids
+			own_control_core = {
+				zabid al_ghulayfiqah as_salafiyah mikhlaf_al_hubishiyah mudhaykirah
+				adan al_arah al_mafalis lahj zinjibar
+				birali al_mukalla al_shihr azzan balhaf habban hajar
+				ahwar al_qara jurrah lawdar shuqra
+				shibam al_khuraybah arrayda dha_sohis huraydah khayrij rakhyah sayun tarim
+				al_hirda hajjah harad_asir
+				hudaida al_luhayyah as_salif hutayb
+				ibb dhafar juban musaymir yahr
+				jazan al_haqu al_khosuf farasan sabt_bani_bishr sabya
+				marib baraqish dhamar harib radaa
+				shabwa al_bayda_yemen bayhan markha nisab
+				taizz al_mandab al_mukha hays mawza
+			}
+
+			our_cores_conquered_by_others = {
+				dhufar hadibu qulensya khalfut mirbat qishn raysut
+				sana_yemen thula kawkaban
+			}
+
+			include = "expl_middle_east"
+			include = "expl_indonesian_trade_route"
+			include = "expl_mongols"
+			starting_technology_level = 3
+			include = "persianate_sultanate_tazik_dominant"
+			government = {
+				type = persianate_sultanate
+				heir_selection = cognatic_primogeniture
+				ruler = yem_al_mujahid_ali
+				reforms = {
+					yemeni_chancery
+				}
+				laws = {
+					sharia_law = shafii_policy
+				}
+				mysticism_vs_jurisprudence = 20
+			}
+
+			tolerated_cultures = {
+				hadhrami_culture
+			}
+
+			religious_school = shafii_school
+
+			country_rank = rank_kingdom
+			capital = taizz
+		}
+
+		ZYD = { #Zaydi Imamate
+			own_control_core = {
+				sadah huth suq_al_ghinan
+				al_mahjal main
+				thula sana_yemen kawkaban
+				shaharah khamir
+			}
+
+			our_cores_conquered_by_others = {
+				dhamar hajjah radaa
+			}
+
+			include = "expl_middle_east"
+			include = "expl_indonesian_trade_route"
+			include = "expl_mongols"
+			starting_technology_level = 3
+			include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+			government = {
+				type = theocracy
+				# Re-seated to zaydi_imamate_elective at game start
+				# (on_action/27_zaydi_imamate_hooks.txt), the horde_toru pattern.
+				heir_selection = theocratic_elective
+				ruler = zyd_yahya_ibn_hamza_pw
+				reforms = { zaydi_imamate }
+				mysticism_vs_jurisprudence = 30
+				laws = {
+					sharia_law = zaidi_policy
+				}
+			}
+
+			religious_school = zaidi_school
+
+			country_rank = rank_duchy
+			capital = sadah
+		}
+
+		YAM = { #Yam of Najran
+			own_control_core = {
+				dhahran najran
+			}
+
+			include = "expl_middle_east"
+			include = "expl_indonesian_trade_route"
+			include = "expl_mongols"
+
+			starting_technology_level = 3
+			include = "muslim_tribe_no_coast"
+			government = {
+				type = tribe
+				heir_selection = tribal_oldest_male
+				ruler = random
+
+				laws = {
+					sharia_law = zaidi_policy
+				}
+			}
+
+			religious_school = zaidi_school
+
+			capital = najran
+		}
+	}
+}

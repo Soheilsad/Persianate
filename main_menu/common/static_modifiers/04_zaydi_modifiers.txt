@@ -1,0 +1,10 @@
+# The jurists' grievance: a generation of clerical resentment after the
+# imamate turns hereditary and becomes a sultanate (proclaim_imams_house).
+# Ibn al-Amir al-San'ani and al-Shawkani are its historical voice.
+sultanized_imamate_grievance = {
+	game_data = {
+		category = country
+	}
+	clergy_estate_target_satisfaction = -0.10
+	monthly_legitimacy = -0.05
+}

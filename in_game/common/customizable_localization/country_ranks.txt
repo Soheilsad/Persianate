@@ -335,7 +335,7 @@ country_flavor = {
 			government_type = government_type:theocracy
 		}
 	}
-	
+
 	# Horde
 	text = {
 		localization_key = rank_empire_horde
@@ -967,6 +967,15 @@ country_flavor = {
 
 			country_rank_is_kingdom = yes
 			government_type = government_type:theocracy
+		}
+	}
+	text = {
+		localization_key = rank_zaydi_theocracy
+		trigger = {
+
+			government_type = government_type:theocracy
+			religion = religion:shia
+			has_reform = government_reform:zaydi_imamate
 		}
 	}
 

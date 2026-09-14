@@ -1,0 +1,70 @@
+﻿l_english:
+
+ # ============================================================
+ # THE ZAYDI IMAMATE — tag, IO, tenets, reform, succession
+ # (docs/design/yemen_setup_plan.md §8, shia_imamates_plan.md)
+ # ============================================================
+
+ # --- tag ---
+ ZYD: "Zaydi Imamate"
+ ZYD_ADJ: "Zaydi"
+
+ # --- dynasties, names ---
+ al_hamza_dynasty: "Āl Ḥamza"
+ al_mutahhar_dynasty: "Āl al-Muṭahhar"
+ name_mutahhar: "al-Muṭahhar"
+ name_al_muayyad: "al-Muʾayyad bi-llāh"
+ name_al_wathiq: "al-Wāthiq bi-llāh"
+
+ # --- the organization ---
+ imamate_living: "Zaydi Imamate"
+ imamate_living_desc: "The community of a living Imam. A qualified descendant of ʿAlī and Fāṭima has risen and been acknowledged by the bayʿa of tribes and sayyids; those sworn to him answer his call to arms and pay him zakāt, and he owes them justice and the sword against the unjust."
+ IMAMATE_LIVING_SEAT_NAME: "Imamate of [ROOT.GetVariable('seat').GetLocation.GetNameWithNoTooltip]"
+ ZAYDI_IMAM_MALE: "Imam"
+ ZAYDI_IMAM_FEMALE: "Imam"
+ recently_left_imamate_tt: "We withdrew our bayʿa from this Imam too recently to swear it again."
+ not_already_imam_tt: "We are not ourselves the Imam of an imamate."
+ IS_SUBJECT_OF_THE_IMAM: "We hold our country by the Imam's bayʿa"
+ IS_LEADER_OF_AN_IMAMATE: "We are the Imam"
+
+ # --- zakat ---
+ zaydi_zakat: "Zakāt to the Imam"
+ zaydi_zakat_desc: "The second half of bayʿa: the sworn pay the Imam the canonical fortieth of their income. A tribe that withholds it has, by that act, withdrawn its oath."
+ ZAYDI_ZAKAT_PAYMENT_MULTIPLIER: "Zakāt on the income of the sworn"
+ zaydi_zakat_price: "Zakāt"
+ zaydi_tenet_price: "The Imam's ruling"
+ zaydi_tenet_price_heavy: "The Imam's ruling, against the grain"
+ zaydi_tenet_price_schism: "The Imam's ruling, against the doctrine"
+
+ # --- tenets ---
+ nass_tenet: "Making of the Imam"
+ nass_tenet_desc: "How a man becomes Imam: by his predecessor's designation, by the scholars' recognition of his qualification, or by the sword alone."
+ nass_explicit: "Explicit Designation"
+ nass_explicit_desc: "The Imam names his successor and the community owes him obedience. The Jaʿfarī position, which the Zaydīs long rejected because it makes the imamate a possession."
+ nass_implicit: "Recognition of the Qualified"
+ nass_implicit_desc: "Any Hasanid or Husaynid who is learned, just and brave, who calls the people to himself and is acknowledged by the scholars, is Imam. The Hādawī norm."
+ khuruj_only: "The Sword Alone"
+ khuruj_only_desc: "He is Imam who rises and holds. Learning may follow; courage and the tribes come first."
+ imamate_succession_tenet: "Who May Be Imam"
+ imamate_succession_tenet_desc: "Whether the imamate is open to every qualified sayyid or has settled into one house."
+ imamate_open_to_sayyids: "Open to the Sayyids"
+ imamate_open_to_sayyids_desc: "Every qualified descendant of ʿAlī and Fāṭima may claim the imamate. Rival claimants are the price."
+ dynastic_imamate: "The Imam's House"
+ dynastic_imamate_desc: "The imamate passes within one family. The jurists call it a betrayal of the doctrine; the family calls it order."
+ companions_tenet: "The Companions"
+ companions_tenet_desc: "What the community says of the first caliphs."
+ tafdil_without_sabb: "Preference without Cursing"
+ tafdil_without_sabb_desc: "ʿAlī was the most excellent, and the imamate of the less excellent is valid though inferior. The mainstream Zaydī position, and the reason Zaydīs and Sunnīs could live in one city."
+ sabb_of_companions: "Cursing of the Companions"
+ sabb_of_companions_desc: "The first caliphs usurped ʿAlī's right and are cursed from the pulpit. Zeal for the community, and war with every Sunnī neighbour."
+ full_acceptance: "Acceptance of the Companions"
+ full_acceptance_desc: "The companions' imamate is accepted without reservation. The road toward the Sunna, walked by the reformist jurists."
+
+ # --- reform ---
+ zaydi_imamate: "The Zaydi Imamate"
+ zaydi_imamate_desc: "A qualified sayyid rules as Imam by the bayʿa of the tribes and the sayyid houses. No fixed capital, no chancery, no iqṭāʿ: the Imam's agents collect zakāt into his treasury, his qāḍīs judge, and the hijras, the protected enclaves of scholars, are the schools of the north. His army is Ḥāshid and Bakīl under their shaykhs."
+
+ # --- succession ---
+ zaydi_imamate_elective: "Rising of the Qualified Sayyid"
+ zaydi_imamate_elective_desc: "The imamate is elective and the electors are the doctrine itself: a Hasanid or Husaynid, learned in the law, brave in the field, acknowledged by the scholars. Blood weighs most, but a brilliant jurist outranks a dull prince, and a boy is not disqualified for being one."
+ HEIR_SELECTION_ZAYDI_SAYYID_DESC: "Of the blood of ʿAlī and Fāṭima"

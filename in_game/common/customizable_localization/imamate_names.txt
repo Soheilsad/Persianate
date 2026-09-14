@@ -1,0 +1,15 @@
+imamate_living_name = {
+	type = international_organization
+
+	text = {
+		trigger = {
+			has_variable = seat
+		}
+		localization_key = IMAMATE_LIVING_SEAT_NAME
+	}
+
+	text = {
+		localization_key = imamate_living
+		fallback = yes
+	}
+}

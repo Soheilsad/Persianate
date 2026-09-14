@@ -31,4 +31,15 @@ dynasty_manager = {
 		name = { name = rifai_dynasty }
 		home = wasit
 	}
+
+	#Yemen — the Zaydi houses of 1337 (115_yemen_overrides.txt). Both
+	#Rassid lines; the imamate is elective between them, not owned by either.
+	al_hamza_dynasty = {
+		name = { name = al_hamza_dynasty }
+		home = sadah
+	}
+	al_mutahhar_dynasty = {
+		name = { name = al_mutahhar_dynasty }
+		home = thula
+	}
 }

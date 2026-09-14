@@ -1,0 +1,45 @@
+# =====================================================================
+# THE DIWAN OF THE LOWLANDS — stage one of the imamate's road to a
+# sultanate (docs/design/yemen_setup_plan.md §8, shia_imamates_plan.md).
+#
+# Mirrors 12_iranic_conquest.txt (the Kurdish mîr offered the chancery).
+# Fires when a Zaydi imamate — theocracy + zaydi_imamate, not yet holding
+# the imams_diwan reform — takes either a location that physically holds
+# a chancery (regional_diwan / central_diwan: "inherited the apparatus")
+# or one of the Rasulid seats. Sharaf al-Din in 1530s Ta'izz, the
+# Qasimids in the Ottoman defters of Sana'a: the imamate never built a
+# bureaucracy, it captured one.
+#
+# root = location; scope:winner = new owner. Re-declaring
+# on_location_changed_owner EXTENDS the list.
+# =====================================================================
+
+on_location_changed_owner = {
+	on_actions = {
+		zaydi_imamate_takes_the_diwan
+	}
+}
+
+zaydi_imamate_takes_the_diwan = {
+	trigger = {
+		scope:winner ?= {
+			government_type = government_type:theocracy
+			has_reform = government_reform:zaydi_imamate
+			NOT = { has_reform = government_reform:imams_diwan }
+			NOT = { has_variable = dispersed_the_diwan }
+		}
+		OR = {
+			has_building = building_type:regional_diwan
+			has_building = building_type:central_diwan
+			this = location:taizz
+			this = location:zabid
+			this = location:adan
+			this = location:sana_yemen
+		}
+	}
+	effect = {
+		scope:winner ?= {
+			trigger_event_non_silently = { id = zaydi_chancery.1 }
+		}
+	}
+}

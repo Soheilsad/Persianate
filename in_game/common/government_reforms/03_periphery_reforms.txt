@@ -92,6 +92,8 @@ REPLACE:mamluk_government = {
 	years = 2
 }
 
+
+
 # REPLACE: base ships indian_sultanate_reform (country_specific.txt:2799,
 # held at start by DLH, MAB, RJR, SMA, SND, HNV — so NO government line:
 # the five minors stay on their base governments until their own batch).
@@ -106,6 +108,9 @@ REPLACE:indian_sultanate_reform = {
 		religion.group = religion_group:muslim
 		capital ?= { sub_continent = sub_continent:south_asia }
 		NOT = { has_reform = government_reform:persianate_bureaucracy_reform }
+	}
+	locked = {
+		always = yes
 	}
 	country_modifier = {
 		has_nizam_ul_mulk_chancery = yes
@@ -160,6 +165,73 @@ REPLACE:indian_sultanate_reform = {
 		# centers; its rural reach was always thinner (the Doab risings).
 		global_max_urban_control = 0.15
 
+		government_size = 1
+		cultures_capacity = 2
+	}
+	years = 2
+}
+
+
+
+yemeni_chancery = {
+	unique = yes
+	major = yes
+	content_priority = 1100
+	potential = {
+		NOT = { has_reform = government_reform:indian_sultanate_reform }
+		NOT = { has_reform = government_reform:mamluk_government}
+		NOT = { has_reform = government_reform:persianate_bureaucracy_reform }
+	}
+	locked = {
+		always = yes
+	}
+	country_modifier = {
+
+
+		can_build_mamluk_barracks = yes
+
+		court_spending_efficiency = -0.1
+
+		# --- the chancery: rawk surveys, diwan al-jaysh, the inshāʾ ---
+		has_nizam_ul_mulk_chancery = yes
+		tax_income_efficiency = 0.05
+
+
+		global_peasant_enfranchisment = 1.0
+
+		# --- military surgery: no peasant hosts, ever ---
+		peasants_estate_levy_size = -1.0
+		burghers_estate_levy_size = -0.5
+		# The askari: small, elite, expensive. (Amirs line arms when the
+		# government-type switch lands; nobles line covers the interim.)
+		amirs_estate_levy_size = 0.75
+		nobles_estate_levy_size = 0.5
+		land_morale_modifier = 0.10
+
+		# --- the chancery state, Egyptian dress (structural block from
+		# the bureaucracy reform, tuned; the diwan capped junior) ---
+		country_cabinet_efficiency = 0.05
+		diwan_estate_target_satisfaction = 0.05
+		global_diwan_estate_power = 0.15
+		diwan_estate_allowed_in_cabinet = yes
+		amirs_estate_allowed_in_cabinet = no
+		nobles_estate_allowed_in_cabinet = no
+		burghers_estate_allowed_in_cabinet = no
+		clergy_estate_blocked_from_cabinet = yes
+		burghers_estate_blocked_from_cabinet = yes
+		nobles_estate_blocked_from_cabinet = yes
+		amirs_estate_allowed_leading_military = yes
+		diwan_estate_allowed_leading_military = no
+		nobles_estate_allowed_leading_military = no
+		burghers_estate_allowed_leading_military = no
+		diwan_estate_levy_size = -0.9
+		monthly_diwan_estate_rebel_growth = -0.01
+		global_clergy_desired_pop_scaled = 0.01
+		global_max_urban_control = 0.2
+		global_max_rural_control = -0.05
+		global_estate_max_tax = 0.1
+		tribes_estate_levy_size = 0.25
+		global_tribes_estate_power = 0.75 ## tribes are VASTLY stronger
 		government_size = 1
 		cultures_capacity = 2
 	}

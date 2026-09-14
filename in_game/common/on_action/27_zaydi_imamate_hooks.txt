@@ -1,0 +1,38 @@
+# =====================================================================
+# SEATING THE IMAMATE at game start.
+#
+# 1. ZYD's succession law becomes zaydi_imamate_elective (a custom heir
+#    selection is applied by effect, not listed on the base theocracy
+#    type — the horde_toru precedent).
+# 2. The aspect bridge for setup-seeded members: on_joined does not run
+#    for members listed in 15_international_organizations.txt, so ZYD
+#    and YAM get imamate_zaydi (and the zaidi_school establishment) here.
+#
+# Re-declaring on_game_start EXTENDS the mod's other start hooks.
+# =====================================================================
+
+on_game_start = {
+	on_actions = {
+		zaydi_imamate_seating
+	}
+}
+
+zaydi_imamate_seating = {
+	effect = {
+		c:ZYD ?= {
+			change_heir_selection = heir_selection:zaydi_imamate_elective
+			if = {
+				limit = { NOT = { has_religious_aspect = religious_aspect:imamate_zaydi } }
+				add_religious_aspect = religious_aspect:imamate_zaydi
+				add_stability = 10
+			}
+		}
+		c:YAM ?= {
+			if = {
+				limit = { NOT = { has_religious_aspect = religious_aspect:imamate_zaydi } }
+				add_religious_aspect = religious_aspect:imamate_zaydi
+				add_stability = 10
+			}
+		}
+	}
+}

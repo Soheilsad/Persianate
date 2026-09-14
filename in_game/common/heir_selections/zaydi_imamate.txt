@@ -1,0 +1,85 @@
+# =====================================================================
+# THE RISING OF THE QUALIFIED SAYYID — Zaydi succession, scored.
+#
+# Base theocracies elect by age alone. The Zaydi imamate elected by
+# qualification: a Hasanid or Husaynid, a mujtahid, a man of courage.
+# Blood is the largest term but not the only one — a brilliant jurist
+# outranks a dull prince — and there is no penalty for being young.
+# Sayyid status is the scripted trigger is_sayyid_character
+# (scripted_triggers/08_zaydi_triggers.txt): the two houses of 1337 plus
+# any character carrying the is_sayyid variable.
+#
+# Seated on ZYD at game start (on_action/27_zaydi_imamate_hooks.txt),
+# the horde_toru pattern; potential/locked keep it on the imamate.
+# =====================================================================
+
+zaydi_imamate_elective = {
+	include_ruler_siblings = yes
+	all_in_country = yes
+	through_female = no
+	allow_female = no
+	ignore_ruler = yes
+	allow_foreign_ruler = no
+	show_candidates = yes
+	custom_tags = { empty_heir_religion_law }
+	allowed_estates = { clergy_estate }
+
+	potential = {
+		government_type = government_type:theocracy
+		has_reform = government_reform:zaydi_imamate
+	}
+	allowed = {
+		government_type = government_type:theocracy
+		has_reform = government_reform:zaydi_imamate
+	}
+	locked = {
+		has_reform = government_reform:zaydi_imamate
+	}
+
+	heir_is_allowed = {
+	}
+
+	calc = {
+		if = {
+			limit = {
+				exists = root
+			}
+			if = {
+				limit = { is_sayyid_character = yes }
+				add = {
+					desc = "HEIR_SELECTION_ZAYDI_SAYYID_DESC"
+					value = 100
+				}
+			}
+			add = {
+				desc = "HEIR_SELECTION_ADM_DESC"
+				value = adm
+			}
+			add = {
+				desc = "HEIR_SELECTION_MIL_DESC"
+				value = mil
+			}
+			add = {
+				desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+				value = character_age
+				multiply = 0.5
+			}
+			if = {
+				limit = { modifier:blocked_from_being_ruler = yes }
+				add = {
+					desc = "HEIR_SELECTION_IS_UNSUITED_TO_RULE_DESC"
+					value = -1000
+				}
+			}
+		}
+		if = {
+			limit = {
+				not = { exists = root }
+			}
+			add = {
+				desc = "HEIR_SELECTION_OLDER_HEIR_DESC"
+				value = 1
+			}
+		}
+	}
+}

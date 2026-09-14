@@ -178,6 +178,25 @@ locations = {
 	mosul = { rank = city 		town_setup = mosul_city }
 
 
+
+	# === Yemen (docs/design/yemen_setup_plan.md) ===
+	# Base ranks only Taiz and Aden, both as towns; Zabid and Sana'a are villages.
+	# Ibn Battuta's four: Taiz (the Rasulid capital), Zabid, Sana'a, Aden.
+	taizz = { rank = city town_setup = levant_city }
+	zabid = { rank = city town_setup = levant_city }
+	sana_yemen = { rank = city town_setup = levant_city }
+	adan = { rank = city town_setup = levant_city }
+	sadah = { rank = town town_setup = levant_town }                       # the Zaydi seat
+	dhamar = { rank = town town_setup = levant_town }
+	ibb = { rank = town town_setup = levant_town }                         # with Jibla
+	radaa = { rank = town town_setup = levant_town }
+	najran = { rank = town town_setup = levant_town }
+	hays = { rank = town town_setup = tiny_levant_town }                   # the Tihama pottery town
+	jazan = { rank = town town_setup = tiny_levant_town }                  # the Sulaymani seat
+	al_shihr = { rank = town town_setup = levant_town }                    # the Hadramawt port
+	tarim = { rank = town town_setup = tiny_levant_town }
+	shibam = { rank = town town_setup = tiny_levant_town }
+
 }
 
 

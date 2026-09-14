@@ -1,0 +1,106 @@
+# =====================================================================
+# THE ZAYDI IMAMATE — a government reform on base theocracy.
+#
+# Why a reform and not a type: the imamate is a theocracy in the plain
+# sense (devotion as its currency, clergy as the default estate, an
+# elective head chosen for religious qualification). What is Zaydi about
+# it is the rule for choosing that head (heir_selections/zaydi_imamate.txt)
+# and the tribal base — Hashid, Bakil, Khawlan under their shaykhs, the
+# imam's only army. No iqta, no chancery: when an imamate takes the
+# lowlands it inherits the lowland apparatus (the Sharaf al-Din and
+# Qasimid cases), and that is a later reform, not this one.
+# =====================================================================
+
+zaydi_imamate = {
+	age = age_1_traditions
+	government = theocracy
+	potential = {
+		government_type = government_type:theocracy
+		religion = religion:shia
+	}
+	locked = {
+		always = yes
+	}
+	country_modifier = {
+		tolerance_own = 1
+		monthly_devotion = 0.05
+		monthly_religious_influence = 0.10
+		global_tribes_estate_power = 0.5
+		tribes_estate_levy_size = 0.25
+		land_morale_modifier = 0.20
+		tribes_estate_can_participate_in_parliament = yes
+		global_defensive = 0.15
+		clergy_estate_target_satisfaction = small_permanent_target_satisfaction
+		government_reform_slots = 1
+	}
+
+	years = 0
+}
+
+
+# =====================================================================
+# THE IMAM'S DIWAN — stage one of the road to a sultanate.
+#
+# Granted by zaydi_chancery.1 when the imamate takes a chancery city.
+# The imam is still elected, the state is still a theocracy, but the
+# chancery gate (has_nizam_ul_mulk_chancery) is now open and the diwan
+# class appears. The price is what the jurists said it was: devotion
+# bleeds, the sayyid houses sour, the tribes lose weight, and the realm
+# drifts toward the Tazik pole. Sharaf al-Din Yahya (r. 1506-58).
+# =====================================================================
+
+imams_diwan = {
+	age = age_1_traditions
+	government = theocracy
+	potential = {
+		government_type = government_type:theocracy
+		has_reform = government_reform:zaydi_imamate
+	}
+	locked = {
+		always = yes
+	}
+	country_modifier = {
+		has_nizam_ul_mulk_chancery = yes
+		tax_income_efficiency = 0.05
+		global_diwan_estate_power = 0.15
+		diwan_estate_target_satisfaction = 0.05
+		monthly_devotion = -0.05
+		clergy_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
+		global_tribes_estate_power = -0.25
+		monthly_towards_tazik = 0.05
+	}
+
+	years = 0
+}
+
+
+# =====================================================================
+# THE SULTANIZED IMAMATE — stage two, the marker on the new sultanate.
+#
+# Applied by proclaim_imams_house alongside yemeni_chancery. The ruler
+# is still Imam of his imamate (the IO persists, the sworn still pay
+# and march), but the office is hereditary now and the state is a
+# Persianate sultanate. The Qasimid fact, with the jurists' grievance
+# carried as a 25-year modifier (sultanized_imamate_grievance) and the
+# tribal base kept heavy: a sultan whose army is Hashid and Bakil.
+# =====================================================================
+
+sultanized_imamate = {
+	age = age_1_traditions
+	government = persianate_sultanate
+	potential = {
+		government_type = government_type:persianate_sultanate
+	}
+	locked = {
+		always = yes
+	}
+	country_modifier = {
+		monthly_religious_influence = 0.05
+		tolerance_own = 1
+		land_morale_modifier = 0.05
+		global_tribes_estate_power = 0.25
+		tribes_estate_levy_size = 0.25
+	}
+
+	years = 0
+}
