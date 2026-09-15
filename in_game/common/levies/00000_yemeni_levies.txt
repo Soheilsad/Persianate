@@ -1,0 +1,58 @@
+# =====================================================================
+# THE IMAM'S LEVY — highland tribal infantry, a little horse.
+#
+# Base hands a theocracy the generic tribesmen levy, which is why the
+# imam raised eight thousand men who could not hold Sana'a. The Hashid
+# and Bakil are coded as PEASANTS in the pops (terrace farmers, not
+# nomads), so the qabili levy draws on peasants and tribesmen alike.
+# Horse only where horses are in the market (the Jawf, Najran), from
+# the tribes and the sayyid houses. Sorted first on purpose: the
+# levies readme says the engine fills picks with the first match.
+# =====================================================================
+
+levy_yemeni_qabili = {
+	size = 0.05
+	allowed_pop_type = peasants
+	allowed_pop_type = tribesmen
+	country_allow = {
+		OR = {
+			has_reform = government_reform:zaydi_imamate
+			has_reform = government_reform:sultanized_imamate
+		}
+	}
+	# highland pops only — a Tihama peasant under the imam is taxed, not levied
+	allow = {
+		location = {
+			OR = {
+				topography = mountains
+				topography = hills
+				topography = plateau
+			}
+		}
+	}
+	unit = a_yemeni_qabili
+}
+
+levy_yemeni_tribal_horse = {
+	size = 0.1 ## to ride for the imam is not something you do if you have time. it's closest to a religious duty.
+	allowed_pop_type = tribesmen
+	allowed_pop_type = nobles
+	allowed_pop_type = clergy
+	country_allow = {
+		OR = {
+			has_reform = government_reform:zaydi_imamate
+			has_reform = government_reform:sultanized_imamate
+		}
+	}
+	allow = {
+		location = {
+			market = {
+				OR = {
+					is_produced_in_market = goods:horses
+					is_traded_in_market = goods:horses
+				}
+			}
+		}
+	}
+	unit = a_yemeni_tribal_horse
+}

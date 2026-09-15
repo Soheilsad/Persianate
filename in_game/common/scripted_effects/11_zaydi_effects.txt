@@ -1,0 +1,20 @@
+# =====================================================================
+# THE IMAM'S HOUSE — the one transformation, called from two places
+# (zaydi_chancery.1 option A when the tenet is already dynastic, and
+# the proclaim_imams_house action) so they cannot drift apart.
+# Country scope: a theocracy holding zaydi_imamate.
+# =====================================================================
+imams_house_transform = {
+	set_variable = imams_house_proclaimed
+	change_government_type = government_type:persianate_sultanate
+	remove_reform = government_reform:zaydi_imamate
+	add_reform = government_reform:yemeni_chancery
+	add_reform = government_reform:sultanized_imamate
+	change_heir_selection = heir_selection:favorite_son_elective_succession
+	add_country_modifier = {
+		modifier = sultanized_imamate_grievance
+		years = 25
+	}
+	add_legitimacy = -10
+	add_stability = -10
+}

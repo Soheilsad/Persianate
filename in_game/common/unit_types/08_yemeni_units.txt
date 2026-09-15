@@ -1,0 +1,93 @@
+# =====================================================================
+# YEMENI HIGHLAND WARFARE — the imam's army.
+#
+# The Zaydi imamate never fielded a lowland army. Its force was the
+# qabili: the armed highland tribesman of Hashid, Bakil and Khawlan,
+# a terrace farmer with spear, sword, shield and jambiya, fighting from
+# fortress-villages on 2,000-3,000 m ridges. He is nearly unbeatable on
+# his own ground and of little use on the Tihama plain, which is why
+# every lowland state from the Rasulids to the Ottomans held the coast
+# and lost the mountains. Horse was scarce: the sayyid houses' retinues
+# and the Jawf and Najran tribes, camel-and-horse country on the
+# desert edge. Modelled on the mod's Zagros skirmisher.
+# =====================================================================
+
+a_yemeni_qabili = {
+	category = army_light_infantry
+	copy_from = a_age_1_traditions_light_infantry
+	buildable = no
+	levy = yes
+	# fanatical, fortress-bred, cheap to lose
+	morale_damage_taken = -0.25
+	morale_damage_done = 0.10
+	strength_damage_taken = 0.10
+	strength_damage_done = 0.15
+	initiative = 2
+	combat = {
+		mountains = 0.35
+		hills = 0.30
+		plateau = 0.15
+	}
+}
+
+a_yemeni_tribal_horse = {
+	category = army_light_cavalry
+	copy_from = a_age_1_traditions_light_cavalry
+	is_special = yes
+	buildable = no
+	levy = yes
+	movement_speed = 1.0
+	initiative = 2
+	combat = {
+		plateau = 0.10
+		sparse = 0.10
+		mountains = 0.1
+		hills = 0.10
+		desert = 0.05
+	}
+}
+
+
+# =====================================================================
+# TIHAMA AUXILIARIES — the Rasulid field army as it actually was.
+#
+# A small mamluk core of a few thousand, and around it the Arab tribes
+# of the coastal plain and Abyan: light horse and foot, plunder-paid,
+# quick, brittle, at home on the flat and useless on a ridge. The
+# Rasulids won on the Tihama and at the walls of the lowland cities
+# with these men, and lost the highlands with them every generation.
+# =====================================================================
+
+a_tihama_arab_horse = {
+	category = army_light_cavalry
+	copy_from = a_age_1_traditions_light_cavalry
+	is_special = yes
+	buildable = no
+	levy = yes
+	movement_speed = 1.0
+	initiative = 2
+	morale_damage_taken = 0.10
+	combat = {
+		flatland = 0.10
+		desert = 0.10
+		sparse = 0.05
+		mountains = -0.25
+		plateau = -0.10
+		hills = -0.10
+	}
+}
+
+a_tihama_arab_foot = {
+	category = army_light_infantry
+	copy_from = a_age_1_traditions_light_infantry
+	buildable = no
+	levy = yes
+	morale_damage_taken = 0.10
+	combat = {
+		flatland = 0.10
+		desert = 0.05
+		mountains = -0.2
+		hills = -0.05
+		plateau = -0.10
+	}
+}

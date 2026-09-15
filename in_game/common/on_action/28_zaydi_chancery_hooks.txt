@@ -3,9 +3,9 @@
 # sultanate (docs/design/yemen_setup_plan.md §8, shia_imamates_plan.md).
 #
 # Mirrors 12_iranic_conquest.txt (the Kurdish mîr offered the chancery).
-# Fires when a Zaydi imamate — theocracy + zaydi_imamate, not yet holding
-# the imams_diwan reform — takes either a location that physically holds
+# Fires when a Zaydi imamate takes either a location that physically holds
 # a chancery (regional_diwan / central_diwan: "inherited the apparatus")
+# — theocracy + zaydi_imamate, not yet holding the diwan (variable) —
 # or one of the Rasulid seats. Sharaf al-Din in 1530s Ta'izz, the
 # Qasimids in the Ottoman defters of Sana'a: the imamate never built a
 # bureaucracy, it captured one.
@@ -25,7 +25,7 @@ zaydi_imamate_takes_the_diwan = {
 		scope:winner ?= {
 			government_type = government_type:theocracy
 			has_reform = government_reform:zaydi_imamate
-			NOT = { has_reform = government_reform:imams_diwan }
+			NOT = { has_variable = holds_the_diwan }
 			NOT = { has_variable = dispersed_the_diwan }
 		}
 		OR = {

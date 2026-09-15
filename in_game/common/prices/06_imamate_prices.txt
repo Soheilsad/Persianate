@@ -43,3 +43,14 @@ proclaim_imams_house = {
 	prestige = 20
 	stability = 5
 }
+
+# The Imam's actions (generic_actions/zaydi_imamate_actions.txt).
+imam_jihad_price = {
+	government_power = 20
+	prestige = 10
+}
+
+swear_bayah_price = {
+	religious_influence = 30
+	prestige = 10
+}

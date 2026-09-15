@@ -18,6 +18,11 @@ a_amir_cavalry = {
 		hills = 0.10
 		sparse = 0.10
 		wetlands = -0.10
+		# Country that kills cavalry: the Zagros, the Haraz, the Alborz.
+		# Base heavy cavalry carries only -0.10 here and the reduced
+		# frontage of mountains then favours the elite unit per slot —
+		# the opposite of what a ridge did to a mamluk. (2026-09-14)
+		mountains = -0.25
 	}
 	mercenaries_per_location = {
 		pop_type = nobles

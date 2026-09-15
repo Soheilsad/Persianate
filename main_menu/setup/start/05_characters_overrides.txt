@@ -621,4 +621,79 @@ character_db = {
 		dynasty = al_mutahhar_dynasty
 		tag = ZYD
 	}
+
+	#Al Hamza and Al al-Mutahhar need a generation each or the elective has no one to elect
+	#(the imams of 1337 are old). Sons and brothers of the two imams: the houses are attested,
+	#these individuals are reconstructed — dates marked Unknown, base convention.
+	zyd_ali_ibn_yahya_pw = {	#son of Imam al-Mu'ayyad Yahya
+		first_name = { name = name_ali }
+		culture = yemeni_culture
+		religion = shia
+		estate = clergy_estate
+		adm = 65 dip = 45 mil = 50
+		birth_date = 1300.1.1 #Unknown
+		birth = sana_yemen
+		father = zyd_yahya_ibn_hamza_pw
+		dynasty = al_hamza_dynasty
+		tag = ZYD
+	}
+	zyd_hamza_ibn_yahya_pw = {	#younger son of Imam al-Mu'ayyad Yahya
+		first_name = { name = name_hamza }
+		culture = yemeni_culture
+		religion = shia
+		estate = clergy_estate
+		adm = 50 dip = 40 mil = 60
+		birth_date = 1310.1.1 #Unknown
+		birth = sadah
+		father = zyd_yahya_ibn_hamza_pw
+		dynasty = al_hamza_dynasty
+		tag = ZYD
+	}
+	zyd_muhammad_ibn_ali_hamza_pw = {	#grandson of Imam al-Mu'ayyad Yahya
+		first_name = { name = name_muhammad }
+		culture = yemeni_culture
+		religion = shia
+		estate = clergy_estate
+		adm = 45 dip = 35 mil = 40
+		birth_date = 1322.1.1 #Unknown
+		birth = sadah
+		father = zyd_ali_ibn_yahya_pw
+		dynasty = al_hamza_dynasty
+		tag = ZYD
+	}
+	zyd_ali_ibn_muhammad_mutahhar_pw = {	#brother of Imam al-Wathiq al-Mutahhar
+		first_name = { name = name_ali }
+		culture = yemeni_culture
+		religion = shia
+		estate = clergy_estate
+		adm = 55 dip = 40 mil = 55
+		birth_date = 1295.1.1 #Unknown
+		birth = thula
+		dynasty = al_mutahhar_dynasty
+		tag = ZYD
+	}
+	zyd_muhammad_ibn_al_mutahhar_pw = {	#son of Imam al-Wathiq al-Mutahhar
+		first_name = { name = name_muhammad }
+		culture = yemeni_culture
+		religion = shia
+		estate = clergy_estate
+		adm = 50 dip = 45 mil = 55
+		birth_date = 1316.1.1 #Unknown
+		birth = thula
+		father = zyd_al_mutahhar_ibn_muhammad_pw
+		dynasty = al_mutahhar_dynasty
+		tag = ZYD
+	}
+	zyd_ahmad_ibn_al_mutahhar_pw = {	#younger son of Imam al-Wathiq al-Mutahhar
+		first_name = { name = name_ahmad }
+		culture = yemeni_culture
+		religion = shia
+		estate = clergy_estate
+		adm = 40 dip = 35 mil = 45
+		birth_date = 1320.1.1 #Unknown
+		birth = thula
+		father = zyd_al_mutahhar_ibn_muhammad_pw
+		dynasty = al_mutahhar_dynasty
+		tag = ZYD
+	}
 }

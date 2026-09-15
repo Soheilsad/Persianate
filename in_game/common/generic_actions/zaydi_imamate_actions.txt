@@ -1,0 +1,200 @@
+# =====================================================================
+# THE IMAM'S ACTIONS.
+#
+# imam_declares_jihad  — the da'wa turned outward: a CB on a neighbour of
+#                        another religion or on a rival living imam.
+#                        Shape: ghazi_declare_holy_war (religion picker
+#                        instead of the disaster picker).
+# swear_bayah          — joining a living imamate is a priced religious
+#                        action, not a free diplomatic click; the engine's
+#                        own join action is hidden on the IO
+#                        (join_visible_trigger). Shape:
+#                        join_autocephalous_patriarchate.
+# =====================================================================
+
+imam_declares_jihad = {
+	type = religious
+	show_message = no
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 3
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = imam_declares_jihad
+		months = 12
+	}
+
+	potential = {
+		scope:actor = {
+			is_leader_of_international_organization_of_type = { type = imamate_living }
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			at_war = no
+		}
+	}
+
+	price = price:imam_jihad_price
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		interaction_source_list = {
+			scope:actor = {
+				every_neighbor_country = {
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target
+		name = "imam_jihad_target"
+		none_available_msg_key = "imam_jihad_no_targets"
+		column = { data = name }
+		column = { data = expected_army_size }
+		visible = {
+			is_real_country = yes
+			OR = {
+				NOT = { religion = scope:actor.religion }
+				is_leader_of_international_organization_of_type = { type = imamate_living }
+			}
+			scope:actor = {
+				can_declare_war_on = root
+				NOT = { has_truce_with = root }
+				NOT = { is_allied_with = { target = root } }
+			}
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			if = {
+				limit = { exists = scope:target }
+				add_casus_belli = {
+					target = scope:target
+					type = casus_belli:cb_imam_jihad
+					years = 10
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = 60
+	}
+}
+
+swear_bayah = {
+	type = religious
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 3
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	potential = {
+		scope:actor = {
+			religion = religion:shia
+			NOT = { is_member_of_international_organization_of_type = { type = imamate_living } }
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			at_war = no
+		}
+	}
+
+	price = price:swear_bayah_price
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		target_flag = target
+		name = "swear_bayah_choose_imam"
+		none_available_msg_key = "swear_bayah_no_imamates"
+		column = {
+			data = international_organization_select_column
+		}
+		visible = {
+			international_organization_type = international_organization_type:imamate_living
+			var:religion = scope:recipient
+		}
+		enabled = {
+			scope:actor = {
+				can_join_international_organization = root
+			}
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				scope:actor = {
+					OR = {
+						has_religious_aspect = religious_aspect:imamate_ithna_ashari
+						has_religious_aspect = religious_aspect:imamate_ismaili
+					}
+				}
+			}
+			custom_tooltip = { text = swear_bayah_converts_tt }
+		}
+		if = {
+			limit = { exists = scope:target }
+			scope:target = {
+				add_country_to_international_organization = scope:actor
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = -20
+		if = {
+			limit = {
+				scope:actor = {
+					OR = {
+						has_religious_aspect = religious_aspect:imamate_ithna_ashari
+						has_religious_aspect = religious_aspect:imamate_ismaili
+					}
+				}
+			}
+			add = -20
+		}
+		if = {
+			limit = {
+				exists = scope:target
+				scope:actor = { is_subject_of = scope:target.leader_country }
+			}
+			add = 60
+		}
+		if = {
+			limit = {
+				scope:actor = { has_religious_aspect = religious_aspect:imamate_zaydi }
+			}
+			add = 30
+		}
+	}
+}

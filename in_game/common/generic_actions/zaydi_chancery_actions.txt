@@ -1,7 +1,7 @@
 # =====================================================================
 # PROCLAIM THE IMAM'S HOUSE — stage two of the road to a sultanate.
 #
-# Requires stage one (imams_diwan), a son to hand it to, and — the
+# Requires stage one (the imam holds a captured diwan), a son to hand it to, and — the
 # load-bearing gate — the imamate's own tenet already turned dynastic:
 # the community must be talked into the Imam's House before the state
 # can become one. Then the theocracy becomes a Persianate sultanate on
@@ -28,14 +28,25 @@ proclaim_imams_house = {
 	potential = {
 		scope:actor = {
 			government_type = government_type:theocracy
-			has_reform = government_reform:imams_diwan
+			has_reform = government_reform:zaydi_imamate
+			has_variable = holds_the_diwan
 		}
 	}
 
 	allow = {
 		scope:actor = {
 			at_war = no
-			has_heir = yes
+			# a son to hand the house to — not "an heir": under the elective the
+			# heir is whichever sayyid scores best, which is the point
+			custom_tooltip = {
+				text = proclaim_imams_house_has_son_tt
+				ruler ?= {
+					any_child = {
+						is_alive = yes
+						is_female = no
+					}
+				}
+			}
 			custom_tooltip = {
 				text = proclaim_imams_house_dynastic_tenet_tt
 				any_international_organizations_member_of = {
@@ -63,19 +74,8 @@ proclaim_imams_house = {
 		scope:actor = {
 			custom_tooltip = {
 				text = proclaim_imams_house_effect_tt
-				change_government_type = government_type:persianate_sultanate
-				remove_reform = government_reform:zaydi_imamate
-				remove_reform = government_reform:imams_diwan
-				add_reform = government_reform:yemeni_chancery
-				add_reform = government_reform:sultanized_imamate
-				change_heir_selection = heir_selection:favorite_son_elective_succession
-				add_country_modifier = {
-					modifier = sultanized_imamate_grievance
-					years = 25
-				}
+				imams_house_transform = yes
 			}
-			add_legitimacy = -10
-			add_stability = -10
 		}
 	}
 

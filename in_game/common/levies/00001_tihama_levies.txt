@@ -1,0 +1,54 @@
+# =====================================================================
+# THE RASULID AUXILIARIES — Arab tribal horse and foot of the Tihama
+# and Abyan, levied from the tribesmen pops the Yemen pass seeds there.
+# Persianate governments have no levy path for Arab tribesmen (the
+# nomadic levy is chancery + Turco-Mongol cultures only); this is that
+# path for the Yemeni chancery and the sultanized imamate. Lowland only:
+# a highland tribesman under the Rasulids is not a Tihama Arab.
+# =====================================================================
+
+levy_tihama_arab_horse = {
+	size = 0.05
+	allowed_pop_type = tribesmen
+	country_allow = {
+		OR = {
+			has_reform = government_reform:yemeni_chancery
+			has_reform = government_reform:sultanized_imamate
+		}
+	}
+	allow = {
+		location = {
+			OR = {
+				topography = flatland
+				topography = hills
+			}
+			market = {
+				OR = {
+					is_produced_in_market = goods:horses
+					is_traded_in_market = goods:horses
+				}
+			}
+		}
+	}
+	unit = a_tihama_arab_horse
+}
+
+levy_tihama_arab_foot = {
+	size = 0.04
+	allowed_pop_type = tribesmen
+	country_allow = {
+		OR = {
+			has_reform = government_reform:yemeni_chancery
+			has_reform = government_reform:sultanized_imamate
+		}
+	}
+	allow = {
+		location = {
+			OR = {
+				topography = flatland
+				topography = hills
+			}
+		}
+	}
+	unit = a_tihama_arab_foot
+}

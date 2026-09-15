@@ -1,0 +1,49 @@
+﻿l_english:
+
+ # ============================================================
+ # THE IMAM'S ARMY AND ACTIONS (08_yemeni_units.txt,
+ # 00000_yemeni_levies.txt, zaydi_jihad.txt, zaydi_imamate_actions.txt)
+ # ============================================================
+
+ # --- units ---
+ a_yemeni_qabili: "Qabīlī Highlanders"
+ a_yemeni_qabili_desc: "The armed tribesman of Ḥāshid, Bakīl and Khawlān: a terrace farmer with spear, sword, shield and jambiya, fighting from fortress-villages on the ridges. Nearly unbeatable on his own ground, of little use on the Tihama plain. Every lowland power held the coast and lost the mountains to men like these."
+ a_yemeni_tribal_horse: "Tribal Horse of the Jawf"
+ a_yemeni_tribal_horse_desc: "The little cavalry the highlands could raise: the sayyid houses' retinues and the horse-and-camel tribes of the Jawf and Najrān on the desert edge."
+ levy_yemeni_qabili: "Qabīlī Levy"
+ levy_yemeni_tribal_horse: "Tribal Horse Levy"
+
+ # --- casus belli ---
+ cb_imam_jihad: "The Imam's Jihād"
+ cb_imam_jihad_desc: "The Imam's daʿwa turned outward: the rising by the sword against unjust rule, against those of another faith and against a rival who claims the imamate."
+
+ # --- actions ---
+ imam_declares_jihad: "Declare the Imam's Jihād"
+ imam_declares_jihad_desc: "Call the sworn to the sword against a neighbour of another faith, or against a rival living Imam. Grants the Imam's Jihād casus belli for ten years."
+ imam_jihad_target: "Against whom?"
+ imam_jihad_no_targets: "No neighbour can be the object of the Imam's jihād."
+ imam_jihad_price: "The Imam's Jihād"
+ swear_bayah: "Swear Bayʿa to an Imam"
+ swear_bayah_desc: "Give the oath of allegiance to a living Imam: answer his call to arms, pay him zakāt, and stand under his justice. A state committed to a hidden Imam must recommit its Shiism first."
+ swear_bayah_choose_imam: "To which Imam?"
+ swear_bayah_no_imamates: "There is no living Imam to swear to."
+ swear_bayah_price: "The Oath"
+
+ # --- AI reasons ---
+ WE_ARE_ZAYDI_ALREADY: "We already hold the Zaydi imamate"
+ WE_ARE_GREATER_THAN_THE_IMAM: "We are greater than the Imam"
+
+ # --- the Rasulid auxiliaries ---
+ a_tihama_arab_horse: "Tihama Arab Horse"
+ a_tihama_arab_horse_desc: "The tribal cavalry of the coastal plain and Abyan, plunder-paid and quick, the mass of every Rasulid field army around its small mamluk core. Masters of the flat; lost on a ridge."
+ a_tihama_arab_foot: "Tihama Arab Foot"
+ a_tihama_arab_foot_desc: "The tribal footmen of the wadis, raised by their shaykhs for a season and a share. They took the lowland cities for the sultans and never held a mountain."
+ levy_tihama_arab_horse: "Tihama Arab Horse Levy"
+ levy_tihama_arab_foot: "Tihama Arab Foot Levy"
+
+ # --- 2026-09-15 additions ---
+ name_hamza: "Ḥamza"
+ swear_bayah_converts_tt: "Bayʿa to a living Imam is the confession itself: #bold we become Zaydi#!, and our commitments to a hidden Imam lapse."
+ proclaim_imams_house_has_son_tt: "The Imam has a living son"
+ OUR_STRENGTH_AGAINST_THE_IMAM: "Our strength measured against the Imam's"
+ WE_HOLD_A_HIDDEN_IMAM: "We are committed to a hidden Imam"

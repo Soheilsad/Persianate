@@ -1,0 +1,27 @@
+# The Imam's jihad. A Zaydi imam's da'wa was a call against unjust rule,
+# and the sword was the imamate's constitution (qiyam bi'l-sayf). Open
+# against any state not of his religion, and against a rival living imam.
+# Shape: cb_ghozva (eranzamin.txt).
+cb_imam_jihad = {
+	create_visible = {
+		is_leader_of_international_organization_of_type = { type = imamate_living }
+		OR = {
+			NOT = { religion = scope:target.religion }
+			scope:target = { is_leader_of_international_organization_of_type = { type = imamate_living } }
+		}
+	}
+	declare_enabled = {
+		OR = {
+			NOT = { religion = scope:target.religion }
+			scope:target = { is_leader_of_international_organization_of_type = { type = imamate_living } }
+		}
+	}
+	province = {
+		any_location_in_province = {
+			always = yes
+		}
+	}
+	custom_tags = { religious_casus_belli }
+	speed = 20
+	war_goal_type = religious_conquer_province
+}

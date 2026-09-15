@@ -52,10 +52,10 @@ countries = {
 			include = "expl_indonesian_trade_route"
 			include = "expl_mongols"
 			starting_technology_level = 3
-			include = "persianate_sultanate_tazik_dominant"
+			include = "yemeni_tazik"
 			government = {
 				type = persianate_sultanate
-				heir_selection = cognatic_primogeniture
+				heir_selection = favorite_son_elective_succession   # wali al-'ahd designation; cognatic primogeniture is not on the persianate list
 				ruler = yem_al_mujahid_ali
 				reforms = {
 					yemeni_chancery
@@ -84,8 +84,13 @@ countries = {
 				shaharah khamir
 			}
 
+			# The imams' reach when they pushed out of Sa'da: Hajjah and the
+			# Haraz edge, the Dhamar plain, the Jawf and Marib, the Najran
+			# fringe. Cores, not holdings.
 			our_cores_conquered_by_others = {
-				dhamar hajjah radaa
+				dhamar hajjah radaa hutayb
+				marib baraqish harib
+				al_husayniyah
 			}
 
 			include = "expl_middle_east"

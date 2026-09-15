@@ -176,8 +176,9 @@ REPLACE:indian_sultanate_reform = {
 yemeni_chancery = {
 	unique = yes
 	major = yes
-	content_priority = 1100
+	age = age_1_traditions
 	potential = {
+		government_type = government_type:persianate_sultanate   # was offered to the Zaydi Imam at start
 		NOT = { has_reform = government_reform:indian_sultanate_reform }
 		NOT = { has_reform = government_reform:mamluk_government}
 		NOT = { has_reform = government_reform:persianate_bureaucracy_reform }
@@ -199,9 +200,9 @@ yemeni_chancery = {
 
 		global_peasant_enfranchisment = 1.0
 
-		# --- military surgery: no peasant hosts, ever ---
-		peasants_estate_levy_size = -1.0
-		burghers_estate_levy_size = -0.5
+		### yemenis WILL have peasant hosts
+		peasants_estate_levy_size = -0.5
+		burghers_estate_levy_size = -0.25
 		# The askari: small, elite, expensive. (Amirs line arms when the
 		# government-type switch lands; nobles line covers the interim.)
 		amirs_estate_levy_size = 0.75

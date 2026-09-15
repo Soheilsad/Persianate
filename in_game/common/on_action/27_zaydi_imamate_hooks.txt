@@ -26,6 +26,12 @@ zaydi_imamate_seating = {
 				add_religious_aspect = religious_aspect:imamate_zaydi
 				add_stability = 10
 			}
+			# The imam of 1337 holds his office by khuruj: the rising is the
+			# imamate's constitution, not a posture it might adopt later.
+			if = {
+				limit = { NOT = { has_religious_aspect = religious_aspect:qiyam_bil_sayf } }
+				add_religious_aspect = religious_aspect:qiyam_bil_sayf
+			}
 		}
 		c:YAM ?= {
 			if = {

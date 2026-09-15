@@ -9,17 +9,17 @@
  zaydi_chancery.1.t: "The Dīwān of the Lowlands"
  zaydi_chancery.1.d: "The city has fallen and its registers with it: the tax rolls of the wadis, the rawk surveys, the dīwān of the army with its lists of iqṭāʿ-holders, and the scribes who kept them, who have not left their desks. They ask, politely, whom they now serve.\n\nThe Imamate has never had such men. The Imam's agents collect zakāt, his qāḍīs judge, the hijras teach; the tribes fight and are not taxed. To keep these scribes is to rule the lowlands as the sultans ruled them, and the sayyid houses of the north already know what that means."
  zaydi_chancery.1.a: "Let the scribes serve the Imam. Take up the dīwān."
+ zaydi_chancery_transform_now_tt: "The imamate already holds the tenet of the Imam's House: #bold the Zaydi Imamate becomes a Persianate Sultanate now#!, under the Rasulid Chancery and the Imam's House."
+ zaydi_chancery_holds_diwan_tt: "The Imam #bold holds the dīwān#!. Once the imamate adopts the tenet of the Imam's House, he may #bold Proclaim the Imam's House#!."
  zaydi_chancery.1.b: "The Imam rules by the Book and the sword. Disperse them, and take what is in the treasury."
 
  # --- the reforms ---
- imams_diwan: "The Imam's Dīwān"
- imams_diwan_desc: "The Imam employs the chancery he captured. Registers, governors and tax farms run the lowlands in his name while the Imam himself is still elected and the state is still the community of a living Imam. The sayyid houses call it the sultans' way; the tribes notice they are now the only ones not on a register. Sharaf al-Dīn Yaḥyā's state."
  sultanized_imamate: "The Imam's House"
  sultanized_imamate_desc: "The imamate has become hereditary and the state a sultanate with an Imam at its head. The sworn still answer his call and pay him zakāt; his army is still Ḥāshid and Bakīl; but the jurists have their grievance, and they will remember it for a generation. The Qāsimid state after al-Mutawakkil Ismāʿīl."
 
  # --- stage two: the action ---
  proclaim_imams_house: "Proclaim the Imam's House"
- proclaim_imams_house_desc: "Make the imamate hereditary and the state a sultanate. Requires the Imam's Dīwān, an heir, and an imamate that has already adopted the tenet of the Imam's House."
+ proclaim_imams_house_desc: "Make the imamate hereditary and the state a sultanate. Requires a captured dīwān, an heir, and an imamate that has already adopted the tenet of the Imam's House."
  proclaim_imams_house_dynastic_tenet_tt: "Our imamate holds the tenet #bold The Imam's House#!"
  proclaim_imams_house_effect_tt: "The Zaydi Imamate becomes a #bold Persianate Sultanate#! under the #bold Rasulid Chancery#! and #bold The Imam's House#!, succession passes to the favoured son, and the jurists carry #bold the sultanized imamate's grievance#! for 25 years."
  THE_IMAM_IS_OLD: "The Imam is old and has a son"

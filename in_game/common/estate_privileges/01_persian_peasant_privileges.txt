@@ -24,7 +24,7 @@ boneh_system = {
 			}
 		}
 	}
-	on_deactivated = {
+	on_deactivate = {
 		every_owned_location = {
 			limit = {
 

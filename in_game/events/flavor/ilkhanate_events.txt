@@ -141,15 +141,15 @@ ilkhanate_flavor.1 = {
 			factor = 25
 			modifier = {
 				factor = 4
-				any_neighbor_country = { religion.group != religion_group:muslim }
+				any_neighbor_country ?= { religion.group != religion_group:muslim }
 			}
 			modifier = {
 				factor = 3
-				any_neighbor_country = { religion != scope:actor.religion }
+				any_neighbor_country ?= { religion != scope:actor.religion }
 			}
 			modifier = {
 				factor = 2
-				any_neighbor_country = { has_policy = mongol_law_policy }
+				any_neighbor_country ?= { has_policy = mongol_law_policy }
 			}
 			modifier = {
 				factor = 10

@@ -27,9 +27,11 @@ zaydi_imamate = {
 		monthly_religious_influence = 0.10
 		global_tribes_estate_power = 0.5
 		tribes_estate_levy_size = 0.25
+		peasants_estate_levy_size = 0.33 
 		land_morale_modifier = 0.20
 		tribes_estate_can_participate_in_parliament = yes
 		global_defensive = 0.15
+		global_levy_size_modifier = 0.15
 		clergy_estate_target_satisfaction = small_permanent_target_satisfaction
 		government_reform_slots = 1
 	}
@@ -39,45 +41,13 @@ zaydi_imamate = {
 
 
 # =====================================================================
-# THE IMAM'S DIWAN — stage one of the road to a sultanate.
-#
-# Granted by zaydi_chancery.1 when the imamate takes a chancery city.
-# The imam is still elected, the state is still a theocracy, but the
-# chancery gate (has_nizam_ul_mulk_chancery) is now open and the diwan
-# class appears. The price is what the jurists said it was: devotion
-# bleeds, the sayyid houses sour, the tribes lose weight, and the realm
-# drifts toward the Tazik pole. Sharaf al-Din Yahya (r. 1506-58).
-# =====================================================================
-
-imams_diwan = {
-	age = age_1_traditions
-	government = theocracy
-	potential = {
-		government_type = government_type:theocracy
-		has_reform = government_reform:zaydi_imamate
-	}
-	locked = {
-		always = yes
-	}
-	country_modifier = {
-		has_nizam_ul_mulk_chancery = yes
-		tax_income_efficiency = 0.05
-		global_diwan_estate_power = 0.15
-		diwan_estate_target_satisfaction = 0.05
-		monthly_devotion = -0.05
-		clergy_estate_target_satisfaction = small_permanent_target_satisfaction_penalty
-		global_tribes_estate_power = -0.25
-		monthly_towards_tazik = 0.05
-	}
-
-	years = 0
-}
-
-
-# =====================================================================
 # THE SULTANIZED IMAMATE — stage two, the marker on the new sultanate.
 #
-# Applied by proclaim_imams_house alongside yemeni_chancery. The ruler
+# Applied by imams_house_transform (scripted_effects/11_zaydi_effects.txt)
+# alongside yemeni_chancery, from zaydi_chancery.1 or proclaim_imams_house
+# — there is no intermediate reform: the imamate captures the chancery and
+# either becomes a sultanate on the spot (tenet already dynastic) or holds
+# the diwan (variable) until the community is talked into it. The ruler
 # is still Imam of his imamate (the IO persists, the sworn still pay
 # and march), but the office is hereditary now and the state is a
 # Persianate sultanate. The Qasimid fact, with the jurists' grievance
@@ -88,8 +58,11 @@ imams_diwan = {
 sultanized_imamate = {
 	age = age_1_traditions
 	government = persianate_sultanate
+	# Effect-only: imams_house_transform sets imams_house_proclaimed first,
+	# so this never appears as a menu choice.
 	potential = {
 		government_type = government_type:persianate_sultanate
+		has_variable = imams_house_proclaimed
 	}
 	locked = {
 		always = yes

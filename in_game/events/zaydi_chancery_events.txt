@@ -24,17 +24,39 @@ zaydi_chancery.1 = {
 	trigger = {
 		government_type = government_type:theocracy
 		has_reform = government_reform:zaydi_imamate
-		NOT = { has_reform = government_reform:imams_diwan }
+		NOT = { has_variable = holds_the_diwan }
 	}
 
-	# A: Take up the dīwān. The imam employs the lowland scribes.
+	# A: Take up the dīwān. If the imamate has already adopted the tenet of
+	# the Imam's House, the transformation is immediate (al-Mutahhar,
+	# the Qasimids). If not, the imam HOLDS the diwan — the variable that
+	# unlocks proclaim_imams_house once the community is talked round —
+	# and pays the jurists' price now.
 	option = {
 		name = zaydi_chancery.1.a
-		add_reform = government_reform:imams_diwan
+		set_variable = holds_the_diwan
 		add_devotion = -20
 		add_stability = -5
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.10 }
 		add_estate_satisfaction = { type = estate_type:tribes_estate value = -0.05 }
+		if = {
+			limit = {
+				any_international_organizations_member_of = {
+					international_organization_type = international_organization_type:imamate_living
+					leader_country ?= root
+					international_organization_has_policy = policy:dynastic_imamate
+				}
+			}
+			custom_tooltip = {
+				text = zaydi_chancery_transform_now_tt
+				imams_house_transform = yes
+			}
+		}
+		else = {
+			custom_tooltip = {
+				text = zaydi_chancery_holds_diwan_tt
+			}
+		}
 		ai_chance = {
 			factor = 80
 		}

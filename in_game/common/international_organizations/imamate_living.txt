@@ -17,7 +17,9 @@
 # Not unique: Yemen in 1337 has rival imams, the Caspian its own line.
 # Bridge to the older aspect content: joining grants imamate_zaydi,
 # leaving (into no other imamate) removes it, so Two Pirs / tariqa
-# gates keep working untouched.
+# gates keep working untouched. A Twelver or Ismaili state MAY swear
+# (AI reluctance -20) and becomes Zaydi by doing so: bay'a to a living
+# imam is the confession.
 # =====================================================================
 
 imamate_living = {
@@ -48,18 +50,29 @@ imamate_living = {
 	}
 	gives_military_access_to_all_when_at_war = yes
 
-	# --- bay'a: the sworn answer the imam's call, and he theirs ----------
+	# --- bay'a is BINDING: the sworn march in the imam's wars without being
+	# asked, and every member defends every other -------------------------
+	join_offensive_wars_always = {
+		scope:actor = { is_leader_of_international_organization = root }
+	}
 	join_offensive_wars_can_call = {
 		scope:actor = { is_leader_of_international_organization = root }
 	}
 	join_offensive_wars_auto_call = {
 		scope:actor = { is_leader_of_international_organization = root }
 	}
+	join_defensive_wars_always = {
+		always = yes
+	}
 	join_defensive_wars_can_call = {
 		always = yes
 	}
 	join_defensive_wars_auto_call = {
 		always = yes
+	}
+	# joining is the priced swear_bayah action, not a free diplomatic click
+	join_visible_trigger = {
+		always = no
 	}
 
 	create_visible_trigger = {
@@ -175,7 +188,9 @@ imamate_living = {
 				set_variable = { name = seat value = root.capital }
 			}
 		}
-		# aspect bridge
+		# aspect bridge: bay'a to a living imam IS becoming Zaydi. A Twelver or
+		# Ismaili state that swears drops its hidden-Imam commitments (and the
+		# occultation politics that hang off them) and takes the Zaydi one.
 		if = {
 			limit = { has_religious_aspect = religious_aspect:imamate_ithna_ashari }
 			remove_religious_aspect = religious_aspect:imamate_ithna_ashari
@@ -183,6 +198,18 @@ imamate_living = {
 		if = {
 			limit = { has_religious_aspect = religious_aspect:imamate_ismaili }
 			remove_religious_aspect = religious_aspect:imamate_ismaili
+		}
+		if = {
+			limit = { has_religious_aspect = religious_aspect:intizar_quietism }
+			remove_religious_aspect = religious_aspect:intizar_quietism
+		}
+		if = {
+			limit = { has_religious_aspect = religious_aspect:niyaba_amma }
+			remove_religious_aspect = religious_aspect:niyaba_amma
+		}
+		if = {
+			limit = { has_religious_aspect = religious_aspect:messianism }
+			remove_religious_aspect = religious_aspect:messianism
 		}
 		if = {
 			limit = { NOT = { has_religious_aspect = religious_aspect:imamate_zaydi } }
@@ -225,22 +252,19 @@ imamate_living = {
 		zaydi_zakat
 	}
 
+	# Bay'a is not free. A state swears to an imam it likes, that it is
+	# smaller than, that it already shares a confession with, or that it
+	# already serves — and never to one it is greater than.
 	ai_desire_to_join = {
+		add = {
+			desc = "VOTE_BASE_VALUE"
+			value = -40
+		}
 		add = {
 			desc = "game_concept_opinion"
 			value = {
 				value = "root.opinion(scope:actor)"
-				divide = 4
-			}
-		}
-		if = {
-			limit = { country_rank_level > 1 }
-			subtract = {
-				desc = "game_concept_country_rank"
-				value = {
-					value = country_rank_level
-					multiply = 20
-				}
+				divide = 2
 			}
 		}
 		if = {
@@ -250,7 +274,55 @@ imamate_living = {
 			}
 			add = {
 				desc = "IS_SUBJECT_OF_THE_IMAM"
-				value = 50
+				value = 40
+			}
+		}
+		if = {
+			limit = { has_religious_aspect = religious_aspect:imamate_zaydi }
+			add = {
+				desc = "WE_ARE_ZAYDI_ALREADY"
+				value = 30
+			}
+		}
+		# A spectrum on military strength, the way base weighs vassalage:
+		# equal to the imam is -30, half his strength -15, twice it -60.
+		if = {
+			limit = { exists = scope:actor }
+			subtract = {
+				desc = "OUR_STRENGTH_AGAINST_THE_IMAM"
+				value = {
+					value = country_total_army_levy_size
+					multiply = 30
+					divide = {
+						value = scope:actor.country_total_army_levy_size
+						add = 1
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					has_religious_aspect = religious_aspect:imamate_ithna_ashari
+					has_religious_aspect = religious_aspect:imamate_ismaili
+				}
+			}
+			subtract = {
+				desc = "WE_HOLD_A_HIDDEN_IMAM"
+				value = 20
+			}
+		}
+		if = {
+			limit = {
+				exists = scope:actor
+				OR = {
+					culture ?= scope:actor.culture
+					ruler ?= { culture ?= scope:actor.culture }
+				}
+			}
+			add = {
+				desc = "PRIMARY_OR_RULER_CULTURE_EQUAL_TO_LEADER_CULTURE"
+				value = 15
 			}
 		}
 		if = {
