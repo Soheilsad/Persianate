@@ -266,11 +266,8 @@ building_manager = {
 	## jal garrisons. 
 	tamma_garrison = { tag = JAL level = 2 location = baghdad }
 	tamma_garrison = { tag = JAL level = 1 location = samarra }
-
-	#JKR
 	tamma_garrison = { tag = JKR level = 1 location = tus }
 
-	## SUT
 	tamma_garrison = { tag = SUT level = 1 location = diyarbekir }
 
 	
@@ -331,8 +328,6 @@ building_manager = {
 	iqta_grant = { tag = MAM level = 2 location = dabiq }
 	iqta_grant = { tag = MAM level = 1 location = zardana }
 	iqta_grant = { tag = MAM level = 1 location = madaba }
-
-	## DLH — the Doab core and the Punjab military belt.
 	iqta_grant = { tag = DLH level = 2 location = jansath }
 	iqta_grant = { tag = DLH level = 1 location = korra }
 	iqta_grant = { tag = DLH level = 1 location = asni }
@@ -361,12 +356,5 @@ building_manager = {
 	## it revolts outright in 1338.
 	regional_diwan = { tag = DLH level = 1 location = daulatabad }
 	regional_diwan = { tag = DLH level = 1 location = multan }
-	## GLH's darugha seats are NO LONGER PLACED AT START. Qutlugh-Temür
-	## at Urgench and Tuluktumur at Solkhat were real men in real posts
-	## in 1337, but seeding them here decides the khan's constitutional
-	## question before the player has been asked it. The choice between
-	## posting a darugha, granting an ulus to a prince of the line, and
-	## paying for a ghulam viceroy is now the game's, made through the
-	## Reach of the Khan event as control fails area by area.
-	## (Was: majar, bolghar, urgench, solkhat.)
+
 }

@@ -8011,7 +8011,7 @@ soghan = { topography = plateau vegetation = desert climate = arid religion = su
 zarand_iran = { topography = plateau vegetation = qanat_farmland climate = cold_arid religion = sunni culture = farsi_culture raw_material = cotton }
 bafq = { topography = plateau vegetation = qanat_farmland climate = arid religion = sunni culture = farsi_culture raw_material = fruit }
 behabad = { topography = plateau vegetation = qanat_farmland climate = arid religion = sunni culture = farsi_culture raw_material = dyes }
-kuhbanan = { topography = hills vegetation = qanat_farmland climate = cold_arid religion = sunni culture = farsi_culture raw_material = medicaments }
+kuhbanan = { topography = hills vegetation = qanat_farmland climate = cold_arid religion = sunni culture = farsi_culture raw_material = iron }
 ravar = { topography = plateau vegetation = qanat_farmland climate = arid religion = sunni culture = farsi_culture raw_material = sand }
 ravar_nayband_corridor = { topography = plateau vegetation = desert climate = arid }
 dasht_lut4 = { topography = dune_wasteland vegetation = desert climate = arid }

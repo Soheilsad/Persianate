@@ -592,6 +592,7 @@ iranian_kingship = {
 		global_max_urban_control = ez_diwan_urban_bonus
 		cultural_tradition_modifier = 0.05
 		diplomatic_reputation = 1
+		government_size = 1
 	}
 
 	years = 10
