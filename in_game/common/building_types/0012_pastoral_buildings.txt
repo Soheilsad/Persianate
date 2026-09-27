@@ -131,7 +131,7 @@ steppe_tribal_pasture = {
 			vegetation = sparse 
 		}
 		num_pop_type:tribesmen > 1
-		num_pop_type:tribesmen < 5
+		
 
 
 	}
