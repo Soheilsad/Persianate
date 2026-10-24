@@ -15,6 +15,13 @@ set -euo pipefail
 MOD_DIR="/Users/mohammadsoheilsadabadi/Documents/Paradox Interactive/Europa Universalis V/mod/wip-pers-world"
 SRC_VDF="$MOD_DIR/build.vdf"
 META_JSON="$MOD_DIR/.metadata/metadata.json"
+# Content source. Defaults to the live folder; set SRC_DIR to upload another
+# branch from its git worktree instead of checking that branch out in the
+# live (iCloud-synced) folder, e.g.
+#   SRC_DIR=/path/to/1.4-dev-worktree ./tools/upload_better.sh "note"
+# .metadata, build.vdf and the version bump always come from MOD_DIR
+# (they are gitignored, so a worktree does not have them).
+SRC_DIR="${SRC_DIR:-$MOD_DIR}"
 STEAM_USER="soheils"
 CHANGENOTE="${1:-Mod update}"
 DRY_RUN="${DRY_RUN:-0}"
@@ -76,7 +83,7 @@ fi
 # on the real ones — a duplicate pops file doubles the world, a duplicate
 # wars file hangs map-gen. They appear when files churn under iCloud
 # (e.g. a git checkout). Never ship them.
-DUPES="$(cd "$MOD_DIR" && find in_game main_menu .metadata -name '* [0-9].*' 2>/dev/null)"
+DUPES="$(cd "$SRC_DIR" && find in_game main_menu -name '* [0-9].*' 2>/dev/null)"
 if [[ -n "$DUPES" ]]; then
     echo "ABORT: iCloud conflict copies in the mod folder:" >&2
     echo "$DUPES" >&2
@@ -85,7 +92,7 @@ fi
 
 # Copy only the whitelisted content into the staging dir.
 for item in "${INCLUDE[@]}"; do
-    src="$MOD_DIR/$item"
+    if [[ "$item" == .metadata ]]; then src="$MOD_DIR/$item"; else src="$SRC_DIR/$item"; fi
     if [[ ! -e "$src" ]]; then
         echo "warning: '$item' not found in MOD_DIR, skipping" >&2
         continue
@@ -98,7 +105,7 @@ done
 # Change Notes page. metadata.json is gitignored, so it does not follow
 # the branch — patch the STAGED copy's supported_game_version from the
 # checked-out branch instead. Source metadata stays on the 1.3 value.
-BRANCH="$(git -C "$MOD_DIR" branch --show-current)"
+BRANCH="$(git -C "$SRC_DIR" branch --show-current)"
 case "$BRANCH" in
     1.4-dev) GAME_VERSION="1.4.2" ;;
     *)       GAME_VERSION="" ;;
