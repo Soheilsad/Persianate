@@ -8,6 +8,9 @@ nobles = {
 	pop_food_consumption = 20.0
 
 	city_graphics = 1.0
+	grow = yes
+	
+	
 	# Sufyānī notables take priority in Commonwealth of Martyrs polities; the
 	# diwan/amir gates fail anyway under that government type (different
 	# government_type, no persianate_bureaucracy_reform), but ordering it first
@@ -25,6 +28,8 @@ nobles = {
 	# land on the right ledger in India.
 	tribes_estate = { is_gaelic_clans = yes }
 	nobles_estate = {}
+	
+	
 	promotion_factor = 0.1
 	
 	upper = yes
@@ -34,12 +39,17 @@ nobles = {
 		local_cultural_tradition = 0.2
 		local_monthly_control = 0.01
 	}
+
+	#ai_local_pop_cap_desire = { value = 0 } #root = location
+
 }
 
 clergy = {
 	color = pop_clergy
 	
 	editor = 0.05
+	
+	grow = yes
 	
 	assimilation_conversion_factor = 0.05
 	
@@ -59,6 +69,7 @@ clergy = {
 	dhimmi_estate = { is_dhimmi = yes }
 	tribes_estate = { is_gaelic_clans = yes }
 	clergy_estate = {}
+	
 	upper = yes
 	has_cap = yes
 	
@@ -66,12 +77,16 @@ clergy = {
 		local_pop_conversion_speed_modifier = 0.25
 		local_pop_assimilation_speed_modifier = 0.25
 	}
+
+
 }
 
 burghers = {
 	color = pop_burghers
 	
 	editor = 0.1
+	
+	grow = yes
 	
 	assimilation_conversion_factor = 0.1
 	
@@ -84,6 +99,7 @@ burghers = {
 	# dhimmi_estate = { is_dhimmi = yes }
 	tribes_estate = { is_gaelic_clans = yes }
 	burghers_estate = {}
+	
 	promotion_factor = 0.5
 	
 	migration_factor = 0.5
@@ -95,13 +111,22 @@ burghers = {
 	literacy_impact = {
 		local_monthly_development_modifier = 0.25
 		local_trades_per_burgher = 0.5
+		local_building_establishment_speed = 0.25
 	}
+
 }
+
+
+
+
+
 
 laborers = {
 	color = pop_laborers
 	
 	editor = 1.0
+	
+	grow = yes
 	
 	assimilation_conversion_factor = 0.5
 	
@@ -109,20 +134,25 @@ laborers = {
 
 	city_graphics = 0.05
 	
+	promote_to = soldiers
+	promote_to = burghers
+
 	has_cap = yes
-	
+
 	promotion_factor = 1.5
-	
+
 	migration_factor = 0.1
 	
 	dhimmi_estate = { is_dhimmi = yes }
 	tribes_estate = { is_gaelic_clans = yes }
 	peasants_estate = {}
 	
+	
 	literacy_impact = {
 		local_production_efficiency = medium_production_efficiency_bonus
 		local_max_rgo_size_modifier = 0.1
 	}
+
 }
 
 soldiers = {
@@ -130,6 +160,7 @@ soldiers = {
 	
 	editor = 1.0
 	
+	grow = yes
 	assimilation_conversion_factor = 0.5
 	
 	pop_food_consumption = 5.0
@@ -141,29 +172,33 @@ soldiers = {
 	migration_factor = 0.05
 	
 	has_cap = yes
-
+	
 	# Soldiers in Commonwealth of Martyrs polities are the dervish corps proper —
 	# the ~5,000 mobilized fighters under the Shaykhī network historically.
 	shaykhi_dervishes_estate = { is_shaykhi_pop = yes }
 	dhimmi_estate = { is_dhimmi = yes }
 	tribes_estate = { is_gaelic_clans = yes }
 	peasants_estate = {}
-
+	
+	
 	literacy_impact = {
 		local_defensive = 0.1
 		local_manpower_modifier = 0.1
 	}
 }
 
+
+
 peasants = {
 	color = pop_peasants
+	
 	
 	promote_to = burghers
 	promote_to = clergy
 	promote_to = nobles
 	promote_to = laborers
 	promote_to = soldiers
-	# promote_to = tribesmen
+	
 	pop_food_consumption = 1.0
 	
 	promotion_factor = 0.5
@@ -175,7 +210,6 @@ peasants = {
 	migration_factor = 0.1
 
 	city_graphics = 0.01
-	
 	dhimmi_estate = { is_dhimmi = yes }
 	tribes_estate = { is_gaelic_clans = yes }
 	peasants_estate = {}
@@ -190,7 +224,6 @@ tribesmen = {
 	color = pop_tribes
 	
 	promote_to = peasants
-
 	
 	pop_food_consumption = 0.0
 	
@@ -210,7 +243,6 @@ tribesmen = {
 
 	city_graphics = 0.01
 	cossacks_estate = { is_cossacks = yes }
-	# Tribesmen are manpower, not Amirs
 	tribes_estate = {}
 }
 
@@ -218,14 +250,17 @@ slaves = {
 	color = pop_slaves
 	pop_food_consumption = 1.0
 	assimilation_conversion_factor = 1.0
-	
+
 	migration_factor = 0.01
-	
+
+	grow = yes
+
 	dhimmi_estate = { is_dhimmi = yes }
 	peasants_estate = {}
 	city_graphics = 0.01
-	
+
 	literacy_impact = {
 		local_unrest = 0.2
 	}
+
 }
