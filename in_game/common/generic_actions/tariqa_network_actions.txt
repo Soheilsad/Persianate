@@ -234,7 +234,10 @@ proclaim_khuruj = {
 
 	effect = {
 		scope:actor = {
-			# Census: one sword-column per qizilbash lodge.
+			# Census: one sword-column per qizilbash lodge. The lodges
+			# MUSTER, they do not come over as land — a network of
+			# chapters is not a realm, and handing every lodge's town to
+			# the pir in one tick was a map-wide land grab.
 			set_variable = { name = khuruj_muster value = 0 }
 			every_owned_foreign_building = {
 				limit = {
@@ -243,38 +246,84 @@ proclaim_khuruj = {
 				scope:actor = {
 					change_variable = { name = khuruj_muster add = 1 }
 				}
-				# The lodges rise: their locations come over to the pir.
-				location ?= {
-					change_location_owner = scope:actor
+			}
+
+			# The shrine-seat first: the one town that is the order's
+			# own comes over before anything else, so the rising has a
+			# hearth to muster at and fall back on.
+			capital ?= {
+				change_location_owner = scope:actor
+			}
+
+			# Then the order takes the field as an ARMY, as in tariqa.2
+			# and tariqa.3: a settled state only once it takes a great
+			# city and crowns its pir (tariqa.6, via the coronation
+			# hook, which keys on khuruj_rising_reform).
+			change_country_type = army
+			set_variable = tariqa_khuruj_underway
+			change_government_type = government_type:persianate_sultanate
+			add_reform = government_reform:khuruj_rising_reform
+			ruler ?= {
+				add_character_modifier = {
+					modifier = ilkhanate_warlord
+					years = -1
+					mode = add_and_extend
 				}
 			}
-			# The order becomes a landed conqueror.
-			change_country_type = location
-			change_government_type = government_type:persianate_sultanate
-			# The devotee army musters at the shrine-seat.
+			heir ?= {
+				add_character_modifier = {
+					modifier = ilkhanate_warlord
+					years = -1
+					mode = add_and_extend
+				}
+			}
+
+			# The devotee army musters at the shrine-seat: two regiments
+			# per five lodges, as in tariqa.2. Real Turkoman horse — the
+			# a_age_1_* keys are hidden base templates, not units.
 			capital ?= {
 				while = {
 					limit = {
 						scope:actor = { var:khuruj_muster > 0 }
 					}
 					create_sub_unit_with_owner = {
-						type = a_age_1_traditions_light_cavalry
+						type = a_turkoman_light_cavalry
 						owner = scope:actor
 					}
 					create_sub_unit_with_owner = {
-						type = a_age_1_traditions_light_cavalry
+						type = a_turkoman_light_cavalry
 						owner = scope:actor
 					}
 					scope:actor = {
-						change_variable = { name = khuruj_muster subtract = 1 }
+						add_manpower = 0.5
+						change_variable = { name = khuruj_muster subtract = 5 }
 					}
 				}
 			}
+
 			# The war chest: a generation of futuh, spent at once.
 			add_gold = {
 				value = monthly_income_total
 				multiply = 24
 			}
+
+			# The khuruj is against the neighborhood, not a neighbor.
+			every_country = {
+				limit = {
+					capital ?= {
+						area = scope:actor.capital.area
+					}
+					NOT = { this = scope:actor }
+				}
+				save_scope_as = neighbour
+				scope:actor = {
+					declare_war_with_cb = {
+						target = scope:neighbour
+						type = casus_belli:cb_eranzamin_succession
+					}
+				}
+			}
+
 			remove_variable = khuruj_muster
 		}
 	}
@@ -366,12 +415,18 @@ rise_against_patron = {
 					limit = {
 						scope:actor = { var:rising_muster > 0 }
 					}
+					# Dervish foot, as in tariqa.2's non-tribal branch —
+					# not the hidden a_age_1_* template. Two per five zawiyas.
 					create_sub_unit_with_owner = {
-						type = a_age_1_traditions_heavy_infantry
+						type = a_dervish_corps
+						owner = scope:actor
+					}
+					create_sub_unit_with_owner = {
+						type = a_dervish_corps
 						owner = scope:actor
 					}
 					scope:actor = {
-						change_variable = { name = rising_muster subtract = 1 }
+						change_variable = { name = rising_muster subtract = 5 }
 					}
 				}
 			}

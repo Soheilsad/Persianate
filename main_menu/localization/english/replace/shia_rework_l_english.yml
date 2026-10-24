@@ -193,7 +193,7 @@
 
  # --- Endgame actions ---
  proclaim_khuruj: "Proclaim the Khuruj"
- proclaim_khuruj_desc: "The rising. The qizilbash lodges declare for the pīr, their lands come over, and the sworn cavalry musters at the shrine-seat. The order ends; the dynasty begins."
+ proclaim_khuruj_desc: "The rising. The shrine-seat declares for the pīr, the qizilbash lodges send their sworn cavalry to it, and the order takes the field as an army against its whole neighborhood. It will be a kingdom when it holds a great city, and not before."
  rise_against_patron: "Rise Against the Patron"
  rise_against_patron_desc: "The patron struck the zawiyas — too late. The villages rise with their lodges, and the order inherits what the patron could not hold. Ask Kiyā Afrāsiyāb how this ends."
  rise_against_patron_select: "Choose the patron"
