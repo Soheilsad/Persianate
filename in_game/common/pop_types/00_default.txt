@@ -228,7 +228,11 @@ peasants = {
 
 tribesmen = {
 	color = pop_tribes
-	power_per_pop = 0.01
+	# 1.4 moved power_per_pop onto pop types. The mod's tribes estate ran
+	# at 1 per pop in 1.3 (tribes are part of the economy, not a rounding
+	# error); tribesmen route almost wholly to tribes_estate, so setting
+	# it here restores that exactly.
+	power_per_pop = 1
 
 	promote_to = peasants
 	
