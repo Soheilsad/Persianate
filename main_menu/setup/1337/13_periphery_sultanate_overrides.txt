@@ -171,8 +171,6 @@ countries = {
 			mizrahi
 		}
 
-		currency_data = { complacency = 15 }
-
 		capital = cairo
 	}
 
