@@ -1214,9 +1214,8 @@ fund_artisan_guilds = {
 establish_trade_insurance = {
 	estate = burghers_estate
 
-	modifier_when_in_debate = {
-		trust_recovery = 0.05
-	}
+	# trust_recovery removed in 1.4 (trust mechanic gone); re-sync
+	# against 1.4's establish_trade_insurance.
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }

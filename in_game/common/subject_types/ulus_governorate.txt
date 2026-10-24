@@ -38,7 +38,9 @@ ulus_governorate = {
 	# let losing governorates kneel mid-war and hand the regent the
 	# bill; it bled CHB and JAL white). Defense is a REQUEST instead:
 	# custody.35, fired from on_war_declared (23_custody_defense_hooks).
-	overlord_protects_external = no
+	# 1.4 removed overlord_protects_external; defensive joining is
+	# governed by the join_defensive_wars_* triggers alone.
+	join_defensive_wars_auto_call = { always = no }
 
 	# The governorate chose this — it does not strain at the leash, but
 	# it keeps its own house. High autonomy, hard to annex.

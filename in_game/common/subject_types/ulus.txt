@@ -108,7 +108,9 @@ ulus = {
 	# The khan is not automatically dragged into his brother's wars.
 	# (Same lesson as the governorate: engine-default protection let
 	# losing subjects kneel mid-war and hand the overlord the bill.)
-	overlord_protects_external = no
+	# 1.4 removed overlord_protects_external; defensive joining is
+	# governed by the join_defensive_wars_* triggers alone.
+	join_defensive_wars_auto_call = { always = no }
 
 	allow_declaring_wars = { always = yes }
 
