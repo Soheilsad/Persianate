@@ -47,7 +47,57 @@ REPLACE:rise_of_the_ottomans = {
 	}
 
 	can_end = {
-		rise_of_the_ottomans_end_trigger = yes
+		# 1.4 deleted base's rise_of_the_ottomans_end_trigger (base moved
+		# to named outcome blocks). A call to the missing trigger ended the
+		# situation on the first monthly tick, so its 1.3 body is inlined
+		# here verbatim — our on_ending still routes the endings.
+		OR = {
+			current_year > 1565
+			custom_tooltip = {
+				text = no_beyliks_left_tt
+				global_variable_list_size = {
+					name = eligible_beylik_list
+					value < 1
+				}
+			}
+			trigger_if = {
+				limit = {
+					country_exists = c:TUR
+					var:strongest_beylik_variable = c:TUR
+				}
+				AND = {
+					custom_tooltip = {
+						text = strongest_beylik_has_over_75_locations
+						var:strongest_beylik_variable = {
+							num_locations > 500
+							num_of_non_rural >= 50
+						}
+					}
+					var:strongest_beylik_variable = { is_subject = no }
+				}
+			}
+			trigger_else = {
+				AND = {
+					custom_tooltip = {
+						text = strongest_beylik_has_over_75_locations
+						var:strongest_beylik_variable = {
+							num_locations > 500
+							num_of_non_rural >= 50
+						}
+					}
+					NOT = { country_exists = c:TUR }
+					var:strongest_beylik_variable = { is_subject = no }
+				}
+			}
+			AND = {
+				current_year > 1400
+				country_exists = var:strongest_beylik_variable
+				var:strongest_beylik_variable = {
+					num_locations < 100
+					at_war = no
+				}
+			}
+		}
 	}
 
 	visible = {
