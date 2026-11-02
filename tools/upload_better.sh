@@ -15,6 +15,13 @@ set -euo pipefail
 MOD_DIR="/Users/mohammadsoheilsadabadi/Documents/Paradox Interactive/Europa Universalis V/mod/wip-pers-world"
 SRC_VDF="$MOD_DIR/build.vdf"
 META_JSON="$MOD_DIR/.metadata/metadata.json"
+# Content source. Defaults to the live folder; set SRC_DIR to upload another
+# branch from its git worktree instead of checking that branch out in the
+# live (iCloud-synced) folder, e.g.
+#   SRC_DIR=/path/to/1.4-dev-worktree ./tools/upload_better.sh "note"
+# .metadata, build.vdf and the version bump always come from MOD_DIR
+# (they are gitignored, so a worktree does not have them).
+SRC_DIR="${SRC_DIR:-$MOD_DIR}"
 STEAM_USER="soheils"
 CHANGENOTE="${1:-Mod update}"
 DRY_RUN="${DRY_RUN:-0}"
@@ -72,15 +79,53 @@ else
     echo "dry-run: skipping version bump"
 fi
 
+# iCloud conflict copies ("06_pops 2.txt") load as extra files and stack
+# on the real ones — a duplicate pops file doubles the world, a duplicate
+# wars file hangs map-gen. They appear when files churn under iCloud
+# (e.g. a git checkout). Never ship them.
+DUPES="$(cd "$SRC_DIR" && find in_game main_menu -name '* [0-9].*' 2>/dev/null)"
+if [[ -n "$DUPES" ]]; then
+    echo "ABORT: iCloud conflict copies in the mod folder:" >&2
+    echo "$DUPES" >&2
+    exit 1
+fi
+
 # Copy only the whitelisted content into the staging dir.
 for item in "${INCLUDE[@]}"; do
-    src="$MOD_DIR/$item"
+    if [[ "$item" == .metadata ]]; then src="$MOD_DIR/$item"; else src="$SRC_DIR/$item"; fi
     if [[ ! -e "$src" ]]; then
         echo "warning: '$item' not found in MOD_DIR, skipping" >&2
         continue
     fi
     cp -R "$src" "$STAGE_DIR/"
 done
+
+# Game-branch versioning (Steam Workshop item versions, enabled for EU5):
+# one item carries a 1.3 build and a 1.4 build, each tagged on the item's
+# Change Notes page. metadata.json is gitignored, so it does not follow
+# the branch — patch the STAGED copy's supported_game_version from the
+# checked-out branch instead. Main line (public-main) is 1.4 since
+# 1.4 went live; 1.3-legacy keeps the last 1.3 build uploadable.
+BRANCH="$(git -C "$SRC_DIR" branch --show-current)"
+case "$BRANCH" in
+    public-main|1.4-dev) GAME_VERSION="1.4.6" ;;
+    1.3-legacy)          GAME_VERSION="1.3.11" ;;
+    *)                   GAME_VERSION="" ;;
+esac
+echo "branch: $BRANCH"
+if [[ -n "$GAME_VERSION" ]]; then
+    python3 - "$STAGE_DIR/.metadata/metadata.json" "$GAME_VERSION" <<'PY'
+import re, sys
+path, ver = sys.argv[1], sys.argv[2]
+with open(path) as f:
+    s = f.read()
+s = re.sub(r'("supported_game_version"\s*:\s*")[^"]*(")',
+           lambda m: m.group(1) + ver + m.group(2), s, count=1)
+with open(path, "w") as f:
+    f.write(s)
+print(f"staged metadata: supported_game_version -> {ver}")
+PY
+fi
 
 # Build a throwaway VDF: copy the real build.vdf so every other field (title,
 # description, visibility, previewfile, ids) is preserved verbatim, then point
