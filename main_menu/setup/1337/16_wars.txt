@@ -214,8 +214,7 @@ war_manager = {
 
 	war = {
 		war_name={
-			name="NORMAL_WAR_NAME"
-			ordinal=1
+			name="FATE_OF_TLEMCEN"
 			first = {
 				name="MOR"
 			}
@@ -521,6 +520,20 @@ war_manager = {
 		attacker = POR
 		start_date = 1337.1.1
 		months = 60
+	}
+
+	truce = { # Yusuf I's four-year peace with Castile (Feb 1334 — Feb 1338), tail end at the bookmark
+		defender = GRA
+		attacker = CAS
+		start_date = 1337.1.1
+		months = 13
+	}
+
+	truce = { # Yusuf I's four-year peace with the Marinid Sultanate (Feb 1334 — Feb 1338), tail end at the bookmark
+		defender = GRA
+		attacker = MOR
+		start_date = 1337.1.1
+		months = 13
 	}
 
 }
