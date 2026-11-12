@@ -1,0 +1,10 @@
+# AI evaluation list for press_amir_retinues (base estate_emergency_list
+# pattern) — the AI only evaluates it when the gate passes.
+amir_retinue_list = {
+	potential = {
+		country_has_estate = estate_type:amirs_estate
+	}
+	actions = {
+		press_amir_retinues
+	}
+}

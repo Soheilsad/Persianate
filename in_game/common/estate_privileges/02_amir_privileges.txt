@@ -74,6 +74,10 @@ amirs_personal_retinues = {
 	estate = amirs_estate
 	
 	country_modifier = {
+		# The amirs' tumens ARE the army (Chobanid/Jalayirid reality):
+		# 1.4 estate private armies — the estate buys regiments from its
+		# own gold; the crown presses them via press_amir_retinues.
+		amirs_estate_allowed_private_army = yes
 		amirs_estate_target_satisfaction = 0.10
 		global_amirs_estate_power = 0.40
 		army_heavy_cavalry_power = 0.20

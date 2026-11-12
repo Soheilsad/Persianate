@@ -1,0 +1,110 @@
+# =====================================================================
+# PRESS THE AMIRS' RETINUES
+#
+# 1.4 estate private armies: an estate allowed a private army
+# (amirs_personal_retinues grants amirs_estate_allowed_private_army)
+# buys regiments out of its own gold. Base's press action
+# (press_estate_private_regiments_action) is hard-wired to the seven
+# base estates, so the amirs get their own.
+#
+# The Chobanid and Jalayirid state did not own an army; it borrowed
+# the amirs' tumens. Calling them under the royal standard is the
+# whole political question of the age: a strong diwan can make it
+# routine (the Nizam al-Mulk ideal: the sultan pays, the amir serves),
+# a weak one has to beg.
+#
+# Base costs: legitimacy_mild_penalty, political_influence_extreme_penalty
+# (-15), 3-year cooldown. Persianate twist: when the diwan out-powers
+# the amirs, the political price drops to political_influence_mild_penalty
+# (-5); the amirs resent it either way (-10% satisfaction).
+# =====================================================================
+
+press_amir_retinues = {
+	icon = press_estate_private_regiments_action
+	type = owncountry
+	estate_interaction_action = yes
+
+	ai_tick = daily
+	ai_tick_frequency = 180
+	automation_tick = never
+
+	potential = {
+		scope:actor = {
+			country_has_estate = estate_type:amirs_estate
+			has_estate_privilege = estate_privilege:amirs_personal_retinues
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			any_estate = {
+				estate_type = estate_type:amirs_estate
+				estate_unraised_regiment_count >= 1
+			}
+		}
+	}
+
+	cooldown = {
+		type = press_amir_retinues_cooldown
+		years = 3
+	}
+
+	select_trigger = {
+		looking_for_a = estate
+		source = actor
+		target_flag = target
+		name = "mission_select_estate"
+		column = {
+			data = name
+		}
+		visible = {
+			estate_type = estate_type:amirs_estate
+		}
+		enabled = {
+			estate_unraised_regiment_count >= 1
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			add_legitimacy = legitimacy_mild_penalty
+			press_estate_private_regiments = { estate = estate_type:amirs_estate }
+			add_estate_satisfaction = {
+				type = estate_type:amirs_estate
+				value = -0.10
+			}
+			if = {
+				limit = {
+					country_has_estate = estate_type:diwan_estate
+					"estate_power(estate_type:diwan_estate)" > "estate_power(estate_type:amirs_estate)"
+				}
+				custom_tooltip = press_amir_retinues_diwan_discount_tt
+				add_political_influence = political_influence_mild_penalty
+			}
+			else = {
+				add_political_influence = political_influence_extreme_penalty
+			}
+		}
+	}
+
+	ai_prerequisite = {
+		at_war = yes
+		any_estate = {
+			estate_type = estate_type:amirs_estate
+			estate_unraised_regiment_count >= 1
+		}
+	}
+
+	ai_will_do = {
+		if = {
+			limit = {
+				exists = scope:target
+				scope:actor = {
+					at_war = yes
+					lowest_war_strength_balance < 0.6
+				}
+			}
+			add = { desc = "At war with low balance" value = 20 }
+		}
+	}
+}
