@@ -219,3 +219,91 @@ ilkhanate_bureaucracy_price_cost_modifier={
 		category=country
 	}
 }
+
+ilkhanate_diwan_integration_price_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+ilkhanate_yurt_integration_price_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+custody_demand_fealty_price_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+ulus_pays_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+zaydi_zakat_price_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+zaydi_tenet_price_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+zaydi_tenet_price_heavy_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+zaydi_tenet_price_schism_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+proclaim_imams_house_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+imam_jihad_price_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+swear_bayah_price_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}

@@ -696,6 +696,16 @@ custody_declare_fealty = {
 				scope:target_steward = {
 					set_variable = { name = custody_new_sworn value = scope:actor }
 					trigger_event_non_silently = custody.34
+					# First sworn governorate under a regency: explain what
+					# the oaths are worth (custody.36, as in custody.31.a).
+					if = {
+						limit = {
+							has_reform = government_reform:chinggisid_regency
+							NOT = { has_variable = custody_sworn_explained }
+						}
+						set_variable = custody_sworn_explained
+						trigger_event_non_silently = { id = custody.36 days = 1 }
+					}
 				}
 			}
 

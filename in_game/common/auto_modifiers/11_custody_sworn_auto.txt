@@ -12,7 +12,7 @@
 # political influence (base capital buildings grant +0.10 / +0.25 for
 # scale). The demand itself costs 5 political influence, win or lose
 # (prices/02_ilkhanate_prices.txt, custody_demand_fealty_price).
-# Explained once by custody.34 on the regent's first sworn governorate.
+# Explained once by custody.36 on the regent's first sworn governorate.
 # =====================================================================
 
 custody_sworn_governorates = {

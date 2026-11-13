@@ -1,5 +1,9 @@
 namespace = institutions
 
+# NOT named institution_events.txt: a same-name file replaces base's
+# 3600-line institution_events.txt and deletes every base institution
+# event (1.4.7 error.log: 55 "does not have a valid namespace").
+
 # =====================================================================
 # INSTITUTION INDICATOR EVENTS — one-shot, no choices.
 #

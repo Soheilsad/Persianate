@@ -97,3 +97,13 @@ amirs_estate_satisfaction_recovery = {
 		should_show_in_modifiers_tab = no
 	}
 }
+
+# 1.4 estate private armies: base defines the per-estate flag
+# explicitly (nobles_estate_allowed_private_army); custom estates get
+# no generated one. Granted by amirs_personal_retinues.
+amirs_estate_allowed_private_army = {
+	boolean = yes
+	game_data = {
+		category = country
+	}
+}

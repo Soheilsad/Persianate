@@ -2,4 +2,6 @@
  MODIFIER_TYPE_NAME_diwan_estate_allowed_in_cabinet: "Diwan Allowed in Cabinet"
  MODIFIER_TYPE_NAME_diwan_estate_allowed_in_cabinet_desc: "Allows members of the Diwan estate to hold positions within the national cabinet."
  MODIFIER_TYPE_NAME_amirs_estate_allowed_in_cabinet: "Amirs Allowed in Cabinet"
+ MODIFIER_TYPE_NAME_amirs_estate_allowed_private_army: "Amirs May Keep Private Tümens"
+ MODIFIER_TYPE_DESC_amirs_estate_allowed_private_army: "The Amirs may buy and keep regiments with their own gold, which the crown can summon into its armies."
  MODIFIER_TYPE_NAME_amirs_estate_allowed_in_cabinet_desc: "Allows members of the Amirs estate to hold positions within the national cabinet."
