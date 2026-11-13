@@ -171,14 +171,8 @@ REPLACE:medicaments = { #Medicinal plants, Pills, Opium, Mummy Powder, etc
 
 }
 
-# Persianate: transport_cost=1
-REPLACE:tar = {
-	transport_cost = 1
-	category = produced
-	color = goods_tar
-	default_market_price = 2
-}
-
+# tar: NOT here. 01_naphtha.txt owns REPLACE:tar (tar as an extracted raw
+# material, for Baku); a second REPLACE here contradicted its category.
 # Persianate: demand_add.tribesmen=0.003
 REPLACE:porcelain = {
 	category = produced

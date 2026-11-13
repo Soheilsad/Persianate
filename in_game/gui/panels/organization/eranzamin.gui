@@ -379,18 +379,15 @@ organization_geodiplomatic_theme = {
 	}
 
 	blockoverride "organization_custom_content" {
-		scrollarea = {
-			using = layoutpolicy_expanding
-			size = { 54 -1 }
-			maximumsize = { -1 600 }
-			scrollbarpolicy_horizontal = always_off
-			autoresizescrollarea = yes
-			scrollbar_vertical = {
-				using = Scrollbar_Vertical
-			}
-
-			scrollwidget = {
+		# Base's scroll_list type (main_menu/gui/shared/main_menu_lists.gui),
+		# as hre.gui's circle list uses through filtered_sorted_list: it
+		# fills the tab and scrolls from the top. The hand-rolled scrollarea
+		# (fixed size + autoresizescrollarea + a 600 cap) collapsed to a
+		# strip at the bottom of the tab.
+		scroll_list = {
+			blockoverride "scroll_list_layout" {
 				vbox = {
+					using = layoutpolicy_expanding
 					margin = { 6 4 }
 					margin_bottom = 15
 					spacing = 6
