@@ -52,7 +52,7 @@ pa_diwan_case_embezzlement = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -71,7 +71,7 @@ pa_diwan_case_sale_of_offices = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -97,7 +97,7 @@ pa_diwan_case_falsified_surveys = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -147,7 +147,7 @@ pa_diwan_case_inflated_costs = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -166,7 +166,7 @@ pa_diwan_case_assessment_bribes = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -221,7 +221,7 @@ pa_diwan_case_fictional_positions = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -278,7 +278,7 @@ pa_diwan_case_double_registers = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -297,7 +297,7 @@ pa_diwan_case_extortionate_collection = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -359,7 +359,7 @@ pa_diwan_case_army_pay_skimmed = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -380,7 +380,7 @@ pa_diwan_case_forged_yarlighs = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -405,7 +405,7 @@ pa_diwan_case_waqf_collusion = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -430,6 +430,6 @@ pa_diwan_case_mirab_collusion = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }

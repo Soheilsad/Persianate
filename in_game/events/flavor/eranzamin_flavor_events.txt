@@ -40,12 +40,12 @@ eranzamin_flavor.1 = {
 	}
 
 	immediate = {
-		# Spawn Hafez at the Shiraz-owning court. Note: create_character
-		# syntax assumed against base-game pattern; verify.
+		# Spawn Hafez at the Shiraz-owning court. culture/religion need
+		# their database prefixes (bare keys fail to resolve).
 		create_character = {
 			first_name = name_hafiz
-			culture = farsi_culture
-			religion = sunni
+			culture = culture:farsi_culture
+			religion = religion:sunni
 			birth_date = 1315.1.1
 			artist = writer
 			artist_skill = 0.98 ## this is Hafez, the undisputed master of the Persian ghazal form. He should be a top-tier poet, and if he is not, WHO IS?
@@ -246,7 +246,8 @@ eranzamin_flavor.4 = {
 	# OPTION A: Sharia primacy
 	option = {
 		name = eranzamin_flavor.4.a
-		change_law = sharia_law_policy
+		# 1.4: change_law is not an effect; add_policy swaps the law's policy.
+		add_policy = policy:sharia_law_policy
 		change_societal_value = { type = turk_vs_tazik value = ez_minor_axis_tazik }
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = ez_minor_estate_sat }
 		add_estate_satisfaction = { type = estate_type:amirs_estate value = ez_minor_estate_loss }
@@ -255,7 +256,7 @@ eranzamin_flavor.4 = {
 	# OPTION B: Yasa primacy
 	option = {
 		name = eranzamin_flavor.4.b
-		change_law = mongol_law_policy
+		add_policy = policy:mongol_law_policy
 		change_societal_value = { type = turk_vs_tazik value = ez_minor_axis_tork }
 		add_estate_satisfaction = { type = estate_type:amirs_estate value = ez_minor_estate_sat }
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = ez_minor_estate_loss }

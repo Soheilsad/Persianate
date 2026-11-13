@@ -11,7 +11,6 @@ mazalim_events.1 = {
 	
 	illustration_tags = {
 		10 = interior
-		10 = throne_room
 	}
 	
 	trigger = {
@@ -72,7 +71,6 @@ mazalim_events.2 = {
 	
 	illustration_tags = {
 		10 = exterior
-		10 = desert
 	}
 	
 	immediate = {
@@ -109,7 +107,6 @@ mazalim_events.3 = {
 	
 	illustration_tags = {
 		10 = interior
-		10 = prison
 	}
 	
 	immediate = {
@@ -159,7 +156,6 @@ mazalim_events.4 = {
 	
 	illustration_tags = {
 		10 = exterior
-		10 = execution
 	}
 	
 	immediate = {
@@ -173,7 +169,8 @@ mazalim_events.4 = {
 	option = {
 		name = mazalim_events.4.a 
 		
-		scope:traitor_vizier = { death = { reason = death_reason:execution } }
+		# 1.4: `death = { }` is not an effect; kill_character is.
+		kill_character = { target = scope:traitor_vizier reason = execution }
 		
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.20 }
 		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.20 }
@@ -207,7 +204,8 @@ mazalim_events.4 = {
 	option = {
 		name = mazalim_events.4.b
 		
-		scope:traitor_vizier = { death = { reason = death_reason:execution } }
+		# 1.4: `death = { }` is not an effect; kill_character is.
+		kill_character = { target = scope:traitor_vizier reason = execution }
 		
 		add_estate_satisfaction = { type = estate_type:diwan_estate value = -0.50 }
 		
@@ -235,7 +233,8 @@ mazalim_events.4 = {
 		
 		add_estate_satisfaction = { type = estate_type:amirs_estate value = -0.50 }
 		
-		scope:traitor_vizier = { death = { reason = death_reason:execution } }
+		# 1.4: `death = { }` is not an effect; kill_character is.
+		kill_character = { target = scope:traitor_vizier reason = execution }
 		
 		# Keep Confiscated Wealth (Gain 6 Months Income)
 		add_gold = { value = monthly_income_total multiply = 6 }

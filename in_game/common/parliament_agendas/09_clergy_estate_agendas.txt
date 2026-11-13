@@ -16,7 +16,7 @@ pa_clergy_case_illegal_waqf = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -50,7 +50,7 @@ pa_clergy_case_judicial_bribery = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -89,7 +89,7 @@ pa_clergy_case_grain_hoarding = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -115,7 +115,7 @@ pa_clergy_case_false_heresy = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -150,7 +150,7 @@ pa_clergy_case_excessive_fees = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -173,7 +173,7 @@ pa_clergy_case_criminal_sanctuary = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -224,7 +224,7 @@ pa_clergy_case_orphan_inheritance = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -247,7 +247,7 @@ pa_clergy_case_false_sayyids = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -269,7 +269,7 @@ pa_clergy_case_sold_chairs = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -292,7 +292,7 @@ pa_clergy_case_false_witness = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -338,6 +338,6 @@ pa_clergy_case_eaten_waqf = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }

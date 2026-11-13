@@ -60,7 +60,8 @@ periphery.1 = {
 			culture = {
 				save_scope_as = breakaway_local_culture
 			}
-			change_primary_culture = culture:dehlavi
+			# 1.4 name of the country effect is change_culture.
+			change_culture = culture:dehlavi
 			add_accepted_culture = scope:breakaway_local_culture
 		}
 
@@ -157,10 +158,11 @@ periphery.2 = {
 		# The family first, then the apostate — no heir of his line
 		# inherits anything.
 		ruler ?= {
+			# 1.4: `death = { }` is not an effect; kill_character is.
 			every_child = {
-				death = { reason = death_reason:execution }
+				kill_character = { target = this reason = execution }
 			}
-			death = { reason = death_reason:execution }
+			kill_character = { target = this reason = execution }
 		}
 		create_character = {
 			estate = estate_type:amirs_estate

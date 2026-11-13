@@ -293,8 +293,8 @@ tariqa.2 = {
 						owner = root
 					}
 				}
-				add_manpower = 0.5
 				root = {
+					add_manpower = 0.5 # country effect: was in the capital's location scope
 					change_variable = { name = khuruj_muster add = -5 }
 				}
 			}
@@ -443,8 +443,8 @@ tariqa.3 = {
 						owner = root
 					}
 				}
-				add_manpower = 0.5 ## 500 manpower, as reserves.
 				root = {
+					add_manpower = 0.5 ## 500 manpower, as reserves. Country effect: was in the capital's location scope
 					change_variable = { name = khuruj_muster add = -5 }
 				}
 			}

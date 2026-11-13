@@ -105,11 +105,14 @@ consolidate_diwan = {
 		}
 	}
 
+	# 1.4: ai_will_do is a script value; modifier = { factor/add } became if = { limit = { } multiply/add }.
 	ai_will_do = {
 		value = 100
-		modifier = {
-			factor = 0
-			scope:actor = { societal_value:turk_vs_tazik < 30 }
+		if = {
+			limit = {
+				scope:actor = { societal_value:turk_vs_tazik < 30 }
+			}
+			multiply = 0
 		}
 	}
 }
@@ -194,9 +197,11 @@ grant_the_yurt = {
 
 	ai_will_do = {
 		value = 100
-		modifier = {
-			factor = 0
-			scope:actor = { societal_value:turk_vs_tazik > -30 }
+		if = {
+			limit = {
+				scope:actor = { societal_value:turk_vs_tazik > -30 }
+			}
+			multiply = 0
 		}
 	}
 }
@@ -431,9 +436,11 @@ rally_turkic_tribes = {
 
 	ai_will_do = {
 		value = 50
-		modifier = {
-			factor = 2
-			at_war = yes
+		if = {
+			limit = {
+				at_war = yes
+			}
+			multiply = 2
 		}
 	}
 }
@@ -601,9 +608,11 @@ press_eranzamin_claim = {
 
 	ai_will_do = {
 		value = 100
-		modifier = {
-			factor = 0
-			at_war = yes
+		if = {
+			limit = {
+				at_war = yes
+			}
+			multiply = 0
 		}
 	}
 }
@@ -716,17 +725,23 @@ custody_declare_fealty = {
 	# threatened it is, the readier it is to kneel.
 	ai_will_do = {
 		add = 10
-		modifier = {
+		if = {
+			limit = {
+				scope:actor = { military_strength < 5 }
+			}
 			add = 50
-			scope:actor = { military_strength < 5 }
 		}
-		modifier = {
+		if = {
+			limit = {
+				scope:actor = { at_war = yes }
+			}
 			add = 30
-			scope:actor = { at_war = yes }
 		}
-		modifier = {
+		if = {
+			limit = {
+				scope:actor = { military_strength > 20 }
+			}
 			add = -40
-			scope:actor = { military_strength > 20 }
 		}
 	}
 }

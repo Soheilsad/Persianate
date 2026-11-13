@@ -22,6 +22,7 @@
 press_amir_retinues = {
 	icon = press_estate_private_regiments_action
 	type = owncountry
+	show_message = no # no PERFORM_press_amir_retinues_ACTION message type
 	estate_interaction_action = yes
 
 	ai_tick = daily

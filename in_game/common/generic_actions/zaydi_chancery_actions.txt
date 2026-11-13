@@ -17,6 +17,7 @@
 
 proclaim_imams_house = {
 	type = religious
+	show_message = no # no PERFORM_proclaim_imams_house_ACTION message type
 
 	sound = UI_action_religion_generic
 

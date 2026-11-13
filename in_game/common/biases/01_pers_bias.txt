@@ -16,3 +16,12 @@ opinion_own_khutbah = {
 io_opinion_eranzamin = {
 	value = -50
 }
+
+# Every IO type needs an io_opinion_<type> bias; neutral for these two.
+io_opinion_imamate_living = {
+	value = 0
+}
+
+io_opinion_sarbadar_movement = {
+	value = 0
+}

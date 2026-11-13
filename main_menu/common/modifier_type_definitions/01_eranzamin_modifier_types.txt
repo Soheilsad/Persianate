@@ -17,3 +17,55 @@ levies_are_raised_flag = {
 		category = location
 	}
 }
+
+# Engine-derived per-special-status modifier types (one pair per status in
+# international_organization_special_statuses/eranzamin.txt). Cloned from
+# base emperor_can_participate_in_parliament / emperor_agenda_impact.
+eranzamin_chinggisid_claimant_agenda_impact={
+	percent=yes
+	game_data={
+		category=internationalorganization
+	}
+}
+eranzamin_chinggisid_claimant_can_participate_in_parliament={
+	boolean=yes
+	game_data={
+		category=internationalorganization
+	}
+}
+eranzamin_khan_maker_agenda_impact={
+	percent=yes
+	game_data={
+		category=internationalorganization
+	}
+}
+eranzamin_khan_maker_can_participate_in_parliament={
+	boolean=yes
+	game_data={
+		category=internationalorganization
+	}
+}
+eranzamin_sovereign_shah_agenda_impact={
+	percent=yes
+	game_data={
+		category=internationalorganization
+	}
+}
+eranzamin_sovereign_shah_can_participate_in_parliament={
+	boolean=yes
+	game_data={
+		category=internationalorganization
+	}
+}
+eranzamin_sworn_client_agenda_impact={
+	percent=yes
+	game_data={
+		category=internationalorganization
+	}
+}
+eranzamin_sworn_client_can_participate_in_parliament={
+	boolean=yes
+	game_data={
+		category=internationalorganization
+	}
+}

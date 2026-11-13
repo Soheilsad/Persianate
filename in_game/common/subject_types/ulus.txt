@@ -58,7 +58,8 @@ ulus = {
 	# level for the grantor's whole reign and take a hard shock the day
 	# he dies. That single conditional is the entire Jochid pattern, and
 	# it cannot be expressed here in the subject type.
-	loyalty_to_overlord = 50
+	# (loyalty_to_overlord = 50 lives in subject_modifier below — 1.4
+	# rejects it as a top-level subject-type key.)
 
 	# Granted, never negotiated. The ulus exists only where the khan
 	# carved one out (create_country_from_location); it must never
@@ -156,6 +157,7 @@ ulus = {
 	# The prince rides with his own tümens and keeps almost no chancery.
 	subject_modifier = {
 		global_levy_size_modifier = 0.10
+		loyalty_to_overlord = 50
 		country_cabinet_efficiency = -0.25
 	}
 

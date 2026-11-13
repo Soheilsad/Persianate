@@ -73,11 +73,14 @@ charter_of_the_liberated = {
 		show_for_owner = yes
 	}
 
+	# 1.4: ai_will_do is a script value; modifier = { factor/add } became if = { limit = { } multiply/add }.
 	ai_will_do = {
 		value = 100
-		modifier = {
-			factor = 1.5
-			scope:target = { province_tax_base > 20 }
+		if = {
+			limit = {
+				scope:target = { province_tax_base > 20 }
+			}
+			multiply = 1.5
 		}
 	}
 }

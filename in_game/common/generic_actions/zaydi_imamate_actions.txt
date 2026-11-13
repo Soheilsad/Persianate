@@ -99,6 +99,7 @@ imam_declares_jihad = {
 
 swear_bayah = {
 	type = religious
+	show_message = no # no PERFORM_swear_bayah_ACTION message type
 	sound = UI_action_religion_generic
 
 	ai_tick = monthly

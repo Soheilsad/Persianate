@@ -1,7 +1,7 @@
 diwan_estate = {
 	color = estate_diwan
 
-	power_per_pop = 35
+	# power_per_pop = 35 -- 1.4 moved this key onto pop types (pop_types/00_default.txt); rejected here.
 	tax_per_pop = 200
 	## each of their privileges is GOING to give a reduction in max tax. this number is going to go way up soon.
 	rival = 0
@@ -103,7 +103,7 @@ diwan_estate = {
 amirs_estate = {
 	color = rgb { 180 20 20 }
 	
-	power_per_pop = 25
+	# power_per_pop = 25 -- 1.4 moved this key onto pop types (pop_types/00_default.txt); rejected here.
 	tax_per_pop = 25 # they pay far less tax than their power would suggest, as they are the military caste. they are being PAID by the state, not the other way around. However, Musadera, Pishkesh, poll taxes, etc. still exist.
 	## each of their privileges is GOING to give a reduction in max tax
 	rival = 0
@@ -177,7 +177,7 @@ amirs_estate = {
 
 REPLACE:tribes_estate = {
 	color = pop_tribes
-	power_per_pop  = 1
+	# power_per_pop = 1 -- 1.4 moved this key onto pop types (pop_types/00_default.txt); rejected here.
 	tax_per_pop = 1
 	rival = -0.01
 	alliance = 0.01

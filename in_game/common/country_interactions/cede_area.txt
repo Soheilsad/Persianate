@@ -68,7 +68,11 @@ cede_area = {
 		looking_for_a = area
 		source = actor
 		target_flag = target_area
-		source_flags = border_or_recipients_capital_area
+		# No source_flags: border_or_recipients_capital_area is a province
+		# pre-filter that makes the engine look up the `recipient` flag itself
+		# (log spam "Could not find flag recipient"); base area pickers use
+		# plain source = actor (assign_governor) and `visible` below already
+		# applies the same contiguity rule.
 		name = "select_an_area_to_cede"
 		none_available_msg_key = "cede_area_no_areas"
 		show_why_not_visible = yes

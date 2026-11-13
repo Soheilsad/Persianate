@@ -145,14 +145,15 @@ matter_of_tazik.100 = {
 	immediate = {
 		spawn_urban_breakaway = yes
 		# Religious-unrest cascade on non-rolling urban provinces
-		every_owned_province = {
+		# every_owned_province is not an effect; the trigger is
+		# location-scope anyway, so iterate locations directly.
+		every_owned_location = {
 			limit = { is_urban_diwan_capable_location = yes }
-			every_location_in_province = {
-				add_location_modifier = { modifier = ez_unrest_5 years = 5 }
-				change_control = control_severe_penalty
-			}
+			add_location_modifier = { modifier = ez_unrest_5 years = 5 }
+			change_control = control_severe_penalty
 		}
-		add_estate_satisfaction = { type = estate_type:amirs_estate value = 20 }
+		# value is a decimal fraction (0.20 = +20%), not a whole percent.
+		add_estate_satisfaction = { type = estate_type:amirs_estate value = 0.20 }
 	}
 
 	option = {

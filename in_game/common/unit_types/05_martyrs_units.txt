@@ -35,7 +35,7 @@ a_dervish_corps = {
 
 	combat = {
 		# raised and drilled in the towns and irrigated districts:
-		farmlands = 0.2
+		farmland = 0.2 # vegetation key is singular
 		hills = 0.2
 		qanat_farmland = 0.2
 		mountains = 0.2

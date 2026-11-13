@@ -664,6 +664,57 @@ matter_tork_horizon_poll = {
 	}
 }
 
+# -------- The Great Raid: sweep the feeder pairings --------
+# Called (country scope) on re-designation and on release, while
+# matter_tork_raid_region is still set. Clears the two location marks
+# the monthly engine leaves: raid_feeders on the theater's holdings and
+# raid_feeder_source on the homeland reservoirs (the same ground as
+# is_eranzamin_region_province), so a new theater pairs from scratch.
+matter_raid_clear_pairings = {
+	var:matter_tork_raid_region ?= {
+		every_location_in_region = {
+			limit = { has_variable = raid_feeders }
+			remove_variable = raid_feeders
+		}
+	}
+	region:persia_region = {
+		every_location_in_region = {
+			limit = { has_variable = raid_feeder_source }
+			remove_variable = raid_feeder_source
+		}
+	}
+	region:khorasan_region = {
+		every_location_in_region = {
+			limit = { has_variable = raid_feeder_source }
+			remove_variable = raid_feeder_source
+		}
+	}
+	region:caucasus_region = {
+		every_location_in_region = {
+			limit = { has_variable = raid_feeder_source }
+			remove_variable = raid_feeder_source
+		}
+	}
+	area:cappadocia_area = {
+		every_location_in_area = {
+			limit = { has_variable = raid_feeder_source }
+			remove_variable = raid_feeder_source
+		}
+	}
+	area:iraq_arabi_area = {
+		every_location_in_area = {
+			limit = { has_variable = raid_feeder_source }
+			remove_variable = raid_feeder_source
+		}
+	}
+	area:jazira_area = {
+		every_location_in_area = {
+			limit = { has_variable = raid_feeder_source }
+			remove_variable = raid_feeder_source
+		}
+	}
+}
+
 matter_tork_clear = {
 	# Called from disaster on_end. Remove counters and transient
 	# modifiers; permanent disposition outcomes stay. Earned approach

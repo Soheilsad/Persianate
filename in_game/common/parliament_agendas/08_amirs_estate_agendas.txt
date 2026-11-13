@@ -20,7 +20,7 @@ pa_amirs_case_land_seizure = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -65,7 +65,7 @@ pa_amirs_case_caravan_theft = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -112,7 +112,7 @@ pa_amirs_case_enslavement = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -155,7 +155,7 @@ pa_amirs_case_price_fixing = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -181,7 +181,7 @@ pa_amirs_case_urban_garrison = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -229,7 +229,7 @@ pa_amirs_case_illegal_tolls = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -275,7 +275,7 @@ pa_amirs_case_qonalgha = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -314,7 +314,7 @@ pa_amirs_case_phantom_muster = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -336,7 +336,7 @@ pa_amirs_case_pasture_encroachment = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -356,6 +356,6 @@ pa_amirs_case_private_justice = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }

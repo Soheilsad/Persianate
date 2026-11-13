@@ -102,9 +102,9 @@ diwan_vizierate.1 = {
 				random_character = {
 					limit = {
 						has_estate = estate_type:diwan_estate
-						is_in_cabinet = no
+						in_cabinet = no # 1.4 trigger names: in_cabinet, age_in_years
 						is_alive = yes
-						age >= 16
+						age_in_years >= 16
 					}
 					save_scope_as = dv_seated
 				}

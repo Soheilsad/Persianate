@@ -4,6 +4,9 @@ namespace = diwan_character_events
 diwan_character_events.1 = {
 	type = country_event
 	hidden = yes
+	outcome = neutral
+	title = empty_text # hidden: base's silent-event form
+	desc = empty_text
 	
 	trigger = {
 		country_has_estate = estate_type:diwan_estate
@@ -31,6 +34,9 @@ diwan_character_events.1 = {
 diwan_character_events.2 = {
 	type = country_event
 	hidden = yes
+	outcome = neutral
+	title = empty_text # hidden: base's silent-event form
+	desc = empty_text
 	
 	trigger = {
 		country_has_estate = estate_type:amirs_estate

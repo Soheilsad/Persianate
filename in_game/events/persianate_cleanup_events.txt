@@ -11,6 +11,9 @@ namespace = persianate_cleanup
 persianate_cleanup.1 = {
 	type = country_event
 	hidden = yes
+	outcome = neutral
+	title = empty_text # hidden: base's silent-event form
+	desc = empty_text
 
 	immediate = {
 		# --- (1) Kill non-_pw duplicates ---

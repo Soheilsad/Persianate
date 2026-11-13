@@ -79,7 +79,7 @@ a_shahr_militia = {
 		# terrain that parks cavalry:
 		hills = 0.10
 		mountains = 0.2
-		farmlands = 0.2
+		farmland = 0.2 # vegetation key is singular
 		wetlands = 0.10
 		# open field is where they die:
 		sparse = -0.20

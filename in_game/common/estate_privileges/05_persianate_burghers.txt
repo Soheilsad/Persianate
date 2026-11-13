@@ -49,7 +49,7 @@ ayyar_militia_recognition = {
 		global_burghers_estate_power = 0.75
 		burghers_estate_target_satisfaction = medium_privilege_target_satisfaction
 		global_garrison_size_modifier = 0.10
-		fort_maintenance_cost = -0.10
+		# fort_maintenance_cost does not exist in 1.4; fort_maintenance_efficiency below is the same lever.
 		fort_maintenance_efficiency = 0.10
 		pop_join_rebel_threshold = -0.02
 		monthly_towards_mysticism = 0.05

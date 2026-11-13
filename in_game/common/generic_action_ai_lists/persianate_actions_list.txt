@@ -91,7 +91,7 @@ matter_tork_actions_list = {
 		matter_tork_great_raid
 		matter_tork_yurt_charters
 		matter_tork_invite_shaykhs
-		matter_tork_iranization
+		claim_iranization
 		matter_tork_release_march
 		claim_murid_bond
 		claim_expulsion

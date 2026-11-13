@@ -107,3 +107,73 @@ amirs_estate_allowed_private_army = {
 		category = country
 	}
 }
+
+# Engine-derived per-estate modifier types (1.4 asserts each must exist in
+# the DB for every estate). Cloned from the base nobles_estate_* blocks.
+amirs_estate_allowed_noble_marriage={
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+amirs_estate_blocked_from_cabinet={
+	color=bad
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+amirs_estate_blocked_from_leading_military={
+	color=bad
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+amirs_estate_blocked_from_parliament={
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+amirs_estate_cannot_marry={
+	color=bad
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+amirs_estate_min_tax={
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+amirs_estate_power_from_cabinet={
+	color = bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+amirs_estate_satisfaction_decay={
+	color=neutral
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+base_amirs_estate_power_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+local_amirs_estate_unrest = {
+	color=bad
+	percent=yes
+	game_data={
+		category=location
+	}
+}

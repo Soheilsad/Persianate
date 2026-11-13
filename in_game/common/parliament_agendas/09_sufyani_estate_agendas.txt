@@ -54,7 +54,7 @@ pa_sufyani_case_grain_hoarding = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -94,7 +94,7 @@ pa_sufyani_case_sheltered_amir_estates = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -114,7 +114,7 @@ pa_sufyani_case_bought_verdicts = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -157,7 +157,7 @@ pa_sufyani_case_waqf_embezzlement = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -198,6 +198,6 @@ pa_sufyani_case_secret_correspondence = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }

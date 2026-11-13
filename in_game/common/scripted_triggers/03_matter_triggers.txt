@@ -339,8 +339,8 @@ is_urban_diwan_capable_location = {
 	# diwan participation, which is historically wrong. See memory
 	# `feedback_iraqi_arabs_are_tazik.md`.
 	#
-	# TODO: confirm exact culture-group keys. Iraqi Arab is likely
-	# culture_group = mashriqi_group or culture = iraqi_arab.
+	# There is no mashriqi_group in 1.4; Iraqi Arab is the single culture
+	# iraqi_culture (arabic_group would admit every Arab culture).
 	any_pop = {
 		OR = {
 			AND = {
@@ -349,7 +349,7 @@ is_urban_diwan_capable_location = {
 			}
 			AND = {
 				pop_type = pop_type:burghers
-				culture ?= { has_culture_group = culture_group:mashriqi_group }
+				culture = culture:iraqi_culture
 			}
 		}
 	}

@@ -34,6 +34,6 @@ iranic_tribal_polity = {
 		care_about_producing_heirs = yes
 		# Thin chancery, light footprint — survives as a nominal vassal of
 		# whichever empire is ascendant.
-		diplomatic_upkeep_modifier = -0.5
+		diplomatic_spending_cost = -0.5 # 1.4 name for diplomatic upkeep (was diplomatic_upkeep_modifier)
 	}
 }

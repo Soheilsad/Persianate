@@ -42,7 +42,8 @@ INJECT:irrigation_systems = {
 	remove_if = {
 		location = {
 			OR = {
-				has_building = building_type:crumbling_qanat
+				# crumbling_qanat is a vegetation; the building is damaged_qanat.
+				has_building = building_type:damaged_qanat
 				has_building = building_type:qanat_network
 			}
 		}

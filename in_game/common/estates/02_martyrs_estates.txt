@@ -20,7 +20,7 @@
 sufyani_notables_estate = {
 	color = rgb { 110 90 60 }
 
-	power_per_pop = 25
+	# power_per_pop = 25 -- 1.4 moved this key onto pop types (pop_types/00_default.txt); rejected here.
 	tax_per_pop = 100
 
 	rival = 0
@@ -115,7 +115,7 @@ sufyani_notables_estate = {
 shaykhi_dervishes_estate = {
 	color = rgb { 35 35 100 }
 
-	power_per_pop = 30
+	# power_per_pop = 30 -- 1.4 moved this key onto pop types (pop_types/00_default.txt); rejected here.
 	tax_per_pop = 3           # Dervishes only pay Khoms
 
 	rival = 0

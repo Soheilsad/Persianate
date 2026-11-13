@@ -17,7 +17,7 @@ pa_peasants_case_tax_evasion = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -45,7 +45,7 @@ pa_peasants_case_irrigation_damage = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -70,7 +70,7 @@ pa_peasants_case_squatting = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -92,7 +92,7 @@ pa_peasants_case_banditry = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -119,7 +119,7 @@ pa_peasants_case_land_flight = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -142,7 +142,7 @@ pa_peasants_case_harboring_deserters = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -165,7 +165,7 @@ pa_peasants_case_kadkhuda_levy = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }
 
@@ -188,6 +188,6 @@ pa_peasants_case_false_petitions = {
 	}
 	can_bribe = { can_bribe_default_trigger = yes }
 	on_bribe = { on_bribe_default_effect = yes }
-	ai_will_do = { base = 100 }
+	ai_will_do = { add = { value = 100 desc = BASE_VALUE } } # 1.4: script value, `base =` is rejected
 	chance = 10
 }

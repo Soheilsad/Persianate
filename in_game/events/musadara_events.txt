@@ -20,6 +20,7 @@ musadara.1 = {
 	type = country_event
 	title = musadara.1.title
 	desc = musadara.1.desc
+	outcome = neutral
 
 	illustration_tags = {
 		10 = interior

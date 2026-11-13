@@ -192,34 +192,41 @@ grant_ulus = {
 	# The AI reaches for this when a corner has gone dark and it has a
 	# grown prince idle. Kept modest: the darugha is the cheaper answer
 	# and should stay the default road.
+	# 1.4: ai_will_do is a script value; modifier = { factor/add } became if = { limit = { } multiply/add }.
 	ai_will_do = {
-		base = 0
+		add = 0
 
-		modifier = {
-			add = 25
-			scope:actor = {
-				any_core_location = {
-					percent >= 0.15
-					owner ?= scope:actor
-					local_control < 25
+		if = {
+			limit = {
+				scope:actor = {
+					any_core_location = {
+						percent >= 0.15
+						owner ?= scope:actor
+						local_control < 25
+					}
 				}
 			}
+			add = 25
 		}
 
-		modifier = {
+		if = {
+			limit = {
+				scope:actor = { horde_unity < 50 }
+			}
 			add = 20
-			scope:actor = { horde_unity < 50 }
 		}
 
 		# Do not hand out the realm one province at a time.
-		modifier = {
-			factor = 0
-			scope:actor = {
-				any_subject = {
-					count >= 3
-					is_subject_type = ulus
+		if = {
+			limit = {
+				scope:actor = {
+					any_subject = {
+						count >= 3
+						is_subject_type = ulus
+					}
 				}
 			}
+			multiply = 0
 		}
 	}
 }

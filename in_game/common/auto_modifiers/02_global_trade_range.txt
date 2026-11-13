@@ -1,6 +1,6 @@
 # Global Trade Range Buff. Persian region legitimately  cannot exist in a realistic way without trade being much more significant in the game.
 global_trade_range_buff = {
-	trigger = {
+	potential_trigger = { # auto modifiers take potential_trigger, not trigger
 		always = yes
 	}
 	

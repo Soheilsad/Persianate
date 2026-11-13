@@ -149,7 +149,7 @@ ilkhanate_governorate = {
 		# place — modest legitimacy, no pump (you make no claim).
 		monthly_legitimacy = 0.1
 		stability_cost_efficiency = 0.10
-		fort_defence = 0.20
+		# fort_defence = 0.20 -- no such modifier type in 1.4 and no direct equivalent; removed.
 		land_morale = 0.05
 		tax_income_efficiency = 0.10
 		# Nobody marches on the humble governor.
@@ -787,7 +787,9 @@ tofangchi_topchi_corps = {
 	government = persianate_sultanate
 
 	country_modifier = {
-		army_infantry_power = 0.15
+		# 1.4 split infantry power into light/heavy (no army_infantry_power).
+		army_light_infantry_power = 0.15
+		army_heavy_infantry_power = 0.15
 		army_artillery_power = 0.15
 		discipline = 0.05
 		army_maintenance_efficiency = -0.10

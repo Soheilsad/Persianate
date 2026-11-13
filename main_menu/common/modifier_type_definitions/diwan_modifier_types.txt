@@ -124,3 +124,79 @@ diwan_estate_satisfaction_recovery = {
 		should_show_in_modifiers_tab = no
 	}
 }
+
+# Engine-derived per-estate modifier types (1.4 asserts each must exist in
+# the DB for every estate). Cloned from the base nobles_estate_* blocks.
+base_diwan_estate_power_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+diwan_estate_allowed_noble_marriage={
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+diwan_estate_allowed_private_army = {
+	boolean = yes
+	game_data = {
+		category = country
+	}
+}
+diwan_estate_blocked_from_cabinet={
+	color=bad
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+diwan_estate_blocked_from_leading_military={
+	color=bad
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+diwan_estate_blocked_from_parliament={
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+diwan_estate_cannot_marry={
+	color=bad
+	boolean=yes
+	game_data={
+		category=country
+	}
+}
+diwan_estate_min_tax={
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+diwan_estate_power_from_cabinet={
+	color = bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+diwan_estate_satisfaction_decay={
+	color=neutral
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+local_diwan_estate_unrest = {
+	color=bad
+	percent=yes
+	game_data={
+		category=location
+	}
+}

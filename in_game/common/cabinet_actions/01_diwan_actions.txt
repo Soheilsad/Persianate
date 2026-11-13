@@ -165,12 +165,15 @@ integrate_into_diwan = {
 		show_for_owner = yes
 	}
 
+	# 1.4: ai_will_do is a script value; modifier = { factor/add } became if = { limit = { } multiply/add }.
 	ai_will_do = {
 		value = 100
 		# Strongly preferred where the province is large and rich.
-		modifier = {
-			factor = 1.5
-			scope:target = { province_tax_base > 20 }
+		if = {
+			limit = {
+				scope:target = { province_tax_base > 20 }
+			}
+			multiply = 1.5
 		}
 	}
 }
@@ -322,14 +325,16 @@ invite_turkic_settlers = {
 	ai_will_do = {
 		value = 100
 		# Prefer provinces where our people already hold a real foothold.
-		modifier = {
-			factor = 1.5
-			scope:target = {
-				culture_percentage = {
-					culture = scope:actor.culture
-					value > 0.25
+		if = {
+			limit = {
+				scope:target = {
+					culture_percentage = {
+						culture = scope:actor.culture
+						value > 0.25
+					}
 				}
 			}
+			multiply = 1.5
 		}
 	}
 }

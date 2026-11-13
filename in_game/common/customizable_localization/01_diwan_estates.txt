@@ -20,11 +20,12 @@ amirs_estate = {
 
 diwan_council = {
 	type = country
-	trigger = {
-		modifier:has_nizam_ul_mulk_chancery = yes
-	}
 	text = {
 		localization_key = diwan_council
+		# trigger belongs inside text = { }
+		trigger = {
+			modifier:has_nizam_ul_mulk_chancery = yes
+		}
 		fallback = yes
 	}
 }

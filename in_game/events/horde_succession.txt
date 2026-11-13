@@ -60,6 +60,9 @@ namespace = horde_succession
 horde_succession.1 = {
 	type = country_event
 	hidden = yes
+	outcome = neutral
+	title = empty_text # hidden: base's silent-event form
+	desc = empty_text
 
 	trigger = {
 		government_type = government_type:steppe_horde
