@@ -288,11 +288,10 @@ culture_lists_apply_start = {
 		if = { limit = { has_tolerated_culture = culture:farsi_culture } remove_tolerated_culture = culture:farsi_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:farsi_culture } } add_accepted_culture = culture:farsi_culture grant_culture_bonus_advances = culture:farsi_culture }
 	}
-	# MAM (lower_egyptian 47.23%): A coptic (12.79% 0.88), levantine (10.82% 0.263), upper_egyptian (10.54% 0.15), syriac (8.98% 0.577), alawite (2.61% 0.15) | T - | 2.02 / 4.0
+	# MAM (lower_egyptian 47.23%): A coptic (12.79% 0.88), levantine (10.82% 0.263), upper_egyptian (10.54% 0.15), syriac (8.98% 0.577), alawite (2.61% 0.15) | T mizrahi (0.73% 0.05) | 2.07 / 4.0
 	c:MAM ?= {
 		if = { limit = { has_tolerated_culture = culture:upper_egyptian_culture } remove_tolerated_culture = culture:upper_egyptian_culture }
 		if = { limit = { has_tolerated_culture = culture:coptic_culture } remove_tolerated_culture = culture:coptic_culture }
-		if = { limit = { has_tolerated_culture = culture:mizrahi } remove_tolerated_culture = culture:mizrahi }
 		if = { limit = { has_tolerated_culture = culture:libyan_arabic_culture } remove_tolerated_culture = culture:libyan_arabic_culture }
 		if = { limit = { has_tolerated_culture = culture:bedouin_culture } remove_tolerated_culture = culture:bedouin_culture }
 		if = { limit = { has_tolerated_culture = culture:eastern_amazigh } remove_tolerated_culture = culture:eastern_amazigh }
@@ -302,6 +301,7 @@ culture_lists_apply_start = {
 		if = { limit = { NOT = { has_accepted_culture = culture:upper_egyptian_culture } } add_accepted_culture = culture:upper_egyptian_culture grant_culture_bonus_advances = culture:upper_egyptian_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:syriac_culture } } add_accepted_culture = culture:syriac_culture grant_culture_bonus_advances = culture:syriac_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:alawite_culture } } add_accepted_culture = culture:alawite_culture grant_culture_bonus_advances = culture:alawite_culture }
+		if = { limit = { NOT = { has_tolerated_culture = culture:mizrahi } NOT = { has_accepted_culture = culture:mizrahi } } add_tolerated_culture = culture:mizrahi }
 	}
 	# MIH (khorasani 89.96%): A tajik (6.12% 0.15), baloch (2.07% 0.15) | T - | 0.3 / 3.0
 	c:MIH ?= {
