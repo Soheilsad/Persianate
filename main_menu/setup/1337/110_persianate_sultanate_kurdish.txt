@@ -41,9 +41,7 @@ countries = {
 				ruler = bht_izz_al_din
 				reforms = { kurdish_emirate }
 			}
-			tolerated_cultures = {
-				armenian_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			capital = cizre
 		}
 
@@ -61,9 +59,7 @@ countries = {
 				ruler = bit_dia_al_din
 				reforms = { kurdish_emirate }
 			}
-			tolerated_cultures = {
-				armenian_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			capital = bitlis
 			religious_school = maturidi_school
 		}
@@ -84,9 +80,7 @@ countries = {
 				ruler = hkk_xars_al_din
 				reforms = { kurdish_emirate }
 			}
-			tolerated_cultures = {
-				syriac_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			capital = hakkari
 			religious_school = maturidi_school
 		}
@@ -106,9 +100,7 @@ countries = {
 				ruler = random
 				reforms = { kurdish_emirate }
 			}
-			tolerated_cultures = {
-				armenian_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			capital = hizan
 			dynasty = ruzagi_dynasty
 			religious_school = maturidi_school
@@ -127,9 +119,7 @@ countries = {
 				ruler = mus_shams_al_din
 				reforms = { kurdish_emirate }
 			}
-			tolerated_cultures = {
-				armenian_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			capital = mus
 			religious_school = maturidi_school
 		}
@@ -147,9 +137,7 @@ countries = {
 				ruler = bin_shap
 				reforms = { kurdish_emirate }
 			}
-			tolerated_cultures = {
-				armenian_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			capital = bingol
 			religious_school = maturidi_school
 		}
@@ -171,9 +159,7 @@ countries = {
 				ruler = dsn_ala_al_din_kurk_ibn_ibrahim
 				reforms = { kurdish_emirate }
 			}
-			tolerated_cultures = {
-				syriac_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			capital = duhok
 		}
 
@@ -192,9 +178,7 @@ countries = {
 				ruler = zrq_zeyd
 				reforms = { kurdish_emirate }
 			}
-			tolerated_cultures = {
-				armenian_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			capital = mayyafariqin
 			religious_school = maturidi_school
 		}
@@ -212,9 +196,7 @@ countries = {
 				ruler = egl_isa
 				reforms = { kurdish_emirate }
 			}
-			tolerated_cultures = {
-				armenian_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			capital = sivrice
 			religious_school = maturidi_school
 		}
@@ -232,9 +214,7 @@ countries = {
 				ruler = random
 				reforms = { kurdish_emirate }
 			}
-			tolerated_cultures = {
-				armenian_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			capital = cemisgezek
 			dynasty = malkishi_dynasty
 			religious_school = maturidi_school
@@ -253,9 +233,7 @@ countries = {
 				ruler = random
 				reforms = { kurdish_emirate }
 			}
-			tolerated_cultures = {
-				armenian_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			capital = hazro
 			dynasty = zraqi_dynasty
 			religious_school = maturidi_school

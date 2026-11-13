@@ -162,14 +162,7 @@ countries = {
 		religious_school = shafii_school #While Egypt today is mostly Hanafi, the $mamluks$ favored Shaafi over the rest
 		
 
-		tolerated_cultures = {
-			upper_egyptian_culture
-			coptic_culture mizrahi #else they be slaves
-			libyan_arabic_culture
-			bedouin_culture
-			eastern_amazigh
-			mizrahi
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		capital = cairo
 	}
@@ -357,14 +350,7 @@ countries = {
 				coin_laws = gold_and_silver_coins
 			}
 		}
-		tolerated_cultures = {
-			punjabi
-			braji
-			haryanvi_culture
-			awadhi
-			kannauji
-			mewati
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		#Delhi Setup to accurately portray the starting situation
 		currency_data = {

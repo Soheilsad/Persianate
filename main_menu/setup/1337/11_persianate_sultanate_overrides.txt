@@ -82,10 +82,7 @@ countries = {
 			country_rank = rank_kingdom
 			capital = baghdad
 			court_language = persian_language
-			tolerated_cultures = {
-				iraqi_culture
-				syriac_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			religious_school = maturidi_school
 		}
 		CHB = { #Chobanids
@@ -126,7 +123,7 @@ countries = {
 				}
 			}
 			court_language = persian_language
-			accepted_cultures = { adhari_culture azeri_culture }
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			country_rank = rank_kingdom
 			religious_school = hanafi_school
 			capital = tabriz
@@ -165,9 +162,7 @@ countries = {
 				ruler = mzf_mubariz_al_din_muhammad_pw
 			}
 
-			tolerated_cultures = {
-				baloch_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			country_rank = rank_duchy
 			religious_school = maturidi_school
 			capital = yazd
@@ -198,9 +193,7 @@ countries = {
 				ruler = inj_ghiyas_al_din_kai_khusrau_pw
 			}
 
-			tolerated_cultures = {
-				lur_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 			country_rank = rank_duchy
 			religious_school = maturidi_school
 			capital = shiraz
@@ -230,10 +223,7 @@ countries = {
 				ruler = krt_mu_izz_uddin_husayn_ibn_ghiyath_uddin_pw
 			}
 
-			tolerated_cultures = {
-				tajik_culture
-				mongolian_culture # was hazara_culture: no Hazara in 1337 (tools/demography_fixes.py)
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 			religious_school = maturidi_school
 
@@ -278,10 +268,7 @@ countries = {
 
 			capital = sivas
 			religious_school = maturidi_school
-			tolerated_cultures = {
-				armenian_culture
-				turkoman_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 		}
 
 		#Mesopotamia
@@ -306,9 +293,7 @@ countries = {
 				ruler = krm_qutb_al_din
 			}
 
-			tolerated_cultures = {
-				baloch_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 			religious_school = maturidi_school
 			capital = kerman
@@ -359,9 +344,7 @@ countries = {
 				}
 			}
 
-			tolerated_cultures = {
-				farsi_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 			religious_school = maturidi_school
 			capital = izeh
@@ -386,9 +369,7 @@ countries = {
 				}
 			}
 
-			tolerated_cultures = {
-				farsi_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 			religious_school = zaidi_school
 			capital = khorramabad
@@ -425,9 +406,7 @@ countries = {
 			religious_school = hanafi_school
 
 			capital = shamakhi
-			tolerated_cultures = {
-				azeri_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 		}
 
 		# Qom — Āl-i Khwāja sayyids under Tāj al-Dīn ʿAlī. Twelver Shi'i Persian
@@ -463,10 +442,7 @@ countries = {
 					}
 				}
 
-				tolerated_cultures = {
-					kurdish_culture
-					armenian_culture
-				}
+				# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 				capital = diyarbekir
 				religious_school = maturidi_school #Widespread among the Turks together with Hanafi
@@ -511,9 +487,7 @@ countries = {
 					}
 
 					capital = tadmur
-					tolerated_cultures = {
-						levantine_culture
-					}
+					# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 					religious_school = hanafi_school
 					government = { mysticism_vs_jurisprudence = -15 }
 					
@@ -580,13 +554,7 @@ countries = {
 
 			religious_school = maturidi_school #Said to be predominant in Persia before the Safavids
 			court_language = turkmen_dialect
-			tolerated_cultures = {
-				turkmen_culture
-				khorasani_culture
-				farsi_culture
-				adhari_culture
-				semnani_culture	
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 			country_rank = rank_kingdom
 			capital = gorgan
@@ -614,9 +582,7 @@ UGH = { #Ughanids
 			}
 		}
 
-		tolerated_cultures = {
-			farsi_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		capital = qatruyeh
 		dynasty = ughanid_dynasty
@@ -637,10 +603,7 @@ KHU = { #Khunj https://en.wikipedia.org/wiki/Khonj
 
 		}
 
-		tolerated_cultures = {
-			lur_culture
-			achomi_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = maturidi_school #Said to be predominant in Persia before the Safavids
 		capital = khunj
@@ -673,10 +636,7 @@ MIH = { #Mihrabanids
 
 		# Sistan is Khorasani (primary). No afghan_culture: "Afghan" = Pashtun,
 		# and Pashtuns are not a Sistani constituency. Tajik 6%, Baloch 2% of pops.
-		tolerated_cultures = {
-			tajik_culture
-			baloch_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = maturidi_school #Said to be predominant in Persia before the Safavids
 		capital = zaranj
@@ -700,11 +660,7 @@ MIH = { #Mihrabanids
 
 		}
 
-		tolerated_cultures = {
-			afghan_culture
-			dehwar_culture
-			brahui_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = maturidi_school #Said to be predominant in Persia before the Safavids
 		capital = kharan
@@ -731,9 +687,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			farsi_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 		capital = darab
 		dynasty = jurmanid_dynasty
 	}
@@ -771,9 +725,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			kaliji_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = hanafi_school
 		government = { mysticism_vs_jurisprudence = -15 }
@@ -796,9 +748,7 @@ JUR = { #Jurmanids
 
 		}
 
-		tolerated_cultures = {
-			brahui_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = maturidi_school #Said to be predominant in Persia before the Safavids
 		capital = siraf
@@ -820,9 +770,7 @@ JUR = { #Jurmanids
 
 		}
 
-		tolerated_cultures = {
-			baloch_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = maturidi_school #Said to be predominant in Persia before the Safavids
 		capital = bandar_e_jask
@@ -846,9 +794,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			talysh_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = shafii_school
 		government = { mysticism_vs_jurisprudence = 20 }
@@ -875,9 +821,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			talysh_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = hanbali_school
 		government = { mysticism_vs_jurisprudence = 40 }
@@ -904,9 +848,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			talysh_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = hanbali_school
 		government = { mysticism_vs_jurisprudence = 40 }
@@ -933,9 +875,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			talysh_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = hanbali_school
 		government = { mysticism_vs_jurisprudence = 40 }
@@ -962,9 +902,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			talysh_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = zaidi_school
 		dynasty = eshaqvand_dynasty
@@ -1024,10 +962,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			gilak_culture
-			farsi_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = hilla_hawza_school
 		capital = kojur
@@ -1054,9 +989,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			brahui_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = hanafi_school
 		government = { mysticism_vs_jurisprudence = -15 }
@@ -1086,9 +1019,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			brahui_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = hanafi_school
 		government = { mysticism_vs_jurisprudence = -15 }
@@ -1117,9 +1048,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			dehwar_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = hanafi_school
 		government = { mysticism_vs_jurisprudence = -15 }
@@ -1147,9 +1076,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			brahui_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = hanafi_school
 		government = { mysticism_vs_jurisprudence = -15 }
@@ -1178,10 +1105,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			brahui_culture
-			baloch_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = hanafi_school
 		government = { mysticism_vs_jurisprudence = -15 }
@@ -1237,9 +1161,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			farsi_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = shafii_school
 		government = { mysticism_vs_jurisprudence = 20 }
@@ -1269,9 +1191,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			adhari_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = shafii_school
 		government = { mysticism_vs_jurisprudence = 20 }
@@ -1355,10 +1275,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			khorasani_culture
-			turkmen_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = shafii_school
 		government = { mysticism_vs_jurisprudence = 20 }
@@ -1463,9 +1380,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			khorasani_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = shafii_school
 		government = { mysticism_vs_jurisprudence = 20 }
@@ -1526,14 +1441,13 @@ JUR = { #Jurmanids
 	}
 
 	# ------------------------------------------------------------------
-	# Neguderi and Besud: base blocks verbatim except tolerated_cultures.
+	# Neguderi and Besud: base blocks verbatim; their culture lists, like
+	# every planned tag's, are set at game start (tools/culture_lists.py).
 	# No "Hazara" in 1337 (the ethnonym is late 15th c.; see
 	# tools/demography_fixes.py). BSD rules as persianized_mongol_culture
-	# (in_game/setup/countries/persia.txt): its unassimilated Mongol
-	# households are tolerated instead of primary, and it no longer
-	# tolerates hazara_culture. NGD stays mongolian_culture, a raiding
-	# soldiery on the far march; only a third of its Mongol nobles are
-	# Persian-using (rule 3 there), too few to list.
+	# (in_game/setup/countries/persia.txt). NGD stays mongolian_culture, a
+	# raiding soldiery on the far march; only a third of its Mongol nobles
+	# are Persian-using (rule 3 there).
 	# ------------------------------------------------------------------
 	NGD = { #Neguderi
 		type = army
@@ -1561,9 +1475,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			afghan_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = shafii_school
 		government = { mysticism_vs_jurisprudence = 20 }
@@ -1595,10 +1507,7 @@ JUR = { #Jurmanids
 			}
 		}
 
-		tolerated_cultures = {
-			mongolian_culture
-			afghan_culture
-		}
+		# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 		religious_school = shafii_school
 		government = { mysticism_vs_jurisprudence = 20 }

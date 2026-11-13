@@ -66,9 +66,7 @@ countries = {
 				mysticism_vs_jurisprudence = 20
 			}
 
-			tolerated_cultures = {
-				hadhrami_culture
-			}
+			# accepted / tolerated cultures: set at game start by culture_lists_apply_start (GENERATED, tools/culture_lists.py)
 
 			religious_school = shafii_school
 
