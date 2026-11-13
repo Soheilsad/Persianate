@@ -14,7 +14,13 @@ diwan_base_values = {
 
     # Base power floors for BOTH service estates — the power_balance
     # file's scaling engines (sedentary% / tribal%) stack on top.
-    global_diwan_estate_power = 0.30
+    #
+    # Diwan: 0.30 floor + 0.40 pop-weight compensation. Before 1.4 the
+    # estate declared power_per_pop = 35; the key now lives on the pop
+    # type and diwan pops are nobles at 25 (35 / 25 = 1.40). Burgher-
+    # sourced diwan pops count 4 — that drop is intended. Amirs were
+    # 25 and nobles are 25, so they need nothing.
+    global_diwan_estate_power = 0.70
     global_amirs_estate_power = 0.30
 }
 

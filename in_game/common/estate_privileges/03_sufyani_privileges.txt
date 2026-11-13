@@ -84,7 +84,7 @@ sufyani_urban_militia_rights = {
 		# notable command — counterweight to the dervish corps.
 		burghers_estate_levy_size = 0.30
 		global_shaykhi_dervishes_estate_power = -0.10
-		# fort_defense = 0.10 -- no such modifier type in 1.4 and no direct equivalent; removed.
+		global_defensive = 0.10 # was fort_defense; the 1.4 key is global_defensive ("Fort Defense"). Base privileges use 0.1-0.15.
 		monthly_towards_tazik = 0.05
 	}
 }

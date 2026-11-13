@@ -149,7 +149,7 @@ ilkhanate_governorate = {
 		# place — modest legitimacy, no pump (you make no claim).
 		monthly_legitimacy = 0.1
 		stability_cost_efficiency = 0.10
-		# fort_defence = 0.20 -- no such modifier type in 1.4 and no direct equivalent; removed.
+		global_defensive = 0.20 # was fort_defence; the 1.4 key is global_defensive ("Fort Defense"). Base laws use 0.1-0.33.
 		land_morale = 0.05
 		tax_income_efficiency = 0.10
 		# Nobody marches on the humble governor.

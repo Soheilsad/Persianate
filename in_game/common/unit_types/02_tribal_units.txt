@@ -3,10 +3,7 @@ a_nomadic_skirmisher_cavalry = {
 	copy_from = a_age_1_traditions_light_cavalry
 	
 	initiative = 3
-	# 1.4 has no fire/shock split (only strength_damage_done/taken); the pair
-	# below has no single equivalent, so it is parked until rebalanced.
-	# fire_damage_dealt = 0.15
-	# shock_damage_dealt = -0.20
+	strength_damage_done = -0.025 # mean of the EU4-style pair fire_damage_dealt 0.15 / shock_damage_dealt -0.20 (base range -0.15..0.2)
 	morale_damage_taken = 0.15
 	supply_weight = -0.15 ## they carry their own supplies
 	buildable = no
@@ -32,10 +29,7 @@ a_turkoman_light_cavalry = {
 	
 	initiative = 3
 	strength_damage_taken = 0.1 ## lightly armored. (1.4: fire/shock_damage_taken were both 0.1)
-	# 1.4 has no fire/shock split (only strength_damage_done/taken); the pair
-	# below has no single equivalent, so it is parked until rebalanced.
-	# fire_damage_dealt = 0.10
-	# shock_damage_dealt = 0.05
+	strength_damage_done = 0.075 # mean of the EU4-style pair fire_damage_dealt 0.10 / shock_damage_dealt 0.05 (base range -0.15..0.2)
 	supply_weight = -0.15 ## they carry their own supplies
 	mercenaries_per_location = {
 		pop_type = tribesmen
@@ -58,10 +52,7 @@ a_qizilbash_cavalry = {
 	copy_from = a_age_3_discovery_heavy_cavalry
 	
 	initiative = 2
-	# 1.4 has no fire/shock split (only strength_damage_done/taken); the pair
-	# below has no single equivalent, so it is parked until rebalanced.
-	# fire_damage_dealt = -0.10
-	# shock_damage_dealt = 0.20
+	strength_damage_done = 0.05 # mean of the EU4-style pair fire_damage_dealt -0.10 / shock_damage_dealt 0.20 (base range -0.15..0.2)
 	morale_damage_done = 0.25 # 1.4 name (was morale_damage_dealt)
 	morale_damage_taken = -0.15
 	
