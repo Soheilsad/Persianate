@@ -325,7 +325,7 @@ ghazi_sultanate = {
 		global_manpower_modifier = 0.10
 		land_morale = 0.05
 		tolerance_own = 1
-
+		auto_slave_raid_different_religion = yes
 		# The Caliphal handshake pays in ulema loyalty. The ghazi sultan
 		# is the clergy's preferred patron — the qadi reads his khutba
 		# without flinching, the madrasas accept his waqf.
@@ -648,7 +648,7 @@ dar_al_jihad = {
 		global_levy_size_modifier = 0.25
 		land_morale = 0.10
 		army_tradition_from_battle = 0.20
-
+		auto_slave_raid_different_religion = yes
 		# Sword of the Faith named in chanceries from Cairo to Delhi.
 		# Antagonism falls; the diplomatic register changes shape.
 		antagonism_received_modifier = -0.20
