@@ -63,8 +63,8 @@ horde_local_appointee = {
 		# FIX: the cap must count THIS building. As written it counted
 		# `local_governor`, which a horde never builds — so the check
 		# read 0 < 1 forever and the appointee was uncapped.
-		# The three government seats share one budget; hordes get a
-		# bigger budget via `num_local_governors` on the auto modifier.
+		# The government seats share one budget (base's governor budget);
+		# on top of it the begs' power buys more, see below.
 		custom_tooltip = {
 			text = horde_local_appointee_tt
 			scope:actor = {
@@ -78,7 +78,9 @@ horde_local_appointee = {
 					subtract = total_building_levels_including_construction:local_governor
 					subtract = total_building_levels_including_construction:itinerant_court_seat
 					subtract = total_building_levels_including_construction:kings_manor
-					add = 4 ### the horde's extra budget on top of base's
+					# The begs' share: +1 seat per full 10% of noble estate
+					# power (script_values/02_horde_reach_values.txt).
+					add = horde_darugha_noble_seats
 				}
 			}
 		}

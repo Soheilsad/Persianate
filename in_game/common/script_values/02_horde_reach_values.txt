@@ -1,0 +1,13 @@
+# Darugha seats the begs' weight buys (Horde_reach.txt, horde_local_appointee).
+#
+# One extra seat for every full 10% of noble estate power. The darugha is
+# the begs' office: the more of the realm the begs hold, the more of it is
+# run through their appointees. The terminal stage -- begs at or near the
+# whole of the realm's power -- is a darugha over nearly every area, which
+# is the state of the Chagatai ulus on the eve of the amirs' regency.
+# Country scope.
+horde_darugha_noble_seats = {
+	value = "estate_power(estate_type:nobles_estate)"
+	multiply = 10
+	floor = yes
+}
