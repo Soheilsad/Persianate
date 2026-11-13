@@ -108,7 +108,7 @@ done
 # 1.4 went live; 1.3-legacy keeps the last 1.3 build uploadable.
 BRANCH="$(git -C "$SRC_DIR" branch --show-current)"
 case "$BRANCH" in
-    public-main|1.4-dev) GAME_VERSION="1.4.6" ;;
+    public-main|1.4-dev) GAME_VERSION="1.4.7" ;;
     1.3-legacy)          GAME_VERSION="1.3.11" ;;
     *)                   GAME_VERSION="" ;;
 esac
