@@ -19,7 +19,7 @@
 # TWO ADJACENT AREAS. See scripted_effects/00_ulus_effects.txt. A share
 # is contiguous pasture a man can ride between and muster from.
 #
-# NOT PRICED IN GOLD. The cost of an ulus is never money; it is the
+# NOT PRICED IN GOLD, and it PAYS political influence (+5, see effect). The cost of an ulus is never money; it is the
 # territory itself, the taxes that leave with it, and a claimant of the
 # blood standing in the törü for the rest of the reign. Adding a gold
 # price on top would mistake the nature of the transaction.
@@ -182,6 +182,10 @@ grant_ulus = {
 				type = estate_type:nobles_estate
 				value = 0.03
 			}
+			# Political influence: an ulus is the reigning khan's coin. It
+			# buys him the quriltai's goodwill now and bills his successor,
+			# who inherits a brother with an army standing in the törü.
+			add_political_influence = political_influence_mild_bonus
 		}
 	}
 

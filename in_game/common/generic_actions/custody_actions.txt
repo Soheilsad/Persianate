@@ -116,6 +116,9 @@ custody_demand_fealty = {
 		months = 24
 	}
 
+	# The overture is paid win or lose: 5 political influence.
+	price = price:custody_demand_fealty_price
+
 	allow = {
 		scope:actor = {
 			has_variable = custody_fired

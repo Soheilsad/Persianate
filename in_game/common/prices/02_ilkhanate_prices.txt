@@ -1,6 +1,9 @@
 ilkhanate_integration_price = {
+	# Absorption is administrative (political influence) and also a
+	# claim on the Ilkhan's inheritance (legitimacy): both, 5 each.
 	scaled_gold = 3.0
 	government_power = 5
+	political_influence = 5
 	### less legitimacy cost by a lot. 
 }
 
@@ -12,6 +15,7 @@ ilkhanate_diwan_integration_price = {
 
 ilkhanate_yurt_integration_price = {
 	government_power = 5
+	political_influence = 5
 	### less legitimacy cost by a lot. 
 }
 
@@ -49,4 +53,11 @@ a_dervish_corps_maintenance = {
 
 a_dervish_corps_reinforce = {
 	gold = -2.25
+}
+# custody_demand_fealty (generic_actions/custody_actions.txt). The oath
+# is mostly titular; the price is the overture, paid win or lose. The
+# return is the per-vassal legitimacy/PI the regency draws from its
+# sworn governorates (auto_modifiers/11_custody_sworn_auto.txt).
+custody_demand_fealty_price = {
+	political_influence = 5
 }

@@ -191,6 +191,9 @@ chinggisid_regency = {
 		stability_decay = -0.0001
 		monthly_legitimacy = 0.5 ## this is the cheapest, easiest legitimacy path, so it gets a big boost to reflect that. The legitimacy is very cheap by design, BUT you will eventually hit the downsides.
 		monthly_prestige = -0.2
+		# Political influence: every act is issued in the puppet's name and
+		# has to be laundered through him first.
+		monthly_political_influence_gain_modifier = -0.20
 		global_max_control = -0.03 # the khan is the legal ruler, his name on every coin. You are a regent, a caretaker, a steward. You can never quite reach the full potential of the state under this borrowed mandate.
 		# The ceiling — the chancery cannot reach full stride under a
 		# borrowed mandate. Cancel the baseline's centralization push.
@@ -1055,6 +1058,8 @@ gurkani_regime = {
 		global_estate_target_satisfaction = 0.05
 		# The permanent ceiling: a gurkan is still not a king.
 		monthly_prestige = -0.1
+		# The son-in-law fiction launders more cheaply than a puppet.
+		monthly_political_influence_gain_modifier = -0.10
 		global_max_control = -0.02
 		country_cabinet_efficiency = ez_reform_cabinet_malus
 		monthly_towards_turk = 0.05

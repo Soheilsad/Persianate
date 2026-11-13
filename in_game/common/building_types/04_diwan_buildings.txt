@@ -71,7 +71,9 @@ central_diwan = {
 		global_crown_estate_power = 0.20
 		global_diwan_estate_power = 0.5
 		tax_income_efficiency = 0.04
-		
+		# The chancery is the engine of political influence: orders that
+		# move by registers, not by riders.
+		monthly_political_influence_gain_modifier = 0.10
 	}
 
 	unique_production_methods = {

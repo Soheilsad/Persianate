@@ -1,0 +1,27 @@
+# =====================================================================
+# THE SWORN GOVERNORATES — what an oath is worth to a regent.
+#
+# A governorate's oath to a Chinggisid regency is mostly titular: the
+# khan's name in the khutbah and on the coin, a governor who still runs
+# his own corner. But the titular part is the regent's whole case. Each
+# governor who reads the puppet's name is one more witness that the
+# custody is real, and each one is a court the regent can now reach
+# with a letter instead of an army.
+#
+# Per sworn ulus_governorate: +0.05 monthly legitimacy and +0.10 monthly
+# political influence (base capital buildings grant +0.10 / +0.25 for
+# scale). The demand itself costs 5 political influence, win or lose
+# (prices/02_ilkhanate_prices.txt, custody_demand_fealty_price).
+# Explained once by custody.34 on the regent's first sworn governorate.
+# =====================================================================
+
+custody_sworn_governorates = {
+	potential_trigger = {
+		has_reform = government_reform:chinggisid_regency
+		custody_sworn_governorate_count > 0
+	}
+	scales_with = custody_sworn_governorate_count
+
+	monthly_legitimacy = 0.05
+	monthly_political_influence = 0.1
+}

@@ -1,0 +1,11 @@
+# Number of governorates sworn to this country as ulus_governorate
+# (custody_demand_fealty / custody.31, custody.30's fealty pulse).
+# Scales custody_sworn_governorates (auto_modifiers/11_custody_sworn_auto.txt).
+# Country scope.
+custody_sworn_governorate_count = {
+	value = 0
+	every_subject = {
+		limit = { is_subject_type = ulus_governorate }
+		root = { add = 1 }
+	}
+}

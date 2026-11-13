@@ -76,6 +76,16 @@ custody.31 = {
 			# is still the swearing governor).
 			set_variable = { name = custody_sworn_gov value = root }
 			trigger_event_non_silently = custody.32
+			# First sworn governorate under a regency: explain what the
+			# oaths are worth (custody_sworn_governorates auto modifier).
+			if = {
+				limit = {
+					has_reform = government_reform:chinggisid_regency
+					NOT = { has_variable = custody_sworn_explained }
+				}
+				set_variable = custody_sworn_explained
+				trigger_event_non_silently = { id = custody.34 days = 1 }
+			}
 		}
 		remove_variable = custody_demanding_lord
 	}
@@ -105,6 +115,22 @@ custody.32 = {
 	option = {
 		name = custody.32.a
 		remove_variable = custody_sworn_gov
+	}
+}
+
+# ---WHAT AN OATH IS WORTH (to the regent, once) ------------------------
+# Fired after the regency's first sworn governorate (custody.31.a).
+# Explains the per-governorate legitimacy and influence that the
+# custody_sworn_governorates auto modifier now pays.
+custody.34 = {
+	type = country_event
+	title = custody.34.title
+	desc = custody.34.desc
+	outcome = positive
+
+	option = {
+		name = custody.34.a
+		custom_tooltip = custody.34.a.tt
 	}
 }
 

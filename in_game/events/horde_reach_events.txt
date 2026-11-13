@@ -169,6 +169,7 @@ horde_reach.10 = {
 	# and arrives as a man, not a number.
 	option = {
 		name = horde_reach.10.a
+		trigger = { political_influence >= 10 }
 
 		# The default road, and Özbeg's. An AI horde should reach for the
 		# appointee first and discover the amirs later.
@@ -191,6 +192,9 @@ horde_reach.10 = {
 			type = estate_type:nobles_estate
 			value = 0.05
 		}
+		# An appointment, priced like hiring an advisor: political capital
+		# spent inside the existing order.
+		add_political_influence = -10
 	}
 
 	# --- GRANT THE ULUS ---------------------------------------------------
@@ -271,6 +275,8 @@ horde_reach.10 = {
 
 		# The line is seen to provide for its own. The quriltai approves.
 		add_horde_unity = 5
+		# The reigning khan's short-term coin: see grant_ulus.txt.
+		add_political_influence = political_influence_mild_bonus
 		add_estate_satisfaction = {
 			type = estate_type:nobles_estate
 			value = 0.03

@@ -39,6 +39,12 @@ sahib_diwan_plenipotentiary = {
 		amirs_estate_target_satisfaction = -0.10
 		monthly_towards_centralization = 0.10
 		monthly_towards_tazik = 0.10
+		# The vizier rules, and is seen to. The King of Iran is neither
+		# Türk nor Tāzīk but both; to be seen ruling THROUGH the chancery
+		# costs him standing (legitimacy) and the political capital that
+		# now accrues to the vizier instead (influence).
+		monthly_legitimacy = -0.15
+		monthly_political_influence_gain_modifier = -0.15
 	}
 
 }
@@ -61,6 +67,8 @@ mustawfi_al_mamalik = {
 		global_max_urban_control = ez_diwan_urban_bonus
 		global_max_rural_control = ez_diwan_rural_bonus
 		stability_decay = -0.0001
+		# Chancery privilege: the registers make the throne's word carry.
+		monthly_political_influence_gain_modifier = 0.10
 		# The man who keeps the books has the easiest line to falsify —
 		# his own. Mustawfī himself held substantial Qazvīn estates.
 		diwan_estate_max_tax = -0.05
@@ -110,6 +118,8 @@ mongol_persian_documentary_synthesis = {
 		research_speed_modifier = 0.05
 		cultural_tradition_modifier = 0.05
 		diplomatic_reputation = 1
+		# Chancery privilege: one documentary culture, understood everywhere.
+		monthly_political_influence_gain_modifier = 0.10
 		monthly_towards_innovative = 0.05
 		monthly_towards_tazik = 0.05
 	}
@@ -393,6 +403,8 @@ diwan_qanun_codification = {
 		country_cabinet_efficiency = 0.10
 		global_max_urban_control = ez_diwan_urban_bonus
 		stability_cost_efficiency = 0.10
+		# Chancery privilege: written sultanic law.
+		monthly_political_influence_gain_modifier = 0.10
 		global_clergy_estate_power = -0.15
 		clergy_estate_target_satisfaction = -0.10
 		monthly_towards_centralization = 0.05

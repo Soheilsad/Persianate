@@ -66,6 +66,8 @@ amir_al_umara = {
 		army_light_cavalry_power = 0.10
 		global_diwan_estate_power = -0.10
 		country_cabinet_efficiency = -0.05
+		# Power-sharing: the commander of commanders speaks for the army.
+		monthly_political_influence_gain_modifier = -0.10
 		monthly_towards_turk = 0.10
 	}
 }
@@ -220,6 +222,8 @@ amirs_umara_at_the_diwan = {
 		global_amirs_estate_power = ez_priv_power_large
 		amirs_estate_allowed_in_cabinet = yes
 		country_cabinet_efficiency = -0.10
+		# Power-sharing: the umarāʾ hold the chancery seats.
+		monthly_political_influence_gain_modifier = -0.10
 		monthly_towards_decentralization = 0.05
 		monthly_towards_turk = 0.10
 		diwan_estate_target_satisfaction = -0.10
