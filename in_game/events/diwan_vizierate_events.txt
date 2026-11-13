@@ -1,4 +1,4 @@
-﻿namespace = diwan_vizierate
+namespace = diwan_vizierate
 
 # =====================================================================
 # THE DĪWĀN'S ULTIMATUM — the chancery refuses a cabinet of princes, burghers, or other undesirable illiterati.
