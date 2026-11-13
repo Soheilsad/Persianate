@@ -1,0 +1,42 @@
+# Script values for the Erānzamīn IO notables ledger.
+# Read by scripted_effects/12_eranzamin_io_effects.txt.
+
+# A realm's weight in the contest: its own locations plus those of its
+# direct subjects and their subjects (a sworn governorate's land is the
+# custodian's land for this purpose). COUNTRY scope.
+# num_locations_owned_or_owned_by_subjects_or_below is only proven as a
+# TRIGGER in base, so the sum is built from num_locations instead.
+eranzamin_bloc_locations = {
+	value = num_locations
+	every_subject = {
+		add = num_locations
+		every_subject = {
+			add = num_locations
+		}
+	}
+}
+
+# Denominator for the power share: every independent member's realm.
+# Allies are NOT folded into a head's share — they are independent and
+# count in their own right. INTERNATIONAL ORGANIZATION scope.
+eranzamin_total_sovereign_locations = {
+	value = 0
+	every_international_organization_member = {
+		limit = { is_subject = no }
+		add = eranzamin_bloc_locations
+	}
+	min = 1
+}
+
+# Who is "leading": consolidation months first (the 24-month bar is the
+# race that matters), realm size as the tiebreak. COUNTRY scope.
+eranzamin_lead_score = {
+	value = eranzamin_bloc_locations
+	if = {
+		limit = { has_variable = eranzamin_consolidation_months }
+		add = {
+			value = var:eranzamin_consolidation_months
+			multiply = 1000
+		}
+	}
+}

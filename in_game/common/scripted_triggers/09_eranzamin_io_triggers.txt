@@ -1,0 +1,97 @@
+# Erānzamīn IO — the notables ledger (who heads a bloc, and on what claim).
+#
+# Historical frame. After Abū Saʿīd (d. 1335) and the fall of Arpa Ke'ün
+# (1336) no Ilkhan commanded general recognition. The contest that
+# followed ran on three distinct bases of claim:
+#   -The KHAN-MAKER: an amir who holds a Chinggisid in custody and rules
+#    in his name. Ḥasan-i Kūchak the Chobanid with Sati Beg and then
+#    Sulaymān; Ḥasan-i Buzurg the Jalayirid with Muḥammad and Jahān
+#    Temür. The yarlıq still issued in the khan's name; the amir held the
+#    seal. (Melville, "The Fall of Amir Chupan"; Wing, The Jalayirids.)
+#   -The CHINGGISID CLAIMANT: a prince of the blood pressing his own
+#    right. Ṭoghā Temür in Khurasan, of the Qasarid line, recognized by
+#    the Sarbadārs and the Kartids at intervals.
+#   -The SOVEREIGN SHAH: a ruler who has stopped borrowing a Chinggisid
+#    name and rules in his own — by farr, by the ghazā, by the army's
+#    assent, or (later) by the vindicated Iranian kingship.
+# Everyone else in the federation is a governor, a client, or waiting.
+#
+# All of these are COUNTRY scope. A HEAD must be independent: a vassal
+# (including a sworn ulus_governorate) belongs on its overlord's card,
+# never on its own.
+#
+# Read by: international_organization_special_statuses/eranzamin.txt
+# (Members-tab grouping) and scripted_effects/12_eranzamin_io_effects.txt
+# (Notables-tab ledger).
+
+# Holds a khan — the regency fiction, its institutionalized gurkan form,
+# or simply a living Borjigin puppet whose patron_country points here
+# (set by ilkhanate_flavor.1 / .2; read by on_borjigin_puppet_death).
+eranzamin_is_khan_maker = {
+	OR = {
+		has_reform ?= government_reform:chinggisid_regency
+		has_reform ?= government_reform:gurkani_regime
+		any_character = {
+			is_alive = yes
+			var:patron_country ?= prev
+		}
+	}
+}
+
+# A prince of the blood on his own throne. Mirrors custody_is_rival's
+# Borjigin test (06_custody_triggers.txt). A regent who happens to have
+# married in is still a khan-maker — the precedence lives in
+# eranzamin_notable_basis below, not here.
+eranzamin_is_chinggisid_claimant = {
+	ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
+}
+
+# Rules in his own name. The Age 1 declared claims (farr, ghazā, the
+# army's sultanate), the Age 2 vindicated forms (Iranian kingship, the
+# Dār al-Jihād, the Timurid synthesis), the crowned murshid, and the
+# vindicated Rūm sultanate. ilkhanate_governorate is deliberately NOT
+# here: the governorate is the road that claims nothing.
+eranzamin_is_sovereign_shah = {
+	OR = {
+		has_reform ?= government_reform:farr_i_izadi
+		has_reform ?= government_reform:iranian_kingship
+		has_reform ?= government_reform:ghazi_sultanate
+		has_reform ?= government_reform:dar_al_jihad
+		has_reform ?= government_reform:amir_sultanate
+		has_reform ?= government_reform:timurid_synthesis
+		has_reform ?= government_reform:crowned_murshid_reform
+		has_reform ?= government_reform:sultanate_of_rum
+	}
+}
+
+# A bloc head: independent, and holding one of the three bases.
+eranzamin_is_notable_head = {
+	is_subject = no
+	OR = {
+		eranzamin_is_khan_maker = yes
+		eranzamin_is_chinggisid_claimant = yes
+		eranzamin_is_sovereign_shah = yes
+	}
+}
+
+# Precedence for the single basis a head is filed under (and for the
+# mutually exclusive special statuses): holding a khan outranks being
+# one — Ḥasan-i Buzurg's Jahān Temür was a Chinggisid, but the claim
+# was the Jalayirid's — and either outranks a self-made crown.
+eranzamin_files_as_khan_maker = {
+	is_subject = no
+	eranzamin_is_khan_maker = yes
+}
+
+eranzamin_files_as_chinggisid = {
+	is_subject = no
+	eranzamin_is_chinggisid_claimant = yes
+	NOT = { eranzamin_is_khan_maker = yes }
+}
+
+eranzamin_files_as_sovereign_shah = {
+	is_subject = no
+	eranzamin_is_sovereign_shah = yes
+	NOT = { eranzamin_is_khan_maker = yes }
+	NOT = { eranzamin_is_chinggisid_claimant = yes }
+}

@@ -1,0 +1,239 @@
+# Erānzamīn IO — the monthly notables ledger behind the IO panel
+# (in_game/gui/panels/organization/eranzamin.gui).
+#
+# Called from the IO's monthly_effect (root = the IO). Rebuilds, from
+# scratch, everything the panel reads:
+#
+#   GLOBAL LISTS (GetGlobalList in the GUI — the proven list path)
+#     eranzamin_notable_heads   bloc heads, largest realm first
+#     eranzamin_unaligned       members in no head's bloc
+#     eranzamin_khan_holders    countries holding a Borjigin puppet
+#
+#   ON EACH HEAD (country)
+#     eranzamin_notable_head           flag
+#     eranzamin_basis_khan_maker /
+#     eranzamin_basis_chinggisid /
+#     eranzamin_basis_shah             one flag, the filed basis
+#     eranzamin_notable_bloc           variable LIST: subjects (any type,
+#                                      incl. ulus / ulus_governorate,
+#                                      member or not) and allied members
+#     eranzamin_bloc_size              count of the above
+#     eranzamin_power_share            0..1, bloc locations / all
+#                                      independent members' locations
+#
+#   ON EACH BLOC MEMBER  eranzamin_bloc_of = its head (one head only)
+#   ON EACH KHAN HOLDER  eranzamin_held_khan = the puppet character
+#
+#   ON THE IO (also declared in eranzamin.txt variables{} for the header)
+#     eranzamin_notables, eranzamin_sovereigns, eranzamin_leader_months,
+#     eranzamin_leader_progress (0..1), eranzamin_leading_contender,
+#     eranzamin_city_<key> / eranzamin_holder_<key> / eranzamin_bloc_<key>
+#
+# Custody storage is NOT changed: sworn governorates are already real
+# subjects (custody.31 / the governorate's fealty action call
+# make_subject_of ... ulus_governorate), so every_subject finds them; the
+# custody_* pointers are transient event-boundary handles and are not
+# read here.
+
+eranzamin_rebuild_notables = {
+	# ---0. Wipe last month's ledger --------------------------------------
+	every_in_global_list = {
+		variable = eranzamin_notable_heads
+		every_in_list = {
+			variable = eranzamin_notable_bloc
+			remove_variable = eranzamin_bloc_of
+		}
+		clear_variable_list = eranzamin_notable_bloc
+		remove_variable = eranzamin_notable_head
+		remove_variable = eranzamin_basis_khan_maker
+		remove_variable = eranzamin_basis_chinggisid
+		remove_variable = eranzamin_basis_shah
+		remove_variable = eranzamin_bloc_size
+		remove_variable = eranzamin_power_share
+	}
+	every_in_global_list = {
+		variable = eranzamin_khan_holders
+		remove_variable = eranzamin_held_khan
+	}
+	clear_global_variable_list = eranzamin_notable_heads
+	clear_global_variable_list = eranzamin_unaligned
+	clear_global_variable_list = eranzamin_khan_holders
+
+	set_local_variable = {
+		name = ez_total
+		value = eranzamin_total_sovereign_locations
+	}
+	set_local_variable = { name = ez_heads value = 0 }
+	set_local_variable = { name = ez_sovereigns value = 0 }
+
+	# ---1. Khans in custody ---------------------------------------------
+	# Any member — a subject may hold a khan too (the strip shows the
+	# holder's own flag; the bloc card shows whose bloc that is).
+	every_international_organization_member = {
+		limit = {
+			any_character = {
+				is_alive = yes
+				var:patron_country ?= prev
+			}
+		}
+		random_character = {
+			limit = {
+				is_alive = yes
+				var:patron_country ?= prev
+			}
+			save_temporary_scope_as = ez_held_khan
+		}
+		set_variable = { name = eranzamin_held_khan value = scope:ez_held_khan }
+		add_to_global_variable_list = { name = eranzamin_khan_holders target = this }
+	}
+
+	# ---2. Bloc heads, largest realm first -------------------------------
+	# Ordered so that an ally of two heads files under the larger.
+	ordered_international_organization_member = {
+		limit = { eranzamin_is_notable_head = yes }
+		order_by = eranzamin_bloc_locations
+		max = 60
+		check_range_bounds = no
+
+		save_temporary_scope_as = ez_head
+		change_local_variable = { name = ez_heads add = 1 }
+		set_variable = eranzamin_notable_head
+		if = {
+			limit = { eranzamin_files_as_khan_maker = yes }
+			set_variable = eranzamin_basis_khan_maker
+		}
+		else_if = {
+			limit = { eranzamin_files_as_chinggisid = yes }
+			set_variable = eranzamin_basis_chinggisid
+		}
+		else = {
+			set_variable = eranzamin_basis_shah
+		}
+		set_variable = {
+			name = eranzamin_power_share
+			value = {
+				value = eranzamin_bloc_locations
+				divide = local_var:ez_total
+			}
+		}
+		add_to_global_variable_list = { name = eranzamin_notable_heads target = this }
+
+		set_variable = { name = eranzamin_bloc_size value = 0 }
+
+		# Subjects (and their subjects): ulus, ulus_governorate, vassal —
+		# members or not. A vassal's land is its overlord's bloc.
+		every_subject = {
+			set_variable = { name = eranzamin_bloc_of value = scope:ez_head }
+			scope:ez_head = {
+				add_to_variable_list = { name = eranzamin_notable_bloc target = prev }
+				change_variable = { name = eranzamin_bloc_size add = 1 }
+			}
+			every_subject = {
+				set_variable = { name = eranzamin_bloc_of value = scope:ez_head }
+				scope:ez_head = {
+					add_to_variable_list = { name = eranzamin_notable_bloc target = prev }
+					change_variable = { name = eranzamin_bloc_size add = 1 }
+				}
+			}
+		}
+
+		# Committed allies: independent members, not heads themselves,
+		# not already filed under a larger head.
+		every_related_country = {
+			type = alliance
+			limit = {
+				is_member_of_international_organization = international_organization:eranzamin
+				is_subject = no
+				NOT = { eranzamin_is_notable_head = yes }
+				NOT = { has_variable = eranzamin_bloc_of }
+			}
+			set_variable = { name = eranzamin_bloc_of value = scope:ez_head }
+			scope:ez_head = {
+				add_to_variable_list = { name = eranzamin_notable_bloc target = prev }
+				change_variable = { name = eranzamin_bloc_size add = 1 }
+			}
+		}
+	}
+
+	# ---3. Unaligned, and the sovereign count ---------------------------
+	every_international_organization_member = {
+		if = {
+			limit = { is_subject = no }
+			change_local_variable = { name = ez_sovereigns add = 1 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = eranzamin_notable_head }
+				NOT = { has_variable = eranzamin_bloc_of }
+			}
+			add_to_global_variable_list = { name = eranzamin_unaligned target = this }
+		}
+	}
+
+	# ---4. The leading contender and the 24-month bar -------------------
+	ordered_international_organization_member = {
+		limit = { is_subject = no }
+		order_by = eranzamin_lead_score
+		max = 1
+		check_range_bounds = no
+		save_scope_as = ez_leader
+	}
+	if = {
+		limit = { exists = scope:ez_leader }
+		set_variable = { name = eranzamin_leading_contender value = scope:ez_leader }
+		if = {
+			limit = { scope:ez_leader = { has_variable = eranzamin_consolidation_months } }
+			set_variable = {
+				name = eranzamin_leader_months
+				value = {
+					value = scope:ez_leader.var:eranzamin_consolidation_months
+					max = 24
+				}
+			}
+		}
+		else = {
+			set_variable = { name = eranzamin_leader_months value = 0 }
+		}
+	}
+	else = {
+		remove_variable = eranzamin_leading_contender
+		set_variable = { name = eranzamin_leader_months value = 0 }
+	}
+	set_variable = {
+		name = eranzamin_leader_progress
+		value = {
+			value = var:eranzamin_leader_months
+			divide = 24
+		}
+	}
+
+	set_variable = { name = eranzamin_notables value = local_var:ez_heads }
+	set_variable = { name = eranzamin_sovereigns value = local_var:ez_sovereigns }
+
+	# ---5. Key cities (controls_eranzamin_key_cities) -------------------
+	eranzamin_record_key_city = { city = tabriz }
+	eranzamin_record_key_city = { city = baghdad }
+	eranzamin_record_key_city = { city = soltaniyeh }
+	eranzamin_record_key_city = { city = isfahan }
+	eranzamin_record_key_city = { city = shiraz }
+}
+
+# One key city: who holds it, and — when the holder is a subject — whose
+# bloc that puts it in. Root = the IO.
+#   $city$  location key (location:$city$)
+eranzamin_record_key_city = {
+	set_variable = { name = eranzamin_city_$city$ value = location:$city$ }
+	remove_variable = eranzamin_holder_$city$
+	remove_variable = eranzamin_bloc_$city$
+	location:$city$ = {
+		owner ?= {
+			root = { set_variable = { name = eranzamin_holder_$city$ value = prev } }
+			if = {
+				limit = { is_subject = yes }
+				top_overlord ?= {
+					root = { set_variable = { name = eranzamin_bloc_$city$ value = prev } }
+				}
+			}
+		}
+	}
+}

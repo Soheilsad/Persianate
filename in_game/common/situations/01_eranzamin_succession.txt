@@ -29,7 +29,7 @@ eranzamin_succession = {
 			any_country = {
 				is_eranzamin_contender = yes
 				custom_tooltip = {
-					text = eranzamin_contender_tt
+					text = eranzamin_victor_conditions_tt
 					has_variable = eranzamin_succession_victor
 					has_variable = eranzamin_contender
 				}

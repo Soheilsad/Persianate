@@ -1,0 +1,80 @@
+﻿l_english:
+ # =====================================================================
+ # Erānzamīn IO panel — header, Overview cards, Notables tab, statuses.
+ # Panel: in_game/gui/panels/organization/eranzamin.gui
+ # Ledger: in_game/common/scripted_effects/12_eranzamin_io_effects.txt
+ # =====================================================================
+
+ # --- Header ---
+ ERANZAMIN_INTERREGNUM: "Interregnum — no Īlkhān since 1335"
+ ERANZAMIN_INTERREGNUM_TT: "Abū Saʿīd died in Qarabagh in 1335 and left no son. Arpa Ke'ün held the throne for five months; every khan after him has been some amir's khan. Until one power holds the realm and its five seats in its own hands, Erānzamīn has no master."
+ ERANZAMIN_LEADING: "Leading:"
+ ERANZAMIN_LEADER_TT: "The independent member closest to the throne: the most months held at the territorial gate (more than 240 locations of its own and its subjects', capital in the region), realm size breaking ties. Twenty-four unbroken months opens the Matter of Tork or the Matter of Tāzīk."
+
+ # --- IO variables (header strip) ---
+ eranzamin_notables: "Notables"
+ eranzamin_notables_desc: "The heads of the federation's blocs: khan-makers, Chinggisid claimants and sovereign shahs who answer to no overlord."
+ eranzamin_sovereigns: "Sovereign Members"
+ eranzamin_sovereigns_desc: "Members that are not the subjects of another power."
+ eranzamin_leader_months: "Consolidation of the Leader"
+ eranzamin_leader_months_desc: "Months the leading contender has held the territorial gate, against the twenty-four that open the consolidation Matter."
+ ERANZAMIN_COUNT_FORMAT: "$VAL|0$"
+ ERANZAMIN_MONTHS_FORMAT: "$VAL|0$/24"
+
+ # --- Overview cards ---
+ ERANZAMIN_LEADER_CARD: "The Leading Contender"
+ ERANZAMIN_CONSOLIDATION: "Consolidation"
+ ERANZAMIN_NOTABLES_LABEL: "notables"
+ ERANZAMIN_SOVEREIGNS_LABEL: "sovereign members"
+ ERANZAMIN_KEY_CITIES: "The Five Seats"
+ ERANZAMIN_KEY_CITIES_TT: "The throne needs all five in the realm's own hands: Tabriz, the Ilkhanid capital of record; Baghdad, the old caliphal seat; Soltaniyeh, Öljeitü's city; Isfahan; and Shiraz, the city of the poets. A seat held by a vassal is shown with its overlord's flag, but it does not count for him until it is his own."
+ ERANZAMIN_FOR_BLOC: "for"
+ ERANZAMIN_KHANS_IN_CUSTODY: "Khans in Custody"
+ ERANZAMIN_NO_KHANS: "No Chinggisid is held in custody."
+
+ # --- Notables tab ---
+ ERANZAMIN_NOTABLES_TAB: "Notables"
+ ERANZAMIN_NOTABLES_TAB_TT: "The heads of the federation's blocs, each with the subjects, sworn governorates and allied members who follow him."
+ ERANZAMIN_NO_NOTABLES: "No member yet heads a bloc. The ledger is drawn up at the turn of each month."
+ ERANZAMIN_BASIS_KHAN_MAKER: "Holds a khan"
+ ERANZAMIN_BASIS_CHINGGISID: "Of the blood of Chinggis"
+ ERANZAMIN_BASIS_SHAH: "Rules in his own name"
+ ERANZAMIN_POWER_SHARE: "Share of the realm"
+ ERANZAMIN_POWER_SHARE_TT: "Locations held by this head and his subjects, as a share of all locations held by the federation's independent members and their subjects. Allies count in their own right, not in the head's share."
+ ERANZAMIN_BLOC_LABEL: "Bloc:"
+ ERANZAMIN_BLOC_TT: "Subjects (ulus shares, sworn governorates and vassals, members or not), then allied members who head no bloc of their own. An ally of two heads is filed under the larger."
+ ERANZAMIN_UNALIGNED: "Unaligned"
+ ERANZAMIN_UNALIGNED_TT: "Members in no head's bloc: governors waiting to see who wins, and powers that have not yet named the basis of their claim."
+ ERANZAMIN_NONE: "None"
+
+ # --- Special statuses (Members tab groups) ---
+ eranzamin_khan_maker: "Khan-Maker"
+ eranzamin_khan_maker_plural: "Khan-Makers"
+ eranzamin_khan_maker_desc: "Rules in the name of a Chinggisid he holds in custody, as the Chobanids ruled through Sati Beg and Sulaymān and the Jalayirids through Jahān Temür. The yarlıq still issues in the khan's name; the seal is in the amir's hand."
+ eranzamin_chinggisid_claimant: "Chinggisid Claimant"
+ eranzamin_chinggisid_claimant_plural: "Chinggisid Claimants"
+ eranzamin_chinggisid_claimant_desc: "A prince of the blood of Chinggis Khan pressing his own right to the throne, as Ṭoghā Temür pressed his from Khurasan."
+ eranzamin_sovereign_shah: "Sovereign Shah"
+ eranzamin_sovereign_shah_plural: "Sovereign Shahs"
+ eranzamin_sovereign_shah_desc: "Rules in his own name rather than a borrowed Chinggisid one: by the farr of Iranian kingship, by the ghazā, by the army's assent, or by a crown already vindicated."
+ eranzamin_sworn_client: "Sworn Client"
+ eranzamin_sworn_client_plural: "Sworn Clients"
+ eranzamin_sworn_client_desc: "A member bound to an overlord: a governorate that swore fealty to a custodian, an ulus share, or a vassal. Its land and its voice count for its overlord's bloc."
+
+ # Engine-generated per-status modifier types (base pattern: ilkhan_claimant).
+ MODIFIER_TYPE_NAME_eranzamin_khan_maker_can_participate_in_parliament: "$eranzamin_khan_maker$ in Parliament"
+ MODIFIER_TYPE_DESC_eranzamin_khan_maker_can_participate_in_parliament: "This allows the [ShowSpecialStatusName('eranzamin_khan_maker')] to suggest [parliament_agendas|e] in the [parliament|e] of an [international_organization|e]."
+ MODIFIER_TYPE_NAME_eranzamin_khan_maker_agenda_impact: "Agenda Impact for $eranzamin_khan_maker$"
+ MODIFIER_TYPE_DESC_eranzamin_khan_maker_agenda_impact: "This modifies the support that the [parliament_agendas|e] that the [ShowSpecialStatusName('eranzamin_khan_maker')] group proposes has."
+ MODIFIER_TYPE_NAME_eranzamin_chinggisid_claimant_can_participate_in_parliament: "$eranzamin_chinggisid_claimant$ in Parliament"
+ MODIFIER_TYPE_DESC_eranzamin_chinggisid_claimant_can_participate_in_parliament: "This allows the [ShowSpecialStatusName('eranzamin_chinggisid_claimant')] to suggest [parliament_agendas|e] in the [parliament|e] of an [international_organization|e]."
+ MODIFIER_TYPE_NAME_eranzamin_chinggisid_claimant_agenda_impact: "Agenda Impact for $eranzamin_chinggisid_claimant$"
+ MODIFIER_TYPE_DESC_eranzamin_chinggisid_claimant_agenda_impact: "This modifies the support that the [parliament_agendas|e] that the [ShowSpecialStatusName('eranzamin_chinggisid_claimant')] group proposes has."
+ MODIFIER_TYPE_NAME_eranzamin_sovereign_shah_can_participate_in_parliament: "$eranzamin_sovereign_shah$ in Parliament"
+ MODIFIER_TYPE_DESC_eranzamin_sovereign_shah_can_participate_in_parliament: "This allows the [ShowSpecialStatusName('eranzamin_sovereign_shah')] to suggest [parliament_agendas|e] in the [parliament|e] of an [international_organization|e]."
+ MODIFIER_TYPE_NAME_eranzamin_sovereign_shah_agenda_impact: "Agenda Impact for $eranzamin_sovereign_shah$"
+ MODIFIER_TYPE_DESC_eranzamin_sovereign_shah_agenda_impact: "This modifies the support that the [parliament_agendas|e] that the [ShowSpecialStatusName('eranzamin_sovereign_shah')] group proposes has."
+ MODIFIER_TYPE_NAME_eranzamin_sworn_client_can_participate_in_parliament: "$eranzamin_sworn_client$ in Parliament"
+ MODIFIER_TYPE_DESC_eranzamin_sworn_client_can_participate_in_parliament: "This allows the [ShowSpecialStatusName('eranzamin_sworn_client')] to suggest [parliament_agendas|e] in the [parliament|e] of an [international_organization|e]."
+ MODIFIER_TYPE_NAME_eranzamin_sworn_client_agenda_impact: "Agenda Impact for $eranzamin_sworn_client$"
+ MODIFIER_TYPE_DESC_eranzamin_sworn_client_agenda_impact: "This modifies the support that the [parliament_agendas|e] that the [ShowSpecialStatusName('eranzamin_sworn_client')] group proposes has."

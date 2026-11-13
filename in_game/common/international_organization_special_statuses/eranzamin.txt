@@ -1,0 +1,160 @@
+# Erānzamīn member roles (special statuses). These exist to GROUP the
+# Members tab by basis of claim — they carry no modifiers; the contest's
+# mechanics live in the situation, the disasters and the reforms.
+#
+# Bases of claim: scripted_triggers/09_eranzamin_io_triggers.txt (the
+# historical frame is written up there). The three head statuses are
+# mutually exclusive by precedence: khan-maker > Chinggisid > shah.
+# A member with none of these is Unaligned (the engine's plain member
+# group). Countries only — subjects that are NOT members never get a
+# status; they appear on their overlord's card in the Notables tab.
+#
+# The field is auto_rescind_trigger (as every base status file writes
+# it), not the readme's auto_dismissal_trigger.
+#
+# special_status_power weights (only read by IO parliaments; Erānzamīn
+# has none today — set so a future maẓālim-style kuriltai reads sanely):
+#   khan-maker   100  the yarlıq still issues in the khan's name, and he
+#                     holds the seal — the strongest voice in any
+#                     assembly of the ulus
+#   Chinggisid    80  the blood itself; no amir can quite overrule it
+#                     in council, though he can outfight it
+#   sovereign     60  a self-made crown — real power, borrowed nothing,
+#                     and so recognized by no one by right
+#   sworn client  10  speaks through the custodian it swore to
+
+eranzamin_khan_maker = {
+	priority = 15
+
+	modifier = {
+	}
+
+	can_bestow_trigger = {
+		eranzamin_files_as_khan_maker = yes
+	}
+
+	auto_bestowal_trigger = {
+		eranzamin_files_as_khan_maker = yes
+	}
+
+	auto_rescind_trigger = {
+		NOT = { eranzamin_files_as_khan_maker = yes }
+	}
+
+	on_bestowed_effect = {
+	}
+
+	on_rescinded_effect = {
+	}
+
+	map_color = {
+		value = rgb { 150 40 45 }
+	}
+
+	special_status_power = {
+		value = 100
+	}
+}
+
+eranzamin_chinggisid_claimant = {
+	priority = 12
+
+	modifier = {
+	}
+
+	can_bestow_trigger = {
+		eranzamin_files_as_chinggisid = yes
+	}
+
+	auto_bestowal_trigger = {
+		eranzamin_files_as_chinggisid = yes
+	}
+
+	auto_rescind_trigger = {
+		NOT = { eranzamin_files_as_chinggisid = yes }
+	}
+
+	on_bestowed_effect = {
+	}
+
+	on_rescinded_effect = {
+	}
+
+	map_color = {
+		value = rgb { 200 160 50 }
+	}
+
+	special_status_power = {
+		value = 80
+	}
+}
+
+eranzamin_sovereign_shah = {
+	priority = 10
+
+	modifier = {
+	}
+
+	can_bestow_trigger = {
+		eranzamin_files_as_sovereign_shah = yes
+	}
+
+	auto_bestowal_trigger = {
+		eranzamin_files_as_sovereign_shah = yes
+	}
+
+	auto_rescind_trigger = {
+		NOT = { eranzamin_files_as_sovereign_shah = yes }
+	}
+
+	on_bestowed_effect = {
+	}
+
+	on_rescinded_effect = {
+	}
+
+	map_color = {
+		value = rgb { 45 85 150 }
+	}
+
+	special_status_power = {
+		value = 60
+	}
+}
+
+# A member that has become a subject — a sworn ulus_governorate, an ulus
+# share, or a plain vassal. Members can never leave (can_leave_trigger),
+# so a member that kneels stays on the roll; this status files it apart
+# from the independent powers.
+eranzamin_sworn_client = {
+	priority = 5
+
+	modifier = {
+	}
+
+	can_bestow_trigger = {
+		is_subject = yes
+	}
+
+	auto_bestowal_trigger = {
+		is_subject = yes
+	}
+
+	auto_rescind_trigger = {
+		is_subject = no
+	}
+
+	on_bestowed_effect = {
+	}
+
+	on_rescinded_effect = {
+	}
+
+	map_color = {
+		value = rgb { 165 135 110 }
+	}
+
+	special_status_power = {
+		value = 10
+	}
+}

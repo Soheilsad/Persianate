@@ -5,14 +5,24 @@
 #   -Membership confers the "contender" passive (lower AE impact,
 #     cheaper integration, modest army morale, increased unrest from
 #     the contested legitimacy).
-#   -Members can leave voluntarily (abandon claim).
+#   -Members cannot leave (can_leave_trigger = always = no below). The
+#    design plan §5 still lists "abandoning claim" as an exit; that has
+#    not been built — a member that kneels stays on the roll and is
+#    filed as a sworn client instead.
 #   -The Erānzamīn succession *situation* owns lifecycle and victory;
 #     this IO auto-disbands when the situation flips its resolved flag.
 #
-# Starting members are seeded in main_menu/setup/start/ via a mod-side
-# 17_eranzamin_organization.txt (created separately). The roster mirrors
-# the base ilkhanate setup plus Sarbedars, minus a few tags that don't
-# belong in the Persianate-succession frame.
+# Starting members are seeded in
+# main_menu/setup/1337/15_international_organizations.txt (the same-name
+# replacement of the base file). The roster mirrors the base ilkhanate
+# setup plus Sarbedars, minus a few tags that don't belong in the
+# Persianate-succession frame.
+#
+# Panel: in_game/gui/panels/organization/eranzamin.gui. Its Overview
+# cards, the "Notables" tab and the header read the ledger rebuilt by
+# monthly_effect below (scripted_effects/12_eranzamin_io_effects.txt);
+# the Members tab groups by the special statuses in
+# international_organization_special_statuses/eranzamin.txt.
 
 eranzamin = {
 
@@ -20,9 +30,15 @@ eranzamin = {
 	unique = yes
 	expel_members_who_are_targets_of_other_members = no
 	disband_if_no_leader = no
-	max_circles_at_formation = 10
 	# Flat federation: no leader country, no claimant promotion.
 	has_leader_country = no
+
+	# Diplomatic map: members tinted; the role statuses (khan-maker,
+	# Chinggisid, sovereign, sworn client) override with their own
+	# map_color. Colors in main_menu/common/named_colors/01_mod_colors.txt.
+	show_on_diplomatic_map = yes
+	member_color = map_eranzamin_member
+	leader_color = map_eranzamin_member
 
 	only_leader_country_joins_defensive_wars = no
 	gives_military_access_to_all_when_at_war = no
@@ -92,14 +108,45 @@ eranzamin = {
 	on_left = {
 	}
 
-	# No engine cadence — the situation handles monthly logic.
+	# The situation still owns lifecycle and victory. This cadence only
+	# rebuilds the notables ledger the IO panel reads (heads, blocs,
+	# power shares, khans in custody, key-city holders, header counts).
 	monthly_effect = {
+		eranzamin_rebuild_notables = yes
 	}
 
+	# Header readouts. Written by eranzamin_rebuild_notables — no
+	# monthly_change of their own (the middle_kingdom
+	# num_of_celestial_governors pattern).
 	variables = {
+		eranzamin_notables = {
+			format = "ERANZAMIN_COUNT_FORMAT"
+			min = 0
+			max = 12
+			start = 0
+			monthly_change_hidden = yes
+		}
+		eranzamin_sovereigns = {
+			format = "ERANZAMIN_COUNT_FORMAT"
+			min = 0
+			max = 60
+			start = 0
+			monthly_change_hidden = yes
+		}
+		eranzamin_leader_months = {
+			format = "ERANZAMIN_MONTHS_FORMAT"
+			min = 0
+			max = 24
+			start = 0
+			monthly_change_hidden = yes
+		}
 	}
 
 	special_statuses_implemented = {
+		eranzamin_khan_maker
+		eranzamin_chinggisid_claimant
+		eranzamin_sovereign_shah
+		eranzamin_sworn_client
 	}
 
 	ai_desire_to_join = {

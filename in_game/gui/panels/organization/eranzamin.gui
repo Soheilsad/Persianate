@@ -1,0 +1,639 @@
+# Erānzamīn IO panel — the post-Ilkhanid interregnum.
+#
+# Engine hook: a file named after the IO key in panels/organization/
+# overrides the theme for that IO (base ilkhanate.gui, middle_kingdom.gui).
+# The IO has no leader country, so common_header.gui shows its "no one in
+# charge" widget: illustration (InternationalOrganization.GetIllustration
+# -> gfx/interface/illustrations/international_organization_types/
+# eranzamin.dds) plus the ios_information_header, which auto-lists the
+# IO variables declared in eranzamin.txt (notables / sovereigns / leader
+# months). io_decoration only renders under a leader country, so the
+# decoration rides organization_panel_extra_item instead.
+#
+# Data: everything below reads the monthly ledger built by
+# eranzamin_rebuild_notables (scripted_effects/12_eranzamin_io_effects.txt).
+# Lists go through GetGlobalList (the proven base path: hook_and_cod_wars,
+# council_of_trent); per-head bloc lists through Country.MakeScope.GetList
+# (the proven middle_kingdom path), nested inside the heads loop.
+#
+# Tabs: Overview (leader / key cities / khans in custody, then the
+# engine's special-member groups), Notables (custom tab: one card per
+# bloc head, then Unaligned), Members (engine, grouped by the role
+# statuses in international_organization_special_statuses/eranzamin.txt).
+
+organization_geodiplomatic_theme = {
+
+	# ---TABS (as base ilkhanate.gui: force the Overview on) -------------
+	blockoverride "organization_overview_tab_visible" {}
+	blockoverride "organization_panel_overview_visible" {
+		visible = "[InternationalOrganizationsView.Vars.NotExistOrHasValue( 'organizations', 'overview' )]"
+	}
+	blockoverride "organization_members_tab_down" {
+		down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'members' )]"
+	}
+	blockoverride "organization_panel_members_visible" {
+		visible = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'members' )]"
+	}
+	blockoverride "scroll_overview_empty_visible" { visible = no }
+
+	blockoverride "io_main_actions_icon" {
+		texture = "[InternationalOrganizationsView.GetInternationalOrganization.GetIcon]"
+	}
+
+	# ---HEADER ----------------------------------------------------------
+	# Banner pinned over the illustration, carrying the IO seal (the
+	# shinto.gui pattern — base textures only, no new art required).
+	blockoverride "organization_panel_extra_item" {
+		flowcontainer = {
+			parentanchor = top|hcenter
+			icon = {
+				parentanchor = top
+				texture = "gfx/interface/great_powers/banner_rank.dds"
+				texture_density = 2
+				size = { 65 60 }
+
+				icon = {
+					position = { 12 0 }
+					using = tooltip_title_icon_size
+					texture = "[InternationalOrganizationsView.GetInternationalOrganization.GetIcon]"
+				}
+			}
+			tooltip = "ERANZAMIN_INTERREGNUM_TT"
+		}
+	}
+
+	# Subheader, left: the throne is empty.
+	blockoverride "organization_panel_left_header" {
+		text_single = {
+			margin_left = 10
+			autoresize = yes
+			align = left|nobaseline
+			text = "ERANZAMIN_INTERREGNUM"
+			default_format = "#yellow_titles"
+			tooltip = "ERANZAMIN_INTERREGNUM_TT"
+		}
+	}
+
+	# Subheader, right: who is closest to filling it.
+	blockoverride "organization_panel_right_header" {
+		hbox = {
+			visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_leading_contender').IsSet]"
+			spacing = 5
+			margin_right = 8
+			tooltip = "ERANZAMIN_LEADER_TT"
+
+			text_single = {
+				autoresize = yes
+				align = right|nobaseline
+				text = "ERANZAMIN_LEADING"
+				default_format = "#subtle_name"
+			}
+			country_flag_small = {
+				datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_leading_contender').GetCountry]"
+			}
+			text_single = {
+				autoresize = yes
+				align = right|nobaseline
+				text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_leading_contender').GetCountry.GetName]"
+			}
+		}
+	}
+
+	# Information strip: the fancy paper card of middle_kingdom.gui,
+	# without its Chinese frame art.
+	blockoverride "ios_information_header_bg" {
+		background = {
+			texture = "gfx/interface/cards/paper_card_fancy_01.dds"
+			texture_density = 2
+			spriteType = corneredstretched
+			spriteborder = { 100 100 }
+			margin = { -17 -2 }
+
+			modify_texture = {
+				using = color_paper_texture
+			}
+			modify_texture = {
+				using = color_black_texture
+				alpha = 0.3
+			}
+			modify_texture = {
+				using = overlay_paper_03
+			}
+			modify_texture = {
+				using = overlay_cloth_texture
+				blend_mode = overlay
+				alpha = 0.2
+			}
+		}
+	}
+
+	# ---OVERVIEW: three cards above the engine's special-member groups --
+	blockoverride "organization_overview_list_custom_top_extra" {
+
+		# The leading contender and the 24-month consolidation bar
+		# (is_eranzamin_consolidation_sustained, 03_matter_triggers.txt).
+		card_common = {
+			blockoverride "header_decor_templates" {
+				using = bg_card_header_01_geopolitics
+				using = bg_cabinet_card_frame
+			}
+			blockoverride "common_header_icon_texture" {
+				texture = "gfx/interface/icons/flat_icons/great_power_score.dds"
+			}
+			blockoverride "common_header_text" {
+				text = "ERANZAMIN_LEADER_CARD"
+			}
+			blockoverride "common_bottom_content" {
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					spacing = 6
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_leading_contender').IsSet]"
+						spacing = 8
+
+						country_flag_small = {
+							datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_leading_contender').GetCountry]"
+						}
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_leading_contender').GetCountry.GetName]"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "ERANZAMIN_CONSOLIDATION"
+							default_format = "#subtle_name"
+							tooltip = "ERANZAMIN_LEADER_TT"
+						}
+					}
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 10
+
+						text_single = {
+							size = { 40 24 }
+							autoresize = yes
+							align = left|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_leader_months').GetValue|V0]"
+						}
+						divider_flavor_03 = { size = { 8 -1 } }
+						progressbar = {
+							layoutpolicy_horizontal = expanding
+							size = { -1 6 }
+							using = progress_bar_green_alt
+							min = 0
+							max = 24
+							value = "[FixedPointToFloat(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_leader_months').GetValue)]"
+							direction = horizontal
+							tooltip = "ERANZAMIN_LEADER_TT"
+						}
+						divider_flavor_03 = { size = { 8 -1 } }
+						text_single = {
+							size = { 40 24 }
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "/ 24"
+						}
+					}
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 6
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_notables').GetValue|V0]"
+						}
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ERANZAMIN_NOTABLES_LABEL"
+							default_format = "#subtle_name"
+						}
+						text_single = {
+							margin_left = 10
+							autoresize = yes
+							align = left|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_sovereigns').GetValue|V0]"
+						}
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ERANZAMIN_SOVEREIGNS_LABEL"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+					}
+				}
+			}
+		}
+
+		# The five seats controls_eranzamin_key_cities requires (it tests
+		# owns, so a vassal's city does not count for the overlord's
+		# victory; the bloc column shows whose camp it sits in anyway).
+		card_common = {
+			blockoverride "header_decor_templates" {
+				using = bg_card_header_01_geopolitics
+				using = bg_cabinet_card_frame
+			}
+			blockoverride "common_header_icon_texture" {
+				texture = "gfx/interface/icons/location_icons/capital.dds"
+			}
+			blockoverride "common_header_text" {
+				text = "ERANZAMIN_KEY_CITIES"
+			}
+			blockoverride "common_bottom_content" {
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					spacing = 3
+					tooltip = "ERANZAMIN_KEY_CITIES_TT"
+
+					hbox = {
+						using = ez_key_city_row
+						blockoverride "ez_city_name" { text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_city_tabriz').GetLocation.GetName]" }
+						blockoverride "ez_holder_visible" { visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_holder_tabriz').IsSet]" }
+						blockoverride "ez_holder" { datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_holder_tabriz').GetCountry]" }
+						blockoverride "ez_bloc_visible" { visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_bloc_tabriz').IsSet]" }
+						blockoverride "ez_bloc" { datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_bloc_tabriz').GetCountry]" }
+					}
+					hbox = {
+						using = ez_key_city_row
+						blockoverride "ez_city_name" { text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_city_baghdad').GetLocation.GetName]" }
+						blockoverride "ez_holder_visible" { visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_holder_baghdad').IsSet]" }
+						blockoverride "ez_holder" { datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_holder_baghdad').GetCountry]" }
+						blockoverride "ez_bloc_visible" { visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_bloc_baghdad').IsSet]" }
+						blockoverride "ez_bloc" { datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_bloc_baghdad').GetCountry]" }
+					}
+					hbox = {
+						using = ez_key_city_row
+						blockoverride "ez_city_name" { text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_city_soltaniyeh').GetLocation.GetName]" }
+						blockoverride "ez_holder_visible" { visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_holder_soltaniyeh').IsSet]" }
+						blockoverride "ez_holder" { datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_holder_soltaniyeh').GetCountry]" }
+						blockoverride "ez_bloc_visible" { visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_bloc_soltaniyeh').IsSet]" }
+						blockoverride "ez_bloc" { datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_bloc_soltaniyeh').GetCountry]" }
+					}
+					hbox = {
+						using = ez_key_city_row
+						blockoverride "ez_city_name" { text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_city_isfahan').GetLocation.GetName]" }
+						blockoverride "ez_holder_visible" { visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_holder_isfahan').IsSet]" }
+						blockoverride "ez_holder" { datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_holder_isfahan').GetCountry]" }
+						blockoverride "ez_bloc_visible" { visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_bloc_isfahan').IsSet]" }
+						blockoverride "ez_bloc" { datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_bloc_isfahan').GetCountry]" }
+					}
+					hbox = {
+						using = ez_key_city_row
+						blockoverride "ez_city_name" { text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_city_shiraz').GetLocation.GetName]" }
+						blockoverride "ez_holder_visible" { visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_holder_shiraz').IsSet]" }
+						blockoverride "ez_holder" { datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_holder_shiraz').GetCountry]" }
+						blockoverride "ez_bloc_visible" { visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_bloc_shiraz').IsSet]" }
+						blockoverride "ez_bloc" { datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('eranzamin_bloc_shiraz').GetCountry]" }
+					}
+				}
+			}
+		}
+
+		# Khans in custody: each Borjigin puppet, under the flag of the
+		# house that holds him (var:patron_country on the character;
+		# mirrored onto the holder as eranzamin_held_khan).
+		card_common = {
+			blockoverride "header_decor_templates" {
+				using = bg_card_header_01_geopolitics
+				using = bg_cabinet_card_frame
+			}
+			blockoverride "common_header_icon_texture" {
+				texture = "gfx/interface/icons/character_roles/regent.dds"
+			}
+			blockoverride "common_header_text" {
+				text = "ERANZAMIN_KHANS_IN_CUSTODY"
+			}
+			blockoverride "common_bottom_content" {
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					spacing = 3
+
+					text_single = {
+						visible = "[IsDataModelEmpty(GetGlobalList('eranzamin_khan_holders'))]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ERANZAMIN_NO_KHANS"
+						default_format = "#subtle_name"
+					}
+
+					dynamicgridbox = {
+						layoutpolicy_horizontal = expanding
+						flipdirection = yes
+						datamodel_wrap = 2
+						datamodel = "[GetGlobalList('eranzamin_khan_holders')]"
+						item = {
+							hbox = {
+								size = { 235 30 }
+								spacing = 6
+								country_flag_small = {
+									datacontext = "[Scope.GetCountry]"
+								}
+								text_single = {
+									size = { 190 24 }
+									autoresize = no
+									align = left|nobaseline
+									text = "[Scope.GetCountry.MakeScope.GetVariable('eranzamin_held_khan').GetCharacter.GetShortNameWithNoTooltip]"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	# ---NOTABLES (custom tab) -------------------------------------------
+	blockoverride "organization_custom_tab_visible" {
+		visible = yes
+	}
+	blockoverride "organization_custom_tab_text" {
+		text = "ERANZAMIN_NOTABLES_TAB"
+	}
+	blockoverride "organization_custom_tab_tooltip" {
+		tooltip = "ERANZAMIN_NOTABLES_TAB_TT"
+	}
+	blockoverride "organization_custom_content_visible" {
+		visible = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'custom' )]"
+	}
+
+	blockoverride "organization_custom_content" {
+		scrollarea = {
+			using = layoutpolicy_expanding
+			size = { 54 -1 }
+			maximumsize = { -1 600 }
+			scrollbarpolicy_horizontal = always_off
+			autoresizescrollarea = yes
+			scrollbar_vertical = {
+				using = Scrollbar_Vertical
+			}
+
+			scrollwidget = {
+				vbox = {
+					margin = { 6 4 }
+					margin_bottom = 15
+					spacing = 6
+
+					text_single = {
+						visible = "[IsDataModelEmpty(GetGlobalList('eranzamin_notable_heads'))]"
+						align = left|nobaseline
+						text = "ERANZAMIN_NO_NOTABLES"
+						default_format = "#subtle_name"
+					}
+
+					# One card per bloc head, largest realm first.
+					vbox = {
+						spacing = 6
+						datamodel = "[GetGlobalList('eranzamin_notable_heads')]"
+						item = {
+							widget = {
+								using = ez_notable_card
+							}
+						}
+					}
+
+					# Unaligned members: in no head's bloc.
+					card_common = {
+						minimumsize = { 510 -1 }
+						maximumsize = { 510 -1 }
+						blockoverride "header_decor_templates" {
+							using = bg_card_header_01_brown
+							using = bg_cabinet_card_frame
+						}
+						blockoverride "common_header_icon_texture" {
+							texture = "gfx/interface/icons/flat_icons/country.dds"
+						}
+						blockoverride "common_header_text" {
+							text = "ERANZAMIN_UNALIGNED"
+						}
+						blockoverride "common_bottom_content" {
+							vbox = {
+								layoutpolicy_horizontal = expanding
+								tooltip = "ERANZAMIN_UNALIGNED_TT"
+								text_single = {
+									visible = "[IsDataModelEmpty(GetGlobalList('eranzamin_unaligned'))]"
+									align = left|nobaseline
+									text = "ERANZAMIN_NONE"
+									default_format = "#subtle_name"
+								}
+								dynamicgridbox = {
+									flipdirection = yes
+									datamodel_wrap = 12
+									datamodel = "[GetGlobalList('eranzamin_unaligned')]"
+									item = {
+										country_flag_small = {
+											datacontext = "[Scope.GetCountry]"
+										}
+									}
+								}
+							}
+						}
+					}
+					expand = {}
+				}
+			}
+		}
+	}
+}
+
+# One key-city row: city | holder flag + name | (bloc flag when the holder
+# is a subject). Blocks are filled per city at the using site.
+template ez_key_city_row {
+	layoutpolicy_horizontal = expanding
+	spacing = 6
+
+	text_single = {
+		size = { 120 24 }
+		autoresize = no
+		align = left|nobaseline
+		default_format = "#yellow_titles"
+		block "ez_city_name" {}
+	}
+	# datacontext (block ez_holder) = the holding Country; the flag and
+	# the name both read it.
+	hbox = {
+		spacing = 5
+		block "ez_holder_visible" {}
+		block "ez_holder" {}
+		country_flag_small = {}
+		text_single = {
+			size = { 170 24 }
+			autoresize = no
+			align = left|nobaseline
+			text = "[Country.GetName]"
+		}
+	}
+	expand = {}
+	hbox = {
+		spacing = 4
+		block "ez_bloc_visible" { visible = no }
+		block "ez_bloc" {}
+		text_single = {
+			autoresize = yes
+			align = right|nobaseline
+			text = "ERANZAMIN_FOR_BLOC"
+			default_format = "#subtle_name"
+		}
+		country_flag_small = {}
+	}
+}
+
+# One notable's card. Datacontext: the list item (Scope = the head).
+# Modelled on hre.gui's hre_imperial_circle_entry / hre_circle_banner_
+# content, with the HRE-only ImperialCircle.* calls replaced by the
+# head's own variables.
+#
+# NESTED LIST: the bloc strip loops Scope.GetCountry.MakeScope.GetList
+# inside the heads loop. Both halves are proven separately in base; the
+# nesting is not. FALLBACK, always shown: the "Bloc: N" count line reads
+# a plain variable (eranzamin_bloc_size), so a card stays meaningful if
+# the inner loop renders nothing.
+template ez_notable_card {
+	using = bg_paper_card
+	layoutpolicy_horizontal = expanding
+	minimumsize = { 510 70 }
+	maximumsize = { 510 -1 }
+
+	vbox = {
+		set_parent_size_to_minimum = yes
+		minimumsize = { 510 70 }
+		margin_bottom = 6
+		spacing = 4
+
+		# Banner
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			size = { 500 50 }
+			using = bg_card_header_01_brown
+			using = bg_cabinet_card_frame
+			margin = { 10 0 }
+			spacing = 8
+
+			country_flag_mid = {
+				datacontext = "[Scope.GetCountry]"
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					size = { 260 20 }
+					autoresize = no
+					align = left|nobaseline
+					text = "[Scope.GetCountry.GetName]"
+					default_format = "#yellow_titles"
+				}
+				text_single = {
+					layoutpolicy_horizontal = expanding
+					size = { 260 18 }
+					autoresize = no
+					align = left|nobaseline
+					fontsize = 12
+					text = "[Scope.GetCountry.GetGovernment.GetRulerOrRegent.GetShortNameWithNoTooltip]"
+				}
+				# Basis of claim — exactly one is set.
+				text_single = {
+					visible = "[Scope.GetCountry.MakeScope.GetVariable('eranzamin_basis_khan_maker').IsSet]"
+					size = { 260 18 }
+					autoresize = no
+					align = left|nobaseline
+					fontsize = 12
+					text = "ERANZAMIN_BASIS_KHAN_MAKER"
+					default_format = "#subtle_name"
+					tooltip = "eranzamin_khan_maker_desc"
+				}
+				text_single = {
+					visible = "[Scope.GetCountry.MakeScope.GetVariable('eranzamin_basis_chinggisid').IsSet]"
+					size = { 260 18 }
+					autoresize = no
+					align = left|nobaseline
+					fontsize = 12
+					text = "ERANZAMIN_BASIS_CHINGGISID"
+					default_format = "#subtle_name"
+					tooltip = "eranzamin_chinggisid_claimant_desc"
+				}
+				text_single = {
+					visible = "[Scope.GetCountry.MakeScope.GetVariable('eranzamin_basis_shah').IsSet]"
+					size = { 260 18 }
+					autoresize = no
+					align = left|nobaseline
+					fontsize = 12
+					text = "ERANZAMIN_BASIS_SHAH"
+					default_format = "#subtle_name"
+					tooltip = "eranzamin_sovereign_shah_desc"
+				}
+			}
+
+			expand = {}
+
+			# Power share
+			vbox = {
+				margin_right = 8
+				tooltip = "ERANZAMIN_POWER_SHARE_TT"
+				text_single = {
+					autoresize = yes
+					align = right|nobaseline
+					fontsize = 12
+					text = "ERANZAMIN_POWER_SHARE"
+					default_format = "#subtle_name"
+				}
+				text_single = {
+					autoresize = yes
+					align = right|nobaseline
+					fontsize = 16
+					text = "[Scope.GetCountry.MakeScope.GetVariable('eranzamin_power_share').GetValue|%0]"
+					default_format = "#yellow_titles"
+				}
+			}
+		}
+
+		progressbar = {
+			size = { 490 6 }
+			using = progress_bar_green_alt
+			min = 0
+			max = 1
+			value = "[FixedPointToFloat(Scope.GetCountry.MakeScope.GetVariable('eranzamin_power_share').GetValue)]"
+			direction = horizontal
+			tooltip = "ERANZAMIN_POWER_SHARE_TT"
+		}
+
+		# Bloc: subjects (ulus, ulus_governorate, vassals — members or
+		# not), then committed allies who are members.
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			margin_left = 10
+			spacing = 6
+			tooltip = "ERANZAMIN_BLOC_TT"
+			text_single = {
+				autoresize = yes
+				align = left|nobaseline
+				text = "ERANZAMIN_BLOC_LABEL"
+				default_format = "#subtle_name"
+			}
+			text_single = {
+				autoresize = yes
+				align = left|nobaseline
+				text = "[Scope.GetCountry.MakeScope.GetVariable('eranzamin_bloc_size').GetValue|V0]"
+			}
+			expand = {}
+		}
+		dynamicgridbox = {
+			margin_left = 10
+			flipdirection = yes
+			datamodel_wrap = 12
+			datamodel = "[Scope.GetCountry.MakeScope.GetList('eranzamin_notable_bloc')]"
+			item = {
+				country_flag_small = {
+					datacontext = "[Scope.GetCountry]"
+				}
+			}
+		}
+	}
+}
