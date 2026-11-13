@@ -171,6 +171,31 @@ character_db = {
 		ruler_trait = lawgiver
 	}
 
+	#Mihrabanids — maliks of Sistan (Nimruz). Base types them farsi_culture;
+	#Sistan is Khorasani (tools/demography_fixes.py, rule 2). Base stats kept (none).
+	mih_qutb_al_din_muhammad_pw = {
+		first_name = { name = name_qutb.name_al_din }
+		nickname = { name = name_muhammad }
+		culture = khorasani_culture
+		religion = sunni
+		birth_date = 1300.1.1 #Unknown
+		birth = zaranj
+		dynasty = mihrabanid_dynasty
+		tag = MIH
+	}
+
+	mih_taj_al_din_ibn_qutb_al_din_pw = {
+		first_name = { name = name_taj.name_al_din }
+		nickname = { name = nick_ibn_qutb_al_din }
+		culture = khorasani_culture
+		religion = sunni
+		birth_date = 1320.1.1 #Unknown
+		birth = zaranj
+		father = mih_qutb_al_din_muhammad_pw
+		dynasty = mihrabanid_dynasty
+		tag = MIH
+	}
+
 	#Sarbadars
 	srb_abd_al_razzaq_ibn_fazlullah_pw = {
 		first_name = { name = name_abd_al_razzaq }

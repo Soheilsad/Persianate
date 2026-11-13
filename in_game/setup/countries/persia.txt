@@ -74,11 +74,11 @@ GRG = { #Gurgan  (Togha Temur)
 	religion_definition = sunni
 }
 
-MIH = { #Mihrabanids
+MIH = { #Mihrabanids — maliks of Nimruz: Sistan is Khorasani, not Farsi and not Pashtun
 	color = map_MIH
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = farsi_culture
+	culture_definition = khorasani_culture
 	religion_definition = sunni
 }
 
@@ -331,11 +331,11 @@ HLG = { #Huleguids — the Ilkhanid house itself: the most Persianized of all
 	religion_definition = sunni
 }
 
-NGD = { #Neguderi
+NGD = { #Neguderi — Mongol households Persianizing in the Afghan highlands (no "Hazara" before the late 15th c.)
 	color = map_NGD
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = persianized_mongol_culture
 	religion_definition = sunni
 }
 
@@ -347,11 +347,11 @@ QUN = { #Qara'unas
 	religion_definition = sunni
 }
 
-BSD = { #Besüd
+BSD = { #Besüd — as NGD: Persianized Mongol, the later Hazara in the making
 	color = map_BSD
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = persianized_mongol_culture
 	religion_definition = sunni
 }
 
