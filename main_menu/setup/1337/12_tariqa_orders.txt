@@ -14,7 +14,8 @@
 #
 # All sunni at start — radicalization is an ARC (Two Pirs), never a
 # starting condition. Chassis = the ABL block: type = building,
-# landless (empty own_control_core), capital in an unowned city
+# landless (no own_control_core at all: even an empty block logs
+# "assigned locations when its not that type of country"; base HSA has none), capital in an unowned city
 # (Peruzzi-in-Florence), tariqa_order + base reform.
 # Starting lodges live in 07_cities_and_buildings_overrides.txt.
 # =====================================================================
@@ -27,14 +28,13 @@ countries = {
 		# the order's village networks run deep into Khurasan. Parent
 		# of stranger children (Nurbakhshiyya, Dhahabiyya) to come.
 		type = building
-		own_control_core = { }
 
 		starting_technology_level = 3
 		include = "muslim_monarchy_not_present"
 		include = "expl_middle_east"
 		government = {
 			type = persianate_sultanate
-			heir_selection = cognatic_primogeniture
+			heir_selection = favorite_son_elective_succession
 			reforms = { tariqa_order tariqa_popular_base }
 			ruler = kbw_mahmud_mazdaqani_pw
 			laws = {
@@ -53,14 +53,13 @@ countries = {
 		# a khanaqah in every port the Persian Gulf trade touches. The
 		# most commercial network any pir ever ran.
 		type = building
-		own_control_core = { }
 
 		starting_technology_level = 3
 		include = "muslim_monarchy_not_present"
 		include = "expl_middle_east"
 		government = {
 			type = persianate_sultanate
-			heir_selection = cognatic_primogeniture
+			heir_selection = favorite_son_elective_succession
 			reforms = { tariqa_order tariqa_urban_base }
 			ruler = kzr_amin_al_din_baliyani_pw
 			laws = {
@@ -78,14 +77,13 @@ countries = {
 		# Abd al-Qadir al-Jilani, its Hanbali madrasa, and a lineage
 		# every order in the west claims to have touched.
 		type = building
-		own_control_core = { }
 
 		starting_technology_level = 3
 		include = "muslim_monarchy_not_present"
 		include = "expl_middle_east"
 		government = {
 			type = persianate_sultanate
-			heir_selection = cognatic_primogeniture
+			heir_selection = favorite_son_elective_succession
 			reforms = { tariqa_order tariqa_urban_base }
 			ruler = qad_sharaf_al_din_ahmad_pw
 			laws = {
@@ -94,7 +92,7 @@ countries = {
 			}
 		}
 		country_rank = rank_county
-		court_language = arabic_language
+		court_language = iraqi_dialect # arabic_language is a family with dialects; court_language needs the dialect
 		religious_school = hanbali_school
 		capital = baghdad
 	}
@@ -104,14 +102,13 @@ countries = {
 		# solitude within the crowd. The order least likely to ever
 		# hear the Two Pirs at all — which is the point of seeding it.
 		type = building
-		own_control_core = { }
 
 		starting_technology_level = 3
 		include = "muslim_monarchy_not_present"
 		include = "expl_silk_road_center"
 		government = {
 			type = persianate_sultanate
-			heir_selection = cognatic_primogeniture
+			heir_selection = favorite_son_elective_succession
 			# The one order that leans JURISPRUDENCE: sharia-observant
 			# sobriety is the Khwajagan brand.
 			reforms = { tariqa_order tariqa_urban_base }
@@ -132,14 +129,13 @@ countries = {
 		# and Chaghatai grass. The second tribal-road order besides
 		# Ardabil — on the opposite flank of the Persianate world.
 		type = building
-		own_control_core = { }
 
 		starting_technology_level = 3
 		include = "muslim_monarchy_not_present"
 		include = "expl_silk_road_center"
 		government = {
 			type = persianate_sultanate
-			heir_selection = cognatic_primogeniture
+			heir_selection = favorite_son_elective_succession
 			reforms = { tariqa_order tariqa_tribal_base }
 			ruler = ysv_ahmad_ata_pw
 			laws = {
@@ -158,14 +154,13 @@ countries = {
 		# ecstatic village lodges through lower Iraq — exactly the
 		# substrate the Musha'sha' will one day set alight.
 		type = building
-		own_control_core = { }
 
 		starting_technology_level = 3
 		include = "muslim_monarchy_not_present"
 		include = "expl_middle_east"
 		government = {
 			type = persianate_sultanate
-			heir_selection = cognatic_primogeniture
+			heir_selection = favorite_son_elective_succession
 			reforms = { tariqa_order tariqa_popular_base }
 			ruler = rif_izz_al_din_ahmad_pw
 			laws = {
@@ -174,7 +169,7 @@ countries = {
 			}
 		}
 		country_rank = rank_county
-		court_language = arabic_language
+		court_language = iraqi_dialect # arabic_language is a family with dialects; court_language needs the dialect
 		religious_school = shafii_school
 		capital = wasit
 	}

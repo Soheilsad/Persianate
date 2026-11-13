@@ -1503,7 +1503,6 @@ JUR = { #Jurmanids
 		# Religion stays base (Sunni) — the Shia flip is the ARC, not
 		# the start (confessional-ambiguity principle).
 		type = building
-		own_control_core = { }
 
 		starting_technology_level = 3
 		include = "expl_middle_east"

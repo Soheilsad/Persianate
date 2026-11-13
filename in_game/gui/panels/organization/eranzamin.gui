@@ -328,7 +328,6 @@ organization_geodiplomatic_theme = {
 					}
 
 					dynamicgridbox = {
-						layoutpolicy_horizontal = expanding
 						flipdirection = yes
 						datamodel_wrap = 2
 						datamodel = "[GetGlobalList('eranzamin_khan_holders')]"
@@ -337,13 +336,21 @@ organization_geodiplomatic_theme = {
 							# through Country.MakeScope (the western_schism
 							# / union.gui pattern), never Scope.GetCountry.
 							# MakeScope chains.
-							hbox = {
+							# A grid item must be a fixed-size widget (every
+							# base dynamicgridbox item is a widget or a
+							# flag). A bare hbox here hung the game the first
+							# time a khan was held: the row had no fixed
+							# parent to lay out against.
+							widget = {
 								datacontext = "[Scope.GetCountry]"
 								size = { 235 30 }
-								spacing = 6
-								country_flag_small = {}
+								country_flag_small = {
+									parentanchor = left|vcenter
+								}
 								text_single = {
 									visible = "[Country.MakeScope.GetVariable('eranzamin_held_khan').IsSet]"
+									parentanchor = left|vcenter
+									position = { 42 0 }
 									size = { 190 24 }
 									autoresize = no
 									align = left|nobaseline
@@ -440,30 +447,37 @@ organization_geodiplomatic_theme = {
 									datamodel_wrap = 2
 									datamodel = "[GetGlobalList('eranzamin_bloc_members')]"
 									item = {
-										hbox = {
+										# Fixed-size widget, absolute positions:
+										# no hbox/expand inside a grid item (see
+										# the khans-in-custody rows above).
+										widget = {
 											datacontext = "[Scope.GetCountry]"
 											size = { 235 30 }
-											spacing = 6
-											country_flag_small = {}
+											country_flag_small = {
+												parentanchor = left|vcenter
+											}
 											text_single = {
-												size = { 150 24 }
+												parentanchor = left|vcenter
+												position = { 42 0 }
+												size = { 120 24 }
 												autoresize = no
 												align = left|nobaseline
 												text = "[Country.GetName]"
 											}
-											expand = {}
-											hbox = {
+											text_single = {
 												visible = "[Country.MakeScope.GetVariable('eranzamin_bloc_of').IsSet]"
-												spacing = 4
-												text_single = {
-													autoresize = yes
-													align = right|nobaseline
-													text = "ERANZAMIN_FOR_BLOC"
-													default_format = "#subtle_name"
-												}
-												country_flag_small = {
-													datacontext = "[Country.MakeScope.GetVariable('eranzamin_bloc_of').GetCountry]"
-												}
+												parentanchor = right|vcenter
+												position = { -42 0 }
+												size = { 26 24 }
+												autoresize = no
+												align = right|nobaseline
+												text = "ERANZAMIN_FOR_BLOC"
+												default_format = "#subtle_name"
+											}
+											country_flag_small = {
+												visible = "[Country.MakeScope.GetVariable('eranzamin_bloc_of').IsSet]"
+												parentanchor = right|vcenter
+												datacontext = "[Country.MakeScope.GetVariable('eranzamin_bloc_of').GetCountry]"
 											}
 										}
 									}

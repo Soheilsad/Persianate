@@ -1,109 +1,24 @@
-namespace = flavor_tur
+namespace = flavor_tur_persianate
 
 # =====================================================================
-# BASE OTTOMAN FLAVOR — persianate gate widening
+# BASE OTTOMAN FLAVOR — persianate twin
 #
 # Under Shattered Rum, TUR runs government_type persianate_sultanate
-# for the whole campaign, which killed the only two monarchy-gated
-# events in base's flavor_TUR.txt (audited: 2 gates in 18,903 lines):
-#   flavor_tur.88 — The Imperial Harem (1437+)
+# for the whole campaign, which kills base's monarchy-gated
 #   flavor_tur.95 — The One True Emperor (1537+)
-# REPLACE'd verbatim with the gate widened to monarchy-OR-persianate.
-# NOTE: REPLACE on the events database is unverified in engine —
-# first dev-branch load after this change must check the error log
-# for these two keys.
+# Events cannot be REPLACE:d (1.4.7 error.log: "'REPLACE:flavor_tur.95'
+# does not have a valid namespace"), and overriding one event would mean
+# shipping all of base's 18,900-line flavor_TUR.txt. So this is a TWIN in
+# its own namespace: base 1.4.7's event verbatim, gated to
+# persianate_sultanate instead of monarchy (the two never both fire), and
+# reusing base's flavor_tur.95.* loc keys.
+#
+# flavor_tur.88 (The Imperial Harem) was dropped: base 1.4 removed the
+# event and its loc.
+# On a patch: re-copy base's flavor_tur.95 and reapply the one-line gate.
 # =====================================================================
 
-REPLACE:flavor_tur.88 = { #The Imperial Harem
-	type = country_event
-	title = flavor_tur.88.title
-	desc = flavor_tur.88.desc
-	outcome = neutral
-
-	fire_only_once = yes
-	dynamic_historical_event = {
-		tag = TUR
-		from = 1437.1.1
-		to = 1637.1.1
-		monthly_chance = 20
-	}
-
-	historical_info = flavor_tur.88.historical_info
-
-
-	trigger = {
-		has_advance = janissaries_advance
-
-		exists = capital
-
-		has_policy = harem_policy
-
-		has_ruler = yes
-
-		country_rank_level >= 3
-
-		OR = {
-			government_type = government_type:monarchy
-			government_type = government_type:persianate_sultanate
-		}
-
-	}
-
-	immediate =  {
-		capital = {
-			save_scope_as = capital_location
-		}
-
-		root.ruler = { save_scope_as = target_ruler }
-	}
-
-	option = {
-		name = flavor_tur.88.a
-		historical_option = yes
-
-		set_variable = { name = ottoman_imperial_harem value = 1 }
-		add_reform = government_reform:ottoman_imperial_harem
-
-		add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.20 }
-
-		add_policy = policy:public_harem_policy
-
-	}
-	option = {
-		name = flavor_tur.88.b
-
-			change_societal_value = { type = centralization_vs_decentralization value = societal_value_minor_move_to_right }
-
-		add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.10 }
-
-		add_stability = 5
-
-		add_policy = policy:dispersed_harem_policy
-	}
-
-}
-
-scripted_trigger is_suitable_rival_for_crimea = {
-	capital = { is_discovered_by = root }
-	NOT = {
-		is_allied_with = { target = c:TUR }
-		is_at_war_with = root
-	}
-	opinion = { target = root value < 25 }
-	OR = {
-  		country_rank = country_rank:rank_empire
- 		country_rank = country_rank:rank_kingdom
-  	}
- 	capital = {
-  		distance_to_squared = {
-    		location = location:kaffa
-    		value < 150000
-  		}
-	}
-}
-
-
-REPLACE:flavor_tur.95 = { #The One True Emperor
+flavor_tur_persianate.95 = { #The One True Emperor
 	type = country_event
 	title = flavor_tur.95.title
 	desc = flavor_tur.95.desc
@@ -127,10 +42,7 @@ REPLACE:flavor_tur.95 = { #The One True Emperor
 
 		country_rank = country_rank:rank_empire
 
-		OR = {
-			government_type = government_type:monarchy
-			government_type = government_type:persianate_sultanate
-		}
+		government_type = government_type:persianate_sultanate
 
 		"religion_group_percentage_in_country(religion_group:christian)" > 0
 
@@ -192,4 +104,3 @@ REPLACE:flavor_tur.95 = { #The One True Emperor
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.15 }
 	}
 }
-
