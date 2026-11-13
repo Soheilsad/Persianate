@@ -1,13 +1,19 @@
 # Erānzamīn IO — the monthly notables ledger behind the IO panel
 # (in_game/gui/panels/organization/eranzamin.gui).
 #
-# Called from the IO's monthly_effect (root = the IO). Rebuilds, from
+# Called with the IO as the CURRENT scope: from the IO's monthly_effect,
+# and once from on_game_start (00_diwan_game_start.txt) so the panel is
+# not empty before the first tick. Root is NOT assumed to be the IO (it
+# is not, at game start) — the IO is saved as scope:ez_io. Rebuilds, from
 # scratch, everything the panel reads:
 #
 #   GLOBAL LISTS (GetGlobalList in the GUI — the proven list path)
 #     eranzamin_notable_heads   bloc heads, largest realm first
 #     eranzamin_unaligned       members in no head's bloc
 #     eranzamin_khan_holders    countries holding a Borjigin puppet
+#     eranzamin_bloc_members    every bloc member (subjects, members or
+#                               not, then allied members), filed head by
+#                               head; the panel's flat Bloc Rolls card
 #
 #   ON EACH HEAD (country)
 #     eranzamin_notable_head           flag
@@ -36,7 +42,13 @@
 # read here.
 
 eranzamin_rebuild_notables = {
+	save_temporary_scope_as = ez_io
+
 	# ---0. Wipe last month's ledger --------------------------------------
+	every_in_global_list = {
+		variable = eranzamin_bloc_members
+		remove_variable = eranzamin_bloc_of
+	}
 	every_in_global_list = {
 		variable = eranzamin_notable_heads
 		every_in_list = {
@@ -58,6 +70,7 @@ eranzamin_rebuild_notables = {
 	clear_global_variable_list = eranzamin_notable_heads
 	clear_global_variable_list = eranzamin_unaligned
 	clear_global_variable_list = eranzamin_khan_holders
+	clear_global_variable_list = eranzamin_bloc_members
 
 	set_local_variable = {
 		name = ez_total
@@ -124,12 +137,14 @@ eranzamin_rebuild_notables = {
 		# members or not. A vassal's land is its overlord's bloc.
 		every_subject = {
 			set_variable = { name = eranzamin_bloc_of value = scope:ez_head }
+			add_to_global_variable_list = { name = eranzamin_bloc_members target = this }
 			scope:ez_head = {
 				add_to_variable_list = { name = eranzamin_notable_bloc target = prev }
 				change_variable = { name = eranzamin_bloc_size add = 1 }
 			}
 			every_subject = {
 				set_variable = { name = eranzamin_bloc_of value = scope:ez_head }
+				add_to_global_variable_list = { name = eranzamin_bloc_members target = this }
 				scope:ez_head = {
 					add_to_variable_list = { name = eranzamin_notable_bloc target = prev }
 					change_variable = { name = eranzamin_bloc_size add = 1 }
@@ -148,6 +163,7 @@ eranzamin_rebuild_notables = {
 				NOT = { has_variable = eranzamin_bloc_of }
 			}
 			set_variable = { name = eranzamin_bloc_of value = scope:ez_head }
+			add_to_global_variable_list = { name = eranzamin_bloc_members target = this }
 			scope:ez_head = {
 				add_to_variable_list = { name = eranzamin_notable_bloc target = prev }
 				change_variable = { name = eranzamin_bloc_size add = 1 }
@@ -219,7 +235,8 @@ eranzamin_rebuild_notables = {
 }
 
 # One key city: who holds it, and — when the holder is a subject — whose
-# bloc that puts it in. Root = the IO.
+# bloc that puts it in. Current scope = the IO, saved as scope:ez_io by
+# eranzamin_rebuild_notables (root is not the IO at game start).
 #   $city$  location key (location:$city$)
 eranzamin_record_key_city = {
 	set_variable = { name = eranzamin_city_$city$ value = location:$city$ }
@@ -227,11 +244,11 @@ eranzamin_record_key_city = {
 	remove_variable = eranzamin_bloc_$city$
 	location:$city$ = {
 		owner ?= {
-			root = { set_variable = { name = eranzamin_holder_$city$ value = prev } }
+			scope:ez_io = { set_variable = { name = eranzamin_holder_$city$ value = prev } }
 			if = {
 				limit = { is_subject = yes }
 				top_overlord ?= {
-					root = { set_variable = { name = eranzamin_bloc_$city$ value = prev } }
+					scope:ez_io = { set_variable = { name = eranzamin_bloc_$city$ value = prev } }
 				}
 			}
 		}

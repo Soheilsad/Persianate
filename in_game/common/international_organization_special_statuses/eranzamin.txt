@@ -122,10 +122,19 @@ eranzamin_sovereign_shah = {
 	}
 }
 
-# A member that has become a subject — a sworn ulus_governorate, an ulus
-# share, or a plain vassal. Members can never leave (can_leave_trigger),
-# so a member that kneels stays on the roll; this status files it apart
-# from the independent powers.
+# A member that has become a subject OF ANOTHER MEMBER — a sworn
+# ulus_governorate, an ulus share, or a plain vassal. Members can never
+# leave (can_leave_trigger), so a member that kneels stays on the roll;
+# this status files it apart from the independent powers. Its overlord
+# must itself be on the roll: a member that kneels to an outsider is not
+# anyone's client within Erānzamīn and stays a plain member.
+#
+# The 1337 count is large by design, not by a bad trigger: the seeded
+# roster (main_menu/setup/1337/15_international_organizations.txt)
+# carries 29 members that 12_diplomacy.txt makes vassals of other
+# members — the Sutayid house under JAL (SUT and its 8 sub-vassals),
+# ERE under JAL, Georgia's four, Armenia's three, Makran's three, Ormus's
+# two, JKR under GRG, KHU under INJ, RNK under LHJ.
 eranzamin_sworn_client = {
 	priority = 5
 
@@ -134,14 +143,19 @@ eranzamin_sworn_client = {
 
 	can_bestow_trigger = {
 		is_subject = yes
+		overlord ?= { is_member_of_international_organization = international_organization:eranzamin }
 	}
 
 	auto_bestowal_trigger = {
 		is_subject = yes
+		overlord ?= { is_member_of_international_organization = international_organization:eranzamin }
 	}
 
 	auto_rescind_trigger = {
-		is_subject = no
+		NOT = {
+			is_subject = yes
+			overlord ?= { is_member_of_international_organization = international_organization:eranzamin }
+		}
 	}
 
 	on_bestowed_effect = {

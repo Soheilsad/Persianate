@@ -42,6 +42,7 @@
  ERANZAMIN_POWER_SHARE: "Share of the realm"
  ERANZAMIN_POWER_SHARE_TT: "Locations held by this head and his subjects, as a share of all locations held by the federation's independent members and their subjects. Allies count in their own right, not in the head's share."
  ERANZAMIN_BLOC_LABEL: "Bloc:"
+ ERANZAMIN_BLOC_ROLLS: "Bloc Rolls"
  ERANZAMIN_BLOC_TT: "Subjects (ulus shares, sworn governorates and vassals, members or not), then allied members who head no bloc of their own. An ally of two heads is filed under the larger."
  ERANZAMIN_UNALIGNED: "Unaligned"
  ERANZAMIN_UNALIGNED_TT: "Members in no head's bloc: governors waiting to see who wins, and powers that have not yet named the basis of their claim."

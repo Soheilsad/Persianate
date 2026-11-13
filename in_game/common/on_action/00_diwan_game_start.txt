@@ -1,7 +1,20 @@
 on_game_start = {
 	on_actions = {
     	on_diwan_start
+    	on_eranzamin_io_start
     }
+}
+
+# Draw up the Erānzamīn IO notables ledger once at game start, so the
+# panel (gui/panels/organization/eranzamin.gui) shows heads, blocs, the
+# five seats and khans in custody on day one instead of waiting for the
+# IO's first monthly_effect. Same effect, IO as the current scope.
+on_eranzamin_io_start = {
+	effect = {
+		international_organization:eranzamin ?= {
+			eranzamin_rebuild_notables = yes
+		}
+	}
 }
 
 on_diwan_start = {
