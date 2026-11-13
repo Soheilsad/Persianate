@@ -1,6 +1,26 @@
+# The Sarbadar Phenomenon - situation panel.
+#
+# No single protagonist: the network is the protagonist, so the header is
+# the illustration alone, as in base black_death.gui / great_pestilence.gui
+# (which never pull a country template into situation_panel_image). The
+# block below is the default from base panels/situation/common.gui:117
+# with a fixed texture.
+#
+# The old version used one_country_header_template with the CountryContext
+# block overridden to "visible = no". That left the template's portrait
+# frame and ruler plate with NO Country/Character datacontext at all, and
+# every expression inside them (Character.GetPortrait, Character.IsAlive,
+# Character.HasRebel, Country.GetGovernment ...) logged "No context
+# supplied" plus "FetchData failed" on every frame the panel was open,
+# rotating error.log within minutes.
+
 situation_panel = {
 
 	##################################### TOP HEADER #####################################
+
+	blockoverride "situation_header_left_size" {
+		maximumsize = { 260 28 }
+	}
 
 	blockoverride "situation_header_left" {
 		vbox = {
@@ -9,46 +29,20 @@ situation_panel = {
 				layoutpolicy_horizontal = expanding
 				text = "sarbadar_preachers"
 				default_format = "#subtle_name"
+				tooltip = "sarbadar_phenomenon_desc"
 			}
 		}
 		expand = {}
-	}
-
-	blockoverride "situation_header_right" {
-		expand = {}
-		vbox = {
-			layoutpolicy_horizontal = expanding
-			text_single = {
-				layoutpolicy_horizontal = expanding
-				align = right|nobaseline
-				text = "sarbadar_phenomenon_desc"
-			}
-		}
 	}
 
 	##################################### MAIN IMAGE #####################################
 
 	blockoverride "situation_panel_image" {
-		using = one_country_header_template
-
-		blockoverride "one_country_header_background" {
-			background = {
-				texture = "gfx/interface/illustrations/situation/sarbadar_phenomenon.dds" # Placeholder (copy of eranzamin art)
-				modify_texture = {
-					texture = "gfx/interface/component_masks/mask_fade_horizontal_middle.dds"
-					texture_density = 2
-					spriteType = stretched
-					spriteborder = { 250 250 }
-					blend_mode = alphamultiply
-					alpha = 0.4
-				}
-			}
+		background = {
+			texture = "gfx/interface/illustrations/situation/sarbadar_phenomenon.dds" # Placeholder (copy of eranzamin art)
 		}
 
-		# No single protagonist — the network is the protagonist.
-		blockoverride "CountryContext" {
-			visible = no
-		}
+		using = scene_fade_vertical_up
 	}
 
 	##################################### MAIN CONTENT #####################################

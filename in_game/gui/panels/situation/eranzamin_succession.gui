@@ -1,27 +1,101 @@
+# The Succession of Eranzamin - situation panel.
+#
+# Header: the LEADING CONTENDER on the left, the PLAYER'S OWN RULER on the
+# right (portrait + flag + name each), copied from base
+# panels/situation/treaty_of_tordesillas.gui (two_countries_header_template
+# fed from variables, second side hidden when both sides are the same
+# country).
+#
+# Leader path: the ledger variable eranzamin_leading_contender lives on the
+# eranzamin IO (rebuilt monthly by eranzamin_rebuild_notables). There is no
+# InternationalOrganizationsView here, so the IO is fetched with
+# GetUniqueInternationalOrganization (base war_of_religions.gui:106,
+# guelphs_and_ghibellines.gui:130) and its variables read through
+# InternationalOrganization.MakeScope.GetVariable (base
+# panels/organization/common.gui:27, union.gui:321).
+# Player path: the global Player country (base people_lateral_view.gui:590,
+# diplomacy_macrobuilder_lateralview.gui:469).
+#
+# NEVER put a country/character template in here without a datacontext:
+# the old version used one_country_header_template with no CountryContext,
+# so every Character.* / Country.* expression in the portrait frame logged
+# "No context supplied" on every frame the panel was open.
+
 situation_panel = {
 
 	##################################### TOP HEADER #####################################
 
+	blockoverride "situation_header_left_size" {
+		maximumsize = { 230 28 }
+	}
+
+	# LEFT: who is closest to the throne
 	blockoverride "situation_header_left" {
 		vbox = {
 			layoutpolicy_horizontal = expanding
+			visible = "[GetUniqueInternationalOrganization('eranzamin').MakeScope.GetVariable('eranzamin_leading_contender').IsSet]"
+
 			text_single = {
 				layoutpolicy_horizontal = expanding
-				text = "eranzamin_contender_modifier"
+				text = "ERANZAMIN_SIT_LEADING_CONTENDER"
+				default_format = "#subtle_name"
+			}
+
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				fontsize = 13
+				text = "[GetUniqueInternationalOrganization('eranzamin').MakeScope.GetVariable('eranzamin_leading_contender').GetCountry.GetName]"
+			}
+		}
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			visible = "[Not(GetUniqueInternationalOrganization('eranzamin').MakeScope.GetVariable('eranzamin_leading_contender').IsSet)]"
+
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				text = "ERANZAMIN_SIT_NO_LEADER"
 				default_format = "#subtle_name"
 			}
 		}
 		expand = {}
 	}
 
+	blockoverride "situation_header_right_size" {
+		maximumsize = { 230 28 }
+	}
+
+	# RIGHT: the player's own house - or a note that the player IS the leader
 	blockoverride "situation_header_right" {
 		expand = {}
 		vbox = {
 			layoutpolicy_horizontal = expanding
+			visible = "[Not(ObjectsEqual(GetUniqueInternationalOrganization('eranzamin').MakeScope.GetVariable('eranzamin_leading_contender').GetCountry.Self, Player.Self))]"
+			datacontext = "[Player]"
+
 			text_single = {
 				layoutpolicy_horizontal = expanding
 				align = right|nobaseline
-				text = "eranzamin_succession_desc"
+				text = "ERANZAMIN_SIT_YOUR_REALM"
+				default_format = "#subtle_name"
+			}
+
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				align = right|nobaseline
+				fontsize = 13
+				text = "[Country.GetNameWithNoTooltip]"
+			}
+		}
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			visible = "[ObjectsEqual(GetUniqueInternationalOrganization('eranzamin').MakeScope.GetVariable('eranzamin_leading_contender').GetCountry.Self, Player.Self)]"
+
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				align = right|nobaseline
+				text = "ERANZAMIN_SIT_YOU_LEAD"
+				default_format = "#subtle_name"
+				tooltip = "ERANZAMIN_SIT_YOU_LEAD_TT"
 			}
 		}
 	}
@@ -29,25 +103,61 @@ situation_panel = {
 	##################################### MAIN IMAGE #####################################
 
 	blockoverride "situation_panel_image" {
-		using = one_country_header_template
+		using = two_countries_header_template
 
-		blockoverride "one_country_header_background" {
+		blockoverride "two_countries_header_image" {
 			background = {
-				texture = "gfx/interface/illustrations/situation/eranzamin_succession.dds" # Placeholder
-				modify_texture = {
-					texture = "gfx/interface/component_masks/mask_fade_horizontal_middle.dds"
-					texture_density = 2
-					spriteType = stretched
-					spriteborder = { 250 250 }
-					blend_mode = alphamultiply
-					alpha = 0.4
-				}
+				texture = "gfx/interface/illustrations/situation/eranzamin_succession.dds"
+				texture_density = 2
+				spriteType = stretched
+				spriteborder = { 0 0 }
 			}
 		}
 
-		# We don't have a single protagonist to show, so we hide specific country context
-		blockoverride "CountryContext" {
+		# First side: the leading contender. Hidden until the ledger names one.
+		blockoverride "FirstCountryVisible" {
+			visible = "[GetUniqueInternationalOrganization('eranzamin').MakeScope.GetVariable('eranzamin_leading_contender').IsSet]"
+		}
+
+		blockoverride "FirstCountryContext" {
+			datacontext = "[GetUniqueInternationalOrganization('eranzamin').MakeScope.GetVariable('eranzamin_leading_contender').GetCountry]"
+		}
+
+		# Second side: the player. Hidden when the player is the leader
+		# (the first side already shows them).
+		blockoverride "SecondCountryVisible" {
+			visible = "[Not(ObjectsEqual(GetUniqueInternationalOrganization('eranzamin').MakeScope.GetVariable('eranzamin_leading_contender').GetCountry.Self, Player.Self))]"
+		}
+
+		blockoverride "SecondCountryContext" {
+			datacontext = "[Player]"
+		}
+
+		blockoverride "first_character_portrait_anchor" {
+			parentanchor = bottom|left
+		}
+
+		blockoverride "second_character_portrait_anchor" {
+			parentanchor = bottom|right
+		}
+
+		blockoverride "character_religion_visibility" {
 			visible = no
+		}
+
+		blockoverride "character_name_maximumsize" {
+			maximumsize = { 270 -1 }
+		}
+
+		blockoverride "country_header_extra" {
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				margin = { 10 10 }
+				spacing = 8
+
+				expand = {}
+			}
 		}
 	}
 
