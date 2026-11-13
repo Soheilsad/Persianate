@@ -150,6 +150,7 @@ REPLACE:control_over_the_coinage = {
 
 	country_modifier = {
 		minting_inflation_threshold = 0.01
+		monthly_political_influence_gain_modifier = -0.10
 		global_goods_gold_output_modifier = 0.05
 		global_silver_output_modifier = 0.05
 		global_copper_output_modifier = 0.05

@@ -26,6 +26,9 @@
 # =====================================================================
 
 on_new_ruler = {
+	on_actions = {
+		horde_line_marking	# see MARKING A THRONE OF THE LINE below
+	}
 	events = {
 		delay = { days = { 30 80 } }
 		horde_succession.1
@@ -54,6 +57,7 @@ on_new_ruler = {
 on_game_start = {
 	on_actions = {
 		horde_toru_seating
+		horde_line_marking_start
 	}
 }
 
@@ -66,5 +70,42 @@ horde_toru_seating = {
 			}
 			change_heir_selection = heir_selection:horde_toru_succession
 		}
+	}
+}
+
+
+# =====================================================================
+# MARKING A THRONE OF THE LINE.
+#
+# horde_civil_war (disasters/horde_civil_war.txt) treats a horde
+# differently once a Borjigin has sat its throne: there the disaster is
+# "the blood has failed", not base's horde unity band. The variable is
+# set at start and at every accession that seats a Chinggisid (wired
+# into the on_game_start / on_new_ruler blocks above), and is
+# never cleared -- a throne Mamai rules through a puppet is still the
+# line's throne. Amir hordes (Barlas, Jalayir, Suldus) and non-Chinggisid
+# hordes (Oirats, Arghunids) never get it unless a khan of the line
+# comes to rule them.
+# =====================================================================
+
+horde_line_marking_start = {
+	effect = {
+		every_country = {
+			limit = {
+				government_type = government_type:steppe_horde
+				ruler ?= { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+			}
+			set_variable = horde_of_the_line
+		}
+	}
+}
+
+horde_line_marking = {
+	trigger = {
+		government_type = government_type:steppe_horde
+		ruler ?= { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+	}
+	effect = {
+		set_variable = horde_of_the_line
 	}
 }

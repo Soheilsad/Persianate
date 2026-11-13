@@ -69,18 +69,28 @@ horde_local_appointee = {
 			text = horde_local_appointee_tt
 			scope:actor = {
 				total_building_levels_including_construction:horde_local_appointee < {
-					value = modifier:num_local_governors
+					# 1.4: base's local_governor reads effective_num_local_governors
+					# (num_local_governors floored by minimum_num_local_governors)
+					# and also shares the budget with itinerant_court_seat and
+					# kings_manor. Kept in step with base.
+					value = effective_num_local_governors
 					subtract = total_building_levels_including_construction:lieutenancy
 					subtract = total_building_levels_including_construction:local_governor
-					add = 4 ### a minimum
+					subtract = total_building_levels_including_construction:itinerant_court_seat
+					subtract = total_building_levels_including_construction:kings_manor
+					add = 4 ### the horde's extra budget on top of base's
 				}
 			}
 		}
 		owner = scope:actor #not in subjects
 	}
 
+	# 1.4 base local_governor rules: not the capital, not a historical
+	# capital, and one proximity source per location.
 	location_potential = {
-		owner.capital != this
+		is_capital = no
+		is_historical_capital = no
+		has_proximity_source_building = no
 	}
 
 	# The reach dies with the legitimacy that carried it — Mamai's

@@ -450,9 +450,14 @@ restore_persian_bureaucracy = {
 	}
 
 	# Prestige gate, parallel to rally — the warlord must have standing
-	# to bring the Iranian chancery class into his service. No axis gate:
-	# the whole point of this action is to give a Türk-leaning warlord a
-	# deliberate path INTO the Persianate institution, even from below 0.
+	# to bring the Iranian chancery class into his service. No lower axis
+	# gate: the whole point of this action is to give a Türk-leaning
+	# warlord a deliberate path INTO the Persianate institution, even from
+	# below 0. Its price is legitimacy (government_power on a sultanate):
+	# a Tork ruler Persianizing spends his standing as a Türk.
+	# Upper gate: a Tāzīk realm (axis >= 50) at kingdom rank already
+	# meets the Dīwān al-Mamālik requirement (04_diwan_buildings.txt) —
+	# the chancery is already his, there is nothing to restore.
 	# Rank floor: a county-rank petty lord cannot credibly seat the
 	# realm-grand chancery — duchy or higher only.
 	allow = {
@@ -462,7 +467,15 @@ restore_persian_bureaucracy = {
 				text = restore_persian_bureaucracy_rank_tt
 				country_rank_level > 1
 			}
-			
+			custom_tooltip = {
+				text = restore_persian_bureaucracy_already_tazik_tt
+				NOT = {
+					AND = {
+						societal_value:turk_vs_tazik >= 50
+						country_rank_level >= 3
+					}
+				}
+			}
 		}
 	}
 

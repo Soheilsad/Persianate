@@ -1,8 +1,10 @@
+#####################################################################
+## Base 07_expansion_parliament_issues, re-derived on 1.4.
+## ONE delta per issue: excluded from the diwan council parliament
+## (allow: NOT parliament_type:diwan_council), which has its own agenda.
+## Bodies are base 1.4 verbatim; on a patch, re-derive, don't hand-merge.
+#####################################################################
 
-#####################################################################
-## New Generic Parliament Issues – 1.2 Expansion
-## Covers Crown, Nobles, Clergy, Burghers, Peasants, Wartime, Proximity
-#####################################################################
 
 ############################################
 ## CROWN
@@ -16,8 +18,8 @@ REPLACE:royal_monopoly_on_trade = {
 	}
 
 	allow = {
-        NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { parliament_type = parliament_type:diwan_council }
+		NOT = { has_country_modifier = parl_royal_monopoly_mod }
 		"estate_power(estate_type:burghers_estate)" < 0.5
 		at_war = no
 	}
@@ -36,7 +38,7 @@ REPLACE:royal_monopoly_on_trade = {
 		add_country_modifier = {
 			modifier = parl_royal_monopoly_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		change_societal_value = { type = mercantilism_vs_free_trade value = societal_value_tiny_move_to_left }
 	}
@@ -55,8 +57,8 @@ REPLACE:charter_subject_governors = {
 	}
 
 	allow = {
-        NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { parliament_type = parliament_type:diwan_council }
+		NOT = { has_country_modifier = parl_charter_governors_mod }
 		num_subjects >= 2
 	}
 
@@ -74,7 +76,7 @@ REPLACE:charter_subject_governors = {
 		add_country_modifier = {
 			modifier = parl_charter_governors_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -95,7 +97,7 @@ REPLACE:establish_colonial_administration = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_colonial_admin_mod }
 		any_subject = {
 			is_subject_type = colonial_nation
 		}
@@ -117,7 +119,7 @@ REPLACE:establish_colonial_administration = {
 		add_country_modifier = {
 			modifier = parl_colonial_admin_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -135,7 +137,6 @@ REPLACE:reform_the_royal_treasury = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
 		inflation > 3
 		at_war = no
 		NOT = { has_country_modifier = parl_royal_treasury_mod }
@@ -155,7 +156,7 @@ REPLACE:reform_the_royal_treasury = {
 		add_country_modifier = {
 			modifier = parl_royal_treasury_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -169,12 +170,12 @@ REPLACE:issue_royal_censure = {
 	estate = crown_estate
 
 	modifier_when_in_debate = {
-		antagonism_monthly_change_modifier = -0.03
+		antagonism_monthly_change_modifier = 0.03
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_royal_censure_mod }
 		any_country = { is_rival_of = ROOT }
 		at_war = no
 	}
@@ -193,12 +194,12 @@ REPLACE:issue_royal_censure = {
 		add_country_modifier = {
 			modifier = parl_royal_censure_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
 	on_debate_failed = {
-		add_prestige = prestige_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 		parliament_debate_failed_effect = yes
 	}
 }
@@ -212,8 +213,9 @@ REPLACE:mandate_emergency_levies = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_emergency_levies_mod }
 		at_war = yes
+		NOT = { has_advance = conscription_center_advance }
 	}
 
 	chance = {
@@ -224,7 +226,7 @@ REPLACE:mandate_emergency_levies = {
 		add_country_modifier = {
 			modifier = parl_emergency_levies_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -243,7 +245,7 @@ REPLACE:fund_royal_art_patronage = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_royal_art_patronage_mod }
 		at_war = no
 	}
 
@@ -255,7 +257,7 @@ REPLACE:fund_royal_art_patronage = {
 		add_country_modifier = {
 			modifier = parl_royal_art_patronage_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -278,8 +280,8 @@ REPLACE:institute_feudal_levies = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
-		
+		NOT = { has_country_modifier = parl_feudal_levies_mod }
+		NOT = { has_embraced_institution = institution:professional_armies }
 	}
 
 	chance = {
@@ -296,7 +298,7 @@ REPLACE:institute_feudal_levies = {
 		add_country_modifier = {
 			modifier = parl_feudal_levies_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -315,7 +317,7 @@ REPLACE:establish_military_exercises = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_military_exercises_mod }
 		at_war = no
 	}
 
@@ -342,7 +344,7 @@ REPLACE:establish_military_exercises = {
 		add_country_modifier = {
 			modifier = parl_military_exercises_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -361,7 +363,6 @@ REPLACE:establish_heralds_college = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
 		at_war = no
 		NOT = { has_country_modifier = parl_heralds_college_mod }
 	}
@@ -374,7 +375,7 @@ REPLACE:establish_heralds_college = {
 		add_country_modifier = {
 			modifier = parl_heralds_college_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
 	}
@@ -394,7 +395,7 @@ REPLACE:promote_chivalric_orders = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_chivalric_orders_mod }
 		has_chivalric_order = yes
 	}
 
@@ -406,7 +407,7 @@ REPLACE:promote_chivalric_orders = {
 		add_country_modifier = {
 			modifier = parl_chivalric_orders_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -425,7 +426,7 @@ REPLACE:license_noble_privateers = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_noble_privateers_mod }
 		num_of_ports >= 1
 		modifier:can_hire_privateers = yes
 	}
@@ -444,7 +445,7 @@ REPLACE:license_noble_privateers = {
 		add_country_modifier = {
 			modifier = parl_noble_privateers_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -463,8 +464,10 @@ REPLACE:monopolize_land_trade_routes = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
-		always = yes
+		NOT = { has_country_modifier = parl_land_trade_mod }
+		NOR = {
+			current_age = age_6_revolutions
+		}
 	}
 
 	chance = {
@@ -475,7 +478,7 @@ REPLACE:monopolize_land_trade_routes = {
 		add_country_modifier = {
 			modifier = parl_land_trade_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -495,7 +498,7 @@ REPLACE:fund_noble_colonization = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_noble_colonization_mod }
 		modifier:can_colonize = yes
 		NOR = {
 			current_age = age_1_traditions
@@ -511,7 +514,7 @@ REPLACE:fund_noble_colonization = {
 		add_country_modifier = {
 			modifier = parl_noble_colonization_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -530,7 +533,7 @@ REPLACE:grant_exclusive_hunting_rights = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_hunting_rights_mod }
 		has_any_rgo_of_goods_method = hunting
 	}
 
@@ -542,13 +545,13 @@ REPLACE:grant_exclusive_hunting_rights = {
 		add_country_modifier = {
 			modifier = parl_hunting_rights_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_mild_bonus }
 	}
 
 	on_debate_failed = {
-		add_prestige = prestige_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 		parliament_debate_failed_effect = yes
 	}
 }
@@ -562,7 +565,7 @@ REPLACE:establish_noble_garrison_law = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_garrison_law_mod }
 		any_rebel = { always = yes }
 	}
 
@@ -580,7 +583,7 @@ REPLACE:establish_noble_garrison_law = {
 		add_country_modifier = {
 			modifier = parl_garrison_law_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -598,7 +601,7 @@ REPLACE:establish_noble_garrison_law = {
 ## CLERGY
 ############################################
 
-establish_clergy_charity = {
+REPLACE:establish_clergy_charity = {
 	estate = clergy_estate
 
 	modifier_when_in_debate = {
@@ -607,7 +610,8 @@ establish_clergy_charity = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_clergy_charity_mod }
+		always = yes
 	}
 
 	chance = {
@@ -618,7 +622,7 @@ establish_clergy_charity = {
 		add_country_modifier = {
 			modifier = parl_clergy_charity_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -628,7 +632,7 @@ establish_clergy_charity = {
 	}
 }
 
-launch_religious_missions = {
+REPLACE:launch_religious_missions = {
 	estate = clergy_estate
 
 	modifier_when_in_debate = {
@@ -637,7 +641,7 @@ launch_religious_missions = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_religious_missions_mod }
 		religious_unity < 1.0
 	}
 
@@ -655,7 +659,7 @@ launch_religious_missions = {
 		add_country_modifier = {
 			modifier = parl_religious_missions_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_tiny_move_to_left }
 	}
@@ -666,7 +670,7 @@ launch_religious_missions = {
 	}
 }
 
-institute_canonical_law = {
+REPLACE:institute_canonical_law = {
 	estate = clergy_estate
 
 	modifier_when_in_debate = {
@@ -675,8 +679,11 @@ institute_canonical_law = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
-
+		NOT = { has_country_modifier = parl_canonical_law_mod }
+		NOR = {
+			current_age = age_5_absolutism
+			current_age = age_6_revolutions
+		}
 	}
 
 	chance = {
@@ -693,7 +700,7 @@ institute_canonical_law = {
 		add_country_modifier = {
 			modifier = parl_canonical_law_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_tiny_move_to_left }
 	}
@@ -705,7 +712,7 @@ institute_canonical_law = {
 	}
 }
 
-establish_inquisition_courts = {
+REPLACE:establish_inquisition_courts = {
 	estate = clergy_estate
 
 	modifier_when_in_debate = {
@@ -714,7 +721,7 @@ establish_inquisition_courts = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_inquisition_courts_mod }
 		has_law = inquisition_law
 		religious_unity < 0.9
 	}
@@ -727,7 +734,7 @@ establish_inquisition_courts = {
 		add_country_modifier = {
 			modifier = parl_inquisition_courts_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -741,7 +748,7 @@ establish_inquisition_courts = {
 	}
 }
 
-promote_religious_tolerance = {
+REPLACE:promote_religious_tolerance = {
 	estate = clergy_estate
 
 	modifier_when_in_debate = {
@@ -750,7 +757,7 @@ promote_religious_tolerance = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_religious_tolerance_mod }
 		religious_unity < 1.0
 		NOT = { government_type = government_type:theocracy }
 		OR = {
@@ -768,7 +775,7 @@ promote_religious_tolerance = {
 		add_country_modifier = {
 			modifier = parl_religious_tolerance_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		change_societal_value = { type = spiritualist_vs_humanist value = societal_value_tiny_move_to_right }
 	}
@@ -780,18 +787,28 @@ promote_religious_tolerance = {
 	}
 }
 
-fund_monastery_network = {
+REPLACE:fund_monastery_network = {
 	estate = clergy_estate
 
 	modifier_when_in_debate = {
-		global_monthly_literacy = 0.001
-		global_monthly_control = 0.05
+		global_monthly_literacy = 0.01
+		global_monthly_control = 0.005
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_monastery_network_mod }
 		at_war = no
+		religion.group = religion_group:christian
+		OR = {
+			modifier:can_have_monasteries = yes
+			religion = religion:orthodox
+			religion = religion:miaphysite
+		}
+		NOR = {
+			current_age = age_5_absolutism
+			current_age = age_6_revolutions
+		}
 	}
 
 	chance = {
@@ -802,23 +819,72 @@ fund_monastery_network = {
 		add_country_modifier = {
 			modifier = parl_monastery_network_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
-		ordered_owned_location = {
+		if = {
 			limit = {
-				NOT = { has_building = building_type:monastery }
-				OR = {
-					location_rank = location_rank:town
-					location_rank = location_rank:city
+				religion = religion:miaphysite
+			}
+			ordered_owned_location = {
+				limit = {
+					NOT = { has_building = building_type:miaphysite_monastery }
+					OR = {
+						location_rank = location_rank:town
+						location_rank = location_rank:city
+						location_rank = location_rank:megalopolis
+					}
+				}
+				order_by = population
+				max = 3
+				check_range_bounds = no
+				construct_building = {
+					building_type = building_type:miaphysite_monastery
+					cost_multiplier = 0.5
+					cost_multiplier_reason = "game_concept_parliament_issue"
 				}
 			}
-			order_by = population
-			max = 3
-			check_range_bounds = no
-			construct_building = {
-				building_type = building_type:monastery
-				cost_multiplier = 0.5
-				cost_multiplier_reason = "game_concept_parliament_issue"
+		}
+		else_if = {
+			limit = {
+				religion = religion:orthodox
+			}
+			ordered_owned_location = {
+				limit = {
+					NOT = { has_building = building_type:orthodox_monastery }
+					OR = {
+						location_rank = location_rank:town
+						location_rank = location_rank:city
+						location_rank = location_rank:megalopolis
+					}
+				}
+				order_by = population
+				max = 3
+				check_range_bounds = no
+				construct_building = {
+					building_type = building_type:orthodox_monastery
+					cost_multiplier = 0.5
+					cost_multiplier_reason = "game_concept_parliament_issue"
+				}
+			}
+		}
+		else = {
+			ordered_owned_location = {
+				limit = {
+					NOT = { has_building = building_type:monastery }
+					OR = {
+						location_rank = location_rank:town
+						location_rank = location_rank:city
+						location_rank = location_rank:megalopolis
+					}
+				}
+				order_by = population
+				max = 3
+				check_range_bounds = no
+				construct_building = {
+					building_type = building_type:monastery
+					cost_multiplier = 0.5
+					cost_multiplier_reason = "game_concept_parliament_issue"
+				}
 			}
 		}
 	}
@@ -829,7 +895,7 @@ fund_monastery_network = {
 	}
 }
 
-establish_pilgrimage_routes = {
+REPLACE:establish_pilgrimage_routes = {
 	estate = clergy_estate
 
 	modifier_when_in_debate = {
@@ -838,8 +904,14 @@ establish_pilgrimage_routes = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_pilgrimage_routes_mod }
 		at_war = no
+		NOR = {
+			religion = religion:anglican
+			religion = religion:calvinist
+			religion = religion:lutheran
+			religion = religion:hussite
+		}
 	}
 
 	chance = {
@@ -850,7 +922,7 @@ establish_pilgrimage_routes = {
 		add_country_modifier = {
 			modifier = parl_pilgrimage_routes_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -860,7 +932,7 @@ establish_pilgrimage_routes = {
 	}
 }
 
-regulate_tithe_collection = {
+REPLACE:regulate_tithe_collection = {
 	estate = clergy_estate
 
 	modifier_when_in_debate = {
@@ -869,8 +941,10 @@ regulate_tithe_collection = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
-
+		NOT = { has_country_modifier = parl_tithe_collection_mod }
+		NOR = {
+			current_age = age_6_revolutions
+		}
 	}
 
 	chance = {
@@ -881,18 +955,18 @@ regulate_tithe_collection = {
 		add_country_modifier = {
 			modifier = parl_tithe_collection_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_mild_bonus }
 	}
 
 	on_debate_failed = {
-		add_prestige = prestige_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 		parliament_debate_failed_effect = yes
 	}
 }
 
-sponsor_theological_seminaries = {
+REPLACE:sponsor_theological_seminaries = {
 	estate = clergy_estate
 
 	modifier_when_in_debate = {
@@ -901,7 +975,7 @@ sponsor_theological_seminaries = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_theological_seminaries_mod }
 		at_war = no
 	}
 
@@ -913,7 +987,7 @@ sponsor_theological_seminaries = {
 		add_country_modifier = {
 			modifier = parl_theological_seminaries_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		change_societal_value = { type = traditionalist_vs_innovative value = societal_value_tiny_move_to_right }
 	}
@@ -928,7 +1002,7 @@ sponsor_theological_seminaries = {
 ## BURGHERS
 ############################################
 
-promote_export_trade = {
+REPLACE:promote_export_trade = {
 	estate = burghers_estate
 
 	modifier_when_in_debate = {
@@ -937,7 +1011,8 @@ promote_export_trade = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_export_trade_mod }
+		always = yes
 	}
 
 	chance = {
@@ -948,7 +1023,7 @@ promote_export_trade = {
 		add_country_modifier = {
 			modifier = parl_export_trade_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -958,16 +1033,16 @@ promote_export_trade = {
 	}
 }
 
-establish_import_controls = {
+REPLACE:establish_import_controls = {
 	estate = burghers_estate
 
 	modifier_when_in_debate = {
-		import_efficiency = tiny_trade_efficiency_bonus
+		tariff_income = 0.10
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_import_controls_mod }
 		any_market_center_in_country = { always = yes }
 	}
 
@@ -979,7 +1054,7 @@ establish_import_controls = {
 		add_country_modifier = {
 			modifier = parl_import_controls_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -989,7 +1064,7 @@ establish_import_controls = {
 	}
 }
 
-fund_trade_expeditions = {
+REPLACE:fund_trade_expeditions = {
 	estate = burghers_estate
 
 	modifier_when_in_debate = {
@@ -998,7 +1073,7 @@ fund_trade_expeditions = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_trade_expeditions_mod }
 		"estate_power(estate_type:burghers_estate)" >= 0.4
 	}
 
@@ -1010,7 +1085,7 @@ fund_trade_expeditions = {
 		add_country_modifier = {
 			modifier = parl_trade_expeditions_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1020,16 +1095,15 @@ fund_trade_expeditions = {
 	}
 }
 
-establish_commodity_exchange = {
+REPLACE:establish_commodity_exchange = {
 	estate = burghers_estate
 
 	modifier_when_in_debate = {
-		selling_efficiency = tiny_trade_efficiency_bonus
+		selling_efficiency = tiny_selling_efficiency_bonus
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
 		any_market_center_in_country = { always = yes }
 		NOT = { has_country_modifier = parl_commodity_exchange_mod }
 		NOR = {
@@ -1046,7 +1120,7 @@ establish_commodity_exchange = {
 		add_country_modifier = {
 			modifier = parl_commodity_exchange_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1056,7 +1130,7 @@ establish_commodity_exchange = {
 	}
 }
 
-promote_maritime_trade = {
+REPLACE:promote_maritime_trade = {
 	estate = burghers_estate
 
 	modifier_when_in_debate = {
@@ -1065,7 +1139,7 @@ promote_maritime_trade = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_maritime_trade_mod }
 		num_of_ports >= 1
 	}
 
@@ -1083,7 +1157,7 @@ promote_maritime_trade = {
 		add_country_modifier = {
 			modifier = parl_maritime_trade_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1093,7 +1167,7 @@ promote_maritime_trade = {
 	}
 }
 
-license_trading_companies = {
+REPLACE:license_trading_companies = {
 	estate = burghers_estate
 
 	modifier_when_in_debate = {
@@ -1102,7 +1176,7 @@ license_trading_companies = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_trading_companies_mod }
 		stability >= 20
 		at_war = no
 		NOR = {
@@ -1119,7 +1193,7 @@ license_trading_companies = {
 		add_country_modifier = {
 			modifier = parl_trading_companies_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1129,7 +1203,7 @@ license_trading_companies = {
 	}
 }
 
-establish_customs_houses = {
+REPLACE:establish_customs_houses = {
 	estate = burghers_estate
 
 	modifier_when_in_debate = {
@@ -1138,7 +1212,7 @@ establish_customs_houses = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_customs_houses_mod }
 		has_advance = customs_house_advance
 		any_owned_location = {
 			is_city = yes
@@ -1155,7 +1229,7 @@ establish_customs_houses = {
 		add_country_modifier = {
 			modifier = parl_customs_houses_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		ordered_owned_location = {
 			order_by = population
@@ -1180,17 +1254,20 @@ establish_customs_houses = {
 	}
 }
 
-fund_artisan_guilds = {
+REPLACE:fund_artisan_guilds = {
 	estate = burghers_estate
 
 	modifier_when_in_debate = {
-		global_production_efficiency = 0.05
+		global_production_efficiency = 0.025
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
-		always = yes
+		NOT = { has_country_modifier = parl_artisan_guilds_mod }
+		NOR = {
+			current_age = age_5_absolutism
+			current_age = age_6_revolutions
+		}
 	}
 
 	chance = {
@@ -1201,7 +1278,7 @@ fund_artisan_guilds = {
 		add_country_modifier = {
 			modifier = parl_artisan_guilds_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1211,15 +1288,16 @@ fund_artisan_guilds = {
 	}
 }
 
-establish_trade_insurance = {
+REPLACE:establish_trade_insurance = {
 	estate = burghers_estate
 
-	# trust_recovery removed in 1.4 (trust mechanic gone); re-sync
-	# against 1.4's establish_trade_insurance.
+	modifier_when_in_debate = {
+		trade_income = 0.05
+	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_trade_insurance_mod }
 		at_war = no
 	}
 
@@ -1231,7 +1309,7 @@ establish_trade_insurance = {
 		add_country_modifier = {
 			modifier = parl_trade_insurance_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1241,7 +1319,7 @@ establish_trade_insurance = {
 	}
 }
 
-expand_postal_relay_network = {
+REPLACE:expand_postal_relay_network = {
 	estate = burghers_estate
 
 	modifier_when_in_debate = {
@@ -1250,7 +1328,6 @@ expand_postal_relay_network = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
 		at_war = no
 		NOT = { has_country_modifier = parl_postal_relay_mod }
 		NOR = {
@@ -1267,7 +1344,7 @@ expand_postal_relay_network = {
 		add_country_modifier = {
 			modifier = parl_postal_relay_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1281,16 +1358,16 @@ expand_postal_relay_network = {
 ## PEASANTS
 ############################################
 
-establish_common_food_stores = {
+REPLACE:establish_common_food_stores = {
 	estate = peasants_estate
 
 	modifier_when_in_debate = {
-		global_monthly_food_modifier = 0.05
+		global_monthly_food_modifier = monthly_food_productivity_weak_bonus
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_common_food_stores_mod }
 		always = yes
 	}
 
@@ -1302,7 +1379,7 @@ establish_common_food_stores = {
 		add_country_modifier = {
 			modifier = parl_common_food_stores_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1312,16 +1389,16 @@ establish_common_food_stores = {
 	}
 }
 
-promote_farming_innovation = {
+REPLACE:promote_farming_innovation = {
 	estate = peasants_estate
 
 	modifier_when_in_debate = {
-		global_monthly_food_modifier = 0.05
+		global_monthly_food_modifier = monthly_food_productivity_weak_bonus
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_farming_innovation_mod }
 		at_war = no
 	}
 
@@ -1333,7 +1410,7 @@ promote_farming_innovation = {
 		add_country_modifier = {
 			modifier = parl_farming_innovation_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1343,7 +1420,7 @@ promote_farming_innovation = {
 	}
 }
 
-sponsor_irrigation_projects = {
+REPLACE:sponsor_irrigation_projects = {
 	estate = peasants_estate
 
 	modifier_when_in_debate = {
@@ -1352,7 +1429,7 @@ sponsor_irrigation_projects = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_irrigation_projects_mod }
 		at_war = no
 	}
 
@@ -1364,7 +1441,7 @@ sponsor_irrigation_projects = {
 		add_country_modifier = {
 			modifier = parl_irrigation_projects_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1374,7 +1451,7 @@ sponsor_irrigation_projects = {
 	}
 }
 
-reduce_serfdom = {
+REPLACE:reduce_serfdom = {
 	estate = peasants_estate
 
 	modifier_when_in_debate = {
@@ -1383,7 +1460,7 @@ reduce_serfdom = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_reduce_serfdom_mod }
 		"estate_power(estate_type:peasants_estate)" >= 0.3
 		societal_value:serfdom_vs_free_subjects < 0
 	}
@@ -1396,7 +1473,7 @@ reduce_serfdom = {
 		add_country_modifier = {
 			modifier = parl_reduce_serfdom_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_tiny_move_to_right }
 	}
@@ -1423,16 +1500,16 @@ reduce_serfdom = {
 	}
 }
 
-establish_village_councils = {
+REPLACE:establish_village_councils = {
 	estate = peasants_estate
 
 	modifier_when_in_debate = {
-		global_monthly_control = 0.05
+		global_monthly_control = 0.005
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_village_councils_mod }
 		"estate_power(estate_type:peasants_estate)" >= 0.35
 	}
 
@@ -1444,19 +1521,19 @@ establish_village_councils = {
 		add_country_modifier = {
 			modifier = parl_village_councils_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		change_societal_value = { type = centralization_vs_decentralization value = societal_value_tiny_move_to_right }
 	}
 
 	on_debate_failed = {
-		add_prestige = prestige_mild_penalty
+		add_political_influence = political_influence_mild_penalty
 		change_societal_value = { type = centralization_vs_decentralization value = societal_value_tiny_move_to_left }
 		parliament_debate_failed_effect = yes
 	}
 }
 
-charter_artisan_guilds = {
+REPLACE:charter_artisan_guilds = {
 	estate = peasants_estate
 
 	modifier_when_in_debate = {
@@ -1465,7 +1542,7 @@ charter_artisan_guilds = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_artisan_guild_charters_mod }
 		NOR = {
 			current_age = age_3_discovery
 			current_age = age_4_reformation
@@ -1482,7 +1559,7 @@ charter_artisan_guilds = {
 		add_country_modifier = {
 			modifier = parl_artisan_guild_charters_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
 	}
@@ -1493,16 +1570,16 @@ charter_artisan_guilds = {
 	}
 }
 
-subsidize_grain_imports = {
+REPLACE:subsidize_grain_imports = {
 	estate = peasants_estate
 
 	modifier_when_in_debate = {
-		food_purchase_cost = -0.10
+		food_purchase_efficiency = 0.10
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_grain_imports_mod }
 		any_market_center_in_country = { always = yes }
 	}
 
@@ -1514,7 +1591,7 @@ subsidize_grain_imports = {
 		add_country_modifier = {
 			modifier = parl_grain_imports_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1524,7 +1601,7 @@ subsidize_grain_imports = {
 	}
 }
 
-rural_crafts_charter = {
+REPLACE:rural_crafts_charter = {
 	estate = peasants_estate
 
 	modifier_when_in_debate = {
@@ -1533,8 +1610,11 @@ rural_crafts_charter = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
-		always = yes
+		NOT = { has_country_modifier = parl_rural_crafts_mod }
+		NOR = {
+			current_age = age_5_absolutism
+			current_age = age_6_revolutions
+		}
 	}
 
 	chance = {
@@ -1545,7 +1625,7 @@ rural_crafts_charter = {
 		add_country_modifier = {
 			modifier = parl_rural_crafts_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_mild_bonus }
 	}
@@ -1557,7 +1637,7 @@ rural_crafts_charter = {
 	}
 }
 
-prevent_noble_enclosure = {
+REPLACE:prevent_noble_enclosure = {
 	estate = peasants_estate
 
 	modifier_when_in_debate = {
@@ -1566,7 +1646,7 @@ prevent_noble_enclosure = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_noble_enclosure_mod }
 		"estate_power(estate_type:nobles_estate)" >= 0.4
 	}
 
@@ -1578,7 +1658,7 @@ prevent_noble_enclosure = {
 		add_country_modifier = {
 			modifier = parl_noble_enclosure_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 		change_societal_value = { type = serfdom_vs_free_subjects value = societal_value_tiny_move_to_right }
 	}
@@ -1594,7 +1674,7 @@ prevent_noble_enclosure = {
 ## WARTIME ISSUES (at_war = yes)
 ############################################
 
-declare_war_taxes = {
+REPLACE:declare_war_taxes = {
 	estate = crown_estate
 
 	modifier_when_in_debate = {
@@ -1603,7 +1683,7 @@ declare_war_taxes = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_war_taxes_mod }
 		at_war = yes
 	}
 
@@ -1621,7 +1701,7 @@ declare_war_taxes = {
 		add_country_modifier = {
 			modifier = parl_war_taxes_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1631,7 +1711,7 @@ declare_war_taxes = {
 	}
 }
 
-wartime_cavalry_reserve = {
+REPLACE:wartime_cavalry_reserve = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
@@ -1640,8 +1720,11 @@ wartime_cavalry_reserve = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_cavalry_reserve_mod }
 		at_war = yes
+		NOR = {
+			current_age = age_6_revolutions
+		}
 	}
 
 	chance = {
@@ -1652,7 +1735,7 @@ wartime_cavalry_reserve = {
 		add_country_modifier = {
 			modifier = parl_cavalry_reserve_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1662,7 +1745,7 @@ wartime_cavalry_reserve = {
 	}
 }
 
-fortify_frontier_passes = {
+REPLACE:fortify_frontier_passes = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
@@ -1671,7 +1754,7 @@ fortify_frontier_passes = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_frontier_passes_mod }
 		at_war = yes
 	}
 
@@ -1683,7 +1766,7 @@ fortify_frontier_passes = {
 		add_country_modifier = {
 			modifier = parl_frontier_passes_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1693,7 +1776,7 @@ fortify_frontier_passes = {
 	}
 }
 
-military_chaplaincy = {
+REPLACE:military_chaplaincy = {
 	estate = clergy_estate
 
 	modifier_when_in_debate = {
@@ -1702,7 +1785,7 @@ military_chaplaincy = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_military_chaplaincy_mod }
 		at_war = yes
 	}
 
@@ -1714,7 +1797,7 @@ military_chaplaincy = {
 		add_country_modifier = {
 			modifier = parl_military_chaplaincy_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1724,7 +1807,7 @@ military_chaplaincy = {
 	}
 }
 
-establish_field_hospitals = {
+REPLACE:establish_field_hospitals = {
 	estate = clergy_estate
 
 	modifier_when_in_debate = {
@@ -1733,7 +1816,7 @@ establish_field_hospitals = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_field_hospitals_mod }
 		at_war = yes
 	}
 
@@ -1745,7 +1828,7 @@ establish_field_hospitals = {
 		add_country_modifier = {
 			modifier = parl_field_hospitals_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1755,7 +1838,7 @@ establish_field_hospitals = {
 	}
 }
 
-naval_supply_contracts = {
+REPLACE:naval_supply_contracts = {
 	estate = burghers_estate
 
 	modifier_when_in_debate = {
@@ -1764,7 +1847,7 @@ naval_supply_contracts = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_naval_supply_mod }
 		at_war = yes
 		num_of_ports >= 1
 	}
@@ -1777,7 +1860,7 @@ naval_supply_contracts = {
 		add_country_modifier = {
 			modifier = parl_naval_supply_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1787,7 +1870,7 @@ naval_supply_contracts = {
 	}
 }
 
-fund_siege_engineers = {
+REPLACE:fund_siege_engineers = {
 	estate = burghers_estate
 
 	modifier_when_in_debate = {
@@ -1796,7 +1879,7 @@ fund_siege_engineers = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_siege_engineers_mod }
 		at_war = yes
 	}
 
@@ -1808,7 +1891,7 @@ fund_siege_engineers = {
 		add_country_modifier = {
 			modifier = parl_siege_engineers_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1818,7 +1901,7 @@ fund_siege_engineers = {
 	}
 }
 
-wartime_harvest_pooling = {
+REPLACE:wartime_harvest_pooling = {
 	estate = peasants_estate
 
 	modifier_when_in_debate = {
@@ -1827,7 +1910,7 @@ wartime_harvest_pooling = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_harvest_pooling_mod }
 		at_war = yes
 	}
 
@@ -1839,7 +1922,7 @@ wartime_harvest_pooling = {
 		add_country_modifier = {
 			modifier = parl_harvest_pooling_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1849,16 +1932,16 @@ wartime_harvest_pooling = {
 	}
 }
 
-supply_line_labor_draft = {
+REPLACE:supply_line_labor_draft = {
 	estate = peasants_estate
 
 	modifier_when_in_debate = {
-		army_reinforce_cost = -0.07
+		army_reinforce_efficiency = 0.14
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_supply_labor_mod }
 		at_war = yes
 		"estate_power(estate_type:peasants_estate)" >= 0.25
 	}
@@ -1871,7 +1954,7 @@ supply_line_labor_draft = {
 		add_country_modifier = {
 			modifier = parl_supply_labor_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1890,7 +1973,7 @@ supply_line_labor_draft = {
 ## PROXIMITY ISSUES (at_war = no)
 ############################################
 
-royal_road_commission = {
+REPLACE:royal_road_commission = {
 	estate = crown_estate
 
 	modifier_when_in_debate = {
@@ -1899,7 +1982,7 @@ royal_road_commission = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_royal_roads_mod }
 		at_war = no
 		stability >= 20
 	}
@@ -1912,7 +1995,7 @@ royal_road_commission = {
 		add_country_modifier = {
 			modifier = parl_royal_roads_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1922,16 +2005,16 @@ royal_road_commission = {
 	}
 }
 
-mountain_pass_charters = {
+REPLACE:mountain_pass_charters = {
 	estate = nobles_estate
 
 	modifier_when_in_debate = {
-		land_cost_on_distance_from_capital = -0.05
+		land_cost_on_distance_from_capital = -2
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_mountain_passes_mod }
 		at_war = no
 	}
 
@@ -1943,7 +2026,7 @@ mountain_pass_charters = {
 		add_country_modifier = {
 			modifier = parl_mountain_passes_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1953,7 +2036,7 @@ mountain_pass_charters = {
 	}
 }
 
-establish_parish_waypoints = {
+REPLACE:establish_parish_waypoints = {
 	estate = clergy_estate
 
 	modifier_when_in_debate = {
@@ -1962,7 +2045,7 @@ establish_parish_waypoints = {
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_parish_waypoints_mod }
 		at_war = no
 	}
 
@@ -1974,7 +2057,7 @@ establish_parish_waypoints = {
 		add_country_modifier = {
 			modifier = parl_parish_waypoints_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -1984,16 +2067,16 @@ establish_parish_waypoints = {
 	}
 }
 
-coastal_trading_post_network = {
+REPLACE:coastal_trading_post_network = {
 	estate = burghers_estate
 
 	modifier_when_in_debate = {
-		sea_cost_on_distance_from_capital = -0.05
+		sea_cost_on_distance_from_capital = -3
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_coastal_posts_mod }
 		at_war = no
 		num_of_ports >= 2
 	}
@@ -2006,7 +2089,7 @@ coastal_trading_post_network = {
 		add_country_modifier = {
 			modifier = parl_coastal_posts_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 
@@ -2016,16 +2099,16 @@ coastal_trading_post_network = {
 	}
 }
 
-rural_road_upkeep_corvee = {
+REPLACE:rural_road_upkeep_corvee = {
 	estate = peasants_estate
 
 	modifier_when_in_debate = {
-		land_cost_on_distance_from_capital = -0.03
+		land_cost_on_distance_from_capital = -2
 	}
 
 	allow = {
 		NOT = { parliament_type = parliament_type:diwan_council }
-
+		NOT = { has_country_modifier = parl_road_corvee_mod }
 		at_war = no
 		"estate_power(estate_type:peasants_estate)" >= 0.3
 	}
@@ -2038,7 +2121,7 @@ rural_road_upkeep_corvee = {
 		add_country_modifier = {
 			modifier = parl_road_corvee_mod
 			years = 10
-			mode = add_and_extend
+			mode = replace
 		}
 	}
 

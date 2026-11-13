@@ -1,7 +1,7 @@
 # =====================================================================
 # HORDE CIVIL WAR -- same-path replacement of the base disaster.
 #
-# ONE change: can_start. Everything else (modifier, on_start, on_end,
+# ONE change: can_start (re-diffed on 1.4). Everything else (modifier, on_start, on_end,
 # can_end, spawn chance, capital conditions) is base game verbatim, so
 # a patch that touches those needs this file re-diffed.
 #
@@ -30,23 +30,54 @@ horde_civil_war = {
 		# 1359 -- and it came apart because the Batuid line ran out, not
 		# because a khan died.
 		#
-		# So this disaster now models that one case and nothing else: the
-		# blood has failed. No living adult male of the line anywhere in the
-		# realm, and no regency standing in for one. Every other succession
-		# outcome is routed by horde_succession.1 into a contest, a regency
-		# or a clean accession.
-		custom_tooltip = {
-			text = horde_civil_war_blood_has_failed_tt
-			NOT = {
-				any_character = {
-					is_alive = yes
-					is_adult = yes
-					is_female = no
-					is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+		# So, for a throne the line has held, this disaster models that one
+		# case and nothing else: the blood has failed. No living male of the
+		# line in the realm -- an adult, or a boy already seated or named
+		# heir (a child khan under regency IS the line) -- and no regency
+		# standing in for one. Every other succession outcome is routed by
+		# horde_succession.1 into a contest, a regency or a clean accession.
+		#
+		# A horde whose throne the line never held (Oirats, Arghunids, the
+		# amir hordes) cannot have its blood fail. Those keep base's unity
+		# band. horde_of_the_line is set by 26_horde_succession_hooks.txt
+		# whenever a Borjigin sits the throne, and never cleared.
+		OR = {
+			AND = {
+				has_variable = horde_of_the_line
+				custom_tooltip = {
+					text = horde_civil_war_blood_has_failed_tt
+					NOT = {
+						any_character = {
+							is_alive = yes
+							is_female = no
+							is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+							OR = {
+								is_adult = yes
+								is_ruler = yes
+								is_heir = yes
+							}
+						}
+					}
+				}
+				NOT = { has_reform = government_reform:chinggisid_regency }
+			}
+			AND = {
+				NOT = { has_variable = horde_of_the_line }
+				OR = {
+					horde_unity <= 40
+					AND = {
+						horde_unity <= 75
+						OR = {
+							has_regent = yes
+							AND = {
+								has_heir = yes
+								horde_unity <= 60
+							}
+						}
+					}
 				}
 			}
 		}
-		NOT = { has_reform = government_reform:chinggisid_regency }
 		in_civil_war = no
 		OR = {
 			at_war = no
