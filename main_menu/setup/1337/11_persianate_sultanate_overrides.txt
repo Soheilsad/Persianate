@@ -1528,10 +1528,12 @@ JUR = { #Jurmanids
 	# ------------------------------------------------------------------
 	# Neguderi and Besud: base blocks verbatim except tolerated_cultures.
 	# No "Hazara" in 1337 (the ethnonym is late 15th c.; see
-	# tools/demography_fixes.py). Both now rule as
-	# persianized_mongol_culture (in_game/setup/countries/persia.txt),
-	# so their unassimilated Mongol households are tolerated instead of
-	# primary, and BSD no longer tolerates hazara_culture.
+	# tools/demography_fixes.py). BSD rules as persianized_mongol_culture
+	# (in_game/setup/countries/persia.txt): its unassimilated Mongol
+	# households are tolerated instead of primary, and it no longer
+	# tolerates hazara_culture. NGD stays mongolian_culture, a raiding
+	# soldiery on the far march; only a third of its Mongol nobles are
+	# Persian-using (rule 3 there), too few to list.
 	# ------------------------------------------------------------------
 	NGD = { #Neguderi
 		type = army
@@ -1561,7 +1563,6 @@ JUR = { #Jurmanids
 
 		tolerated_cultures = {
 			afghan_culture
-			mongolian_culture
 		}
 
 		religious_school = shafii_school

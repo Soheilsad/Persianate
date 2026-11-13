@@ -331,11 +331,11 @@ HLG = { #Huleguids — the Ilkhanid house itself: the most Persianized of all
 	religion_definition = sunni
 }
 
-NGD = { #Neguderi — Mongol households Persianizing in the Afghan highlands (no "Hazara" before the late 15th c.)
+NGD = { #Neguderi — a raiding soldiery on the far march of the ulus: still Mongol; only a fringe of its nobles and clergy is Persian-using (tools/demography_fixes.py, rule 3)
 	color = map_NGD
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = persianized_mongol_culture
+	culture_definition = mongolian_culture
 	religion_definition = sunni
 }
 
@@ -347,7 +347,7 @@ QUN = { #Qara'unas
 	religion_definition = sunni
 }
 
-BSD = { #Besüd — as NGD: Persianized Mongol, the later Hazara in the making
+BSD = { #Besüd — Persianized Mongol, the later Hazara in the making
 	color = map_BSD
 	color2 = rgb { 16 41 202 }
 
