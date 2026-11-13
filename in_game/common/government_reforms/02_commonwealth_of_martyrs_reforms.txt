@@ -74,6 +74,19 @@ bashtin_proclamation_reform = {
 	}
 
 	days = 0
+
+	# Dervish corps pop weight (1.4): the estate's pops are SOLDIERS at
+	# power_per_pop 0.0625, against the 30 the estate carried before the
+	# key moved to pop types (x480). Restored per location so it
+	# multiplies with national estate-power modifiers instead of
+	# swamping them; arithmetic in auto_modifiers/08_martyrs_auto_modifiers
+	# .txt (shaykhi_base_values). Base reforms use location_modifier the
+	# same way (government_reforms/common.txt). NEEDS AN IN-GAME CHECK:
+	# Sabzevar's shaykhi share should read about 30%.
+	location_modifier = {
+		potential_trigger = { always = yes }
+		local_shaykhi_dervishes_estate_power = 480
+	}
 }
 
 # The Niyāba ʿĀmma Charter — the ledger becomes lawful.
