@@ -74,13 +74,13 @@ culture_lists_apply_start = {
 		if = { limit = { has_tolerated_culture = culture:armenian_culture } remove_tolerated_culture = culture:armenian_culture }
 		if = { limit = { NOT = { has_tolerated_culture = culture:zaza_culture } NOT = { has_accepted_culture = culture:zaza_culture } } add_tolerated_culture = culture:zaza_culture }
 	}
-	# CHB (persianized_mongol 0.02%): A adhari (48.88% 1.653), mongolian (14.9% 0.783) | T kurdish (12.87% 0.737) | 3.173 / 4.0
+	# CHB (persianized_mongol 0.02%): A adhari (48.88% 1.235), mongolian (14.9% 0.783), azeri (10.87% 1.28) | T - | 3.298 / 4.0
 	c:CHB ?= {
 		if = { limit = { has_tolerated_culture = culture:adhari_culture } remove_tolerated_culture = culture:adhari_culture }
 		if = { limit = { has_tolerated_culture = culture:farsi_culture } remove_tolerated_culture = culture:farsi_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:adhari_culture } } add_accepted_culture = culture:adhari_culture grant_culture_bonus_advances = culture:adhari_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:mongolian_culture } } add_accepted_culture = culture:mongolian_culture grant_culture_bonus_advances = culture:mongolian_culture }
-		if = { limit = { NOT = { has_tolerated_culture = culture:kurdish_culture } NOT = { has_accepted_culture = culture:kurdish_culture } } add_tolerated_culture = culture:kurdish_culture }
+		if = { limit = { NOT = { has_accepted_culture = culture:azeri_culture } } add_accepted_culture = culture:azeri_culture grant_culture_bonus_advances = culture:azeri_culture }
 	}
 	# CHG (mongolian 0.99%): A oirat (56.95% 1.804) | T - | 1.804 / 3.0
 	c:CHG ?= {
@@ -212,15 +212,16 @@ culture_lists_apply_start = {
 	c:ISQ ?= {
 		if = { limit = { NOT = { has_tolerated_culture = culture:kyrgyz_culture } NOT = { has_accepted_culture = culture:kyrgyz_culture } } add_tolerated_culture = culture:kyrgyz_culture }
 	}
-	# JAL (persianized_mongol 0.27%): A iraqi (38.38% 1.85) | T kurdish (31.28% 0.776), lur (14.83% 0.624) | 3.25 / 4.0
+	# JAL (persianized_mongol 0.27%): A iraqi (38.38% 1.302), kurdish (31.28% 1.465) | T lur (14.83% 0.437) | 3.204 / 4.0
 	c:JAL ?= {
 		if = { limit = { has_tolerated_culture = culture:iraqi_culture } remove_tolerated_culture = culture:iraqi_culture }
 		if = { limit = { has_tolerated_culture = culture:adhari_culture } remove_tolerated_culture = culture:adhari_culture }
 		if = { limit = { has_tolerated_culture = culture:azeri_culture } remove_tolerated_culture = culture:azeri_culture }
+		if = { limit = { has_tolerated_culture = culture:kurdish_culture } remove_tolerated_culture = culture:kurdish_culture }
 		if = { limit = { has_tolerated_culture = culture:armenian_culture } remove_tolerated_culture = culture:armenian_culture }
 		if = { limit = { has_tolerated_culture = culture:syriac_culture } remove_tolerated_culture = culture:syriac_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:iraqi_culture } } add_accepted_culture = culture:iraqi_culture grant_culture_bonus_advances = culture:iraqi_culture }
-		if = { limit = { NOT = { has_tolerated_culture = culture:kurdish_culture } NOT = { has_accepted_culture = culture:kurdish_culture } } add_tolerated_culture = culture:kurdish_culture }
+		if = { limit = { NOT = { has_accepted_culture = culture:kurdish_culture } } add_accepted_culture = culture:kurdish_culture grant_culture_bonus_advances = culture:kurdish_culture }
 		if = { limit = { NOT = { has_tolerated_culture = culture:lur_culture } NOT = { has_accepted_culture = culture:lur_culture } } add_tolerated_culture = culture:lur_culture }
 	}
 	# JKR (oirat 0.0%): A - | T mongolian (28.16% 1.08) | 1.08 / 2.0
