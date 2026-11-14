@@ -88,9 +88,9 @@
  ULUS_AGAINST: "against"
  ULUS_SCORE_HEADER: "kingmaker score"
  # DEBUG decisions (common/decisions/zz_persianate_debug_decisions.txt) — remove with them
- persianate_debug_begin_regency: "DEBUG: The Amirs Raise a Khan"
- persianate_debug_begin_regency_desc: "Testing aid. Starts the Amirs' Regency in Ulus Chaghatay at once, as if the khan had died with the begs over the bar."
+ persianate_debug_begin_regency.title: "DEBUG: The Amirs Raise a Khan"
+ persianate_debug_begin_regency.desc: "Testing aid. Starts the Amirs' Regency in Ulus Chaghatay at once, as if the khan had died with the begs over the bar."
  persianate_debug_begin_regency.a: "Begin the regency."
- persianate_debug_advance_regency: "DEBUG: Advance the Regency"
- persianate_debug_advance_regency_desc: "Testing aid. Adds 100 progress to the Amirs' Regency, enough for the next stage at the next monthly tick."
+ persianate_debug_advance_regency.title: "DEBUG: Advance the Regency"
+ persianate_debug_advance_regency.desc: "Testing aid. Adds 100 progress to the Amirs' Regency, enough for the next stage at the next monthly tick."
  persianate_debug_advance_regency.a: "Push it on."
