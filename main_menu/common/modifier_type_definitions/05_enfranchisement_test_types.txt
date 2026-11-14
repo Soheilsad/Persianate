@@ -1,0 +1,37 @@
+# TEST (author, 2026-11-14). Base defines enfranchisement for peasants
+# only (global_/local_peasant_enfranchisment: the share of a location's
+# wealth that belongs to the peasants' estate). These declare the same
+# thing for tribesmen and burghers to see whether the engine does
+# anything with a type it does not know by name. Used by
+# in_game/common/estate_privileges/13_steppe_privileges.txt.
+# If the privilege tooltip shows the line and nothing moves, delete this
+# file and those lines.
+
+global_tribesmen_enfranchisment={
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+local_tribesmen_enfranchisment={
+	percent=yes
+	game_data={
+		category=location
+	}
+}
+
+global_burgher_enfranchisment={
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+local_burgher_enfranchisment={
+	percent=yes
+	game_data={
+		category=location
+	}
+}
+

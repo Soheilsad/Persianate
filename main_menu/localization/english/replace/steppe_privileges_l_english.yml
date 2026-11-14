@@ -1,0 +1,13 @@
+﻿l_english:
+ hereditary_tumens: "Hereditary Tümens"
+ hereditary_tumens_desc: "The command of a tümen passes from father to son in the beg's own house. Inside it he judges, assigns the pastures and takes his due. The khan may confirm him, but he does not appoint him and cannot easily remove him."
+ bound_to_the_tumen: "Bound to the Tümen"
+ bound_to_the_tumen_desc: "Every man belongs to his ten, his hundred and his thousand, and may not leave them for another chief. A beg can count on the men his fathers counted on, and they have nowhere else to go."
+ MODIFIER_TYPE_NAME_global_tribesmen_enfranchisment: "Tribesmen Enfranchisement"
+ MODIFIER_TYPE_DESC_global_tribesmen_enfranchisment: "Test: the share of a [location|e]'s wealth that belongs to the tribes, as Peasant Enfranchisement is for peasants."
+ MODIFIER_TYPE_NAME_local_tribesmen_enfranchisment: "Local Tribesmen Enfranchisement"
+ MODIFIER_TYPE_DESC_local_tribesmen_enfranchisment: "Test: the share of this [location|e]'s wealth that belongs to the tribes."
+ MODIFIER_TYPE_NAME_global_burgher_enfranchisment: "Burgher Enfranchisement"
+ MODIFIER_TYPE_DESC_global_burgher_enfranchisment: "Test: the share of a [location|e]'s wealth that belongs to the burghers."
+ MODIFIER_TYPE_NAME_local_burgher_enfranchisment: "Local Burgher Enfranchisement"
+ MODIFIER_TYPE_DESC_local_burgher_enfranchisment: "Test: the share of this [location|e]'s wealth that belongs to the burghers."

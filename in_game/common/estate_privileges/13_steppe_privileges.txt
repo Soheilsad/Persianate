@@ -1,0 +1,58 @@
+# =====================================================================
+# STEPPE PRIVILEGES of the begs (nobles' estate in a steppe horde).
+# Given at the start by the mod's copy of base's horde template
+# (main_menu/setup/templates/eurasian_horde_no_coast_no_pleading.txt).
+#
+# Mechanical weight copied from the base privileges they stand in for
+# (nobles_estate.txt, banal_lordship and noble_serfdom_rights), with the
+# peasant terms turned to the tribesmen:
+#   - base lowers PEASANT enfranchisement; here the test modifier types
+#     global_tribesmen_enfranchisment / global_burgher_enfranchisment
+#     (main_menu/common/modifier_type_definitions/
+#     05_enfranchisement_test_types.txt) are used. Base has only the
+#     peasant pair and the engine most likely reads it by name, so these
+#     two may do NOTHING: that is what the author's next test is for.
+#     If they are inert, the lines are dead weight and the rest stands.
+#   - the tribesmen's food and the levy carry the part that is certain
+#     to work.
+# =====================================================================
+
+# The command of a tümen passes in the beg's house, and inside it his
+# word is the law: he judges, he assigns pasture, he takes his due. The
+# khan may confirm him; the khan does not appoint him.
+hereditary_tumens = {
+	estate = nobles_estate
+
+	potential = {
+		government_type = government_type:steppe_horde
+	}
+
+	country_modifier = {
+		global_nobles_estate_power = 0.5
+		monthly_political_influence_gain_modifier = -0.10
+		nobles_estate_target_satisfaction = medium_privilege_target_satisfaction
+		monthly_towards_aristocracy = societal_value_monthly_move
+		global_max_control = -0.05
+		global_tribesmen_enfranchisment = -0.05
+	}
+}
+
+# The decimal order: a man belongs to his ten, his hundred and his
+# thousand, and may not leave them for another chief. (The Yasa as
+# Juvayni reports it: death for the man who moves and punishment for
+# the chief who takes him in.)
+bound_to_the_tumen = {
+	estate = nobles_estate
+
+	potential = {
+		government_type = government_type:steppe_horde
+	}
+
+	country_modifier = {
+		global_nobles_estate_power = 0.4
+		global_tribesmen_food_consumption = -0.1
+		global_levy_size_modifier = 0.05
+		global_tribesmen_enfranchisment = -0.05
+		nobles_estate_target_satisfaction = medium_privilege_target_satisfaction
+	}
+}
