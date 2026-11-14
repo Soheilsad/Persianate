@@ -65,6 +65,10 @@ culture_lists_apply_start = {
 		if = { limit = { has_tolerated_culture = culture:afghan_culture } remove_tolerated_culture = culture:afghan_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:mongolian_culture } } add_accepted_culture = culture:mongolian_culture grant_culture_bonus_advances = culture:mongolian_culture }
 	}
+	# CAC (mongolian 0.0%): A - | T khorezmian (29.26% 1.569) | 1.569 / 2.5
+	c:CAC ?= {
+		if = { limit = { NOT = { has_tolerated_culture = culture:khorezmian_culture } NOT = { has_accepted_culture = culture:khorezmian_culture } } add_tolerated_culture = culture:khorezmian_culture }
+	}
 	# CEM (kurdish 0.0%): A - | T zaza (26.23% 0.623) | 0.623 / 1.0
 	c:CEM ?= {
 		if = { limit = { has_tolerated_culture = culture:armenian_culture } remove_tolerated_culture = culture:armenian_culture }
@@ -77,6 +81,15 @@ culture_lists_apply_start = {
 		if = { limit = { NOT = { has_accepted_culture = culture:adhari_culture } } add_accepted_culture = culture:adhari_culture grant_culture_bonus_advances = culture:adhari_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:mongolian_culture } } add_accepted_culture = culture:mongolian_culture grant_culture_bonus_advances = culture:mongolian_culture }
 		if = { limit = { NOT = { has_tolerated_culture = culture:kurdish_culture } NOT = { has_accepted_culture = culture:kurdish_culture } } add_tolerated_culture = culture:kurdish_culture }
+	}
+	# CHG (mongolian 0.99%): A oirat (56.95% 1.804) | T - | 1.804 / 3.0
+	c:CHG ?= {
+		if = { limit = { has_tolerated_culture = culture:khorezmian_culture } remove_tolerated_culture = culture:khorezmian_culture }
+		if = { limit = { has_tolerated_culture = culture:kyrgyz_culture } remove_tolerated_culture = culture:kyrgyz_culture }
+		if = { limit = { has_tolerated_culture = culture:uzbek_culture } remove_tolerated_culture = culture:uzbek_culture }
+		if = { limit = { has_tolerated_culture = culture:uyghur_culture } remove_tolerated_culture = culture:uyghur_culture }
+		if = { limit = { has_tolerated_culture = culture:tajik_culture } remove_tolerated_culture = culture:tajik_culture }
+		if = { limit = { NOT = { has_accepted_culture = culture:oirat_culture } } add_accepted_culture = culture:oirat_culture grant_culture_bonus_advances = culture:oirat_culture }
 	}
 	# DIL (turkish 8.24%): A turkoman (2.56% 0.759) | T - | 0.759 / 1.0
 	c:DIL ?= {
@@ -98,6 +111,11 @@ culture_lists_apply_start = {
 		if = { limit = { has_tolerated_culture = culture:syriac_culture } remove_tolerated_culture = culture:syriac_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:iraqi_culture } } add_accepted_culture = culture:iraqi_culture grant_culture_bonus_advances = culture:iraqi_culture }
 	}
+	# DZG (mongolian 4.46%): A - | T oirat (77.89% 0.581), uyghur (17.65% 0.852) | 1.433 / 2.0
+	c:DZG ?= {
+		if = { limit = { NOT = { has_tolerated_culture = culture:oirat_culture } NOT = { has_accepted_culture = culture:oirat_culture } } add_tolerated_culture = culture:oirat_culture }
+		if = { limit = { NOT = { has_tolerated_culture = culture:uyghur_culture } NOT = { has_accepted_culture = culture:uyghur_culture } } add_tolerated_culture = culture:uyghur_culture }
+	}
 	# EGL (kurdish 4.37%): A - | T zaza (15.28% 0.467) | 0.467 / 1.0
 	c:EGL ?= {
 		if = { limit = { has_tolerated_culture = culture:armenian_culture } remove_tolerated_culture = culture:armenian_culture }
@@ -118,6 +136,10 @@ culture_lists_apply_start = {
 	# FDL (bedouin 0.0%): A - | T - | 0 / 1.0
 	c:FDL ?= {
 		if = { limit = { has_tolerated_culture = culture:levantine_culture } remove_tolerated_culture = culture:levantine_culture }
+	}
+	# FGN (mongolian 0.0%): A - | T khorezmian (28.31% 1.568) | 1.568 / 2.0
+	c:FGN ?= {
+		if = { limit = { NOT = { has_tolerated_culture = culture:khorezmian_culture } NOT = { has_accepted_culture = culture:khorezmian_culture } } add_tolerated_culture = culture:khorezmian_culture }
 	}
 	# FMN (gilak 85.37%): A talysh (14.63% 0.429) | T - | 0.429 / 3.0
 	c:FMN ?= {
@@ -185,6 +207,10 @@ culture_lists_apply_start = {
 	c:INJ ?= {
 		if = { limit = { has_tolerated_culture = culture:lur_culture } remove_tolerated_culture = culture:lur_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:lur_culture } } add_accepted_culture = culture:lur_culture grant_culture_bonus_advances = culture:lur_culture }
+	}
+	# ISQ (mongolian 1.69%): A - | T kyrgyz (60.05% 0.979) | 0.979 / 2.0
+	c:ISQ ?= {
+		if = { limit = { NOT = { has_tolerated_culture = culture:kyrgyz_culture } NOT = { has_accepted_culture = culture:kyrgyz_culture } } add_tolerated_culture = culture:kyrgyz_culture }
 	}
 	# JAL (persianized_mongol 0.27%): A iraqi (38.38% 1.85) | T kurdish (31.28% 0.776), lur (14.83% 0.624) | 3.25 / 4.0
 	c:JAL ?= {
