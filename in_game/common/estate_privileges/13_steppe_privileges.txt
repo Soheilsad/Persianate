@@ -34,6 +34,9 @@ hereditary_tumens = {
 		monthly_towards_aristocracy = societal_value_monthly_move
 		global_max_control = -0.05
 		global_tribesmen_enfranchisment = -0.05
+		# A tümen is its beg's own host (base gives this to the nobles
+		# through its private-army privilege).
+		nobles_estate_allowed_private_army = yes
 	}
 }
 

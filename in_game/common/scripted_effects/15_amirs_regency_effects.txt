@@ -1251,14 +1251,37 @@ ulus_end_sahib_qiran = {
 		list = ulus_loyal_amirs
 		# Sworn to the man: they ride away if his fortune stays empty
 		# (sq_fortune_reckoning).
-		set_variable = sq_sworn_amir
 		remove_variable = ulus_chaghatay_admitted
 		remove_variable = ulus_kingmaker_score
 		remove_variable = ulus_amir_share
 		remove_variable = ulus_weight
-		make_subject_of = {
-			target = scope:ulus_sahib_qiran_realm
-			type = subject_type:sworn_amir
+		# THE CORE (author, 2026-11-14). A loyal house that borders him
+		# and has its seat in the same AREA as his own is not left as a
+		# sworn amir: it is taken into his realm outright, with its men,
+		# its treasury and its people (transfer = yes moves manpower and
+		# characters, base flavor events). Temür's own Barlas and the
+		# houses around Kesh and Samarkand were his household, not his
+		# following. The periphery stays sworn.
+		if = {
+			limit = {
+				capital ?= { area = scope:ulus_sahib_qiran_realm.capital.area }
+				any_neighbor_country = { this = scope:ulus_sahib_qiran_realm }
+			}
+			save_scope_as = sq_core_house
+			scope:ulus_sahib_qiran_realm = {
+				annex_country = {
+					country = scope:sq_core_house
+					reason = Diplomatic
+					transfer = yes
+				}
+			}
+		}
+		else = {
+			set_variable = sq_sworn_amir
+			make_subject_of = {
+				target = scope:ulus_sahib_qiran_realm
+				type = subject_type:sworn_amir
+			}
 		}
 	}
 	every_in_list = {

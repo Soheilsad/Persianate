@@ -35,7 +35,7 @@
 # from script here); what is cut is the begs' power, for ten years.
 # ------------------------------------------------------------
 ulus_recall_darughas = {
-	type = internationalorganization
+	type = disaster
 	show_message = no
 
 	ai_tick = monthly
@@ -63,16 +63,20 @@ ulus_recall_darughas = {
 		}
 	}
 
+	# On the Amirs' Regency DISASTER panel (author, 2026-11-14): these
+	# are the regent's own business, and that is where a player looks
+	# for them. The houses' business (pledges, the claim, raids) stays
+	# on the ulus panel.
 	select_trigger = {
-		looking_for_a = international_organization
-		source = actor
+		looking_for_a = disaster
+		name = "choose_disaster"
 		target_flag = recipient
-		name = "choose_international_organization"
 		column = {
 			data = name
 		}
 		visible = {
-			international_organization_type = international_organization_type:ulus_chaghatay
+			disaster_type = disaster_type:amirs_regency
+			disaster_is_active = yes
 		}
 	}
 
@@ -144,7 +148,7 @@ ulus_recall_darughas = {
 # daughter's blood.
 # ------------------------------------------------------------
 ulus_marry_into_the_line = {
-	type = internationalorganization
+	type = disaster
 	show_message = no
 
 	ai_tick = monthly
@@ -180,16 +184,20 @@ ulus_marry_into_the_line = {
 		}
 	}
 
+	# On the Amirs' Regency DISASTER panel (author, 2026-11-14): these
+	# are the regent's own business, and that is where a player looks
+	# for them. The houses' business (pledges, the claim, raids) stays
+	# on the ulus panel.
 	select_trigger = {
-		looking_for_a = international_organization
-		source = actor
+		looking_for_a = disaster
+		name = "choose_disaster"
 		target_flag = recipient
-		name = "choose_international_organization"
 		column = {
 			data = name
 		}
 		visible = {
-			international_organization_type = international_organization_type:ulus_chaghatay
+			disaster_type = disaster_type:amirs_regency
+			disaster_is_active = yes
 		}
 	}
 
@@ -259,7 +267,7 @@ ulus_marry_into_the_line = {
 # A year's income for ulus_gap_largesse points, once a year.
 # ------------------------------------------------------------
 ulus_distribute_largesse = {
-	type = internationalorganization
+	type = disaster
 	show_message = no
 
 	ai_tick = monthly
@@ -286,16 +294,20 @@ ulus_distribute_largesse = {
 		}
 	}
 
+	# On the Amirs' Regency DISASTER panel (author, 2026-11-14): these
+	# are the regent's own business, and that is where a player looks
+	# for them. The houses' business (pledges, the claim, raids) stays
+	# on the ulus panel.
 	select_trigger = {
-		looking_for_a = international_organization
-		source = actor
+		looking_for_a = disaster
+		name = "choose_disaster"
 		target_flag = recipient
-		name = "choose_international_organization"
 		column = {
 			data = name
 		}
 		visible = {
-			international_organization_type = international_organization_type:ulus_chaghatay
+			disaster_type = disaster_type:amirs_regency
+			disaster_is_active = yes
 		}
 	}
 
