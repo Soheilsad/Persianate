@@ -384,10 +384,10 @@ ulus_breaking_service_prestige = 25
 ulus_pledge_acceptance = {
 	# A tümen does not give half its weight away for nothing.
 	value = -25
-	# What they think of us: a third of their opinion (opinion runs to ±200).
+	# What they think of us: a sixth of their opinion (opinion runs to ±200).
 	add = {
 		value = "opinion(scope:actor)"
-		multiply = 0.33
+		multiply = 0.167
 	}
 	# Kin by marriage.
 	if = {
