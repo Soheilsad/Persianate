@@ -1,0 +1,115 @@
+# =====================================================================
+# SWORN AMIR — the Ṣāḥib-qirān's following.
+#
+# At the Ṣāḥib-qirān ending the amirs who think well of the man become
+# his subjects (scripted_effects/15_amirs_regency_effects.txt,
+# ulus_end_sahib_qiran). As ordinary vassals they cost him diplomatic
+# capacity by size: 163 against 8.8 in the author's first test. But they
+# were never administered dependencies. Temür's amirs were his personal
+# following: he kept them by leading them to plunder and spent his
+# reign moving them about so that none could build a base against him.
+#
+# So this type, cloned from the mod's ulus (subject_types/ulus.txt):
+#   - costs NO diplomatic capacity (diplomatic_capacity_cost_scale = 0;
+#     base uses 0 for one of its own types, the ulus uses 0.5);
+#   - carries NO loyalty of its own (loyalty_to_overlord = 0): what
+#     holds them is his fortune — sq_fortune_high_mod gives subject
+#     loyalty, sq_fortune_low_mod takes more away (main_menu/common/
+#     static_modifiers/17_sahib_qiran_fortune_modifiers.txt);
+#   - rides when called, pays a token in gold and a real share of men
+#     (prices/05_sahib_qiran_prices.txt, sworn_amir_pays);
+#   - is all but un-annexable (they are followers, not provinces) and
+#     is not inherited;
+#   - cannot be offered or asked for through diplomacy: it exists only
+#     by the ending.
+# The amirs who ride away at the reckoning (sahib_qiran.2) are the
+# subjects marked sq_sworn_amir, whatever their type.
+# =====================================================================
+
+sworn_amir = {
+	subject_pays = sworn_amir_pays
+	color = subject_appanage
+	level = 2
+	annullment_favours_required = 25
+
+	creation_visible = { always = no }
+	visible_through_diplomacy = { always = no }
+	visible_through_treaty = { always = no }
+	subject_creation_enabled = { always = no }
+	release_country_enabled = { always = no }
+
+	has_overlords_ruler = no
+	can_change_rank = yes
+	can_change_heir_selection = yes
+
+	overlord_inherit_if_no_heir = no
+
+	strength_vs_overlord = -0.20
+
+	annexation_speed = 0.1
+	annexation_min_years_before = 30
+	annexation_min_opinion = 160
+	annexation_stall_opinion = 140
+	overlord_can_cancel = yes
+	subject_can_cancel = no
+
+	join_offensive_wars_always = { always = no }
+	join_defensive_wars_always = { always = no }
+	join_offensive_wars_can_call = { always = yes }
+	join_defensive_wars_can_call = { always = yes }
+	will_join_independence_wars = yes
+
+	join_defensive_wars_auto_call = { always = no }
+
+	allow_declaring_wars = { always = yes }
+
+	can_attack = {
+		OR = {
+			NOT = { scope:defender = scope:overlord }
+			custom_tooltip = {
+				text = sworn_amir_turn_on_him_tt
+				scope:subject = { subject_loyalty < MIN_SUBJECT_LOYALTY_FOR_ACTION }
+			}
+		}
+	}
+
+	has_limited_diplomacy = yes
+	diplomatic_capacity_cost_scale = 0
+	great_power_score_transfer = 0.5
+
+	can_overlord_build_roads = no
+	can_overlord_build_buildings = no
+	can_overlord_build_rgos = no
+
+	overlord_modifier = {
+		monthly_horde_unity = 0.05
+		global_levy_size_modifier = 0.05
+			}
+
+	subject_modifier = {
+		global_levy_size_modifier = 0.10
+		loyalty_to_overlord = 0
+			}
+
+	diplo_chance_accept_subject = {
+		base = -9999
+	}
+	diplo_chance_accept_overlord = {
+		base = -9999
+	}
+
+	ai_wants_to_be_overlord = {
+		scope:subject = {
+			add = {
+				desc = "COALITION_GRADE_ANTAGONISM_TOWARDS_THEM_SUBJECT"
+				value = {
+					every_country_with_coalition_grade_antagonism_against_us = {
+						add = {
+							value = -10
+						}
+					}
+				}
+			}
+		}
+	}
+}

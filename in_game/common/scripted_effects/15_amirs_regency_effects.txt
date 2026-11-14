@@ -1160,7 +1160,7 @@ ulus_end_sahib_qiran = {
 		remove_variable = ulus_weight
 		make_subject_of = {
 			target = scope:ulus_sahib_qiran_realm
-			type = subject_type:vassal
+			type = subject_type:sworn_amir
 		}
 	}
 	every_in_list = {

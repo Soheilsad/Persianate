@@ -44,3 +44,23 @@
  # its title from this key.
  rise_of_timur: "Rise of [GetCountry('TIM').MakeScope.GetVariable('tim_founding_father').GetCharacter.GetFirstNameWithNoTooltip]"
  STATIC_MODIFIER_NAME_rot_timur_scare: "Dread of the Ṣāḥib-qirān"
+
+ # Subject type (subject_types/sworn_amir.txt)
+ sworn_amir: "Sworn Amir"
+ sworn_amir_desc: "An amir who swore to the Ṣāḥib-qirān when the ulus became one man's realm. He keeps his tümen and his pastures, rides when he is called, and sends men and a token of gold. He is a follower, not a governor: he takes up none of our diplomatic capacity and cannot be absorbed for a generation. Nothing binds him but our fortune. While it stands high he is loyal; when it runs low his loyalty goes with it, and if it lies empty he rides away."
+ sworn_amir_pays: "Sworn Amir rides for the Ṣāḥib-qirān"
+ sworn_amir_turn_on_him_tt: "A sworn amir turns on the Ṣāḥib-qirān only when his loyalty has failed."
+
+ # Outcomes of the situation (common/situations/rise_of_timur.txt)
+ rise_of_timur_empire_forged: "The Conjunction Holds"
+ rise_of_timur_conquests_stall: "The Amirs Ride Away"
+ rise_of_timur_conquests_stall_desc: "The fortune of [GetCountry('TIM').MakeScope.GetVariable('tim_founding_father').GetCharacter.GetName] lay empty too long, and the amirs who swore to him have gone. The campaign bonus lapses and outstanding claims of conquest expire."
+ rise_of_timur_sons_divide: "The Sons Divide"
+ rise_of_timur_sons_divide_desc: "The man who made the realm is dead and his heir has not found a fortune of his own. The campaign bonus lapses and outstanding claims of conquest expire."
+ sq_conjunction_holds_tt: "[GetCountry('TIM').GetNameWithNoTooltip] is master of Erānzamīn, holds Samarkand and Bukhara, and its fortune is not low"
+ sq_amirs_rode_away_tt: "The fortune of the Ṣāḥib-qirān has lain empty for two years and his sworn amirs have ridden away"
+ sq_sons_divide_tt: "The founder is dead and an heir's fortune has stayed low for five years running, or the realm has neither ruler nor heir"
+ sahib_qiran.3.title: "The Conjunction Holds"
+ sahib_qiran.3.desc: "From the Oxus to the passes of the west there is no one left to send a rival khuṭba. The cities that closed their gates have opened them, the amirs who rode for plunder now ride because there is nowhere else to ride, and the secretaries in Samarkand have begun to write of this house as though it had always been here.\n\nIt was made by one man's fortune. It will not need to be made again from nothing."
+ sahib_qiran.3.a: "Let them write it so."
+ sahib_qiran_conjunction_tt: "The situation ends. The fortune of the Ṣāḥib-qirān continues, but from now on each heir begins at #G 50#! instead of 25."

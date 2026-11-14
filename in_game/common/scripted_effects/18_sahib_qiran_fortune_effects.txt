@@ -171,6 +171,20 @@ sq_fortune_tick = {
 
 	# The reckoning. sq_reckoning_called (two months) keeps it from
 	# being called again before the event has run.
+	# Under an heir (sq_heir_reign, set at every accession after the
+	# founder's): months running in the low band, for the "Sons Divide"
+	# outcome of the situation.
+	if = {
+		limit = {
+			has_variable = sq_heir_reign
+			has_variable = sq_band_low
+		}
+		change_variable = { name = sq_heir_low_months add = 1 }
+	}
+	else_if = {
+		limit = { has_variable = sq_heir_reign }
+		set_variable = { name = sq_heir_low_months value = 0 }
+	}
 	if = {
 		limit = {
 			var:sq_empty_months >= sq_empty_months_needed
@@ -193,6 +207,8 @@ sq_fortune_reckoning = {
 		# base's form (overlord = { cancel_subject = prev })
 		overlord ?= { cancel_subject = prev }
 	}
+	# Read by the situation's "Amirs Ride Away" outcome.
+	set_variable = sq_reckoned
 	add_prestige = sq_reckoning_prestige
 	if = {
 		limit = { government_type = government_type:steppe_horde }
@@ -211,6 +227,14 @@ sq_fortune_succession = {
 		set_variable = { name = sq_man value = scope:sq_man_scope }
 	}
 	set_variable = { name = sq_fortune value = sq_fortune_heir }
+	# After the Conjunction has held (sahib_qiran.3) the house has a name
+	# of its own: the heir starts in the middle band, not at the bottom.
+	if = {
+		limit = { has_variable = sq_conjunction_held }
+		set_variable = { name = sq_fortune value = sq_fortune_heir_held }
+	}
+	set_variable = sq_heir_reign
+	set_variable = { name = sq_heir_low_months value = 0 }
 	set_variable = { name = sq_empty_months value = 0 }
 	sq_fortune_refresh = yes
 }

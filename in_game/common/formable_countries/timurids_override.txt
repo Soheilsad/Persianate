@@ -1,0 +1,28 @@
+# Base's "Timurids" formable: any UZBEK-culture country holding 80% of the
+# Persia region becomes TIM. The Uzbeks of Shaybān were the people who
+# destroyed the Timurids, and in this mod TIM is not a nation to be formed
+# at all: it is the realm of whoever came out of the Amirs' Regency as
+# Ṣāḥib-qirān (scripted_effects/16_sahib_qiran_effects.txt). Closed.
+# Base body otherwise verbatim (1.4.7).
+REPLACE:TIM_f = {
+	level = 3
+	required_locations_fraction = 0.8
+
+	rule = historical
+
+	potential = {
+		always = no
+	}
+
+	name = TIM
+	flag = TIM
+	adjective = TIM_ADJ
+	tag = TIM
+	color = map_TIM
+	regions = {
+		persia_region
+	}
+
+	form_effect = {
+	}
+}

@@ -8,9 +8,16 @@ sq_fortune_high_mod = {
 		category = country
 		decaying = no
 	}
-	subject_loyalty = 10
+	# 20, not 10: the sworn amirs (subject_types/sworn_amir.txt) carry no
+	# loyalty of their own; this is what holds them.
+	subject_loyalty = 20
 	monthly_horde_unity = 0.10
 	land_morale_modifier = 0.05
+	# THE CONQUEST MACHINE. Base gives auto-conquer to the man for life
+	# (character modifier timmy_wants_to_play). Here it belongs to the
+	# fortune: while his star is up, what his armies occupy is his; when
+	# it is not, he besieges and treats like anyone else.
+	auto_conquer_at_war = yes
 }
 
 # Failing: he has stopped winning, or stopped giving.
@@ -21,4 +28,28 @@ sq_fortune_low_mod = {
 	}
 	subject_loyalty = -15
 	monthly_horde_unity = -0.15
+}
+
+# Base's buff on the conqueror himself, given by rise_of_timur.1's option
+# to global_var:timur_character. Two lines removed from base (1.4.7):
+#   auto_conquer_at_war = yes        -> moved to sq_fortune_high_mod above
+#   character_life_expectancy = 20   -> no plot armour in this mod
+REPLACE:timmy_wants_to_play = {
+	game_data = {
+		category = character
+	}
+	force_allow_as_leader = yes
+	global_army_levy_size_modifier = 0.5
+	max_war_exhaustion = -5
+	aggressiveness_modifier = 1
+}
+
+# Base's third "legacy" choice (rise_of_timur.13.c) also carried a
+# permanent auto-conquer. Removed for the same reason; the rest is base.
+REPLACE:rot_legacy_fallback = {
+	game_data = {
+		category = country
+	}
+	antagonism_received_modifier = -0.1
+	land_morale_modifier = 0.15
 }

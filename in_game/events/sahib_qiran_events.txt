@@ -67,3 +67,29 @@ sahib_qiran.2 = {
 		}
 	}
 }
+
+# ----------------------------------------------------------------------------
+# .3 — THE CONJUNCTION HOLDS. Fired by the situation's first outcome
+# (common/situations/rise_of_timur.txt): master of Erānzamīn, Samarkand
+# and Bukhara still his. The situation ends; the fortune goes on, but
+# the house now has a name of its own (sq_conjunction_held: heirs start
+# at sq_fortune_heir_held).
+# ----------------------------------------------------------------------------
+sahib_qiran.3 = {
+	type = country_event
+	title = sahib_qiran.3.title
+	desc = sahib_qiran.3.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = sahib_qiran.3.a
+		custom_tooltip = sahib_qiran_conjunction_tt
+		set_variable = sq_conjunction_held
+		add_prestige = sq_conjunction_prestige
+	}
+}

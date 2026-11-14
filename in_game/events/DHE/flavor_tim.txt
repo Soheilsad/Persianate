@@ -19,9 +19,14 @@
 #
 # RE-DERIVE THIS FILE after any patch that touches base's copy, the same
 # maintenance the mod already carries for events/disaster/
-# horde_civil_war.txt and the setup files. The other hard references to
-# character:chg_timur_lame_borjigin in this file are left as base wrote
-# them; they are listed in the header of 16_sahib_qiran_effects.txt.
+# horde_civil_war.txt and the setup files. FOURTH CHANGE (2026-11-14): every
+# `character:chg_timur_lame_borjigin` below is now `global_var:sq_founder`
+# — the man who actually became the Ṣāḥib-qirān, stored for good by
+# 16_sahib_qiran_effects.txt (base's own global_var:timur_character is
+# removed when the situation ends, so it cannot serve). The death of the
+# conqueror, the Zafarnama and the rest now follow whoever he was. The
+# three disabled events stay disabled: they are about the historical
+# Temür's own childhood and his limp.
 
 namespace = flavor_tim
 
@@ -34,7 +39,7 @@ flavor_tim.1 = { #Death of Timur
 	fire_only_once = yes
 
 	trigger = {
-		scope:old_ruler ?= character:chg_timur_lame_borjigin
+		scope:old_ruler ?= global_var:sq_founder
 	}
 
 	illustration_tags = {
@@ -44,7 +49,7 @@ flavor_tim.1 = { #Death of Timur
 
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
-		character:chg_timur_lame_borjigin = { save_scope_as = target_timur }
+		global_var:sq_founder = { save_scope_as = target_timur }
 		set_variable = had_timur_ruler_variable
 
 		trigger_event_silently = {
@@ -358,7 +363,7 @@ flavor_tim.6 = { #Timur the Lame
 		# PERSIANATE WORLD: disabled — the "Lang" nickname and +mil for the historical Temür.
 		# The Ṣāḥib-qirān is whoever earns it; no scheduled favours.
 		always = no
-		character:chg_timur_lame_borjigin ?= {
+		global_var:sq_founder ?= {
 			is_alive = yes
 			owner = root
 			has_nickname = no
@@ -372,7 +377,7 @@ flavor_tim.6 = { #Timur the Lame
 
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
-		character:chg_timur_lame_borjigin = { save_scope_as = target_timur }
+		global_var:sq_founder = { save_scope_as = target_timur }
 	}
 
 	option = {
@@ -500,7 +505,7 @@ flavor_tim.8 = {
 				has_culture_group = culture_group:mongolian_group
 			}
 		}
-		character:chg_timur_lame_borjigin = {
+		global_var:sq_founder = {
 			is_alive = yes
 			is_adult = yes
 		}
@@ -511,12 +516,12 @@ flavor_tim.8 = {
 		every_owned_location = {
 			add_to_list = own_locations
 		}
-		character:chg_timur_lame_borjigin = {
+		global_var:sq_founder = {
 			save_scope_as = target_character
 		}
 		set_global_variable = {
 			name = timur_character
-			value = character:chg_timur_lame_borjigin
+			value = global_var:sq_founder
 		}
 		c:CHG ?= { save_scope_as = target_chagatai }
 		c:TIM = { save_scope_as = target_country }
@@ -804,7 +809,7 @@ flavor_tim.9 = {
 	trigger = {
 		OR = {
 			has_ruler = no
-			ruler != character:chg_timur_lame_borjigin
+			ruler != global_var:sq_founder
 		}
 		culture_group_percentage_in_country = {
 			culture_group = culture_group:iranian_group
@@ -821,7 +826,7 @@ flavor_tim.9 = {
 
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
-		character:chg_timur_lame_borjigin ?= {
+		global_var:sq_founder ?= {
 			save_scope_as = target_character
 		}
 
@@ -1065,7 +1070,7 @@ flavor_tim.12 = {
 	fire_only_once = yes
 
 	trigger = {
-		ruler ?= character:chg_timur_lame_borjigin
+		ruler ?= global_var:sq_founder
 		has_advance = tamerlane_chess
 	}
 
@@ -1173,7 +1178,7 @@ flavor_tim.14 = {
 			is_capital = no
 		}
 		government_type = government_type:monarchy
-		ruler != character:chg_timur_lame_borjigin
+		ruler != global_var:sq_founder
 	}
 
 	illustration_tags = {
@@ -1389,7 +1394,7 @@ flavor_tim.17 = {
 
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
-		character:chg_timur_lame_borjigin = {
+		global_var:sq_founder = {
 			save_scope_as = target_character
 		}
 
@@ -1680,7 +1685,7 @@ flavor_tim.1000 = { #A Problematic Individual
 		# PERSIANATE WORLD: disabled — the 1345-50 childhood chain (.1000-.1004), which buffs the historical Temür.
 		# The Ṣāḥib-qirān is whoever earns it; no scheduled favours.
 		always = no
-		character:chg_timur_lame_borjigin ?= {
+		global_var:sq_founder ?= {
 			is_alive = yes
 			owner = root
 		}
@@ -1704,7 +1709,7 @@ flavor_tim.1000 = { #A Problematic Individual
 
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
-		character:chg_timur_lame_borjigin = { save_scope_as = target_timur }
+		global_var:sq_founder = { save_scope_as = target_timur }
 		character:chg_taraghai_noyan_borjigin = { save_scope_as = target_father }
 		random_owned_location = {
 			limit = {
@@ -1747,7 +1752,7 @@ flavor_tim.1001 = { #Timur Calms Down
 	outcome = neutral
 
 	trigger = {
-		character:chg_timur_lame_borjigin ?= {
+		global_var:sq_founder ?= {
 			is_alive = yes
 			owner = root
 		}
@@ -1760,7 +1765,7 @@ flavor_tim.1001 = { #Timur Calms Down
 
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
-		character:chg_timur_lame_borjigin = { save_scope_as = target_timur }
+		global_var:sq_founder = { save_scope_as = target_timur }
 		if = {
 			limit = { exists = scope:target_father }
 			clear_saved_scope = target_father
@@ -1769,7 +1774,7 @@ flavor_tim.1001 = { #Timur Calms Down
 
 	option = { #Restrain is the key
 		name = flavor_tim.1001.a
-		character:chg_timur_lame_borjigin = {
+		global_var:sq_founder = {
 			if = {
 				limit = { has_trait = child_rowdy }
 				remove_trait = trait:child_rowdy
@@ -1781,7 +1786,7 @@ flavor_tim.1001 = { #Timur Calms Down
 
 	option = { #As long as he has learned his lesson
 		name = flavor_tim.1001.b
-		character:chg_timur_lame_borjigin = {
+		global_var:sq_founder = {
 			add_mil = -5
 		}
 		add_prestige = prestige_weak_bonus
@@ -1795,7 +1800,7 @@ flavor_tim.1002 = { #Timur Rebels
 	outcome = neutral
 
 	trigger = {
-		character:chg_timur_lame_borjigin ?= {
+		global_var:sq_founder ?= {
 			is_alive = yes
 			owner = root
 		}
@@ -1808,7 +1813,7 @@ flavor_tim.1002 = { #Timur Rebels
 
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
-		character:chg_timur_lame_borjigin = {
+		global_var:sq_founder = {
 			save_scope_as = target_timur
 			if = {
 				limit = {
@@ -1826,7 +1831,7 @@ flavor_tim.1002 = { #Timur Rebels
 
 	option = { #Enough of this!
 		name = flavor_tim.1002.a
-		character:chg_timur_lame_borjigin = {
+		global_var:sq_founder = {
 			if = {
 				limit = { has_trait = child_rowdy }
 				remove_trait = trait:child_rowdy
@@ -1838,7 +1843,7 @@ flavor_tim.1002 = { #Timur Rebels
 
 	option = { #There is actually nothing we can do
 		name = flavor_tim.1002.b
-		character:chg_timur_lame_borjigin = {
+		global_var:sq_founder = {
 			if = {
 				limit = { has_trait = child_rowdy }
 				remove_trait = trait:child_rowdy
@@ -1857,7 +1862,7 @@ flavor_tim.1003 = { #Timur Continues Rampaging
 	outcome = neutral
 
 	trigger = {
-		character:chg_timur_lame_borjigin ?= {
+		global_var:sq_founder ?= {
 			is_alive = yes
 			owner = root
 		}
@@ -1870,7 +1875,7 @@ flavor_tim.1003 = { #Timur Continues Rampaging
 
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
-		character:chg_timur_lame_borjigin = { save_scope_as = target_timur }
+		global_var:sq_founder = { save_scope_as = target_timur }
 		if = {
 			limit = { exists = scope:target_father }
 			clear_saved_scope = target_father
@@ -1902,7 +1907,7 @@ flavor_tim.1004 = { #Timur Learns Proper Manners
 	outcome = neutral
 
 	trigger = {
-		character:chg_timur_lame_borjigin ?= {
+		global_var:sq_founder ?= {
 			is_alive = yes
 			owner = root
 		}
@@ -1915,12 +1920,12 @@ flavor_tim.1004 = { #Timur Learns Proper Manners
 
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
-		character:chg_timur_lame_borjigin = { save_scope_as = target_timur }
+		global_var:sq_founder = { save_scope_as = target_timur }
 	}
 
 	option = {
 		name = flavor_tim.1004.a
-		character:chg_timur_lame_borjigin = {
+		global_var:sq_founder = {
 			random_list = {
 				10 = { add_adm = 5 }
 				10 = { add_dip = 5 }

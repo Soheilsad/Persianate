@@ -88,6 +88,13 @@ ulus_sahib_qiran_conquest_ambition = {
 			name = timur_character
 			value = scope:ulus_sq_man
 		}
+		# Never removed (base removes timur_character when the situation
+		# ends): read by events/DHE/flavor_tim.txt in place of the
+		# historical Temür.
+		set_global_variable = {
+			name = sq_founder
+			value = scope:ulus_sq_man
+		}
 		c:TIM = { save_scope_as = ulus_tim }
 
 		every_owned_location = {

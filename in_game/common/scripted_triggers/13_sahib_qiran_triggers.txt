@@ -1,0 +1,50 @@
+# Outcome tests of the Rise of Timur situation as this mod runs it
+# (common/situations/rise_of_timur.txt). Any scope; all read c:TIM.
+
+# THE CONJUNCTION HOLDS. He has made himself master of Erānzamīn
+# (is_eranzamin_consolidation_sustained, scripted_triggers/
+# 03_matter_triggers.txt) and still holds the two cities of
+# Transoxiana his rule began from, with his fortune not in the low band.
+sq_conjunction_holds = {
+	custom_tooltip = {
+		text = sq_conjunction_holds_tt
+		c:TIM ?= {
+			is_eranzamin_consolidation_sustained = yes
+			owns = location:samarkand
+			owns = location:bukhara
+			NOT = { has_variable = sq_band_low }
+		}
+	}
+}
+
+# THE AMIRS RIDE AWAY. The reckoning has happened: his fortune lay
+# empty sq_empty_years and the sworn amirs left (sq_fortune_reckoning
+# sets sq_reckoned on the realm).
+sq_amirs_rode_away = {
+	custom_tooltip = {
+		text = sq_amirs_rode_away_tt
+		c:TIM ?= { has_variable = sq_reckoned }
+	}
+}
+
+# THE SONS DIVIDE. The founder is dead and an heir's fortune has stayed
+# in the low band sq_sons_divide_months running (counted by
+# sq_fortune_tick as sq_heir_low_months), or the realm has neither
+# ruler nor heir.
+sq_sons_divide = {
+	custom_tooltip = {
+		text = sq_sons_divide_tt
+		c:TIM ?= {
+			OR = {
+				AND = {
+					has_variable = sq_heir_low_months
+					var:sq_heir_low_months >= sq_sons_divide_months
+				}
+				AND = {
+					has_heir = no
+					has_ruler = no
+				}
+			}
+		}
+	}
+}
