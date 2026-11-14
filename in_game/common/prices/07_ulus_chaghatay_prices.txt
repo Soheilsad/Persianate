@@ -1,0 +1,10 @@
+# Prices for Ulus Chaghatay (international_organizations/ulus_chaghatay.txt).
+#
+# The qubchur's base unit; the amount is set by the payment's
+# price_multiplier (1% of the amirs' tax-and-trade income), the same
+# construction as base tatar_yoke_leader_payments_price and the mod's
+# zaydi_zakat_price.
+
+ulus_chaghatay_qubchur_price = {
+	gold = 1
+}

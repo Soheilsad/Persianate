@@ -1,0 +1,185 @@
+# Ulus Chaghatay — the Chagatai khanate as an organisation, from 1337.
+#
+# Historical frame. In 1337 the Barlas around Kesh, the Jalayir at
+# Khujand, the Suldus at Balkh, the Qara'unas in the Afghan lands and
+# the rest held hereditary domains with their own followings. They were
+# more than provinces and less than foreign states: they were tümens of
+# ONE ulus, and a strong khan (Kebek, Tarmashirin) could command them
+# and reshuffle them. (Manz, The Rise and Rule of Tamerlane, ch. 2.)
+#
+# Vassalage gets both halves wrong. It hands each amir a liberty-desire
+# meter and separate diplomacy, gives the khan nothing he can do inside
+# an amir's domain, and has no answer to the question the regency
+# raises: when Qazaghan rules through a puppet khan after 1346, who is
+# the overlord? An organisation with a leader COUNTRY answers it. The
+# khan's rights are the organisation's rules, and the leadership can
+# move to whichever amir holds the khan.
+#
+# PHASE 1 (this file): structure only. The khan's realm (CHG, court at
+# Almaliq) leads; the amir domains are junior members ("Amir of the
+# Ulus", international_organization_special_statuses/ulus_chaghatay.txt).
+# No succession, regency or disaster logic yet — the two variables below
+# are the hooks the later phases open:
+#   ulus_amirs_may_fight    (on the IO)  lifts the ban on war inside
+#                                        the ulus (disaster stage 2)
+#   ulus_members_may_leave  (on the IO)  opens can_leave_trigger (the
+#                                        "defy and break east" branch)
+#   ulus_chaghatay_admitted (on a COUNTRY) lets script seat a new member
+#                                        (a darugha released as an amir)
+#
+# Leadership changes ONLY by script: set_leader_country (base
+# generic_actions/jihad_actions.txt, autocephalous_patriarchates.txt),
+# hence leader_change_trigger_type = none (base tatar_yoke.txt,
+# autocephalous_patriarchate.txt).
+#
+# Seeded in main_menu/setup/1337/15_international_organizations.txt.
+# The eleven amir tags were CHG's vassals in base; their dependency
+# lines are gone from the mod's 12_diplomacy.txt. Badakhshan, Karategin
+# and Qocho (tributary dynasties, not tümens) stay ordinary subjects.
+#
+# Panel: in_game/gui/panels/organization/ulus_chaghatay.gui, reading the
+# ledger rebuilt by monthly_effect (scripted_effects/
+# 14_ulus_chaghatay_effects.txt).
+
+ulus_chaghatay = {
+
+	has_target = no
+	unique = yes
+	expel_members_who_are_targets_of_other_members = no
+	disband_if_no_leader = no
+
+	has_leader_country = yes
+	leader_type = country
+	# The readme documents the key for both leader types (_MALE/_FEMALE
+	# are appended only for character leaders); no base country-led IO
+	# sets one, so all three keys are localized.
+	leader_title_key = "ULUS_CHAGHATAY_KHAN"
+	leader_change_trigger_type = none
+	leader_change_method = none
+
+	# One realm on the political map, as the khanate and its vassals
+	# were drawn before (base hre.txt; subject to the player's map
+	# setting). Colors: main_menu/common/named_colors/01_mod_colors.txt;
+	# the junior status overrides the member tint with its own map_color.
+	show_as_overlord_on_map_trigger = {
+		always = yes
+	}
+	show_on_diplomatic_map = yes
+	leader_color = map_ulus_chaghatay_khan
+	member_color = map_ulus_chaghatay_amir
+
+	# --- THE KHAN'S RIGHTS ------------------------------------------------
+	# 1. The amirs ride with the khan. Attacked, the whole ulus musters
+	#    without being asked; when the khan rides out, every member is
+	#    summoned (an AI amir weighs the call like any other). The khan in
+	#    turn can be called to an amir's defence against an outsider — a
+	#    protection the amirs had as vassals and would otherwise lose.
+	#    Amirs do not summon each other.
+	#    Scopes (readme): root = IO, scope:actor = caller,
+	#    scope:recipient = callee, scope:target = the enemy.
+	join_defensive_wars_always = {
+		scope:actor = { is_leader_of_international_organization = root }
+	}
+	join_defensive_wars_can_call = {
+		OR = {
+			scope:actor = { is_leader_of_international_organization = root }
+			scope:recipient = { is_leader_of_international_organization = root }
+		}
+	}
+	join_defensive_wars_auto_call = {
+		OR = {
+			scope:actor = { is_leader_of_international_organization = root }
+			scope:recipient = { is_leader_of_international_organization = root }
+		}
+	}
+	join_offensive_wars_can_call = {
+		scope:actor = { is_leader_of_international_organization = root }
+	}
+	join_offensive_wars_auto_call = {
+		scope:actor = { is_leader_of_international_organization = root }
+	}
+	gives_military_access_to_all_when_at_war = yes
+
+	# 2. No war inside the ulus — not on the khan, not on each other
+	#    (base tribal_confederation.txt). The Amirs' Regency lifts this by
+	#    setting ulus_amirs_may_fight on the IO.
+	can_declare_war = {
+		trigger_if = {
+			limit = {
+				scope:recipient = { NOT = { has_variable = ulus_amirs_may_fight } }
+				scope:attacker ?= { is_member_of_international_organization = scope:recipient }
+			}
+			scope:defender ?= { NOT = { is_member_of_international_organization = scope:recipient } }
+		}
+		trigger_else = {
+			always = yes
+		}
+	}
+	international_organization_modifier = {
+		cannot_declare_no_cb_wars_on_members = yes
+	}
+
+	# 3. Nobody leaves while a khan rules. The later stages set
+	#    ulus_members_may_leave on the IO.
+	can_leave_trigger = {
+		scope:recipient ?= { has_variable = ulus_members_may_leave }
+	}
+	auto_leave_trigger = {
+		always = no
+	}
+
+	# 4. The qubchur — payments_implemented below.
+
+	# --- MEMBERSHIP -------------------------------------------------------
+	# Closed. Members are seeded at start; script seats a later one by
+	# setting ulus_chaghatay_admitted on the country first.
+	create_visible_trigger = {
+		always = no
+	}
+	invite_visible_trigger = {
+		always = no
+	}
+	join_visible_trigger = {
+		always = no
+	}
+	can_join_trigger = {
+		has_variable = ulus_chaghatay_admitted
+	}
+
+	auto_disband_trigger = {
+		total_members < 2
+	}
+
+	# --- MODIFIERS --------------------------------------------------------
+	# Small on purpose: the khan's real benefit is the war call. Steppe
+	# hordes run on horde unity where others run on legitimacy.
+	leader_modifier = {
+		monthly_prestige = 0.05
+		monthly_horde_unity = 0.05
+	}
+	# A house whose pasture is confirmed by the khan's yarlıq stands a
+	# little firmer among its own.
+	non_leader_modifier = {
+		monthly_horde_unity = 0.02
+	}
+
+	on_joined = {
+	}
+
+	on_left = {
+	}
+
+	payments_implemented = {
+		ulus_chaghatay_qubchur
+	}
+
+	special_statuses_implemented = {
+		ulus_amir
+	}
+
+	ai_desire_to_join = {
+	}
+
+	ai_desire_to_allow_new_member = {
+	}
+}

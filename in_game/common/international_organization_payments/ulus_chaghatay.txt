@@ -1,0 +1,77 @@
+# The qubchur — the khan's share. Paid by every member that is not the
+# leader, to the leader country (the pattern of the mod's zaydi_zakat and
+# base tatar_yoke_leader_payments).
+#
+# LIGHT by decision: one part in a hundred of tax-and-trade income, the
+# old qubchur rate on the herds. A light levy keeps the amirs rich and
+# dangerous, which is what they were; the khan's real benefit from the
+# ulus is the war call, not the silver. An amir who slides the
+# maintenance down is withholding the khan's due and is seen to.
+
+ulus_chaghatay_qubchur = {
+	get_payer_list = {
+		every_international_organization_member = {
+			limit = {
+				NOT = { is_leader_of_international_organization = root }
+			}
+			add_to_local_variable_list = {
+				name = payers
+				target = this
+			}
+		}
+	}
+	get_payee_list = {
+		leader_country ?= {
+			add_to_local_variable_list = {
+				name = payees
+				target = this
+			}
+		}
+	}
+	price = ulus_chaghatay_qubchur_price
+	uses_maintenance = yes
+	maintenance_modifier = {
+		potential_trigger = { "payment_maintenance(scope:recipient|ulus_chaghatay_qubchur)" < 0.5 }
+		scale = {
+			value = 1
+			subtract = {
+				value = "payment_maintenance(scope:recipient|ulus_chaghatay_qubchur)"
+				multiply = 2
+			}
+		}
+		monthly_prestige = -0.05
+	}
+	maintenance_modifier = {
+		potential_trigger = { "payment_maintenance(scope:recipient|ulus_chaghatay_qubchur)" > 0.5 }
+		scale = {
+			value = "payment_maintenance(scope:recipient|ulus_chaghatay_qubchur)"
+			subtract = 0.5
+			multiply = 2
+		}
+		monthly_prestige = 0.02
+	}
+	price_multiplier = {
+		add = {
+			desc = "ULUS_CHAGHATAY_QUBCHUR_PAYMENT_MULTIPLIER"
+			every_international_organization_member = {
+				limit = {
+					NOT = { is_leader_of_international_organization = root }
+				}
+				add = monthly_income_trade_and_tax
+			}
+			multiply = 0.01
+		}
+	}
+	proportion_for_payer = {
+		add = {
+			desc = "ulus_chaghatay_qubchur"
+			value = monthly_income_trade_and_tax
+		}
+	}
+	proportion_for_payee = {
+		add = {
+			desc = "ulus_chaghatay_qubchur"
+			value = 1
+		}
+	}
+}

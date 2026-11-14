@@ -1,0 +1,28 @@
+# Ulus Chaghatay — membership tests. COUNTRY scope.
+#
+# The exists guard is there because the organisation can end (Bulqaq,
+# or the Ṣāḥib-qirān folding it into his realm, in the later phases);
+# international_organization:ulus_chaghatay is then an unset link.
+#
+# Read by: Erānzamīn's join rules and is_eranzamin_contender (the amir
+# domains sit in Transoxiana and Tukharistan, inside khorasan_region,
+# and are no longer anyone's subjects — without this they would qualify
+# as contenders for the Ilkhan's throne), the horde succession poll, and
+# the ulus ledger.
+
+is_ulus_chaghatay_member = {
+	exists = international_organization:ulus_chaghatay
+	is_member_of_international_organization = international_organization:ulus_chaghatay
+}
+
+# A junior member: in the ulus, and not the seat of the khan.
+is_ulus_chaghatay_amir = {
+	is_ulus_chaghatay_member = yes
+	NOT = { is_leader_of_international_organization = international_organization:ulus_chaghatay }
+}
+
+# The seat: the khan's own realm, or in a regency the regent's.
+is_ulus_chaghatay_leader = {
+	is_ulus_chaghatay_member = yes
+	is_leader_of_international_organization = international_organization:ulus_chaghatay
+}

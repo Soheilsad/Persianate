@@ -1,0 +1,54 @@
+# Coats of arms for the four domains carved out of the khan's share
+# (116_ulus_chaghatay_overrides.txt). Plain fields with a single charge,
+# in the manner of base's amir tags (CHG and JLY a square tamgha, DGH an
+# annulet): placeholders by land until the houses are researched.
+
+FGN = { # Fergana — the green valley, a crescent
+	pattern = "pattern_solid.dds"
+	color1 = "green"
+	color2 = "white"
+
+	colored_emblem = {
+		texture = "ce_crescent.dds"
+		color1 = color2
+		instance = { position = { 0.5 0.5 } scale = { 0.65 0.65 } }
+	}
+}
+
+CAC = { # Chach — Syr Darya ochre, a crescent
+	pattern = "pattern_solid.dds"
+	color1 = "yellow_mid"
+	color2 = "black"
+
+	colored_emblem = {
+		texture = "ce_crescent.dds"
+		color1 = color2
+		instance = { position = { 0.5 0.5 } scale = { 0.65 0.65 } }
+	}
+}
+
+ISQ = { # Issyk-Kul — the lake, a square tamgha as the khan's own
+	pattern = "pattern_solid.dds"
+	color1 = "blue"
+	color2 = "white"
+
+	colored_emblem = {
+		texture = "ce_square.dds"
+		color1 = color2
+		color2 = color2
+		instance = { position = { 0.5 0.5 } scale = { 0.8 0.8 } }
+	}
+}
+
+DZG = { # Dzungaria — an annulet on black
+	pattern = "pattern_solid.dds"
+	color1 = "black"
+	color2 = "yellow_mid"
+
+	colored_emblem = {
+		texture = "ce_frame_circle.dds"
+		color1 = color2
+		color2 = color2
+		instance = { position = { 0.5 0.5 } scale = { 0.75 0.75 } }
+	}
+}

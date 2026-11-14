@@ -61,6 +61,12 @@ join_eranzamin = {
         capital = {
             is_eranzamin_region_province = yes
         }
+        # A country born for Ulus Chaghatay (a later phase releases a
+        # darugha as an amir, marking him ulus_chaghatay_admitted before
+        # seating him) belongs to the khan's roll, not to the Ilkhanid
+        # succession.
+        NOT = { has_variable = ulus_chaghatay_admitted }
+        NOT = { is_ulus_chaghatay_member = yes }
         
     }
     effect = {

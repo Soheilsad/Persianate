@@ -12,4 +12,14 @@ colors = {
 
 	# Erānzamīn IO diplomatic-map tint (the role statuses override it)
 	map_eranzamin_member = rgb { 175 120 80 } # dusty terracotta — the contested ulus
+
+	# Ulus Chaghatay IO diplomatic-map tints (the Amir status carries its
+	# own map_color) and the four domains carved from the khan's share
+	# (in_game/setup/countries/ulus_chaghatay.txt)
+	map_ulus_chaghatay_khan = rgb { 60 85 160 } # the khan's blue
+	map_ulus_chaghatay_amir = rgb { 150 165 205 } # the tümens, paler
+	map_FGN = rgb { 96 150 96 } # Fergana — the irrigated valley
+	map_CAC = rgb { 176 132 72 } # Chach — Syr Darya ochre
+	map_ISQ = rgb { 70 140 170 } # Issyk-Kul — the lake
+	map_DZG = rgb { 132 110 160 } # Dzungaria — the northern slopes
 }

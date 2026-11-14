@@ -230,7 +230,7 @@ building_manager = {
 	astana_complex = { tag = GRG level = 1 location = bastam }
 	astana_complex = { tag = KAR level = 1 location = konya }
 	astana_complex = { tag = KRT level = 1 location = chishti_sarif }
-	astana_complex = { tag = CHG level = 1 location = turkestan }
+	astana_complex = { tag = CAC level = 1 location = turkestan } # Yasi is in the Ulus of Chach (116_ulus_chaghatay_overrides.txt)
 	astana_complex = { tag = INJ level = 1 location = kazerun }
 	
 	madrasa = { tag = JAL level = 1 location = baghdad }

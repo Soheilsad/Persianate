@@ -1718,4 +1718,42 @@ international_organization_manager = {
 			tafdil_without_sabb
 		}
 	}
+
+	#################################################################
+	# 				Ulus Chaghatay									#
+	#################################################################
+	# The Chagatai khanate as an organisation (in_game/common/
+	# international_organizations/ulus_chaghatay.txt). The khan's realm
+	# leads; the eleven amir domains that base makes CHG's vassals, and
+	# the four domains carved out of CHG's own share
+	# (116_ulus_chaghatay_overrides.txt), are junior members. BKH, KRG and
+	# QCH are not members: they stay the khan's subjects (12_diplomacy).
+	# creation_date: the kuriltai of 1269 on the Talas, where Qaidu,
+	# Baraq and Mengü-Temür divided Transoxiana without the Great Khan.
+	add_international_organization = {
+		type = ulus_chaghatay
+		creation_date = 1269.1.1
+
+		map_color = hsv360 { 225 55 60 }
+
+		members = {
+			#The khan's realm
+			CHG
+			#The amirs of Transoxiana and Tukharistan
+			BRL JLY YSU SLD KTT ART APD
+			#The southern tümens
+			QUN NGD BSD
+			#The east
+			DGH
+			#Carved from the khan's share
+			FGN CAC ISQ DZG
+		}
+		leader = CHG
+		ulus_amir = {
+			BRL JLY YSU SLD KTT ART APD
+			QUN NGD BSD
+			DGH
+			FGN CAC ISQ DZG
+		}
+	}
 }

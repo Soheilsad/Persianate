@@ -1,0 +1,56 @@
+﻿l_english:
+ # =====================================================================
+ # Ulus Chaghatay — the organisation, its standing, the qubchur, the
+ # four domains carved from the khan's share, and the panel.
+ # IO:     in_game/common/international_organizations/ulus_chaghatay.txt
+ # Panel:  in_game/gui/panels/organization/ulus_chaghatay.gui
+ # Ledger: in_game/common/scripted_effects/14_ulus_chaghatay_effects.txt
+ # =====================================================================
+
+ # --- The organisation ---
+ ulus_chaghatay: "Ulus Chaghatay"
+ ulus_chaghatay_desc: "The people and pastures Chinggis Khan gave his second son, from the Altai to the Amu Darya. The khan holds court at Almaliq; under him the tümens hold their hereditary domains: the Barlas at Kesh, the Jalayir at Khujand, the Suldus at Balkh, the Qara'unas in the Afghan lands, the Dughlats at Kashgar. They are not provinces and they are not foreign kings. They ride when the khan rides, they do not make war on him or on one another, and they send him the qubchur.\n\nThe khan's seat is the organisation's leader. It need not stay where it is."
+ ULUS_CHAGHATAY_KHAN: "Khan"
+ ULUS_CHAGHATAY_KHAN_MALE: "Khan"
+ ULUS_CHAGHATAY_KHAN_FEMALE: "Khatun"
+ io_opinion_ulus_chaghatay: "Of the same ulus"
+ io_trust_ulus_chaghatay: "Of the same ulus"
+ diplomatic_status_ulus_chaghatay_name: "Of Ulus Chaghatay"
+ diplomatic_status_ulus_chaghatay_tooltip: "This realm belongs to the Chagatai ulus: the khan's own seat, or one of the amir domains that answer it."
+ ulus_chaghatay_list_who_tt: "The khan and the amirs of Ulus Chaghatay:"
+
+ # --- Junior standing (Members tab group) ---
+ ulus_amir: "Amir of the Ulus"
+ ulus_amir_plural: "Amirs of the Ulus"
+ ulus_amir_desc: "The head of a tümen holding a hereditary domain inside the ulus. He answers the khan's summons to war, may not take the field against the khan or a fellow amir, and sends the qubchur. His house keeps its own succession."
+ MODIFIER_TYPE_NAME_ulus_amir_can_participate_in_parliament: "$ulus_amir$ in Parliament"
+ MODIFIER_TYPE_DESC_ulus_amir_can_participate_in_parliament: "This allows the [ShowSpecialStatusName('ulus_amir')] to suggest [parliament_agendas|e] in the [parliament|e] of an [international_organization|e]."
+ MODIFIER_TYPE_NAME_ulus_amir_agenda_impact: "Agenda Impact for $ulus_amir$"
+ MODIFIER_TYPE_DESC_ulus_amir_agenda_impact: "This modifies the support that the [parliament_agendas|e] that the [ShowSpecialStatusName('ulus_amir')] group proposes has."
+
+ # --- The qubchur ---
+ ulus_chaghatay_qubchur: "Qubchur for the Khan"
+ ulus_chaghatay_qubchur_desc: "The khan's share: one part in a hundred of each amir's income, sent to the seat of the ulus. It is a light levy. What the khan truly has of his amirs is their horsemen."
+ ULUS_CHAGHATAY_QUBCHUR_PAYMENT_MULTIPLIER: "1% of the amirs' [monthly_income_trade_and_tax|e]"
+ ulus_chaghatay_qubchur_price: "Qubchur"
+
+ # --- IO variables (header strip) ---
+ ulus_amir_count: "Amirs"
+ ulus_amir_count_desc: "The junior members of the ulus: every member that is not the khan's seat."
+ ulus_beg_power: "Weight of the Begs"
+ ulus_beg_power_desc: "The power of the nobles in the khan's own realm. At 50% the begs can raise a khan of their own when the throne next falls vacant."
+ ulus_amir_ratio: "Amirs to Khan"
+ ulus_amir_ratio_desc: "The combined [military_strength|e] of the amirs against the khan's own. At 2.00 the amirs can raise a khan of their own when the throne next falls vacant."
+ ULUS_COUNT_FORMAT: "$VAL|0$"
+ ULUS_PERCENT_FORMAT: "$VAL|0$%"
+ ULUS_RATIO_FORMAT: "$VAL|2$"
+
+ # --- The four domains carved from the khan's share ---
+ FGN: "Ulus of Fergana"
+ FGN_ADJ: "Ferganan"
+ CAC: "Ulus of Chach"
+ CAC_ADJ: "Chachi"
+ ISQ: "Ulus of Issyk-Kul"
+ ISQ_ADJ: "Issyk-Kul"
+ DZG: "Ulus of Dzungaria"
+ DZG_ADJ: "Dzungarian"

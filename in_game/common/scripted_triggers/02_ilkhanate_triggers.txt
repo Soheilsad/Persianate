@@ -41,6 +41,12 @@ is_eranzamin_contender = {
 	# but do not contend: no flavor.1, no warlord modifier, no
 	# contender actions such as Restore Persian Bureaucracy.
 	religion.group = religion_group:muslim
+	# Nor the members of Ulus Chaghatay: the Barlas, Jalayir, Suldus and
+	# the rest are independent of everyone but their own khan now (junior
+	# members of the organisation, no longer CHG's vassals), Muslim, and
+	# seated in khorasan_region — without this line every one of them
+	# would be flagged a contender at the situation's start.
+	NOT = { is_ulus_chaghatay_member = yes }
 
 	# Must be a relevant state
 	# OR = {

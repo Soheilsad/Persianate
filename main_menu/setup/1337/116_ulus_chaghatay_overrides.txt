@@ -1,0 +1,238 @@
+# =====================================================================
+# ULUS CHAGHATAY 1337 — the khan's own share, and four domains carved
+# out of it (design: the Ulus Chaghatay proposal; organisation in
+# in_game/common/international_organizations/ulus_chaghatay.txt).
+#
+# Base draws CHG as one tag of 127 locations from Urumqi to Tashkent,
+# with the Dughlats' Kashgaria as the only eastern domain beside it.
+# That makes the khan far stronger in his own right than any khan of
+# the 1330s was — Changshi, the fourth khan in three years, ruled what
+# his amirs let him rule — and it leaves the eastern party of the later
+# split (Moghulistan) with almost nobody in it.
+#
+# So the khan keeps the Ili and Zhetysu around Almaliq and Almaty, the
+# Talas and the Karatau foothills, and the passes north to the Emil;
+# four junior members of the ulus take the rest, by whole provinces:
+#
+#   FGN  Fergana              akhsikath, andijan, farghana        (16)
+#        Seat at Andijan, the town Qaidu and Duwa built to be the
+#        valley's capital. The hinge between west and east.
+#   CAC  Chach                chach, isbijab, otrar, turkestan    (27)
+#        Tashkent, Sayram and the middle Syr Darya down to Otrar and
+#        Yasi — Chagatayid mint towns facing the Jochid left wing.
+#   ISQ  Issyk-Kul and the Chu  chu, issyk_kul, naryn             (17)
+#        Balasagun, the lake basin and the upper Naryn: the summer
+#        pastures the Tarikh-i Rashidi later calls the heart of
+#        Moghulistan.
+#   DZG  Dzungaria            yangjibaliq, gurbantunggut          (10)
+#        Urumqi, Manas and the northern slopes of the Tian Shan.
+#
+#   CHG  keeps                almaliq, ilibalyk, kayalyk, almaty,
+#                             kuragharty, talas, akkol, emin,
+#                             bortala                              (57)
+#
+# WHO held which eastern valley in 1337 is thinly attested: the main
+# source, Mirza Haydar's Tarikh-i Rashidi, is two centuries later and
+# writes from the Dughlat side. The four are therefore named by LAND,
+# with random rulers, until the houses (Barin, Kereit, Qangli, Bekchik,
+# Choras are the candidates) are researched. Pops are untouched: this
+# is ownership only.
+#
+# RELIGION. Fergana and Chach are Sunni and Hanafi — Marghinan is the
+# town of the author of the Hidaya. The two eastern domains keep the
+# khan's own tengri: the eastern amirs deposed Tarmashirin in 1334 for
+# abandoning the yasa, and Islam reached them only with Tughluq Temür
+# in the 1350s. (Flip religion_definition in
+# in_game/setup/countries/ulus_chaghatay.txt and the include here if
+# they should start Muslim like the Dughlats.)
+#
+# Templates copied from the comparable base amir tags: JLY/BRL for the
+# western pair (eurasian_horde_no_coast_no_pleading, legacy_of_genghis),
+# CHG/DGH for the eastern pair (eurasian_horde_no_muslim).
+#
+# CHG is the base block verbatim with the shrunken territory. Its
+# tolerated_cultures list is deliberately NOT repeated: setup is
+# additive for those lists and a culture named in both the base block
+# and a mod block is billed twice (tools/culture_lists.py header).
+#
+# Same-tag blocks in a later file override the base 10_countries entry
+# (precedent: YEM/ZYD in 115_yemen_overrides.txt). File number 116 so
+# the new tags exist before 12_diplomacy and
+# 15_international_organizations name them.
+# =====================================================================
+
+countries = {
+	countries = {
+		CHG = { #Chagatai — the khan's own share
+			type = army
+			own_control_core = {
+				tamdy akkesene baba_ata nurlykent saudakent shavgar sholakkorgan
+				almaty boyauli karakastek karamergen kargaly kurty shengeldy talkhir
+				charyn chundzha kegen lavar shelek
+				dungene lepsy sagabuyen tekeli
+				merki aspara khantau kulan sretenskoe tasuktul tolekskoe
+				talas dzhulsub sarvaslyk tekabket yangi zherkorgan
+			}
+
+			own_control_integrated = {
+				almaliq gulja narat nilka tokkuztara bortala jing
+				kuytun urghtbulaq usu_xinjiang
+				targabatay dahra_sasykkol emin
+				ilanbalyk koktuma toli
+				ilibalyk koktal kayalyk tansyk
+			}
+
+			starting_technology_level = 3
+			include = "expl_mongols"
+			include = "eurasian_horde_no_muslim"
+			government = {
+					ruler_term = { character = chagatai_khan start_date = 1227.8.25 end_date = 1242.7.1 regnal_number = 1 }
+					ruler_term = { character = chg_qara_hulegu_borjigin start_date = 1242.7.1 end_date = 1246.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_yesu_mongke_borjigin start_date = 1246.1.1 end_date = 1252.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_qara_hulegu_borjigin start_date = 1252.1.1 end_date = 1252.2.1 regnal_number = 1 }
+					ruler_term = { character = chg_mubarak_shah_borjigin start_date = 1252.2.1 end_date = 1260.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_alghu_borjigin start_date = 1260.1.1 end_date = 1266.3.1 regnal_number = 1 }
+					ruler_term = { character = chg_mubarak_shah_borjigin start_date = 1266.3.1 end_date = 1266.6.1 regnal_number = 1 }
+					ruler_term = { character = baraq_borjigin start_date = 1266.6.1 end_date = 1270.7.22 regnal_number = 1 }
+					ruler_term = { character = chg_nebubei_borjigin start_date = 1270.7.22 end_date = 1272.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_buqa_temur_borjigin start_date = 1272.1.1 end_date = 1282.1.1 regnal_number = 1 }
+					ruler_term = { character = duwa_borjigin start_date = 1282.1.1 end_date = 1307.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_konchek_borjigin start_date = 1307.1.1 end_date = 1308.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_taliqu_borjigin start_date = 1308.1.1 end_date = 1309.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_kebek_borjigin start_date = 1309.1.1 end_date = 1310.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_esen_buqa_borjigin start_date = 1310.1.1 end_date = 1318.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_kebek_borjigin start_date = 1318.1.1 end_date = 1325.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_eljigidey_borjigin start_date = 1325.1.1 end_date = 1329.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_duwa_temur_borjigin start_date = 1329.1.1 end_date = 1330.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_tamashirin_borjigin start_date = 1330.1.1 end_date = 1334.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_buzan_borjigin start_date = 1334.1.1 end_date = 1335.1.1 regnal_number = 1 }
+					ruler_term = { character = chg_changsi start_date = 1335.1.1 regnal_number = 1 }
+
+				type = steppe_horde
+				heir_selection = tribal_oldest_male
+				ruler = chg_changsi
+
+				reforms = {
+					legacy_of_genghis
+				}
+			}
+			country_rank = rank_kingdom
+			court_language = karluk_language
+
+			capital = almaliq
+		}
+
+		FGN = { #Ulus of Fergana
+			type = army
+			own_control_core = {
+				akhsikath asht karasuu kasan kerben pop_fargana
+				andijan arslanbob gulcha jalalabad_fergana uzkand
+				fergana marghinan osh quva rishton
+			}
+
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "eurasian_horde_no_coast_no_pleading"
+			starting_technology_level = 3
+			government = {
+				type = steppe_horde
+				heir_selection = tribal_oldest_male
+				ruler = random
+
+				laws = {
+					sharia_law = hanafi_policy
+				}
+
+				reforms = {
+					legacy_of_genghis
+				}
+			}
+
+			religious_school = hanafi_school
+			government = { mysticism_vs_jurisprudence = 20 }
+
+			capital = andijan
+		}
+
+		CAC = { #Ulus of Chach
+			type = army
+			own_control_core = {
+				chach almalik_chach altyntobe bogiston burchmullo fanakat nuket
+				isbijab arsubaniket badam karabulak kazatlyk shymkent
+				otrar artyk_ata kyr_uzkand mardankuyik sutkent zemukh zhaushikumtobe
+				turkestan aktas_kystagy baydibek_ata ikan karnak sawran shilik
+			}
+
+			include = "expl_middle_east"
+			include = "expl_mongols"
+			include = "eurasian_horde_no_coast_no_pleading"
+			starting_technology_level = 3
+			government = {
+				type = steppe_horde
+				heir_selection = tribal_oldest_male
+				ruler = random
+
+				laws = {
+					sharia_law = hanafi_policy
+				}
+
+				reforms = {
+					legacy_of_genghis
+				}
+			}
+			country_rank = rank_duchy
+
+			religious_school = hanafi_school
+			government = { mysticism_vs_jurisprudence = 20 }
+
+			capital = chach
+		}
+
+		ISQ = { #Ulus of Issyk-Kul and the Chu
+			type = army
+			own_control_core = {
+				balasagun dzhul harandzuvan kysmyci nuzket sargau soltobe
+				barskoon balykchy kochkor san_tash
+				koshoy_korgon cholok_kaiyn chon_naryn jumgal ketmen_tobe naryn
+			}
+
+			starting_technology_level = 3
+			include = "expl_mongols"
+			include = "eurasian_horde_no_muslim"
+			government = {
+				type = steppe_horde
+				heir_selection = tribal_oldest_male
+				ruler = random
+
+				reforms = {
+					legacy_of_genghis
+				}
+			}
+
+			capital = balasagun
+		}
+
+		DZG = { #Ulus of Dzungaria
+			type = army
+			own_control_core = {
+				urumqi yangjibaliq kutubi ulan_us qanbalik
+				manas hoboksar gonganbao utbulaq zhekdeliq
+			}
+
+			starting_technology_level = 3
+			include = "expl_mongols"
+			include = "eurasian_horde_no_muslim"
+			government = {
+				type = steppe_horde
+				heir_selection = tribal_oldest_male
+				ruler = random
+
+				reforms = {
+					legacy_of_genghis
+				}
+			}
+
+			capital = urumqi
+		}
+	}
+}

@@ -1,0 +1,63 @@
+# Ulus Chaghatay — the junior standing.
+#
+# AMIR OF THE ULUS: every member that is not the leader. In 1337 that is
+# the heads of the tümens — Barlas, Jalayir, Suldus, Arlat, Apardi,
+# Yasa'uri, the Khuttalani amirs, the Qara'unas, Negüderi and Besüd in
+# the south, the Dughlats in the east — and the four domains carved out
+# of the khan's own share (Fergana, Chach, Issyk-Kul and the Chu,
+# Dzungaria). The status follows the seat, not the tag: when a later
+# phase moves the leadership to a regent, the regent's state loses it
+# and the khan's old realm, if it stays, gains it.
+#
+# Scopes (base readme): root = country, scope:recipient = the IO.
+# The field is auto_rescind_trigger (as every base status file writes
+# it), not the readme's auto_dismissal_trigger.
+
+ulus_amir = {
+	priority = 10
+
+	# The tümen rides under the khan's tug.
+	modifier = {
+		land_morale_modifier = 0.05
+	}
+
+	# The khan's standing is the number of amirs who answer him
+	# (multiplied by the count of holders; base lordship_of_ireland.txt,
+	# japanese_shogunate.txt).
+	leader_modifier = {
+		monthly_prestige = 0.005
+	}
+
+	can_bestow_trigger = {
+		is_member_of_international_organization = scope:recipient
+		NOT = { is_leader_of_international_organization = scope:recipient }
+	}
+
+	auto_bestowal_trigger = {
+		is_member_of_international_organization = scope:recipient
+		NOT = { is_leader_of_international_organization = scope:recipient }
+	}
+
+	auto_rescind_trigger = {
+		OR = {
+			NOT = { is_member_of_international_organization = scope:recipient }
+			is_leader_of_international_organization = scope:recipient
+		}
+	}
+
+	on_bestowed_effect = {
+	}
+
+	on_rescinded_effect = {
+	}
+
+	map_color = {
+		value = rgb { 150 165 205 }
+	}
+
+	# Only read by IO parliaments; the ulus has none in this version. Set
+	# so a later kuriltai weighs a great tümen above a small one.
+	special_status_power = {
+		value = num_locations
+	}
+}

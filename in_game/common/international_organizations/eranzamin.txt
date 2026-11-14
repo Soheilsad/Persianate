@@ -71,6 +71,8 @@ eranzamin = {
 	invite_visible_trigger = {
 		scope:target ?= {
 			capital = { is_eranzamin_region_province = yes }
+			# Not the tümens of the Chagatai ulus (see can_join_trigger).
+			NOT = { is_ulus_chaghatay_member = yes }
 		}
 		
 	}
@@ -84,6 +86,14 @@ eranzamin = {
 		capital = { is_eranzamin_region_province = yes }
 		
 		is_subject = no
+
+		# The amir domains of Ulus Chaghatay sit in Transoxiana and
+		# Tukharistan, inside khorasan_region, and since they stopped
+		# being CHG's vassals they would pass every test above. They
+		# answer a living Chagatayid khan; the Ilkhan's empty throne is
+		# not theirs to contend for while they do.
+		# (scripted_triggers/10_ulus_chaghatay_triggers.txt)
+		NOT = { is_ulus_chaghatay_member = yes }
 	}
 
 	# Members cannot voluntarily abandon the claim.
