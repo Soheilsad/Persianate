@@ -73,6 +73,21 @@ ulus_kingmaker_score = {
 	}
 }
 
+# The khan on the same scale as his amirs, for the panel's "Standing in
+# the ulus" ranking: an amir gets 25 for a WIFE of the line, the khan
+# twice that for being of the line himself.
+ulus_khan_line_bonus = 50
+
+# The stored score, for ordering that ranking (the khan's stored score
+# carries his line bonus; the script value above does not). COUNTRY scope.
+ulus_standing_score = {
+	value = 0
+	if = {
+		limit = { has_variable = ulus_kingmaker_score }
+		add = var:ulus_kingmaker_score
+	}
+}
+
 # A member's weight, for ordering (the stored variable; 0 before the
 # first ledger run). COUNTRY scope.
 ulus_realm_weight = {

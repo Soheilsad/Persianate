@@ -68,3 +68,107 @@ persianate_debug_advance_regency = { # DEBUG: +100 progress, i.e. the next stage
 		}
 	}
 }
+
+persianate_debug_take_regency = { # DEBUG: the player's state takes the khan
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		is_ulus_chaghatay_member = yes
+		NOT = { has_variable = ulus_regent_seat }
+		international_organization:ulus_chaghatay ?= {
+			has_variable = ulus_regency
+		}
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = persianate_debug_take_regency.a
+		ai_chance = { value = 0 }
+		effect = {
+			save_scope_as = ulus_new_regent
+			ulus_transfer_regency = yes
+		}
+	}
+}
+
+persianate_debug_sahib_qiran = { # DEBUG: stage 4, a wife of the line, the gap filled five years
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		is_ulus_chaghatay_member = yes
+		international_organization:ulus_chaghatay ?= {
+			has_variable = ulus_regency
+		}
+	}
+
+	allow = {
+		# The one thing this cannot supply: a living khan in the
+		# regent's keeping (enthrone one from the panel first).
+		international_organization:ulus_chaghatay ?= {
+			var:ulus_held_khan ?= { is_alive = yes }
+		}
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = persianate_debug_sahib_qiran.a
+		ai_chance = { value = 0 }
+		effect = {
+			international_organization:ulus_chaghatay ?= {
+				set_variable = { name = ulus_regency_stage value = 4 }
+				set_variable = { name = ulus_regency_progress value = 0 }
+				set_variable = { name = ulus_gap value = 100 }
+				set_variable = { name = ulus_gap_filled_months value = ulus_sahib_qiran_months }
+				set_variable = { name = ulus_gap_empty_months value = 0 }
+				leader_country ?= {
+					ruler ?= { set_variable = ulus_gurkan }
+				}
+				ulus_chaghatay_rebuild_ledger = yes
+			}
+		}
+	}
+}
+
+persianate_debug_bulqaq = { # DEBUG: the gap empty three years
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		is_ulus_chaghatay_member = yes
+		international_organization:ulus_chaghatay ?= {
+			has_variable = ulus_regency
+		}
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = persianate_debug_bulqaq.a
+		ai_chance = { value = 0 }
+		effect = {
+			international_organization:ulus_chaghatay ?= {
+				set_variable = { name = ulus_gap value = 0 }
+				set_variable = { name = ulus_gap_filled_months value = 0 }
+				set_variable = { name = ulus_gap_empty_months value = ulus_bulqaq_months }
+			}
+		}
+	}
+}

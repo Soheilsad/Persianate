@@ -68,9 +68,16 @@ ulus_chaghatay_rebuild_ledger = {
 		remove_variable = ulus_kingmaker_score
 		remove_variable = ulus_amir_share
 	}
+	every_in_global_list = {
+		variable = ulus_standing
+		remove_variable = ulus_kingmaker_score
+		remove_variable = ulus_seat_row
+	}
 	clear_global_variable_list = ulus_amirs
 	clear_global_variable_list = ulus_kingmakers
 	clear_global_variable_list = ulus_greatest_amirs
+	clear_global_variable_list = ulus_standing
+	remove_variable = ulus_heir_holds
 	remove_variable = ulus_khan_heir
 
 	set_local_variable = { name = ulus_n value = 0 }
@@ -289,6 +296,41 @@ ulus_chaghatay_rebuild_ledger = {
 		}
 	}
 
+	# ---4b. Standing in the ulus: the seat among the three kingmakers ----
+	# The khan is scored by the amirs' own formula (his ulus_amir_share
+	# was set just above), plus ulus_khan_line_bonus if he is of the line,
+	# and ranked with the three likeliest kingmakers. The ranking is for
+	# reading; what decides a succession is the bar (ulus_heir_holds, set
+	# at the end of step 5).
+	leader_country ?= {
+		set_variable = {
+			name = ulus_kingmaker_score
+			value = {
+				value = ulus_kingmaker_score
+				if = {
+					limit = { ulus_ruler_is_of_the_line = yes }
+					add = ulus_khan_line_bonus
+				}
+			}
+		}
+		set_variable = ulus_seat_row
+	}
+	ordered_international_organization_member = {
+		limit = {
+			OR = {
+				is_leader_of_international_organization = scope:ulus_io
+				is_target_in_global_variable_list = {
+					name = ulus_kingmakers
+					target = this
+				}
+			}
+		}
+		order_by = ulus_standing_score
+		max = 4
+		check_range_bounds = no
+		add_to_global_variable_list = { name = ulus_standing target = this }
+	}
+
 	# ---5. The regency bar ------------------------------------------------
 	set_variable = { name = ulus_amir_count value = local_var:ulus_n }
 	set_variable = { name = ulus_khan_weight value = local_var:ulus_khan_str }
@@ -366,6 +408,17 @@ ulus_chaghatay_rebuild_ledger = {
 			divide = ulus_regency_amir_ratio_now
 			max = 1
 		}
+	}
+
+	# Would the khan's heir hold the seat today? (The panel's line under
+	# the standing; ulus_regency_bar_met is the poll's own test.)
+	if = {
+		limit = {
+			leader_country ?= {
+				NOT = { ulus_regency_bar_met = yes }
+			}
+		}
+		set_variable = ulus_heir_holds
 	}
 
 	# ---6. During a regency: what the Succession card shows instead -----

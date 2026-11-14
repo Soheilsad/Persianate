@@ -40,6 +40,11 @@ ulus_amir_house_succession = {
 		# Set for six months when the leader has just IMPOSED this
 		# ruler (ulus_impose_kinsman): he does not confirm his own act.
 		NOT = { has_variable = ulus_succession_settled }
+		# The rulers seated at setup (and the mod's character swaps at
+		# game start) count as "new rulers" on day one: nine events at
+		# once. Silent for the first month after the 1337.4.1 start
+		# (the date form base's own DHE triggers use).
+		current_date > 1337.5.1
 	}
 	effect = {
 		save_scope_as = ulus_amir_house

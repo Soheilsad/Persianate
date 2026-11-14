@@ -680,8 +680,8 @@ organization_geodiplomatic_theme = {
 						}
 					}
 
-					# If the khan died today: a DIFFERENT ranking, by
-					# kingmaker score.
+					# Standing in the ulus: the khan and the three likeliest
+					# kingmakers, by kingmaker score (list ulus_standing).
 					hbox = {
 						layoutpolicy_horizontal = expanding
 						margin_top = 6
@@ -702,7 +702,7 @@ organization_geodiplomatic_theme = {
 						}
 					}
 					text_single = {
-						visible = "[IsDataModelEmpty(GetGlobalList('ulus_kingmakers'))]"
+						visible = "[IsDataModelEmpty(GetGlobalList('ulus_standing'))]"
 						layoutpolicy_horizontal = expanding
 						align = left|nobaseline
 						text = "ULUS_NO_KINGMAKERS"
@@ -713,7 +713,7 @@ organization_geodiplomatic_theme = {
 					# Notables-tab heads list of eranzamin.gui).
 					vbox = {
 						spacing = 2
-						datamodel = "[GetGlobalList('ulus_kingmakers')]"
+						datamodel = "[GetGlobalList('ulus_standing')]"
 						item = {
 							widget = {
 								datacontext = "[Scope.GetCountry]"
@@ -733,12 +733,21 @@ organization_geodiplomatic_theme = {
 								text_single = {
 									parentanchor = left|vcenter
 									position = { 215 0 }
-									size = { 190 24 }
+									size = { 165 24 }
 									autoresize = no
 									align = left|nobaseline
 									fontsize = 12
 									text = "[Country.GetGovernment.GetRulerOrRegent.GetShortNameWithNoTooltip]"
 									default_format = "#subtle_name"
+								}
+								# The seat's own row.
+								icon = {
+									visible = "[Country.MakeScope.GetVariable('ulus_seat_row').IsSet]"
+									parentanchor = left|vcenter
+									position = { 384 0 }
+									size = { 22 22 }
+									texture = "gfx/interface/icons/character_roles/ruler.dds"
+									tooltip = "ULUS_SEAT_ROW_TT"
 								}
 								text_single = {
 									visible = "[Country.MakeScope.GetVariable('ulus_kingmaker_score').IsSet]"
@@ -752,6 +761,23 @@ organization_geodiplomatic_theme = {
 								}
 							}
 						}
+					}
+					# What the bars above come to today.
+					text_single = {
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_heir_holds').IsSet]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_HEIR_HOLDS"
+						default_format = "#subtle_name"
+						tooltip = "ULUS_OUTCOME_TT"
+					}
+					text_single = {
+						visible = "[Not(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_heir_holds').IsSet)]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_AMIRS_WOULD_RISE"
+						default_format = "#yellow_titles"
+						tooltip = "ULUS_OUTCOME_TT"
 					}
 				}
 				}
