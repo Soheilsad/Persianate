@@ -84,6 +84,29 @@ country_flavor = {
 
 	################## EMPIRE ##################
 
+	# --- PERSIANATE WORLD MOD: the Ṣāḥib-qirān's regime -----------------
+	# A beg who has taken the ulus behind a khan of the line is not a
+	# khan and did not call himself one: Temür was Amīr Temür Güregen,
+	# "the son-in-law", to the end. Ahead of every rank default (no rank
+	# test: whatever the realm's rank, the horde entries below would give
+	# Khān / Khāghān). The second entry is his heirs' style when the
+	# ruler has no wife of the line.
+	text = {
+		localization_key = rank_gurkan_horde
+		trigger = {
+			government_type = government_type:steppe_horde
+			has_reform = government_reform:gurkan_of_the_ulus
+			ulus_ruler_is_gurkan = yes
+		}
+	}
+	text = {
+		localization_key = rank_gurkan_horde_mirza
+		trigger = {
+			government_type = government_type:steppe_horde
+			has_reform = government_reform:gurkan_of_the_ulus
+		}
+	}
+
 	# --- PERSIANATE WORLD MOD: Erānzamīn persianate_sultanate titles ---
 	# Injected ahead of all rank defaults so a persianate_sultanate seated
 	# in the Iran-zamīn region reads with Persianate titles (Pādshāhī /

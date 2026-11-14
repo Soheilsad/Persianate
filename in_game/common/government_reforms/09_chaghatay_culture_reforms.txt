@@ -1,0 +1,53 @@
+# =====================================================================
+# REPLACE: base legacy_of_genghis (government_reforms/steppe_horde.txt:1)
+# — one line added to each of `potential` and `locked`.
+#
+# Base keys the reform on `culture = culture:mongolian_culture` (or a
+# Borjigin ruler). The tümens of the western Ulus Chaghatay start with
+# it (base 10_countries: BRL, JLY, QUN, SLD...; this mod's FGN and CAC)
+# and are chaghatay_culture since in_game/common/cultures/chaghatay.txt,
+# with amirs who are not Borjigin: without this they would hold a reform
+# whose own `potential` they fail. The Chaghatay kept the yasa, the
+# decimal host and the quriltai — that is the legacy the reform names —
+# long after they stopped speaking Mongolian. The same goes for the
+# Ṣāḥib-qirān's realm, which is given this reform on release
+# (scripted_effects/16_sahib_qiran_effects.txt).
+#
+# Everything else base verbatim (1.4.7); re-diff after a patch.
+# =====================================================================
+
+REPLACE:legacy_of_genghis = {
+	age = age_1_traditions
+	government = steppe_horde
+	major = yes
+
+	potential = {
+		OR = {
+			culture = culture:mongolian_culture
+			culture = culture:chaghatay_culture
+			ruler ?= { 
+				has_dynasty = yes
+				dynasty ?= dynasty:borjigin_dynasty
+			}
+		}
+		country_type = army
+	}
+	
+	locked = {
+		OR = {
+			culture = culture:mongolian_culture
+			culture = culture:chaghatay_culture
+			ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
+		}
+		country_type = army
+	}
+
+	
+	country_modifier = {
+		army_light_cavalry_maintenance_cost_modifier = -0.1
+		court_spending_efficiency = 0.4
+		monthly_towards_aristocracy = societal_value_monthly_move
+	}
+
+	years = 2
+}

@@ -343,7 +343,7 @@ QUN = { #Qara'unas
 	color = map_QUN
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = chaghatay_culture
 	religion_definition = sunni
 }
 
@@ -359,7 +359,7 @@ ART = { #Arlat
 	color = map_ART
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = chaghatay_culture
 	religion_definition = sunni
 }
 
@@ -367,7 +367,7 @@ APD = { #Apardi
 	color = map_APD
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = chaghatay_culture
 	religion_definition = sunni
 }
 
@@ -375,7 +375,7 @@ SLD = { #Suldus
 	color = map_SLD
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = chaghatay_culture
 	religion_definition = sunni
 }
 
@@ -383,7 +383,7 @@ BRL = { #Barlas
 	color = map_BRL
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = chaghatay_culture
 	religion_definition = sunni
 }
 
@@ -391,7 +391,7 @@ YSU = { #Yasa'uri
 	color = map_YSU
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = chaghatay_culture
 	religion_definition = sunni
 }
 
@@ -399,7 +399,7 @@ KTT = { #Khuttal
 	color = map_KTT
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = chaghatay_culture
 	religion_definition = sunni
 }
 
@@ -407,7 +407,7 @@ JLY = { #Jalayirs
 	color = map_JLY
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = chaghatay_culture
 	religion_definition = sunni
 }
 

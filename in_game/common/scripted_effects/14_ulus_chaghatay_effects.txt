@@ -514,5 +514,45 @@ ulus_chaghatay_rebuild_ledger = {
 				set_variable = ulus_stage_is_1
 			}
 		}
+
+		# The same readings on the REGENT'S STATE, for the disaster's own
+		# panel (gui/panels/disaster/amirs_regency.gui), which can only
+		# read its owner. Rewritten every month; a state that has lost
+		# the khan has lost the disaster with him, so stale copies on a
+		# former regent are never shown.
+		leader_country ?= {
+			remove_variable = ulus_d_stage_1
+			remove_variable = ulus_d_stage_2
+			remove_variable = ulus_d_stage_3
+			remove_variable = ulus_d_stage_4
+			if = {
+				limit = { scope:ulus_io = { has_variable = ulus_stage_is_4 } }
+				set_variable = ulus_d_stage_4
+			}
+			else_if = {
+				limit = { scope:ulus_io = { has_variable = ulus_stage_is_3 } }
+				set_variable = ulus_d_stage_3
+			}
+			else_if = {
+				limit = { scope:ulus_io = { has_variable = ulus_stage_is_2 } }
+				set_variable = ulus_d_stage_2
+			}
+			else = {
+				set_variable = ulus_d_stage_1
+			}
+			if = {
+				limit = { scope:ulus_io = { has_variable = ulus_regency_stage } }
+				set_variable = { name = ulus_d_stage value = scope:ulus_io.var:ulus_regency_stage }
+			}
+			if = {
+				limit = { scope:ulus_io = { has_variable = ulus_regency_progress } }
+				set_variable = { name = ulus_d_progress value = scope:ulus_io.var:ulus_regency_progress }
+			}
+			if = {
+				limit = { scope:ulus_io = { has_variable = ulus_gap } }
+				set_variable = { name = ulus_d_gap value = scope:ulus_io.var:ulus_gap }
+			}
+			set_variable = { name = ulus_d_heir value = scope:ulus_io.var:ulus_heir_bar }
+		}
 	}
 }

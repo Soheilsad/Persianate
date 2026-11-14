@@ -1,0 +1,24 @@
+# The Ṣāḥib-qirān's fortune, by band
+# (in_game/common/scripted_effects/18_sahib_qiran_fortune_effects.txt).
+# Kept by sq_fortune_refresh: one of the two, or neither.
+
+# High: the amirs follow a man whose star is up.
+sq_fortune_high_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	subject_loyalty = 10
+	monthly_horde_unity = 0.10
+	land_morale_modifier = 0.05
+}
+
+# Failing: he has stopped winning, or stopped giving.
+sq_fortune_low_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	subject_loyalty = -15
+	monthly_horde_unity = -0.15
+}

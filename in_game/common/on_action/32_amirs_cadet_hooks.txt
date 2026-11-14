@@ -1,0 +1,102 @@
+# =====================================================================
+# THE CADET TAKES THE TÜMEN — engine hooks
+# (scripted_effects/17_amirs_cadet_effects.txt).
+#
+# Re-declaring an engine on_action EXTENDS it; nothing here replaces
+# the hooks other files hang on the same on_actions
+# (31_amirs_regency_hooks.txt, 24_warlord_conquest_hooks.txt).
+#
+#   on_losing_war          root = country; scope:winner, scope:loser
+#   on_siege_won /
+#   on_location_occupied   root = the occupier; scope:target = location
+#   yearly_country_pulse   root = country
+# =====================================================================
+
+# ---THE HOUSE HAS LOST A WAR TO AN INVADER -----------------------------
+on_losing_war = {
+	on_actions = {
+		ulus_cadet_house_beaten
+	}
+}
+
+ulus_cadet_house_beaten = {
+	trigger = {
+		has_variable = ulus_weight	# cheap: only members carry it
+		scope:loser ?= { this = root }
+		exists = scope:winner
+		ulus_house_open_to_cadet_route = yes
+		scope:winner = { ulus_is_cadet_route_invader = yes }
+	}
+	effect = {
+		scope:winner = { save_scope_as = ulus_cadet_invader }
+		set_variable = { name = ulus_cadet_asked value = 1 months = 24 }
+		trigger_event_non_silently = amirs_cadet.1
+	}
+}
+
+# ---THE HOUSE'S OWN CAMP HAS FALLEN ------------------------------------
+on_siege_won = {
+	on_actions = {
+		ulus_cadet_capital_taken
+	}
+}
+
+on_location_occupied = {
+	on_actions = {
+		ulus_cadet_capital_taken
+	}
+}
+
+ulus_cadet_capital_taken = {
+	trigger = {
+		ulus_regency_stage_at_least = { STAGE = 3 }
+		ulus_is_cadet_route_invader = yes
+		scope:target ?= {
+			is_capital = yes
+			owner ?= {
+				has_variable = ulus_weight
+				is_at_war_with = root
+				ulus_house_open_to_cadet_route = yes
+			}
+		}
+	}
+	effect = {
+		save_scope_as = ulus_cadet_invader
+		scope:target.owner = {
+			# Both hooks can fire for the one fall of the camp.
+			set_variable = { name = ulus_cadet_asked value = 1 months = 24 }
+			trigger_event_non_silently = amirs_cadet.1
+		}
+	}
+}
+
+# ---STAGE 2: A KINSMAN WHO IS THE BETTER SOLDIER -----------------------
+# Rare. About fifteen houses are polled once a year; perhaps a fifth of
+# them have such a man; the pulse lets about one in thirty through, and
+# after one coup anywhere in the ulus the others wait eight years
+# (ulus_cadet_coup_recent, on the organisation). Once or twice in a
+# regency.
+yearly_country_pulse = {
+	on_actions = {
+		ulus_cadet_coup_pulse
+	}
+}
+
+ulus_cadet_coup_pulse = {
+	trigger = {
+		has_variable = ulus_weight
+		is_ulus_chaghatay_amir = yes
+		ulus_regency_stage_at_least = { STAGE = 2 }
+		at_war = no
+		NOT = { has_variable = ulus_cadet_recent }
+		NOT = { has_variable = ulus_fled_chief }
+		international_organization:ulus_chaghatay ?= {
+			NOT = { has_variable = ulus_cadet_coup_recent }
+		}
+		ulus_house_has_ambitious_cadet = yes
+	}
+	random_events = {
+		97 = 0
+		3 = amirs_cadet.20
+	}
+}

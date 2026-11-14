@@ -81,7 +81,7 @@ grant_ulus = {
 		enabled = {
 			custom_tooltip = {
 				text = grant_ulus_must_be_borjigin_tt
-				is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+				is_of_chinggis_line = yes
 			}
 			custom_tooltip = {
 				text = grant_ulus_must_be_adult_tt

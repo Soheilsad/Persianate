@@ -1,0 +1,7 @@
+# Prices of the Ṣāḥib-qirān's actions
+# (generic_actions/sahib_qiran_actions.txt). scaled_gold is in months
+# of income.
+
+sq_distribute_plunder_price = {
+	scaled_gold = 12
+}

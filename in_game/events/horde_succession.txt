@@ -83,6 +83,13 @@ horde_succession.1 = {
 		# his heir keeps the khan (amirs_regency.40, fired by
 		# on_action/31_amirs_regency_hooks.txt after the same delay).
 		NOT = { is_ulus_regent = yes }
+		# Nor a Ṣāḥib-qirān's realm, in his reign or his heirs': it was
+		# never a khan's throne, so its blood cannot fail. (Without this
+		# the new realm was polled as one and told "There Is No One Left
+		# to Raise".) His succession is sahib_qiran.1
+		# (on_action/33_sahib_qiran_hooks.txt). The variable is set the
+		# day the realm is made; this poll comes 30-80 days later.
+		NOT = { has_variable = ulus_sahib_qiran }
 	}
 
 	immediate = {
@@ -120,7 +127,7 @@ horde_succession.1 = {
 				is_alive = yes
 				is_adult = yes
 				is_female = no
-				is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+				is_of_chinggis_line = yes
 			}
 			change_local_variable = { name = blood add = 1 }
 		}
@@ -130,7 +137,7 @@ horde_succession.1 = {
 		every_subject = {
 			limit = {
 				is_subject_type = ulus
-				ruler ?= { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+				ruler ?= { is_of_chinggis_line = yes }
 			}
 			change_local_variable = { name = blood add = 1 }
 		}
@@ -144,7 +151,7 @@ horde_succession.1 = {
 				is_ruler = no
 				is_adult = yes
 				is_female = no
-				is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+				is_of_chinggis_line = yes
 			}
 			change_local_variable = { name = contest add = 1 }
 		}
@@ -153,7 +160,7 @@ horde_succession.1 = {
 		every_subject = {
 			limit = {
 				is_subject_type = ulus
-				ruler ?= { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+				ruler ?= { is_of_chinggis_line = yes }
 			}
 			change_local_variable = { name = contest add = 4 }
 		}
@@ -219,7 +226,7 @@ horde_succession.1 = {
 			limit = {
 				NOT = { has_reform = government_reform:beglerbeg_regency }
 				OR = {
-					NOT = { ruler ?= { is_patrilineal_descendant_of = dynasty:borjigin_dynasty } }
+					NOT = { ruler ?= { is_of_chinggis_line = yes } }
 					AND = {
 						local_var:seats >= 4
 						"estate_power(estate_type:nobles_estate)" > 0.35

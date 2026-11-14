@@ -1,0 +1,69 @@
+namespace = sahib_qiran
+
+# ============================================================================
+# THE ṢĀḤIB-QIRĀN'S FORTUNE — events
+# (scripted_effects/18_sahib_qiran_fortune_effects.txt; fired from
+# on_action/33_sahib_qiran_hooks.txt and the monthly tick).
+#
+#   .1   The Sons and the Amirs — a new man on the seat; the fortune
+#        was his father's.
+#   .2   The Amirs Ride Away — the fortune empty sq_empty_years
+#        running.
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# .1 — THE SONS AND THE AMIRS. Temür died at Otrar in February 1405
+# having named Pir Muhammad. Khalil Sultan took Samarkand and the
+# treasury within weeks; Shah Rukh held Herat; it was 1409 before one
+# of them ruled the whole. The effect (the fortune reset to
+# sq_fortune_heir) has already run in the hook.
+# ----------------------------------------------------------------------------
+sahib_qiran.1 = {
+	type = country_event
+	title = sahib_qiran.1.title
+	desc = sahib_qiran.1.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		has_variable = sq_fortune
+	}
+
+	option = {
+		name = sahib_qiran.1.a
+		custom_tooltip = sahib_qiran_succession_tt
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .2 — THE AMIRS RIDE AWAY. No victories, no plunder, nothing given:
+# the men who swore at the ending were sworn to a fortune, and it is
+# gone. See sq_fortune_reckoning.
+# ----------------------------------------------------------------------------
+sahib_qiran.2 = {
+	type = country_event
+	title = sahib_qiran.2.title
+	desc = sahib_qiran.2.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		has_variable = sq_fortune
+	}
+
+	option = {
+		name = sahib_qiran.2.a
+		custom_tooltip = sahib_qiran_reckoning_tt
+		hidden_effect = {
+			sq_fortune_reckoning = yes
+		}
+	}
+}

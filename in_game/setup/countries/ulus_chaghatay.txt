@@ -7,9 +7,11 @@
 #
 # Named by LAND, not by house: which tümen held which eastern valley in
 # 1337 is thinly attested (the Tarikh-i Rashidi is two centuries later
-# and writes from the Dughlat side). Mongol by culture like the base
-# amir tags (BRL, JLY, DGH). Fergana and Chach are Sunni; the two
-# eastern domains keep the khan's tengri — the east took Islam with
+# and writes from the Dughlat side). Fergana and Chach are Chaghatay
+# by culture like the western amir tags (BRL, JLY: in_game/common/
+# cultures/chaghatay.txt); the two eastern domains stay Mongol like DGH,
+# and that line is the one the ulus splits along. Fergana and Chach are
+# Sunni; the two eastern domains keep the khan's tengri — the east took Islam with
 # Tughluq Temür in the 1350s, not before.
 # Colors: main_menu/common/named_colors/01_mod_colors.txt.
 # =====================================================================
@@ -18,7 +20,7 @@ FGN = { #Ulus of Fergana — Andijan, Qaidu and Duwa's foundation
 	color = map_FGN
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = chaghatay_culture
 	religion_definition = sunni
 }
 
@@ -26,7 +28,7 @@ CAC = { #Ulus of Chach — Tashkent and the middle Syr Darya
 	color = map_CAC
 	color2 = rgb { 16 41 202 }
 
-	culture_definition = mongolian_culture
+	culture_definition = chaghatay_culture
 	religion_definition = sunni
 }
 

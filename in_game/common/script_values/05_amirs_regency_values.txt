@@ -243,3 +243,91 @@ ulus_sahib_qiran_loyal_opinion = 0
 # Gold in the new tag's treasury when the conquest ambition releases
 # TIM around him (base's scheduled Timur is handed 3000).
 ulus_sahib_qiran_gold = 1000
+
+# =====================================================================
+# 9. THE ṢĀḤIB-QIRĀN'S FORTUNE (dawlat) — the legitimacy gap carried
+#    into the winner's reign (scripted_effects/
+#    18_sahib_qiran_fortune_effects.txt). 0..100 on his COUNTRY.
+# =====================================================================
+
+# At or above this his fortune is high (the amirs follow); below the
+# low line it is failing (they look elsewhere).
+sq_fortune_high_line = 60
+sq_fortune_low_line = 30
+# Drain per month (the regency's stage-4 drain).
+sq_fortune_drain = 0.6
+# ...multiplied by this while he is at war (a campaign is itself the
+# argument)...
+sq_fortune_war_factor = 0.5
+# ...and by this once he has sat at peace longer than the months below.
+sq_fortune_idle_factor = 2
+sq_fortune_idle_months = 36
+# What fills it (the regency's own figures).
+sq_fortune_great_battle = 4
+sq_fortune_siege = 2
+sq_fortune_war_won = 10
+sq_fortune_war_lost = -15
+sq_fortune_largesse = 10
+# An heir starts here, whatever his father left: the fortune was the
+# man's, not the house's.
+sq_fortune_heir = 25
+# Years of an EMPTY fortune running before the sworn amirs ride away.
+sq_empty_years = 2
+sq_empty_months_needed = {
+	value = sq_empty_years
+	multiply = 12
+}
+# What is left him after they have gone (so the reckoning is not called
+# again the next month).
+sq_fortune_after_reckoning = 15
+sq_reckoning_prestige = -25
+sq_reckoning_unity = -25
+
+# =====================================================================
+# 9. THE CADET TAKES THE TÜMEN (events/amirs_cadet_events.txt,
+#    scripted_effects/17_amirs_cadet_effects.txt)
+# =====================================================================
+
+# Who among the kinsmen is "the most capable": the sword, with the pen
+# as a tie-breaker. CHARACTER scope.
+ulus_cadet_worth = {
+	value = mil
+	add = {
+		value = adm
+		multiply = 0.2
+	}
+}
+# Renown the confirmed kinsman starts with (a great battle is worth 3).
+ulus_cadet_renown_seed = 5
+# ...and what he keeps on top if he later yields the tümen back.
+ulus_cadet_yield_renown = 3
+# The AI is three times likelier to let the chief ride out when the
+# house's military strength is under this share of the invader's.
+ulus_cadet_outmatched_share = 0.5
+# The chief stands his ground.
+ulus_cadet_stand_prestige = 5
+ulus_cadet_stand_unity = 5
+# The invader who confirms a chief; the leader of the ulus who sees a
+# tümen confirmed by someone else.
+ulus_cadet_invader_prestige = 5
+ulus_cadet_leader_prestige = -5
+# The old chief returns: the kinsman yields / refuses.
+ulus_cadet_yield_unity = 5
+ulus_cadet_refuse_unity = -10
+ulus_cadet_refuse_nobles = -0.10
+# The old chief dies on the road: the matter is closed.
+ulus_cadet_chief_dead_unity = 5
+# Stage 2 coup: the kinsman must out-soldier the chief by this much.
+ulus_cadet_coup_mil_edge = 15
+ulus_cadet_coup_unity = -10
+ulus_cadet_seized_unity = -5
+ulus_cadet_seized_nobles = -0.10
+# Durations are literals where they are used (a timed variable takes a
+# literal in every base use): ulus_cadet_recent 10 years (a house goes
+# through this once a decade at most), ulus_cadet_asked 24 months (a
+# chief who stood is not asked again for two years),
+# ulus_sworn_to_regent 5 years, ulus_cadet_coup_recent 8 years (on the
+# organisation: one coup anywhere quiets the rest), the old chief's
+# return 365-1095 days at 70% (30% he dies on the road), the coup
+# pulse 3 in 100 a year per eligible house
+# (on_action/32_amirs_cadet_hooks.txt).

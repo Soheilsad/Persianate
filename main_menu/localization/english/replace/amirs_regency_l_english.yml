@@ -117,7 +117,10 @@
  # =====================================================================
  amirs_regency: "The Amirs' Regency"
  amirs_regency_desc: "A beg rules the ulus through a khan he keeps in his own camp. The amirs follow him while he delivers, and no longer. Left to itself the arrangement runs through four stages in about a generation: the beglerbeg's peace, the amirs falling out, the shock from outside, and at last a beg who rules in his own right as Ṣāḥib-qirān, or nobody ruling at all.\n\nThe stage, the legitimacy gap and the regent's heir are shown on the panel of [GetInternationalOrganization('ulus_chaghatay').GetName]; the actions are there as well."
- amirs_regency_end_tt: "This realm no longer holds the khan of the ulus."
+ amirs_regency_end_tt: "Ends when this realm no longer holds the khan of the ulus."
+ AMIRS_REGENCY_STAGE_TRACK: "The Stage of the Regency"
+ AMIRS_REGENCY_PANEL_POINTER: "The regent's actions (enthroning a khan, the marriage into the line, largesse, recalling an amir, the purge) are on the panel of #Y Ulus Chaghatay#!."
+ AMIRS_REGENCY_PROGRESS_TT: "Rises each month while the begs stay over the bar, and at the death of a khan or a regent, a lost war, or ruling without a khan. At 100 the regency passes to its next stage."
 
  # --- Stages ---
  amirs_regency.100.title: "The Amirs Fall Out"

@@ -1,0 +1,313 @@
+namespace = amirs_cadet
+
+# ============================================================================
+# THE CADET TAKES THE TÜMEN — events. History and effects:
+# common/scripted_effects/17_amirs_cadet_effects.txt. Hooks:
+# common/on_action/32_amirs_cadet_hooks.txt.
+#
+#   .1   the invader is upon the house: the chief stands or rides out
+#        (to the house; scope:ulus_cadet_invader)
+#   .2   a kinsman of the house has come to our camp   (to the invader)
+#   .3   a tümen has a new chief by another's yarlıq   (to the leader)
+#   .10  the old chief comes back for his tümen        (to the house)
+#   .11  the old chief is dead on the road             (to the house)
+#   .20  stage 2: a kinsman who is the better soldier  (to the house)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# .1 — root = the amir house. scope:ulus_cadet_invader = the realm that
+# beat it or took its camp.
+# ----------------------------------------------------------------------------
+amirs_cadet.1 = {
+	type = country_event
+	title = amirs_cadet.1.title
+	desc = amirs_cadet.1.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		exists = scope:ulus_cadet_invader
+		is_ulus_chaghatay_amir = yes
+		NOT = { has_variable = ulus_fled_chief }
+		ulus_house_has_cadet = yes
+	}
+
+	immediate = {
+		ulus_cadet_find = yes
+	}
+
+	# ----- A: The chief rides out; the kinsman goes to the camp -----
+	option = {
+		name = amirs_cadet.1.a
+		trigger = { exists = scope:ulus_cadet }
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 3
+				military_strength < {
+					value = scope:ulus_cadet_invader.military_strength
+					multiply = ulus_cadet_outmatched_share
+				}
+			}
+		}
+
+		custom_tooltip = amirs_cadet_flee_tt
+		if = {
+			limit = {
+				scope:ulus_cadet_invader = { NOT = { is_ulus_chaghatay_member = yes } }
+			}
+			custom_tooltip = amirs_cadet_tributary_tt
+		}
+		else = {
+			custom_tooltip = amirs_cadet_sworn_tt
+		}
+		hidden_effect = {
+			ulus_cadet_takes_tumen = yes
+			ulus_cadet_submits = yes
+			scope:ulus_cadet_invader = {
+				trigger_event_non_silently = amirs_cadet.2
+			}
+			international_organization:ulus_chaghatay ?= {
+				leader_country ?= {
+					if = {
+						limit = { NOT = { this = scope:ulus_cadet_invader } }
+						trigger_event_non_silently = amirs_cadet.3
+					}
+				}
+			}
+		}
+	}
+
+	# ----- B: The chief stands -----
+	option = {
+		name = amirs_cadet.1.b
+		ai_chance = { factor = 50 }
+
+		add_prestige = ulus_cadet_stand_prestige
+		add_horde_unity = ulus_cadet_stand_unity
+	}
+}
+
+# .2 — root = the invader.
+amirs_cadet.2 = {
+	type = country_event
+	title = amirs_cadet.2.title
+	desc = amirs_cadet.2.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		exists = scope:ulus_cadet_house
+	}
+
+	option = {
+		name = amirs_cadet.2.a
+		add_prestige = ulus_cadet_invader_prestige
+	}
+}
+
+# .3 — root = the leader of the ulus (not the invader).
+amirs_cadet.3 = {
+	type = country_event
+	title = amirs_cadet.3.title
+	desc = amirs_cadet.3.desc
+	outcome = negative
+
+	illustration_tags = { 10 = interior }
+
+	trigger = {
+		exists = scope:ulus_cadet_house
+	}
+
+	option = {
+		name = amirs_cadet.3.a
+		add_prestige = ulus_cadet_leader_prestige
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .10 — the old chief comes back. root = the house. Fires one to three
+# years after he rode out, if he and the kinsman both still live and
+# the kinsman still leads the tümen.
+# ----------------------------------------------------------------------------
+amirs_cadet.10 = {
+	type = country_event
+	title = amirs_cadet.10.title
+	desc = amirs_cadet.10.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		has_variable = ulus_fled_chief
+		has_variable = ulus_cadet_chief
+		var:ulus_fled_chief ?= { is_alive = yes }
+		var:ulus_cadet_chief ?= {
+			is_alive = yes
+			is_ruler = yes
+		}
+	}
+
+	immediate = {
+		var:ulus_fled_chief = { save_scope_as = ulus_fled_chief }
+		var:ulus_cadet_chief = { save_scope_as = ulus_cadet }
+	}
+
+	# ----- A: The tümen is his; I held it for him -----
+	option = {
+		name = amirs_cadet.10.a
+		ai_chance = { factor = 40 }
+
+		custom_tooltip = amirs_cadet_yield_tt
+		add_horde_unity = ulus_cadet_yield_unity
+		hidden_effect = {
+			set_variable = { name = ulus_succession_settled value = 1 months = 6 }
+			set_new_ruler = scope:ulus_fled_chief
+			# The name he made is his own and stays with him.
+			scope:ulus_cadet = {
+				if = {
+					limit = { has_variable = ulus_renown }
+					change_variable = { name = ulus_renown add = ulus_cadet_yield_renown }
+				}
+				else = {
+					set_variable = { name = ulus_renown value = ulus_cadet_yield_renown }
+				}
+			}
+			ulus_cadet_clear_exile = yes
+		}
+	}
+
+	# ----- B: He left it on the ground; I picked it up -----
+	option = {
+		name = amirs_cadet.10.b
+		ai_chance = { factor = 60 }
+
+		add_horde_unity = ulus_cadet_refuse_unity
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = ulus_cadet_refuse_nobles
+		}
+		hidden_effect = {
+			ulus_cadet_clear_exile = yes
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .11 — the old chief dies on the road. root = the house.
+# ----------------------------------------------------------------------------
+amirs_cadet.11 = {
+	type = country_event
+	title = amirs_cadet.11.title
+	desc = amirs_cadet.11.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		has_variable = ulus_fled_chief
+		var:ulus_fled_chief ?= { is_alive = yes }
+	}
+
+	immediate = {
+		var:ulus_fled_chief = { save_scope_as = ulus_fled_chief }
+		hidden_effect = {
+			kill_character = {
+				target = scope:ulus_fled_chief
+				reason = assassination
+			}
+		}
+	}
+
+	option = {
+		name = amirs_cadet.11.a
+		add_horde_unity = ulus_cadet_chief_dead_unity
+		hidden_effect = {
+			remove_variable = ulus_fled_chief
+			remove_variable = ulus_cadet_chief
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .20 — stage 2, the amirs falling out: a kinsman who is plainly the
+# better soldier, and men in the tümen who say so. root = the house.
+# Fired by ulus_cadet_coup_pulse (rare).
+# ----------------------------------------------------------------------------
+amirs_cadet.20 = {
+	type = country_event
+	title = amirs_cadet.20.title
+	desc = amirs_cadet.20.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		is_ulus_chaghatay_amir = yes
+		ulus_house_has_ambitious_cadet = yes
+	}
+
+	immediate = {
+		ulus_cadet_find = yes
+		international_organization:ulus_chaghatay ?= {
+			set_variable = { name = ulus_cadet_coup_recent value = 1 years = 8 }
+		}
+	}
+
+	# ----- A: The tümen follows the kinsman -----
+	option = {
+		name = amirs_cadet.20.a
+		trigger = { exists = scope:ulus_cadet }
+		ai_chance = { factor = 60 }
+
+		custom_tooltip = amirs_cadet_coup_tt
+		add_horde_unity = ulus_cadet_coup_unity
+		hidden_effect = {
+			ulus_cadet_takes_tumen = yes
+		}
+	}
+
+	# ----- B: The chief has him seized -----
+	option = {
+		name = amirs_cadet.20.b
+		trigger = { exists = scope:ulus_cadet }
+		ai_chance = { factor = 40 }
+
+		custom_tooltip = amirs_cadet_seized_tt
+		add_horde_unity = ulus_cadet_seized_unity
+		add_estate_satisfaction = {
+			type = estate_type:nobles_estate
+			value = ulus_cadet_seized_nobles
+		}
+		set_variable = { name = ulus_cadet_recent value = 1 years = 10 }
+		hidden_effect = {
+			kill_character = {
+				target = scope:ulus_cadet
+				reason = execution
+			}
+		}
+	}
+
+	# Fallback: the man died between the pulse and the event.
+	option = {
+		name = amirs_cadet.20.c
+		trigger = { NOT = { exists = scope:ulus_cadet } }
+	}
+}

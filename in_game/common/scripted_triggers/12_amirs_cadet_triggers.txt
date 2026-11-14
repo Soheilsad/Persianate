@@ -1,0 +1,65 @@
+# The cadet takes the tümen — tests (events/amirs_cadet_events.txt).
+
+# CHARACTER scope: a man of the house's own blood who could lead its
+# tümen in the chief's place. $HOUSE$ = the amir house (a country scope).
+# The house's dynasty is whatever its ruler's is; no dynasty is named.
+ulus_is_cadet_of_house = {
+	is_alive = yes
+	is_adult = yes
+	is_female = no
+	is_ruler = no
+	owner ?= $HOUSE$
+	exists = dynasty
+	dynasty ?= $HOUSE$.ruler.dynasty
+}
+
+# COUNTRY scope (an amir house): it has a chief with a house behind
+# him, and at least one such kinsman at its own court.
+ulus_house_has_cadet = {
+	has_ruler = yes
+	ruler ?= { exists = dynasty }
+	save_temporary_scope_as = ulus_cadet_test_house
+	any_character = {
+		ulus_is_cadet_of_house = { HOUSE = scope:ulus_cadet_test_house }
+	}
+}
+
+# COUNTRY scope (an amir house): a kinsman who is clearly the better
+# soldier than the chief (the internal coup of stage 2).
+ulus_house_has_ambitious_cadet = {
+	has_ruler = yes
+	ruler ?= { exists = dynasty }
+	save_temporary_scope_as = ulus_cadet_test_house
+	any_character = {
+		ulus_is_cadet_of_house = { HOUSE = scope:ulus_cadet_test_house }
+		mil >= {
+			value = scope:ulus_cadet_test_house.ruler.mil
+			add = ulus_cadet_coup_mil_edge
+		}
+	}
+}
+
+# COUNTRY scope: can the cadet route open for this house at all?
+# A junior member (never the seat or the regent's state), in stage 3 or
+# later, not already through it recently.
+ulus_house_open_to_cadet_route = {
+	is_ulus_chaghatay_amir = yes
+	ulus_regency_stage_at_least = { STAGE = 3 }
+	NOT = { has_variable = ulus_cadet_recent }
+	# Asked within the last two years (and stood his ground, or both
+	# hooks fired for the one defeat).
+	NOT = { has_variable = ulus_cadet_asked }
+	NOT = { has_variable = ulus_fled_chief }
+	ulus_house_has_cadet = yes
+}
+
+# COUNTRY scope: an invader a chief flees before — anyone from outside
+# the ulus (the eastern khanate that broke away included), or the state
+# that holds the khan. Never a fellow amir: that is a feud, and feuds
+# are settled between houses.
+ulus_is_cadet_route_invader = {
+	OR = {
+		NOT = { is_ulus_chaghatay_member = yes }
+		is_ulus_regent = yes
+	}
+}

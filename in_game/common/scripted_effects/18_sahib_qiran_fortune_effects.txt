@@ -1,0 +1,216 @@
+# =====================================================================
+# THE ṢĀḤIB-QIRĀN'S FORTUNE (dawlat).
+#
+# The Amirs' Regency ends when a regent has covered for the blood he
+# lacks with five years of victories (the legitimacy gap,
+# scripted_effects/15_amirs_regency_effects.txt). The regency's state
+# is then cleared — but the condition it measured is not. Temür after
+# 1370 was still not a khan. What held the amirs of the ulus to him was
+# his dawlat: the fortune a man is seen to have while he keeps winning
+# and keeps giving. He campaigned almost every year for thirty-five
+# years, and emptied his treasury on his followers after each one. And
+# the fortune was his, not his house's: at his death in 1405 his sons
+# and grandsons fought for four years over a realm none of them had
+# made.
+#
+# So the gap is carried into the reign as sq_fortune, 0..100, on the
+# Ṣāḥib-qirān's COUNTRY (TIM, when the conquest ambition releases it):
+#
+#   seeded     from the regency's gap at the ending (sq_fortune_seed,
+#              called by ulus_end_sahib_qiran)
+#   drains     every month; half as fast at war, twice as fast after
+#              three years of peace (sq_fortune_tick, from
+#              on_action/33_sahib_qiran_hooks.txt)
+#   filled by  great battles, sieges, wars won, and largesse
+#              (generic_actions/sahib_qiran_actions.txt)
+#   bands      high: sq_fortune_high_mod; low: sq_fortune_low_mod
+#              (main_menu/common/static_modifiers/
+#              17_sahib_qiran_fortune_modifiers.txt)
+#   empty      for sq_empty_years running: the amirs who swore to him at
+#              the ending (sq_sworn_amir) ride away (sahib_qiran.2)
+#   his death  the heir starts at sq_fortune_heir (sahib_qiran.1)
+#
+# Variables on the country:
+#   sq_fortune          0..100
+#   sq_fortune_bar      0..1, for the panel
+#   sq_band_high / sq_band_low   flags, for the panel (the GUI tests
+#                       IsSet; it has no verified numeric comparison)
+#   sq_man              the ruler the fortune belongs to
+#   sq_peace_months     months since his last war
+#   sq_empty_months     running count of months at 0
+# On each amir who became his vassal at the ending: sq_sworn_amir.
+#
+# Numbers: script_values/05_amirs_regency_values.txt, section 9.
+# =====================================================================
+
+# COUNTRY scope: the Ṣāḥib-qirān's realm, at the ending. Reads
+# local_var:sq_seed if ulus_end_sahib_qiran saved the regency's gap
+# there before clearing it; otherwise starts at the high line.
+sq_fortune_seed = {
+	if = {
+		limit = { has_local_variable = sq_seed }
+		set_variable = { name = sq_fortune value = local_var:sq_seed }
+	}
+	else = {
+		set_variable = { name = sq_fortune value = sq_fortune_high_line }
+	}
+	set_variable = { name = sq_peace_months value = 0 }
+	set_variable = { name = sq_empty_months value = 0 }
+	if = {
+		limit = { has_ruler = yes }
+		ruler = { save_scope_as = sq_man_scope }
+		set_variable = { name = sq_man value = scope:sq_man_scope }
+	}
+	sq_fortune_refresh = yes
+}
+
+# COUNTRY scope. $AMOUNT$ a number or a script value; clamped 0..100.
+sq_change_fortune = {
+	if = {
+		limit = { has_variable = sq_fortune }
+		change_variable = { name = sq_fortune add = $AMOUNT$ }
+		if = {
+			limit = { var:sq_fortune < 0 }
+			set_variable = { name = sq_fortune value = 0 }
+		}
+		if = {
+			limit = { var:sq_fortune > 100 }
+			set_variable = { name = sq_fortune value = 100 }
+		}
+		sq_fortune_refresh = yes
+	}
+}
+
+# COUNTRY scope: the bar, the band flags and the band's modifier.
+sq_fortune_refresh = {
+	set_variable = {
+		name = sq_fortune_bar
+		value = {
+			value = var:sq_fortune
+			divide = 100
+		}
+	}
+	remove_variable = sq_band_high
+	remove_variable = sq_band_low
+	if = {
+		limit = { var:sq_fortune >= sq_fortune_high_line }
+		set_variable = sq_band_high
+		if = {
+			limit = { has_country_modifier = sq_fortune_low_mod }
+			remove_country_modifier = sq_fortune_low_mod
+		}
+		if = {
+			limit = { NOT = { has_country_modifier = sq_fortune_high_mod } }
+			add_country_modifier = {
+				modifier = sq_fortune_high_mod
+				years = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { var:sq_fortune < sq_fortune_low_line }
+		set_variable = sq_band_low
+		if = {
+			limit = { has_country_modifier = sq_fortune_high_mod }
+			remove_country_modifier = sq_fortune_high_mod
+		}
+		if = {
+			limit = { NOT = { has_country_modifier = sq_fortune_low_mod } }
+			add_country_modifier = {
+				modifier = sq_fortune_low_mod
+				years = -1
+			}
+		}
+	}
+	else = {
+		if = {
+			limit = { has_country_modifier = sq_fortune_high_mod }
+			remove_country_modifier = sq_fortune_high_mod
+		}
+		if = {
+			limit = { has_country_modifier = sq_fortune_low_mod }
+			remove_country_modifier = sq_fortune_low_mod
+		}
+	}
+}
+
+# COUNTRY scope, monthly.
+sq_fortune_tick = {
+	if = {
+		limit = { at_war = yes }
+		set_variable = { name = sq_peace_months value = 0 }
+	}
+	else = {
+		change_variable = { name = sq_peace_months add = 1 }
+	}
+
+	set_local_variable = {
+		name = sq_drain
+		value = {
+			value = sq_fortune_drain
+			multiply = -1
+		}
+	}
+	if = {
+		limit = { at_war = yes }
+		change_local_variable = { name = sq_drain multiply = sq_fortune_war_factor }
+	}
+	else_if = {
+		limit = { var:sq_peace_months > sq_fortune_idle_months }
+		change_local_variable = { name = sq_drain multiply = sq_fortune_idle_factor }
+	}
+	sq_change_fortune = { AMOUNT = local_var:sq_drain }
+
+	if = {
+		limit = { var:sq_fortune <= 0 }
+		change_variable = { name = sq_empty_months add = 1 }
+	}
+	else = {
+		set_variable = { name = sq_empty_months value = 0 }
+	}
+
+	# The reckoning. sq_reckoning_called (two months) keeps it from
+	# being called again before the event has run.
+	if = {
+		limit = {
+			var:sq_empty_months >= sq_empty_months_needed
+			NOT = { has_variable = sq_reckoning_called }
+		}
+		set_variable = { name = sq_reckoning_called value = 1 months = 2 }
+		trigger_event_non_silently = { id = sahib_qiran.2 days = 1 }
+	}
+}
+
+# COUNTRY scope: the amirs who swore at the ending go their own way.
+sq_fortune_reckoning = {
+	every_subject = {
+		limit = { has_variable = sq_sworn_amir }
+		add_to_list = sq_leaving_amirs
+	}
+	every_in_list = {
+		list = sq_leaving_amirs
+		remove_variable = sq_sworn_amir
+		# base's form (overlord = { cancel_subject = prev })
+		overlord ?= { cancel_subject = prev }
+	}
+	add_prestige = sq_reckoning_prestige
+	if = {
+		limit = { government_type = government_type:steppe_horde }
+		add_horde_unity = sq_reckoning_unity
+	}
+	set_variable = { name = sq_empty_months value = 0 }
+	set_variable = { name = sq_fortune value = sq_fortune_after_reckoning }
+	sq_fortune_refresh = yes
+}
+
+# COUNTRY scope: a new man on the seat. The fortune was the dead man's.
+sq_fortune_succession = {
+	if = {
+		limit = { has_ruler = yes }
+		ruler = { save_scope_as = sq_man_scope }
+		set_variable = { name = sq_man value = scope:sq_man_scope }
+	}
+	set_variable = { name = sq_fortune value = sq_fortune_heir }
+	set_variable = { name = sq_empty_months value = 0 }
+	sq_fortune_refresh = yes
+}

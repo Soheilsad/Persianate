@@ -18,6 +18,54 @@ on_ulus_chaghatay_start = {
 			ulus_chaghatay_rebuild_ledger = yes
 		}
 
+		# THE BARLAS ARE NOT BORJIGIN. Base files Temür, Taraghai and
+		# their line back to Qachuli under borjigin_dynasty: the Timurid
+		# court genealogy (Muʿizz al-ansāb, the Gūr-i Amīr inscription),
+		# which gives the Barlas a common ancestor with Chinggis three
+		# generations above him, taken as membership of the line. Temür
+		# ruled as güregen behind a khan because he was NOT of it.
+		#   - the line from Qarachar Noyan down becomes barlas_dynasty
+		#     (the dynasty is defined in setup/1337/
+		#     04_dynasties_overrides.txt; created here if the engine has
+		#     not instantiated a dynasty with no setup members, as base
+		#     does for the Fuggers);
+		#   - so does whoever rules the Barlas at the start (base: ruler =
+		#     random, an unrelated generated man) and his children: the
+		#     head of the tümen in these years was of the same descent,
+		#     in another branch (Hajji Beg was a distant cousin).
+		# is_patrilineal_descendant_of may still read these men as
+		# descended from a Borjigin (Qachuli's father stays one), so the
+		# mod's "of the line" tests exclude barlas_dynasty explicitly
+		# (scripted_triggers/11_amirs_regency_triggers.txt).
+		c:BRL ?= {
+			if = {
+				limit = { NOT = { exists = dynasty:barlas_dynasty } }
+				create_named_dynasty = barlas_dynasty
+			}
+			ruler ?= {
+				change_dynasty = dynasty:barlas_dynasty
+				every_child = {
+					change_dynasty = dynasty:barlas_dynasty
+				}
+			}
+		}
+		if = {
+			limit = { exists = dynasty:barlas_dynasty }
+			character:qarachar_noyan_borjigin ?= {
+				change_dynasty = dynasty:barlas_dynasty
+				every_descendant = {
+					change_dynasty = dynasty:barlas_dynasty
+				}
+			}
+			# By name as well: the walk above passes through dead men.
+			character:chg_taraghai_noyan_borjigin ?= {
+				change_dynasty = dynasty:barlas_dynasty
+			}
+			character:chg_timur_lame_borjigin ?= {
+				change_dynasty = dynasty:barlas_dynasty
+			}
+		}
+
 		# NO PLOT ARMOUR. Base setup gives the historical Temür Barlas
 		# the character modifier is_tim_timur (+30 life expectancy, "he
 		# lived to 1405 - prevent early random death from collapsing the

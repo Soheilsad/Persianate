@@ -38,7 +38,7 @@ scripted_trigger horde_character_valid_pretender_trigger = {
 	# Tengrist reaction against a Muslim khan is exactly the quarrel
 	# Ozbeg's conversion and his purge of the bakhshis set up.
 	OR = {
-		is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+		is_of_chinggis_line = yes
 		culture = { has_culture_group = culture_group:steppe_group }
 		culture = { has_culture_group = culture_group:mongolian_group }
 	}

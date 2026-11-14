@@ -68,6 +68,10 @@ ulus_is_khan_material = {
 		is_patrilineal_descendant_of = dynasty:borjigin_dynasty
 	}
 	NOT = { has_variable = patron_country }
+	# The Barlas are moved out of borjigin_dynasty at game start
+	# (on_action/30_ulus_chaghatay_start.txt), but the descent test may
+	# still pass through Qachuli's father; the names stay as a net.
+	NOT = { dynasty ?= dynasty:barlas_dynasty }
 	NOT = { this = character:chg_timur_lame_borjigin }
 	NOT = { this = character:chg_taraghai_noyan_borjigin }
 	owner ?= { is_ulus_chaghatay_member = yes }
@@ -123,6 +127,7 @@ ulus_ruler_is_of_the_line = {
 			dynasty ?= dynasty:borjigin_dynasty
 			is_patrilineal_descendant_of = dynasty:borjigin_dynasty
 		}
+		NOT = { dynasty ?= dynasty:barlas_dynasty }
 		NOT = { this = character:chg_timur_lame_borjigin }
 		NOT = { this = character:chg_taraghai_noyan_borjigin }
 	}
@@ -148,4 +153,16 @@ ulus_house_has_inlaw_tie = {
 		has_variable = ulus_inlaw_house
 		ulus_ruler_is_gurkan = yes
 	}
+}
+
+# CHARACTER scope: of the line of Chinggis, for every test in the mod
+# that used to read `is_patrilineal_descendant_of = dynasty:
+# borjigin_dynasty` directly (the horde succession, the törü, the ulus
+# grant, the civil-war disaster). The descent test alone may count the
+# Barlas, whose scripted ancestry in base runs up through Qachuli to a
+# Borjigin; they are moved to barlas_dynasty at game start
+# (on_action/30_ulus_chaghatay_start.txt) and excluded here.
+is_of_chinggis_line = {
+	is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+	NOT = { dynasty ?= dynasty:barlas_dynasty }
 }

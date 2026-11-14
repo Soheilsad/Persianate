@@ -1,0 +1,118 @@
+# =====================================================================
+# THE ṢĀḤIB-QIRĀN'S FORTUNE — engine hooks
+# (scripted_effects/18_sahib_qiran_fortune_effects.txt).
+#
+# Re-declaring an engine on_action EXTENDS it; nothing here replaces
+# the mod's other hooks on the same on_actions (31_amirs_regency_hooks,
+# 26_horde_succession_hooks, 09_custody_governorate_pulse ...).
+#
+# Every trigger opens with has_variable = sq_fortune: one country in
+# the world carries it, and only after the Amirs' Regency has ended in
+# a Ṣāḥib-qirān.
+# =====================================================================
+
+# ---THE MONTH --------------------------------------------------------
+monthly_country_pulse = {
+	on_actions = {
+		sq_fortune_monthly
+	}
+}
+
+sq_fortune_monthly = {
+	trigger = {
+		has_variable = sq_fortune
+	}
+	effect = {
+		sq_fortune_tick = yes
+	}
+}
+
+# ---VICTORY FILLS IT -------------------------------------------------
+# Scopes as in 31_amirs_regency_hooks.txt: on_great_battle_won root =
+# the winning country; on_siege_won root = the country taking the
+# location; on_winning_war / on_losing_war root = country, with
+# scope:winner and scope:loser.
+on_great_battle_won = {
+	on_actions = {
+		sq_fortune_great_battle
+	}
+}
+
+sq_fortune_great_battle = {
+	trigger = {
+		has_variable = sq_fortune
+	}
+	effect = {
+		sq_change_fortune = { AMOUNT = sq_fortune_great_battle }
+	}
+}
+
+on_siege_won = {
+	on_actions = {
+		sq_fortune_siege
+	}
+}
+
+sq_fortune_siege = {
+	trigger = {
+		has_variable = sq_fortune
+	}
+	effect = {
+		sq_change_fortune = { AMOUNT = sq_fortune_siege }
+	}
+}
+
+on_winning_war = {
+	on_actions = {
+		sq_fortune_war_won
+	}
+}
+
+sq_fortune_war_won = {
+	trigger = {
+		has_variable = sq_fortune
+		scope:winner ?= { this = root }
+	}
+	effect = {
+		sq_change_fortune = { AMOUNT = sq_fortune_war_won }
+	}
+}
+
+on_losing_war = {
+	on_actions = {
+		sq_fortune_war_lost
+	}
+}
+
+sq_fortune_war_lost = {
+	trigger = {
+		has_variable = sq_fortune
+		scope:loser ?= { this = root }
+	}
+	effect = {
+		sq_change_fortune = { AMOUNT = sq_fortune_war_lost }
+	}
+}
+
+# ---THE MAN DIES -----------------------------------------------------
+# on_new_ruler: root = country. Fires for every later accession too:
+# each Timurid succession was fought over. Silent on the day the realm
+# is made (sq_man is that day's ruler).
+on_new_ruler = {
+	on_actions = {
+		sq_fortune_new_ruler
+	}
+}
+
+sq_fortune_new_ruler = {
+	trigger = {
+		has_variable = sq_fortune
+		has_variable = sq_man
+		has_ruler = yes
+		NOT = { ruler ?= var:sq_man }
+	}
+	effect = {
+		sq_fortune_succession = yes
+		trigger_event_non_silently = sahib_qiran.1
+	}
+}

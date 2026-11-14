@@ -9,6 +9,7 @@ colors = {
 
 	# Cultures
 	map_persianized_mongol = rgb { 115 120 205 } # Mongol blue shifted toward Persian violet
+	map_chaghatay = rgb { 70 140 170 } # Mongol blue shifted toward Turkic teal (in_game/common/cultures/chaghatay.txt)
 
 	# Erānzamīn IO diplomatic-map tint (the role statuses override it)
 	map_eranzamin_member = rgb { 175 120 80 } # dusty terracotta — the contested ulus

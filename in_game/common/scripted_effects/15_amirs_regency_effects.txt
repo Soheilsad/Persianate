@@ -1111,6 +1111,13 @@ ulus_end_sahib_qiran = {
 				add_to_list = ulus_defiant_amirs
 			}
 		}
+		# The gap is not thrown away: it becomes the Ṣāḥib-qirān's
+		# fortune (scripted_effects/18_sahib_qiran_fortune_effects.txt).
+		# Read here, before ulus_regency_clear wipes it.
+		if = {
+			limit = { has_variable = ulus_gap }
+			set_local_variable = { name = sq_seed value = var:ulus_gap }
+		}
 		# The khan keeps his marks: he is still held.
 		remove_variable = ulus_held_khan
 		ulus_regency_clear = yes
@@ -1137,11 +1144,16 @@ ulus_end_sahib_qiran = {
 		}
 		add_horde_unity = 50
 		add_prestige = 25
+		# His fortune, from the regency's gap (local_var:sq_seed above).
+		sq_fortune_seed = yes
 	}
 	set_global_variable = { name = ulus_sahib_qiran_realm value = scope:ulus_sahib_qiran_realm }
 
 	every_in_list = {
 		list = ulus_loyal_amirs
+		# Sworn to the man: they ride away if his fortune stays empty
+		# (sq_fortune_reckoning).
+		set_variable = sq_sworn_amir
 		remove_variable = ulus_chaghatay_admitted
 		remove_variable = ulus_kingmaker_score
 		remove_variable = ulus_amir_share

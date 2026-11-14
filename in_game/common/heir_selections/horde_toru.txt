@@ -217,7 +217,7 @@ horde_toru_succession = {
 			add = {
 				desc = "HORDE_TORU_OF_THE_LINE"
 				if = {
-					limit = { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+					limit = { is_of_chinggis_line = yes }
 					value = 150
 				}
 			}
@@ -301,7 +301,7 @@ horde_toru_succession = {
 				desc = "HORDE_TORU_THE_POWER_OF_THE_ESTATE"
 				if = {
 					limit = {
-						NOT = { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+						NOT = { is_of_chinggis_line = yes }
 					}
 					value = {
 						value = "scope:target.estate_power(estate_type:nobles_estate)"
@@ -354,7 +354,7 @@ horde_toru_succession = {
 			add = {
 				desc = "HORDE_TORU_OF_THE_LINE"
 				if = {
-					limit = { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+					limit = { is_of_chinggis_line = yes }
 					value = 150
 				}
 			}
@@ -396,7 +396,7 @@ horde_toru_succession = {
 				desc = "HORDE_TORU_THE_POWER_OF_THE_ESTATE"
 				if = {
 					limit = {
-						NOT = { is_patrilineal_descendant_of = dynasty:borjigin_dynasty }
+						NOT = { is_of_chinggis_line = yes }
 					}
 					value = {
 						value = "scope:target.estate_power(estate_type:nobles_estate)"

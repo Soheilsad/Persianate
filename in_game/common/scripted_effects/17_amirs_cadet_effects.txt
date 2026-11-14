@@ -1,0 +1,173 @@
+# =====================================================================
+# THE CADET TAKES THE TÜMEN.
+#
+# 1360: Tughluq Temür, khan of the eastern half, rides into Transoxiana.
+# Hajji Beg, chief of the Barlas, does not wait for him: he takes the
+# road to Khurasan. A young kinsman of the house, Temür son of
+# Taraghai, stays, goes to the khan's camp, submits, and is confirmed
+# over the Barlas tümen and the Kish valley. When the khan withdraws
+# Hajji Beg comes back and Temür yields the tribe to him; when the khan
+# returns in 1361 Hajji Beg flees again and is killed in Khurasan, and
+# the tümen is Temür's for good (Manz, The Rise and Rule of Tamerlane,
+# ch. 3).
+#
+# Nothing in that is peculiar to the Barlas. A tümen was the house's,
+# not the chief's, and an invader who wanted the tribe quiet confirmed
+# whichever man of the house came to him. So this runs for ANY amir
+# house, on the house's own dynasty.
+#
+# Events: events/amirs_cadet_events.txt. Hooks:
+# on_action/32_amirs_cadet_hooks.txt. Tunables:
+# script_values/05_amirs_regency_values.txt, section 9.
+#
+# Variables
+#   ON THE HOUSE (country)
+#     ulus_fled_chief      the chief who rode out (character)
+#     ulus_cadet_chief     the kinsman confirmed in his place
+#     ulus_cadet_recent    timed: the route does not reopen
+#     ulus_confirmed_by    the invader who confirmed him (country)
+#     ulus_sworn_to_regent timed: confirmed by the state holding the khan
+#   ON THE OLD CHIEF     ulus_chief_in_exile
+# =====================================================================
+
+# COUNTRY scope (the house). Saves scope:ulus_cadet = its best soldier
+# among the kinsmen at court; leaves it unset if there is none.
+ulus_cadet_find = {
+	if = {
+		limit = { exists = scope:ulus_cadet }
+		clear_saved_scope = ulus_cadet
+	}
+	save_scope_as = ulus_cadet_house
+	ordered_character = {
+		limit = {
+			ulus_is_cadet_of_house = { HOUSE = scope:ulus_cadet_house }
+		}
+		order_by = ulus_cadet_worth
+		max = 1
+		check_range_bounds = no
+		save_scope_as = ulus_cadet
+	}
+}
+
+# COUNTRY scope (the house). Needs scope:ulus_cadet. The chief rides
+# out alive; the kinsman leads the tümen. The marker keeps the leader
+# of the ulus from being asked to confirm an accession that was settled
+# in another man's camp (on_action/31_amirs_regency_hooks.txt).
+ulus_cadet_takes_tumen = {
+	save_scope_as = ulus_cadet_house
+	ruler = { save_scope_as = ulus_fled_chief }
+	set_variable = { name = ulus_succession_settled value = 1 months = 6 }
+	set_variable = { name = ulus_cadet_recent value = 1 years = 10 }
+	set_variable = { name = ulus_fled_chief value = scope:ulus_fled_chief }
+	set_variable = { name = ulus_cadet_chief value = scope:ulus_cadet }
+	scope:ulus_fled_chief = { set_variable = ulus_chief_in_exile }
+	set_new_ruler = scope:ulus_cadet
+
+	# His name is made the day he is confirmed: he enters the kingmaker
+	# ranking with something behind him (the renown is the man's own —
+	# ulus_add_renown — so it is set on him directly, whatever the
+	# engine has done with `ruler` by this line).
+	scope:ulus_cadet = {
+		if = {
+			limit = { has_variable = ulus_renown }
+			change_variable = { name = ulus_renown add = ulus_cadet_renown_seed }
+		}
+		else = {
+			set_variable = { name = ulus_renown value = ulus_cadet_renown_seed }
+		}
+	}
+
+	# What becomes of the man who rode out: he comes back for his tümen,
+	# or he dies on the road (Hajji Beg, killed near Sabzavar).
+	random_list = {
+		70 = {
+			trigger_event_non_silently = { id = amirs_cadet.10 days = { 365 1095 } }
+		}
+		30 = {
+			trigger_event_non_silently = { id = amirs_cadet.11 days = { 365 1095 } }
+		}
+	}
+}
+
+# COUNTRY scope (the house). Needs scope:ulus_cadet_invader. What the
+# confirmed man owes for his confirmation.
+#
+#   the state that holds the khan   no subject tie (he is already a
+#                                   member under that seat): a sworn
+#                                   word that lasts some years, and the
+#                                   regent's goodwill.
+#   an invader from outside         he holds the tümen OF that invader:
+#                                   a tributary (base's lightest tie,
+#                                   the steppe's own), which he can
+#                                   break like any other. If the war
+#                                   between them cannot be closed here
+#                                   (the house is not one of its
+#                                   leaders), only the mark and the
+#                                   goodwill are set.
+ulus_cadet_submits = {
+	save_scope_as = ulus_cadet_house
+	set_variable = { name = ulus_confirmed_by value = scope:ulus_cadet_invader }
+	add_opinion = {
+		modifier = opinion_ulus_confirmed_our_house
+		target = scope:ulus_cadet_invader
+	}
+	scope:ulus_cadet_invader = {
+		add_opinion = {
+			modifier = opinion_ulus_cadet_submitted
+			target = scope:ulus_cadet_house
+		}
+	}
+
+	if = {
+		limit = {
+			scope:ulus_cadet_invader = { is_ulus_chaghatay_member = yes }
+		}
+		set_variable = { name = ulus_sworn_to_regent value = scope:ulus_cadet_invader years = 5 }
+	}
+	else = {
+		set_local_variable = { name = ulus_cadet_at_peace value = 1 }
+		if = {
+			limit = { is_at_war_with = scope:ulus_cadet_invader }
+			set_local_variable = { name = ulus_cadet_at_peace value = 0 }
+			if = {
+				limit = { exists = scope:ulus_cadet_war }
+				clear_saved_scope = ulus_cadet_war
+			}
+			random_war = {
+				limit = {
+					is_in_war = scope:ulus_cadet_house
+					is_in_war = scope:ulus_cadet_invader
+					scope:ulus_cadet_house = { is_war_leader_of = prev }
+				}
+				save_scope_as = ulus_cadet_war
+			}
+			if = {
+				limit = { exists = scope:ulus_cadet_war }
+				white_peace = scope:ulus_cadet_war
+				set_local_variable = { name = ulus_cadet_at_peace value = 1 }
+			}
+		}
+		if = {
+			limit = {
+				local_var:ulus_cadet_at_peace = 1
+				is_subject = no
+			}
+			make_subject_of = {
+				target = scope:ulus_cadet_invader
+				type = subject_type:tributary
+			}
+		}
+	}
+}
+
+# COUNTRY scope (the house): the matter of the old chief is closed.
+ulus_cadet_clear_exile = {
+	if = {
+		limit = { has_variable = ulus_fled_chief }
+		var:ulus_fled_chief ?= {
+			remove_variable = ulus_chief_in_exile
+		}
+	}
+	remove_variable = ulus_fled_chief
+	remove_variable = ulus_cadet_chief
+}

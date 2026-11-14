@@ -27873,99 +27873,113 @@ hissar = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 14.150	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.038	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 4.412	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.150	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.103	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.309	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.150	culture = chaghatay_culture	religion = sunni }
 }
 aiwanj = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 11.892	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.038	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 6.670	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.150	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.668	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.002	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.150	culture = chaghatay_culture	religion = sunni }
 }
 basand = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 15.659	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.037	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 2.902	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.150	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.726	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.176	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.150	culture = chaghatay_culture	religion = sunni }
 }
 darzanji = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 14.357	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.038	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 4.205	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.150	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.052	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.153	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.150	culture = chaghatay_culture	religion = sunni }
 }
 denov = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 11.458	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.037	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.104	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.150	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.776	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.328	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.150	culture = chaghatay_culture	religion = sunni }
 }
 qubodijon = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 11.487	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.038	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.074	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.150	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.769	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.305	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.150	culture = chaghatay_culture	religion = sunni }
 }
 shuman = {
 	define_pop = { type = clergy	size = 0.000	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 11.639	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.038	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 6.923	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.150	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.731	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.192	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.150	culture = chaghatay_culture	religion = sunni }
 }
 termez = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 12.064	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.037	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 6.497	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.150	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.625	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.872	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.150	culture = chaghatay_culture	religion = sunni }
 }
 kulob = {
 	define_pop = { type = clergy	size = 0.003	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 23.292	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.060	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 6.405	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.240	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.602	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.803	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.240	culture = chaghatay_culture	religion = sunni }
 }
 farkhor = {
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 22.213	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.060	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.485	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.240	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.872	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.613	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.240	culture = chaghatay_culture	religion = sunni }
 }
 hulbuk = {
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 23.609	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.060	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 6.088	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.240	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.522	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.566	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.240	culture = chaghatay_culture	religion = sunni }
 }
 munk = {
 	define_pop = { type = clergy	size = 0.003	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 23.200	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.060	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 6.497	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.240	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.625	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.872	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.240	culture = chaghatay_culture	religion = sunni }
 }
 vakhs = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 24.819	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.060	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 4.879	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.240	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.220	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.659	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.240	culture = chaghatay_culture	religion = sunni }
 }
 wesgird = {
 	define_pop = { type = clergy	size = 0.004	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 22.651	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.060	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.045	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.240	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.762	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.283	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.240	culture = chaghatay_culture	religion = sunni }
 }
 gharm = {
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = sunni }
@@ -28794,16 +28808,16 @@ zadian = {
 bamyan = {
 	define_pop = { type = clergy	size = 0.005	culture = tajik_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.005	culture = persianized_mongol_culture	religion = sunni }
-	define_pop = { type = clergy	size = 0.005	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = clergy	size = 0.005	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = peasants	size = 1.450	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 1.449	culture = persianized_mongol_culture	religion = sunni }
-	define_pop = { type = peasants	size = 1.450	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.450	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.004	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.005	culture = persianized_mongol_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.016	culture = mongolian_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.458	culture = mongolian_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.841	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.043	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.016	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.458	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.841	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.043	culture = chaghatay_culture	religion = tengri }
 }
 andarab = {
 	define_pop = { type = clergy	size = 0.002	culture = khorasani_culture	religion = sunni }
@@ -28827,16 +28841,16 @@ istalif = {
 kahmard = {
 	define_pop = { type = clergy	size = 0.005	culture = tajik_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.005	culture = persianized_mongol_culture	religion = sunni }
-	define_pop = { type = clergy	size = 0.005	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = clergy	size = 0.005	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = peasants	size = 1.449	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 1.450	culture = persianized_mongol_culture	religion = sunni }
-	define_pop = { type = peasants	size = 1.450	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.450	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.005	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.005	culture = persianized_mongol_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.015	culture = mongolian_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.459	culture = mongolian_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.841	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.043	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.015	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.459	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.841	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.043	culture = chaghatay_culture	religion = tengri }
 }
 panjshir = {
 	define_pop = { type = clergy	size = 0.003	culture = khorasani_culture	religion = sunni }
@@ -28846,16 +28860,16 @@ panjshir = {
 yakawlang = {
 	define_pop = { type = clergy	size = 0.004	culture = tajik_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.004	culture = persianized_mongol_culture	religion = sunni }
-	define_pop = { type = clergy	size = 0.003	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = clergy	size = 0.003	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = peasants	size = 1.451	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 1.450	culture = persianized_mongol_culture	religion = sunni }
-	define_pop = { type = peasants	size = 1.451	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = peasants	size = 1.451	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.004	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.005	culture = persianized_mongol_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.016	culture = mongolian_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.460	culture = mongolian_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.840	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.043	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.016	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.460	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.840	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.043	culture = chaghatay_culture	religion = tengri }
 }
 hindu_kush1 = {
 }
@@ -28992,10 +29006,10 @@ maymana = {
 	define_pop = { type = clergy	size = 0.004	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 10.259	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.026	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.492	culture = oirat_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.021	culture = oirat_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.973	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.082	culture = oirat_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 0.492	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.021	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.973	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.082	culture = chaghatay_culture	religion = tengri }
 }
 andkhoy = {
 	define_pop = { type = clergy	size = 0.020	culture = tajik_culture	religion = sunni }
@@ -29012,19 +29026,19 @@ dawlat_abad = {
 	define_pop = { type = clergy	size = 0.006	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 10.257	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.026	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.493	culture = oirat_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.021	culture = oirat_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.973	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.082	culture = oirat_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 0.493	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.021	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.973	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.082	culture = chaghatay_culture	religion = tengri }
 }
 qaisar = {
 	define_pop = { type = clergy	size = 0.006	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 10.258	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.026	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.492	culture = oirat_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.020	culture = oirat_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.973	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.082	culture = oirat_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 0.492	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.020	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.973	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.082	culture = chaghatay_culture	religion = tengri }
 }
 sangcharak = {
 	define_pop = { type = clergy	size = 0.018	culture = tajik_culture	religion = sunni }
@@ -29134,15 +29148,17 @@ darganata = {
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 40.585	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.131	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 23.979	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.522	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.995	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 17.984	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.522	culture = chaghatay_culture	religion = sunni }
 }
 hazarasp = {
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 45.436	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.130	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 19.127	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.522	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.782	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 14.345	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.522	culture = chaghatay_culture	religion = sunni }
 }
 urgench = {
 	define_pop = { type = peasants	size = 34.878	culture = nogai	religion = sunni }
@@ -29295,166 +29311,189 @@ akhsikath = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 17.006	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.044	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 4.593	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.175	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.149	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.444	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.175	culture = chaghatay_culture	religion = sunni }
 }
 asht = {
 	define_pop = { type = peasants	size = 15.398	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.044	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 6.202	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.174	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.551	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.651	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.174	culture = chaghatay_culture	religion = sunni }
 }
 karasuu = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 9.771	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.027	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 3.728	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.109	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.932	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.796	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.109	culture = chaghatay_culture	religion = sunni }
 }
 kasan = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 15.210	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.044	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 6.390	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.175	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.598	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.792	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.175	culture = chaghatay_culture	religion = sunni }
 }
 kerben = {
 	define_pop = { type = clergy	size = 0.000	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 10.178	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.027	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 3.321	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.109	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.831	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.490	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.109	culture = chaghatay_culture	religion = sunni }
 }
 pop_fargana = {
 	define_pop = { type = peasants	size = 19.225	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.055	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.775	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.218	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.944	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.831	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.218	culture = chaghatay_culture	religion = sunni }
 }
 amol_turkmenabad = {
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 9.121	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.028	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 4.738	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.112	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.185	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.553	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.112	culture = chaghatay_culture	religion = sunni }
 }
 alat = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 8.995	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.028	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 4.865	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.112	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.217	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.648	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.112	culture = chaghatay_culture	religion = sunni }
 }
 daya_kathyn = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 8.672	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.028	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 5.187	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.112	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.297	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.890	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.112	culture = chaghatay_culture	religion = sunni }
 }
 paykend = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 11.300	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.028	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 2.559	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.112	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.640	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.919	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.112	culture = chaghatay_culture	religion = sunni }
 }
 vardanzi = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 8.796	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.028	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 5.063	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.112	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.266	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.797	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.112	culture = chaghatay_culture	religion = sunni }
 }
 andijan = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 25.287	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.063	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 6.024	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.253	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.506	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.518	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.253	culture = chaghatay_culture	religion = sunni }
 }
 arslanbob = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 12.094	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.040	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.475	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.158	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.869	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.606	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.158	culture = chaghatay_culture	religion = sunni }
 }
 gulcha = {
 	define_pop = { type = peasants	size = 26.508	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.079	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 12.631	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.316	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.158	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 9.473	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.316	culture = chaghatay_culture	religion = sunni }
 }
 jalalabad_fergana = {
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 31.472	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.079	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.665	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.316	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.917	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.748	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.316	culture = chaghatay_culture	religion = sunni }
 }
 uzkand = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 23.572	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.633	culture = tajik_culture	religion = sunni }
 	define_pop = { type = burghers	size = 3.218	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 11.953	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.158	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.989	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 8.964	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.158	culture = chaghatay_culture	religion = sunni }
 }
 bukhara = {
 	define_pop = { type = burghers	size = 13.720	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 4.927	culture = tajik_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.072	culture = tajik_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.006	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = nobles	size = 2.115	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = peasants	size = 80.946	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 38.845	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 2.109	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 9.712	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 29.133	culture = chaghatay_culture	religion = sunni }
 }
 chiroqchi = {
 	define_pop = { type = peasants	size = 29.763	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.093	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 16.644	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.375	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.161	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 12.483	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.375	culture = chaghatay_culture	religion = sunni }
 }
 firabr = {
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 31.695	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.075	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 5.427	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.300	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.357	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.070	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.300	culture = chaghatay_culture	religion = sunni }
 }
 kish_shahrisabz = {
 	define_pop = { type = clergy	size = 0.004	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 29.878	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.094	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 16.524	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.375	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.131	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 12.393	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.375	culture = chaghatay_culture	religion = sunni }
 }
 koson = {
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 27.427	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.075	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 9.697	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.300	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.425	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 7.272	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.300	culture = chaghatay_culture	religion = sunni }
 }
 muborak = {
 	define_pop = { type = clergy	size = 0.004	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 37.633	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.094	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 8.769	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.375	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.193	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 6.576	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.375	culture = chaghatay_culture	religion = sunni }
 }
 paikend = {
 	define_pop = { type = peasants	size = 36.753	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.093	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 9.653	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.375	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.414	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 7.239	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.375	culture = chaghatay_culture	religion = sunni }
 }
 tim_samarkand = {
 	define_pop = { type = peasants	size = 36.978	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.094	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 9.429	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.375	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.358	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 7.071	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.375	culture = chaghatay_culture	religion = sunni }
 }
 dengizkul_lake = {
 }
@@ -29463,52 +29502,60 @@ chach = {
 	define_pop = { type = nobles	size = 0.533	culture = tajik_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.016	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 23.177	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.543	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.133	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.886	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.657	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.133	culture = chaghatay_culture	religion = sunni }
 }
 almalik_chach = {
 	define_pop = { type = peasants	size = 1.727	culture = tajik_culture	religion = nestorianism }
 	define_pop = { type = nobles	size = 0.005	culture = tajik_culture	religion = nestorianism }
 	define_pop = { type = peasants	size = 9.792	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.028	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.743	culture = khorezmian_culture	religion = nestorianism }
-	define_pop = { type = nobles	size = 0.020	culture = khorezmian_culture	religion = nestorianism }
-	define_pop = { type = tribesmen	size = 4.211	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.113	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.186	culture = khorezmian_culture	religion = nestorianism }
+	define_pop = { type = tribesmen	size = 0.557	culture = chaghatay_culture	religion = nestorianism }
+	define_pop = { type = nobles	size = 0.020	culture = chaghatay_culture	religion = nestorianism }
+	define_pop = { type = tribesmen	size = 1.053	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.158	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.113	culture = chaghatay_culture	religion = sunni }
 }
 altyntobe = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 16.814	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.042	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 3.777	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.166	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.945	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.832	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.166	culture = chaghatay_culture	religion = sunni }
 }
 bogiston = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 13.230	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.042	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.361	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.166	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.841	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.520	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.166	culture = chaghatay_culture	religion = sunni }
 }
 burchmullo = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 3.464	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.010	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.683	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.042	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.421	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.262	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.042	culture = chaghatay_culture	religion = sunni }
 }
 fanakat = {
 	define_pop = { type = peasants	size = 11.357	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.033	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 5.117	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.133	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.280	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.837	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.133	culture = chaghatay_culture	religion = sunni }
 }
 nuket = {
 	define_pop = { type = clergy	size = 0.000	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 10.803	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.033	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 5.670	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.133	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.418	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.252	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.133	culture = chaghatay_culture	religion = sunni }
 }
 tian_shan14 = {
 }
@@ -29518,181 +29565,208 @@ fergana = {
 	define_pop = { type = clergy	size = 0.000	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 19.480	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.050	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 5.269	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.200	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.318	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.951	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.200	culture = chaghatay_culture	religion = sunni }
 }
 marghinan = {
 	define_pop = { type = peasants	size = 15.506	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.050	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 9.244	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.200	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.311	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 6.933	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.200	culture = chaghatay_culture	religion = sunni }
 }
 osh = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 28.991	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.800	culture = tajik_culture	religion = sunni }
 	define_pop = { type = burghers	size = 3.081	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 16.926	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.200	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.232	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 12.694	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.200	culture = chaghatay_culture	religion = sunni }
 }
 quva = {
 	define_pop = { type = clergy	size = 0.000	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 20.136	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.050	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 4.614	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.200	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.154	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.460	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.200	culture = chaghatay_culture	religion = sunni }
 }
 rishton = {
 	define_pop = { type = peasants	size = 17.176	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.050	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.574	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.200	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.894	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.680	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.200	culture = chaghatay_culture	religion = sunni }
 }
 tian_shan7 = {
 }
 isbijab = {
 	define_pop = { type = peasants	size = 5.031	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.013	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.569	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.054	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.393	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.176	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.054	culture = chaghatay_culture	religion = sunni }
 }
 arsubaniket = {
 	define_pop = { type = peasants	size = 4.322	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.013	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 2.278	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.053	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.570	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.708	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.053	culture = chaghatay_culture	religion = sunni }
 }
 badam = {
 	define_pop = { type = peasants	size = 4.382	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.013	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 2.218	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.053	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.555	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.663	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.053	culture = chaghatay_culture	religion = sunni }
 }
 karabulak = {
 	define_pop = { type = peasants	size = 4.922	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.013	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.678	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.053	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.420	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.258	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.053	culture = chaghatay_culture	religion = sunni }
 }
 kazatlyk = {
 	define_pop = { type = peasants	size = 5.423	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.013	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.177	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.053	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.295	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.882	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.053	culture = chaghatay_culture	religion = sunni }
 }
 shymkent = {
 	define_pop = { type = clergy	size = 0.006	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 4.506	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.014	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 2.089	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.053	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.523	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.566	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.053	culture = chaghatay_culture	religion = sunni }
 }
 jizzakh = {
 	define_pop = { type = peasants	size = 17.983	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.043	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 3.401	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.173	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.851	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.550	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.173	culture = chaghatay_culture	religion = sunni }
 }
 pishagar = {
 	define_pop = { type = peasants	size = 13.344	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.043	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 8.040	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.173	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.010	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 6.030	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.173	culture = chaghatay_culture	religion = sunni }
 }
 ura_tyube = {
 	define_pop = { type = peasants	size = 24.264	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.077	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 13.752	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.307	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.438	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 10.314	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.307	culture = chaghatay_culture	religion = sunni }
 }
 zomin = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 28.166	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.077	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 9.849	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.307	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.463	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 7.386	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.307	culture = chaghatay_culture	religion = sunni }
 }
 tuzkan_lake = {
 }
 kelif = {
 	define_pop = { type = peasants	size = 4.565	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.012	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.258	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.047	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.315	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.943	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.047	culture = chaghatay_culture	religion = sunni }
 }
 akhsisek = {
 	define_pop = { type = clergy	size = 0.000	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 5.026	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.015	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 2.253	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.059	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.564	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.689	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.059	culture = chaghatay_culture	religion = sunni }
 }
 guzor = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 4.268	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.012	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.555	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.047	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.389	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.166	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.047	culture = chaghatay_culture	religion = sunni }
 }
 kerki = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 4.853	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.012	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.969	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.047	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.243	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.726	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.047	culture = chaghatay_culture	religion = sunni }
 }
 khoja_idat_kala = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 4.522	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.012	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.300	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.047	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.325	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.975	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.047	culture = chaghatay_culture	religion = sunni }
 }
 nasaf = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 7.187	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.188	culture = tajik_culture	religion = sunni }
 	define_pop = { type = burghers	size = 1.357	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 2.985	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.047	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.747	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.238	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.047	culture = chaghatay_culture	religion = sunni }
 }
 navidakh = {
 	define_pop = { type = clergy	size = 0.000	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 4.416	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.015	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 2.863	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.059	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.716	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.147	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.059	culture = chaghatay_culture	religion = sunni }
 }
 khujand = {
 	define_pop = { type = peasants	size = 22.524	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.587	culture = tajik_culture	religion = sunni }
 	define_pop = { type = burghers	size = 2.333	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 11.077	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.147	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.770	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 8.307	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.147	culture = chaghatay_culture	religion = sunni }
 }
 dakhkat = {
 	define_pop = { type = peasants	size = 13.658	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.037	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 4.492	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.147	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.123	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.369	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.147	culture = chaghatay_culture	religion = sunni }
 }
 isfara = {
 	define_pop = { type = peasants	size = 13.855	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.037	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 4.295	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.147	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.074	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.221	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.147	culture = chaghatay_culture	religion = sunni }
 }
 kokand = {
 	define_pop = { type = peasants	size = 15.364	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.037	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 2.786	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.147	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.697	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.089	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.147	culture = chaghatay_culture	religion = sunni }
 }
 konibodom = {
 	define_pop = { type = peasants	size = 11.165	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.037	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 6.985	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.147	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.747	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.238	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.147	culture = chaghatay_culture	religion = sunni }
 }
 koshoy_korgon = {
 	define_pop = { type = peasants	size = 1.304	culture = tajik_culture	religion = sunni }
@@ -29751,78 +29825,90 @@ nurota = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 1.607	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.005	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.807	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.020	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.202	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.605	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.020	culture = chaghatay_culture	religion = sunni }
 }
 ishtixon = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 20.349	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.049	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 3.796	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.195	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.949	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.847	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.195	culture = chaghatay_culture	religion = sunni }
 }
 karmana = {
 	define_pop = { type = clergy	size = 0.003	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 19.517	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.049	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 4.626	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.195	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.157	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.469	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.195	culture = chaghatay_culture	religion = sunni }
 }
 primkent = {
 	define_pop = { type = peasants	size = 16.931	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.049	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.215	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.195	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.804	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.411	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.195	culture = chaghatay_culture	religion = sunni }
 }
 yangirabod = {
 	define_pop = { type = clergy	size = 0.003	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 19.545	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.049	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 4.599	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.195	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.150	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.449	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.195	culture = chaghatay_culture	religion = sunni }
 }
 otrar = {
 	define_pop = { type = peasants	size = 15.280	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.042	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 5.685	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.169	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.422	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.263	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.169	culture = chaghatay_culture	religion = sunni }
 }
 artyk_ata = {
 	define_pop = { type = peasants	size = 17.555	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.052	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 8.059	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.207	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.015	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 6.044	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.207	culture = chaghatay_culture	religion = sunni }
 }
 kyr_uzkand = {
 	define_pop = { type = peasants	size = 1.949	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.005	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.671	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.021	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.168	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.503	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.021	culture = chaghatay_culture	religion = sunni }
 }
 mardankuyik = {
 	define_pop = { type = peasants	size = 12.945	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.042	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 8.020	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.169	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.005	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 6.015	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.169	culture = chaghatay_culture	religion = sunni }
 }
 sutkent = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 15.211	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.042	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 5.753	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.170	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.439	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.314	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.170	culture = chaghatay_culture	religion = sunni }
 }
 zemukh = {
 	define_pop = { type = peasants	size = 17.672	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.042	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 3.293	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.169	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.824	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.469	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.169	culture = chaghatay_culture	religion = sunni }
 }
 zhaushikumtobe = {
 	define_pop = { type = peasants	size = 1.644	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.005	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.976	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.021	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.244	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.732	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.021	culture = chaghatay_culture	religion = sunni }
 }
 vpadina_ayakalytma_lake = {
 }
@@ -29832,30 +29918,33 @@ samarkand = {
 	define_pop = { type = burghers	size = 26.172	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 6.070	culture = tajik_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.120	culture = tajik_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.008	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = nobles	size = 2.606	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = peasants	size = 88.678	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 49.550	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 2.598	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 12.388	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 37.162	culture = chaghatay_culture	religion = sunni }
 }
 ayni = {
 	define_pop = { type = clergy	size = 0.006	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 24.985	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.065	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.158	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.260	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.790	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.368	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.260	culture = chaghatay_culture	religion = sunni }
 }
 dimishk = {
 	define_pop = { type = clergy	size = 0.003	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 57.822	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.144	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 13.619	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.577	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 3.405	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 10.214	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.577	culture = chaghatay_culture	religion = sunni }
 }
 panjakent = {
 	define_pop = { type = peasants	size = 53.197	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.145	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 18.246	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.578	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.562	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 13.684	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.578	culture = chaghatay_culture	religion = sunni }
 }
 hissar_mountains1 = {
 }
@@ -29919,50 +30008,57 @@ turkestan = {
 	define_pop = { type = clergy	size = 0.003	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 11.956	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.038	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 7.134	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.154	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.784	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 5.350	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.154	culture = chaghatay_culture	religion = sunni }
 }
 aktas_kystagy = {
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 2.571	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.008	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.670	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.034	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.418	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.252	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.034	culture = chaghatay_culture	religion = sunni }
 }
 baydibek_ata = {
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 3.005	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.009	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.235	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.034	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.309	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.926	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.034	culture = chaghatay_culture	religion = sunni }
 }
 ikan = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 3.342	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.009	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.899	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.034	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.225	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.674	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.034	culture = chaghatay_culture	religion = sunni }
 }
 karnak = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 3.594	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.008	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.648	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.034	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.162	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.486	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.034	culture = chaghatay_culture	religion = sunni }
 }
 sawran = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 3.077	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.009	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 1.165	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.034	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.292	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.873	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.034	culture = chaghatay_culture	religion = sunni }
 }
 shilik = {
 	define_pop = { type = clergy	size = 0.003	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 12.851	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.039	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 6.239	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.154	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 1.560	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 4.679	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.154	culture = chaghatay_culture	religion = sunni }
 }
 yangikent = {
 	define_pop = { type = peasants	size = 1.718	culture = tajik_culture	religion = sunni }
@@ -41612,6 +41708,7 @@ lash_joveyn = {
 	define_pop = { type = nobles	size = 0.004	culture = farsi_culture	religion = sunni }
 	define_pop = { type = clergy	size = 0.002	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = peasants	size = 0.181	culture = farsi_culture	religion = zoroastrian }
+	define_pop = { type = nobles	size = 0.000	culture = farsi_culture	religion = zoroastrian }
 	define_pop = { type = clergy	size = 0.021	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 2.102	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.004	culture = tajik_culture	religion = sunni }
@@ -41620,6 +41717,7 @@ lash_joveyn = {
 	define_pop = { type = slaves	size = 0.005	culture = khorasani_culture	religion = zoroastrian }
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = zoroastrian }
 	define_pop = { type = peasants	size = 0.220	culture = tajik_culture	religion = zoroastrian }
+	define_pop = { type = nobles	size = 0.000	culture = tajik_culture	religion = zoroastrian }
 	define_pop = { type = slaves	size = 0.012	culture = tajik_culture	religion = zoroastrian }
 }
 sarbisheh = {
@@ -41764,13 +41862,13 @@ chak = {
 	define_pop = { type = nobles	size = 0.075	culture = afghan_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 2.214	culture = tajik_culture	religion = sunni }
 	define_pop = { type = tribesmen	size = 2.214	culture = persianized_mongol_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 2.213	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 2.213	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.100	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.100	culture = persianized_mongol_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.100	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.100	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = slaves	size = 0.122	culture = tajik_culture	religion = sunni }
 	define_pop = { type = slaves	size = 0.122	culture = persianized_mongol_culture	religion = sunni }
-	define_pop = { type = slaves	size = 0.122	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = slaves	size = 0.122	culture = chaghatay_culture	religion = sunni }
 }
 gandamak = {
 	define_pop = { type = clergy	size = 0.085	culture = tajik_culture	religion = sunni }
@@ -62950,16 +63048,16 @@ urtsun = {
 	define_pop = {	type = peasants	size = 3.183	culture = chitrali	religion = hindu }
 }
 parun = {
-	define_pop = {	type = clergy	size = 0.029	culture = mongolian_culture	religion = hindu }
-	define_pop = {	type = slaves	size = 19.129	culture = nuristani_culture	religion = hindu }
+	define_pop = { type = clergy	size = 0.029	culture = chaghatay_culture	religion = hindu }
+	define_pop = { type = slaves	size = 19.129	culture = nuristani_culture	religion = hindu }
 }
 asadabad_kunar = {
-	define_pop = {	type = clergy	size = 0.021	culture = mongolian_culture	religion = hindu }
-	define_pop = {	type = slaves	size = 16.815	culture = pashayi_culture	religion = hindu }
+	define_pop = { type = clergy	size = 0.021	culture = chaghatay_culture	religion = hindu }
+	define_pop = { type = slaves	size = 16.815	culture = pashayi_culture	religion = hindu }
 }
 hajiabad = {
-	define_pop = {	type = clergy	size = 0.018	culture = mongolian_culture	religion = hindu }
-	define_pop = {	type = slaves	size = 9.404	culture = pashayi_culture	religion = hindu }
+	define_pop = { type = clergy	size = 0.018	culture = chaghatay_culture	religion = hindu }
+	define_pop = { type = slaves	size = 9.404	culture = pashayi_culture	religion = hindu }
 }
 kalam_swat = {
 	define_pop = {	type = clergy	size = 0.007	culture = kashmiri_culture	religion = hindu }

@@ -1,0 +1,11 @@
+# AI evaluation list for the Ṣāḥib-qirān's actions
+# (generic_actions/sahib_qiran_actions.txt). One country carries
+# sq_fortune.
+sahib_qiran_actions_list = {
+	potential = {
+		has_variable = sq_fortune
+	}
+	actions = {
+		sq_distribute_plunder
+	}
+}

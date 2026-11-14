@@ -15,7 +15,15 @@ culture_lists_apply_start = {
 	c:AAI ?= {
 		if = { limit = { NOT = { has_tolerated_culture = culture:armenian_culture } NOT = { has_accepted_culture = culture:armenian_culture } } add_tolerated_culture = culture:armenian_culture }
 	}
+	# APD (chaghatay 0.0%): A - | T tajik (100.0% 1.573) | 1.573 / 2.0
+	c:APD ?= {
+		if = { limit = { NOT = { has_tolerated_culture = culture:tajik_culture } NOT = { has_accepted_culture = culture:tajik_culture } } add_tolerated_culture = culture:tajik_culture }
+	}
 	# ARM (armenian 100.0%): A - | T - | 0 / 1.0
+	# ART (chaghatay 19.97%): A - | T tajik (80.03% 1.436) | 1.436 / 2.0
+	c:ART ?= {
+		if = { limit = { NOT = { has_tolerated_culture = culture:tajik_culture } NOT = { has_accepted_culture = culture:tajik_culture } } add_tolerated_culture = culture:tajik_culture }
+	}
 	# ATQ (turkish 0.01%): A - | T turkoman (22.55% 0.762) | 0.762 / 1.0
 	c:ATQ ?= {
 		if = { limit = { has_tolerated_culture = culture:kurdish_culture } remove_tolerated_culture = culture:kurdish_culture }
@@ -58,15 +66,22 @@ culture_lists_apply_start = {
 		if = { limit = { has_tolerated_culture = culture:brahui_culture } remove_tolerated_culture = culture:brahui_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:tajik_culture } } add_accepted_culture = culture:tajik_culture grant_culture_bonus_advances = culture:tajik_culture }
 	}
+	# BRL (chaghatay 20.29%): A - | T tajik (73.21% 1.423), khorezmian (6.5% 0.222) | 1.645 / 2.0
+	c:BRL ?= {
+		if = { limit = { NOT = { has_tolerated_culture = culture:tajik_culture } NOT = { has_accepted_culture = culture:tajik_culture } } add_tolerated_culture = culture:tajik_culture }
+		if = { limit = { NOT = { has_tolerated_culture = culture:khorezmian_culture } NOT = { has_accepted_culture = culture:khorezmian_culture } } add_tolerated_culture = culture:khorezmian_culture }
+	}
 	# BSD (persianized_mongol 18.51%): A mongolian (28.86% 1.648) | T - | 1.648 / 2.0
 	c:BSD ?= {
 		if = { limit = { has_tolerated_culture = culture:hazara_culture } remove_tolerated_culture = culture:hazara_culture }
 		if = { limit = { has_tolerated_culture = culture:afghan_culture } remove_tolerated_culture = culture:afghan_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:mongolian_culture } } add_accepted_culture = culture:mongolian_culture grant_culture_bonus_advances = culture:mongolian_culture }
 	}
-	# CAC (mongolian 0.0%): A - | T khorezmian (29.26% 1.569) | 1.569 / 2.5
+	# CAC (chaghatay 22.13%): A khorezmian (7.13% 0.669) | T tajik (70.74% 1.409) | 2.078 / 2.5
 	c:CAC ?= {
-		if = { limit = { NOT = { has_tolerated_culture = culture:khorezmian_culture } NOT = { has_accepted_culture = culture:khorezmian_culture } } add_tolerated_culture = culture:khorezmian_culture }
+		if = { limit = { has_tolerated_culture = culture:khorezmian_culture } remove_tolerated_culture = culture:khorezmian_culture }
+		if = { limit = { NOT = { has_accepted_culture = culture:khorezmian_culture } } add_accepted_culture = culture:khorezmian_culture grant_culture_bonus_advances = culture:khorezmian_culture }
+		if = { limit = { NOT = { has_tolerated_culture = culture:tajik_culture } NOT = { has_accepted_culture = culture:tajik_culture } } add_tolerated_culture = culture:tajik_culture }
 	}
 	# CEM (kurdish 0.0%): A - | T armenian (63.78% 1.415) | 1.415 / 2.0
 	c:CEM ?= {
@@ -80,7 +95,7 @@ culture_lists_apply_start = {
 		if = { limit = { NOT = { has_accepted_culture = culture:mongolian_culture } } add_accepted_culture = culture:mongolian_culture grant_culture_bonus_advances = culture:mongolian_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:azeri_culture } } add_accepted_culture = culture:azeri_culture grant_culture_bonus_advances = culture:azeri_culture }
 	}
-	# CHG (mongolian 0.99%): A oirat (56.95% 1.804) | T - | 1.804 / 3.0
+	# CHG (mongolian 0.99%): A oirat (56.95% 1.803) | T - | 1.803 / 3.0
 	c:CHG ?= {
 		if = { limit = { has_tolerated_culture = culture:khorezmian_culture } remove_tolerated_culture = culture:khorezmian_culture }
 		if = { limit = { has_tolerated_culture = culture:kyrgyz_culture } remove_tolerated_culture = culture:kyrgyz_culture }
@@ -134,8 +149,9 @@ culture_lists_apply_start = {
 	c:FDL ?= {
 		if = { limit = { has_tolerated_culture = culture:levantine_culture } remove_tolerated_culture = culture:levantine_culture }
 	}
-	# FGN (mongolian 0.0%): A - | T khorezmian (28.31% 1.568) | 1.568 / 2.0
+	# FGN (chaghatay 21.41%): A - | T tajik (71.69% 1.414), khorezmian (6.9% 0.223) | 1.637 / 2.0
 	c:FGN ?= {
+		if = { limit = { NOT = { has_tolerated_culture = culture:tajik_culture } NOT = { has_accepted_culture = culture:tajik_culture } } add_tolerated_culture = culture:tajik_culture }
 		if = { limit = { NOT = { has_tolerated_culture = culture:khorezmian_culture } NOT = { has_accepted_culture = culture:khorezmian_culture } } add_tolerated_culture = culture:khorezmian_culture }
 	}
 	# FMN (gilak 85.37%): A talysh (14.63% 0.429) | T - | 0.429 / 3.0
@@ -154,7 +170,7 @@ culture_lists_apply_start = {
 		if = { limit = { NOT = { has_accepted_culture = culture:svan_culture } } add_accepted_culture = culture:svan_culture grant_culture_bonus_advances = culture:svan_culture }
 		if = { limit = { NOT = { has_tolerated_culture = culture:armenian_culture } NOT = { has_accepted_culture = culture:armenian_culture } } add_tolerated_culture = culture:armenian_culture }
 	}
-	# GRG (mongolian 19.44%): A - | T adhari (21.18% 1.428), semnani (11.12% 1.062) | 2.49 / 3.0
+	# GRG (mongolian 19.44%): A - | T adhari (21.18% 1.429), semnani (11.12% 1.063) | 2.492 / 3.0
 	c:GRG ?= {
 		if = { limit = { has_tolerated_culture = culture:turkmen_culture } remove_tolerated_culture = culture:turkmen_culture }
 		if = { limit = { has_tolerated_culture = culture:khorasani_culture } remove_tolerated_culture = culture:khorasani_culture }
@@ -229,12 +245,17 @@ culture_lists_apply_start = {
 		if = { limit = { has_tolerated_culture = culture:turkmen_culture } remove_tolerated_culture = culture:turkmen_culture }
 		if = { limit = { NOT = { has_tolerated_culture = culture:mongolian_culture } NOT = { has_accepted_culture = culture:mongolian_culture } } add_tolerated_culture = culture:mongolian_culture }
 	}
+	# JLY (chaghatay 21.83%): A - | T tajik (71.14% 1.411), khorezmian (7.03% 0.223) | 1.634 / 2.0
+	c:JLY ?= {
+		if = { limit = { NOT = { has_tolerated_culture = culture:tajik_culture } NOT = { has_accepted_culture = culture:tajik_culture } } add_tolerated_culture = culture:tajik_culture }
+		if = { limit = { NOT = { has_tolerated_culture = culture:khorezmian_culture } NOT = { has_accepted_culture = culture:khorezmian_culture } } add_tolerated_culture = culture:khorezmian_culture }
+	}
 	# JSK (farsi 0.0%): A baloch (100.0% 1.438) | T - | 1.438 / 2.0
 	c:JSK ?= {
 		if = { limit = { has_tolerated_culture = culture:baloch_culture } remove_tolerated_culture = culture:baloch_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:baloch_culture } } add_accepted_culture = culture:baloch_culture grant_culture_bonus_advances = culture:baloch_culture }
 	}
-	# JUR (mongolian 29.99%): A - | T farsi (70.01% 1.532) | 1.532 / 3.0
+	# JUR (mongolian 29.99%): A - | T farsi (70.01% 1.533) | 1.533 / 3.0
 	c:JUR ?= {
 		if = { limit = { NOT = { has_tolerated_culture = culture:farsi_culture } NOT = { has_accepted_culture = culture:farsi_culture } } add_tolerated_culture = culture:farsi_culture }
 	}
@@ -243,7 +264,7 @@ culture_lists_apply_start = {
 		if = { limit = { has_tolerated_culture = culture:adhari_culture } remove_tolerated_culture = culture:adhari_culture }
 		if = { limit = { NOT = { has_tolerated_culture = culture:azeri_culture } NOT = { has_accepted_culture = culture:azeri_culture } } add_tolerated_culture = culture:azeri_culture }
 	}
-	# KHF (farsi 0.0%): A khorasani (70.09% 0.15) | T mongolian (29.91% 1.228) | 1.378 / 3.0
+	# KHF (farsi 0.0%): A khorasani (70.09% 0.15) | T mongolian (29.91% 1.227) | 1.377 / 3.0
 	c:KHF ?= {
 		if = { limit = { has_tolerated_culture = culture:khorasani_culture } remove_tolerated_culture = culture:khorasani_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:khorasani_culture } } add_accepted_culture = culture:khorasani_culture grant_culture_bonus_advances = culture:khorasani_culture }
@@ -257,7 +278,7 @@ culture_lists_apply_start = {
 		if = { limit = { NOT = { has_accepted_culture = culture:dehwar_culture } } add_accepted_culture = culture:dehwar_culture grant_culture_bonus_advances = culture:dehwar_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:brahui_culture } } add_accepted_culture = culture:brahui_culture grant_culture_bonus_advances = culture:brahui_culture }
 	}
-	# KHT (khorasani 73.02%): A - | T mongolian (26.96% 0.919) | 0.919 / 3.0
+	# KHT (khorasani 73.02%): A - | T mongolian (26.96% 0.918) | 0.918 / 3.0
 	c:KHT ?= {
 		if = { limit = { NOT = { has_tolerated_culture = culture:mongolian_culture } NOT = { has_accepted_culture = culture:mongolian_culture } } add_tolerated_culture = culture:mongolian_culture }
 	}
@@ -292,7 +313,7 @@ culture_lists_apply_start = {
 		if = { limit = { has_tolerated_culture = culture:baloch_culture } remove_tolerated_culture = culture:baloch_culture }
 		if = { limit = { NOT = { has_tolerated_culture = culture:kalimi } NOT = { has_accepted_culture = culture:kalimi } } add_tolerated_culture = culture:kalimi }
 	}
-	# KRT (khorasani 58.23%): A mongolian (21.09% 2.746), tajik (12.43% 0.15) | T persianized_mongol (4.6% 0.05) | 2.946 / 3.5
+	# KRT (khorasani 58.23%): A mongolian (21.09% 2.743), tajik (12.43% 0.15) | T persianized_mongol (4.6% 0.05) | 2.943 / 3.5
 	c:KRT ?= {
 		if = { limit = { has_tolerated_culture = culture:tajik_culture } remove_tolerated_culture = culture:tajik_culture }
 		if = { limit = { has_tolerated_culture = culture:hazara_culture } remove_tolerated_culture = culture:hazara_culture }
@@ -301,6 +322,11 @@ culture_lists_apply_start = {
 		if = { limit = { NOT = { has_tolerated_culture = culture:persianized_mongol_culture } NOT = { has_accepted_culture = culture:persianized_mongol_culture } } add_tolerated_culture = culture:persianized_mongol_culture }
 	}
 	# KSA (farsi 100.0%): A - | T - | 0 / 3.0
+	# KTT (chaghatay 16.73%): A - | T tajik (77.95% 1.451), khorezmian (5.31% 0.218) | 1.669 / 2.0
+	c:KTT ?= {
+		if = { limit = { NOT = { has_tolerated_culture = culture:tajik_culture } NOT = { has_accepted_culture = culture:tajik_culture } } add_tolerated_culture = culture:tajik_culture }
+		if = { limit = { NOT = { has_tolerated_culture = culture:khorezmian_culture } NOT = { has_accepted_culture = culture:khorezmian_culture } } add_tolerated_culture = culture:khorezmian_culture }
+	}
 	# LCK (lur 72.31%): A farsi (26.44% 1.028) | T - | 1.028 / 3.0
 	c:LCK ?= {
 		if = { limit = { has_tolerated_culture = culture:farsi_culture } remove_tolerated_culture = culture:farsi_culture }
@@ -342,7 +368,7 @@ culture_lists_apply_start = {
 		if = { limit = { has_tolerated_culture = culture:brahui_culture } remove_tolerated_culture = culture:brahui_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:sindhi } } add_accepted_culture = culture:sindhi grant_culture_bonus_advances = culture:sindhi }
 	}
-	# MRV (tajik 72.52%): A oirat (20.0% 1.621) | T hui_muslim (7.48% 0.408) | 2.029 / 3.0
+	# MRV (tajik 72.52%): A oirat (20.0% 1.618) | T hui_muslim (7.48% 0.408) | 2.026 / 3.0
 	c:MRV ?= {
 		if = { limit = { NOT = { has_accepted_culture = culture:oirat_culture } } add_accepted_culture = culture:oirat_culture grant_culture_bonus_advances = culture:oirat_culture }
 		if = { limit = { NOT = { has_tolerated_culture = culture:hui_muslim_culture } NOT = { has_accepted_culture = culture:hui_muslim_culture } } add_tolerated_culture = culture:hui_muslim_culture }
@@ -357,7 +383,7 @@ culture_lists_apply_start = {
 		if = { limit = { NOT = { has_accepted_culture = culture:kalimi } } add_accepted_culture = culture:kalimi grant_culture_bonus_advances = culture:kalimi }
 	}
 	# MZN (mazanderani 100.0%): A - | T - | 0 / 3.0
-	# NGD (mongolian 12.11%): A - | T afghan (85.39% 1.635) | 1.635 / 2.0
+	# NGD (mongolian 12.11%): A - | T afghan (85.39% 1.636) | 1.636 / 2.0
 	c:NGD ?= {
 		if = { limit = { NOT = { has_tolerated_culture = culture:afghan_culture } NOT = { has_accepted_culture = culture:afghan_culture } } add_tolerated_culture = culture:afghan_culture }
 	}
@@ -371,6 +397,11 @@ culture_lists_apply_start = {
 	# QOM (farsi 98.66%): A - | T kalimi (1.34% 0.05) | 0.05 / 3.0
 	c:QOM ?= {
 		if = { limit = { NOT = { has_tolerated_culture = culture:kalimi } NOT = { has_accepted_culture = culture:kalimi } } add_tolerated_culture = culture:kalimi }
+	}
+	# QUN (chaghatay 4.1%): A - | T tajik (42.61% 1.502) | 1.502 / 2.0
+	c:QUN ?= {
+		if = { limit = { has_tolerated_culture = culture:afghan_culture } remove_tolerated_culture = culture:afghan_culture }
+		if = { limit = { NOT = { has_tolerated_culture = culture:tajik_culture } NOT = { has_accepted_culture = culture:tajik_culture } } add_tolerated_culture = culture:tajik_culture }
 	}
 	# RNK (gilak 100.0%): A - | T - | 0 / 3.0
 	c:RNK ?= {
@@ -390,6 +421,11 @@ culture_lists_apply_start = {
 		if = { limit = { has_tolerated_culture = culture:azeri_culture } remove_tolerated_culture = culture:azeri_culture }
 		if = { limit = { NOT = { has_tolerated_culture = culture:lezgin_culture } NOT = { has_accepted_culture = culture:lezgin_culture } } add_tolerated_culture = culture:lezgin_culture }
 	}
+	# SLD (chaghatay 11.94%): A - | T tajik (84.21% 1.487) | 1.487 / 2.0
+	c:SLD ?= {
+		if = { limit = { has_tolerated_culture = culture:khorezmian_culture } remove_tolerated_culture = culture:khorezmian_culture }
+		if = { limit = { NOT = { has_tolerated_culture = culture:tajik_culture } NOT = { has_accepted_culture = culture:tajik_culture } } add_tolerated_culture = culture:tajik_culture }
+	}
 	# SME (georgian 38.08%): A laz (10.68% 0.168) | T armenian (47.56% 0.858) | 1.026 / 1.5
 	c:SME ?= {
 		if = { limit = { has_tolerated_culture = culture:laz_culture } remove_tolerated_culture = culture:laz_culture }
@@ -406,7 +442,7 @@ culture_lists_apply_start = {
 		if = { limit = { NOT = { has_accepted_culture = culture:lezgin_culture } } add_accepted_culture = culture:lezgin_culture grant_culture_bonus_advances = culture:lezgin_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:azeri_culture } } add_accepted_culture = culture:azeri_culture grant_culture_bonus_advances = culture:azeri_culture }
 	}
-	# SUT (mongolian 0.0%): A - | T armenian (67.82% 1.782), oirat (13.53% 0.558) | 2.34 / 3.0
+	# SUT (mongolian 0.0%): A - | T armenian (67.82% 1.784), oirat (13.53% 0.557) | 2.341 / 3.0
 	c:SUT ?= {
 		if = { limit = { has_tolerated_culture = culture:kurdish_culture } remove_tolerated_culture = culture:kurdish_culture }
 		if = { limit = { NOT = { has_tolerated_culture = culture:armenian_culture } NOT = { has_accepted_culture = culture:armenian_culture } } add_tolerated_culture = culture:armenian_culture }
@@ -422,7 +458,7 @@ culture_lists_apply_start = {
 		if = { limit = { has_tolerated_culture = culture:talysh_culture } remove_tolerated_culture = culture:talysh_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:talysh_culture } } add_accepted_culture = culture:talysh_culture grant_culture_bonus_advances = culture:talysh_culture }
 	}
-	# UGH (mongolian 29.99%): A - | T farsi (70.01% 1.532) | 1.532 / 3.0
+	# UGH (mongolian 29.99%): A - | T farsi (70.01% 1.533) | 1.533 / 3.0
 	c:UGH ?= {
 		if = { limit = { NOT = { has_tolerated_culture = culture:farsi_culture } NOT = { has_accepted_culture = culture:farsi_culture } } add_tolerated_culture = culture:farsi_culture }
 	}
@@ -436,6 +472,12 @@ culture_lists_apply_start = {
 		if = { limit = { has_tolerated_culture = culture:hadhrami_culture } remove_tolerated_culture = culture:hadhrami_culture }
 		if = { limit = { NOT = { has_accepted_culture = culture:hadhrami_culture } } add_accepted_culture = culture:hadhrami_culture grant_culture_bonus_advances = culture:hadhrami_culture }
 		if = { limit = { NOT = { has_tolerated_culture = culture:teimani } NOT = { has_accepted_culture = culture:teimani } } add_tolerated_culture = culture:teimani }
+	}
+	# YSU (chaghatay 17.41%): A - | T tajik (60.08% 1.416), khorezmian (5.51% 0.218) | 1.634 / 2.0
+	c:YSU ?= {
+		if = { limit = { has_tolerated_culture = culture:nogai } remove_tolerated_culture = culture:nogai }
+		if = { limit = { NOT = { has_tolerated_culture = culture:tajik_culture } NOT = { has_accepted_culture = culture:tajik_culture } } add_tolerated_culture = culture:tajik_culture }
+		if = { limit = { NOT = { has_tolerated_culture = culture:khorezmian_culture } NOT = { has_accepted_culture = culture:khorezmian_culture } } add_tolerated_culture = culture:khorezmian_culture }
 	}
 	# ZRQ (kurdish 42.06%): A - | T turkoman (29.9% 0.795), syriac (17.53% 0.751) | 1.546 / 2.0
 	c:ZRQ ?= {

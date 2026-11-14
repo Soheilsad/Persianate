@@ -1,0 +1,93 @@
+# ============================================================
+# THE ṢĀḤIB-QIRĀN'S ACTIONS.
+#
+# type = situation, selected on base's Rise of Timur, so the button
+# appears among that panel's Main Actions (the form of base
+# generic_actions/rise_of_timur.txt). Only while that situation is
+# active: a Ṣāḥib-qirān whose realm was not released as TIM (Iran
+# already had a master) has the fortune but not this button.
+#
+# Price: common/prices/05_sahib_qiran_prices.txt.
+# AI list: common/generic_action_ai_lists/sahib_qiran_list.txt.
+# ============================================================
+
+# ------------------------------------------------------------
+# DIVIDE THE PLUNDER. Gold into his fortune. After each campaign Temür
+# divided what had been taken among the amirs and the tümens, by rank,
+# at a feast; it is what the chronicles of his reign count beside the
+# victories. A year's income for sq_fortune_largesse points, once a
+# year.
+# ------------------------------------------------------------
+sq_distribute_plunder = {
+	type = situation
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = sq_distribute_plunder
+		years = 1
+	}
+
+	price = price:sq_distribute_plunder_price
+
+	potential = {
+		scope:actor = {
+			has_variable = sq_fortune
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			is_rebel_country = no
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = situation
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:rise_of_timur = this
+			situation_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			if = {
+				limit = { country_has_estate = estate_type:nobles_estate }
+				add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 }
+			}
+			custom_tooltip = sq_distribute_plunder_tt
+			hidden_effect = {
+				sq_change_fortune = { AMOUNT = sq_fortune_largesse }
+			}
+		}
+	}
+
+	# The AI pays when his fortune is under the high line.
+	ai_will_do = {
+		add = 0
+		if = {
+			limit = {
+				scope:actor = {
+					trigger_if = {
+						limit = { has_variable = sq_fortune }
+						var:sq_fortune < sq_fortune_high_line
+					}
+					trigger_else = {
+						always = no
+					}
+				}
+			}
+			add = 40
+		}
+	}
+}

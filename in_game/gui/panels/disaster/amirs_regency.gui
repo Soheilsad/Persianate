@@ -1,0 +1,251 @@
+# ============================================================
+# The Amirs' Regency — disaster panel.
+#
+# The regency's state lives on the ORGANISATION (it moves from court to
+# court); a disaster panel can only read its owner. The monthly ledger
+# (scripted_effects/14_ulus_chaghatay_effects.txt, section 6) copies the
+# readings onto the regent's state as ulus_d_*:
+#   ulus_d_stage_1..4   which stage (flags; the GUI tests IsSet)
+#   ulus_d_progress     0..100 toward the next stage
+#   ulus_d_gap          0..100 the legitimacy gap's fill
+#   ulus_d_heir         0..1   the regent's heir against the best rival
+# The regent's actions are organisation actions and stay on the Ulus
+# Chaghatay panel; this panel says so.
+# Pattern: custody_of_the_ulus.gui.
+# ============================================================
+
+disaster_panel = {
+
+	blockoverride "disaster_secondary_tab" {
+		margin_top = 10
+		spacing = 5
+		disaster_card_expandable = {
+			blockoverride "header_button_onclick" {
+				onclick = "[LateralView.Vars.Toggle( 'requirements_toggled' )]"
+			}
+			blockoverride "header_text" {
+				text = "END_REQUIREMENTS"
+			}
+			blockoverride "header_icon" {
+				texture = "gfx/interface/icons/disasters/end_requirements_green.dds"
+			}
+			blockoverride "bottom_content" {
+				TooltipRequirementsList = {
+					textcontext = "[DisasterView.GetDisaster.GetType.GetEndConditions]"
+				}
+			}
+			blockoverride "bottom_content_onclick" {
+				visible = "[LateralView.Vars.Exists( 'requirements_toggled' )]"
+			}
+			blockoverride "icon_replace_visible_yes" {
+				visible = "[LateralView.Vars.Exists( 'requirements_toggled' )]"
+			}
+			blockoverride "icon_replace_visible_not" {
+				visible = "[Not(LateralView.Vars.Exists( 'requirements_toggled' ))]"
+			}
+		}
+	}
+
+	blockoverride "disaster_main_content_subheader" {}
+
+	blockoverride "main_content" {
+
+		# ---- The stage ----
+		disaster_card_common = {
+			blockoverride "common_header_icon_texture" {
+				texture = "gfx/interface/icons/character_roles/regent.dds"
+			}
+			blockoverride "common_header_text" {
+				text = "AMIRS_REGENCY_STAGE_TRACK"
+			}
+			blockoverride "common_bottom_content" {
+				vbox = {
+					margin = { 10 4 }
+					spacing = 4
+					layoutpolicy_horizontal = expanding
+
+					text_single = {
+						visible = "[DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('ulus_d_stage_1').IsSet]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_STAGE_1"
+						default_format = "#yellow_titles"
+						tooltip = "ULUS_STAGE_1_TT"
+					}
+					text_single = {
+						visible = "[DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('ulus_d_stage_2').IsSet]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_STAGE_2"
+						default_format = "#yellow_titles"
+						tooltip = "ULUS_STAGE_2_TT"
+					}
+					text_single = {
+						visible = "[DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('ulus_d_stage_3').IsSet]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_STAGE_3"
+						default_format = "#yellow_titles"
+						tooltip = "ULUS_STAGE_3_TT"
+					}
+					text_single = {
+						visible = "[DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('ulus_d_stage_4').IsSet]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_STAGE_4"
+						default_format = "#yellow_titles"
+						tooltip = "ULUS_STAGE_4_TT"
+					}
+					text_multi = {
+						layoutpolicy_horizontal = expanding
+						autoresize = yes
+						max_width = 440
+						text = "AMIRS_REGENCY_PANEL_POINTER"
+						default_format = "#subtle_name"
+					}
+				}
+			}
+		}
+
+		disaster_card_common = {
+			blockoverride "common_header_icon_texture" {
+				texture = "gfx/interface/icons/disasters/end_requirements_green.dds"
+			}
+			blockoverride "common_header_text" {
+				text = "ULUS_STAGE_PROGRESS"
+			}
+			blockoverride "common_bottom_content" {
+				hbox = {
+					maximumsize = { -1 150 }
+					margin = { 10 0 }
+					spacing = 10
+					layoutpolicy_horizontal = expanding
+					tooltip = "AMIRS_REGENCY_PROGRESS_TT"
+
+					text_single = {
+						size = { 60 30 }
+						autoresize = yes
+						align = left|nobaseline
+						text = "[DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('ulus_d_progress').GetValue|V0]"
+					}
+
+					divider_flavor_03 = { size = { 8 -1 } }
+
+					progressbar = {
+						visible = yes
+						layoutpolicy_horizontal = expanding
+						size = { -1 6 }
+						using = progress_bar_red_alt
+						min = 0
+						max = 100
+						value = "[FixedPointToFloat(DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('ulus_d_progress').GetValue)]"
+						direction = horizontal
+					}
+
+					divider_flavor_03 = { size = { 8 -1 } }
+
+					text_single = {
+						size = { 40 30 }
+						autoresize = yes
+						align = right|nobaseline
+						raw_text = "/ 100"
+					}
+				}
+			}
+		}
+
+		disaster_card_common = {
+			blockoverride "common_header_icon_texture" {
+				texture = "gfx/interface/icons/character_roles/ruler.dds"
+			}
+			blockoverride "common_header_text" {
+				text = "ULUS_GAP_LABEL"
+			}
+			blockoverride "common_bottom_content" {
+				hbox = {
+					maximumsize = { -1 150 }
+					margin = { 10 0 }
+					spacing = 10
+					layoutpolicy_horizontal = expanding
+					tooltip = "ULUS_GAP_TT"
+
+					text_single = {
+						size = { 60 30 }
+						autoresize = yes
+						align = left|nobaseline
+						text = "[DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('ulus_d_gap').GetValue|V0]"
+					}
+
+					divider_flavor_03 = { size = { 8 -1 } }
+
+					progressbar = {
+						visible = yes
+						layoutpolicy_horizontal = expanding
+						size = { -1 6 }
+						using = progress_bar_red_alt
+						min = 0
+						max = 100
+						value = "[FixedPointToFloat(DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('ulus_d_gap').GetValue)]"
+						direction = horizontal
+					}
+
+					divider_flavor_03 = { size = { 8 -1 } }
+
+					text_single = {
+						size = { 40 30 }
+						autoresize = yes
+						align = right|nobaseline
+						raw_text = "/ 100"
+					}
+				}
+			}
+		}
+
+		disaster_card_common = {
+			blockoverride "common_header_icon_texture" {
+				texture = "gfx/interface/icons/character_roles/heir.dds"
+			}
+			blockoverride "common_header_text" {
+				text = "ULUS_HEIR_BAR"
+			}
+			blockoverride "common_bottom_content" {
+				hbox = {
+					maximumsize = { -1 150 }
+					margin = { 10 0 }
+					spacing = 10
+					layoutpolicy_horizontal = expanding
+					tooltip = "ULUS_HEIR_BAR_TT"
+
+					text_single = {
+						size = { 60 30 }
+						autoresize = yes
+						align = left|nobaseline
+						text = "[DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('ulus_d_heir').GetValue|2]"
+					}
+
+					divider_flavor_03 = { size = { 8 -1 } }
+
+					progressbar = {
+						visible = yes
+						layoutpolicy_horizontal = expanding
+						size = { -1 6 }
+						using = progress_bar_red_alt
+						min = 0
+						max = 1
+						value = "[FixedPointToFloat(DisasterView.GetDisaster.GetOwner.MakeScope.GetVariable('ulus_d_heir').GetValue)]"
+						direction = horizontal
+					}
+
+					divider_flavor_03 = { size = { 8 -1 } }
+
+					text_single = {
+						size = { 40 30 }
+						autoresize = yes
+						align = right|nobaseline
+						raw_text = "/ 1"
+					}
+				}
+			}
+		}
+	}
+}

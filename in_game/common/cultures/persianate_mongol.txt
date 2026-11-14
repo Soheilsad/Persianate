@@ -14,9 +14,10 @@
 # it makes accepting Persian cheap for these courts (as it should be)
 # and is the on-ramp for the future Matter of Tazik acculturation arc.
 # steppe_group is deliberately DROPPED — that is the statement of
-# settledness. The Chagatai tribal world (Barlas, Qara'unas, Suldus,
-# Arlat...) and Togha Temur's GRG keep plain mongolian_culture: their
-# Iranization is the Timurid arc, not 1337 fact.
+# settledness. Togha Temur's GRG keeps plain mongolian_culture. The
+# Chagatai tribal world (Barlas, Qara'unas, Suldus, Arlat...) is
+# neither: Turkicized, not Persianized — chaghatay_culture, in
+# chaghatay.txt. Its Iranization is the Timurid arc, not 1337 fact.
 #
 # Pops: 22 urban sunni noble/clergy pops flipped by
 # tools/persianize_mongol_pops.py (2026-08-28) — see that script for
@@ -35,6 +36,7 @@ persianized_mongol_culture = {
 	opinions = {
 		mongolian_culture = positive
 		oirat_culture = positive
+		chaghatay_culture = positive
 		farsi_culture = positive
 		adhari_culture = positive
 		khorasani_culture = positive
@@ -49,6 +51,9 @@ persianized_mongol_culture = {
 	use_patronym = yes
 }
 
+# No entry for chaghatay_culture here or under oirat, on purpose: the
+# eastern nomads called the western tribes qara'unas, "mongrels". The
+# regard runs one way (chaghatay.txt holds mongolian = positive).
 INJECT:mongolian_culture = {
 
 	opinions = {
@@ -136,6 +141,10 @@ INJECT:khorasani_culture = {
 		mongolian_culture = enemy
 		oirat_culture = enemy
 		persianized_mongol_culture = negative
+		# The Chaghatay tümens (cultures/chaghatay.txt): Yasa'ur's raids
+		# are within living memory, but these are Muslim, Turkic-speaking
+		# neighbours across the Oxus, not the pagan horde of 1221.
+		chaghatay_culture = negative
 		farsi_culture = kindred
 		adhari_culture = kindred
 		tajik_culture = kindred
@@ -164,6 +173,15 @@ INJECT:tajik_culture = {
 		mongolian_culture = enemy
 		oirat_culture = enemy
 		persianized_mongol_culture = neutral
+		# NO entry for chaghatay_culture (cultures/chaghatay.txt), on
+		# purpose: neutral. The tümens of Transoxiana take the tax, but
+		# they are Muslim, Turkic-speaking, winter beside the towns and
+		# patronise the same shaykhs; the sadrs of Bukhara and the
+		# notables of Samarkand work with them. The enemy above is the
+		# Mongol of the east: when Samarkand shut its gates in 1365 it
+		# was against the Jete, not against its own amirs. (Mechanically:
+		# at `negative` no Chaghatay tümen can afford to tolerate its own
+		# Tajik majority inside its capacity — tools/culture_lists.py.)
 		farsi_culture = kindred
 		khorasani_culture = kindred
 		adhari_culture = kindred
@@ -213,6 +231,10 @@ INJECT:iraqi_culture = {
 INJECT:khorezmian_culture = {
 	opinions = {
 		mongolian_culture = negative
+		# The Chaghatay tümens speak their tongue and ride with their
+		# kin: base's khorezmian tribesmen of Transoxiana are the pool
+		# the tribes are drawn from (tools/chaghatay_culture.py).
+		chaghatay_culture = positive
 		uzbek_culture = negative
 		tajik_culture = positive
 		khorasani_culture = positive
@@ -312,6 +334,9 @@ INJECT:baloch_culture = {
 INJECT:afghan_culture = {
 	opinions = {
 		mongolian_culture = negative
+		# The Qara'unas named above are chaghatay_culture since
+		# cultures/chaghatay.txt: the grievance follows them.
+		chaghatay_culture = negative
 		khorasani_culture = positive
 		tajik_culture = positive
 		farsi_culture = positive

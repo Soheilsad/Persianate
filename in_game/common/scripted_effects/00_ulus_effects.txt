@@ -77,7 +77,18 @@ grant_ulus_effect = {
 		#   with a confession of its own.
 		# =============================================================
 		scope:ulus_country = {
-			change_culture = culture:mongolian_culture
+			# A share carved from a Chaghatay khan's patrimony is
+			# Chaghatay (in_game/common/cultures/chaghatay.txt); from
+			# any other khan's, Mongol as before.
+			if = {
+				limit = {
+					scope:ulus_overlord = { culture = culture:chaghatay_culture }
+				}
+				change_culture = culture:chaghatay_culture
+			}
+			else = {
+				change_culture = culture:mongolian_culture
+			}
 			change_religion = scope:ulus_overlord.religion
 
 			change_country_type = army

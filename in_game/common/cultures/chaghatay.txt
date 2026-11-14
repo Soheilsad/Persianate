@@ -1,0 +1,54 @@
+# =====================================================================
+# CHAGHATAY — the tribes of the western Ulus Chaghatay
+#
+# By the 1330s the tümens of Transoxiana and the Oxus country (Barlas,
+# Jalayir, Suldus, Arlat, Apardi, Yasa'uri, the Qara'unas) were Mongol
+# by descent and by tribal name only. They spoke Turkic, were Muslim,
+# and wintered beside the towns they taxed. They called themselves
+# Chaghatay. The nomads of the eastern half, who had kept closer to the
+# old ways, called them qara'unas ("mongrels") and were called jete
+# ("robbers") in return: the divide along which the ulus splits in the
+# 1340s. Base half-admits it — the Barlas tag is mongolian_culture, but
+# Temür and his father are khorezmian_culture characters, and the
+# khan's court language is already karluk_language.
+#
+# Language: karluk_language, the Turkic of Transoxiana (what base's
+# khorezmian_culture speaks, and what later carries the name Chaghatay).
+# Groups: mongolian_group (the heritage, and every "of the Mongol
+# family" gate in base and in this mod), turkic_group (the tongue),
+# steppe_group (they are still nomads — the opposite statement to
+# persianized_mongol_culture, which drops it).
+#
+# Who is Chaghatay at the 1337 start, the pops and the one switch for
+# the khan's own tag: tools/chaghatay_culture.py (generator; also writes
+# setup/countries/zz_chaghatay_culture_base_tags.txt and
+# on_action/34_chaghatay_culture_start.txt). The east — Dughlat,
+# Issyk-Kul, Dzungaria — stays mongolian_culture.
+#
+# Opinions HELD OF this culture live in the INJECT blocks of
+# persianate_mongol.txt, beside the rest of the lattice (one INJECT per
+# culture, so a second file never has to merge with the first).
+# =====================================================================
+
+chaghatay_culture = {
+	language = karluk_language
+
+	color = map_chaghatay
+
+	tags = { mongol_gfx turkic_gfx persianate_gfx central_asian_gfx middle_east_gfx afrasian_gfx }
+
+	opinions = {
+		# The descent they claim, whatever the east says of them.
+		mongolian_culture = positive
+		# The same tongue: the Turkic nomads of their own pastures.
+		khorezmian_culture = kindred
+		# The other Muslim Turco-Mongol military class, across the Oxus.
+		persianized_mongol_culture = positive
+	}
+
+	culture_groups = {
+		mongolian_group
+		turkic_group
+		steppe_group
+	}
+}

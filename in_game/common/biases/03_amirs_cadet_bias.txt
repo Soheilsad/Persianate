@@ -1,0 +1,13 @@
+# Opinion modifiers of the cadet route (events/amirs_cadet_events.txt).
+
+# The house toward the invader who confirmed its new chief.
+opinion_ulus_confirmed_our_house = {
+	value = 40
+	yearly_decay = 4
+}
+
+# The invader toward the house whose kinsman came to his camp.
+opinion_ulus_cadet_submitted = {
+	value = 40
+	yearly_decay = 4
+}

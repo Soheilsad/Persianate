@@ -42,4 +42,12 @@ dynasty_manager = {
 		name = { name = al_mutahhar_dynasty }
 		home = thula
 	}
+	#The Barlas of Kish. Base files Temür, his father Taraghai and the
+	#whole line back to Qarachar Noyan under borjigin_dynasty (the Timurid
+	#court genealogy taken literally). They are moved here at game start
+	#(in_game/common/on_action/30_ulus_chaghatay_start.txt).
+	barlas_dynasty = {
+		name = { name = barlas_dynasty }
+		home = kish_shahrisabz
+	}
 }

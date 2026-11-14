@@ -1,0 +1,38 @@
+﻿l_english:
+ # The Ṣāḥib-qirān's fortune (in_game/common/scripted_effects/18_sahib_qiran_fortune_effects.txt)
+
+ # Panel (gui/panels/situation/rise_of_timur.gui)
+ SQ_FORTUNE_LABEL: "Fortune of the Ṣāḥib-qirān"
+ SQ_FORTUNE_TT: "#T Fortune (dawlat)#!\nHe is not a khan. What holds the amirs to him is the fortune he is seen to have, on a scale of 0 to 100.\n\nIt drains every month: half as fast while he is at war, twice as fast once he has been at peace for more than three years.\nIt is filled by great battles won (+4), sieges won (+2), wars won (+10) and by dividing the plunder (+10). A lost war costs 15.\n\nAt 60 or more the amirs follow him gladly. Under 30 they begin to look elsewhere. If it stays empty for two years, the amirs who swore to him when he took the ulus go their own way.\n\nThe fortune is the man's. His heir begins at 25, whatever was left."
+ SQ_FORTUNE_HIGH: "His star is up: the amirs follow."
+ SQ_FORTUNE_MIDDLE: "The amirs wait to see what the next campaign brings."
+ SQ_FORTUNE_LOW: "His fortune is failing: the amirs look elsewhere."
+
+ # Action (generic_actions/sahib_qiran_actions.txt)
+ sq_distribute_plunder: "Divide the Plunder"
+ sq_distribute_plunder_desc: "Hold the feast and divide what has been taken among the amirs and the tümens, each by his rank. A year's income raises the Ṣāḥib-qirān's fortune."
+ sq_distribute_plunder_tt: "The fortune of the Ṣāḥib-qirān rises by #G 10#!."
+
+ # Band modifiers
+ STATIC_MODIFIER_NAME_sq_fortune_high_mod: "Fortune of the Ṣāḥib-qirān"
+ STATIC_MODIFIER_DESC_sq_fortune_high_mod: "He keeps winning and he keeps giving. The amirs follow."
+ STATIC_MODIFIER_NAME_sq_fortune_low_mod: "A Failing Fortune"
+ STATIC_MODIFIER_DESC_sq_fortune_low_mod: "No victories and nothing divided. The amirs who followed his fortune have begun to doubt it."
+
+ # Events (events/sahib_qiran_events.txt)
+ sahib_qiran.1.title: "The Sons and the Amirs"
+ sahib_qiran.1.desc: "The man who made this realm is dead, and what he made it with has died with him. The amirs did not swear to a house. They swore to a fortune: to a man who had won every year they could remember and had divided what he took. His heir sits in his place with his father's name and none of his father's victories.\n\nThe brothers and the nephews have governorships and armies of their own. The amirs who commanded the tümens are watching to see which of them is worth following. Nothing that was owed to the father is owed to the son until he has earned it in the field."
+ sahib_qiran.1.a: "Then I will earn it as he did."
+ sahib_qiran_succession_tt: "The fortune of the Ṣāḥib-qirān begins again at #R 25#! for the new ruler. It is filled as before: by victories and by dividing the plunder."
+ sahib_qiran.2.title: "The Amirs Ride Away"
+ sahib_qiran.2.desc: "There has been no campaign worth the name for two years, and no division of spoils because there were no spoils. The amirs who gave their oath when the ulus was taken gave it to a man whose fortune was plain to everyone. It is no longer plain to anyone.\n\nThey have not rebelled. They have taken their tümens back to their own pastures and stopped answering the summons, which comes to the same thing."
+ sahib_qiran.2.a: "They will answer the next one, or be made to."
+ sahib_qiran_reckoning_tt: "Every amir who became our subject when the ulus was taken breaks free.\nWe lose #R 25#! prestige and #R 25#! horde unity."
+
+ # Ruler style (in_game/common/customizable_localization/country_ranks.txt)
+ rank_gurkan_horde: "Horde"
+ rank_gurkan_horde_ruler_suffix_male: "Güregen"
+ rank_gurkan_horde_ruler_suffix_female: "Khātūn"
+ rank_gurkan_horde_mirza: "Horde"
+ rank_gurkan_horde_mirza_ruler_suffix_male: "Mīrzā"
+ rank_gurkan_horde_mirza_ruler_suffix_female: "Begum"

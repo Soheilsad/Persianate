@@ -1,0 +1,212 @@
+situation_panel = {
+
+	##################################### TOP HEADER #####################################
+
+	# TIMUR STRENGTH
+	blockoverride "situation_header_left" {
+		country_flag_small = {
+			datacontext = "[GetCountry('TIM')]"
+		}
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				text = "army_size"
+				default_format = "#subtle_name"
+			}
+
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				fontsize = 13
+				text = "[GetCountry('TIM').GetTotalStrength|3]"
+			}
+			tooltipwidget = {
+				SimpleContextualTooltipType = {
+					blockoverride "title_icon" {
+						icon = {
+							using = tooltip_title_icon_size
+							texture = "gfx/interface/icons/unit_category/army_size.dds"
+						}
+					}
+
+					blockoverride "concept_link" {
+						text = "[army|e]"
+					}
+					
+					lowpriotextcontext = "target_regular_army_size_simple"
+
+				}
+			}
+		}
+		expand = {}
+	}
+
+	# Kills in Battle
+	blockoverride "situation_header_right" {
+		expand = {}
+		
+		
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				align = left|nobaseline
+				text = "KILLS_IN_BATTLES"
+			}
+			text_single = {
+				layoutpolicy_horizontal = expanding
+				align = right|nobaseline
+				text = "[SituationView.GetActiveSituation.GetSituation.MakeScope.GetVariable('timur_battle_kill_counter').GetValue]"
+			}
+		}
+		icon = {
+			size = {32 32}
+			texture = "gfx/interface/icons/flat_icons/geopolitics/privateer.dds"
+		}
+		tooltipwidget = {
+			SimpleContextualTooltipType = {
+				blockoverride "title_icon" {
+					icon = {
+						using = tooltip_title_icon_size
+						texture = "gfx/interface/icons/flat_icons/geopolitics/privateer.dds"
+					}
+				}
+
+				blockoverride "concept_link" {
+					text = "[battle|e]"
+				}
+				
+				lowpriotextcontext = "TOTAL_CASUALTIES_TIMUR"
+
+			}
+		}
+	}
+
+	##################################### MAIN IMAGE #####################################
+
+	blockoverride "situation_panel_image" {
+		using = one_country_header_template
+
+		blockoverride "one_country_header_background" {
+			background = {
+				texture = "gfx/interface/illustrations/situation/rise_of_timur.dds"
+				modify_texture = {
+					texture = "gfx/interface/component_masks/mask_fade_horizontal_middle.dds"
+					texture_density = 2
+					spriteType = stretched
+					spriteborder = { 250 250 }
+					blend_mode = alphamultiply
+					alpha = 0.4
+				}
+			}
+		}
+
+		blockoverride "CountryContext" {
+			datacontext = "[GetCountry('TIM')]"
+		}
+		# blockoverride "history_button_anchor" {}
+		blockoverride "character_portrait_anchor" {
+			parentanchor = bottom|left
+		}
+		blockoverride "character_religion_visibility" {
+			visible = no
+		}
+		blockoverride "character_name_maximumsize" {
+			maximumsize = { 270 -1 }
+		}
+		blockoverride "country_header_extra" {
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				margin = { 10 10 }
+				spacing = 8
+				expand = {}
+			}
+		}
+	}
+
+	##################################### TAB NAME #####################################
+
+
+	##################################### SUBHEADER #####################################
+
+	blockoverride "situation_subheader_content" {
+		
+	}
+	##################################### MAIN CONTENT #####################################
+	blockoverride "situation_panel_outcome_hint" {
+		action_tooltip = {
+			title = "OPEN_HINT"
+			on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_rise_of_timur')]"
+		}
+	}
+
+	# PERSIANATE WORLD MOD: the Ṣāḥib-qirān's fortune (dawlat), kept on
+	# TIM by scripted_effects/18_sahib_qiran_fortune_effects.txt. Shown
+	# only when TIM carries it, i.e. when the realm came out of the
+	# Amirs' Regency. The rest of this file is base 1.4.7 verbatim;
+	# re-diff on a patch.
+	blockoverride "situation_panel_main_content" {
+		vbox = {
+			visible = "[GetCountry('TIM').MakeScope.GetVariable('sq_fortune').IsSet]"
+			layoutpolicy_horizontal = expanding
+			spacing = 4
+			tooltip = "SQ_FORTUNE_TT"
+
+			hbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 8
+
+				text_single = {
+					autoresize = yes
+					align = left|nobaseline
+					text = "SQ_FORTUNE_LABEL"
+					default_format = "#yellow_titles"
+				}
+				expand = {}
+				text_single = {
+					autoresize = yes
+					align = right|nobaseline
+					text = "[GetCountry('TIM').MakeScope.GetVariable('sq_fortune').GetValue|V0]"
+				}
+				text_single = {
+					autoresize = yes
+					align = right|nobaseline
+					raw_text = "/ 100"
+				}
+			}
+			progressbar = {
+				layoutpolicy_horizontal = expanding
+				size = { -1 6 }
+				using = progress_bar_green_alt
+				min = 0
+				max = 1
+				value = "[FixedPointToFloat(GetCountry('TIM').MakeScope.GetVariable('sq_fortune_bar').GetValue)]"
+				direction = horizontal
+			}
+			text_single = {
+				visible = "[GetCountry('TIM').MakeScope.GetVariable('sq_band_high').IsSet]"
+				layoutpolicy_horizontal = expanding
+				align = left|nobaseline
+				text = "SQ_FORTUNE_HIGH"
+				default_format = "#subtle_name"
+			}
+			text_single = {
+				visible = "[And(Not(GetCountry('TIM').MakeScope.GetVariable('sq_band_high').IsSet), Not(GetCountry('TIM').MakeScope.GetVariable('sq_band_low').IsSet))]"
+				layoutpolicy_horizontal = expanding
+				align = left|nobaseline
+				text = "SQ_FORTUNE_MIDDLE"
+				default_format = "#subtle_name"
+			}
+			text_single = {
+				visible = "[GetCountry('TIM').MakeScope.GetVariable('sq_band_low').IsSet]"
+				layoutpolicy_horizontal = expanding
+				align = left|nobaseline
+				text = "SQ_FORTUNE_LOW"
+				default_format = "#subtle_name"
+			}
+		}
+	}
+
+	# blockoverride "action_group_header" { using = bg_war_situation_main_header }
+}
