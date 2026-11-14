@@ -1,0 +1,359 @@
+# Ulus Chaghatay IO panel — the khan, the succession, the amirs.
+#
+# Engine hook: a file named after the IO key in panels/organization/
+# overrides the theme for that IO (base ilkhanate.gui, middle_kingdom.gui;
+# the mod's eranzamin.gui).
+#
+# Unlike Erānzamīn this IO HAS a leader country, so base common_header.gui
+# draws the header by itself: the leader's country_header (ruler portrait,
+# flag, the ULUS_CHAGHATAY_KHAN title) over
+# InternationalOrganizationsView.GetIllustration
+# (gfx/interface/illustrations/international_organization_types/
+# ulus_chaghatay.dds), with the ios_information_header strip listing the
+# IO variables declared in ulus_chaghatay.txt (amirs / weight of the begs
+# / amirs to khan). Nothing in the header is overridden here.
+#
+# Data: every card reads the monthly ledger built by
+# ulus_chaghatay_rebuild_ledger (scripted_effects/14_ulus_chaghatay_effects.txt).
+#
+# EVERY construction below is one already running in eranzamin.gui — read
+# the comments there before changing anything; they were paid for with
+# crashes:
+#   - lists only through GetGlobalList, ONE level deep (no list inside a
+#     list item);
+#   - a list item is a FIXED-SIZE widget with
+#     datacontext = "[Scope.GetCountry]", reading per-country variables as
+#     Country.MakeScope.GetVariable(...), positioned absolutely (no
+#     hbox/expand inside a grid item);
+#   - IO variables as InternationalOrganizationsView.
+#     GetInternationalOrganization.MakeScope.GetVariable(...), a character
+#     through .GetCharacter (the eranzamin_held_khan read), a number
+#     through .GetValue, a bar through FixedPointToFloat;
+#   - cards are base card_common.
+# The leader country is read as ...GetInternationalOrganization.
+# GetLeaderCountry / IsLeaderCountryInPlace (base common_header.gui,
+# middle_kingdom.gui).
+#
+# Tabs: Overview (the three cards, then the engine's special-member
+# groups) and Members (engine, grouped by the Amir of the Ulus status in
+# international_organization_special_statuses/ulus_chaghatay.txt).
+#
+# LATER PHASES add to the Succession card: the regent and the khan he
+# holds, the heir's score against the 80% line, the legitimacy gap and
+# the stage of the Amirs' Regency.
+
+organization_geodiplomatic_theme = {
+
+	# ---TABS (as base ilkhanate.gui: force the Overview on) -------------
+	blockoverride "organization_overview_tab_visible" {}
+	blockoverride "organization_panel_overview_visible" {
+		visible = "[InternationalOrganizationsView.Vars.NotExistOrHasValue( 'organizations', 'overview' )]"
+	}
+	blockoverride "organization_members_tab_down" {
+		down = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'members' )]"
+	}
+	blockoverride "organization_panel_members_visible" {
+		visible = "[InternationalOrganizationsView.Vars.HasValue( 'organizations', 'members' )]"
+	}
+	blockoverride "scroll_overview_empty_visible" { visible = no }
+
+	blockoverride "io_main_actions_icon" {
+		texture = "[InternationalOrganizationsView.GetInternationalOrganization.GetIcon]"
+	}
+
+	# ---OVERVIEW: three cards above the engine's special-member groups --
+	blockoverride "organization_overview_list_custom_top_extra" {
+
+		# (1) THE KHAN — the seat of the ulus, the man on it, and his heir
+		# as the realm's own succession law names him (the törü once it is
+		# seated on CHG; tribal_oldest_male until then).
+		card_common = {
+			blockoverride "header_decor_templates" {
+				using = bg_card_header_01_geopolitics
+				using = bg_cabinet_card_frame
+			}
+			blockoverride "common_header_icon_texture" {
+				texture = "gfx/interface/icons/flat_icons/great_power_score.dds"
+			}
+			blockoverride "common_header_text" {
+				text = "ULUS_KHAN_CARD"
+			}
+			blockoverride "common_bottom_content" {
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					spacing = 4
+					tooltip = "ULUS_KHAN_CARD_TT"
+
+					# Seat and ruler. datacontext = the leader Country (the
+					# ez_key_city_row construction: a Country datacontext on
+					# the hbox, flag and texts reading it).
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.IsLeaderCountryInPlace]"
+						datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.GetLeaderCountry]"
+						spacing = 8
+
+						country_flag_small = {}
+						text_single = {
+							size = { 200 24 }
+							autoresize = no
+							align = left|nobaseline
+							text = "[Country.GetName]"
+							default_format = "#yellow_titles"
+						}
+						expand = {}
+						text_single = {
+							size = { 220 24 }
+							autoresize = no
+							align = right|nobaseline
+							text = "[Country.GetGovernment.GetRulerOrRegent.GetShortNameWithNoTooltip]"
+						}
+					}
+
+					# Heir (ulus_khan_heir on the IO, a character).
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_khan_heir').IsSet]"
+						spacing = 8
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_HEIR_LABEL"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							size = { 300 24 }
+							autoresize = no
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_khan_heir').GetCharacter.GetShortNameWithNoTooltip]"
+						}
+					}
+					text_single = {
+						visible = "[Not(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_khan_heir').IsSet)]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_NO_HEIR"
+						default_format = "#subtle_name"
+					}
+				}
+			}
+		}
+
+		# (2) THE SUCCESSION — the regency bar, and who would take the khan
+		# if the throne fell vacant today. Shown at all times, as the
+		# Empire's panel shows its next election.
+		card_common = {
+			blockoverride "header_decor_templates" {
+				using = bg_card_header_01_geopolitics
+				using = bg_cabinet_card_frame
+			}
+			blockoverride "common_header_icon_texture" {
+				texture = "gfx/interface/icons/character_roles/regent.dds"
+			}
+			blockoverride "common_header_text" {
+				text = "ULUS_SUCCESSION_CARD"
+			}
+			blockoverride "common_bottom_content" {
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					spacing = 6
+
+					# The begs' weight in the khan's own realm, against 50%.
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						tooltip = "ULUS_BEG_BAR_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_BEG_BAR"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_beg_power').GetValue|V0]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "% / 50%"
+						}
+					}
+					progressbar = {
+						layoutpolicy_horizontal = expanding
+						size = { -1 6 }
+						using = progress_bar_green_alt
+						min = 0
+						max = 1
+						value = "[FixedPointToFloat(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_beg_bar').GetValue)]"
+						direction = horizontal
+						tooltip = "ULUS_BEG_BAR_TT"
+					}
+
+					# The amirs' combined strength against the khan's, against 2.
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						tooltip = "ULUS_AMIR_BAR_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_AMIR_BAR"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_amir_ratio').GetValue|2]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "/ 2.00"
+						}
+					}
+					progressbar = {
+						layoutpolicy_horizontal = expanding
+						size = { -1 6 }
+						using = progress_bar_green_alt
+						min = 0
+						max = 1
+						value = "[FixedPointToFloat(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_amir_bar').GetValue)]"
+						direction = horizontal
+						tooltip = "ULUS_AMIR_BAR_TT"
+					}
+
+					# If the khan died today.
+					text_single = {
+						layoutpolicy_horizontal = expanding
+						margin_top = 4
+						align = left|nobaseline
+						text = "ULUS_IF_KHAN_DIED"
+						default_format = "#yellow_titles"
+						tooltip = "ULUS_KINGMAKER_TT"
+					}
+					text_single = {
+						visible = "[IsDataModelEmpty(GetGlobalList('ulus_kingmakers'))]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_NO_KINGMAKERS"
+						default_format = "#subtle_name"
+					}
+					# The three highest kingmaker scores, best first: a vbox
+					# over a global list with fixed-size widget items (the
+					# Notables-tab heads list of eranzamin.gui).
+					vbox = {
+						spacing = 2
+						datamodel = "[GetGlobalList('ulus_kingmakers')]"
+						item = {
+							widget = {
+								datacontext = "[Scope.GetCountry]"
+								size = { 470 30 }
+								tooltip = "ULUS_KINGMAKER_TT"
+								country_flag_small = {
+									parentanchor = left|vcenter
+								}
+								text_single = {
+									parentanchor = left|vcenter
+									position = { 42 0 }
+									size = { 170 24 }
+									autoresize = no
+									align = left|nobaseline
+									text = "[Country.GetName]"
+								}
+								text_single = {
+									parentanchor = left|vcenter
+									position = { 215 0 }
+									size = { 190 24 }
+									autoresize = no
+									align = left|nobaseline
+									fontsize = 12
+									text = "[Country.GetGovernment.GetRulerOrRegent.GetShortNameWithNoTooltip]"
+									default_format = "#subtle_name"
+								}
+								text_single = {
+									visible = "[Country.MakeScope.GetVariable('ulus_kingmaker_score').IsSet]"
+									parentanchor = right|vcenter
+									position = { -6 0 }
+									size = { 50 24 }
+									autoresize = no
+									align = right|nobaseline
+									text = "[Country.MakeScope.GetVariable('ulus_kingmaker_score').GetValue|V0]"
+									default_format = "#yellow_titles"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		# (3) THE AMIRS — every junior member, strongest first, with its
+		# share of the amirs' combined strength (the Bloc Rolls grid of
+		# eranzamin.gui: flat global list, fixed-size widget items).
+		card_common = {
+			blockoverride "header_decor_templates" {
+				using = bg_card_header_01_brown
+				using = bg_cabinet_card_frame
+			}
+			blockoverride "common_header_icon_texture" {
+				texture = "gfx/interface/icons/flat_icons/country.dds"
+			}
+			blockoverride "common_header_text" {
+				text = "ULUS_AMIRS_CARD"
+			}
+			blockoverride "common_bottom_content" {
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					tooltip = "ULUS_AMIRS_CARD_TT"
+
+					text_single = {
+						visible = "[IsDataModelEmpty(GetGlobalList('ulus_amirs'))]"
+						align = left|nobaseline
+						text = "ULUS_NO_AMIRS"
+						default_format = "#subtle_name"
+					}
+					dynamicgridbox = {
+						flipdirection = yes
+						datamodel_wrap = 2
+						datamodel = "[GetGlobalList('ulus_amirs')]"
+						item = {
+							widget = {
+								datacontext = "[Scope.GetCountry]"
+								size = { 235 30 }
+								country_flag_small = {
+									parentanchor = left|vcenter
+								}
+								text_single = {
+									parentanchor = left|vcenter
+									position = { 42 0 }
+									size = { 135 24 }
+									autoresize = no
+									align = left|nobaseline
+									text = "[Country.GetName]"
+								}
+								text_single = {
+									visible = "[Country.MakeScope.GetVariable('ulus_amir_share').IsSet]"
+									parentanchor = right|vcenter
+									position = { -6 0 }
+									size = { 46 24 }
+									autoresize = no
+									align = right|nobaseline
+									text = "[Country.MakeScope.GetVariable('ulus_amir_share').GetValue|%0]"
+									default_format = "#subtle_name"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

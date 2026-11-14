@@ -1,0 +1,49 @@
+# Script values for Ulus Chaghatay.
+# Read by scripted_effects/14_ulus_chaghatay_effects.txt (the panel's
+# ledger) and, from phase 2, by the succession poll and the choice of
+# regent. ONE definition on purpose: the number the panel shows is the
+# number that decides.
+
+# THE KINGMAKER SCORE — who takes the khan if the throne falls vacant
+# with the begs over the bar. COUNTRY scope (a junior member).
+#
+#   ruler's military skill x2   the regency is taken by the man the
+#                               tümens will follow: Qazaghan was the
+#                               ulus's best general before he was its
+#                               master
+#   ruler's administrative skill  holding it is another matter, and it
+#                               was the bitikchis and the settled towns
+#                               that kept Qazaghan twelve years
+#   domain                      2 per location, capped at 60 — a great
+#                               tümen outweighs a small one, but land
+#                               alone does not make a regent
+#   a wife of the line          +25: the güregen's claim, Temür's own
+#
+# Character abilities are 0-100 (base reads them as ruler.adm / heir.mil;
+# events/ and script_values/). The historical houses get no bonus.
+# NOT in the score yet: battles won (no cheap per-ruler tally exists;
+# the later phase can keep one in a variable and add it here).
+ulus_kingmaker_score = {
+	value = 0
+	if = {
+		limit = { has_ruler = yes }
+		add = {
+			value = ruler.mil
+			multiply = 2
+		}
+		add = ruler.adm
+	}
+	add = {
+		value = num_locations
+		multiply = 2
+		max = 60
+	}
+	if = {
+		limit = {
+			ruler ?= {
+				any_spouse = { dynasty ?= dynasty:borjigin_dynasty }
+			}
+		}
+		add = 25
+	}
+}

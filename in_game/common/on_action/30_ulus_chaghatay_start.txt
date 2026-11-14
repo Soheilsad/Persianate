@@ -1,0 +1,21 @@
+# Draw up the Ulus Chaghatay ledger once at game start, so the IO panel
+# (gui/panels/organization/ulus_chaghatay.gui) shows the khan's heir, the
+# regency bar and the kingmakers on day one instead of waiting for the
+# IO's first monthly_effect. Same effect, IO as the current scope (the
+# on_eranzamin_io_start pattern, 00_diwan_game_start.txt).
+#
+# Re-declaring on_game_start EXTENDS the mod's other start hooks.
+
+on_game_start = {
+	on_actions = {
+		on_ulus_chaghatay_start
+	}
+}
+
+on_ulus_chaghatay_start = {
+	effect = {
+		international_organization:ulus_chaghatay ?= {
+			ulus_chaghatay_rebuild_ledger = yes
+		}
+	}
+}

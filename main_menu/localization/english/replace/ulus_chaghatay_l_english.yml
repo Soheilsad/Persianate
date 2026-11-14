@@ -58,3 +58,20 @@
  # --- The beglerbeg's regency (government_reforms/08_ulus_chaghatay_reforms.txt) ---
  beglerbeg_regency: "Beglerbeg's Regency"
  beglerbeg_regency_desc: "The khan sits on the felt and the beg commands the ordu. Every yarlıq goes out under the khan's seal and every tümen musters in his name, because it would not muster in the beg's: a man without the blood of Chinggis cannot be khan, so he keeps one. Qazaghan ruled the ulus this way through two khans, and Mamai and Edigü ruled the house of Jochi so."
+
+ # --- Panel: Overview cards (gui/panels/organization/ulus_chaghatay.gui) ---
+ ULUS_KHAN_CARD: "The Khan"
+ ULUS_KHAN_CARD_TT: "The seat of the ulus and the man who holds it. The heir is the one the seat's own law of succession names today; whether the amirs let him sit is another matter."
+ ULUS_HEIR_LABEL: "Heir:"
+ ULUS_NO_HEIR: "No heir stands ready."
+ ULUS_SUCCESSION_CARD: "The Succession"
+ ULUS_BEG_BAR: "Weight of the begs"
+ ULUS_BEG_BAR_TT: "The power of the nobles in the khan's own realm, against the half that lets them make a khan. If the throne falls vacant with the begs at 50% or more, they do not wait for the heir."
+ ULUS_AMIR_BAR: "Amirs against the khan"
+ ULUS_AMIR_BAR_TT: "The combined [military_strength|e] of the amirs as a multiple of the khan's own. If the throne falls vacant while the amirs field twice the khan's strength, they raise a khan of their own."
+ ULUS_IF_KHAN_DIED: "If the khan died today"
+ ULUS_KINGMAKER_TT: "The amirs best placed to take a khan into their keeping and rule the ulus in his name. An amir's standing is twice his military skill, plus his administrative skill, plus two for each location of his domain (to a limit of 60), plus 25 if he has a wife of the line of Chinggis."
+ ULUS_NO_KINGMAKERS: "No amir stands ready. The roll is drawn up at the turn of each month."
+ ULUS_AMIRS_CARD: "The Amirs"
+ ULUS_AMIRS_CARD_TT: "Every amir of the ulus, strongest first, with his share of the amirs' combined [military_strength|e]."
+ ULUS_NO_AMIRS: "The khan has no amirs."

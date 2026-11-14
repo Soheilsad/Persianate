@@ -169,6 +169,40 @@ ulus_chaghatay = {
 	on_left = {
 	}
 
+	# Rebuilds the ledger the panel reads (the khan's heir, the regency
+	# bar, the kingmaker scores, the amirs by strength). Nothing here
+	# decides anything yet; phase 2 reads the same numbers.
+	monthly_effect = {
+		ulus_chaghatay_rebuild_ledger = yes
+	}
+
+	# Header readouts, written by the ledger (no monthly_change of their
+	# own — the middle_kingdom num_of_celestial_governors pattern, as in
+	# eranzamin.txt).
+	variables = {
+		ulus_amir_count = {
+			format = "ULUS_COUNT_FORMAT"
+			min = 0
+			max = 60
+			start = 0
+			monthly_change_hidden = yes
+		}
+		ulus_beg_power = {
+			format = "ULUS_PERCENT_FORMAT"
+			min = 0
+			max = 100
+			start = 0
+			monthly_change_hidden = yes
+		}
+		ulus_amir_ratio = {
+			format = "ULUS_RATIO_FORMAT"
+			min = 0
+			max = 100
+			start = 0
+			monthly_change_hidden = yes
+		}
+	}
+
 	payments_implemented = {
 		ulus_chaghatay_qubchur
 	}
