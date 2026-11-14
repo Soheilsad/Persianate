@@ -39,7 +39,11 @@ ulus_chaghatay_qubchur = {
 				multiply = 2
 			}
 		}
-		monthly_prestige = -0.05
+		# Withholding the qubchur is defiance of the khan, not thrift:
+		# at zero payment a junior loses 0.30 prestige and 0.10 horde
+		# unity a month (scaled down to nothing at half payment).
+		monthly_prestige = -0.30
+		monthly_horde_unity = -0.10
 	}
 	maintenance_modifier = {
 		potential_trigger = { "payment_maintenance(scope:recipient|ulus_chaghatay_qubchur)" > 0.5 }
@@ -59,7 +63,7 @@ ulus_chaghatay_qubchur = {
 				}
 				add = monthly_income_trade_and_tax
 			}
-			multiply = 0.01
+			multiply = 0.05 # 5% of the juniors' tax-and-trade income: at 1% the khan was insolvent
 		}
 	}
 	proportion_for_payer = {
@@ -74,4 +78,7 @@ ulus_chaghatay_qubchur = {
 			value = 1
 		}
 	}
+	# The AI pays in full; refusing is a player's (or a later phase's) choice.
+	ai_maintenance_value = { value = 1 }
+	ai_maintenance_ignore_saving = yes
 }

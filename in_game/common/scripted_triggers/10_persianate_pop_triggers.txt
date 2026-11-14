@@ -25,7 +25,17 @@ is_diwan_pop = {
 				religion.group = religion_group:muslim
 			}
 		}
-		pop_literacy > 20
+		# Literacy gate, waived during the start year. HYPOTHESIS under test:
+		# the diwan estate was missing on day one and appeared at the first
+		# yearly re-sort even after the chancery check was made day-one
+		# safe (has_chancery_apparatus), which leaves pop_literacy as the
+		# value not yet initialised when setup pops are first sorted. If
+		# the diwan exists on 1 April 1337 with this, the cause is
+		# confirmed; if not, remove this OR and look at the location links.
+		OR = {
+			pop_literacy > 20
+			current_year < 1338
+		}
 		# Apparatus flag only — the chancery makes the pop class, not the
 		# government form (a beylik sultanate has no diwan to join).
 		location = {
