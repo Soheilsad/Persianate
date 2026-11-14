@@ -67,6 +67,7 @@ join_eranzamin = {
         # succession.
         NOT = { has_variable = ulus_chaghatay_admitted }
         NOT = { is_ulus_chaghatay_member = yes }
+        NOT = { is_ulus_chaghatay_roster_tag = yes }
         
     }
     effect = {

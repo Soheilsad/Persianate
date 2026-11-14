@@ -17,16 +17,19 @@
 #
 #   ON EACH JUNIOR MEMBER (country)
 #     ulus_kingmaker_score   script value of the same name
-#     ulus_amir_share        0..1, its military strength as a share of
-#                            all the amirs' together
+#     ulus_weight            0..100 across ALL members (khan included):
+#                            50% military strength, 35% tax base, 15%
+#                            prestige, each as a share of the ulus total
+#     ulus_amir_share        0..1, its weight as a share of all the
+#                            amirs' together
 #
 #   ON THE IO
 #     ulus_amir_count   number of junior members            (header)
 #     ulus_beg_power    nobles' estate power in the leader's realm,
 #                       0..100                              (header)
 #     ulus_beg_bar      the same against the 50% bar, 0..1
-#     ulus_amir_ratio   amirs' combined military strength / the
-#                       leader's own                        (header)
+#     ulus_amir_ratio   amirs' combined weight / the leader's own
+#                                                           (header)
 #     ulus_amir_bar     the same against the 2.0 bar, 0..1
 #     ulus_khan_heir    the leader's heir (character), unset if none
 #
@@ -59,12 +62,69 @@ ulus_chaghatay_rebuild_ledger = {
 	set_local_variable = { name = ulus_beg value = 0 }
 
 	# ---1. The amirs' combined strength ----------------------------------
+	# ---The weight of a realm ------------------------------------------
+	# Not land. A count of locations makes a hundred empty pastures
+	# outweigh Samarkand. A realm's weight in the ulus is what it can
+	# put in the field, what it can tax, and the name it carries: each
+	# taken as its share of the whole ulus's total (khan included), then
+	#   50% military strength, 35% tax base, 15% prestige,
+	# on a 0-100 scale across all members. Stored on every member as
+	# ulus_weight; the bars, the amirs' shares and the kingmaker score
+	# all read it.
+	set_local_variable = { name = ulus_t_mil value = 0 }
+	set_local_variable = { name = ulus_t_tax value = 0 }
+	set_local_variable = { name = ulus_t_pre value = 0 }
+	every_international_organization_member = {
+		change_local_variable = { name = ulus_t_mil add = military_strength }
+		change_local_variable = { name = ulus_t_tax add = country_tax_base }
+		change_local_variable = {
+			name = ulus_t_pre
+			add = {
+				value = prestige
+				min = 0
+			}
+		}
+	}
+	every_international_organization_member = {
+		set_variable = {
+			name = ulus_weight
+			value = {
+				value = 0
+				if = {
+					limit = { local_var:ulus_t_mil > 0 }
+					add = {
+						value = military_strength
+						divide = local_var:ulus_t_mil
+						multiply = 50
+					}
+				}
+				if = {
+					limit = { local_var:ulus_t_tax > 0 }
+					add = {
+						value = country_tax_base
+						divide = local_var:ulus_t_tax
+						multiply = 35
+					}
+				}
+				if = {
+					limit = { local_var:ulus_t_pre > 0 }
+					add = {
+						value = prestige
+						min = 0
+						divide = local_var:ulus_t_pre
+						multiply = 15
+					}
+				}
+			}
+		}
+	}
+
 	every_international_organization_member = {
 		limit = {
 			NOT = { is_leader_of_international_organization = scope:ulus_io }
 		}
 		change_local_variable = { name = ulus_n add = 1 }
-		change_local_variable = { name = ulus_amir_str add = military_strength }
+		change_local_variable = { name = ulus_amir_str add = var:ulus_weight }
 	}
 
 	# ---2. The amirs, strongest first ------------------------------------
@@ -72,17 +132,17 @@ ulus_chaghatay_rebuild_ledger = {
 		limit = {
 			NOT = { is_leader_of_international_organization = scope:ulus_io }
 		}
-		order_by = military_strength
+		order_by = ulus_realm_weight
 		max = 60
 		check_range_bounds = no
 
-		set_variable = { name = ulus_kingmaker_score value = ulus_kingmaker_score }
+		# Share first: the kingmaker score reads it.
 		if = {
 			limit = { local_var:ulus_amir_str > 0 }
 			set_variable = {
 				name = ulus_amir_share
 				value = {
-					value = military_strength
+					value = var:ulus_weight
 					divide = local_var:ulus_amir_str
 				}
 			}
@@ -90,6 +150,7 @@ ulus_chaghatay_rebuild_ledger = {
 		else = {
 			set_variable = { name = ulus_amir_share value = 0 }
 		}
+		set_variable = { name = ulus_kingmaker_score value = ulus_kingmaker_score }
 		add_to_global_variable_list = { name = ulus_amirs target = this }
 	}
 
@@ -106,7 +167,7 @@ ulus_chaghatay_rebuild_ledger = {
 
 	# ---4. The seat: its own strength, its begs, its heir ----------------
 	leader_country ?= {
-		set_local_variable = { name = ulus_khan_str value = military_strength }
+		set_local_variable = { name = ulus_khan_str value = var:ulus_weight }
 		if = {
 			limit = { country_has_estate = estate_type:nobles_estate }
 			set_local_variable = {

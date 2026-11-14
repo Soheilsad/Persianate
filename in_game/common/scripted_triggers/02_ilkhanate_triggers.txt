@@ -47,6 +47,7 @@ is_eranzamin_contender = {
 	# seated in khorasan_region — without this line every one of them
 	# would be flagged a contender at the situation's start.
 	NOT = { is_ulus_chaghatay_member = yes }
+	NOT = { is_ulus_chaghatay_roster_tag = yes }
 
 	# Must be a relevant state
 	# OR = {

@@ -26,3 +26,30 @@ is_ulus_chaghatay_leader = {
 	is_ulus_chaghatay_member = yes
 	is_leader_of_international_organization = international_organization:ulus_chaghatay
 }
+
+# The 1337 roll of the ulus BY TAG. Membership is seeded after countries
+# are created, so at creation time is_ulus_chaghatay_member is still
+# false: Fergana and Chach (capitals in khorasan_region) were picked up
+# by on_new_country_formed's join_eranzamin and ended in the wrong
+# organisation. Use this wherever something must hold from the first
+# instant. Keep in step with setup/1337/15_international_organizations.txt.
+is_ulus_chaghatay_roster_tag = {
+	OR = {
+		tag = CHG
+		tag = BRL
+		tag = JLY
+		tag = YSU
+		tag = SLD
+		tag = KTT
+		tag = ART
+		tag = APD
+		tag = QUN
+		tag = NGD
+		tag = BSD
+		tag = DGH
+		tag = FGN
+		tag = CAC
+		tag = ISQ
+		tag = DZG
+	}
+}

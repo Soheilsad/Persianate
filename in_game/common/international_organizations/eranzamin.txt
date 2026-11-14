@@ -73,6 +73,7 @@ eranzamin = {
 			capital = { is_eranzamin_region_province = yes }
 			# Not the tümens of the Chagatai ulus (see can_join_trigger).
 			NOT = { is_ulus_chaghatay_member = yes }
+			NOT = { is_ulus_chaghatay_roster_tag = yes }
 		}
 		
 	}
@@ -94,6 +95,7 @@ eranzamin = {
 		# not theirs to contend for while they do.
 		# (scripted_triggers/10_ulus_chaghatay_triggers.txt)
 		NOT = { is_ulus_chaghatay_member = yes }
+		NOT = { is_ulus_chaghatay_roster_tag = yes }
 	}
 
 	# Members cannot voluntarily abandon the claim.

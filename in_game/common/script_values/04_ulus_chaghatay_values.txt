@@ -14,9 +14,12 @@
 #   ruler's administrative skill  holding it is another matter, and it
 #                               was the bitikchis and the settled towns
 #                               that kept Qazaghan twelve years
-#   domain                      2 per location, capped at 60 — a great
-#                               tümen outweighs a small one, but land
-#                               alone does not make a regent
+#   domain                      his realm's share of all the amirs'
+#                               weight (ulus_amir_share: military
+#                               strength, tax base and prestige, NOT a
+#                               count of locations) x250, capped at 60:
+#                               a quarter of the amirs' weight is worth
+#                               the full 60
 #   a wife of the line          +25: the güregen's claim, Temür's own
 #
 # Character abilities are 0-100 (base reads them as ruler.adm / heir.mil;
@@ -33,10 +36,13 @@ ulus_kingmaker_score = {
 		}
 		add = ruler.adm
 	}
-	add = {
-		value = num_locations
-		multiply = 2
-		max = 60
+	if = {
+		limit = { has_variable = ulus_amir_share }
+		add = {
+			value = var:ulus_amir_share
+			multiply = 250
+			max = 60
+		}
 	}
 	if = {
 		limit = {
@@ -45,5 +51,15 @@ ulus_kingmaker_score = {
 			}
 		}
 		add = 25
+	}
+}
+
+# A member's weight, for ordering (the stored variable; 0 before the
+# first ledger run). COUNTRY scope.
+ulus_realm_weight = {
+	value = 0
+	if = {
+		limit = { has_variable = ulus_weight }
+		add = var:ulus_weight
 	}
 }

@@ -40,7 +40,7 @@
  ulus_beg_power: "Weight of the Begs"
  ulus_beg_power_desc: "The power of the nobles in the khan's own realm. At 50% the begs can raise a khan of their own when the throne next falls vacant."
  ulus_amir_ratio: "Amirs to Khan"
- ulus_amir_ratio_desc: "The combined [military_strength|e] of the amirs against the khan's own. At 2.00 the amirs can raise a khan of their own when the throne next falls vacant."
+ ulus_amir_ratio_desc: "The combined weight of the amirs against the khan's own. A realm's weight is half its military strength, a third its tax base and the rest its prestige, each as a share of the whole ulus; empty land counts for nothing. At 2.00 the amirs together outweigh the khan twice over."
  ULUS_COUNT_FORMAT: "$VAL|0$"
  ULUS_PERCENT_FORMAT: "$VAL|0$%"
  ULUS_RATIO_FORMAT: "$VAL|2$"
