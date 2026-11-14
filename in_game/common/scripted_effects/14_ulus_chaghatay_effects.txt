@@ -151,6 +151,46 @@ ulus_chaghatay_rebuild_ledger = {
 		change_local_variable = { name = ulus_amir_str add = var:ulus_weight }
 	}
 
+	# ---1b. Pledges of support (generic_actions/amirs_rising_actions.txt)
+	# An amir who has pledged himself to another house (ulus_pledged_to on
+	# the pledger) lends it ulus_pledge_share of his weight: it leaves his
+	# own effective weight and joins the other's as ulus_backing. The
+	# amirs' total is unchanged. Everything below that ranks or sums the
+	# amirs reads the EFFECTIVE weight (script value ulus_realm_weight,
+	# stored for the panel as ulus_weight_eff). A pledge to a house that
+	# has left the ulus, or become its leader, lapses here.
+	every_international_organization_member = {
+		set_variable = { name = ulus_backing value = 0 }
+	}
+	every_international_organization_member = {
+		limit = { has_variable = ulus_pledged_to }
+		if = {
+			limit = {
+				NOT = { is_leader_of_international_organization = scope:ulus_io }
+				var:ulus_pledged_to ?= {
+					is_ulus_chaghatay_amir = yes
+					NOT = { has_variable = ulus_pledged_to }
+				}
+			}
+			set_local_variable = {
+				name = ulus_lent
+				value = {
+					value = var:ulus_weight
+					multiply = ulus_pledge_share
+				}
+			}
+			var:ulus_pledged_to = {
+				change_variable = { name = ulus_backing add = local_var:ulus_lent }
+			}
+		}
+		else = {
+			remove_variable = ulus_pledged_to
+		}
+	}
+	every_international_organization_member = {
+		set_variable = { name = ulus_weight_eff value = ulus_realm_weight }
+	}
+
 	# ---2. The amirs, strongest first ------------------------------------
 	ordered_international_organization_member = {
 		limit = {
@@ -166,7 +206,7 @@ ulus_chaghatay_rebuild_ledger = {
 			set_variable = {
 				name = ulus_amir_share
 				value = {
-					value = var:ulus_weight
+					value = ulus_realm_weight
 					divide = local_var:ulus_amir_str
 				}
 			}
@@ -207,7 +247,7 @@ ulus_chaghatay_rebuild_ledger = {
 		order_by = ulus_realm_weight
 		max = 3
 		check_range_bounds = no
-		change_local_variable = { name = ulus_top3 add = var:ulus_weight }
+		change_local_variable = { name = ulus_top3 add = ulus_realm_weight }
 		add_to_global_variable_list = { name = ulus_greatest_amirs target = this }
 	}
 
@@ -408,6 +448,19 @@ ulus_chaghatay_rebuild_ledger = {
 			divide = ulus_regency_amir_ratio_now
 			max = 1
 		}
+	}
+
+	# Months running with the bar met and no regency: how long the amirs
+	# have been able to rise (the AI's patience, amirs_rising_actions).
+	if = {
+		limit = {
+			NOT = { has_variable = ulus_regency }
+			leader_country ?= { ulus_regency_bar_met = yes }
+		}
+		change_variable = { name = ulus_bar_met_months add = 1 }
+	}
+	else = {
+		set_variable = { name = ulus_bar_met_months value = 0 }
 	}
 
 	# Would the khan's heir hold the seat today? (The panel's line under

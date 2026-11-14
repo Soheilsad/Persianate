@@ -311,6 +311,9 @@ ulus_install_regent = {
 			}
 			add_reform = government_reform:beglerbeg_regency
 		}
+		# Amirs who pledged their tümens to this house are owed
+		# (scripted_effects/19_amirs_rising_effects.txt).
+		ulus_pay_pledges = yes
 	}
 	international_organization:ulus_chaghatay ?= {
 		set_leader_country = scope:ulus_new_regent

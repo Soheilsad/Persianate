@@ -1,0 +1,274 @@
+# ============================================================
+# BEFORE THE REGENCY: what an amir can DO about a khan he outweighs.
+#
+# The Amirs' Regency began only at a khan's natural death. That left
+# an amir who had done everything right (grown his tümen, or helped
+# another house grow, until the bar was met) waiting for a funeral.
+# Qazaghan did not wait: in 1346 the western amirs rose under him and
+# killed Qazan Khan in battle.
+#
+#   ulus_rise_against_the_khan   a casus belli on the khan's seat, for
+#                                an amir among the likeliest kingmakers
+#                                while the bar is met. Won: the khan
+#                                is killed and the amir begins the
+#                                regency himself. Lost: the khan has
+#                                broken the begs for a decade.
+#   ulus_pledge_support          lend half one's weight to another
+#                                house (it counts in the three-
+#                                greatest bar and in his kingmaker
+#                                score); if he takes the khan he owes
+#                                the favour.
+#   ulus_withdraw_pledge         take it back.
+#
+# Organisation actions, the same shape as amirs_regency_actions.txt
+# (ulus_claim_the_khan); the outcome of the war is read by
+# on_action/35_amirs_rising_hooks.txt.
+# ============================================================
+
+ulus_rise_against_the_khan = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_rise_against_the_khan
+		years = 10
+	}
+
+	price = price:ulus_rise_against_the_khan_price
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_amir = yes
+		}
+		international_organization:ulus_chaghatay ?= {
+			NOT = { has_variable = ulus_regency }
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			at_war = no
+			# The amirs do not follow a nobody.
+			custom_tooltip = {
+				text = ulus_rising_kingmaker_tt
+				is_target_in_global_variable_list = {
+					name = ulus_kingmakers
+					target = this
+				}
+			}
+		}
+		# The begs outweigh the throne: the same bar a khan's death is
+		# judged by.
+		custom_tooltip = {
+			text = ulus_rising_bar_tt
+			international_organization:ulus_chaghatay ?= {
+				leader_country ?= { ulus_regency_bar_met = yes }
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = { name = ulus_rising value = 1 years = 10 }
+			international_organization:ulus_chaghatay ?= {
+				leader_country ?= { save_scope_as = ulus_khan_seat }
+			}
+			if = {
+				limit = { exists = scope:ulus_khan_seat }
+				add_casus_belli = {
+					type = casus_belli:cb_rise_against_the_khan
+					target = scope:ulus_khan_seat
+					years = 5
+				}
+				scope:ulus_khan_seat = {
+					trigger_event_non_silently = amirs_rising.1
+				}
+			}
+		}
+	}
+
+	# The AI rises when it is the likeliest kingmaker of all and the bar
+	# has been met for ulus_rising_ai_patience_months.
+	ai_will_do = {
+		add = 0
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					has_variable = ulus_bar_met_months
+					var:ulus_bar_met_months >= ulus_rising_ai_patience_months
+				}
+				scope:actor = {
+					has_variable = ulus_kingmaker_score
+					NOT = {
+						any_in_global_list = {
+							variable = ulus_kingmakers
+							NOT = { this = scope:actor }
+							has_variable = ulus_kingmaker_score
+							var:ulus_kingmaker_score > scope:actor.var:ulus_kingmaker_score
+						}
+					}
+				}
+			}
+			add = 25
+		}
+	}
+}
+
+ulus_pledge_support = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = never
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_pledge_support
+		years = 5
+	}
+
+	price = price:ulus_pledge_support_price
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_amir = yes
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			custom_tooltip = {
+				text = ulus_not_pledged_tt
+				NOT = { has_variable = ulus_pledged_to }
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		target_flag = target_country
+		name = "choose_country"
+		none_available_msg_key = "no_valid_countries"
+		interaction_source_list = {
+			scope:recipient = {
+				every_international_organization_member = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+		}
+		enabled = {
+			this != scope:actor
+			NOT = { is_leader_of_international_organization = scope:recipient }
+			# No chains: a house that has itself pledged cannot be backed.
+			NOT = { has_variable = ulus_pledged_to }
+		}
+		column = { data = name }
+		column = { data = population }
+		column = { data = great_power_score }
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = { name = ulus_pledged_to value = scope:target_country }
+			custom_tooltip = ulus_pledge_effect_tt
+		}
+		scope:target_country = {
+			trigger_event_non_silently = amirs_rising.5
+		}
+		scope:recipient = {
+			ulus_chaghatay_rebuild_ledger = yes
+		}
+	}
+
+	ai_will_do = {
+		add = 0
+	}
+}
+
+ulus_withdraw_pledge = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = never
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_withdraw_pledge
+		years = 2
+	}
+
+	price = price:ulus_withdraw_pledge_price
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_amir = yes
+			has_variable = ulus_pledged_to
+		}
+	}
+
+	allow = {
+		always = yes
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			remove_variable = ulus_pledged_to
+		}
+		scope:recipient = {
+			ulus_chaghatay_rebuild_ledger = yes
+		}
+	}
+
+	ai_will_do = {
+		add = 0
+	}
+}

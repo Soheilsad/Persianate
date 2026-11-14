@@ -1,0 +1,117 @@
+namespace = amirs_rising
+
+# Events of the rising against the khan and of the pledges
+# (generic_actions/amirs_rising_actions.txt). Notifications: the
+# mechanics are in scripted_effects/19_amirs_rising_effects.txt.
+
+# .1 — to the khan: an amir has risen.
+
+amirs_rising.1 = {
+	type = country_event
+	title = amirs_rising.1.title
+	desc = amirs_rising.1.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_rising.1.a
+	}
+}
+
+# .2 — to the amir who rose and won: the khan is dead, the regency is his.
+
+amirs_rising.2 = {
+	type = country_event
+	title = amirs_rising.2.title
+	desc = amirs_rising.2.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = amirs_rising.2.a
+		custom_tooltip = amirs_rising_won_tt
+	}
+}
+
+# .3 — to the amir who rose and lost.
+
+amirs_rising.3 = {
+	type = country_event
+	title = amirs_rising.3.title
+	desc = amirs_rising.3.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_rising.3.a
+		custom_tooltip = amirs_rising_lost_tt
+	}
+}
+
+# .4 — to the khan who broke the rising.
+
+amirs_rising.4 = {
+	type = country_event
+	title = amirs_rising.4.title
+	desc = amirs_rising.4.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = amirs_rising.4.a
+		custom_tooltip = amirs_rising_khan_won_tt
+	}
+}
+
+# .5 — to a house another amir has pledged to.
+
+amirs_rising.5 = {
+	type = country_event
+	title = amirs_rising.5.title
+	desc = amirs_rising.5.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	option = {
+		name = amirs_rising.5.a
+	}
+}
+
+# .6 — to a pledged amir whose man has taken the khan.
+
+amirs_rising.6 = {
+	type = country_event
+	title = amirs_rising.6.title
+	desc = amirs_rising.6.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	option = {
+		name = amirs_rising.6.a
+		custom_tooltip = amirs_rising_pledge_paid_tt
+	}
+}

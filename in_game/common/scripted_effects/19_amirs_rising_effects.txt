@@ -1,0 +1,107 @@
+# =====================================================================
+# RISING AGAINST THE KHAN — how the war ends.
+# (generic_actions/amirs_rising_actions.txt gives the casus belli;
+# on_action/35_amirs_rising_hooks.txt calls these.)
+# =====================================================================
+
+# COUNTRY scope: the amir who rose and WON. The khan is killed (Qazan,
+# 1346), and the victor takes a boy of the line into his keeping: the
+# regency begins with him as regent, not with whoever tops the ranking.
+ulus_rising_won = {
+	remove_variable = ulus_rising
+	save_scope_as = ulus_new_regent
+	save_scope_as = ulus_kingmaker	# ulus_pick_puppet_khan reads it
+	international_organization:ulus_chaghatay ?= {
+		leader_country ?= {
+			save_scope_as = ulus_old_seat
+			ruler ?= {
+				kill_character = {
+					target = this
+					reason = execution
+				}
+			}
+		}
+		ulus_begin_regency_by_force = yes
+	}
+}
+
+# IO scope; needs scope:ulus_new_regent (= scope:ulus_kingmaker) and
+# scope:ulus_old_seat. ulus_begin_regency (15_amirs_regency_effects.txt)
+# with the regent given instead of polled, and a lower starting gap.
+ulus_begin_regency_by_force = {
+	ulus_chaghatay_rebuild_ledger = yes
+	ulus_pick_puppet_khan = yes
+	ulus_install_regent = yes
+	ulus_seat_khan = yes
+
+	set_variable = ulus_regency
+	set_variable = { name = ulus_regency_stage value = 1 }
+	set_variable = { name = ulus_regency_progress value = 0 }
+	set_variable = {
+		name = ulus_gap
+		value = {
+			value = ulus_gap_start
+			subtract = ulus_rising_gap_penalty
+			min = 0
+		}
+	}
+	set_variable = { name = ulus_gap_filled_months value = 0 }
+	set_variable = { name = ulus_gap_empty_months value = 0 }
+	set_variable = { name = ulus_murder_clock value = 0 }
+	remove_variable = ulus_bar_reduced
+	ulus_chaghatay_rebuild_ledger = yes
+
+	scope:ulus_new_regent = {
+		# (pledges are paid by ulus_install_regent)
+		trigger_event_non_silently = amirs_rising.2
+	}
+	scope:ulus_old_seat ?= {
+		trigger_event_non_silently = amirs_regency.10
+	}
+}
+
+# COUNTRY scope: the amir who rose and LOST; scope:ulus_khan_seat is the
+# khan's realm. The khan's purge has succeeded without a regency ever
+# starting: the begs are cowed for ulus_rising_failed_peace_years (the
+# bar cannot be met; ulus_regency_bar_met reads the variable).
+ulus_rising_lost = {
+	remove_variable = ulus_rising
+	add_prestige = ulus_rising_lost_prestige
+	if = {
+		limit = { government_type = government_type:steppe_horde }
+		add_horde_unity = ulus_rising_lost_unity
+	}
+	# Whoever had pledged to him has backed the wrong man.
+	international_organization:ulus_chaghatay ?= {
+		set_variable = { name = ulus_khan_triumphant_peace value = 1 years = ulus_rising_failed_peace_years }
+		every_international_organization_member = {
+			limit = { var:ulus_pledged_to ?= root }
+			remove_variable = ulus_pledged_to
+		}
+		ulus_chaghatay_rebuild_ledger = yes
+	}
+	scope:ulus_khan_seat ?= {
+		add_prestige = ulus_rising_khan_prestige
+		if = {
+			limit = { government_type = government_type:steppe_horde }
+			add_horde_unity = ulus_rising_khan_unity
+		}
+		trigger_event_non_silently = amirs_rising.4
+	}
+	trigger_event_non_silently = amirs_rising.3
+}
+
+# COUNTRY scope: a house that has just taken the khan. Every amir
+# pledged to it is owed: favours with the new regent, and a name for
+# having chosen well. The pledge itself stands.
+ulus_pay_pledges = {
+	save_scope_as = ulus_backed_house
+	international_organization:ulus_chaghatay ?= {
+		every_international_organization_member = {
+			limit = { var:ulus_pledged_to ?= scope:ulus_backed_house }
+			add_favors = { target = scope:ulus_backed_house value = ulus_pledge_favors }
+			add_prestige = ulus_pledge_prestige
+			trigger_event_non_silently = amirs_rising.6
+		}
+	}
+}

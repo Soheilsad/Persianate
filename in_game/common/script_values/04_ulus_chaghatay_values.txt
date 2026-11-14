@@ -90,10 +90,26 @@ ulus_standing_score = {
 
 # A member's weight, for ordering (the stored variable; 0 before the
 # first ledger run). COUNTRY scope.
+# EFFECTIVE weight since pledges exist (ledger, step 1b): his own, less
+# the share he has lent to another house, plus what others lend him.
 ulus_realm_weight = {
 	value = 0
 	if = {
 		limit = { has_variable = ulus_weight }
 		add = var:ulus_weight
 	}
+	if = {
+		limit = { has_variable = ulus_pledged_to }
+		multiply = {
+			value = 1
+			subtract = ulus_pledge_share
+		}
+	}
+	if = {
+		limit = { has_variable = ulus_backing }
+		add = var:ulus_backing
+	}
 }
+
+# The share of his weight a pledged amir lends the house he backs.
+ulus_pledge_share = 0.5

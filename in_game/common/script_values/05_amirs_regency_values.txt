@@ -338,3 +338,24 @@ sq_sons_divide_months = 60
 # An heir's starting fortune once the Conjunction has held.
 sq_fortune_heir_held = 50
 sq_conjunction_prestige = 50
+
+# =====================================================================
+# 10. RISING AGAINST THE KHAN, AND PLEDGES
+#     (generic_actions/amirs_rising_actions.txt,
+#      scripted_effects/19_amirs_rising_effects.txt)
+# =====================================================================
+# The regency a rising wins starts with the gap this much lower than a
+# regency that followed a khan's natural death: he killed a khan.
+ulus_rising_gap_penalty = 15
+# A rising that fails: what it costs the amir, what the khan gains, and
+# how long the begs are cowed (the regency bar cannot be met).
+ulus_rising_lost_prestige = -20
+ulus_rising_lost_unity = -15
+ulus_rising_khan_prestige = 15
+ulus_rising_khan_unity = 10
+ulus_rising_failed_peace_years = 10
+# The AI rises only after the bar has been met this many months running.
+ulus_rising_ai_patience_months = 36
+# What a pledged amir receives when the house he backed takes the khan.
+ulus_pledge_favors = 20
+ulus_pledge_prestige = 10

@@ -87,3 +87,23 @@ cb_sahib_qiran_submission = {
 	}
 	war_goal_type = sahib_qiran_submission_wargoal
 }
+
+# RISING AGAINST THE KHAN. Given by the action of that name to an amir
+# while the regency bar is met and no regency stands: Qazaghan against
+# Qazan Khan, 1346. Take the khan's ordu and he is yours to replace.
+cb_rise_against_the_khan = {
+	create_visible = {
+		always = no
+	}
+	create_enabled = {
+		always = no
+	}
+	declare_enabled = {
+		has_variable = ulus_rising
+		scope:target = {
+			is_ulus_chaghatay_leader = yes
+			NOT = { has_variable = ulus_regent_seat }
+		}
+	}
+	war_goal_type = take_the_khan_wargoal
+}

@@ -22,3 +22,16 @@ ulus_recall_darughas_price = {
 ulus_back_the_khan_price = {
 	political_influence = 15
 }
+
+# Rising against the khan, pledging to another house, taking a pledge back.
+ulus_rise_against_the_khan_price = {
+	political_influence = 25
+}
+
+ulus_pledge_support_price = {
+	political_influence = 5
+}
+
+ulus_withdraw_pledge_price = {
+	prestige = 5
+}

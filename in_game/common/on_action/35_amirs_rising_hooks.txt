@@ -1,0 +1,46 @@
+# How a rising against the khan ends (scripted_effects/
+# 19_amirs_rising_effects.txt). on_winning_war / on_losing_war: root =
+# country, scope:winner, scope:loser (base _hardcoded.txt); tested on
+# root being the winner / the loser, as 31_amirs_regency_hooks.txt does.
+# Re-declaring the on_actions EXTENDS them.
+
+on_winning_war = {
+	on_actions = {
+		ulus_rising_war_won
+	}
+}
+
+ulus_rising_war_won = {
+	trigger = {
+		has_variable = ulus_rising
+		scope:winner ?= { this = root }
+		scope:loser ?= {
+			is_ulus_chaghatay_leader = yes
+			NOT = { has_variable = ulus_regent_seat }
+		}
+		international_organization:ulus_chaghatay ?= {
+			NOT = { has_variable = ulus_regency }
+		}
+	}
+	effect = {
+		ulus_rising_won = yes
+	}
+}
+
+on_losing_war = {
+	on_actions = {
+		ulus_rising_war_lost
+	}
+}
+
+ulus_rising_war_lost = {
+	trigger = {
+		has_variable = ulus_rising
+		scope:loser ?= { this = root }
+		scope:winner ?= { is_ulus_chaghatay_leader = yes }
+	}
+	effect = {
+		scope:winner = { save_scope_as = ulus_khan_seat }
+		ulus_rising_lost = yes
+	}
+}

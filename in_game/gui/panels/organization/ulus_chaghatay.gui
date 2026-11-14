@@ -634,13 +634,13 @@ organization_geodiplomatic_theme = {
 									text = "[Country.GetName]"
 								}
 								text_single = {
-									visible = "[Country.MakeScope.GetVariable('ulus_weight').IsSet]"
+									visible = "[Country.MakeScope.GetVariable('ulus_weight_eff').IsSet]"
 									parentanchor = right|vcenter
 									position = { -6 0 }
 									size = { 60 24 }
 									autoresize = no
 									align = right|nobaseline
-									text = "[Country.MakeScope.GetVariable('ulus_weight').GetValue|1]"
+									text = "[Country.MakeScope.GetVariable('ulus_weight_eff').GetValue|1]"
 								}
 							}
 						}
@@ -831,13 +831,13 @@ organization_geodiplomatic_theme = {
 								# Weight (0-100 across the whole ulus), then
 								# the share of the amirs' weight.
 								text_single = {
-									visible = "[Country.MakeScope.GetVariable('ulus_weight').IsSet]"
+									visible = "[Country.MakeScope.GetVariable('ulus_weight_eff').IsSet]"
 									parentanchor = right|vcenter
 									position = { -50 0 }
 									size = { 40 24 }
 									autoresize = no
 									align = right|nobaseline
-									text = "[Country.MakeScope.GetVariable('ulus_weight').GetValue|1]"
+									text = "[Country.MakeScope.GetVariable('ulus_weight_eff').GetValue|1]"
 								}
 								text_single = {
 									visible = "[Country.MakeScope.GetVariable('ulus_amir_share').IsSet]"

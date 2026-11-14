@@ -14,5 +14,6 @@ amirs_regency_actions_list = {
 		ulus_distribute_largesse
 		ulus_claim_the_khan
 		ulus_back_the_khan
+		ulus_rise_against_the_khan
 	}
 }
