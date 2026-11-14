@@ -1,0 +1,663 @@
+# The Amirs' Regency — how a beg comes to hold the khan, and how the
+# khan passes from one beg to another.
+#
+# Historical frame (Manz, The Rise and Rule of Tamerlane, ch. 3). In
+# 1346/7 Amir Qazaghan of the Qara'unas killed Qazan Khan. He did NOT
+# take the khan's court and he did not call himself khan: he raised a
+# khan of his own at his own ordu — first Danishmendcha, an Ögedeid,
+# then the Chaghatayid Bayan Quli — and ruled the western ulus in that
+# man's name for twelve years. So here the regent does not take over
+# the khan's realm. He enthrones a SECOND man of the line at his own
+# court, and the organisation follows that khan: the leadership of
+# Ulus Chaghatay moves to the regent's state (set_leader_country, base
+# jihad_actions.txt / autocephalous_patriarchates.txt). The old seat
+# keeps its ruler and must decide whether to live with it. That choice
+# is where Moghulistan comes from.
+#
+# THE PUPPET is marked exactly as Erānzamīn's puppet khans are
+# (events/flavor/ilkhanate_events.txt, ilkhanate_flavor.1.a): variable
+# patron_country on the man, modifier borjigin_puppet_sequestered. The
+# same death hook (on_action/04_borjigin_puppet_death.txt) therefore
+# fires for him, and routes to amirs_regency.30 when the patron holds
+# beglerbeg_regency.
+#
+# State lives on the organisation — see the table at the head of
+# scripted_triggers/11_amirs_regency_triggers.txt. Numbers:
+# script_values/05_amirs_regency_values.txt.
+#
+# SAVED SCOPES these effects pass between them:
+#   scope:ulus_old_seat    the khan's realm losing the leadership
+#                          (absent if it no longer exists)
+#   scope:ulus_kingmaker   the amir state chosen to hold the khan
+#   scope:ulus_new_regent  the state the leadership is moving to
+#   scope:ulus_puppet      the man being enthroned
+
+# ---------------------------------------------------------------------
+# WHO: the junior member with the highest kingmaker score, today.
+# IO scope. The score is the one the panel shows
+# (script_values/04_ulus_chaghatay_values.txt); the historical houses
+# get nothing for being historical.
+# ---------------------------------------------------------------------
+ulus_pick_kingmaker = {
+	save_temporary_scope_as = ulus_io
+	ordered_international_organization_member = {
+		limit = {
+			NOT = { is_leader_of_international_organization = scope:ulus_io }
+			has_ruler = yes
+		}
+		order_by = ulus_kingmaker_score
+		max = 1
+		check_range_bounds = no
+		save_scope_as = ulus_kingmaker
+	}
+}
+
+# ---------------------------------------------------------------------
+# THE DARUGHA ROUTE (design 2.2): the man with no house.
+#
+# A darugha is appointed, not born (building_types/Horde_reach.txt;
+# events/horde_reach_events.txt .20 makes the man and marks him
+# darugha_of_the_khan). He can never be khan and he has no tümen of his
+# own, so his only road is the one Qazaghan took. If the best darugha
+# in the old seat's realm outscores every amir, the area of his seat is
+# released to him as a NEW junior member, and HE is the kingmaker.
+#
+# COUNTRY scope: the old seat. Needs scope:ulus_kingmaker (the best
+# amir) and scope:ulus_old_seat. The carving mirrors grant_ulus_effect
+# (scripted_effects/00_ulus_effects.txt) without the overlord: an amir
+# of the ulus is nobody's subject.
+#
+# The new country is marked ulus_chaghatay_admitted as its FIRST act,
+# inside create_country_from_location, so that on_new_country_formed's
+# join_eranzamin (on_action/13_new_country_government.txt) passes it
+# over; it is then seated in the ulus, where the Amir of the Ulus
+# status is bestowed by the status's own auto_bestowal_trigger.
+# ---------------------------------------------------------------------
+ulus_try_darugha_kingmaker = {
+	if = {
+		limit = { exists = scope:ulus_kingmaker }
+		scope:ulus_kingmaker = {
+			set_local_variable = { name = ulus_best_amir value = ulus_kingmaker_score }
+		}
+	}
+	else = {
+		set_local_variable = { name = ulus_best_amir value = 0 }
+	}
+
+	ordered_character = {
+		limit = {
+			has_variable = darugha_of_the_khan
+			is_alive = yes
+			is_adult = yes
+			is_female = no
+			is_ruler = no
+			is_heir = no
+			owner ?= scope:ulus_old_seat
+		}
+		order_by = ulus_darugha_score
+		max = 1
+		check_range_bounds = no
+		save_scope_as = ulus_darugha
+	}
+
+	if = {
+		limit = {
+			scope:ulus_darugha ?= { ulus_darugha_score > local_var:ulus_best_amir }
+		}
+
+		# His seat: the town he was posted to if it was recorded and is
+		# still ours, else the best darugha town we hold.
+		scope:ulus_darugha = {
+			if = {
+				limit = { has_variable = darugha_seat }
+				var:darugha_seat = {
+					if = {
+						limit = {
+							owner ?= scope:ulus_old_seat
+							is_capital = no
+						}
+						save_scope_as = ulus_darugha_seat
+					}
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { exists = scope:ulus_darugha_seat } }
+			ordered_owned_location = {
+				limit = {
+					has_building = building_type:horde_local_appointee
+					is_capital = no
+				}
+				order_by = development
+				max = 1
+				check_range_bounds = no
+				save_scope_as = ulus_darugha_seat
+			}
+		}
+
+		if = {
+			limit = { exists = scope:ulus_darugha_seat }
+
+			scope:ulus_darugha_seat = {
+				set_variable = reach_settled
+				create_country_from_location = {
+					set_variable = ulus_chaghatay_admitted
+					set_capital = prev
+					set_new_ruler = scope:ulus_darugha
+					save_scope_as = ulus_new_amir
+				}
+				add_core = scope:ulus_new_amir
+			}
+
+			scope:ulus_new_amir ?= {
+				set_variable = ulus_chaghatay_admitted
+				change_culture = scope:ulus_old_seat.culture
+				change_religion = scope:ulus_old_seat.religion
+				change_country_type = army
+				set_country_rank = country_rank:rank_duchy
+				change_government_type = government_type:steppe_horde
+				add_reform = government_reform:legacy_of_genghis
+				add_gold = 250
+				set_personality = ai_personality:ai_aggressive
+				capital = {
+					create_sub_unit_with_owner = {
+						type = a_steppe_horse_archers
+						owner = scope:ulus_new_amir
+					}
+					create_sub_unit_with_owner = {
+						type = a_steppe_horse_archers
+						owner = scope:ulus_new_amir
+					}
+				}
+				# The same handover of people that an ulus grant carries.
+				add_country_modifier = {
+					modifier = recently_granted_ulus
+					years = 20
+				}
+			}
+
+			# The district he governed rides with him: everything the old
+			# seat holds in the seat's area, its own capital excepted.
+			scope:ulus_darugha_seat = {
+				area = {
+					every_location_in_area = {
+						limit = {
+							owner ?= scope:ulus_old_seat
+							is_capital = no
+						}
+						change_location_owner = scope:ulus_new_amir
+						add_core = scope:ulus_new_amir
+						set_variable = reach_settled
+					}
+				}
+			}
+
+			if = {
+				limit = { exists = scope:ulus_new_amir }
+				# Belt and braces for the Erānzamīn enrolment: if the
+				# formation hook ran before the marker was read, take him
+				# back out.
+				international_organization:eranzamin ?= {
+					if = {
+						limit = {
+							scope:ulus_new_amir = { is_member_of_international_organization = prev }
+						}
+						remove_country_from_international_organization = {
+							country = scope:ulus_new_amir
+							reason = DecidedToLeave
+						}
+					}
+				}
+				international_organization:ulus_chaghatay ?= {
+					add_country_to_international_organization = scope:ulus_new_amir
+				}
+				scope:ulus_new_amir = {
+					set_variable = ulus_darugha_house
+					save_scope_as = ulus_kingmaker
+				}
+			}
+		}
+	}
+}
+
+# ---------------------------------------------------------------------
+# THE KHAN HE NEEDS. Any scope; needs scope:ulus_kingmaker.
+#
+# A man of the line OTHER than a sitting ruler: the youngest boy, else
+# the least able grown man, at the court of any member of the ulus
+# (ulus_puppet_pliancy). Qazaghan's first khan was an Ögedeid nobody
+# had heard of. If the line has no such man left, a cadet is found, as
+# ilkhanate_flavor.1.a finds one.
+# ---------------------------------------------------------------------
+ulus_pick_puppet_khan = {
+	if = {
+		limit = { exists = scope:ulus_puppet }
+		clear_saved_scope = ulus_puppet
+	}
+	dynasty:borjigin_dynasty ?= {
+		ordered_character_in_dynasty = {
+			limit = { ulus_is_khan_material = yes }
+			order_by = ulus_puppet_pliancy
+			max = 1
+			check_range_bounds = no
+			save_scope_as = ulus_puppet
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:ulus_puppet } }
+		if = {
+			limit = { NOT = { exists = dynasty:borjigin_dynasty } }
+			found_dynasty = borjigin_dynasty
+		}
+		scope:ulus_kingmaker = {
+			create_character = {
+				dynasty = dynasty:borjigin_dynasty
+				estate = estate_type:nobles_estate
+				religion = scope:ulus_kingmaker.religion
+				culture = scope:ulus_kingmaker.culture
+				age = { 12 30 }
+				female = no
+				save_scope_as = ulus_puppet
+			}
+		}
+	}
+}
+
+# ---------------------------------------------------------------------
+# THE KHAN TAKEN INTO KEEPING. Any scope; needs scope:ulus_puppet and
+# scope:ulus_new_regent. The marker and the modifier are the Erānzamīn
+# chassis's own.
+# ---------------------------------------------------------------------
+ulus_seat_khan = {
+	scope:ulus_puppet = {
+		if = {
+			limit = { NOT = { owner ?= scope:ulus_new_regent } }
+			move_country = scope:ulus_new_regent
+		}
+		set_variable = {
+			name = patron_country
+			value = scope:ulus_new_regent
+		}
+		add_character_modifier = {
+			modifier = borjigin_puppet_sequestered
+			years = -1
+			mode = add_and_extend
+		}
+	}
+	international_organization:ulus_chaghatay ?= {
+		set_variable = { name = ulus_held_khan value = scope:ulus_puppet }
+		remove_variable = ulus_no_khan
+	}
+}
+
+# ---------------------------------------------------------------------
+# THE SEAT MOVES. Any scope; needs scope:ulus_new_regent.
+#
+# beglerbeg_regency (government_reforms/08_ulus_chaghatay_reforms.txt)
+# is closed behind beglerbeg_regency_granted and is a steppe_horde
+# reform; every member of the 1337 roll is a steppe horde, and a member
+# that has since become something else leads without it.
+# ulus_regent_seat starts the amirs_regency disaster on the state
+# (disasters/05_amirs_regency.txt) and its removal ends it there.
+# ---------------------------------------------------------------------
+ulus_install_regent = {
+	scope:ulus_new_regent = {
+		set_variable = beglerbeg_regency_granted
+		set_variable = ulus_regent_seat
+		if = {
+			limit = {
+				government_type = government_type:steppe_horde
+				NOT = { has_reform = government_reform:beglerbeg_regency }
+			}
+			add_reform = government_reform:beglerbeg_regency
+		}
+	}
+	international_organization:ulus_chaghatay ?= {
+		set_leader_country = scope:ulus_new_regent
+		set_variable = { name = ulus_regent value = scope:ulus_new_regent }
+	}
+}
+
+# COUNTRY scope: a state that has lost the khan.
+ulus_unseat_regent = {
+	remove_variable = ulus_regent_seat
+	if = {
+		limit = { has_reform = government_reform:beglerbeg_regency }
+		remove_reform = government_reform:beglerbeg_regency
+	}
+	remove_variable = beglerbeg_regency_granted
+}
+
+# Any scope; needs scope:ulus_new_regent. The khan (if one lives) goes
+# to the new regent's court, the reform and the leadership with him;
+# the Amir of the Ulus status rotates by its own auto triggers.
+ulus_transfer_regency = {
+	international_organization:ulus_chaghatay ?= {
+		leader_country ?= {
+			if = {
+				limit = { NOT = { this = scope:ulus_new_regent } }
+				ulus_unseat_regent = yes
+			}
+		}
+	}
+	ulus_install_regent = yes
+	if = {
+		limit = { exists = scope:ulus_puppet }
+		clear_saved_scope = ulus_puppet
+	}
+	international_organization:ulus_chaghatay ?= {
+		if = {
+			limit = { has_variable = ulus_held_khan }
+			var:ulus_held_khan = {
+				if = {
+					limit = { is_alive = yes }
+					save_scope_as = ulus_puppet
+				}
+			}
+		}
+	}
+	if = {
+		limit = { exists = scope:ulus_puppet }
+		ulus_seat_khan = yes
+	}
+	international_organization:ulus_chaghatay ?= {
+		ulus_chaghatay_rebuild_ledger = yes
+	}
+}
+
+# ---------------------------------------------------------------------
+# THE REGENCY BEGINS. IO scope. scope:ulus_old_seat is the khan's realm
+# if it still exists (the succession poll saves it); if the khan's
+# realm has been destroyed the organisation's own tick calls this with
+# no old seat (design, edge cases: "treated as the khan's death with
+# the bar already met").
+# ---------------------------------------------------------------------
+ulus_begin_regency = {
+	ulus_chaghatay_rebuild_ledger = yes
+	if = {
+		limit = { exists = scope:ulus_kingmaker }
+		clear_saved_scope = ulus_kingmaker
+	}
+	ulus_pick_kingmaker = yes
+	scope:ulus_old_seat ?= {
+		ulus_try_darugha_kingmaker = yes
+	}
+
+	if = {
+		limit = { exists = scope:ulus_kingmaker }
+
+		scope:ulus_kingmaker = { save_scope_as = ulus_new_regent }
+		ulus_pick_puppet_khan = yes
+		ulus_install_regent = yes
+		ulus_seat_khan = yes
+
+		set_variable = ulus_regency
+		set_variable = { name = ulus_regency_stage value = 1 }
+		set_variable = { name = ulus_regency_progress value = 0 }
+		set_variable = { name = ulus_gap value = ulus_gap_start }
+		set_variable = { name = ulus_gap_filled_months value = 0 }
+		set_variable = { name = ulus_gap_empty_months value = 0 }
+		set_variable = { name = ulus_murder_clock value = 0 }
+		remove_variable = ulus_bar_reduced
+		ulus_chaghatay_rebuild_ledger = yes
+
+		scope:ulus_new_regent = {
+			trigger_event_non_silently = amirs_regency.1
+		}
+		scope:ulus_old_seat ?= {
+			trigger_event_non_silently = amirs_regency.10
+		}
+	}
+}
+
+# ---------------------------------------------------------------------
+# THE AMIRS ARE POLLED AGAIN. IO scope. Used when the regent's state is
+# gone (conquered by an outsider, or annexed): the strongest amir takes
+# the khan if the khan still lives at a member's court, or finds
+# another.
+# ---------------------------------------------------------------------
+ulus_repoll_regency = {
+	if = {
+		limit = { exists = scope:ulus_kingmaker }
+		clear_saved_scope = ulus_kingmaker
+	}
+	ulus_pick_kingmaker = yes
+	if = {
+		limit = { exists = scope:ulus_kingmaker }
+		scope:ulus_kingmaker = { save_scope_as = ulus_new_regent }
+		if = {
+			limit = {
+				var:ulus_held_khan ?= {
+					is_alive = yes
+					owner ?= { is_ulus_chaghatay_member = yes }
+				}
+			}
+			ulus_transfer_regency = yes
+		}
+		else = {
+			remove_variable = ulus_held_khan
+			ulus_install_regent = yes
+			if = {
+				limit = { NOT = { has_variable = ulus_no_khan } }
+				ulus_pick_puppet_khan = yes
+				ulus_seat_khan = yes
+			}
+			ulus_chaghatay_rebuild_ledger = yes
+		}
+		scope:ulus_new_regent = {
+			trigger_event_non_silently = amirs_regency.42
+		}
+	}
+}
+
+# ---------------------------------------------------------------------
+# BREAKING EAST. COUNTRY scope: a member following the old khan out of
+# the ulus. Needs scope:ulus_eastern_khan (the defying realm). It goes
+# back to what base made it in 1337 — the khan's vassal — but of the
+# eastern khan alone.
+# ---------------------------------------------------------------------
+ulus_follow_east = {
+	save_scope_as = ulus_follower
+	international_organization:ulus_chaghatay ?= {
+		remove_country_from_international_organization = {
+			country = scope:ulus_follower
+			reason = DecidedToLeave
+		}
+	}
+	remove_variable = ulus_chaghatay_admitted
+	set_variable = ulus_followed_east
+	make_subject_of = {
+		target = scope:ulus_eastern_khan
+		type = subject_type:vassal
+	}
+}
+
+# ---------------------------------------------------------------------
+# THE REGENT'S MURDER, and the house-keeping of the regency month.
+# IO scope, from the organisation's monthly_effect, after the ledger.
+#
+# Qazaghan was killed in 1358 by the son-in-law of a man he had
+# slighted; his son ʿAbdallāh could not hold what he inherited. The
+# danger to a regent is not the khan. It is the other amirs, and it is
+# greatest when several of them are nearly his equals, when his own
+# begs are discontented, and when he has no victory to show.
+#
+# THE ROLLS. `random = { chance = N }` is written with a literal in
+# every base use, so the percentages are literals here, in one place:
+#   yearly, 1-2 rivals at half his score or better ........ 2%
+#   yearly, 3 or more ..................................... 4%
+#   doubled if the nobles' satisfaction in his realm is under
+#   ulus_murder_low_satisfaction; no roll at all in a year
+#   in which he has won a great battle (ulus_recent_victory).
+# ---------------------------------------------------------------------
+ulus_regency_murder_roll = {
+	set_local_variable = { name = ulus_rivals value = 0 }
+	set_local_variable = { name = ulus_regent_score value = 0 }
+	leader_country ?= {
+		set_local_variable = { name = ulus_regent_score value = ulus_kingmaker_score }
+	}
+	every_in_global_list = {
+		variable = ulus_amirs
+		limit = { has_variable = ulus_kingmaker_score }
+		if = {
+			limit = {
+				var:ulus_kingmaker_score >= {
+					value = local_var:ulus_regent_score
+					multiply = ulus_murder_rival_share
+				}
+			}
+			change_local_variable = { name = ulus_rivals add = 1 }
+		}
+	}
+
+	leader_country ?= {
+		if = {
+			limit = {
+				local_var:ulus_rivals >= 1
+				has_ruler = yes
+				NOT = { has_variable = ulus_recent_victory }
+			}
+			if = {
+				limit = {
+					country_has_estate = estate_type:nobles_estate
+					"estate(estate_type:nobles_estate)" = { satisfaction < ulus_murder_low_satisfaction }
+				}
+				if = {
+					limit = { local_var:ulus_rivals >= 3 }
+					random = {
+						chance = 8
+						trigger_event_non_silently = amirs_regency.45
+					}
+				}
+				else = {
+					random = {
+						chance = 4
+						trigger_event_non_silently = amirs_regency.45
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = { local_var:ulus_rivals >= 3 }
+					random = {
+						chance = 4
+						trigger_event_non_silently = amirs_regency.45
+					}
+				}
+				else = {
+					random = {
+						chance = 2
+						trigger_event_non_silently = amirs_regency.45
+					}
+				}
+			}
+		}
+	}
+}
+
+ulus_regency_monthly_tick = {
+	# A seat with nobody on it.
+	if = {
+		limit = { NOT = { exists = leader_country } }
+		if = {
+			limit = { has_variable = ulus_regency }
+			ulus_repoll_regency = yes
+		}
+		else = {
+			ulus_begin_regency = yes
+		}
+	}
+	else_if = {
+		limit = { has_variable = ulus_regency }
+
+		# The yearly roll on the regent's life.
+		change_variable = { name = ulus_murder_clock add = 1 }
+		if = {
+			limit = { var:ulus_murder_clock >= 12 }
+			set_variable = { name = ulus_murder_clock value = 0 }
+			ulus_regency_murder_roll = yes
+		}
+	}
+}
+
+# ---------------------------------------------------------------------
+# THE TWO METERS. IO scope. $AMOUNT$ may be negative.
+#   ulus_regency_progress  0..100 within a stage (the stage change
+#                          itself is the monthly tick's business)
+#   ulus_gap               0..100
+# ---------------------------------------------------------------------
+ulus_change_progress = {
+	if = {
+		limit = { has_variable = ulus_regency_progress }
+		change_variable = { name = ulus_regency_progress add = $AMOUNT$ }
+		if = {
+			limit = { var:ulus_regency_progress < 0 }
+			set_variable = { name = ulus_regency_progress value = 0 }
+		}
+	}
+}
+
+ulus_change_gap = {
+	if = {
+		limit = { has_variable = ulus_gap }
+		change_variable = { name = ulus_gap add = $AMOUNT$ }
+		if = {
+			limit = { var:ulus_gap < 0 }
+			set_variable = { name = ulus_gap value = 0 }
+		}
+		if = {
+			limit = { var:ulus_gap > 100 }
+			set_variable = { name = ulus_gap value = 100 }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------
+# A KINSMAN SET OVER A HOUSE. Any scope; needs scope:ulus_amir_house
+# (the member) and scope:ulus_kinsman (the man). The marker keeps the
+# accession this causes from asking the leader to confirm it again
+# (on_action/31_amirs_regency_hooks.txt).
+# ---------------------------------------------------------------------
+ulus_impose_kinsman = {
+	scope:ulus_amir_house = {
+		set_variable = { name = ulus_succession_settled value = 1 months = 6 }
+		set_new_ruler = scope:ulus_kinsman
+		trigger_event_non_silently = amirs_regency.51
+	}
+}
+
+# ---------------------------------------------------------------------
+# THE AMIRS FALL OUT (stage 2), reached early. IO scope. Called when a
+# regent's heir loses the khan while the regency is still in its first
+# stage; the stage's own opening (the variable that lets members fight
+# each other, the event) is ulus_regency_enter_stage.
+# ---------------------------------------------------------------------
+ulus_regency_advance_to_stage_2 = {
+	# Nested, not one AND: AND members do not short-circuit, and the
+	# variable read would log on an organisation without the variable.
+	if = {
+		limit = { has_variable = ulus_regency_stage }
+		if = {
+			limit = { var:ulus_regency_stage < 2 }
+			set_variable = { name = ulus_regency_stage value = 2 }
+			set_variable = { name = ulus_regency_progress value = 0 }
+			ulus_regency_enter_stage = yes
+		}
+	}
+}
+
+# IO scope. What each stage opens. The events are fired on the regent.
+#   2  ulus_amirs_may_fight   members may make war on each other
+#                             (international_organizations/
+#                             ulus_chaghatay.txt, can_declare_war)
+#   3  ulus_members_may_leave the door out of the ulus opens
+ulus_regency_enter_stage = {
+	if = {
+		limit = { var:ulus_regency_stage >= 2 }
+		set_variable = ulus_amirs_may_fight
+	}
+	if = {
+		limit = { var:ulus_regency_stage >= 3 }
+		set_variable = ulus_members_may_leave
+	}
+}

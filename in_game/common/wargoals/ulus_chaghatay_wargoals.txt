@@ -1,0 +1,39 @@
+# War goals of the Amirs' Regency (casus_belli/ulus_chaghatay.txt).
+# Shapes taken from base wargoals/00_default.txt and the mod's
+# eranzamin_succession_wargoal.
+
+# The khan's claim: beat the regent in the field and bring him under
+# the khan again. Subjugation is cheap; land is not the point.
+restore_the_ulus_wargoal = {
+	type = superiority
+	war_name = "RESTORE_THE_ULUS_WAR_NAME"
+
+	attacker = {
+		conquer_cost = 1.0
+		subjugate_cost = 0.5
+	}
+
+	defender = {
+		conquer_cost = 1.0
+		subjugate_cost = 0.75
+	}
+
+	ticking_war_score = 0.25
+}
+
+# Taking the khan: the regent's capital is the goal (base
+# high_kingship_subjugate_wargoal is take_capital the same way).
+take_the_khan_wargoal = {
+	type = take_capital
+	war_name = "TAKE_THE_KHAN_WAR_NAME"
+
+	attacker = {
+		conquer_cost = 1.0
+		subjugate_cost = 0.75
+	}
+
+	defender = {
+		conquer_cost = 1.0
+		subjugate_cost = 0.75
+	}
+}

@@ -1,0 +1,52 @@
+# =====================================================================
+# THE AMIRS' REGENCY — engine hooks.
+#
+# Re-declaring an engine on_action EXTENDS it (Paradox merges on_actions
+# across files); nothing here replaces the mod's other hooks on the
+# same on_actions (26_horde_succession_hooks.txt, 06_ghazi_hooks.txt,
+# 24_warlord_conquest_hooks.txt).
+#
+# on_new_ruler: root = country; scope:old_ruler and scope:new_ruler are
+# supplied (base on_action/_hardcoded.txt).
+# =====================================================================
+
+# ---THE TWO SUCCESSIONS THE KHAN'S POLL DOES NOT COVER ----------------
+# horde_succession.1 polls the seat of a KHAN. It skips the amir houses
+# and, while a regency lasts, the regent's state. Those two get their
+# own procedure here:
+#
+#   an amir house      the leader of the ulus is asked at once to
+#                      confirm the heir or set a kinsman over the house
+#                      (amirs_regency.50)
+#   the regent's state after the same 30-80 days the khan's poll waits,
+#                      the amirs are polled on whether the heir keeps
+#                      the khan (amirs_regency.40; its own trigger
+#                      tests is_ulus_regent, so it is silent for every
+#                      other country)
+on_new_ruler = {
+	on_actions = {
+		ulus_amir_house_succession
+	}
+	events = {
+		delay = { days = { 30 80 } }
+		amirs_regency.40
+	}
+}
+
+ulus_amir_house_succession = {
+	trigger = {
+		is_ulus_chaghatay_amir = yes
+		has_ruler = yes
+		# Set for six months when the leader has just IMPOSED this
+		# ruler (ulus_impose_kinsman): he does not confirm his own act.
+		NOT = { has_variable = ulus_succession_settled }
+	}
+	effect = {
+		save_scope_as = ulus_amir_house
+		international_organization:ulus_chaghatay ?= {
+			leader_country ?= {
+				trigger_event_non_silently = amirs_regency.50
+			}
+		}
+	}
+}

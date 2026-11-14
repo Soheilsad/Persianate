@@ -1,0 +1,113 @@
+﻿l_english:
+ # =====================================================================
+ # The Amirs' Regency — succession in Ulus Chaghatay, the regency and
+ # its disaster.
+ # Events:  in_game/events/amirs_regency_events.txt
+ # Effects: in_game/common/scripted_effects/15_amirs_regency_effects.txt
+ # Panel:   in_game/gui/panels/organization/ulus_chaghatay.gui
+ # Voice: option text is the speaker's own; descriptions and tooltips
+ # are neutral.
+ # =====================================================================
+
+ # --- .1 The amirs raise a khan (to the new regent) ---
+ amirs_regency.1.title: "The Amirs Raise a Khan"
+ amirs_regency.1.desc: "The khan is dead and the amirs did not wait for Almaliq to name another. The tümens gathered at our ordu, a prince of the line of Chinggis was brought out, lifted on the white felt and hailed as khan, and when the acclamation was over he was led back to his tent and the amirs came to ours.\n\nEvery yarlıq will go out under his seal. Every one will be written here. The ulus now answers the khan we hold, and through him it answers us."
+ amirs_regency.1.a: "He has the name of khan. We have the khan."
+ amirs_regency_onset_tt: "Our realm now leads [GetInternationalOrganization('ulus_chaghatay').GetName] as the keeper of its khan. We take the #Y Beglerbeg's Regency#!. The regency lasts only while we keep a khan and keep delivering: watch the legitimacy gap and our heir's standing on the organisation's panel."
+
+ # --- .2 A child khan ---
+ amirs_regency.2.title: "A Boy on the Felt"
+ amirs_regency.2.desc: "The new khan is a child. The begs are not yet strong enough to set him aside for a khan of their own making, so the realm will be governed in his name until he is grown, as the yasa allows.\n\nBut a boy's reign is the begs' season. Offices are filled without him, pastures are granted without him, and by the time he can ride to war the men who ruled for him will have grown used to it."
+ amirs_regency.2.a: "Then let him grow quickly."
+ amirs_regency_bar_reduced_tt: "Until a grown khan is seated, the begs need #Y a third less#! weight to raise a khan of their own at the next succession."
+
+ # --- .10 The old seat answers ---
+ amirs_regency.10.title: "A Khan Not of Our Making"
+ amirs_regency.10.desc: "Word has come from the west. The amirs have lifted a prince of the line on the felt at one of their own camps and proclaimed him khan of the whole ulus. The beg who holds him writes, with every courtesy, that the tümens of Transoxiana now muster in that khan's name, and that our court is invited to recognise him.\n\nWe may accept it: keep our pastures and our title and sit in the ulus as one house among the others, under a khan who is another man's prisoner. Or we may refuse, take the eastern tümens who are nearer to us than to him, and keep our own khan and our claim to all of it."
+ amirs_regency.10.a: "A khan is a khan. We will not break the ulus over which tent he sleeps in."
+ amirs_regency.10.b: "A beg's captive is no khan of ours. The east rides with us, and one day the west will answer for this."
+ amirs_regency_acquiesce_tt: "We remain in [GetInternationalOrganization('ulus_chaghatay').GetName] as an #Y Amir of the Ulus#! under the amirs' khan. Tributary dynasties nearer the regent than to us pass to him."
+ amirs_regency_defy_tt: "We leave [GetInternationalOrganization('ulus_chaghatay').GetName]. Every member whose seat lies nearer our capital than the regent's follows us as our vassal. We become the #Y eastern khanate#!, with a standing claim to restore the ulus."
+
+ # --- .12 A player amir nearer Almaliq ---
+ amirs_regency.12.title: "Two Khans"
+ amirs_regency.12.desc: "The khan at Almaliq has refused the khan the western amirs raised, and has ridden out of the ulus with his claim intact. Our pastures lie nearer his court than the regent's. His envoys are in our camp, and so are the regent's."
+ amirs_regency.12.a: "We know which of them is a khan and which is a hostage. We ride east."
+ amirs_regency.12.b: "Almaliq is far and the beg's tümens are near. We stay."
+ amirs_regency_follow_east_tt: "We leave [GetInternationalOrganization('ulus_chaghatay').GetName] and become a vassal of the eastern khan."
+
+ # --- .30 The puppet khan is dead ---
+ amirs_regency.30.title: "The Khan Is Dead"
+ amirs_regency.30.desc: "The khan in whose name we govern has died. His seal is in our keeping, his household eats at our expense, and none of that is worth anything without a living man of the line to put it to.\n\nThe amirs are watching what we do next. Each time a khan is buried and another brought out, fewer of them pretend not to notice who chooses."
+ amirs_regency.30.a: "Find another of the blood. There is always another."
+ amirs_regency.30.b: "My daughter's son carries the blood of Chinggis. Lift him on the felt."
+ amirs_regency.30.c: "The tümens follow me, not a boy in a tent. There will be no khan."
+ amirs_regency_enthrone_tt: "A living prince of the line is taken into our keeping and proclaimed khan. Every funeral makes the fiction thinner: the regency moves closer to its next stage."
+ amirs_regency_enthrone_inlaw_tt: "A child of our own in-law line is proclaimed khan. Our ruler stands as #Y güregen#!, son-in-law of the line, which the last stage of the regency requires."
+ amirs_regency_no_khan_tt: "We rule without a khan. The legitimacy gap is #R halved at once#! and drains #R twice as fast#!; the regency moves sharply toward its next stage. Only a regent whose victories already speak for him survives this."
+
+ # --- .41 / .42 / .43 The regent's death ---
+ amirs_regency.41.title: "The Khan Stays"
+ amirs_regency.41.desc: "The old beg is dead and the amirs came to the funeral with their men behind them. They looked at his heir, and at each other, and at the khan's tent, and in the end they kissed the heir's stirrup. He is not the man his father was. He is near enough, and none of them was sure of beating him."
+ amirs_regency.41.a: "My father held the khan. So do I."
+ amirs_regency.42.title: "The Khan Comes to Us"
+ amirs_regency.42.desc: "The house that held the khan could not keep him. The amirs measured its new head and found him short, and the khan's household has been escorted to our ordu with his seal, his wives and his guards. From today the yarlıqs are written here, and the ulus answers us."
+ amirs_regency.42.a: "Pitch the khan's tent beside mine, and set my guards around it."
+ amirs_regency.43.title: "The Khan Is Taken from Us"
+ amirs_regency.43.desc: "Our father held the khan and ruled the ulus. We inherited his tümens and his pastures, and we believed we had inherited the rest. The amirs thought otherwise. A stronger house has taken the khan into its own keeping, and the ulus has gone with him."
+ amirs_regency.43.a: "They were my father's dogs. I will have the khan back and their heads with him."
+ amirs_regency_lost_khan_tt: "We keep our own state and lose the regency. We hold a claim to take the khan back by war."
+
+ # --- .45 The regent is murdered ---
+ amirs_regency.45.title: "The Beg Is Murdered"
+ amirs_regency.45.desc: "He rode out to hunt with a few companions and no guard, as he had a hundred times. A kinsman of an amir he had slighted was among the party. By the time the news reached the ordu the killers were across the river, and every amir in the ulus had begun to count his men."
+ amirs_regency.45.a: "Bury him. Then find out who is riding toward the khan's tent."
+
+ # --- .50 / .51 / .52 An amir house's succession ---
+ amirs_regency.50.title: "An Amir's Succession"
+ amirs_regency.50.desc: "The head of one of the tümens of the ulus has died, and his house has already raised its own heir. By the custom of the ulus the succession waits on our word: the command of a tümen is confirmed by the khan's yarlıq.\n\nWe may confirm the heir the house has chosen. Or we may set another man of the same house over it, one who will owe his place to us."
+ amirs_regency.50.a: "The son holds what the father held. Send him the yarlıq and a robe."
+ amirs_regency.50.b: "That tümen is the khan's to give. It goes to the kinsman I name."
+ amirs_regency_impose_tt: "The house's ruler is replaced by a kinsman of our choosing."
+ amirs_regency_may_refuse_tt: "The amirs have fallen out: the house may accept the kinsman, or #R refuse him and take up arms#! against us."
+ amirs_regency.51.title: "A Kinsman Set Over Us"
+ amirs_regency.51.desc: "A yarlıq has come from the seat of the ulus. It does not confirm the heir our house raised. It names another of our own blood to lead the tümen, and he rode in behind it with an escort."
+ amirs_regency.51.a: "He has the yarlıq. We will remember who wrote it."
+ amirs_regency.52.title: "The House Refuses"
+ amirs_regency.52.desc: "The kinsman we named was turned back at the edge of the tümen's pastures. The house keeps the heir it raised and has sent our yarlıq back unopened, with word that it will answer to a khan and not to his keeper."
+ amirs_regency.52.a: "Then they have chosen war."
+
+ # --- Casus belli ---
+ cb_restore_the_ulus: "Restore the Ulus"
+ cb_restore_the_ulus_desc: "A khan of the line against the beg who rules the ulus through a khan of his own making."
+ RESTORE_THE_ULUS_WAR_NAME: "$ORDER$$ATTACKER.GetAdjectiveWithFlag$ War to Restore the Ulus"
+ cb_take_the_khan: "Take the Khan"
+ cb_take_the_khan_desc: "An amir of the ulus against the amir who holds the khan. Whoever takes the regent's ordu takes the khan."
+ TAKE_THE_KHAN_WAR_NAME: "$ORDER$$ATTACKER.GetAdjectiveWithFlag$ War for the Khan"
+
+ # --- Opinion ---
+ opinion_ulus_heir_confirmed: "Confirmed our succession"
+ opinion_ulus_kinsman_imposed: "Set a kinsman over our house"
+ opinion_ulus_two_khans: "Two khans of one ulus"
+
+ # --- Panel: the Succession card during a regency ---
+ ULUS_REGENT_LABEL: "Regent:"
+ ULUS_REGENT_TT: "The beg who holds the khan. His state leads the ulus for as long as he keeps a khan and keeps the amirs behind him."
+ ULUS_HELD_KHAN_LABEL: "Holds the khan:"
+ ULUS_HELD_KHAN_TT: "The prince of the line in whose name the regent rules, and his age. A grown and capable khan may one day try to rid himself of his keeper. If the khan dies the regent must find another, or rule without one."
+ ULUS_NO_HELD_KHAN: "He rules without a khan."
+ ULUS_HEIR_BAR: "Regent's heir against the best rival"
+ ULUS_HEIR_BAR_TT: "When the regent dies, his heir inherits the state but not the khan. The amirs are polled: the heir keeps the regency only if his standing is at least the share shown of the strongest rival amir's. Otherwise that rival takes the khan and the ulus."
+ ULUS_GAP_LABEL: "Legitimacy gap filled"
+ ULUS_GAP_TT: "A beg has no blood to rule by, only deeds. This measure drains every month, faster in each stage and twice as fast without a khan, and is filled only by victories, plunder and gold. Kept at 60 or more for five years running in the last stage, with a khan in keeping and a wife of the line, it makes the regent #Y Ṣāḥib-qirān#!. Left empty for three years, the ulus breaks apart."
+ ULUS_GAP_FILLED_MONTHS: "Months filled:"
+ ULUS_GAP_EMPTY_MONTHS: "Months empty:"
+ ULUS_STAGE_PROGRESS: "Toward the next stage"
+ ULUS_STAGE_1: "I. The Beglerbeg's Peace"
+ ULUS_STAGE_1_TT: "One beg rules through a khan and the amirs are content. Next: #Y The Amirs Fall Out#!, when members of the ulus may make war on one another and an amir house may refuse a kinsman set over it."
+ ULUS_STAGE_2: "II. The Amirs Fall Out"
+ ULUS_STAGE_2_TT: "The amirs may make war on one another, and a house may refuse an imposed kinsman. Next: #Y The Shock from Outside#!, when outsiders gain a claim on the ulus, members may leave it, and whoever takes the regent's capital takes the khan."
+ ULUS_STAGE_3: "III. The Shock from Outside"
+ ULUS_STAGE_3_TT: "Outsiders hold a claim on the fractured ulus, members may leave it, and a member who takes the regent's capital captures the khan and the leadership. Next: #Y The Ṣāḥib-qirān#!."
+ ULUS_STAGE_4: "IV. The Ṣāḥib-qirān"
+ ULUS_STAGE_4_TT: "The beg rules in his own right behind his khan. If he holds the khan, has a wife of the line, and keeps the legitimacy gap filled for five years running, the ulus becomes his realm. If the gap lies empty for three years, it dissolves."

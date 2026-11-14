@@ -42,8 +42,9 @@ namespace = horde_succession
 # ----------------------------------------------------------------------------
 # horde_succession.1 — THE POLL
 #
-# Hidden. Computes three quantities, routes to one of four outcomes, and
-# grants nothing itself.
+# Hidden. Computes three quantities, routes to one of four outcomes
+# (six for the seat of Ulus Chaghatay: also "the amirs raise a khan" and
+# "a child khan"), and grants nothing itself.
 #
 #   local_var:blood        living adult males of the line, ulus-holding
 #                          brothers counted as well
@@ -77,6 +78,11 @@ horde_succession.1 = {
 		# kuriltai polled here is the one that seats a KHAN, so the
 		# ulus's leader — CHG, or a regent's state — is still polled.
 		NOT = { is_ulus_chaghatay_amir = yes }
+		# Nor a regent's state while the Amirs' Regency lasts: the man
+		# who died there was not a khan, and what is at stake is whether
+		# his heir keeps the khan (amirs_regency.40, fired by
+		# on_action/31_amirs_regency_hooks.txt after the same delay).
+		NOT = { is_ulus_regent = yes }
 	}
 
 	immediate = {
@@ -169,6 +175,43 @@ horde_succession.1 = {
 			trigger_event_non_silently = horde_succession.40
 		}
 
+		# (r) THE AMIRS RAISE A KHAN — Ulus Chaghatay only, while a khan
+		# still leads it. The begs are over the bar (the nobles hold half
+		# the power in the khan's realm and twice the crown's, OR his
+		# three greatest amirs outweigh him ulus_regency_amir_ratio times
+		# over), and there is a man of the line for them to enthrone.
+		# The strongest amir takes a khan of his own into keeping and the
+		# leadership of the organisation moves to him: Qazaghan in 1346/7.
+		# Everything from here is scripted_effects/
+		# 15_amirs_regency_effects.txt and events/amirs_regency_events.txt.
+		else_if = {
+			limit = {
+				is_ulus_chaghatay_leader = yes
+				NOT = { ulus_regency_is_on = yes }
+				ulus_regency_bar_met = yes
+				ulus_khan_material_exists = yes
+			}
+			save_scope_as = ulus_old_seat
+			international_organization:ulus_chaghatay ?= {
+				ulus_begin_regency = yes
+			}
+		}
+
+		# (e) A CHILD KHAN — Ulus Chaghatay only. The successor is under
+		# age and the begs are under the bar: an ordinary regency inside
+		# the khan's realm, and the bar for the next poll a third lower.
+		else_if = {
+			limit = {
+				is_ulus_chaghatay_leader = yes
+				NOT = { ulus_regency_is_on = yes }
+				OR = {
+					has_regent = yes
+					ruler ?= { is_adult = no }
+				}
+			}
+			trigger_event_non_silently = amirs_regency.2
+		}
+
 		# (c) THE BEGS MAKE THEIR PLAY. Either a non-Borjigin has taken the
 		# seat outright, or the appointed aristocracy has grown heavy enough
 		# to hold whoever sits on it. Mamai's office, and Qazaghan's.
@@ -203,6 +246,22 @@ horde_succession.1 = {
 		# own twenty-eight years after 1313. Base game made this unreachable.
 		else = {
 			trigger_event_non_silently = horde_succession.10
+		}
+
+		# A grown khan seated without a regency: the reduction a child
+		# khan's reign bought the begs (ulus_bar_reduced, set by
+		# amirs_regency.2) is spent. Read AFTER the routing above, which
+		# used it.
+		if = {
+			limit = {
+				is_ulus_chaghatay_leader = yes
+				NOT = { ulus_regency_is_on = yes }
+				has_regent = no
+				ruler ?= { is_adult = yes }
+			}
+			international_organization:ulus_chaghatay ?= {
+				remove_variable = ulus_bar_reduced
+			}
 		}
 	}
 }

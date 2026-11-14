@@ -392,6 +392,14 @@ horde_reach.20 = {
 		# (common/heir_selections/horde_toru.txt).
 		scope:new_darugha = {
 			set_variable = darugha_of_the_khan
+			# Where he sits (scope:darugha_seat is saved by the
+			# building's on_built). Read by the Amirs' Regency when a
+			# darugha outscores every amir and his district is released
+			# to him (ulus_try_darugha_kingmaker).
+			if = {
+				limit = { exists = scope:darugha_seat }
+				set_variable = { name = darugha_seat value = scope:darugha_seat }
+			}
 		}
 	}
 

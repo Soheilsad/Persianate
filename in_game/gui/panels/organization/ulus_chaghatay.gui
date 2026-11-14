@@ -38,9 +38,12 @@
 # groups) and Members (engine, grouped by the Amir of the Ulus status in
 # international_organization_special_statuses/ulus_chaghatay.txt).
 #
-# LATER PHASES add to the Succession card: the regent and the khan he
-# holds, the heir's score against the 80% line, the legitimacy gap and
-# the stage of the Amirs' Regency.
+# The Succession card has two faces, switched on the IO variable
+# ulus_regency: while a khan rules, the regency bar and the kingmakers;
+# during the Amirs' Regency, the regent and the khan he holds, the
+# heir's standing against the line, the legitimacy gap and the stage.
+# All of it is IO variables written by the ledger (section 6) and by
+# scripted_effects/15_amirs_regency_effects.txt.
 
 organization_geodiplomatic_theme = {
 
@@ -156,7 +159,256 @@ organization_geodiplomatic_theme = {
 				text = "ULUS_SUCCESSION_CARD"
 			}
 			blockoverride "common_bottom_content" {
+				# Two faces, one card. While a khan rules: the regency bar
+				# and the kingmakers. During a regency (ulus_regency set on
+				# the IO): the regent and the khan he holds, his heir
+				# against the line, the legitimacy gap, the stage. Each is
+				# a vbox switched on the IO variable; nothing is nested
+				# deeper than the lists already were.
 				vbox = {
+				layoutpolicy_horizontal = expanding
+
+				# ---DURING A REGENCY ----------------------------------------
+				vbox = {
+					visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_regency').IsSet]"
+					layoutpolicy_horizontal = expanding
+					spacing = 6
+
+					# The regent: the ruler of the leading state.
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.IsLeaderCountryInPlace]"
+						datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.GetLeaderCountry]"
+						spacing = 8
+						tooltip = "ULUS_REGENT_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_REGENT_LABEL"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							size = { 300 24 }
+							autoresize = no
+							align = right|nobaseline
+							text = "[Country.GetGovernment.GetRulerOrRegent.GetShortNameWithNoTooltip]"
+							default_format = "#yellow_titles"
+						}
+					}
+
+					# The khan he holds, and the khan's age.
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_held_khan').IsSet]"
+						spacing = 8
+						tooltip = "ULUS_HELD_KHAN_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_HELD_KHAN_LABEL"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							size = { 240 24 }
+							autoresize = no
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_held_khan').GetCharacter.GetShortNameWithNoTooltip]"
+						}
+						text_single = {
+							visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_held_khan_age').IsSet]"
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = ","
+						}
+						text_single = {
+							visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_held_khan_age').IsSet]"
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_held_khan_age').GetValue|V0]"
+						}
+					}
+					text_single = {
+						visible = "[Not(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_held_khan').IsSet)]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_NO_HELD_KHAN"
+						default_format = "#subtle_name"
+						tooltip = "ULUS_HELD_KHAN_TT"
+					}
+
+					# The regent's heir against the best rival amir.
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						tooltip = "ULUS_HEIR_BAR_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_HEIR_BAR"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_heir_standing').GetValue|2]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "/"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_heir_line').GetValue|2]"
+						}
+					}
+					progressbar = {
+						layoutpolicy_horizontal = expanding
+						size = { -1 6 }
+						using = progress_bar_green_alt
+						min = 0
+						max = 1
+						value = "[FixedPointToFloat(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_heir_bar').GetValue)]"
+						direction = horizontal
+						tooltip = "ULUS_HEIR_BAR_TT"
+					}
+
+					# The legitimacy gap.
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						tooltip = "ULUS_GAP_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_GAP_LABEL"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_gap').GetValue|V0]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "/ 100"
+						}
+					}
+					progressbar = {
+						layoutpolicy_horizontal = expanding
+						size = { -1 6 }
+						using = progress_bar_green_alt
+						min = 0
+						max = 1
+						value = "[FixedPointToFloat(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_gap_bar').GetValue)]"
+						direction = horizontal
+						tooltip = "ULUS_GAP_TT"
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						tooltip = "ULUS_GAP_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_GAP_FILLED_MONTHS"
+							default_format = "#subtle_name"
+						}
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_gap_filled_months').GetValue|V0]"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "ULUS_GAP_EMPTY_MONTHS"
+							default_format = "#subtle_name"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_gap_empty_months').GetValue|V0]"
+						}
+					}
+
+					# The stage (one of four flags is set by the ledger),
+					# its progress, and what the next stage opens.
+					text_single = {
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_stage_is_1').IsSet]"
+						layoutpolicy_horizontal = expanding
+						margin_top = 4
+						align = left|nobaseline
+						text = "ULUS_STAGE_1"
+						default_format = "#yellow_titles"
+						tooltip = "ULUS_STAGE_1_TT"
+					}
+					text_single = {
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_stage_is_2').IsSet]"
+						layoutpolicy_horizontal = expanding
+						margin_top = 4
+						align = left|nobaseline
+						text = "ULUS_STAGE_2"
+						default_format = "#yellow_titles"
+						tooltip = "ULUS_STAGE_2_TT"
+					}
+					text_single = {
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_stage_is_3').IsSet]"
+						layoutpolicy_horizontal = expanding
+						margin_top = 4
+						align = left|nobaseline
+						text = "ULUS_STAGE_3"
+						default_format = "#yellow_titles"
+						tooltip = "ULUS_STAGE_3_TT"
+					}
+					text_single = {
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_stage_is_4').IsSet]"
+						layoutpolicy_horizontal = expanding
+						margin_top = 4
+						align = left|nobaseline
+						text = "ULUS_STAGE_4"
+						default_format = "#yellow_titles"
+						tooltip = "ULUS_STAGE_4_TT"
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_STAGE_PROGRESS"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_regency_progress').GetValue|V0]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "/ 100"
+						}
+					}
+				}
+
+				# ---WHILE A KHAN RULES --------------------------------------
+				vbox = {
+					visible = "[Not(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_regency').IsSet)]"
 					layoutpolicy_horizontal = expanding
 					spacing = 6
 
@@ -181,7 +433,17 @@ organization_geodiplomatic_theme = {
 						text_single = {
 							autoresize = yes
 							align = right|nobaseline
-							raw_text = "% / 50%"
+							raw_text = "% /"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_beg_line').GetValue|V0]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "%"
 						}
 					}
 					progressbar = {
@@ -216,7 +478,12 @@ organization_geodiplomatic_theme = {
 						text_single = {
 							autoresize = yes
 							align = right|nobaseline
-							raw_text = "/ 2.00"
+							raw_text = "/"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_amir_line').GetValue|2]"
 						}
 					}
 					progressbar = {
@@ -291,6 +558,7 @@ organization_geodiplomatic_theme = {
 							}
 						}
 					}
+				}
 				}
 			}
 		}

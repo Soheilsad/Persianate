@@ -37,7 +37,7 @@ on_new_ruler = {
 
 
 # =====================================================================
-# SEATING THE TÖRÜ — test scope: GLH only.
+# SEATING THE TÖRÜ — test scope: GLH and CHG.
 #
 # The law itself (common/heir_selections/horde_toru.txt) is `locked` and
 # `potential`-gated to steppe_horde, so it is safe on any horde. It is
@@ -65,7 +65,14 @@ horde_toru_seating = {
 	effect = {
 		every_country = {
 			limit = {
-				tag = GLH
+				OR = {
+					tag = GLH
+					# Seated on Chagatai too from the Ulus Chaghatay
+					# build: the panel's "heir" is the törü's first
+					# candidate, and the succession poll reads the realm
+					# the törü leaves behind.
+					tag = CHG
+				}
 				government_type = government_type:steppe_horde
 			}
 			change_heir_selection = heir_selection:horde_toru_succession

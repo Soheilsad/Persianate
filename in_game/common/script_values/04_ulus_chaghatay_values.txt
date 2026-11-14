@@ -24,8 +24,12 @@
 #
 # Character abilities are 0-100 (base reads them as ruler.adm / heir.mil;
 # events/ and script_values/). The historical houses get no bonus.
-# NOT in the score yet: battles won (no cheap per-ruler tally exists;
-# the later phase can keep one in a variable and add it here).
+#   battles won                 his renown (ulus_renown on the MAN, kept
+#                               by on_action/31_amirs_regency_hooks.txt
+#                               from great battles and sieges won while
+#                               a regency lasts) x ulus_renown_weight,
+#                               capped at ulus_renown_cap. Nothing before
+#                               a regency: this is where a Temür is made.
 ulus_kingmaker_score = {
 	value = 0
 	if = {
@@ -51,6 +55,16 @@ ulus_kingmaker_score = {
 			}
 		}
 		add = 25
+	}
+	if = {
+		limit = {
+			ruler ?= { has_variable = ulus_renown }
+		}
+		add = {
+			value = ruler.var:ulus_renown
+			multiply = ulus_renown_weight
+			max = ulus_renown_cap
+		}
 	}
 }
 

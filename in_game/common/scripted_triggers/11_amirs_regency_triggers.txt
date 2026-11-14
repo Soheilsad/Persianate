@@ -1,0 +1,146 @@
+# The Amirs' Regency — tests. The state of the regency lives on the
+# ORGANISATION, because the regency moves between states and the
+# organisation does not:
+#
+#   ON THE IO (international_organization:ulus_chaghatay)
+#     ulus_regency            set while a beg rules through a khan
+#     ulus_regency_stage      1..4
+#     ulus_regency_progress   0..100 within the stage
+#     ulus_held_khan          the puppet khan (character); unset when
+#                             the regent rules without one
+#     ulus_no_khan            set while he rules without one
+#     ulus_gap                the legitimacy gap's fill, 0..100
+#     ulus_gap_filled_months / ulus_gap_empty_months   running counts
+#     ulus_bar_reduced        a child khan sat last: bars x 2/3
+#     ulus_eastern_khanate    the realm (country) that defied and
+#                             broke east, if any
+#   ON THE REGENT'S STATE
+#     ulus_regent_seat        marker; starts the amirs_regency disaster
+#     beglerbeg_regency_granted   opens the reform's potential
+#
+# Every read of the organisation goes through `?=`: it can be gone
+# (Bulqaq, or folded into the Ṣāḥib-qirān's realm).
+
+# Any scope.
+ulus_regency_is_on = {
+	international_organization:ulus_chaghatay ?= { has_variable = ulus_regency }
+}
+
+# COUNTRY scope: the state that holds the khan and leads the ulus.
+is_ulus_regent = {
+	has_variable = ulus_regent_seat
+	is_ulus_chaghatay_leader = yes
+	ulus_regency_is_on = yes
+}
+
+# Any scope. $STAGE$ = 2, 3 or 4.
+ulus_regency_stage_at_least = {
+	international_organization:ulus_chaghatay ?= {
+		has_variable = ulus_regency
+		trigger_if = {
+			limit = { has_variable = ulus_regency_stage }
+			var:ulus_regency_stage >= $STAGE$
+		}
+		trigger_else = {
+			always = no
+		}
+	}
+}
+
+# CHARACTER scope: a man the amirs could raise on the felt. Of the
+# line, male, not already a ruler or anyone's heir, not already held as
+# somebody's khan, and at the court of a member of the ulus.
+#
+# Two exclusions by name. Base files Temür Barlas and his father
+# Taraghai under borjigin_dynasty (setup/1337/05_characters.txt,
+# chg_timur_lame_borjigin / chg_taraghai_noyan_borjigin, both at the
+# Barlas court). The Barlas were not Chinggisids — that is the whole
+# reason Temür needed a khan — and without this line the infant Temür
+# is the youngest boy "of the line" in the ulus and gets enthroned as
+# somebody's puppet.
+ulus_is_khan_material = {
+	is_alive = yes
+	is_female = no
+	is_ruler = no
+	is_heir = no
+	OR = {
+		dynasty ?= dynasty:borjigin_dynasty
+		is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+	}
+	NOT = { has_variable = patron_country }
+	NOT = { this = character:chg_timur_lame_borjigin }
+	NOT = { this = character:chg_taraghai_noyan_borjigin }
+	owner ?= { is_ulus_chaghatay_member = yes }
+}
+
+# COUNTRY scope (the khan's realm, asked at a succession): are the begs
+# over the bar? Either reading is enough (design, "The amirs raise a
+# khan"); both shrink by a third after a child khan.
+ulus_regency_bar_met = {
+	OR = {
+		AND = {
+			country_has_estate = estate_type:nobles_estate
+			"estate_power(estate_type:nobles_estate)" >= ulus_regency_noble_power_now
+			"estate_power(estate_type:nobles_estate)" >= {
+				value = "estate_power(estate_type:crown_estate)"
+				multiply = ulus_regency_noble_crown_ratio
+			}
+		}
+		international_organization:ulus_chaghatay ?= {
+			trigger_if = {
+				limit = { has_variable = ulus_amir_ratio }
+				var:ulus_amir_ratio >= ulus_regency_amir_ratio_now
+			}
+			trigger_else = {
+				always = no
+			}
+		}
+	}
+}
+
+# Any scope: is there a man of the line to enthrone? Without one a
+# vacant throne is the failure of the blood (the civil-war disaster),
+# not a regency.
+ulus_khan_material_exists = {
+	dynasty:borjigin_dynasty ?= {
+		any_character_in_dynasty = {
+			ulus_is_khan_material = yes
+		}
+	}
+}
+
+# COUNTRY scope: its ruler is of the line. Temür and Taraghai excluded
+# for the reason given above: a Barlas regent's realm must not read as
+# "a Borjigin's own realm" when the Khan Triumphant is judged.
+ulus_ruler_is_of_the_line = {
+	ruler ?= {
+		OR = {
+			dynasty ?= dynasty:borjigin_dynasty
+			is_patrilineal_descendant_of = dynasty:borjigin_dynasty
+		}
+		NOT = { this = character:chg_timur_lame_borjigin }
+		NOT = { this = character:chg_taraghai_noyan_borjigin }
+	}
+}
+
+# COUNTRY scope: the ruler is a güregen — a wife of the line, or the
+# marriage made through the regency's own action (kept as a variable on
+# the MAN, so it dies with him).
+ulus_ruler_is_gurkan = {
+	ruler ?= {
+		OR = {
+			has_variable = ulus_gurkan
+			any_spouse = { dynasty ?= dynasty:borjigin_dynasty }
+		}
+	}
+}
+
+# COUNTRY scope: the house has married into the line at some point (the
+# in-law route when a puppet khan dies). Kept on the COUNTRY, so it
+# outlives the man who made the match.
+ulus_house_has_inlaw_tie = {
+	OR = {
+		has_variable = ulus_inlaw_house
+		ulus_ruler_is_gurkan = yes
+	}
+}

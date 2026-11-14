@@ -15,11 +15,12 @@
 # khan's rights are the organisation's rules, and the leadership can
 # move to whichever amir holds the khan.
 #
-# PHASE 1 (this file): structure only. The khan's realm (CHG, court at
-# Almaliq) leads; the amir domains are junior members ("Amir of the
-# Ulus", international_organization_special_statuses/ulus_chaghatay.txt).
-# No succession, regency or disaster logic yet — the two variables below
-# are the hooks the later phases open:
+# This file is structure: the khan's realm (CHG, court at Almaliq)
+# leads; the amir domains are junior members ("Amir of the Ulus",
+# international_organization_special_statuses/ulus_chaghatay.txt). The
+# succession and the Amirs' Regency are scripted_effects/
+# 15_amirs_regency_effects.txt and events/amirs_regency_events.txt; they
+# reach this file through three variables:
 #   ulus_amirs_may_fight    (on the IO)  lifts the ban on war inside
 #                                        the ulus (disaster stage 2)
 #   ulus_members_may_leave  (on the IO)  opens can_leave_trigger (the
@@ -172,8 +173,13 @@ ulus_chaghatay = {
 	# Rebuilds the ledger the panel reads (the khan's heir, the regency
 	# bar, the kingmaker scores, the amirs by strength). Nothing here
 	# decides anything yet; phase 2 reads the same numbers.
+	# Then the regency's own month (scripted_effects/
+	# 15_amirs_regency_effects.txt): a vacant seat is filled, the
+	# regent's life is rolled for, and — from the disaster — the stage
+	# clock and the legitimacy gap move.
 	monthly_effect = {
 		ulus_chaghatay_rebuild_ledger = yes
+		ulus_regency_monthly_tick = yes
 	}
 
 	# Header readouts, written by the ledger (no monthly_change of their

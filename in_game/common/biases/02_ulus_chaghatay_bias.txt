@@ -1,0 +1,21 @@
+# Opinion modifiers of Ulus Chaghatay's successions
+# (events/amirs_regency_events.txt).
+
+# The leader confirmed the house's own heir.
+opinion_ulus_heir_confirmed = {
+	value = 30
+	yearly_decay = 2
+}
+
+# The leader set a kinsman of his choosing over the house.
+opinion_ulus_kinsman_imposed = {
+	value = -75
+	yearly_decay = 3
+}
+
+# The khan at Almaliq against the beg who raised another khan, and the
+# beg against him.
+opinion_ulus_two_khans = {
+	value = -100
+	yearly_decay = 1
+}

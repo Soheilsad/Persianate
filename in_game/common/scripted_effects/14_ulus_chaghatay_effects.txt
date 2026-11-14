@@ -32,6 +32,14 @@
 #                       the leader's own                    (header)
 #     ulus_amir_bar     the same against the 2.0 bar, 0..1
 #     ulus_khan_heir    the leader's heir (character), unset if none
+#     ulus_beg_line / ulus_amir_line   the two bars' thresholds today
+#   ON THE IO, DURING A REGENCY (section 6)
+#     ulus_held_khan_age    the puppet khan's age
+#     ulus_heir_standing    the regent's heir's score / the best rival's
+#     ulus_heir_bar         the same, capped at 1
+#     ulus_heir_line        the share he needs (ulus_regent_heir_ratio)
+#     ulus_gap_bar          the legitimacy gap's fill, 0..1
+#     ulus_stage_is_1..4    which stage (one of the four is set)
 #
 # THE REGENCY BAR (design, "The amirs raise a khan"): the begs can raise
 # a khan of their own when the nobles hold half the power in the khan's
@@ -184,6 +192,23 @@ ulus_chaghatay_rebuild_ledger = {
 
 	leader_country ?= {
 		set_local_variable = { name = ulus_khan_str value = var:ulus_weight }
+		# The seat's own weight on the amirs' scale, so that
+		# ulus_kingmaker_score reads the same for a regent (and his
+		# heir) as for the amirs he is measured against. The seat is in
+		# neither list above.
+		if = {
+			limit = { local_var:ulus_amir_str > 0 }
+			set_variable = {
+				name = ulus_amir_share
+				value = {
+					value = var:ulus_weight
+					divide = local_var:ulus_amir_str
+				}
+			}
+		}
+		else = {
+			set_variable = { name = ulus_amir_share value = 0 }
+		}
 		if = {
 			limit = { country_has_estate = estate_type:nobles_estate }
 			set_local_variable = {
@@ -214,10 +239,20 @@ ulus_chaghatay_rebuild_ledger = {
 		name = ulus_beg_bar
 		value = {
 			value = local_var:ulus_beg
-			divide = 0.5
+			divide = ulus_regency_noble_power_now
 			max = 1
 		}
 	}
+	# The two lines themselves, for the panel's "x / line" texts: they
+	# move (a third lower after a child khan), so they are not literals.
+	set_variable = {
+		name = ulus_beg_line
+		value = {
+			value = ulus_regency_noble_power_now
+			multiply = 100
+		}
+	}
+	set_variable = { name = ulus_amir_line value = ulus_regency_amir_ratio_now }
 	if = {
 		limit = { local_var:ulus_khan_str > 0 }
 		set_variable = {
@@ -243,8 +278,103 @@ ulus_chaghatay_rebuild_ledger = {
 		name = ulus_amir_bar
 		value = {
 			value = var:ulus_amir_ratio
-			divide = 2
+			divide = ulus_regency_amir_ratio_now
 			max = 1
+		}
+	}
+
+	# ---6. During a regency: what the Succession card shows instead -----
+	# (the state itself is kept by scripted_effects/
+	# 15_amirs_regency_effects.txt; this only derives display values.)
+	remove_variable = ulus_stage_is_1
+	remove_variable = ulus_stage_is_2
+	remove_variable = ulus_stage_is_3
+	remove_variable = ulus_stage_is_4
+	remove_variable = ulus_held_khan_age
+	if = {
+		limit = { has_variable = ulus_regency }
+
+		# The khan's age.
+		if = {
+			limit = {
+				var:ulus_held_khan ?= { is_alive = yes }
+			}
+			set_local_variable = { name = ulus_k_age value = 0 }
+			var:ulus_held_khan = {
+				set_local_variable = { name = ulus_k_age value = age_in_years }
+			}
+			set_variable = { name = ulus_held_khan_age value = local_var:ulus_k_age }
+		}
+
+		# The regent's heir against the best rival amir: the number the
+		# poll at the regent's death (amirs_regency.40) will compare with
+		# ulus_regent_heir_ratio.
+		set_local_variable = { name = ulus_h_score value = 0 }
+		set_local_variable = { name = ulus_r_score value = 0 }
+		leader_country ?= {
+			set_local_variable = { name = ulus_h_score value = ulus_regent_heir_score }
+		}
+		ordered_international_organization_member = {
+			limit = {
+				NOT = { is_leader_of_international_organization = scope:ulus_io }
+			}
+			order_by = ulus_kingmaker_score
+			max = 1
+			check_range_bounds = no
+			set_local_variable = { name = ulus_r_score value = ulus_kingmaker_score }
+		}
+		if = {
+			limit = { local_var:ulus_r_score > 0 }
+			set_variable = {
+				name = ulus_heir_standing
+				value = {
+					value = local_var:ulus_h_score
+					divide = local_var:ulus_r_score
+					max = 9.99
+				}
+			}
+		}
+		else = {
+			set_variable = { name = ulus_heir_standing value = 9.99 }
+		}
+		set_variable = {
+			name = ulus_heir_bar
+			value = {
+				value = var:ulus_heir_standing
+				max = 1
+			}
+		}
+		set_variable = { name = ulus_heir_line value = ulus_regent_heir_ratio }
+
+		# The gap as a 0..1 bar, and the stage as four flags (the GUI
+		# tests IsSet; it has no verified numeric comparison).
+		if = {
+			limit = { has_variable = ulus_gap }
+			set_variable = {
+				name = ulus_gap_bar
+				value = {
+					value = var:ulus_gap
+					divide = 100
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = ulus_regency_stage }
+			if = {
+				limit = { var:ulus_regency_stage >= 4 }
+				set_variable = ulus_stage_is_4
+			}
+			else_if = {
+				limit = { var:ulus_regency_stage >= 3 }
+				set_variable = ulus_stage_is_3
+			}
+			else_if = {
+				limit = { var:ulus_regency_stage >= 2 }
+				set_variable = ulus_stage_is_2
+			}
+			else = {
+				set_variable = ulus_stage_is_1
+			}
 		}
 	}
 }

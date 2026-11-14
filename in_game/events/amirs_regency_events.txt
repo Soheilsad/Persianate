@@ -1,0 +1,681 @@
+namespace = amirs_regency
+
+# ============================================================================
+# THE AMIRS' REGENCY — events.
+#
+# Succession and the onset (this half):
+#   .1   the amirs raise a khan            (to the new regent)
+#   .2   a child khan                      (to the khan's realm)
+#   .10  the old seat answers: acquiesce or break east
+#   .12  a player amir nearer Almaliq chooses whom to follow
+#   .30  the puppet khan is dead           (to the regent)
+#   .40  the regent is dead: the amirs are polled (hidden)
+#   .41  the heir keeps the khan
+#   .42  another amir takes the khan       (to the new regent)
+#   .43  the heir loses the khan           (to the old regent's house)
+#   .45  the regent is murdered
+#   .50  an amir house's succession: confirm or impose (to the leader)
+#   .51  a kinsman is set over the house   (to the member)
+#   .52  the house refuses the kinsman     (to the leader)
+# The disaster's stages and endings: .100 onward, below.
+#
+# Effects: common/scripted_effects/15_amirs_regency_effects.txt.
+# Numbers: common/script_values/05_amirs_regency_values.txt.
+# Source for the history throughout: Beatrice Forbes Manz, The Rise and
+# Rule of Tamerlane (1989), chs. 2-3.
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# .1 — THE AMIRS RAISE A KHAN. Qazaghan, 1346/7: he killed Qazan Khan in
+# battle, and then, being a Qara'unas amir and no Chinggisid, set
+# Danishmendcha on the felt and governed in his name.
+# Fired by ulus_begin_regency on the state that now holds the khan.
+# ----------------------------------------------------------------------------
+amirs_regency.1 = {
+	type = country_event
+	title = amirs_regency.1.title
+	desc = amirs_regency.1.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	option = {
+		name = amirs_regency.1.a
+		add_prestige = 10
+		custom_tooltip = amirs_regency_onset_tt
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .2 — A CHILD KHAN. The begs were under the bar, so the realm gets an
+# ordinary regency of its own; but a boy's reign is the begs' season,
+# and the bar for the next succession stands a third lower.
+# ----------------------------------------------------------------------------
+amirs_regency.2 = {
+	type = country_event
+	title = amirs_regency.2.title
+	desc = amirs_regency.2.desc
+	outcome = neutral
+
+	illustration_tags = { 10 = interior }
+
+	immediate = {
+		international_organization:ulus_chaghatay ?= {
+			set_variable = ulus_bar_reduced
+			ulus_chaghatay_rebuild_ledger = yes
+		}
+	}
+
+	option = {
+		name = amirs_regency.2.a
+		add_horde_unity = -5
+		custom_tooltip = amirs_regency_bar_reduced_tt
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .10 — THE OLD SEAT ANSWERS. The eastern tribes did not accept
+# Qazaghan's khans: in 1347 the Dughlat amir Bulaji raised Tughluq
+# Temür at Aqsu, and from then on there were two khans of the ulus of
+# Chaghatay and, in time, two countries. Here the choice is the khan's
+# own: sit under the amirs' khan as one member among others, or leave
+# with the east and keep the claim.
+#
+# The members who follow are those whose seat lies nearer the old
+# khan's capital than the regent's (the distance test of base
+# flavor_tim.8); from the 1337 roll that is the Dughlats, Issyk-Kul and
+# Dzungaria. The AI defies when it is the stronger and yields otherwise.
+# ----------------------------------------------------------------------------
+amirs_regency.10 = {
+	type = country_event
+	title = amirs_regency.10.title
+	desc = amirs_regency.10.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	immediate = {
+		international_organization:ulus_chaghatay ?= {
+			leader_country ?= { save_scope_as = ulus_regent }
+		}
+	}
+
+	# ----- A: Acquiesce -----
+	option = {
+		name = amirs_regency.10.a
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				military_strength > scope:ulus_regent.military_strength
+			}
+		}
+
+		add_horde_unity = -10
+		custom_tooltip = amirs_regency_acquiesce_tt
+		# The tributary dynasties nearer the regent go over to him
+		# (Badakhshan, Karategin); Qocho stays with Almaliq.
+		hidden_effect = {
+			every_subject = {
+				limit = {
+					NOT = { is_subject_type = ulus }
+					capital ?= {
+						"this.distance_to(scope:ulus_regent.capital)" < "this.distance_to(root.capital)"
+					}
+				}
+				add_to_list = ulus_moving_tributaries
+			}
+			every_in_list = {
+				list = ulus_moving_tributaries
+				save_scope_as = ulus_tributary
+				root = { cancel_subject = scope:ulus_tributary }
+				make_subject_of = {
+					target = scope:ulus_regent
+					type = subject_type:vassal
+				}
+			}
+		}
+	}
+
+	# ----- B: Defy, and break east -----
+	option = {
+		name = amirs_regency.10.b
+		trigger = { exists = scope:ulus_regent }
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				military_strength <= scope:ulus_regent.military_strength
+			}
+		}
+
+		save_scope_as = ulus_eastern_khan
+		set_variable = ulus_eastern_khanate_realm
+		add_horde_unity = 10
+		custom_tooltip = amirs_regency_defy_tt
+		add_casus_belli = {
+			type = casus_belli:cb_restore_the_ulus
+			target = scope:ulus_regent
+		}
+		add_opinion = {
+			modifier = opinion_ulus_two_khans
+			target = scope:ulus_regent
+		}
+		scope:ulus_regent = {
+			add_opinion = {
+				modifier = opinion_ulus_two_khans
+				target = root
+			}
+		}
+		hidden_effect = {
+			international_organization:ulus_chaghatay ?= {
+				set_variable = { name = ulus_eastern_khanate value = root }
+				every_international_organization_member = {
+					limit = {
+						NOT = { this = root }
+						NOT = { has_variable = ulus_regent_seat }
+						capital ?= {
+							"this.distance_to(root.capital)" < "this.distance_to(scope:ulus_regent.capital)"
+						}
+					}
+					add_to_list = ulus_eastern_followers
+				}
+				remove_country_from_international_organization = {
+					country = root
+					reason = DecidedToLeave
+				}
+			}
+			every_in_list = {
+				list = ulus_eastern_followers
+				if = {
+					limit = { is_ai = yes }
+					ulus_follow_east = yes
+				}
+				else = {
+					trigger_event_non_silently = amirs_regency.12
+				}
+			}
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .12 — A PLAYER AMIR NEARER ALMALIQ. The AI's eastern members follow
+# the old khan without being asked; a player is asked.
+# scope:ulus_eastern_khan = the defying realm.
+# ----------------------------------------------------------------------------
+amirs_regency.12 = {
+	type = country_event
+	title = amirs_regency.12.title
+	desc = amirs_regency.12.desc
+	outcome = neutral
+
+	illustration_tags = { 10 = exterior }
+
+	option = {
+		name = amirs_regency.12.a
+		trigger = { exists = scope:ulus_eastern_khan }
+		custom_tooltip = amirs_regency_follow_east_tt
+		ulus_follow_east = yes
+	}
+
+	option = {
+		name = amirs_regency.12.b
+		add_horde_unity = -5
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .30 — THE PUPPET KHAN IS DEAD. Danishmendcha lasted two years before
+# Qazaghan replaced him with Bayan Quli; Bayan Quli outlived Qazaghan
+# and was killed by his son. Every funeral makes the fiction thinner.
+# Fired by on_borjigin_puppet_death (on_action/
+# 04_borjigin_puppet_death.txt) on the patron when it holds
+# beglerbeg_regency. root = the regent's state.
+# ----------------------------------------------------------------------------
+amirs_regency.30 = {
+	type = country_event
+	title = amirs_regency.30.title
+	desc = amirs_regency.30.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	immediate = {
+		save_scope_as = ulus_kingmaker
+		save_scope_as = ulus_new_regent
+		international_organization:ulus_chaghatay ?= {
+			remove_variable = ulus_held_khan
+			remove_variable = ulus_held_khan_age
+		}
+	}
+
+	# ----- A: Enthrone another -----
+	option = {
+		name = amirs_regency.30.a
+		trigger = {
+			ulus_khan_material_exists = yes
+			political_influence >= ulus_enthrone_khan_cost
+		}
+		ai_chance = { factor = 60 }
+
+		add_political_influence = ulus_enthrone_khan_pi
+		custom_tooltip = amirs_regency_enthrone_tt
+		hidden_effect = {
+			ulus_pick_puppet_khan = yes
+			ulus_seat_khan = yes
+			international_organization:ulus_chaghatay ?= {
+				ulus_change_progress = { AMOUNT = ulus_regency_progress_khan_death }
+				ulus_chaghatay_rebuild_ledger = yes
+			}
+		}
+	}
+
+	# ----- B: A khan of our own daughter's line -----
+	option = {
+		name = amirs_regency.30.b
+		trigger = {
+			ulus_house_has_inlaw_tie = yes
+			political_influence >= ulus_enthrone_inlaw_cost
+		}
+		ai_chance = { factor = 80 }
+
+		add_political_influence = ulus_enthrone_inlaw_pi
+		custom_tooltip = amirs_regency_enthrone_inlaw_tt
+		set_variable = ulus_inlaw_house
+		hidden_effect = {
+			if = {
+				limit = { exists = scope:ulus_puppet }
+				clear_saved_scope = ulus_puppet
+			}
+			create_character = {
+				dynasty = dynasty:borjigin_dynasty
+				estate = estate_type:nobles_estate
+				religion = root.religion
+				culture = root.culture
+				age = { 4 12 }
+				female = no
+				save_scope_as = ulus_puppet
+			}
+			ulus_seat_khan = yes
+			ruler ?= { set_variable = ulus_gurkan }
+			international_organization:ulus_chaghatay ?= {
+				ulus_chaghatay_rebuild_ledger = yes
+			}
+		}
+	}
+
+	# ----- C: Rule without a khan -----
+	option = {
+		name = amirs_regency.30.c
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 10
+				NOT = { ulus_khan_material_exists = yes }
+			}
+		}
+
+		custom_tooltip = amirs_regency_no_khan_tt
+		add_horde_unity = -20
+		hidden_effect = {
+			international_organization:ulus_chaghatay ?= {
+				set_variable = ulus_no_khan
+				if = {
+					limit = { has_variable = ulus_gap }
+					set_variable = {
+						name = ulus_gap
+						value = {
+							value = var:ulus_gap
+							divide = 2
+						}
+					}
+				}
+				ulus_change_progress = { AMOUNT = ulus_regency_progress_ruling_alone }
+				ulus_chaghatay_rebuild_ledger = yes
+			}
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .40 — THE REGENT IS DEAD: THE AMIRS ARE POLLED. Hidden.
+#
+# 1358. Qazaghan's son ʿAbdallāh inherited the Qara'unas and assumed he
+# had inherited the ulus. He moved the court to Samarkand, killed Bayan
+# Quli Khan, and within the year Bayan Suldus and Hajji Barlas had
+# driven him out. The house's own succession gives the heir the STATE;
+# it does not give him the khan. He keeps the regency only if his
+# standing is at least ulus_regent_heir_ratio of the best rival's.
+#
+# Fired 30-80 days after a new ruler is seated in the regent's state
+# (on_action/31_amirs_regency_hooks.txt), by which time root's ruler IS
+# the heir and ulus_kingmaker_score reads him.
+# ----------------------------------------------------------------------------
+amirs_regency.40 = {
+	type = country_event
+	hidden = yes
+	outcome = neutral
+	title = empty_text
+	desc = empty_text
+
+	trigger = {
+		is_ulus_regent = yes
+	}
+
+	immediate = {
+		save_scope_as = ulus_old_regent
+		set_local_variable = { name = ulus_heir_score value = 0 }
+		set_local_variable = { name = ulus_rival_score value = 0 }
+		if = {
+			limit = { exists = scope:ulus_best_rival }
+			clear_saved_scope = ulus_best_rival
+		}
+		international_organization:ulus_chaghatay ?= {
+			ulus_change_progress = { AMOUNT = ulus_regency_progress_regent_death }
+			ulus_chaghatay_rebuild_ledger = yes
+			save_temporary_scope_as = ulus_io
+			ordered_international_organization_member = {
+				limit = {
+					NOT = { is_leader_of_international_organization = scope:ulus_io }
+					has_ruler = yes
+				}
+				order_by = ulus_kingmaker_score
+				max = 1
+				check_range_bounds = no
+				save_scope_as = ulus_best_rival
+				set_local_variable = { name = ulus_rival_score value = ulus_kingmaker_score }
+			}
+		}
+		set_local_variable = { name = ulus_heir_score value = ulus_kingmaker_score }
+
+		if = {
+			limit = {
+				exists = scope:ulus_best_rival
+				local_var:ulus_heir_score < {
+					value = local_var:ulus_rival_score
+					multiply = ulus_regent_heir_ratio
+				}
+			}
+			scope:ulus_best_rival = { save_scope_as = ulus_new_regent }
+			ulus_transfer_regency = yes
+			# No single beg replaces him: the amirs fall out (stage 2),
+			# if they had not already.
+			international_organization:ulus_chaghatay ?= {
+				ulus_regency_advance_to_stage_2 = yes
+			}
+			scope:ulus_new_regent = { trigger_event_non_silently = amirs_regency.42 }
+			# The dispossessed house may fight to take the khan back.
+			add_casus_belli = {
+				type = casus_belli:cb_take_the_khan
+				target = scope:ulus_new_regent
+			}
+			trigger_event_non_silently = amirs_regency.43
+		}
+		else = {
+			trigger_event_non_silently = amirs_regency.41
+		}
+	}
+}
+
+# .41 — the heir keeps the khan.
+amirs_regency.41 = {
+	type = country_event
+	title = amirs_regency.41.title
+	desc = amirs_regency.41.desc
+	outcome = positive
+
+	illustration_tags = { 10 = interior }
+
+	option = {
+		name = amirs_regency.41.a
+		add_horde_unity = 5
+	}
+}
+
+# .42 — another amir takes the khan. root = the new regent's state.
+amirs_regency.42 = {
+	type = country_event
+	title = amirs_regency.42.title
+	desc = amirs_regency.42.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = amirs_regency.42.a
+		add_prestige = 10
+		custom_tooltip = amirs_regency_onset_tt
+	}
+}
+
+# .43 — the heir loses the khan. root = the old regent's house.
+amirs_regency.43 = {
+	type = country_event
+	title = amirs_regency.43.title
+	desc = amirs_regency.43.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_regency.43.a
+		add_horde_unity = -10
+		custom_tooltip = amirs_regency_lost_khan_tt
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .45 — THE REGENT IS MURDERED. 1358: Qazaghan was killed while hunting
+# by Qutlugh Temür, son-in-law of an amir he had refused. Rolled yearly
+# by ulus_regency_murder_roll. The accession that follows is polled by
+# .40 like any other.
+# ----------------------------------------------------------------------------
+amirs_regency.45 = {
+	type = country_event
+	title = amirs_regency.45.title
+	desc = amirs_regency.45.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		is_ulus_regent = yes
+		has_ruler = yes
+	}
+
+	immediate = {
+		ruler = { save_scope_as = ulus_murdered_regent }
+		hidden_effect = {
+			kill_character = {
+				target = scope:ulus_murdered_regent
+				reason = assassination
+			}
+		}
+	}
+
+	option = {
+		name = amirs_regency.45.a
+		add_horde_unity = -10
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .50 — AN AMIR HOUSE'S SUCCESSION. The khan's right over his tümens
+# was to confirm who led them, and a strong khan used it: Kebek and
+# Tarmashirin reshuffled commands. Confirming the house's own heir is
+# free and remembered; setting another kinsman over it costs political
+# influence and the house's goodwill. Under a regent the cost doubles;
+# once the amirs have fallen out (stage 2) a house may refuse and take
+# up arms; once the ulus is under attack from outside (stage 3) no
+# regent can impose anyone.
+#
+# root = the leader of the ulus. scope:ulus_amir_house = the member
+# whose ruler has just changed (on_action/31_amirs_regency_hooks.txt).
+# ----------------------------------------------------------------------------
+amirs_regency.50 = {
+	type = country_event
+	title = amirs_regency.50.title
+	desc = amirs_regency.50.desc
+	outcome = neutral
+
+	illustration_tags = { 10 = interior }
+
+	trigger = {
+		exists = scope:ulus_amir_house
+	}
+
+	immediate = {
+		if = {
+			limit = { exists = scope:ulus_kinsman }
+			clear_saved_scope = ulus_kinsman
+		}
+		scope:ulus_amir_house = {
+			ordered_character = {
+				limit = {
+					is_alive = yes
+					is_adult = yes
+					is_female = no
+					is_ruler = no
+					owner ?= scope:ulus_amir_house
+					dynasty ?= scope:ulus_amir_house.ruler.dynasty
+				}
+				order_by = total_abilities
+				max = 1
+				check_range_bounds = no
+				save_scope_as = ulus_kinsman
+			}
+		}
+	}
+
+	# ----- A: Confirm the heir -----
+	option = {
+		name = amirs_regency.50.a
+		ai_chance = { factor = 85 }
+
+		scope:ulus_amir_house = {
+			add_opinion = {
+				modifier = opinion_ulus_heir_confirmed
+				target = root
+			}
+		}
+	}
+
+	# ----- B: Impose a kinsman -----
+	option = {
+		name = amirs_regency.50.b
+		trigger = {
+			exists = scope:ulus_kinsman
+			NOT = { ulus_regency_stage_at_least = { STAGE = 3 } }
+			trigger_if = {
+				limit = { is_ulus_regent = yes }
+				political_influence >= ulus_impose_kinsman_regent_cost
+			}
+			trigger_else = {
+				political_influence >= ulus_impose_kinsman_cost
+			}
+		}
+		ai_chance = {
+			factor = 15
+			modifier = {
+				factor = 0
+				ulus_regency_stage_at_least = { STAGE = 2 }
+			}
+		}
+
+		if = {
+			limit = { is_ulus_regent = yes }
+			add_political_influence = ulus_impose_kinsman_regent_pi
+		}
+		else = {
+			add_political_influence = ulus_impose_kinsman_pi
+		}
+		scope:ulus_amir_house = {
+			add_opinion = {
+				modifier = opinion_ulus_kinsman_imposed
+				target = root
+			}
+		}
+		if = {
+			limit = { ulus_regency_stage_at_least = { STAGE = 2 } }
+			custom_tooltip = amirs_regency_may_refuse_tt
+			hidden_effect = {
+				random_list = {
+					50 = {
+						ulus_impose_kinsman = yes
+					}
+					50 = {
+						scope:ulus_amir_house = {
+							add_casus_belli = {
+								type = casus_belli:cb_take_the_khan
+								target = root
+							}
+						}
+						trigger_event_non_silently = amirs_regency.52
+					}
+				}
+			}
+		}
+		else = {
+			custom_tooltip = amirs_regency_impose_tt
+			hidden_effect = {
+				ulus_impose_kinsman = yes
+			}
+		}
+	}
+}
+
+# .51 — a kinsman is set over the house. root = the member.
+amirs_regency.51 = {
+	type = country_event
+	title = amirs_regency.51.title
+	desc = amirs_regency.51.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_regency.51.a
+		add_horde_unity = -10
+	}
+}
+
+# .52 — the house refuses the kinsman. root = the leader.
+amirs_regency.52 = {
+	type = country_event
+	title = amirs_regency.52.title
+	desc = amirs_regency.52.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_regency.52.a
+		add_prestige = -10
+	}
+}

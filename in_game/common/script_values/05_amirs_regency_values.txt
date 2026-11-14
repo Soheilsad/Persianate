@@ -1,0 +1,222 @@
+# The Amirs' Regency — every number the succession and the regency run
+# on, in one place. Tune here after watching AI runs; nothing below is
+# repeated as a literal elsewhere EXCEPT the monthly percentage rolls
+# (`random = { chance = N }` takes a literal in every base use), which
+# sit together in scripted_effects/15_amirs_regency_effects.txt under
+# "THE ROLLS".
+#
+# History behind the defaults (Manz, The Rise and Rule of Tamerlane):
+# Qazaghan took the ulus in 1346/7, was murdered in 1358, Tughluq Temür
+# invaded in 1360 and 1361, Temür took Balkh in 1370. Twenty-four
+# years from the first regent to the Ṣāḥib-qirān.
+
+# =====================================================================
+# 1. THE REGENCY BAR (read by the succession poll and the panel)
+# =====================================================================
+
+# Nobles' estate power in the khan's own realm (0..1).
+ulus_regency_noble_power = 0.50
+# ...and the nobles must hold at least this multiple of the crown's.
+ulus_regency_noble_crown_ratio = 2
+# OR: the three greatest amirs' combined weight / the khan's own.
+# The author retunes this one from the in-game reading.
+ulus_regency_amir_ratio = 2.0
+# After a child khan's accession the next poll's bars are multiplied by
+# this (design: "drops by a third").
+ulus_regency_child_bar_factor = 0.667
+
+# The bars as they stand today (the child-khan reduction applied).
+# Any scope.
+ulus_regency_noble_power_now = {
+	value = ulus_regency_noble_power
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { has_variable = ulus_bar_reduced }
+		}
+		multiply = ulus_regency_child_bar_factor
+	}
+}
+ulus_regency_amir_ratio_now = {
+	value = ulus_regency_amir_ratio
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { has_variable = ulus_bar_reduced }
+		}
+		multiply = ulus_regency_child_bar_factor
+	}
+}
+
+# =====================================================================
+# 2. WHO TAKES THE KHAN
+# =====================================================================
+
+# The regent's heir keeps the regency if his score is at least this
+# share of the best rival amir's (Qazaghan's son ʿAbdallāh did not
+# clear it in 1358).
+ulus_regent_heir_ratio = 0.80
+
+# A darugha has no domain; his seat stands in for the amirs' domain
+# term of ulus_kingmaker_score (which caps at 60).
+ulus_darugha_seat_bonus = 20
+
+# Renown: gained by an amir's ruler from victories while a regency
+# lasts; the "battles won" term of ulus_kingmaker_score.
+ulus_renown_great_battle = 3
+ulus_renown_siege = 1
+# Each point of renown is worth this much kingmaker score...
+ulus_renown_weight = 2
+# ...up to this cap (the same ceiling as the domain term).
+ulus_renown_cap = 60
+
+# A DARUGHA'S STANDING — character scope. The same shape as
+# ulus_kingmaker_score (script_values/04_ulus_chaghatay_values.txt):
+# sword twice, pen once, his seat for a domain, his renown.
+ulus_darugha_score = {
+	value = mil
+	multiply = 2
+	add = adm
+	add = ulus_darugha_seat_bonus
+	if = {
+		limit = { has_variable = ulus_renown }
+		add = {
+			value = var:ulus_renown
+			multiply = ulus_renown_weight
+			max = ulus_renown_cap
+		}
+	}
+}
+
+# WHO MAKES THE BEST PUPPET — character scope, higher is better. A boy
+# on the felt is worth more to a regent than any grown man (the younger
+# the better); among grown men, the least able.
+ulus_puppet_pliancy = {
+	value = 300
+	if = {
+		limit = { is_adult = yes }
+		subtract = total_abilities
+	}
+	else = {
+		add = 100
+		subtract = age_in_years
+	}
+}
+
+# The regent's standing for the panel and the death poll: his state's
+# kingmaker score with the HEIR's abilities in place of the ruler's.
+# COUNTRY scope (the regent's state).
+ulus_regent_heir_score = {
+	value = 0
+	if = {
+		limit = { has_heir = yes }
+		add = {
+			value = heir.mil
+			multiply = 2
+		}
+		add = heir.adm
+	}
+	if = {
+		limit = { has_variable = ulus_amir_share }
+		add = {
+			value = var:ulus_amir_share
+			multiply = 250
+			max = 60
+		}
+	}
+}
+
+# =====================================================================
+# 3. PRICES (political influence; negative because they are added)
+# =====================================================================
+
+# Enthroning another khan when the puppet dies.
+ulus_enthrone_khan_cost = 20
+ulus_enthrone_khan_pi = -20
+# ...through the regent's own in-law line (cheaper).
+ulus_enthrone_inlaw_cost = 10
+ulus_enthrone_inlaw_pi = -10
+# Imposing a kinsman on an amir house; double under a regent.
+ulus_impose_kinsman_cost = 15
+ulus_impose_kinsman_pi = -15
+ulus_impose_kinsman_regent_cost = 30
+ulus_impose_kinsman_regent_pi = -30
+
+# =====================================================================
+# 4. THE DISASTER'S CLOCK (progress 0..100 per stage; three stage
+#    changes from onset to the Ṣāḥib-qirān)
+# =====================================================================
+
+# Progress needed to pass from one stage to the next.
+ulus_regency_stage_length = 100
+# Monthly, while the begs stay over the bar in the regent's realm
+# (nobles >= the 50% line, or the great amirs outweigh the leader).
+# 1.0 = 100 months a stage, 25 years unchecked before deaths and lost
+# wars shorten it toward 20.
+ulus_regency_progress_monthly = 1.0
+# Monthly, while the crown holds more power than the nobles in the
+# regent's realm (negative: the fiction hardens into a government).
+ulus_regency_progress_recovery = -0.5
+# One-off steps.
+ulus_regency_progress_khan_death = 10
+ulus_regency_progress_regent_death = 15
+ulus_regency_progress_lost_war = 10
+ulus_regency_progress_ruling_alone = 25
+# The arresting actions.
+ulus_regency_progress_recall = -15
+ulus_regency_progress_marriage = -20
+ulus_regency_progress_ulus_grant = -10
+
+# =====================================================================
+# 5. THE LEGITIMACY GAP (a 0..100 measure of how well the regent's
+#    deeds cover for the blood he lacks; it drains, and only plunder,
+#    gold and victory fill it)
+# =====================================================================
+
+ulus_gap_start = 50
+# Drain per month in stage 4. Stages 1-3 drain a quarter, a half and
+# three quarters of it; ruling without a khan doubles it.
+ulus_gap_drain_base = 0.6
+# At or above this the gap counts as "filled" for the month.
+ulus_gap_filled_line = 60
+# What fills it.
+ulus_gap_great_battle = 4
+ulus_gap_siege = 2
+ulus_gap_war_won = 10
+ulus_gap_war_lost = -15
+ulus_gap_largesse = 10
+# Years of filled months running, in stage 4, for the Ṣāḥib-qirān.
+ulus_sahib_qiran_years = 5
+ulus_sahib_qiran_months = {
+	value = ulus_sahib_qiran_years
+	multiply = 12
+}
+# Years of an EMPTY gap running, at any stage, for the Bulqaq.
+ulus_bulqaq_years = 3
+ulus_bulqaq_months = {
+	value = ulus_bulqaq_years
+	multiply = 12
+}
+
+# =====================================================================
+# 6. THE REGENT'S MURDER
+# =====================================================================
+
+# A rival amir counts toward the murder chance when his kingmaker
+# score is at least this share of the regent's own.
+ulus_murder_rival_share = 0.5
+# Nobles' satisfaction below this in the regent's realm doubles it.
+ulus_murder_low_satisfaction = 0.4
+
+# =====================================================================
+# 7. THE KHAN'S PURGE (Qazan's gamble)
+# =====================================================================
+
+# The puppet khan must have at least this military skill to try.
+ulus_purge_min_mil = 50
+
+# =====================================================================
+# 8. THE ṢĀḤIB-QIRĀN'S RECKONING
+# =====================================================================
+
+# A member whose opinion of the Ṣāḥib-qirān is at least this bows and
+# becomes his subject; the rest are left to be subjugated.
+ulus_sahib_qiran_loyal_opinion = 0

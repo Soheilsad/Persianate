@@ -1,0 +1,51 @@
+# Casus belli of the Amirs' Regency. root = the country holding the CB,
+# scope:target = its target (base casus_belli/readme.txt). All are
+# handed out by script (add_casus_belli), never fabricated: speed is
+# left at its default and create_visible / create_enabled are closed
+# (base casus_belli/01_event_triggered.txt).
+
+# THE KHAN'S CLAIM. Held by a realm of the line against the beg who
+# rules the ulus through a khan of his own making: Tughluq Temür's
+# title to Transoxiana in 1360 was exactly this, that he was a
+# Chaghatayid khan and the men holding it were servants. Standing: it
+# does not lapse while the regency lasts (can_expire = no; the
+# declare gate closes when the target no longer holds the seat).
+cb_restore_the_ulus = {
+	create_visible = {
+		always = no
+	}
+	create_enabled = {
+		always = no
+	}
+	declare_enabled = {
+		scope:target = {
+			OR = {
+				has_variable = ulus_regent_seat
+				has_variable = ulus_sahib_qiran
+			}
+		}
+	}
+	can_expire = no
+	war_goal_type = restore_the_ulus_wargoal
+}
+
+# TAKING THE KHAN. One member of the ulus against the member that
+# holds the khan: Husayn and Temür against each other after 1366, and
+# every amir against ʿAbdallāh b. Qazaghan in 1358. The prize is the
+# regent's ordu, where the khan is kept (the capture itself is the
+# siege hook in on_action/31_amirs_regency_hooks.txt).
+cb_take_the_khan = {
+	create_visible = {
+		always = no
+	}
+	create_enabled = {
+		always = no
+	}
+	declare_enabled = {
+		is_ulus_chaghatay_member = yes
+		scope:target = {
+			has_variable = ulus_regent_seat
+		}
+	}
+	war_goal_type = take_the_khan_wargoal
+}
