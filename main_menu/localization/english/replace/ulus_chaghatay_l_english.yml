@@ -118,3 +118,6 @@
  persianate_debug_cadet_coup.desc: "Testing aid. Makes one kinsman of our house a far better soldier than the chief (+40 military) and fires the event in which he may seize the tümen."
  persianate_debug_cadet_coup.a: "Let him try."
  persianate_debug_cadet_needs_kinsman_tt: "An adult man of our ruler's own dynasty, not the ruler, is at our court"
+ ULUS_KEEPING_LABEL: "In the keeping of"
+ ULUS_REGENT_HEIR_LABEL: "Regent's heir"
+ ULUS_KHAN_AGE_LABEL: "age"

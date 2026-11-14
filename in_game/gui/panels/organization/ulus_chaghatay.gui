@@ -92,7 +92,7 @@ organization_geodiplomatic_theme = {
 					# the hbox, flag and texts reading it).
 					hbox = {
 						layoutpolicy_horizontal = expanding
-						visible = "[InternationalOrganizationsView.GetInternationalOrganization.IsLeaderCountryInPlace]"
+						visible = "[And(InternationalOrganizationsView.GetInternationalOrganization.IsLeaderCountryInPlace, Not(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_regency').IsSet))]"
 						datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.GetLeaderCountry]"
 						spacing = 8
 
@@ -113,6 +113,83 @@ organization_geodiplomatic_theme = {
 						}
 					}
 
+					# ---DURING A REGENCY: the khan is the man who is HELD, not
+					# the ruler of the state that leads the ulus. First the
+					# khan (ulus_held_khan, a character on the IO), then the
+					# state that keeps him and the regent who rules it.
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						visible = "[And(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_regency').IsSet, InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_held_khan').IsSet)]"
+						spacing = 8
+						tooltip = "ULUS_HELD_KHAN_TT"
+
+						icon = {
+							size = { 22 22 }
+							texture = "gfx/interface/icons/character_roles/ruler.dds"
+						}
+						text_single = {
+							size = { 300 24 }
+							autoresize = no
+							align = left|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_held_khan').GetCharacter.GetShortNameWithNoTooltip]"
+							default_format = "#yellow_titles"
+						}
+						expand = {}
+						text_single = {
+							visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_held_khan_age').IsSet]"
+							autoresize = yes
+							align = right|nobaseline
+							text = "ULUS_KHAN_AGE_LABEL"
+							default_format = "#subtle_name"
+						}
+						text_single = {
+							visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_held_khan_age').IsSet]"
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_held_khan_age').GetValue|V0]"
+						}
+					}
+					text_single = {
+						visible = "[And(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_regency').IsSet, Not(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_held_khan').IsSet))]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_NO_HELD_KHAN"
+						default_format = "#subtle_name"
+						tooltip = "ULUS_HELD_KHAN_TT"
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						visible = "[And(InternationalOrganizationsView.GetInternationalOrganization.IsLeaderCountryInPlace, InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_regency').IsSet)]"
+						datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.GetLeaderCountry]"
+						spacing = 8
+						tooltip = "ULUS_REGENT_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_KEEPING_LABEL"
+							default_format = "#subtle_name"
+						}
+						country_flag_small = {}
+						text_single = {
+							size = { 150 24 }
+							autoresize = no
+							align = left|nobaseline
+							text = "[Country.GetName]"
+						}
+						expand = {}
+						icon = {
+							size = { 22 22 }
+							texture = "gfx/interface/icons/character_roles/regent.dds"
+						}
+						text_single = {
+							size = { 190 24 }
+							autoresize = no
+							align = right|nobaseline
+							text = "[Country.GetGovernment.GetRulerOrRegent.GetShortNameWithNoTooltip]"
+						}
+					}
+
 					# Heir (ulus_khan_heir on the IO, a character).
 					hbox = {
 						layoutpolicy_horizontal = expanding
@@ -120,9 +197,17 @@ organization_geodiplomatic_theme = {
 						spacing = 8
 
 						text_single = {
+							visible = "[Not(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_regency').IsSet)]"
 							autoresize = yes
 							align = left|nobaseline
 							text = "ULUS_HEIR_LABEL"
+							default_format = "#subtle_name"
+						}
+						text_single = {
+							visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_regency').IsSet]"
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_REGENT_HEIR_LABEL"
 							default_format = "#subtle_name"
 						}
 						expand = {}
