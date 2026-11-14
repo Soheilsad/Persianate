@@ -125,3 +125,46 @@ amirs_client.1 = {
 		}
 	}
 }
+
+# Hidden. Three days after a tümen shatters: is its old capital still
+# loose ground? In the author's test (2026-11-14) the house that broke
+# Dzungaria had already TAKEN its capital in the peace, and the event
+# then offered to turn the conqueror's own realm into "a new tümen".
+# Loose means the seat is held by the broken house itself or by a
+# country that is not a standing house of the ulus and sits on a
+# tümen's pasture. Otherwise there is nothing to dispose of.
+amirs_client.2 = {
+	type = country_event
+	hidden = yes
+	outcome = neutral
+	title = empty_text
+	desc = empty_text
+
+	trigger = {
+		has_global_variable = ulus_broken_seat
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				global_var:ulus_broken_seat = {
+					exists = owner
+					owner = {
+						NOT = { this = root }
+						OR = {
+							this = global_var:ulus_broken_house
+							AND = {
+								NOT = { is_ulus_chaghatay_member = yes }
+								capital ?= { has_variable = ulus_tumen_pasture }
+							}
+						}
+					}
+				}
+			}
+			trigger_event_non_silently = amirs_client.1
+		}
+		else = {
+			ulus_broken_ground_done = yes
+		}
+	}
+}

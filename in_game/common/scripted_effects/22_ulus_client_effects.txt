@@ -119,11 +119,13 @@ ulus_tumen_is_broken = {
 			limit = { exists = scope:ulus_broken_seat_loc }
 			set_global_variable = { name = ulus_broken_seat value = scope:ulus_broken_seat_loc }
 			set_global_variable = { name = ulus_breaker value = scope:ulus_breaker }
+			set_global_variable = { name = ulus_broken_house value = scope:ulus_broken }
 			# Its pledges die with it.
 			remove_variable = ulus_pledged_to
 			remove_variable = ulus_pledged_to_khan
 			scope:ulus_breaker = {
-				trigger_event_non_silently = { id = amirs_client.1 days = 3 }
+				# Hidden first: is there still loose ground? (amirs_client.2)
+				trigger_event_non_silently = { id = amirs_client.2 days = 3 }
 			}
 		}
 	}
@@ -273,6 +275,7 @@ ulus_broken_ground_done = {
 	clear_global_variable_list = ulus_broken_ground
 	remove_global_variable = ulus_broken_seat
 	remove_global_variable = ulus_breaker
+	remove_global_variable = ulus_broken_house
 	international_organization:ulus_chaghatay ?= {
 		ulus_chaghatay_rebuild_ledger = yes
 	}

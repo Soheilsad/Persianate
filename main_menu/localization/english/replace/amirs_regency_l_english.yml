@@ -231,3 +231,8 @@
  amirs_regency.3.desc: "The khan is dead, and no son of his rules. [SCOPE.sCountry('ulus_new_regent').GetName] has raised a prince of the line on the white felt and keeps him in its own camp. The summonses to the ulus go out in the khan's name and under that house's seal. The begs who were there say the prince was not asked. Every house in the ulus now has the same two questions to answer: how long this arrangement will hold, and whether it could keep a khan as well as they can."
  amirs_regency.3.a: "We shall see how long he keeps him."
  amirs_regency_begins_tt: "#Y The Amirs' Regency#! has begun. The keeper of the khan leads the ulus while his standing among the amirs lasts (the #Y legitimacy gap#! on the ulus panel).\nWe can #Y pledge our tümen#! to a house, or gather pledges ourselves. From the second stage any amir can #Y claim the khan#! by war."
+ opinion_ulus_largesse: "Largesse to the amirs"
+ opinion_ulus_gurkan: "Married into the line"
+ opinion_ulus_amirs_fallen_out: "The amirs have fallen out"
+ opinion_ulus_raised_by_him_name: "Raised us to our place"
+ ulus_took_his_silver_tt: "We have not taken the regent's largesse within the last two years"

@@ -1,9 +1,11 @@
 # Opinion modifiers of the Amirs' Regency system (form: 03_amirs_cadet_bias.txt).
 
 # The regent has opened his treasury to the amirs.
+# Gifts are remembered for about two years (was 5 a year: it stacked to
+# +70 and outlasted every quarrel).
 opinion_ulus_largesse = {
 	value = 25
-	yearly_decay = 5
+	yearly_decay = 12
 }
 
 # He has married into the line: a güregen is a man one can follow.
@@ -48,4 +50,11 @@ opinion_ulus_keeps_what_is_ours = {
 opinion_ulus_pledge_broken = {
 	value = -40
 	yearly_decay = 4
+}
+
+
+# The second stage of the regency: house against house.
+opinion_ulus_amirs_fallen_out = {
+	value = -100
+	yearly_decay = 3
 }

@@ -695,6 +695,14 @@ ulus_regency_enter_stage = {
 	}
 	ulus_houses_resent_the_keeper = yes
 	if = {
+		limit = {
+			var:ulus_regency_stage >= 2
+			NOT = { has_variable = ulus_amirs_fell_out }
+		}
+		set_variable = ulus_amirs_fell_out
+		ulus_amirs_fall_out = yes
+	}
+	if = {
 		limit = { var:ulus_regency_stage >= 3 }
 		set_variable = ulus_members_may_leave
 	}
@@ -1009,6 +1017,7 @@ ulus_regency_clear = {
 	remove_variable = ulus_members_may_leave
 	remove_variable = ulus_ending_called
 	remove_variable = ulus_office_steps
+	remove_variable = ulus_amirs_fell_out
 }
 
 # ---------------------------------------------------------------------
@@ -1314,6 +1323,39 @@ ulus_houses_resent_the_keeper = {
 			add_opinion = {
 				target = scope:ulus_keeper
 				modifier = opinion_ulus_keeps_what_is_ours
+			}
+		}
+	}
+}
+
+
+# IO scope; once, when the second stage opens. Stage two is named "the
+# amirs fall out", and until now nothing made them: the houses stayed at
+# +100 and more with one another and no feud was ever pressed (author,
+# 2026-11-14). Every house now holds it against every other house,
+# except those it is bound to: an ally, its lord or its subject, the
+# house it has pledged to or that has pledged to it. What is left
+# standing after this is the blocs, which is what the years after 1358
+# looked like.
+ulus_amirs_fall_out = {
+	every_international_organization_member = {
+		limit = { is_ulus_chaghatay_amir = yes }
+		save_scope_as = ulus_house_a
+		prev = {
+			every_international_organization_member = {
+				limit = {
+					is_ulus_chaghatay_amir = yes
+					NOT = { this = scope:ulus_house_a }
+					NOT = { is_allied_with = { target = scope:ulus_house_a } }
+					NOT = { is_subject_of = scope:ulus_house_a }
+					NOT = { scope:ulus_house_a = { is_subject_of = prev } }
+					NOT = { var:ulus_pledged_to ?= scope:ulus_house_a }
+					NOT = { scope:ulus_house_a.var:ulus_pledged_to ?= this }
+				}
+				add_opinion = {
+					target = scope:ulus_house_a
+					modifier = opinion_ulus_amirs_fallen_out
+				}
 			}
 		}
 	}

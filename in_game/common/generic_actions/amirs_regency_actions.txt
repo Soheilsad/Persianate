@@ -316,6 +316,10 @@ ulus_distribute_largesse = {
 						modifier = opinion_ulus_largesse
 						target = scope:ulus_giver
 					}
+					# A house that has taken his silver does not ride on
+					# him while it is remembered (read by Claim the Khan's
+					# AI, and shown in its tooltip to a player).
+					set_variable = { name = ulus_took_his_silver value = 1 months = ulus_largesse_months }
 				}
 			}
 			add_country_modifier = {
@@ -415,6 +419,12 @@ ulus_claim_the_khan = {
 				ulus_regency_stage_at_least = { STAGE = 2 }
 			}
 			at_war = no
+			# A player is bound as the AI is inclined: no claim while the
+			# regent's largesse to us is remembered.
+			custom_tooltip = {
+				text = ulus_took_his_silver_tt
+				NOT = { has_variable = ulus_took_his_silver }
+			}
 		}
 	}
 
@@ -491,6 +501,11 @@ ulus_claim_the_khan = {
 				}
 				add = -60
 			}
+		}
+		# His robes are still on our backs.
+		if = {
+			limit = { scope:actor = { has_variable = ulus_took_his_silver } }
+			add = -40
 		}
 		# A keeper of the khan with no host is an invitation, whatever
 		# his rents and his friends make him weigh.
