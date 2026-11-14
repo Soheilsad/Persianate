@@ -1064,6 +1064,10 @@ ulus_end_bulqaq = {
 			}
 		}
 	}
+	# What the Bulqaq leads to: the neighbours come for the tümens
+	# (scripted_effects/20_chaghatay_breaking_effects.txt).
+	set_global_variable = { name = ulus_bulqaq_done value = 1 }
+	ulus_bulqaq_open_the_pastures = yes
 	set_global_variable = { name = ulus_chaghatay_ended value = 1 }
 	clear_global_variable_list = ulus_amirs
 	clear_global_variable_list = ulus_kingmakers

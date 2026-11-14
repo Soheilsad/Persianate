@@ -107,3 +107,22 @@ cb_rise_against_the_khan = {
 	}
 	war_goal_type = take_the_khan_wargoal
 }
+
+
+# BREAK THE TÜMENS. After the Bulqaq, an outsider against a tümen that
+# has gone its own way (given by ulus_bulqaq_open_the_pastures to every
+# outside neighbour of each orphan).
+cb_break_the_tumens = {
+	create_visible = {
+		always = no
+	}
+	create_enabled = {
+		always = no
+	}
+	declare_enabled = {
+		scope:target = {
+			has_variable = ulus_bulqaq_orphan
+		}
+	}
+	war_goal_type = restore_the_ulus_wargoal
+}

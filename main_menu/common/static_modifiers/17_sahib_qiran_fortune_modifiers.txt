@@ -53,3 +53,27 @@ REPLACE:rot_legacy_fallback = {
 	antagonism_received_modifier = -0.1
 	land_morale_modifier = 0.15
 }
+
+
+# The Breaking of the Chaghatay (events/amirs_breaking_events.txt).
+# Distributed: the households are ours, and for a generation so are the
+# riders they raise.
+ulus_tumens_distributed_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	global_manpower_modifier = 0.20
+	global_levy_size_modifier = 0.15
+}
+
+# In service: fewer of them, and they stay a people apart, but they stay.
+ulus_tumens_in_service_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	global_levy_size_modifier = 0.10
+	land_morale_modifier = 0.05
+	cultures_capacity = 1
+}

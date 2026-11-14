@@ -1,0 +1,63 @@
+namespace = amirs_breaking
+
+# .1 — THE PRIZE. To the outsider who has come to hold the pastures of
+# the broken ulus (on_action/36_chaghatay_breaking_hooks.txt). Once in a
+# game. The Chaghatay were an army with households; the army is gone and
+# the households are his to dispose of.
+amirs_breaking.1 = {
+	type = country_event
+	title = amirs_breaking.1.title
+	desc = amirs_breaking.1.desc
+	outcome = positive
+	major = yes
+	major_trigger = {
+		capital ?= {
+			OR = {
+				sub_continent = sub_continent:central_asia
+				sub_continent = sub_continent:middle_east
+				sub_continent = sub_continent:south_asia
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	# Distribute them: the practice of the steppe. The tümens' people in
+	# our pastures become ours at once.
+	option = {
+		name = amirs_breaking.1.a
+		custom_tooltip = amirs_breaking_distribute_tt
+		hidden_effect = {
+			ulus_distribute_the_tumens = yes
+		}
+		add_country_modifier = {
+			modifier = ulus_tumens_distributed_mod
+			years = 30
+		}
+		add_prestige = ulus_breaking_prestige
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 3
+				government_type = government_type:steppe_horde
+			}
+		}
+	}
+	# Take them into service: they keep their name and their captains,
+	# and ride for us.
+	option = {
+		name = amirs_breaking.1.b
+		custom_tooltip = amirs_breaking_service_tt
+		add_country_modifier = {
+			modifier = ulus_tumens_in_service_mod
+			years = -1
+		}
+		add_prestige = ulus_breaking_service_prestige
+		ai_chance = {
+			factor = 1
+		}
+	}
+}

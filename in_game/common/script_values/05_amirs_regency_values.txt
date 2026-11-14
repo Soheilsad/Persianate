@@ -365,3 +365,12 @@ ulus_pledge_prestige = 10
 sq_ambition_share = 0.6
 sq_fortune_ambition = 15
 sq_ambitions_needed = 2
+
+
+# =====================================================================
+# 11. THE BREAKING OF THE CHAGHATAY (after the Bulqaq)
+# =====================================================================
+# Share of the marked pastures an outsider and his subjects must hold.
+ulus_breaking_share = 0.5
+ulus_breaking_prestige = 50
+ulus_breaking_service_prestige = 25

@@ -1,0 +1,158 @@
+# =====================================================================
+# THE BREAKING OF THE CHAGHATAY — what the Bulqaq leads to.
+#
+# The Chaghatay were not a nation with an army; they were an army with
+# households. If the Amirs' Regency ends in the Bulqaq (no khan anyone
+# obeys, no beg anyone follows), what is left in the pastures is the
+# tümens' families and herds, and the neighbours come for them: the
+# eastern khanate, the Jochids, whoever has united Iran. The rehearsal
+# is 1387-88, when Tokhtamysh, Khwarazm and the Moghuls struck
+# Transoxiana together while Temür was in Iran; the practice with a
+# beaten tribe is the one Chinggis used on the Tatars and Temür on his
+# own enemies: the survivors are distributed among the victor's people
+# so that the tribe cannot re-form. People survive that. The name does
+# not: "Ilkhanid" was gone from Iran two generations after 1335.
+#
+#   at game start   the lands of the thirteen Chaghatay realms are
+#                   marked (location variable ulus_tumen_pasture, global
+#                   list ulus_pastures) — the same tags tools/
+#                   chaghatay_culture.py makes chaghatay_culture.
+#   at the Bulqaq   scripted_effects/15_amirs_regency_effects.txt sets
+#                   global ulus_bulqaq_done and calls
+#                   ulus_bulqaq_open_the_pastures: every outsider
+#                   bordering an orphaned tümen gets a claim on it.
+#   every year      THE PRIZE (once in a game): an outsider who, with his
+#                   subjects, holds ulus_breaking_share of the marked
+#                   pastures is offered the tümens themselves
+#                   (amirs_breaking.1).
+#                   THE DISSOLUTION: in marked pastures held by anyone
+#                   not Chaghatay, the tribal Chaghatay pops pass, a few
+#                   places a year, into the ruler's own people.
+# Effects: scripted_effects/20_chaghatay_breaking_effects.txt.
+# Re-declaring the on_actions EXTENDS them.
+# =====================================================================
+
+on_game_start = {
+	on_actions = {
+		ulus_mark_the_pastures
+	}
+}
+
+ulus_mark_the_pastures = {
+	effect = {
+		c:APD ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+		c:ART ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+		c:BRL ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+		c:JLY ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+		c:KTT ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+		c:QUN ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+		c:SLD ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+		c:YSU ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+		c:FGN ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+		c:CAC ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+		c:CHG ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+		c:ISQ ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+		c:DZG ?= {
+			every_owned_location = {
+				set_variable = ulus_tumen_pasture
+				add_to_global_variable_list = { name = ulus_pastures target = this }
+			}
+		}
+	}
+}
+
+yearly_country_pulse = {
+	on_actions = {
+		ulus_breaking_prize_pulse
+		ulus_dissolving_pulse
+	}
+}
+
+ulus_breaking_prize_pulse = {
+	trigger = {
+		has_global_variable = ulus_bulqaq_done
+		NOT = { has_global_variable = ulus_chaghatay_broken_by }
+		is_rebel_country = no
+		is_subject = no
+		NOT = { culture = culture:chaghatay_culture }
+		NOT = { has_variable = ulus_bulqaq_orphan }
+		any_owned_location = { has_variable = ulus_tumen_pasture }
+		ulus_holds_the_pastures = yes
+	}
+	effect = {
+		set_global_variable = { name = ulus_chaghatay_broken_by value = this }
+		trigger_event_non_silently = amirs_breaking.1
+	}
+}
+
+ulus_dissolving_pulse = {
+	trigger = {
+		has_global_variable = ulus_bulqaq_done
+		is_rebel_country = no
+		NOT = { culture = culture:chaghatay_culture }
+		any_owned_location = { has_variable = ulus_tumen_pasture }
+	}
+	effect = {
+		ulus_dissolve_the_tumens = { CHANCE = 10 }
+	}
+}

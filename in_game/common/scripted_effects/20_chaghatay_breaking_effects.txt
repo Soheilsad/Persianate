@@ -1,0 +1,53 @@
+# The Breaking of the Chaghatay (on_action/36_chaghatay_breaking_hooks.txt).
+
+# Any scope, at the Bulqaq; needs the list ulus_orphans (the former
+# members). Every outsider who borders an orphaned tümen gets a claim on
+# it. The eastern khan's own claim (cb_restore_the_ulus) is given by
+# ulus_end_bulqaq as before.
+ulus_bulqaq_open_the_pastures = {
+	every_in_list = {
+		list = ulus_orphans
+		save_scope_as = ulus_orphan_tumen
+		every_neighbor_country = {
+			limit = {
+				is_rebel_country = no
+				NOT = { has_variable = ulus_bulqaq_orphan }
+				NOT = { is_in_list = ulus_orphans }
+			}
+			add_casus_belli = {
+				type = casus_belli:cb_break_the_tumens
+				target = scope:ulus_orphan_tumen
+				years = 25
+			}
+		}
+	}
+}
+
+# COUNTRY scope. In each marked pasture this country owns, with CHANCE in
+# a hundred per place, the tümens' people (tribesmen, soldiers, nobles of
+# chaghatay_culture) pass into the ruler's own. In-place conversion: these
+# are the same households under a new name, not settlers.
+ulus_dissolve_the_tumens = {
+	every_owned_location = {
+		limit = { has_variable = ulus_tumen_pasture }
+		random = {
+			chance = $CHANCE$
+			every_pop = {
+				limit = { ulus_is_tumen_pop = yes }
+				change_pop_culture = root.culture
+			}
+		}
+	}
+}
+
+# COUNTRY scope: the breaker distributes the tümens among his own people.
+# Every marked pasture he owns, at once.
+ulus_distribute_the_tumens = {
+	every_owned_location = {
+		limit = { has_variable = ulus_tumen_pasture }
+		every_pop = {
+			limit = { ulus_is_tumen_pop = yes }
+			change_pop_culture = root.culture
+		}
+	}
+}

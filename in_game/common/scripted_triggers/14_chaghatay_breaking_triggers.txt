@@ -1,0 +1,25 @@
+# COUNTRY scope: with its subjects it holds ulus_breaking_share of the
+# pastures marked at game start (on_action/36_chaghatay_breaking_hooks.txt).
+ulus_holds_the_pastures = {
+	save_temporary_scope_as = ulus_breaker_test
+	any_in_global_list = {
+		variable = ulus_pastures
+		percent >= ulus_breaking_share
+		owner ?= {
+			OR = {
+				this = scope:ulus_breaker_test
+				is_subject_of = scope:ulus_breaker_test
+			}
+		}
+	}
+}
+
+# POP scope: one of the tümens' own people.
+ulus_is_tumen_pop = {
+	culture = culture:chaghatay_culture
+	OR = {
+		pop_type = pop_type:tribesmen
+		pop_type = pop_type:soldiers
+		pop_type = pop_type:nobles
+	}
+}
