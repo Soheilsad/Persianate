@@ -68,6 +68,15 @@ horde_succession.1 = {
 		government_type = government_type:steppe_horde
 		is_subject = no
 		is_rebel_country = no
+		# Not the amir houses of Ulus Chaghatay. While they were CHG's
+		# vassals `is_subject = no` kept them out of the poll; as junior
+		# members of the organisation they are nobody's subjects, and a
+		# Barlas or Jalayir accession would route to (c) every time (no
+		# Borjigin on the seat) for -20 unity. An amir house keeps its
+		# own succession, which the khan confirms (later phase); the
+		# kuriltai polled here is the one that seats a KHAN, so the
+		# ulus's leader — CHG, or a regent's state — is still polled.
+		NOT = { is_ulus_chaghatay_amir = yes }
 	}
 
 	immediate = {
@@ -155,7 +164,7 @@ horde_succession.1 = {
 		if = {
 			limit = {
 				local_var:blood = 0
-				NOT = { has_reform = government_reform:chinggisid_regency }
+				NOT = { has_reform = government_reform:beglerbeg_regency }
 			}
 			trigger_event_non_silently = horde_succession.40
 		}
@@ -165,7 +174,7 @@ horde_succession.1 = {
 		# to hold whoever sits on it. Mamai's office, and Qazaghan's.
 		else_if = {
 			limit = {
-				NOT = { has_reform = government_reform:chinggisid_regency }
+				NOT = { has_reform = government_reform:beglerbeg_regency }
 				OR = {
 					NOT = { ruler ?= { is_patrilineal_descendant_of = dynasty:borjigin_dynasty } }
 					AND = {

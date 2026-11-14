@@ -1,0 +1,56 @@
+# =====================================================================
+# THE BEGLERBEG'S REGENCY — a beg commanding the ordu in a puppet khan's
+# name.
+#
+# The steppe's own answer to a problem the mod already models in Tabriz
+# (chinggisid_regency, 01_persian_reforms.txt, persianate_sultanate
+# only): a man with the armies and no descent cannot be khan, so he
+# keeps one. Qazaghan, amir of the Qara'unas, killed Qazan Khan in 1346
+# and ruled Transoxiana for twelve years through Danishmendcha and then
+# Bayan Quli; Amir Husayn and Temür did the same after him, and Temür
+# never took the title at all — he died a güregen, a son-in-law of the
+# line, with a Chagatayid khan's name on his coins. Mamai and Edigü ran
+# the same office in the Jochid ulus under the title beglerbeg.
+#
+# What it buys: the tümens muster, because the yarlıq is still a
+# khan's. What it costs: every act has to be issued in another man's
+# name and laundered through him first, and the regent's own standing
+# is that of a servant however large his army.
+#
+# PHASE 1: DEFINITION ONLY. Nobody holds this yet. The potential is
+# closed behind beglerbeg_regency_granted, which only the regency-onset
+# script (the Amirs' Regency, later phase) will set before add_reform.
+#
+# The horde systems that grant a regent the khan's reach — the yam
+# (auto_modifiers/09_horde_reach_auto.txt), the darugha seats
+# (building_types/Horde_reach.txt), ulus grants, the reach events, the
+# succession poll and the civil-war disaster — test THIS reform. They
+# used to test chinggisid_regency, which a steppe_horde can never hold,
+# so those arms were dead.
+# =====================================================================
+
+beglerbeg_regency = {
+	age = age_1_traditions
+	government = steppe_horde
+
+	potential = {
+		has_variable = beglerbeg_regency_granted
+	}
+	locked = {
+		always = yes
+	}
+	country_modifier = {
+		# Every yarlıq goes out under the khan's seal, not the beg's.
+		monthly_political_influence_gain_modifier = -0.20
+		# The fiction works: the ulus answers a khan's summons.
+		monthly_horde_unity = 0.10
+		# A servant's standing, whatever the size of his ordu.
+		monthly_prestige = -0.10
+		# The khan is the lawful ruler and his name is on the coin; the
+		# regent's writ never quite runs as far as a khan's would
+		# (same ceiling as chinggisid_regency).
+		global_max_control = -0.03
+	}
+
+	years = 0
+}

@@ -54,3 +54,7 @@
  ISQ_ADJ: "Issyk-Kul"
  DZG: "Ulus of Dzungaria"
  DZG_ADJ: "Dzungarian"
+
+ # --- The beglerbeg's regency (government_reforms/08_ulus_chaghatay_reforms.txt) ---
+ beglerbeg_regency: "Beglerbeg's Regency"
+ beglerbeg_regency_desc: "The khan sits on the felt and the beg commands the ordu. Every yarlıq goes out under the khan's seal and every tümen musters in his name, because it would not muster in the beg's: a man without the blood of Chinggis cannot be khan, so he keeps one. Qazaghan ruled the ulus this way through two khans, and Mamai and Edigü ruled the house of Jochi so."

@@ -57,7 +57,7 @@ borjigin_yam_reach = {
 		government_type = government_type:steppe_horde
 		OR = {
 			ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
-			has_reform ?= government_reform:chinggisid_regency
+			has_reform ?= government_reform:beglerbeg_regency
 		}
 	}
 	global_distance_from_capital_speed_propagation = 0.33

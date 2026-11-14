@@ -44,7 +44,7 @@ grant_ulus = {
 			government_type = government_type:steppe_horde
 			OR = {
 				ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
-				has_reform ?= government_reform:chinggisid_regency
+				has_reform ?= government_reform:beglerbeg_regency
 			}
 		}
 		scope:recipient ?= {

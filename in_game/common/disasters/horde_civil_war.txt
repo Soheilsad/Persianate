@@ -59,7 +59,7 @@ horde_civil_war = {
 						}
 					}
 				}
-				NOT = { has_reform = government_reform:chinggisid_regency }
+				NOT = { has_reform = government_reform:beglerbeg_regency }
 			}
 			AND = {
 				NOT = { has_variable = horde_of_the_line }
