@@ -426,20 +426,52 @@ ulus_pledge_acceptance = {
 			}
 			add = 15
 		}
+		# The lighter house asking the heavier: up to -100, by how much
+		# lighter (equal weight 0, half the weight -50, a tenth -90).
 		else_if = {
-			limit = { scope:actor.var:ulus_weight < var:ulus_weight }
-			add = -40
+			limit = {
+				scope:actor.var:ulus_weight < var:ulus_weight
+				var:ulus_weight > 0
+			}
+			add = {
+				value = scope:actor.var:ulus_weight
+				divide = var:ulus_weight
+				subtract = 1
+				multiply = 100
+				min = -100
+				max = 0
+			}
 		}
 	}
-	# A house that could take the khan itself does not stand behind another.
+	# A house that could take the khan itself does not stand behind
+	# another: up to -66, by its kingmaker score against the best amir's
+	# (the likeliest kingmaker of all -66, the third of the three less).
 	if = {
 		limit = {
 			is_target_in_global_variable_list = {
 				name = ulus_kingmakers
 				target = this
 			}
+			has_variable = ulus_kingmaker_score
 		}
-		add = -30
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					has_variable = ulus_top_kingmaker_score
+					var:ulus_top_kingmaker_score > 0
+				}
+			}
+			add = {
+				value = var:ulus_kingmaker_score
+				divide = international_organization:ulus_chaghatay.var:ulus_top_kingmaker_score
+				max = 1
+				min = 0
+				multiply = -66
+			}
+		}
+		else = {
+			add = -66
+		}
 	}
 	# Standing behind a likely winner.
 	if = {

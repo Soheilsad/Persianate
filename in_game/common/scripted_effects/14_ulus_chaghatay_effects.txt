@@ -227,6 +227,17 @@ ulus_chaghatay_rebuild_ledger = {
 		max = 3
 		check_range_bounds = no
 		add_to_global_variable_list = { name = ulus_kingmakers target = this }
+		# The best amir's score, for ulus_pledge_acceptance (a house's own
+		# hopes of the khan are measured against it).
+		if = {
+			limit = { NOT = { has_local_variable = ulus_top_set } }
+			set_local_variable = { name = ulus_top_set value = 1 }
+			set_local_variable = { name = ulus_top_score value = var:ulus_kingmaker_score }
+		}
+	}
+	if = {
+		limit = { has_local_variable = ulus_top_score }
+		set_variable = { name = ulus_top_kingmaker_score value = local_var:ulus_top_score }
 	}
 
 	# ---4. The seat: its own strength, its begs, its heir ----------------
