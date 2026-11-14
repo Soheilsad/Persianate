@@ -19,6 +19,33 @@ is_ulus_chaghatay_member = {
 is_ulus_chaghatay_amir = {
 	is_ulus_chaghatay_member = yes
 	NOT = { is_leader_of_international_organization = international_organization:ulus_chaghatay }
+	NOT = { ulus_marked_client = yes }
+}
+
+# Any member that is not the seat: amirs and client kings alike.
+is_ulus_chaghatay_junior = {
+	is_ulus_chaghatay_member = yes
+	NOT = { is_leader_of_international_organization = international_organization:ulus_chaghatay }
+}
+
+# A CLIENT KING of the ulus (special status ulus_client): the Shahs of
+# Badakhshan, the lords of Karategin, and any settled house the ulus
+# raises on a broken tümen's ground. He sends the qubchur and may pledge
+# to a house, but he is no amir: he has no hope of the khan, is not
+# reckoned among the amirs, and does not raid or rise.
+# The mark is the country variable ulus_client; the two 1337 tags are
+# named as well so that the test holds before on_game_start has run.
+ulus_marked_client = {
+	OR = {
+		has_variable = ulus_client
+		tag = BKH
+		tag = KRG
+	}
+}
+is_ulus_chaghatay_client = {
+	is_ulus_chaghatay_member = yes
+	NOT = { is_leader_of_international_organization = international_organization:ulus_chaghatay }
+	ulus_marked_client = yes
 }
 
 # The seat: the khan's own realm, or in a regency the regent's.
@@ -51,6 +78,9 @@ is_ulus_chaghatay_roster_tag = {
 		tag = CAC
 		tag = ISQ
 		tag = DZG
+		# the client kings
+		tag = BKH
+		tag = KRG
 	}
 }
 

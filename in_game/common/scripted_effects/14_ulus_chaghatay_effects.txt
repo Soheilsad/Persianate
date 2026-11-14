@@ -157,6 +157,7 @@ ulus_chaghatay_rebuild_ledger = {
 	every_international_organization_member = {
 		limit = {
 			NOT = { is_leader_of_international_organization = scope:ulus_io }
+			NOT = { ulus_marked_client = yes }
 		}
 		change_local_variable = { name = ulus_n add = 1 }
 		change_local_variable = { name = ulus_amir_str add = var:ulus_weight }
@@ -371,10 +372,19 @@ ulus_chaghatay_rebuild_ledger = {
 		set_variable = { name = ulus_weight_eff value = ulus_realm_weight }
 	}
 
+	# The client kings are not amirs: no share of the amirs' weight, no
+	# hope of the khan. (Their pledges are counted above like anyone's.)
+	every_international_organization_member = {
+		limit = { ulus_marked_client = yes }
+		set_variable = { name = ulus_amir_share value = 0 }
+		set_variable = { name = ulus_kingmaker_score value = 0 }
+	}
+
 	# ---2. The amirs, strongest first ------------------------------------
 	ordered_international_organization_member = {
 		limit = {
 			NOT = { is_leader_of_international_organization = scope:ulus_io }
+			NOT = { ulus_marked_client = yes }
 		}
 		order_by = ulus_realm_weight
 		max = 60
@@ -402,6 +412,7 @@ ulus_chaghatay_rebuild_ledger = {
 	ordered_international_organization_member = {
 		limit = {
 			NOT = { is_leader_of_international_organization = scope:ulus_io }
+			NOT = { ulus_marked_client = yes }
 		}
 		order_by = ulus_kingmaker_score
 		max = 3
@@ -434,6 +445,7 @@ ulus_chaghatay_rebuild_ledger = {
 	ordered_international_organization_member = {
 		limit = {
 			NOT = { is_leader_of_international_organization = scope:ulus_io }
+			NOT = { ulus_marked_client = yes }
 		}
 		order_by = ulus_realm_weight
 		max = 3
@@ -712,6 +724,7 @@ ulus_chaghatay_rebuild_ledger = {
 		ordered_international_organization_member = {
 			limit = {
 				NOT = { is_leader_of_international_organization = scope:ulus_io }
+				NOT = { ulus_marked_client = yes }
 			}
 			order_by = ulus_kingmaker_score
 			max = 1
@@ -731,6 +744,21 @@ ulus_chaghatay_rebuild_ledger = {
 		}
 		else = {
 			set_variable = { name = ulus_heir_standing value = 9.99 }
+		}
+		# The hardened office (scripted_effects/22): each step lifts the
+		# heir's standing.
+		if = {
+			limit = { has_variable = ulus_office_steps }
+			set_variable = {
+				name = ulus_heir_standing
+				value = {
+					value = var:ulus_office_steps
+					multiply = ulus_office_heir_bonus
+					add = 1
+					multiply = var:ulus_heir_standing
+					max = 9.99
+				}
+			}
 		}
 		set_variable = {
 			name = ulus_heir_bar

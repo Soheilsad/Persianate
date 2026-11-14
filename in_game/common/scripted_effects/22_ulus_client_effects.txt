@@ -1,0 +1,292 @@
+# =====================================================================
+# CLIENT KINGS OF THE ULUS, and what becomes of a broken tümen's ground.
+#
+# 1. ulus_make_client: Badakhshan and Karategin at the start
+#    (on_action/38_ulus_client_hooks.txt), and a settled house raised on
+#    a broken tümen's ground.
+# 2. The broken tümen. A horde whose armies are all destroyed shatters
+#    (engine: on_shatter_country turns it into a settled tribe). Inside
+#    the ulus that left a Tajik country on a tümen's pasture which the
+#    mod then made a Persianate sultanate and enrolled in Erānzamīn
+#    (author's test, Suldus broken by the Yasa'uri, 2026-11-14). Now the
+#    one who broke it disposes of the ground (events/
+#    amirs_client_events.txt, amirs_client.1):
+#       take it        the pastures are his, unintegrated;
+#       a new tümen    a horde again under a new chief, pledged to him;
+#       a client king  a settled house under the ulus, pledged to him.
+#    If nobody of the ulus was at war with it, the seat disposes.
+# Globals used between the shattering and the event:
+#   ulus_breaker        country  who decides
+#   ulus_broken_seat    location the old capital
+#   ulus_broken_ground  list of locations the house held
+# =====================================================================
+
+# COUNTRY scope. Makes this country a client king and seats it.
+ulus_make_client = {
+	set_variable = ulus_client
+	remove_variable = ulus_pledged_to
+	remove_variable = ulus_pledged_to_khan
+	if = {
+		limit = { NOT = { government_type = government_type:persianate_sultanate } }
+		change_government_type = government_type:persianate_sultanate
+	}
+	if = {
+		limit = { NOT = { has_reform = government_reform:persianate_bureaucracy_reform } }
+		add_reform = government_reform:persianate_bureaucracy_reform
+	}
+	if = {
+		limit = { NOT = { has_reform = government_reform:client_of_the_ulus } }
+		add_reform = government_reform:client_of_the_ulus
+	}
+	ulus_seat_in_the_ulus = yes
+}
+
+# COUNTRY scope. Seats this country in the ulus if it is not there.
+ulus_seat_in_the_ulus = {
+	if = {
+		limit = {
+			exists = international_organization:ulus_chaghatay
+			NOT = { is_ulus_chaghatay_member = yes }
+		}
+		set_variable = ulus_chaghatay_admitted
+		save_scope_as = ulus_seated
+		international_organization:ulus_chaghatay = {
+			add_country_to_international_organization_no_update = scope:ulus_seated
+		}
+	}
+}
+
+# COUNTRY scope. A client whose ulus is gone, or who is out of it: the
+# reform and the mark lapse, and he is an ordinary Persianate ruler with
+# the ordinary question to answer.
+ulus_client_lapses = {
+	remove_variable = ulus_client
+	if = {
+		limit = { has_reform = government_reform:client_of_the_ulus }
+		remove_reform = government_reform:client_of_the_ulus
+	}
+}
+
+# COUNTRY scope: a tümen of the ulus at the moment it shatters.
+ulus_tumen_is_broken = {
+	save_scope_as = ulus_broken
+	# Who decides: an ulus house at war with it, the heaviest if there
+	# are several; failing that, the seat.
+	ordered_country_at_war_with = {
+		limit = { is_ulus_chaghatay_member = yes }
+		order_by = ulus_realm_weight
+		max = 1
+		check_range_bounds = no
+		save_scope_as = ulus_breaker
+	}
+	if = {
+		limit = { NOT = { exists = scope:ulus_breaker } }
+		international_organization:ulus_chaghatay.leader_country ?= {
+			if = {
+				limit = { NOT = { this = scope:ulus_broken } }
+				save_scope_as = ulus_breaker
+			}
+		}
+	}
+	if = {
+		limit = { exists = scope:ulus_breaker }
+		clear_global_variable_list = ulus_broken_ground
+		every_owned_location = {
+			add_to_global_variable_list = { name = ulus_broken_ground target = this }
+		}
+		capital ?= { save_scope_as = ulus_broken_seat_loc }
+		if = {
+			limit = { exists = scope:ulus_broken_seat_loc }
+			set_global_variable = { name = ulus_broken_seat value = scope:ulus_broken_seat_loc }
+			set_global_variable = { name = ulus_breaker value = scope:ulus_breaker }
+			# Its pledges die with it.
+			remove_variable = ulus_pledged_to
+			remove_variable = ulus_pledged_to_khan
+			scope:ulus_breaker = {
+				trigger_event_non_silently = { id = amirs_client.1 days = 3 }
+			}
+		}
+	}
+}
+
+# COUNTRY scope: the breaker. Whoever sits on the old capital now is the
+# house that inherits the ground; saved as scope:ulus_ground_heir, and
+# every place the broken house held that others of its pieces hold is
+# gathered under it. Needs the globals above.
+ulus_gather_the_broken_ground = {
+	global_var:ulus_broken_seat.owner ?= { save_scope_as = ulus_ground_heir }
+	if = {
+		limit = { exists = scope:ulus_ground_heir }
+		every_in_global_list = {
+			variable = ulus_broken_ground
+			limit = {
+				exists = owner
+				NOT = { owner = scope:ulus_ground_heir }
+				# only what is still loose: nothing a standing house of
+				# the ulus or an outsider has taken meanwhile
+				owner = {
+					NOT = { is_ulus_chaghatay_member = yes }
+					capital ?= { has_variable = ulus_tumen_pasture }
+					NOT = { this = root }
+				}
+			}
+			change_location_owner = scope:ulus_ground_heir
+		}
+	}
+}
+
+# COUNTRY scope: the breaker. Ends his war with the heir of the ground.
+ulus_peace_with_the_ground_heir = {
+	if = {
+		limit = {
+			exists = scope:ulus_ground_heir
+			is_at_war_with = scope:ulus_ground_heir
+		}
+		random_current_war = {
+			limit = {
+				any_war_participant = { this = root }
+				any_war_participant = { this = scope:ulus_ground_heir }
+			}
+			white_peace = this
+		}
+	}
+}
+
+# COUNTRY scope: the breaker. CHOICE I: the ground is his.
+ulus_broken_ground_taken = {
+	every_in_global_list = {
+		variable = ulus_broken_ground
+		limit = {
+			exists = owner
+			NOT = { owner = root }
+			owner = {
+				NOT = { is_ulus_chaghatay_member = yes }
+				capital ?= { has_variable = ulus_tumen_pasture }
+			}
+		}
+		change_integration_level = conquered
+		change_location_owner = root
+		change_integration_level = conquered
+	}
+	ulus_broken_ground_done = yes
+}
+
+# COUNTRY scope: the breaker. CHOICE II: a tümen again.
+ulus_broken_ground_new_tumen = {
+	ulus_gather_the_broken_ground = yes
+	ulus_peace_with_the_ground_heir = yes
+	scope:ulus_ground_heir ?= {
+		remove_variable = ulus_client
+		change_country_type = army
+		change_government_type = government_type:steppe_horde
+		add_reform = government_reform:legacy_of_genghis
+		set_personality = ai_personality:ai_aggressive
+		capital ?= {
+			if = {
+				limit = { NOT = { has_building = building_type:kurultai } }
+				construct_building = {
+					building_type = building_type:kurultai
+					cost_multiplier = 0
+					cost_multiplier_reason = "game_concept_event"
+					instant = yes
+				}
+			}
+			create_sub_unit_with_owner = {
+				type = a_steppe_horse_archers
+				owner = scope:ulus_ground_heir
+			}
+			create_sub_unit_with_owner = {
+				type = a_steppe_horse_archers
+				owner = scope:ulus_ground_heir
+			}
+		}
+		ulus_seat_in_the_ulus = yes
+		ulus_owes_his_place_to_the_breaker = yes
+	}
+	ulus_broken_ground_done = yes
+}
+
+# COUNTRY scope: the breaker. CHOICE III: a client king.
+ulus_broken_ground_client = {
+	ulus_gather_the_broken_ground = yes
+	ulus_peace_with_the_ground_heir = yes
+	scope:ulus_ground_heir ?= {
+		ulus_make_client = yes
+		ulus_owes_his_place_to_the_breaker = yes
+	}
+	ulus_broken_ground_done = yes
+}
+
+# COUNTRY scope: the house just raised; root = the breaker. Pledged to
+# the man who raised it (if he is an amir who can be pledged to) and
+# well disposed to him.
+ulus_owes_his_place_to_the_breaker = {
+	if = {
+		limit = {
+			root = {
+				is_ulus_chaghatay_amir = yes
+				NOT = { has_variable = ulus_pledged_to }
+			}
+		}
+		set_variable = { name = ulus_pledged_to value = root }
+	}
+	else_if = {
+		limit = { root = { is_ulus_chaghatay_leader = yes } }
+		set_variable = ulus_pledged_to_khan
+	}
+	add_opinion = {
+		target = root
+		modifier = opinion_ulus_raised_by_him
+	}
+}
+
+ulus_broken_ground_done = {
+	clear_global_variable_list = ulus_broken_ground
+	remove_global_variable = ulus_broken_seat
+	remove_global_variable = ulus_breaker
+	international_organization:ulus_chaghatay ?= {
+		ulus_chaghatay_rebuild_ledger = yes
+	}
+}
+
+# IO scope, at a stage's turn (ulus_regency_stage_tick). THE OFFICE
+# HARDENS. A regent whose standing among the amirs is whole when the
+# stage turns (the gap at the filled line or over) has made the keeping
+# of the khan a little more of an office and a little less of a
+# seizure: Qazaghan's beglerbegate passed to his son, and Temür's to his
+# line, because the years had made it a thing that could be inherited.
+# One step a stage, three at most (ulus_office_steps on the IO; the
+# modifier beglerbeg_office_hardened on his state, sized by it). Each
+# step gives the crown power, undoes one stage's worth of the regency's
+# strain, and raises his heir's standing against the best rival
+# (ledger, ulus_heir_standing). All of it goes with the khan: a state
+# that loses him loses the office (ulus_unseat_regent).
+ulus_office_hardens_check = {
+	if = {
+		limit = {
+			has_variable = ulus_gap
+			var:ulus_gap >= ulus_gap_filled_line
+		}
+		if = {
+			limit = { NOT = { has_variable = ulus_office_steps } }
+			set_variable = { name = ulus_office_steps value = 0 }
+		}
+		if = {
+			limit = { var:ulus_office_steps < ulus_office_max_steps }
+			change_variable = { name = ulus_office_steps add = 1 }
+			leader_country ?= {
+				add_country_modifier = {
+					modifier = beglerbeg_office_hardened
+					years = -1
+					mode = replace
+					size = {
+						value = international_organization:ulus_chaghatay.var:ulus_office_steps
+						min = 1
+						max = 3
+					}
+				}
+				trigger_event_non_silently = { id = amirs_regency.130 days = 2 }
+			}
+		}
+	}
+}

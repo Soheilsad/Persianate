@@ -1726,8 +1726,9 @@ international_organization_manager = {
 	# international_organizations/ulus_chaghatay.txt). The khan's realm
 	# leads; the eleven amir domains that base makes CHG's vassals, and
 	# the four domains carved out of CHG's own share
-	# (116_ulus_chaghatay_overrides.txt), are junior members. BKH, KRG and
-	# QCH are not members: they stay the khan's subjects (12_diplomacy).
+	# (116_ulus_chaghatay_overrides.txt), are junior members. BKH and KRG
+	# are members as client kings (status ulus_client); QCH is not a
+	# member and stays the khan's subject (12_diplomacy).
 	# creation_date: the kuriltai of 1269 on the Talas, where Qaidu,
 	# Baraq and Mengü-Temür divided Transoxiana without the Great Khan.
 	add_international_organization = {
@@ -1747,6 +1748,8 @@ international_organization_manager = {
 			DGH
 			#Carved from the khan's share
 			FGN CAC ISQ DZG
+			#The client kings (status ulus_client)
+			BKH KRG
 		}
 		leader = CHG
 		ulus_amir = {
@@ -1754,6 +1757,9 @@ international_organization_manager = {
 			QUN NGD BSD
 			DGH
 			FGN CAC ISQ DZG
+		}
+		ulus_client = {
+			BKH KRG
 		}
 	}
 }

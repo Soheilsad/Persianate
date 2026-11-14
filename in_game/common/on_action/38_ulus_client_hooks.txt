@@ -1,0 +1,66 @@
+# =====================================================================
+# CLIENT KINGS and BROKEN TÜMENS — engine hooks
+# (scripted_effects/22_ulus_client_effects.txt). Re-declaring an engine
+# on_action EXTENDS it.
+# =====================================================================
+
+on_game_start = {
+	on_actions = {
+		ulus_client_kings_start
+	}
+}
+
+# Badakhshan and Karategin: settled Tajik courts, client kings of the
+# ulus. Base gives both a plain monarchy; Badakhshan's STATE religion in
+# base is Mahayana over an entirely Sunni population, which is set right
+# here (the shahs were Muslim; the valley's Ismailism is another pass).
+ulus_client_kings_start = {
+	effect = {
+		c:BKH ?= {
+			if = {
+				limit = { NOT = { religion = religion:sunni } }
+				change_religion = religion:sunni
+			}
+			ulus_make_client = yes
+		}
+		c:KRG ?= {
+			ulus_make_client = yes
+		}
+	}
+}
+
+# root = the country shattering (a horde with no army left). Base turns
+# it into a settled tribe in the same on_action.
+on_shatter_country = {
+	on_actions = {
+		ulus_tumen_shatters
+	}
+}
+
+ulus_tumen_shatters = {
+	trigger = {
+		is_ulus_chaghatay_amir = yes
+		NOT = { has_global_variable = ulus_broken_seat }
+	}
+	effect = {
+		ulus_tumen_is_broken = yes
+	}
+}
+
+# A client outside the ulus is a client no longer.
+monthly_country_pulse = {
+	on_actions = {
+		ulus_client_lapse_check
+	}
+}
+
+ulus_client_lapse_check = {
+	trigger = {
+		has_variable = ulus_client
+		NOT = { is_ulus_chaghatay_member = yes }
+		NOT = { has_variable = ulus_chaghatay_admitted }
+	}
+	effect = {
+		ulus_client_lapses = yes
+	}
+}

@@ -333,6 +333,14 @@ ulus_unseat_regent = {
 		limit = { has_country_modifier = amirs_regency_strain }
 		remove_country_modifier = amirs_regency_strain
 	}
+	# The office goes with the khan.
+	if = {
+		limit = { has_country_modifier = beglerbeg_office_hardened }
+		remove_country_modifier = beglerbeg_office_hardened
+	}
+	international_organization:ulus_chaghatay ?= {
+		remove_variable = ulus_office_steps
+	}
 }
 
 # Any scope; needs scope:ulus_new_regent. The khan (if one lives) goes
@@ -730,6 +738,9 @@ ulus_regency_stage_tick = {
 			set_variable = { name = ulus_regency_progress value = 0 }
 			ulus_regency_enter_stage = yes
 			ulus_regency_announce_stage = yes
+			# The stage turns either way; a regent whose standing is
+			# whole gains by it (scripted_effects/22).
+			ulus_office_hardens_check = yes
 		}
 		else = {
 			set_variable = { name = ulus_regency_progress value = ulus_regency_stage_length }
@@ -927,6 +938,7 @@ ulus_regency_clear = {
 	remove_variable = ulus_amirs_may_fight
 	remove_variable = ulus_members_may_leave
 	remove_variable = ulus_ending_called
+	remove_variable = ulus_office_steps
 }
 
 # ---------------------------------------------------------------------

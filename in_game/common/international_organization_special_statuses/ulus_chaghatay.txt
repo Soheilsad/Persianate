@@ -31,17 +31,20 @@ ulus_amir = {
 	can_bestow_trigger = {
 		is_member_of_international_organization = scope:recipient
 		NOT = { is_leader_of_international_organization = scope:recipient }
+		NOT = { ulus_marked_client = yes }
 	}
 
 	auto_bestowal_trigger = {
 		is_member_of_international_organization = scope:recipient
 		NOT = { is_leader_of_international_organization = scope:recipient }
+		NOT = { ulus_marked_client = yes }
 	}
 
 	auto_rescind_trigger = {
 		OR = {
 			NOT = { is_member_of_international_organization = scope:recipient }
 			is_leader_of_international_organization = scope:recipient
+			ulus_marked_client = yes
 		}
 	}
 
@@ -57,6 +60,64 @@ ulus_amir = {
 
 	# Only read by IO parliaments; the ulus has none in this version. Set
 	# so a later kuriltai weighs a great tümen above a small one.
+	special_status_power = {
+		value = num_locations
+	}
+}
+
+# ---------------------------------------------------------------------
+# CLIENT KING. Badakhshan's shahs and the lords of Karategin were
+# settled Tajik dynasties in the mountains above the ulus: older than
+# the Mongols there, tributary to whoever held Transoxiana, never heads
+# of a tümen and never in the reckoning for the khan. As ordinary
+# vassals of CHG they were dead weight (author, 2026-11-14). Here they
+# sit in the ulus under their own status: they pay the qubchur, they
+# may pledge to a house (their weight then counts for it at the same
+# half rate as a tümen's), and the amirs' business passes them by.
+# The same status is what the ulus gives a settled house it raises on a
+# broken tümen's ground (events/amirs_client_events.txt).
+# ---------------------------------------------------------------------
+ulus_client = {
+	priority = 5
+
+	modifier = {
+		monthly_legitimacy = 0.02
+	}
+
+	leader_modifier = {
+		monthly_prestige = 0.005
+	}
+
+	can_bestow_trigger = {
+		is_member_of_international_organization = scope:recipient
+		NOT = { is_leader_of_international_organization = scope:recipient }
+		ulus_marked_client = yes
+	}
+
+	auto_bestowal_trigger = {
+		is_member_of_international_organization = scope:recipient
+		NOT = { is_leader_of_international_organization = scope:recipient }
+		ulus_marked_client = yes
+	}
+
+	auto_rescind_trigger = {
+		OR = {
+			NOT = { is_member_of_international_organization = scope:recipient }
+			is_leader_of_international_organization = scope:recipient
+			NOT = { ulus_marked_client = yes }
+		}
+	}
+
+	on_bestowed_effect = {
+	}
+
+	on_rescinded_effect = {
+	}
+
+	map_color = {
+		value = rgb { 120 175 165 }
+	}
+
 	special_status_power = {
 		value = num_locations
 	}

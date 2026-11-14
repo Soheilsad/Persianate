@@ -23,6 +23,9 @@ unsettled_legitimacy_crisis = {
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:ilkhanate_governorate }
 		NOT = { has_reform = government_reform:yemeni_chancery }
+		# A client king of the Chagatai ulus reads the khuṭba in the
+		# khan's name: his question is answered.
+		NOT = { has_reform = government_reform:client_of_the_ulus }
 		# The Ghaznavid template IS an answer: the sword holds the realm
 		# and Cairo's diploma names it lawful. (Also the constitution of
 		# released Great Raid marches — they must not be born bleeding.)

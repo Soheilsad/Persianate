@@ -29,3 +29,10 @@ opinion_ulus_meddler = {
 	value = -30
 	yearly_decay = 3
 }
+
+
+# A house raised on a broken tümen's ground, toward the man who raised it.
+opinion_ulus_raised_by_him = {
+	value = 50
+	yearly_decay = 2
+}

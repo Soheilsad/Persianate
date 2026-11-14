@@ -702,3 +702,9 @@ ulus_raid_lost_prestige = -10
 ulus_raid_lost_unity = -10
 # The regent's gap is filled by a raid won as by any war
 # (on_action/31_amirs_regency_hooks.txt already does that).
+
+
+# ---18. THE OFFICE HARDENS (scripted_effects/22_ulus_client_effects.txt)
+ulus_office_max_steps = 3
+# per step, on the regent's heir's standing against the best rival
+ulus_office_heir_bonus = 0.10

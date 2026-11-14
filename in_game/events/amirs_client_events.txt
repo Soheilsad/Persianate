@@ -1,0 +1,127 @@
+namespace = amirs_client
+
+# The ground of a broken tümen (scripted_effects/22_ulus_client_effects.txt).
+# Fired on the house that broke it, or on the seat of the ulus.
+
+amirs_client.1 = {
+	type = country_event
+	title = amirs_client.1.title
+	desc = amirs_client.1.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	trigger = {
+		has_global_variable = ulus_broken_seat
+	}
+
+	immediate = {
+		global_var:ulus_broken_seat = { save_scope_as = ulus_broken_seat_loc }
+	}
+
+	# I. The pastures are ours.
+	option = {
+		name = amirs_client.1.a
+		custom_tooltip = amirs_client_take_tt
+		ulus_broken_ground_taken = yes
+		ai_chance = {
+			factor = 10
+			# A chief who lives by taking takes.
+			modifier = {
+				factor = 2
+				OR = {
+					ai_personality = ai_personality:ai_aggressive
+					ai_personality = ai_personality:ai_expansionist
+				}
+			}
+			# Ground he cannot hold is a gift to the next man: not with
+			# his own horde coming apart, and not with another war on.
+			modifier = {
+				factor = 0.3
+				horde_unity < 40
+			}
+			modifier = {
+				factor = 0.5
+				any_country_at_war_with = {
+					NOT = { capital ?= { has_variable = ulus_tumen_pasture } }
+					military_strength > root.military_strength
+				}
+			}
+			# The seat of the ulus does not swallow tümens while the
+			# begs outweigh it: that is how risings begin.
+			modifier = {
+				factor = 0.3
+				is_ulus_chaghatay_leader = yes
+				ulus_regency_bar_met = yes
+			}
+		}
+	}
+
+	# II. A tümen again, under a chief who owes us his place.
+	option = {
+		name = amirs_client.1.b
+		custom_tooltip = amirs_client_tumen_tt
+		ulus_broken_ground_new_tumen = yes
+		ai_chance = {
+			factor = 10
+			# An amir who wants the khan wants tümens pledged to him.
+			modifier = {
+				factor = 2.5
+				is_ulus_chaghatay_amir = yes
+				is_target_in_global_variable_list = {
+					name = ulus_kingmakers
+					target = this
+				}
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					ai_personality = ai_personality:ai_opportunistic
+					ai_personality = ai_personality:ai_friendly
+				}
+			}
+			# Riders are worth more than rents to a house at war.
+			modifier = {
+				factor = 1.5
+				at_war = yes
+			}
+		}
+	}
+
+	# III. A settled house under the ulus.
+	option = {
+		name = amirs_client.1.c
+		custom_tooltip = amirs_client_king_tt
+		ulus_broken_ground_client = yes
+		ai_chance = {
+			factor = 10
+			# The careful choice: a tributary who can never contend.
+			modifier = {
+				factor = 2
+				OR = {
+					ai_personality = ai_personality:ai_cautious
+					ai_personality = ai_personality:ai_defensive
+					ai_personality = ai_personality:ai_isolationist
+				}
+			}
+			# The seat prefers a client to a new amir when the begs
+			# already outweigh it.
+			modifier = {
+				factor = 2.5
+				is_ulus_chaghatay_leader = yes
+				ulus_regency_bar_met = yes
+			}
+			# Towns make a court; open steppe does not.
+			modifier = {
+				factor = 0.4
+				scope:ulus_broken_seat_loc = {
+					NOT = { location_rank = location_rank:town }
+					NOT = { location_rank = location_rank:city }
+				}
+			}
+		}
+	}
+}

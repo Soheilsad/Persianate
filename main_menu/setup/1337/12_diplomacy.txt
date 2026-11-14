@@ -668,10 +668,9 @@ diplomacy_manager = {
     # The eleven amir domains of the Chagatai ulus (APD ART BRL BSD DGH JLY
     # KTT NGD QUN SLD YSU) are NOT vassals: they are junior members of the
     # ulus_chaghatay organisation (15_international_organizations.txt).
-    # Badakhshan, Karategin and Qocho were tributary dynasties, not tümens,
-    # and stay ordinary subjects of the khan.
-    dependency = { first = CHG second = BKH subject_type = vassal }
-    dependency = { first = CHG second = KRG subject_type = vassal }
+    # Badakhshan and Karategin are client kings INSIDE the ulus (status
+    # ulus_client, 15_international_organizations.txt), no longer vassals.
+    # Qocho stays an ordinary subject of the khan.
     dependency = { first = CHG second = QCH subject_type = vassal }
     
     dependency = { first = DGH second = MNL subject_type = vassal }

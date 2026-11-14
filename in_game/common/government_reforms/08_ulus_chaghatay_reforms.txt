@@ -97,3 +97,31 @@ gurkan_of_the_ulus = {
 
 	years = 0
 }
+
+
+# ---------------------------------------------------------------------
+# CLIENT OF THE ULUS. The reform of a client king (special status
+# ulus_client): a settled Persianate court that keeps its own house and
+# law under the ulus. Its answer to the khuṭba question is the khan's
+# name, so it carries no unsettled-legitimacy bleed
+# (auto_modifiers/03_eranzamin_legitimacy_crisis.txt). Given and taken
+# by script only (ulus_make_client / ulus_client_lapses,
+# scripted_effects/22_ulus_client_effects.txt).
+# ---------------------------------------------------------------------
+client_of_the_ulus = {
+	age = age_1_traditions
+	government = persianate_sultanate
+
+	potential = {
+		has_variable = ulus_client
+	}
+	locked = {
+		always = yes
+	}
+	country_modifier = {
+		monthly_legitimacy = 0.05
+		monthly_prestige = -0.02
+	}
+
+	years = 0
+}

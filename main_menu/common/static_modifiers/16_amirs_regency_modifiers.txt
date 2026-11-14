@@ -46,3 +46,18 @@ sahib_qiran_ascendant_mod = {
 	monthly_horde_unity = 0.10
 	monthly_prestige = 0.10
 }
+
+
+# The office hardens (scripted_effects/22_ulus_client_effects.txt,
+# ulus_office_hardens_check). Sized 1..3 by the steps. The unity and
+# prestige lines are amirs_regency_strain's, reversed: one step undoes
+# one stage of it.
+beglerbeg_office_hardened = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	base_crown_estate_power_modifier = 0.05
+	monthly_horde_unity = 0.03
+	monthly_prestige = 0.03
+}

@@ -243,7 +243,7 @@ ulus_pledge_support = {
 
 	potential = {
 		scope:actor = {
-			is_ulus_chaghatay_amir = yes
+			is_ulus_chaghatay_junior = yes
 		}
 	}
 
@@ -291,6 +291,8 @@ ulus_pledge_support = {
 			NOT = { is_leader_of_international_organization = scope:recipient }
 			# No chains: a house that has itself pledged cannot be backed.
 			NOT = { has_variable = ulus_pledged_to }
+			# A client king is nobody's patron.
+			NOT = { ulus_marked_client = yes }
 		}
 		column = { data = name }
 		column = { data = population }
@@ -333,7 +335,7 @@ ulus_withdraw_pledge = {
 
 	potential = {
 		scope:actor = {
-			is_ulus_chaghatay_amir = yes
+			is_ulus_chaghatay_junior = yes
 			OR = {
 				has_variable = ulus_pledged_to
 				has_variable = ulus_pledged_to_khan

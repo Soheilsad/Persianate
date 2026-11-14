@@ -1096,3 +1096,25 @@ amirs_regency.220 = {
 		}
 	}
 }
+
+
+# ----------------------------------------------------------------------------
+# THE OFFICE HARDENS. Fired on the regent when a stage turns with his
+# standing whole (scripted_effects/22, ulus_office_hardens_check).
+# ----------------------------------------------------------------------------
+amirs_regency.130 = {
+	type = country_event
+	title = amirs_regency.130.title
+	desc = amirs_regency.130.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	option = {
+		name = amirs_regency.130.a
+		custom_tooltip = amirs_regency_office_tt
+	}
+}
