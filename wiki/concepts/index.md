@@ -36,7 +36,10 @@ Start with the **government** and the **dyad** of Türk and Tāzīk — almost e
 ## The steppe
 
 - [**Hordes**](hordes.md) — the *yam*, Darugha's Seats, *ulus* grants and Törü succession.
-- [**Ulus Chaghatay**](ulus-chaghatay.md) — the Chagatai khanate as an organisation.
+- [**Ulus Chaghatay**](ulus-chaghatay.md) — the Chagatai khanate as an organisation: weight, pledges, risings, raids, client kings.
+- [**The Amirs' Regency**](amirs-regency.md) — the disaster carried by whoever holds the khan, its four stages and three endings.
+- [**The Ṣāḥib-qirān**](sahib-qiran.md) — the emergent Timur, his fortune and his sworn amirs.
+- [**The Beglerbeg's Regency**](beglerbegs-regency.md) — a beg on the Golden Horde's throne, and the princes against him.
 
 ## The periphery
 

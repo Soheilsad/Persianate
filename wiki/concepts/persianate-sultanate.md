@@ -27,7 +27,7 @@ The full roster is on the [countries and tags](../reference/countries-and-tags.m
 - a Kurdish emirate takes one of the great seats — Tabriz, Isfahan, Shiraz, Nishapur, Baghdad or Herat — and accepts the offer to take over its chancery;
 - a Sufi order rises in arms, a Commonwealth of Martyrs gives way to a sultan, or a Zaydi imam makes his house hereditary (see those pages);
 - an Anatolian march is founded during the Rise of the Ottomans, or a breakaway sultanate splits from Delhi;
-- Timur's realm settles down as the **Timurid Empire**.
+- The [Ṣāḥib-qirān's](sahib-qiran.md) realm settles down as the **Timurid Empire**.
 
 Any new country whose capital lies in the Erānzamīn region also joins the [Erānzamīn organisation](eranzamin-organisation.md) automatically.
 

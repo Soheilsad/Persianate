@@ -43,7 +43,10 @@ This mod is about that world. Not the collapse as flavor, but the collapse as a 
 ## The steppe
 
 - **[Hordes](concepts/hordes.md)** — the *yam*, the darugha, the *ulus* and the Törü.
-- **[Ulus Chaghatay](concepts/ulus-chaghatay.md)** — the khan and his amirs.
+- **[Ulus Chaghatay](concepts/ulus-chaghatay.md)** — the khan and his amirs: weight, pledges, risings and raids.
+- **[The Amirs' Regency](concepts/amirs-regency.md)** — a beg rules through a khan he keeps, and how that ends.
+- **[The Ṣāḥib-qirān](concepts/sahib-qiran.md)** — the conqueror the regency can produce, and the fortune that holds his amirs.
+- **[The Beglerbeg's Regency](concepts/beglerbegs-regency.md)** — the same office in the Golden Horde, against its own princes.
 
 ## The periphery
 
@@ -54,6 +57,7 @@ This mod is about that world. Not the collapse as flavor, but the collapse as a 
 ## Reference
 
 - **[Countries and tags](reference/countries-and-tags.md)** — every country the mod adds or changes.
+- **[Ulus and regency numbers](reference/ulus-and-regency-numbers.md)** — prices, cooldowns and thresholds of the steppe systems.
 - [Workshop page](https://steamcommunity.com/sharedfiles/filedetails/?id=3634535722)
 
 ---

@@ -28,7 +28,7 @@ Every Persianate Sultanate runs on one of five versions of the same chancery. Th
 | **Mamluk Government** | Mamluks (MAM) | The base Mamluk mechanics (promotion, Mamluk barracks, +0.1 monthly army tradition, −10% court spending efficiency) on the same chancery: +5% cabinet efficiency, +5% tax efficiency, Dīwān +15% power. Levies: peasants −100%, burghers −50%, Dīwān −90%, Amirs +75%, tribes +10%. +10% land morale. +15% max urban and +10% max rural control. Same cabinet and command rules as the Iranian form. |
 | **The Delhi Dispensation** | Delhi (DLH) and the Muslim Indian minors at start; the Delhi breakaway sultanates when they appear. Muslim, capital in South Asia. | +10% cabinet efficiency, +10% tax efficiency, +15% max estate tax, +0.15 centralization. Dīwān +25% power. Nobles −60% power (the Hindu landed nobility remains a real estate). Levies: peasants −50%, Dīwān −90%, Amirs +40%, tribes +10%. Can build Mamluk barracks. +15% max urban control. |
 | **Rasulid Chancery** | Rasulid Yemen (YEM); a Zaydi imam who turns sultan | +5% cabinet efficiency, +5% tax efficiency, Dīwān +15% power. Levies: peasants −50%, burghers −25%, Amirs +75%, tribes +25%. Tribes +75% power. +10% land morale. +20% max urban control, −5% max rural control. |
-| **Timurid Empire** | Timur's realm (TIM), when it settles down through the Rise of Timur situation | The Persianate Bureaucracy block with heavier horse (Amirs levy +40%, tribes +20%), +3 cultural capacity, +1 reform slot, +50% loot, −20% antagonism received. Needs no separate answer to the legitimacy question. |
+| **Timurid Empire** | The [Ṣāḥib-qirān's](sahib-qiran.md) realm (TIM), when it settles down through the Rise of Timur situation | The Persianate Bureaucracy block with heavier horse (Amirs levy +40%, tribes +20%), +3 cultural capacity, +1 reform slot, +50% loot, −20% antagonism received. Needs no separate answer to the legitimacy question. |
 
 ## Age of Traditions — the legitimacy answers
 
@@ -114,6 +114,8 @@ These are sketches, not rails.
 | **Anatolian Beylik**, **Legacy of Osman**, **Imperial Harem** | The base Anatolian reforms, rewritten for the marches of Rûm. | [Shattered Rûm](shattered-rum.md) |
 | **Kurdish Emirate** | The *mîrnishîn*: a mountain principality without a chancery. | [Kurdish emirates](kurdish-emirates.md) |
 | **The Zaydi Imamate** | The elected imamate of the Yemeni highlands. | [Zaydi Imamate](zaydi-imamate.md) |
-| **Beglerbeg's Regency**, **Güregen of the Ulus** | The Chaghatayid horde ruled by a beg behind a khan. | [Ulus Chaghatay](ulus-chaghatay.md) |
+| **Beglerbeg's Regency** | A horde ruled by a beg behind a khan he keeps: the regent of Ulus Chaghatay, or a beg elected on the Golden Horde's throne. | [The Amirs' Regency](amirs-regency.md), [The Beglerbeg's Regency](beglerbegs-regency.md) |
+| **Güregen of the Ulus** | The regime of the amir who ends the Amirs' Regency as Ṣāḥib-qirān. | [The Ṣāḥib-qirān](sahib-qiran.md) |
+| **Client of the Ulus** | A settled Persianate court under Ulus Chaghatay; the khan's name answers the legitimacy question for it. | [Ulus Chaghatay](ulus-chaghatay.md) |
 
 See also: [Persianate Sultanate](persianate-sultanate.md), [Türk vs Tāzīk](turk-vs-tazik.md), [Erānzamīn situation](eranzamin-situation.md), [Custody of the Ulus](borrowed-mandate.md), [Farr Proof of Fortune](farr-proof-of-fortune.md), [Ghāzī Burden of the Sword](ghazi-burden-of-sword.md), [Estate privileges](estate-privileges.md).

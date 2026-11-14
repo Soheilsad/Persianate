@@ -101,7 +101,7 @@ The name *Hazāra* — Persian for the Mongol military "thousand" — is first a
 
 ### Mongol Neguderi, Persianized Besüd
 
-The Negüderi (NGD) were a raiding soldiery on the Indian march of the Chagatai *ulus*, not a court. They stay **Mongolian**; only a third of their nobles — the men who dealt with the towns of Ghazni and Kandahar — are Persianized. Their neighbours the Besüd (BSD) rule as **Persianized Mongols**. Both belong to [Ulus Chaghatay](ulus-chaghatay.md), not to the Ilkhanid succession.
+The Negüderi (NGD) were a raiding soldiery on the Indian march of the Chagatai *ulus*, not a court. They stay **Mongolian** (they are not among the [Chaghatay](#chaghatay) tümens below); only a third of their nobles — the men who dealt with the towns of Ghazni and Kandahar — are Persianized. Their neighbours the Besüd (BSD) rule as **Persianized Mongols**. Both belong to [Ulus Chaghatay](ulus-chaghatay.md), not to the Ilkhanid succession.
 
 ## The Persianized Mongol
 
@@ -117,13 +117,37 @@ The practical effect is that a Persianized Mongol court finds it cheap to accept
 
 | Rule as Persianized Mongol | Stay Mongolian |
 |-|-|
-| Chobanids (CHB), Jalayirids (JAL), Hüleguids (HLG), Besüd (BSD) | Gurgan (GRG) under Ṭoghā Temür, the Sutayids (SUT), the Negüderi (NGD), the Jurmanids (JUR) and Ughanids (UGH) of Fārs, and every amir of the Chagatai *ulus* |
+| Chobanids (CHB), Jalayirids (JAL), Hüleguids (HLG), Besüd (BSD) | Gurgan (GRG) under Ṭoghā Temür, the Sutayids (SUT), the Negüderi (NGD), the Jurmanids (JUR) and Ughanids (UGH) of Fārs, and the Dughlat (DGH) of Kashgar |
 
 The line runs through conversion. Persianization came through Islam, and the houses that had not come in — the two Tengri-following garrison hordes of eastern Fārs, two valleys from Shiraz — are still culturally on the steppe. Ṭoghā Temür's camp faces Khurasan and the Türkmen plain, and stays Mongol too.
 
 Ten characters carry the new culture at the start: of the Chobanid house and court, Ḥasan-i Kūchak, his father Tīmūrtāsh and grandfather Chūpān, Malik Ashraf, Dimashq Khwāja and Sūrgān, with the two Chinggisids the Chobanids keep, Sātī Beg and Sulaymān Khān; on the Jalayirid side Ḥasan-i Buzurg and the child Muḥammad Khān.
 
 As a population the Persianized Mongols are very small — about 60,000 people. Roughly 9,000 are nobles — the Muslim Mongol aristocracy of the western cities and the Persian-using fringe of the eastern march; most of the rest are the former "Hazara" third in the Afghan highlands. In both great regencies the ruling culture is well under one percent of the realm. That is the point: see **A Thin Stratum** below.
+
+## Chaghatay
+
+The tümens of Transoxiana and the Oxus country were a third case. By the 1330s the Barlas, Jalayir, Suldus, Arlat, Apardi, Yasa'uri and Qara'unas were Mongol by descent and by tribal name only. They spoke Turkic, were Muslim, and wintered beside the towns they taxed. They called themselves *Chaghatay*. The nomads of the eastern half, who had kept closer to the old ways, called them *qara'unas*, "mongrels", and were called *jete*, "robbers", in return. They were Turkicized, not Persianized: their Iranization is the Timurid story, not a fact of 1337.
+
+The mod gives them a culture of their own, **Chaghatay**:
+
+- its language is the Turkic of Transoxiana (the base game's Karluk);
+- it belongs to the Mongolian, Turkic and steppe culture groups, so every rule in the game or the mod that asks for "a Mongol" or "a steppe people" still finds it;
+- it thinks well of Mongolian, Persianized Mongol, Kyrgyz and Uzbek culture and regards Khorezmian, the same tongue, as kindred.
+
+| Chaghatay at the start | Not Chaghatay |
+|-|-|
+| The khan's seat, Chagatai (CHG); the eight western houses Apardi (APD), Arlat (ART), Barlas (BRL), Jalayirs (JLY), Khuttal (KTT), Qara'unas (QUN), Suldus (SLD), Yasa'uri (YSU); the four carved domains Fergana (FGN), Chach (CAC), Issyk-Kul (ISQ), Dzungaria (DZG) | The Dughlat (DGH) and Negüderi (NGD) stay Mongolian; the Besüd (BSD) Persianized Mongol; Karategin (KRG), a mountain principality with no nomads, is Tajik |
+
+In the lands those thirteen realms hold at the start:
+
+- every Mongolian pop becomes Chaghatay;
+- Oirat tribesmen, nobles and soldiers become Chaghatay (in the khan's own share of the Ili and Dzungaria, every Oirat pop does: the Oirats reached Dzungaria only in the fifteenth century);
+- Khorezmian nobles and soldiers become Chaghatay, and three in four Khorezmian tribesmen; the rest stay as the older Turkic nomads outside the tümens.
+
+Tajik townsmen and peasants are untouched, and nobody's religion or class changes. The ruling culture comes out at no more than about a fifth of a western realm: a real minority over a Tajik majority, which is why the western houses start by tolerating Tajiks. In the Dughlat lands the same shares of Khorezmian nomads become Mongolian instead. The scripted characters of these realms who were Mongolian or Khorezmian, Temür and his father among them, become Chaghatay on the first day.
+
+A share granted from a Chaghatay khan's patrimony is Chaghatay; the **Legacy of Genghis** reform is open to Chaghatay hordes; and after a Bulqaq these are the people whose tribesmen, soldiers and nobles the neighbours divide up (see [the Breaking of the Chaghatay](amirs-regency.md#the-breaking-of-the-chaghatay)).
 
 ## Protected communities
 
@@ -240,4 +264,4 @@ Court language feeds the same acceptance arithmetic as attitudes do: peoples who
 - **Cities are worth more than land.** Population, townsmen and the cultural weight of the Persianate core are all concentrated in the ranked towns and cities. Tabriz alone holds a quarter of a million people.
 - **Do not expect Pashtun levies in Sistan or Hazara anywhere.** If you are used to the base game's south-east, look again.
 
-See also: [Starting the game](starting-the-game.md), [The Türk–Tāzīk axis](turk-vs-tazik.md), [The Dīwān estate](diwan-estate.md), [Hordes](hordes.md), [Ulus Chaghatay](ulus-chaghatay.md), [Kurdish emirates](kurdish-emirates.md), [Countries and tags](../reference/countries-and-tags.md).
+See also: [Starting the game](starting-the-game.md), [The Türk–Tāzīk axis](turk-vs-tazik.md), [The Dīwān estate](diwan-estate.md), [Hordes](hordes.md), [Ulus Chaghatay](ulus-chaghatay.md), [The Amirs' Regency](amirs-regency.md), [Kurdish emirates](kurdish-emirates.md), [Countries and tags](../reference/countries-and-tags.md).

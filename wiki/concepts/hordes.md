@@ -10,12 +10,15 @@ The base game gives a steppe horde no tools of control, a flat penalty at every 
 
 | Rule | Applies to |
 |-|-|
-| **The Yam and the Ordu**, **Darugha's Seat**, **Grant a Share of the Ulus**, the event *The Question of the Far Country* | Any Steppe Horde whose ruler is of the Borjigin dynasty, or which holds the **Beglerbeg's Regency** reform (see [Ulus Chaghatay](ulus-chaghatay.md)) |
+| **The Yam and the Ordu**, **Darugha's Seat**, **Grant a Share of the Ulus**, the event *The Question of the Far Country* | Any Steppe Horde whose ruler is of the Borjigin dynasty, or which holds the **Beglerbeg's Regency** reform (see [The Amirs' Regency](amirs-regency.md) and [The Beglerbeg's Regency](beglerbegs-regency.md)) |
 | No flat horde-unity loss at a ruler's death; the tümen levy | Every Steppe Horde |
-| The succession poll | Every independent Steppe Horde, except the amirs of Ulus Chaghatay and a regent's state there |
+| The succession poll | Every independent Steppe Horde, except the amirs of Ulus Chaghatay, a regent's state there, and a [Ṣāḥib-qirān's](sahib-qiran.md) realm |
+| **The Beglerbeg's Regency** disaster | Any Steppe Horde outside Ulus Chaghatay whose throne a Chinggisid has held, when its succession seats a man not of the line (see [The Beglerbeg's Regency](beglerbegs-regency.md)) |
 | **The Törü of the Ulus** succession law | Seated at game start on Jochi (GLH, the Golden Horde) and Chagatai (CHG); a horde that holds it cannot change it |
 | The changed **Horde Civil War** | Every Steppe Horde; the rule differs by whether a Borjigin has ever held the throne |
 | **Horse-Lords of the Steppes** and **Kurultai** advances | Any country of a steppe or Mongolian culture, whatever its government |
+| The steppe privileges **Hereditary Tümens** and **Bound to the Tümen** | Every Steppe Horde that starts from the base game's Eurasian horde setup; any Steppe Horde may hold them |
+| The tribes in the horde's parliament | Every horde with the **Legacy of Genghis** reform |
 
 A horde ruled by a house that is not Borjigin — the Barlas, Jalayirs and the other amir houses of Transoxiana, for instance — has none of the khan's reach: no yam, no darughas, no shares to grant.
 
@@ -71,14 +74,17 @@ The area is not offered again once it has been settled by a seat or a grant.
 
 **Requirements**
 
-- The recipient is a grown man, a patrilineal descendant of the Borjigin, and not the ruler.
+- The recipient is a grown man of the line of Chinggis and not the ruler. The Barlas, whom the base game files under the Borjigin dynasty, do not count (see [Ulus Chaghatay](ulus-chaghatay.md#the-khans-own-house)).
 - Two areas that border each other. Neither may be the capital's area; you must own at least half the locations in each; neither may contain a Darugha's Seat (pull the seat down first if you have changed your mind).
 
 **What happens**
 
-- Everything you own in both areas passes to a new country, with the prince as its ruler and its capital at the best-developed location of the first area. It is a Steppe Horde of Mongolian culture and your religion, with the Legacy of Genghis reform, 250 gold, two regiments of Horse Archers, and the modifier **Newly Granted Share** for twenty years (+0.30 maximum control and +0.005 monthly control, fading over the period).
+- Everything you own in both areas passes to a new country, with the prince as its ruler and its capital at the best-developed location of the first area. It is a Steppe Horde of Mongolian culture (Chaghatay, if the granting realm is Chaghatay) and your religion, with the Legacy of Genghis reform, 250 gold, two regiments of Horse Archers, and the modifier **Newly Granted Share** for twenty years (+0.30 maximum control and +0.005 monthly control, fading over the period).
 - It is your subject of the type **Ulus**.
 - You gain +5 horde unity, +3% nobles satisfaction and a small amount of political influence. The grant costs no gold: its price is the land, and a claimant with an army.
+- Inside Ulus Chaghatay during [the Amirs' Regency](amirs-regency.md), a share granted to a prince sets the regency's clock back by 10.
+
+The AI now grants shares. It does so when it holds much core land at under a quarter control, when horde unity is low, or when the nobles hold more than 40% of estate power; each share already granted makes the next less likely, and it does not grant while at war.
 
 ### The Ulus subject
 
@@ -125,20 +131,23 @@ Blood is worth a great deal and nothing is deducted for lacking it. A capable da
 
 ## What happens when a khan dies
 
-The base game's −50 horde unity at every ruler's death is cancelled for all Steppe Hordes. Instead, 30 to 80 days after a new ruler is seated, the realm is polled and one of four things follows. They are tested in this order:
+The base game's −50 horde unity at every ruler's death is cancelled for all Steppe Hordes. Instead, 30 to 80 days after a new ruler is seated, the realm is polled and one of the following happens. They are tested in this order:
 
 | Outcome | When | Horde unity |
 |-|-|-|
+| The regent's own succession | A [Beglerbeg's Regency](beglerbegs-regency.md) is running, or the house holds the office | See that page |
 | *There Is No One Left to Raise* | No grown man of the Borjigin line anywhere in the realm — the new ruler included — or ruling one of its uluses, and no Beglerbeg's Regency | −50, and the Horde Civil War can begin |
-| *The Amirs Have Been Counting* | The new ruler is not of the line; or the realm has 4 or more Darugha's Seats and the nobles hold over 35% of estate power; or there is a regent and 3 or more seats | −20 |
+| *The Amirs Raise a Khan* | The seat of Ulus Chaghatay only: one of the two bars is at its line and a man of the line exists to enthrone | [The Amirs' Regency](amirs-regency.md) begins |
+| *A Boy on the Felt* | The seat of Ulus Chaghatay only: the new khan is a child or has a regent | −5, and both bars stand a third lower at the next succession |
+| *The Beglerbeg* | Outside Ulus Chaghatay: the new ruler is not of the line, on a throne a Chinggisid has held | [The Beglerbeg's Regency](beglerbegs-regency.md) begins |
+| *The Amirs Have Been Counting* | The new ruler is not of the line, where the row above does not apply; or the realm has 4 or more Darugha's Seats and the nobles hold over 35% of estate power; or there is a regent and 3 or more seats | −20 |
 | *Too Many Sons of the Line* | The contest reaches 4, counting 1 for every grown Borjigin man in the realm other than the ruler and 4 for every ulus ruled by one | −15 |
 | *The Quriltai Is of One Mind* | Otherwise | +5 |
 
 So the bill at the funeral is for the road taken in life: many shares make a contested field, many seats make the begs' play, and a realm that used neither pays nothing.
 
-At present these four events carry only their horde-unity consequence. The choices their texts point to (purge or appanage; the beglerbeg's terms) are not yet written, and two of the descriptions still show a developer's placeholder note.
+At present the four generic events (*There Is No One Left to Raise*, *The Amirs Have Been Counting*, *Too Many Sons of the Line*, *The Quriltai Is of One Mind*) carry only their horde-unity consequence. The choices their texts point to (purge or appanage; the beglerbeg's terms) are not yet written, and two of the descriptions still show a developer's placeholder note.
 
-The seat of [Ulus Chaghatay](ulus-chaghatay.md) has two further outcomes of its own.
 
 ## The Horde Civil War
 
@@ -152,6 +161,22 @@ The mod keeps the base **Horde Civil War** disaster and changes two things.
 | Any other horde | The base rule: horde unity at 40 or less; or at 75 or less with a regent; or at 60 or less with an heir |
 
 **Who can be a pretender.** In the base game any adult noble of the realm may claim the throne. Here a pretender must be a patrilineal Borjigin or of a steppe or Mongolian culture. Religion is not tested.
+
+## The begs' privileges, the kuriltai and the parliament
+
+A beg's hold was on tribesmen, not on peasants: a hereditary command, and men who could not leave their unit. The base game starts a horde's nobles with two privileges written for a lord and his manor (a monopoly of mill and oven; serfs tied to the land). The mod's copy of the base horde setup swaps them for two steppe privileges of the nobles' estate, which any Steppe Horde can hold.
+
+| Privilege | Effect |
+|-|-|
+| **Hereditary Tümens** | +50% nobles' estate power, −10% political influence gain, −5% maximum control, a monthly drift toward aristocracy, and the nobles may keep a private army |
+| **Bound to the Tümen** | +40% nobles' estate power, −10% tribesmen food consumption, +5% levy size |
+
+Both raise the nobles' target satisfaction, and both carry a line lowering "tribesmen enfranchisement", a modifier the mod defines as a test and which may have no effect in the engine.
+
+Two smaller rules changed with them:
+
+- **The Kurultai building** may stand wherever its *owner's* primary culture is of the steppe group, not only where the location's majority is. A horde seated in a Tajik city (the Yasa'uri at Samarkand and Bukhara) can build and upgrade its Kurultai, and so recruit and grow its manpower.
+- **The tribes sit in a horde's parliament.** The **Legacy of Genghis** reform now lets the tribes estate take part; before, a horde's assembly seated nobles and peasants only. The reform is also open to hordes of [Chaghatay culture](demography-and-cultures.md#chaghatay), not only Mongolian ones.
 
 ## The tümen levy, advances and pasture
 
@@ -169,4 +194,4 @@ The mod keeps the base **Horde Civil War** disaster and changes two things.
 - **A darugha cannot share ground with an ulus.** The two answers are exclusive in the same area, in both directions.
 - **Read the line of succession.** The törü shows its candidates and their scores at all times. A beg near the top is a warning that the next accession may go to the begs.
 
-See also: [Ulus Chaghatay](ulus-chaghatay.md), [Custody of the Ulus](borrowed-mandate.md), [Ilkhanate governorate](ilkhanate-governorate.md), [The Matter of Tork](matter-of-tork.md), [Military system](military-system.md), [Buildings](buildings.md), [Countries and tags](../reference/countries-and-tags.md).
+See also: [Ulus Chaghatay](ulus-chaghatay.md), [The Amirs' Regency](amirs-regency.md), [The Ṣāḥib-qirān](sahib-qiran.md), [The Beglerbeg's Regency](beglerbegs-regency.md), [Custody of the Ulus](borrowed-mandate.md), [Ilkhanate governorate](ilkhanate-governorate.md), [The Matter of Tork](matter-of-tork.md), [Military system](military-system.md), [Buildings](buildings.md), [Countries and tags](../reference/countries-and-tags.md).

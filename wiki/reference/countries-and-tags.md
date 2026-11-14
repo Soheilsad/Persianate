@@ -158,11 +158,11 @@ Ardabil is a base-game tag; there it is a small landed state. In the mod it is t
 
 ## Ulus Chaghatay
 
-The Chagatai khanate is rebuilt as an organisation: the khan leads, fifteen amirs are junior members with the status **Amir of the Ulus**. None of them are members of Erānzamīn. See [Ulus Chaghatay](../concepts/ulus-chaghatay.md) and [Hordes](../concepts/hordes.md).
+The Chagatai khanate is rebuilt as an organisation: the khan leads, fifteen amirs are junior members with the status **Amir of the Ulus**, and two settled dynasties sit in it as **Client Kings of the Ulus**. None of them are members of Erānzamīn. The khan's seat, the eight western houses and the four new domains are of **Chaghatay** culture. See [Ulus Chaghatay](../concepts/ulus-chaghatay.md), [The Amirs' Regency](../concepts/amirs-regency.md) and [Hordes](../concepts/hordes.md).
 
 | Country | Tag | Position at start |
 |-|-|-|
-| Chagatai | CHG | The khan's realm and leader of the organisation. Reduced from 127 locations to 57: the Ili, Zhetysu, the Talas and the road north to the Emil. Keeps Badakhshan (BKH), Karategin (KRG) and Qocho (QCH) as ordinary vassals. |
+| Chagatai | CHG | The khan's realm and leader of the organisation. Reduced from 127 locations to 57: the Ili, Zhetysu, the Talas and the road north to the Emil. Chaghatay culture. Keeps Qocho (QCH) as an ordinary vassal. |
 | Barlas | BRL | Amir of the Ulus (a vassal in the base game) |
 | Jalayirs | JLY | Amir of the Ulus (a vassal in the base game) |
 | Yasa'uri | YSU | Amir of the Ulus (a vassal in the base game); holds Samarkand and Bukhara |
@@ -178,8 +178,12 @@ The Chagatai khanate is rebuilt as an organisation: the khan leads, fifteen amir
 | Ulus of Chach | CAC | New. Amir of the Ulus; seat Chach (Tashkent), 27 locations, duchy rank. Sunni. Holds the Āstāna of Yasi. |
 | Ulus of Issyk-Kul | ISQ | New. Amir of the Ulus; seat Balasagun, 17 locations. Tengri. |
 | Ulus of Dzungaria | DZG | New. Amir of the Ulus; seat Urumqi, 10 locations. Tengri. |
+| Badakhshan | BKH | Client King of the Ulus (a vassal of Chagatai in the base game). A Persianate Sultanate with the reform Client of the Ulus; state religion set to Sunni. |
+| Karategin | KRG | Client King of the Ulus (a vassal of Chagatai in the base game). A Persianate Sultanate with the reform Client of the Ulus; Tajik. |
 
 The four new domains are named for their land rather than for a house, and start with generated rulers: which clan held which eastern valley in 1337 is thinly attested.
+
+**The Timurid tag (TIM)** does not appear by date and cannot be formed. It is released for whoever ends the Amirs' Regency as Ṣāḥib-qirān, and carries the name Timurids only if that man is Temür Barlas; otherwise it is named for his house (for example the Qara'unas Gurkanate) or The Ṣāḥib-qirān's Realm. See [The Ṣāḥib-qirān](../concepts/sahib-qiran.md).
 
 ## Yemen
 
