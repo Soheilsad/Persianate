@@ -1,0 +1,479 @@
+# ============================================================
+# The Amirs' Regency — actions on the organisation's panel.
+#
+# Organisation actions (type = internationalorganization, the base
+# claim_ilkhanate construction: one select_trigger that picks the
+# organisation itself as scope:recipient), because the regency belongs
+# to the organisation and moves between states.
+#
+#   FOR THE SEAT (khan or regent)
+#     ulus_recall_darughas       cut the begs' weight; angers them
+#   FOR THE REGENT
+#     ulus_marry_into_the_line   the güregen's marriage
+#     ulus_distribute_largesse   gold into the legitimacy gap
+#   FOR AN AMIR WHO DOES NOT HOLD THE KHAN
+#     ulus_claim_the_khan        a casus belli on the regent (stage 2+)
+#     ulus_back_the_khan         the khan's purge — Qazan's gamble
+#
+# The fourth way to arrest the regency, granting an ulus to a prince of
+# the line, is the existing Grant a Share interaction; its effect
+# (scripted_effects/00_ulus_effects.txt) now sets the clock back.
+#
+# Prices: common/prices/04_amirs_regency_prices.txt.
+# AI list: common/generic_action_ai_lists/amirs_regency_list.txt.
+# ============================================================
+
+# ------------------------------------------------------------
+# RECALL THE DARUGHAS. The seat calls its appointed governors back to
+# the ordu. It was the appointed aristocracy, not the princes, that
+# grew heavy enough to hold a khan (events/horde_succession.txt), and a
+# ruler who sees the bar filling can thin it. The begs do not thank
+# him. Available to whoever leads the ulus, khan or regent; during a
+# regency it also sets the clock back.
+#
+# The seats themselves stand (no verified effect removes a building
+# from script here); what is cut is the begs' power, for ten years.
+# ------------------------------------------------------------
+ulus_recall_darughas = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_recall_darughas
+		years = 10
+	}
+
+	price = price:ulus_recall_darughas_price
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_leader = yes
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			country_has_estate = estate_type:nobles_estate
+			NOT = { has_country_modifier = ulus_darughas_recalled_mod }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			add_country_modifier = {
+				modifier = ulus_darughas_recalled_mod
+				years = 10
+			}
+			add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.15 }
+			add_stability = -10
+			international_organization:ulus_chaghatay ?= {
+				ulus_change_progress = { AMOUNT = ulus_regency_progress_recall }
+				ulus_chaghatay_rebuild_ledger = yes
+			}
+		}
+	}
+
+	# The AI recalls when its begs are within reach of the bar.
+	ai_will_do = {
+		add = 0
+		if = {
+			limit = {
+				scope:actor = {
+					"estate_power(estate_type:nobles_estate)" >= 0.4
+				}
+			}
+			add = 30
+		}
+	}
+}
+
+# ------------------------------------------------------------
+# MARRY INTO THE LINE. The regent takes a woman of the khan's house to
+# wife and is güregen, son-in-law of the line: Temür's own title after
+# 1370, by his marriage to Saray Mulk. It buys time now (the amirs read
+# it as respect for the line) and it is one of the three things the
+# Ṣāḥib-qirān needs. It also binds his HOUSE to the line: when a puppet
+# khan dies, a house with the tie may raise a khan of its own
+# daughter's blood.
+# ------------------------------------------------------------
+ulus_marry_into_the_line = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_marry_into_the_line
+		years = 5
+	}
+
+	price = price:ulus_marry_into_the_line_price
+
+	potential = {
+		scope:actor = {
+			has_variable = ulus_regent_seat
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			is_ulus_regent = yes
+			has_ruler = yes
+			custom_tooltip = {
+				text = ulus_not_yet_gurkan_tt
+				NOT = { ulus_ruler_is_gurkan = yes }
+			}
+			custom_tooltip = {
+				text = ulus_holds_a_khan_tt
+				international_organization:ulus_chaghatay ?= { has_variable = ulus_held_khan }
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = ulus_inlaw_house
+			# The bride: a daughter of the khan's house. The marriage
+			# itself is attempted (a ruler already married may be
+			# refused it by the engine); the variable on the man is what
+			# the regency reads either way.
+			create_character = {
+				dynasty = dynasty:borjigin_dynasty
+				estate = estate_type:nobles_estate
+				religion = scope:actor.religion
+				culture = scope:actor.culture
+				age = { 16 22 }
+				female = yes
+				save_scope_as = ulus_bride
+			}
+			ruler = {
+				set_variable = ulus_gurkan
+				marry_character = scope:ulus_bride
+			}
+			add_prestige = 10
+			international_organization:ulus_chaghatay ?= {
+				ulus_change_progress = { AMOUNT = ulus_regency_progress_marriage }
+				ulus_chaghatay_rebuild_ledger = yes
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = 60
+	}
+}
+
+# ------------------------------------------------------------
+# DISTRIBUTE LARGESSE. Gold into the gap. A beg's followers stay
+# because he gives: robes, horses, a share of everything taken. Temür
+# emptied his treasury after every campaign and was the richer for it.
+# A year's income for ulus_gap_largesse points, once a year.
+# ------------------------------------------------------------
+ulus_distribute_largesse = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_distribute_largesse
+		years = 1
+	}
+
+	price = price:ulus_largesse_price
+
+	potential = {
+		scope:actor = {
+			has_variable = ulus_regent_seat
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			is_ulus_regent = yes
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 }
+			international_organization:ulus_chaghatay ?= {
+				ulus_change_gap = { AMOUNT = ulus_gap_largesse }
+				ulus_chaghatay_rebuild_ledger = yes
+			}
+		}
+	}
+
+	# The AI pays when the gap is under the filled line.
+	ai_will_do = {
+		add = 0
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					trigger_if = {
+						limit = { has_variable = ulus_gap }
+						var:ulus_gap < ulus_gap_filled_line
+					}
+					trigger_else = {
+						always = no
+					}
+				}
+			}
+			add = 40
+		}
+	}
+}
+
+# ------------------------------------------------------------
+# CLAIM THE KHAN. Once the amirs have fallen out (stage 2), an amir who
+# does not hold the khan may claim him: a casus belli on the regent for
+# ten years. Inside the ulus this is the only road to war — the
+# organisation forbids war without one on a fellow member.
+# ------------------------------------------------------------
+ulus_claim_the_khan = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_claim_the_khan
+		years = 10
+	}
+
+	price = price:ulus_claim_the_khan_price
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_amir = yes
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			custom_tooltip = {
+				text = ulus_amirs_fallen_out_tt
+				ulus_regency_stage_at_least = { STAGE = 2 }
+			}
+			at_war = no
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			international_organization:ulus_chaghatay ?= {
+				leader_country ?= { save_scope_as = ulus_regent }
+			}
+			if = {
+				limit = { exists = scope:ulus_regent }
+				add_casus_belli = {
+					type = casus_belli:cb_take_the_khan
+					target = scope:ulus_regent
+					years = 10
+				}
+			}
+		}
+	}
+
+	# The AI claims when it stands among the three likeliest kingmakers.
+	ai_will_do = {
+		add = 0
+		if = {
+			limit = {
+				scope:actor = {
+					is_target_in_global_variable_list = {
+						name = ulus_kingmakers
+						target = this
+					}
+				}
+			}
+			add = 30
+		}
+	}
+}
+
+# ------------------------------------------------------------
+# BACK THE KHAN — the khan's purge, Qazan's gamble.
+#
+# Qazan Khan (1343-46) was the last khan to try to rule the western
+# amirs rather than be ruled by them; he executed several, drove the
+# rest together, and was killed by Qazaghan in battle. A grown khan
+# with a soldier's skill, kept in a beg's tent, may try the same from
+# the inside — but not alone. An amir who does not hold the khan sends
+# him men and silver.
+#
+#   SUCCESS  the Khan Triumphant: the khan kills the regent's house
+#            and takes the regent's state for his own (.200).
+#   FAILURE  the regency moves a stage on, and the khan usually dies
+#            for it (.201).
+# THE ROLL (literals, as in scripted_effects/15_...: THE ROLLS):
+# success 30%, or 50% if the khan's military skill is at least
+# ulus_purge_good_mil; on failure the khan is killed 3 times in 4.
+# ------------------------------------------------------------
+ulus_back_the_khan = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 24
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_back_the_khan
+		years = 10
+	}
+
+	price = price:ulus_back_the_khan_price
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_amir = yes
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			ulus_regency_is_on = yes
+			custom_tooltip = {
+				text = ulus_khan_can_purge_tt
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_held_khan ?= {
+						is_alive = yes
+						is_adult = yes
+						mil >= ulus_purge_min_mil
+					}
+				}
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			save_scope_as = ulus_khans_backer
+			international_organization:ulus_chaghatay ?= {
+				leader_country ?= { save_scope_as = ulus_regent }
+				var:ulus_held_khan ?= { save_scope_as = ulus_purging_khan }
+			}
+			if = {
+				limit = {
+					exists = scope:ulus_regent
+					exists = scope:ulus_purging_khan
+				}
+				if = {
+					limit = {
+						scope:ulus_purging_khan = { mil >= ulus_purge_good_mil }
+					}
+					random_list = {
+						50 = {
+							scope:ulus_regent = { trigger_event_non_silently = amirs_regency.200 }
+						}
+						50 = {
+							scope:ulus_regent = { trigger_event_non_silently = amirs_regency.201 }
+						}
+					}
+				}
+				else = {
+					random_list = {
+						30 = {
+							scope:ulus_regent = { trigger_event_non_silently = amirs_regency.200 }
+						}
+						70 = {
+							scope:ulus_regent = { trigger_event_non_silently = amirs_regency.201 }
+						}
+					}
+				}
+			}
+		}
+	}
+
+	# The AI gambles rarely, and not when it could take the khan itself.
+	ai_will_do = {
+		add = 5
+		if = {
+			limit = {
+				scope:actor = { ulus_ruler_is_of_the_line = yes }
+			}
+			add = 40
+		}
+	}
+}

@@ -64,6 +64,13 @@ ulus_chaghatay_qubchur = {
 				add = monthly_income_trade_and_tax
 			}
 			multiply = 0.05 # 5% of the juniors' tax-and-trade income: at 1% the khan was insolvent
+			# Under a regent the tribute falls: the amirs sent Qazaghan
+			# gifts, not the khan's due (ulus_regency_tribute_factor,
+			# script_values/05_amirs_regency_values.txt). root = the IO.
+			if = {
+				limit = { has_variable = ulus_regency }
+				multiply = ulus_regency_tribute_factor
+			}
 		}
 	}
 	proportion_for_payer = {

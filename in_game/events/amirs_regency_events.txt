@@ -17,7 +17,17 @@ namespace = amirs_regency
 #   .50  an amir house's succession: confirm or impose (to the leader)
 #   .51  a kinsman is set over the house   (to the member)
 #   .52  the house refuses the kinsman     (to the leader)
-# The disaster's stages and endings: .100 onward, below.
+# The disaster (common/disasters/05_amirs_regency.txt):
+#   .100 stage 2, the amirs fall out       (to the regent)
+#   .110 stage 3, the shock from outside   (to the regent)
+#   .120 stage 4: who is the Ṣāḥib-qirān?  (hidden router)
+#   .121 stage 4, the Ṣāḥib-qirān          (to whoever holds the khan)
+#   .130 the khan taken by force           (to the captor)
+#   .200 the khan's purge succeeds: the Khan Triumphant
+#   .201 the khan's purge fails
+#   .205 the Khan Triumphant by the sword  (to the victor)
+#   .210 the Ṣāḥib-qirān                   (ending)
+#   .220 Bulqaq                            (ending)
 #
 # Effects: common/scripted_effects/15_amirs_regency_effects.txt.
 # Numbers: common/script_values/05_amirs_regency_values.txt.
@@ -677,5 +687,412 @@ amirs_regency.52 = {
 	option = {
 		name = amirs_regency.52.a
 		add_prestige = -10
+	}
+}
+
+
+# ============================================================================
+# THE DISASTER — stages.
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# .100 — STAGE 2, THE AMIRS FALL OUT. After Qazaghan's murder in 1358
+# no single beg replaced him: Hajji Barlas held Kesh, Bayazid Jalayir
+# Khujand, Bayan Suldus Shadman, Qazaghan's grandson Husayn the south,
+# and each made war on his neighbours as he saw fit. The organisation's
+# ban on war between members is lifted (ulus_amirs_may_fight, set by
+# ulus_regency_enter_stage); an amir needs only a claim on the khan.
+# ----------------------------------------------------------------------------
+amirs_regency.100 = {
+	type = country_event
+	title = amirs_regency.100.title
+	desc = amirs_regency.100.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_regency.100.a
+		add_horde_unity = -10
+		custom_tooltip = amirs_regency_stage_2_tt
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .110 — STAGE 3, THE SHOCK FROM OUTSIDE. In 1360 Tughluq Temür, khan
+# of the eastern half since 1347, crossed the Syr Darya. The western
+# amirs did not combine against him: Hajji Barlas fled to Khurasan and
+# was killed there, and a young kinsman of his, Temür, made his
+# submission and was given Kesh. The khan came again in 1361.
+#
+# The regent's three strongest neighbours outside the ulus are handed
+# a claim on it for ten years; the eastern khanate, if there is one,
+# gets it beside its standing claim. Members may now leave, and
+# whoever takes the regent's capital takes the khan.
+# ----------------------------------------------------------------------------
+amirs_regency.110 = {
+	type = country_event
+	title = amirs_regency.110.title
+	desc = amirs_regency.110.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	immediate = {
+		save_scope_as = ulus_regent
+		hidden_effect = {
+			ordered_neighbor_country = {
+				limit = {
+					NOT = { is_ulus_chaghatay_member = yes }
+					is_subject = no
+					is_rebel_country = no
+				}
+				order_by = military_strength
+				max = 3
+				check_range_bounds = no
+				add_casus_belli = {
+					type = casus_belli:cb_ulus_in_disarray
+					target = scope:ulus_regent
+					years = 10
+				}
+			}
+			international_organization:ulus_chaghatay ?= {
+				var:ulus_eastern_khanate ?= {
+					add_casus_belli = {
+						type = casus_belli:cb_ulus_in_disarray
+						target = scope:ulus_regent
+						years = 10
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = amirs_regency.110.a
+		add_horde_unity = -10
+		custom_tooltip = amirs_regency_stage_3_tt
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .120 — STAGE 4: WHO IS THE ṢĀḤIB-QIRĀN? Hidden.
+#
+# By 1370 the man who held the khan was not the heir of the man who
+# first took one. He was the amir who had come out of the wars of the
+# 1360s with the greatest name. So at the turn into the last stage the
+# amirs are measured once more, renown and all: if a rival now stands
+# higher than the regent, the khan goes to him.
+# ----------------------------------------------------------------------------
+amirs_regency.120 = {
+	type = country_event
+	hidden = yes
+	outcome = neutral
+	title = empty_text
+	desc = empty_text
+
+	trigger = {
+		is_ulus_regent = yes
+	}
+
+	immediate = {
+		set_local_variable = { name = ulus_my_score value = ulus_kingmaker_score }
+		set_local_variable = { name = ulus_rival_score value = 0 }
+		if = {
+			limit = { exists = scope:ulus_best_rival }
+			clear_saved_scope = ulus_best_rival
+		}
+		international_organization:ulus_chaghatay ?= {
+			save_temporary_scope_as = ulus_io
+			ordered_international_organization_member = {
+				limit = {
+					NOT = { is_leader_of_international_organization = scope:ulus_io }
+					has_ruler = yes
+					# A khan of the line does not become a beg's
+					# successor; his road is the Khan Triumphant.
+					NOT = { ulus_ruler_is_of_the_line = yes }
+				}
+				order_by = ulus_kingmaker_score
+				max = 1
+				check_range_bounds = no
+				save_scope_as = ulus_best_rival
+				set_local_variable = { name = ulus_rival_score value = ulus_kingmaker_score }
+			}
+		}
+		if = {
+			limit = {
+				exists = scope:ulus_best_rival
+				local_var:ulus_rival_score > local_var:ulus_my_score
+			}
+			scope:ulus_best_rival = { save_scope_as = ulus_new_regent }
+			ulus_transfer_regency = yes
+			scope:ulus_new_regent = { trigger_event_non_silently = amirs_regency.121 }
+			trigger_event_non_silently = amirs_regency.43
+		}
+		else = {
+			trigger_event_non_silently = amirs_regency.121
+		}
+	}
+}
+
+# .121 — the Ṣāḥib-qirān stage, told to whoever now holds the khan.
+amirs_regency.121 = {
+	type = country_event
+	title = amirs_regency.121.title
+	desc = amirs_regency.121.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = amirs_regency.121.a
+		add_prestige = 15
+		custom_tooltip = amirs_regency_stage_4_tt
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .130 — THE KHAN TAKEN BY FORCE. From stage 3 a member who takes the
+# regent's capital takes the khan (on_action/31_amirs_regency_hooks.txt,
+# ulus_khan_taken_by_force, which has already moved him). Samarkand
+# and its khan changed hands this way between Husayn and Temür.
+# root = the captor.
+# ----------------------------------------------------------------------------
+amirs_regency.130 = {
+	type = country_event
+	title = amirs_regency.130.title
+	desc = amirs_regency.130.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = amirs_regency.130.a
+		add_prestige = 15
+		custom_tooltip = amirs_regency_onset_tt
+	}
+}
+
+
+# ============================================================================
+# THE DISASTER — endings.
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# .200 — THE KHAN'S PURGE SUCCEEDS: THE KHAN TRIUMPHANT. What Qazan
+# Khan attempted in 1343-46 and died of. Fired on the regent's state by
+# the ulus_back_the_khan action. The khan becomes the ruler of the
+# state that held him; the regency is over.
+# ----------------------------------------------------------------------------
+amirs_regency.200 = {
+	type = country_event
+	title = amirs_regency.200.title
+	desc = amirs_regency.200.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		is_ulus_regent = yes
+	}
+
+	immediate = {
+		hidden_effect = {
+			ulus_end_khan_triumphant_purge = yes
+		}
+	}
+
+	option = {
+		name = amirs_regency.200.a
+		custom_tooltip = amirs_regency_khan_triumphant_tt
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .201 — THE KHAN'S PURGE FAILS. Qazan's actual end: the amirs he meant
+# to break closed ranks, and he was killed. The regency moves a stage
+# on (the amirs have seen what a khan with a will costs them), and the
+# khan is put to death three times in four — which, as a puppet khan's
+# death, asks the regent to find another (amirs_regency.30).
+# ----------------------------------------------------------------------------
+amirs_regency.201 = {
+	type = country_event
+	title = amirs_regency.201.title
+	desc = amirs_regency.201.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	trigger = {
+		is_ulus_regent = yes
+	}
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { exists = scope:ulus_failed_khan }
+				clear_saved_scope = ulus_failed_khan
+			}
+			international_organization:ulus_chaghatay ?= {
+				var:ulus_held_khan ?= { save_scope_as = ulus_failed_khan }
+				if = {
+					limit = { var:ulus_regency_stage < 4 }
+					change_variable = { name = ulus_regency_stage add = 1 }
+					set_variable = { name = ulus_regency_progress value = 0 }
+					ulus_regency_enter_stage = yes
+					ulus_regency_announce_stage = yes
+				}
+			}
+			random_list = {
+				75 = {
+					if = {
+						limit = {
+							scope:ulus_failed_khan ?= { is_alive = yes }
+						}
+						kill_character = {
+							target = scope:ulus_failed_khan
+							reason = execution
+						}
+					}
+				}
+				25 = {
+				}
+			}
+		}
+	}
+
+	option = {
+		name = amirs_regency.201.a
+		add_horde_unity = -10
+		custom_tooltip = amirs_regency_purge_failed_tt
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .205 — THE KHAN TRIUMPHANT, BY THE SWORD. Tughluq Temür, 1360-61: a
+# khan of the line beat the western amirs in the field and was khan of
+# the whole ulus. Fired on the victor by the war and siege hooks, with
+# scope:ulus_beaten_regent.
+# ----------------------------------------------------------------------------
+amirs_regency.205 = {
+	type = country_event
+	title = amirs_regency.205.title
+	desc = amirs_regency.205.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		ulus_regency_is_on = yes
+	}
+
+	immediate = {
+		hidden_effect = {
+			ulus_end_khan_triumphant_war = yes
+		}
+	}
+
+	option = {
+		name = amirs_regency.205.a
+		custom_tooltip = amirs_regency_khan_triumphant_war_tt
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .210 — THE ṢĀḤIB-QIRĀN. Balkh, 1370: the oath of the amirs to a man
+# who was not khan and did not pretend to be. See ulus_end_sahib_qiran
+# for the reckoning with the members.
+# ----------------------------------------------------------------------------
+amirs_regency.210 = {
+	type = country_event
+	title = amirs_regency.210.title
+	desc = amirs_regency.210.desc
+	outcome = positive
+	major = yes
+	major_trigger = {
+		capital ?= {
+			OR = {
+				sub_continent = sub_continent:central_asia
+				sub_continent = sub_continent:middle_east
+				sub_continent = sub_continent:south_asia
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		is_ulus_regent = yes
+	}
+
+	option = {
+		name = amirs_regency.210.a
+		custom_tooltip = amirs_regency_sahib_qiran_tt
+		hidden_effect = {
+			ulus_end_sahib_qiran = yes
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .220 — BULQAQ. No khan anyone obeys and no beg anyone follows: the
+# ulus is a name. See ulus_end_bulqaq.
+# ----------------------------------------------------------------------------
+amirs_regency.220 = {
+	type = country_event
+	title = amirs_regency.220.title
+	desc = amirs_regency.220.desc
+	outcome = negative
+	major = yes
+	major_trigger = {
+		capital ?= {
+			OR = {
+				sub_continent = sub_continent:central_asia
+				sub_continent = sub_continent:middle_east
+				sub_continent = sub_continent:south_asia
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	trigger = {
+		is_ulus_regent = yes
+	}
+
+	option = {
+		name = amirs_regency.220.a
+		custom_tooltip = amirs_regency_bulqaq_tt
+		add_prestige = -25
+		hidden_effect = {
+			ulus_end_bulqaq = yes
+		}
 	}
 }

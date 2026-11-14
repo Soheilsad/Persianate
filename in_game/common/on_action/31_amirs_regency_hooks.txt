@@ -50,3 +50,193 @@ ulus_amir_house_succession = {
 		}
 	}
 }
+
+
+# ---RENOWN, AND WHAT FILLS THE GAP ------------------------------------
+# on_great_battle_won: root = the winning country (base reads country
+# triggers at root there), scope:target = the losing unit. Real
+# engagements only — on_battle_won is skirmishes.
+# on_siege_won: root = the country taking the location.
+#
+# While a regency lasts, every member's ruler gains renown from his
+# victories (the "battles won" term of ulus_kingmaker_score): this is
+# where the man who will take the khan is made. For the regent himself
+# each victory also fills the legitimacy gap, and a great battle won
+# stays his hand against the knife for a year (ulus_recent_victory,
+# read by ulus_regency_murder_roll).
+on_great_battle_won = {
+	on_actions = {
+		ulus_renown_great_battle
+	}
+}
+
+ulus_renown_great_battle = {
+	trigger = {
+		has_variable = ulus_weight	# cheap: only members carry it
+		is_ulus_chaghatay_member = yes
+		ulus_regency_is_on = yes
+	}
+	effect = {
+		ulus_add_renown = { AMOUNT = ulus_renown_great_battle }
+		if = {
+			limit = { has_variable = ulus_regent_seat }
+			set_variable = { name = ulus_recent_victory value = 1 months = 12 }
+			international_organization:ulus_chaghatay ?= {
+				ulus_change_gap = { AMOUNT = ulus_gap_great_battle }
+			}
+		}
+	}
+}
+
+on_siege_won = {
+	on_actions = {
+		ulus_renown_siege
+		ulus_khan_taken_by_force
+	}
+}
+
+on_location_occupied = {
+	on_actions = {
+		ulus_khan_taken_by_force
+	}
+}
+
+ulus_renown_siege = {
+	trigger = {
+		has_variable = ulus_weight
+		is_ulus_chaghatay_member = yes
+		ulus_regency_is_on = yes
+	}
+	effect = {
+		ulus_add_renown = { AMOUNT = ulus_renown_siege }
+		if = {
+			limit = { has_variable = ulus_regent_seat }
+			international_organization:ulus_chaghatay ?= {
+				ulus_change_gap = { AMOUNT = ulus_gap_siege }
+			}
+		}
+	}
+}
+
+# ---TAKING THE KHAN BY FORCE (design 6) --------------------------------
+# From stage 3, whoever takes the regent's capital in war takes what is
+# kept there. Same two hooks, same scopes, as the warlord conquest
+# (24_warlord_conquest_hooks.txt): root = the occupier, scope:target =
+# the location.
+#
+#   a member of the ulus      captures the khan: he and the leadership
+#                             pass to the victor (amirs_regency.130).
+#                             Husayn and Temür took Samarkand and its
+#                             khan from each other this way.
+#   a realm of the line       (the eastern khanate, or any country
+#                             whose ruler is of the line and which is
+#                             not a member): the Khan Triumphant by the
+#                             sword (amirs_regency.205).
+#   anyone else               the khan's household flees before the
+#                             ordu falls; the regency is shaken (the
+#                             lost-war step) but not moved.
+ulus_khan_taken_by_force = {
+	trigger = {
+		ulus_regency_stage_at_least = { STAGE = 3 }
+		scope:target ?= {
+			is_capital = yes
+			owner ?= {
+				has_variable = ulus_regent_seat
+				is_at_war_with = root
+			}
+		}
+	}
+	effect = {
+		scope:target.owner = { save_scope_as = ulus_beaten_regent }
+		# A khan of the line first, member or not: a Borjigin who takes
+		# the regent's ordu does not become a regent, he ends the regency.
+		if = {
+			limit = {
+				OR = {
+					has_variable = ulus_eastern_khanate_realm
+					ulus_ruler_is_of_the_line = yes
+				}
+			}
+			trigger_event_non_silently = amirs_regency.205
+		}
+		else_if = {
+			limit = { is_ulus_chaghatay_member = yes }
+			save_scope_as = ulus_new_regent
+			ulus_transfer_regency = yes
+			ulus_add_renown = { AMOUNT = ulus_renown_great_battle }
+			trigger_event_non_silently = amirs_regency.130
+			scope:ulus_beaten_regent = {
+				trigger_event_non_silently = amirs_regency.43
+			}
+		}
+		else = {
+			international_organization:ulus_chaghatay ?= {
+				ulus_change_progress = { AMOUNT = ulus_regency_progress_lost_war }
+				ulus_change_gap = { AMOUNT = ulus_gap_war_lost }
+			}
+		}
+	}
+}
+
+# ---WARS WON AND LOST ---------------------------------------------------
+# on_winning_war / on_losing_war: root = country, scope:winner,
+# scope:loser, scope:war (base _hardcoded.txt). Tested on scope:winner /
+# scope:loser being root, so a war with several participants counts
+# once.
+#
+# The regent winning a war fills the gap. The regent losing one empties
+# it and pushes the regency toward its next stage — and if the man who
+# beat him is a khan of the line (the eastern khanate first of all),
+# that is the Khan Triumphant by the sword.
+on_winning_war = {
+	on_actions = {
+		ulus_regent_wins_war
+	}
+}
+
+ulus_regent_wins_war = {
+	trigger = {
+		has_variable = ulus_regent_seat
+		scope:winner ?= { this = root }
+	}
+	effect = {
+		international_organization:ulus_chaghatay ?= {
+			ulus_change_gap = { AMOUNT = ulus_gap_war_won }
+		}
+		ulus_add_renown = { AMOUNT = ulus_renown_great_battle }
+	}
+}
+
+on_losing_war = {
+	on_actions = {
+		ulus_regent_loses_war
+	}
+}
+
+ulus_regent_loses_war = {
+	trigger = {
+		has_variable = ulus_regent_seat
+		scope:loser ?= { this = root }
+		exists = scope:winner
+	}
+	effect = {
+		international_organization:ulus_chaghatay ?= {
+			ulus_change_progress = { AMOUNT = ulus_regency_progress_lost_war }
+			ulus_change_gap = { AMOUNT = ulus_gap_war_lost }
+		}
+		if = {
+			limit = {
+				scope:winner = {
+					OR = {
+						has_variable = ulus_eastern_khanate_realm
+						ulus_ruler_is_of_the_line = yes
+					}
+				}
+			}
+			save_scope_as = ulus_beaten_regent
+			scope:winner = {
+				trigger_event_non_silently = amirs_regency.205
+			}
+		}
+	}
+}

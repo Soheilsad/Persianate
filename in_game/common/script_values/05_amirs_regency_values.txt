@@ -155,6 +155,12 @@ ulus_regency_progress_monthly = 1.0
 # Monthly, while the crown holds more power than the nobles in the
 # regent's realm (negative: the fiction hardens into a government).
 ulus_regency_progress_recovery = -0.5
+# "Over the bar" inside a regency also means: the three greatest amirs
+# together outweigh the REGENT by at least this (ulus_amir_ratio).
+ulus_regency_progress_amir_ratio = 1.0
+# The qubchur the amirs send the seat is multiplied by this while a
+# regent holds it.
+ulus_regency_tribute_factor = 0.5
 # One-off steps.
 ulus_regency_progress_khan_death = 10
 ulus_regency_progress_regent_death = 15
@@ -212,6 +218,12 @@ ulus_murder_low_satisfaction = 0.4
 
 # The puppet khan must have at least this military skill to try.
 ulus_purge_min_mil = 50
+# A khan at or above this is the better bet (the success roll rises
+# from 30% to 50%; the rolls themselves are literals in THE ROLLS).
+ulus_purge_good_mil = 70
+# After a Khan Triumphant the begs cannot raise another khan for this
+# many years, whatever their weight.
+ulus_khan_triumphant_peace_years = 15
 
 # =====================================================================
 # 8. THE ṢĀḤIB-QIRĀN'S RECKONING

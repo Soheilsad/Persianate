@@ -1,0 +1,48 @@
+# Static modifiers of the Amirs' Regency
+# (in_game/common/scripted_effects/15_amirs_regency_effects.txt).
+
+# On the regent's state, sized by the stage of the regency (1..4): the
+# further the ulus comes apart, the less of it a regent's summons
+# reaches. Re-sized monthly by the tick (mode = replace), the
+# custody_contested construction.
+amirs_regency_strain = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	monthly_horde_unity = -0.03
+	monthly_prestige = -0.03
+}
+
+# The Khan Triumphant: a khan of the line has broken the begs' hold.
+khan_triumphant_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	global_crown_estate_power = 0.20
+	global_nobles_estate_power = -0.15
+	monthly_horde_unity = 0.10
+}
+
+# The darughas recalled: the khan's appointees are brought back to the
+# ordu and their districts answer the seat directly for a while.
+ulus_darughas_recalled_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	global_nobles_estate_power = -0.15
+	nobles_estate_target_satisfaction = -0.10
+}
+
+# The Ṣāḥib-qirān's first years: the tümens that bowed are his.
+sahib_qiran_ascendant_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	land_morale_modifier = 0.10
+	monthly_horde_unity = 0.10
+	monthly_prestige = 0.10
+}

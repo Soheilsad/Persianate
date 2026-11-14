@@ -111,3 +111,87 @@
  ULUS_STAGE_3_TT: "Outsiders hold a claim on the fractured ulus, members may leave it, and a member who takes the regent's capital captures the khan and the leadership. Next: #Y The Ṣāḥib-qirān#!."
  ULUS_STAGE_4: "IV. The Ṣāḥib-qirān"
  ULUS_STAGE_4_TT: "The beg rules in his own right behind his khan. If he holds the khan, has a wife of the line, and keeps the legitimacy gap filled for five years running, the ulus becomes his realm. If the gap lies empty for three years, it dissolves."
+
+ # =====================================================================
+ # The disaster (in_game/common/disasters/05_amirs_regency.txt)
+ # =====================================================================
+ amirs_regency: "The Amirs' Regency"
+ amirs_regency_desc: "A beg rules the ulus through a khan he keeps in his own camp. The amirs follow him while he delivers, and no longer. Left to itself the arrangement runs through four stages in about a generation: the beglerbeg's peace, the amirs falling out, the shock from outside, and at last a beg who rules in his own right as Ṣāḥib-qirān, or nobody ruling at all.\n\nThe stage, the legitimacy gap and the regent's heir are shown on the panel of [GetInternationalOrganization('ulus_chaghatay').GetName]; the actions are there as well."
+ amirs_regency_end_tt: "This realm no longer holds the khan of the ulus."
+
+ # --- Stages ---
+ amirs_regency.100.title: "The Amirs Fall Out"
+ amirs_regency.100.desc: "The peace is over. No beg now stands so far above the others that they fear to cross him, and the tümens that mustered together under one tug are raiding one another's herds. One amir holds Kesh, another Khujand, another the south, and each speaks of the khan's will as though the khan had sent him.\n\nThe khan is in our tent. That is now a reason for the others to come and take him."
+ amirs_regency.100.a: "Let them try the door of this tent."
+ amirs_regency_stage_2_tt: "#Y The Amirs Fall Out.#! Members of the ulus may now make war on one another, and an amir may claim the khan from us. A house may refuse a kinsman set over it."
+ amirs_regency.110.title: "The Shock from Outside"
+ amirs_regency.110.desc: "An ulus whose amirs fight each other is an open pasture. Riders have crossed the frontier in force, and they are not raiders: they come with a claim, and some of our own amirs have gone out to meet them with gifts.\n\nEvery beg in the ulus is now deciding whether to resist, to submit, or to make himself useful to the invader and be left holding something when he goes home."
+ amirs_regency.110.a: "The amirs who ride with me now will be remembered. So will the others."
+ amirs_regency_stage_3_tt: "#Y The Shock from Outside.#! Our strongest neighbours hold a claim on the ulus for ten years. Members may leave it. Whoever takes our capital in war takes the khan, and the leadership with him."
+ amirs_regency.121.title: "The Lord of the Conjunction"
+ amirs_regency.121.desc: "The wars have sorted the amirs. Those who rode against us are dead, fled or in our service, and the rest no longer speak of the beg as first among them. They call him what the astrologers called the great conquerors: Ṣāḥib-qirān, born under the conjunction of the two fortunate planets.\n\nHe is still not khan and cannot be. The khan stays in his tent and the yarlıqs go out in his name. But the tümens know whose victories feed them, and they will go on knowing it for exactly as long as the victories continue."
+ amirs_regency.121.a: "The khan reigns. I conquer. Let no one confuse the two."
+ amirs_regency_stage_4_tt: "#Y The Ṣāḥib-qirān.#! Hold the khan, take a wife of the line, and keep the legitimacy gap filled for five years running, and the ulus becomes our realm. Let the gap lie empty for three years, and it dissolves."
+ amirs_regency.130.title: "The Khan Is Ours"
+ amirs_regency.130.desc: "The regent's ordu has fallen. His guards were found dead around the khan's tent and the khan inside it, unharmed, waiting to learn whose prisoner he was. He has been brought to our camp with his seal and his household, and the first yarlıq written here has already gone out."
+ amirs_regency.130.a: "Treat him as a khan. Guard him as a treasure."
+
+ # --- Endings ---
+ amirs_regency.200.title: "The Khan Triumphant"
+ amirs_regency.200.desc: "The khan was meant to sit in his tent and seal what was put before him. He has done otherwise. With men and silver sent to him in secret he struck in a single night: the beg and the grown men of his house were killed at a feast, their commanders were offered the choice of the khan's stirrup or the same, and by morning the tümens were swearing to a khan who rules.\n\nThe realm that kept a khan is now the khan's own."
+ amirs_regency.200.a: "There is one khan, and he has no keeper."
+ amirs_regency_khan_triumphant_tt: "The khan becomes our ruler. The #Y Beglerbeg's Regency#! ends, and for twenty years the crown's power is greater and the begs' less. The begs cannot raise another khan for fifteen years."
+ amirs_regency.201.title: "The Khan's Hand Is Stayed"
+ amirs_regency.201.desc: "The khan tried to rid himself of us. He had found friends among the amirs and silver from somewhere, and on the appointed night his men came for our tents. They were expected. Those who were not killed have named the others.\n\nThe amirs who had no part in it have drawn their own conclusion: a khan with a will of his own is a danger to every one of them."
+ amirs_regency.201.a: "A khan who bites the hand is still a khan. For now."
+ amirs_regency_purge_failed_tt: "The regency moves on to its next stage. The khan will most likely be put to death, and another must then be found."
+ amirs_regency.205.title: "One Khan Again"
+ amirs_regency.205.desc: "The beg who ruled the ulus through a captive has been beaten in the field. His amirs came into our camp one after another to kiss the stirrup, each explaining that he had never truly accepted the other khan. The tümens of the west muster again in the name of a khan who commands them."
+ amirs_regency.205.a: "They served a servant. Now they will learn to serve a khan."
+ amirs_regency_khan_triumphant_war_tt: "Our realm leads [GetInternationalOrganization('ulus_chaghatay').GetName] again; the members who followed us east return to it. The regency ends, and for twenty years the crown's power is greater and the begs' less."
+ amirs_regency.210.title: "Ṣāḥib-qirān"
+ amirs_regency.210.desc: "The amirs of the ulus have come to the kuriltai, and this time there is nothing to decide. For five years every campaign has ended in plunder and every tümen has had its share. The khan sits on the felt; beside him, a step lower, sits his son-in-law, and it is to the son-in-law that the amirs swear, one by one, laying their belts across their necks.\n\nNot all of them have come. Those who stayed away will be visited."
+ amirs_regency.210.a: "I am the khan's servant and his son-in-law. The world may judge what that servant can do."
+ amirs_regency_sahib_qiran_tt: "The ulus becomes our realm. Members who think well of us become our vassals; against the rest we hold a claim to their submission for twenty years. [GetInternationalOrganization('ulus_chaghatay').GetName] is dissolved. We take the regime of the #Y Güregen of the Ulus#!."
+ amirs_regency.220.title: "Bulqaq"
+ amirs_regency.220.desc: "The amirs no longer come when summoned and no longer send excuses. The khan's name is still read, where anyone troubles to read it, and it commands nothing. Each tümen keeps its own pastures, makes its own wars and answers to no one.\n\nThe old men have a word for a time like this: bulqaq, the great trouble. The ulus of Chaghatay is a memory that several ambitious men are now free to claim."
+ amirs_regency.220.a: "I held it as long as it could be held."
+ amirs_regency_bulqaq_tt: "[GetInternationalOrganization('ulus_chaghatay').GetName] is dissolved. Every member stands alone. We lose the #Y Beglerbeg's Regency#!. A khan in the east, if there is one, keeps his claim on each of us."
+
+ # --- Actions ---
+ ulus_recall_darughas: "Recall the Darughas"
+ ulus_recall_darughas_desc: "Call the appointed governors back to the ordu. For ten years the nobles hold less power in our realm, and they resent it. During a regency it also sets the regency's clock back."
+ ulus_marry_into_the_line: "Marry into the Line"
+ ulus_marry_into_the_line_desc: "Take a woman of the khan's house to wife and stand as güregen, son-in-law of the line of Chinggis. It sets the regency's clock back, it is required of a Ṣāḥib-qirān, and it lets our house raise a khan of its own daughter's blood if the khan we hold should die."
+ ulus_not_yet_gurkan_tt: "Our ruler is not already a son-in-law of the line"
+ ulus_holds_a_khan_tt: "We hold a living khan"
+ ulus_distribute_largesse: "Distribute Largesse"
+ ulus_distribute_largesse_desc: "Open the treasury to the amirs: robes, horses and silver. A year's income fills part of the legitimacy gap."
+ ulus_claim_the_khan: "Claim the Khan"
+ ulus_claim_the_khan_desc: "Declare before the amirs that the khan is ill kept and would be better kept by us. We gain a casus belli on the regent for ten years; whoever takes his capital takes the khan."
+ ulus_amirs_fallen_out_tt: "The regency has reached its second stage, #Y The Amirs Fall Out#!"
+ ulus_back_the_khan: "Back the Khan's Purge"
+ ulus_back_the_khan_desc: "Send men and silver in secret to the khan in the regent's tent. If he succeeds he kills the regent's house and rules as a true khan. If he fails the regency hardens, and he will most likely die for it. The odds are three in ten, or even if he is a proven soldier."
+ ulus_khan_can_purge_tt: "The khan the regent holds is a grown man with a soldier's skill (military 50 or more)"
+
+ # --- Casus belli ---
+ cb_ulus_in_disarray: "The Ulus in Disarray"
+ cb_ulus_in_disarray_desc: "The ulus is ruled by a beg whose own amirs make war on him. Its pastures are there for the taking."
+ ULUS_IN_DISARRAY_WAR_NAME: "$ORDER$$ATTACKER.GetAdjectiveWithFlag$ Invasion of the Ulus"
+ cb_sahib_qiran_submission: "The Ṣāḥib-qirān's Reckoning"
+ cb_sahib_qiran_submission_desc: "This amir did not come to swear when the ulus became one man's realm."
+ SAHIB_QIRAN_SUBMISSION_WAR_NAME: "$ORDER$$ATTACKER.GetAdjectiveWithFlag$ Reckoning with $DEFENDER.GetNameWithFlagNoTooltip$"
+
+ # --- Modifiers ---
+ STATIC_MODIFIER_NAME_amirs_regency_strain: "The Regency Under Strain"
+ STATIC_MODIFIER_DESC_amirs_regency_strain: "The further the Amirs' Regency runs, the less of the ulus a regent's summons reaches. Grows with each stage."
+ STATIC_MODIFIER_NAME_khan_triumphant_mod: "The Khan Triumphant"
+ STATIC_MODIFIER_DESC_khan_triumphant_mod: "A khan of the line has broken the begs' hold on the ulus."
+ STATIC_MODIFIER_NAME_ulus_darughas_recalled_mod: "Darughas Recalled"
+ STATIC_MODIFIER_DESC_ulus_darughas_recalled_mod: "The appointed governors have been called back to the ordu."
+ STATIC_MODIFIER_NAME_sahib_qiran_ascendant_mod: "Lord of the Conjunction"
+ STATIC_MODIFIER_DESC_sahib_qiran_ascendant_mod: "The tümens that swore at the kuriltai follow the man whose victories feed them."
+
+ # --- The Ṣāḥib-qirān's regime (government_reforms/08_ulus_chaghatay_reforms.txt) ---
+ gurkan_of_the_ulus: "Güregen of the Ulus"
+ gurkan_of_the_ulus_desc: "He is amir and son-in-law of the line, and he is careful never to be called more. A khan of the blood of Chinggis sits on the felt and seals the yarlıqs; the güregen commands the tümens, divides the plunder and decides everything else. Temür ruled so from 1370 to his death, and never took the title of khan."

@@ -54,3 +54,46 @@ beglerbeg_regency = {
 
 	years = 0
 }
+
+# =====================================================================
+# GÜREGEN OF THE ULUS — the Ṣāḥib-qirān's regime, the steppe twin of
+# gurkani_regime (01_persian_reforms.txt).
+#
+# Temür after Balkh, 1370: he took the Chinggisid princess Saray Mulk
+# from Husayn's household, enthroned Soyurghatmish, and for the rest of
+# his life styled himself amir and güregen — son-in-law of the line —
+# and never khan. gurkani_regime is that same answer reached from the
+# Persian side, by a persianate_sultanate that outlasted the Custody of
+# the Ulus; its potential is the custody's variables and its government
+# is the sultanate's, so a steppe_horde cannot hold it. This is the
+# same regime for the beg who won the Amirs' Regency while still a
+# horde. If the base Timur situation later turns him into a settled
+# empire (rot_reform_into_monarchy), that action's own reform replaces
+# this one.
+#
+# Granted only by amirs_regency.210 (ulus_sahib_qiran is set first).
+# =====================================================================
+
+gurkan_of_the_ulus = {
+	age = age_1_traditions
+	government = steppe_horde
+
+	potential = {
+		has_variable = ulus_sahib_qiran
+	}
+	locked = {
+		always = yes
+	}
+	country_modifier = {
+		# The tümens that made him follow him.
+		monthly_horde_unity = 0.15
+		land_morale_modifier = 0.05
+		# A güregen is still not a khan (the ceiling gurkani_regime
+		# carries).
+		monthly_prestige = -0.05
+		monthly_political_influence_gain_modifier = -0.10
+		global_max_control = -0.02
+	}
+
+	years = 0
+}

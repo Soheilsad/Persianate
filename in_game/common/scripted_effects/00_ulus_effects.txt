@@ -147,5 +147,18 @@ grant_ulus_effect = {
 				value = scope:ulus_overlord.ruler
 			}
 		}
+
+		# Inside Ulus Chaghatay during the Amirs' Regency, a share
+		# granted to a prince of the line is a Borjigin power base the
+		# begs must reckon with: it sets the regency's clock back
+		# (ulus_regency_progress_ulus_grant; no effect otherwise).
+		if = {
+			limit = {
+				scope:ulus_overlord = { is_ulus_chaghatay_member = yes }
+			}
+			international_organization:ulus_chaghatay ?= {
+				ulus_change_progress = { AMOUNT = ulus_regency_progress_ulus_grant }
+			}
+		}
 	}
 }

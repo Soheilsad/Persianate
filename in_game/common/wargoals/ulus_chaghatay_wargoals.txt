@@ -37,3 +37,38 @@ take_the_khan_wargoal = {
 		subjugate_cost = 0.75
 	}
 }
+
+# The ulus in disarray: land is cheap for the outsider.
+ulus_in_disarray_wargoal = {
+	type = superiority
+	war_name = "ULUS_IN_DISARRAY_WAR_NAME"
+
+	attacker = {
+		conquer_cost = 0.5
+		subjugate_cost = 0.75
+	}
+
+	defender = {
+		conquer_cost = 1.0
+		subjugate_cost = 1.0
+	}
+
+	ticking_war_score = 0.25
+}
+
+# The Ṣāḥib-qirān's reckoning: take the amir's seat and he submits
+# (base high_kingship_subjugate_wargoal: subjugation cheap, land dear).
+sahib_qiran_submission_wargoal = {
+	type = take_capital
+	war_name = "SAHIB_QIRAN_SUBMISSION_WAR_NAME"
+
+	attacker = {
+		subjugate_cost = 0.25
+		conquer_cost = 1.5
+	}
+
+	defender = {
+		subjugate_cost = 1.0
+		conquer_cost = 1.0
+	}
+}

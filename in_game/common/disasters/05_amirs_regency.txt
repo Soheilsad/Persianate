@@ -1,0 +1,80 @@
+# ============================================================
+# The Amirs' Regency — the disaster carried by whoever holds the khan.
+#
+# Manz's reading of Temür: not a world-historical force but the
+# product of one institutional collapse that took a generation. The
+# ulus went from a khan disciplining his amirs (Qazan, 1343-46) to a
+# beg conquering Iran in twenty-four years, through four states of
+# affairs that each made the next possible:
+#
+#   1  THE BEGLERBEG'S PEACE     Qazaghan, 1346-58. One beg rules
+#                                through a khan; the ulus is quiet.
+#   2  THE AMIRS FALL OUT        after his murder in 1358. No single
+#                                beg replaces him; the amirs may fight
+#                                each other.
+#   3  THE SHOCK FROM OUTSIDE    Tughluq Temür's invasions, 1360-61.
+#                                Outsiders hold a claim on the ulus;
+#                                whoever takes the regent's ordu takes
+#                                the khan. Renown is made here.
+#   4  THE ṢĀḤIB-QIRĀN           Temür at Balkh, 1370. The most
+#                                renowned beg rules in his own right
+#                                behind a khan and a marriage into the
+#                                line, and must keep paying for it in
+#                                victories.
+#
+# WHERE THE STATE LIVES. The regency moves from state to state — that
+# is the point of it — and a disaster belongs to one country. So the
+# stage, the progress and the legitimacy gap are variables on the
+# ORGANISATION, moved by the organisation's own monthly_effect
+# (ulus_regency_monthly_tick, scripted_effects/
+# 15_amirs_regency_effects.txt), and this disaster is only the mark of
+# it on the state that currently holds the khan: it starts when a
+# state is given ulus_regent_seat (ulus_install_regent) and ends when
+# the variable is taken away (ulus_unseat_regent), so it follows the
+# khan from court to court. The actions are organisation actions
+# (generic_actions/amirs_regency_actions.txt) and the readout is the
+# Succession card of the organisation's panel.
+#
+# Endings (events/amirs_regency_events.txt): the Khan Triumphant
+# (.200, .205), the Ṣāḥib-qirān (.210), Bulqaq (.220).
+# ============================================================
+
+amirs_regency = {
+
+	image = "gfx/interface/illustrations/disaster/horde_civil_war.dds"
+
+	monthly_spawn_chance = 1
+
+	can_start = {
+		has_variable = ulus_regent_seat
+		is_ulus_chaghatay_leader = yes
+	}
+
+	can_end = {
+		custom_tooltip = {
+			text = amirs_regency_end_tt
+			NOT = { has_variable = ulus_regent_seat }
+		}
+	}
+
+	# The cost of ruling in another man's name, on top of the reform's
+	# own (beglerbeg_regency). Light: the strain that grows by stage is
+	# the sized country modifier amirs_regency_strain, kept by the tick.
+	modifier = {
+		monthly_horde_unity = -0.02
+		subject_loyalty = -5
+	}
+
+	on_start = {
+	}
+
+	on_monthly = {
+	}
+
+	on_end = {
+		if = {
+			limit = { has_country_modifier = amirs_regency_strain }
+			remove_country_modifier = amirs_regency_strain
+		}
+	}
+}

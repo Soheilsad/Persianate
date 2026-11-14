@@ -1,0 +1,24 @@
+# Prices of the Amirs' Regency actions
+# (generic_actions/amirs_regency_actions.txt). scaled_gold is in
+# months of income; political influence is the currency of the ulus.
+
+ulus_claim_the_khan_price = {
+	political_influence = 10
+}
+
+ulus_marry_into_the_line_price = {
+	scaled_gold = 6
+	political_influence = 10
+}
+
+ulus_largesse_price = {
+	scaled_gold = 12
+}
+
+ulus_recall_darughas_price = {
+	political_influence = 10
+}
+
+ulus_back_the_khan_price = {
+	political_influence = 15
+}

@@ -326,6 +326,10 @@ ulus_unseat_regent = {
 		remove_reform = government_reform:beglerbeg_regency
 	}
 	remove_variable = beglerbeg_regency_granted
+	if = {
+		limit = { has_country_modifier = amirs_regency_strain }
+		remove_country_modifier = amirs_regency_strain
+	}
 }
 
 # Any scope; needs scope:ulus_new_regent. The khan (if one lives) goes
@@ -577,6 +581,11 @@ ulus_regency_monthly_tick = {
 			set_variable = { name = ulus_murder_clock value = 0 }
 			ulus_regency_murder_roll = yes
 		}
+
+		# The disaster's month: the stage clock, the gap, the endings.
+		ulus_regency_stage_tick = yes
+		ulus_regency_gap_tick = yes
+		ulus_regency_endings_poll = yes
 	}
 }
 
@@ -660,4 +669,486 @@ ulus_regency_enter_stage = {
 		limit = { var:ulus_regency_stage >= 3 }
 		set_variable = ulus_members_may_leave
 	}
+}
+
+
+# =====================================================================
+# THE DISASTER'S MONTH (disasters/05_amirs_regency.txt explains why
+# this runs on the organisation and not on a country).
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# THE STAGE CLOCK. IO scope.
+#
+# Progress rises while the begs stay over the bar in the regent's own
+# realm (his nobles at ulus_regency_noble_power or more, or the three
+# greatest amirs together outweighing him), and falls while his crown
+# holds more than his nobles: a regent who builds a government stops
+# the slide, one who lives off his amirs does not. Deaths, funerals and
+# lost wars add their steps elsewhere. At ulus_regency_stage_length the
+# stage turns.
+#
+# In stage 4 there is no further stage. A full clock there with the
+# legitimacy gap under the filled line is the other road to Bulqaq
+# (design: "the gap runs dry in stage 4, or progress maxes out").
+# ---------------------------------------------------------------------
+ulus_regency_stage_tick = {
+	set_local_variable = { name = ulus_step value = 0 }
+	leader_country ?= {
+		if = {
+			limit = {
+				country_has_estate = estate_type:nobles_estate
+				"estate_power(estate_type:nobles_estate)" >= ulus_regency_noble_power
+			}
+			set_local_variable = { name = ulus_step value = ulus_regency_progress_monthly }
+		}
+		else_if = {
+			limit = {
+				country_has_estate = estate_type:nobles_estate
+				"estate_power(estate_type:crown_estate)" > "estate_power(estate_type:nobles_estate)"
+			}
+			set_local_variable = { name = ulus_step value = ulus_regency_progress_recovery }
+		}
+	}
+	if = {
+		limit = { has_variable = ulus_amir_ratio }
+		if = {
+			limit = { var:ulus_amir_ratio >= ulus_regency_progress_amir_ratio }
+			set_local_variable = { name = ulus_step value = ulus_regency_progress_monthly }
+		}
+	}
+	ulus_change_progress = { AMOUNT = local_var:ulus_step }
+
+	if = {
+		limit = { var:ulus_regency_progress >= ulus_regency_stage_length }
+		if = {
+			limit = { var:ulus_regency_stage < 4 }
+			change_variable = { name = ulus_regency_stage add = 1 }
+			set_variable = { name = ulus_regency_progress value = 0 }
+			ulus_regency_enter_stage = yes
+			ulus_regency_announce_stage = yes
+		}
+		else = {
+			set_variable = { name = ulus_regency_progress value = ulus_regency_stage_length }
+		}
+	}
+
+	# The strain on the regent's state, sized by stage.
+	leader_country ?= {
+		add_country_modifier = {
+			modifier = amirs_regency_strain
+			years = -1
+			mode = replace
+			size = {
+				value = international_organization:ulus_chaghatay.var:ulus_regency_stage
+				min = 1
+				max = 4
+			}
+		}
+	}
+}
+
+# IO scope: the stage has just turned; tell the regent, and do what the
+# new stage does at its opening. Events a day later, so nothing that
+# moves the leadership runs inside the organisation's own monthly
+# effect.
+ulus_regency_announce_stage = {
+	if = {
+		limit = { var:ulus_regency_stage = 2 }
+		leader_country ?= {
+			trigger_event_non_silently = { id = amirs_regency.100 days = 1 }
+		}
+	}
+	else_if = {
+		limit = { var:ulus_regency_stage = 3 }
+		leader_country ?= {
+			trigger_event_non_silently = { id = amirs_regency.110 days = 1 }
+		}
+	}
+	else_if = {
+		limit = { var:ulus_regency_stage = 4 }
+		leader_country ?= {
+			trigger_event_non_silently = { id = amirs_regency.120 days = 1 }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------
+# THE LEGITIMACY GAP. IO scope.
+#
+# The ghazi burden's decay-at-rest (auto_modifiers/
+# 03_eranzamin_legitimacy_crisis.txt, ghazi_lord_at_war) moved from a
+# modifier to a meter, because here the thing that decays is not the
+# realm's legitimacy but one man's standing among his peers. It drains
+# every month — a quarter of ulus_gap_drain_base in stage 1, half in
+# 2, three quarters in 3, all of it in 4, doubled when he rules without
+# a khan — and nothing fills it but victories, plunder and gold (the
+# hooks in on_action/31_amirs_regency_hooks.txt; the largesse action).
+# "The raid economy becomes the constitution."
+# ---------------------------------------------------------------------
+ulus_regency_gap_tick = {
+	set_local_variable = {
+		name = ulus_drain
+		value = {
+			value = ulus_gap_drain_base
+			multiply = var:ulus_regency_stage
+			divide = 4
+			multiply = -1
+		}
+	}
+	if = {
+		limit = { has_variable = ulus_no_khan }
+		change_local_variable = { name = ulus_drain multiply = 2 }
+	}
+	ulus_change_gap = { AMOUNT = local_var:ulus_drain }
+
+	if = {
+		limit = { var:ulus_gap >= ulus_gap_filled_line }
+		change_variable = { name = ulus_gap_filled_months add = 1 }
+		set_variable = { name = ulus_gap_empty_months value = 0 }
+	}
+	else = {
+		set_variable = { name = ulus_gap_filled_months value = 0 }
+		if = {
+			limit = { var:ulus_gap <= 0 }
+			change_variable = { name = ulus_gap_empty_months add = 1 }
+		}
+		else = {
+			set_variable = { name = ulus_gap_empty_months value = 0 }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------
+# THE ENDINGS. IO scope. Each fires its event on the regent a day
+# later; ulus_ending_called (two months) keeps it from being called
+# again before the event has run.
+#
+#   BULQAQ        the gap empty ulus_bulqaq_years running; or the clock
+#                 full in stage 4 with the gap under the line; or the
+#                 regent rules without a khan, no man of the line is
+#                 left to raise, and the gap is under the line.
+#   ṢĀḤIB-QIRĀN   stage 4, the khan alive in his keeping, a wife of the
+#                 line, and the gap filled ulus_sahib_qiran_years
+#                 running.
+# The Khan Triumphant is not polled: it comes from the purge action or
+# from the regent's defeat by a khan of the line.
+# ---------------------------------------------------------------------
+ulus_regency_endings_poll = {
+	if = {
+		limit = { NOT = { has_variable = ulus_ending_called } }
+		if = {
+			limit = {
+				OR = {
+					var:ulus_gap_empty_months >= ulus_bulqaq_months
+					AND = {
+						var:ulus_regency_stage >= 4
+						var:ulus_regency_progress >= ulus_regency_stage_length
+						var:ulus_gap < ulus_gap_filled_line
+					}
+					AND = {
+						has_variable = ulus_no_khan
+						var:ulus_gap < ulus_gap_filled_line
+						NOT = { ulus_khan_material_exists = yes }
+					}
+				}
+			}
+			set_variable = { name = ulus_ending_called value = 1 months = 2 }
+			leader_country ?= {
+				trigger_event_non_silently = { id = amirs_regency.220 days = 1 }
+			}
+		}
+		else_if = {
+			limit = {
+				var:ulus_regency_stage >= 4
+				var:ulus_gap_filled_months >= ulus_sahib_qiran_months
+				var:ulus_held_khan ?= { is_alive = yes }
+				leader_country ?= { ulus_ruler_is_gurkan = yes }
+			}
+			set_variable = { name = ulus_ending_called value = 1 months = 2 }
+			leader_country ?= {
+				trigger_event_non_silently = { id = amirs_regency.210 days = 1 }
+			}
+		}
+	}
+}
+
+# ---------------------------------------------------------------------
+# RENOWN. COUNTRY scope; the renown is the RULER's, so it dies with
+# him and his heir starts with none (which is half of why heirs lose
+# the khan). $AMOUNT$ a number or a script value.
+# ---------------------------------------------------------------------
+ulus_add_renown = {
+	ruler ?= {
+		if = {
+			limit = { has_variable = ulus_renown }
+			change_variable = { name = ulus_renown add = $AMOUNT$ }
+		}
+		else = {
+			set_variable = { name = ulus_renown value = $AMOUNT$ }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------
+# THE REGENCY IS OVER. IO scope. Clears the state of the regency from
+# the organisation (not the regent's own marks: ulus_unseat_regent).
+# ---------------------------------------------------------------------
+ulus_regency_clear = {
+	if = {
+		limit = {
+			var:ulus_held_khan ?= { is_alive = yes }
+		}
+		var:ulus_held_khan = {
+			remove_variable = patron_country
+			if = {
+				limit = { has_character_modifier = borjigin_puppet_sequestered }
+				remove_character_modifier = borjigin_puppet_sequestered
+			}
+		}
+	}
+	remove_variable = ulus_regency
+	remove_variable = ulus_regency_stage
+	remove_variable = ulus_regency_progress
+	remove_variable = ulus_gap
+	remove_variable = ulus_gap_bar
+	remove_variable = ulus_gap_filled_months
+	remove_variable = ulus_gap_empty_months
+	remove_variable = ulus_murder_clock
+	remove_variable = ulus_held_khan
+	remove_variable = ulus_held_khan_age
+	remove_variable = ulus_no_khan
+	remove_variable = ulus_regent
+	remove_variable = ulus_heir_standing
+	remove_variable = ulus_heir_bar
+	remove_variable = ulus_amirs_may_fight
+	remove_variable = ulus_members_may_leave
+	remove_variable = ulus_ending_called
+}
+
+# ---------------------------------------------------------------------
+# ENDING: THE KHAN TRIUMPHANT, by the purge. COUNTRY scope: the
+# regent's state.
+#
+# Qazan Khan's gamble of 1343-46, won. The khan the beg kept in a tent
+# has killed the beg's house and taken the beg's tümens for his own:
+# the state that held the khan is now the khan's own realm, and since
+# it already leads the ulus, the leadership "returns to a Borjigin's
+# realm" without moving.
+# ---------------------------------------------------------------------
+ulus_end_khan_triumphant_purge = {
+	if = {
+		limit = { exists = scope:ulus_puppet }
+		clear_saved_scope = ulus_puppet
+	}
+	international_organization:ulus_chaghatay ?= {
+		var:ulus_held_khan ?= { save_scope_as = ulus_puppet }
+		ulus_regency_clear = yes
+		set_variable = { name = ulus_khan_triumphant_peace value = 1 years = ulus_khan_triumphant_peace_years }
+	}
+	ulus_unseat_regent = yes
+	if = {
+		limit = {
+			scope:ulus_puppet ?= { is_alive = yes }
+		}
+		# His own accession is not polled as a khan's succession.
+		set_variable = { name = ulus_succession_settled value = 1 months = 6 }
+		set_new_ruler = scope:ulus_puppet
+	}
+	set_variable = horde_of_the_line
+	add_country_modifier = {
+		modifier = khan_triumphant_mod
+		years = 20
+	}
+	add_horde_unity = 25
+	international_organization:ulus_chaghatay ?= {
+		ulus_chaghatay_rebuild_ledger = yes
+	}
+}
+
+# ---------------------------------------------------------------------
+# ENDING: THE KHAN TRIUMPHANT, by the sword. COUNTRY scope: the realm
+# of the line that has beaten the regent (the eastern khanate, or a
+# member whose ruler is of the line). Needs scope:ulus_beaten_regent.
+#
+# Tughluq Temür in 1360-61: the khan from the east rode into
+# Transoxiana, the amirs submitted or fled, and for two years there was
+# one khan of the whole ulus again. The victor's realm leads the ulus;
+# if it had left, it comes back in and brings home the members who
+# followed it east.
+# ---------------------------------------------------------------------
+ulus_end_khan_triumphant_war = {
+	save_scope_as = ulus_victor
+	scope:ulus_beaten_regent ?= {
+		ulus_unseat_regent = yes
+	}
+	set_variable = ulus_chaghatay_admitted
+	every_subject = {
+		limit = { has_variable = ulus_followed_east }
+		add_to_list = ulus_returning
+	}
+	every_in_list = {
+		list = ulus_returning
+		save_scope_as = ulus_returner
+		scope:ulus_victor = { cancel_subject = scope:ulus_returner }
+		remove_variable = ulus_followed_east
+		set_variable = ulus_chaghatay_admitted
+		international_organization:ulus_chaghatay ?= {
+			add_country_to_international_organization = scope:ulus_returner
+		}
+	}
+	international_organization:ulus_chaghatay ?= {
+		if = {
+			limit = {
+				scope:ulus_victor = { NOT = { is_member_of_international_organization = prev } }
+			}
+			add_country_to_international_organization = scope:ulus_victor
+		}
+		ulus_regency_clear = yes
+		remove_variable = ulus_eastern_khanate
+		set_leader_country = scope:ulus_victor
+		set_variable = { name = ulus_khan_triumphant_peace value = 1 years = ulus_khan_triumphant_peace_years }
+		ulus_chaghatay_rebuild_ledger = yes
+	}
+	remove_variable = ulus_eastern_khanate_realm
+	set_variable = horde_of_the_line
+	add_country_modifier = {
+		modifier = khan_triumphant_mod
+		years = 20
+	}
+	add_horde_unity = 25
+}
+
+# ---------------------------------------------------------------------
+# ENDING: BULQAQ. COUNTRY scope: the regent's state.
+#
+# The word the Rus' chroniclers' Tatar informants used for the Golden
+# Horde after 1359 — "the great trouble" — and it fits Transoxiana in
+# the 1360s as well: no khan anyone obeys, no beg anyone follows, each
+# tümen for itself. The organisation dissolves and every member stands
+# alone. A khan in the east, if there is one, keeps his claim on each
+# of them (cb_restore_the_ulus reads ulus_bulqaq_orphan).
+# ---------------------------------------------------------------------
+ulus_end_bulqaq = {
+	save_scope_as = ulus_broken_regent
+	international_organization:ulus_chaghatay ?= {
+		if = {
+			limit = { has_variable = ulus_eastern_khanate }
+			var:ulus_eastern_khanate = { save_scope_as = ulus_eastern_khan }
+		}
+		every_international_organization_member = {
+			add_to_list = ulus_orphans
+		}
+		ulus_regency_clear = yes
+	}
+	ulus_unseat_regent = yes
+	every_in_list = {
+		list = ulus_orphans
+		set_variable = ulus_bulqaq_orphan
+		remove_variable = ulus_chaghatay_admitted
+		remove_variable = ulus_kingmaker_score
+		remove_variable = ulus_amir_share
+		remove_variable = ulus_weight
+		add_horde_unity = -10
+		if = {
+			limit = { exists = scope:ulus_eastern_khan }
+			save_scope_as = ulus_orphan
+			scope:ulus_eastern_khan = {
+				add_casus_belli = {
+					type = casus_belli:cb_restore_the_ulus
+					target = scope:ulus_orphan
+				}
+			}
+		}
+	}
+	set_global_variable = { name = ulus_chaghatay_ended value = 1 }
+	clear_global_variable_list = ulus_amirs
+	clear_global_variable_list = ulus_kingmakers
+	destroy_international_organization_no_instigator = { target = international_organization:ulus_chaghatay }
+}
+
+# ---------------------------------------------------------------------
+# ENDING: THE ṢĀḤIB-QIRĀN. COUNTRY scope: the regent's state.
+#
+# Balkh, April 1370. Temür took the citadel, had Husayn killed, took
+# Husayn's Chinggisid wife Saray Mulk for his own, set Soyurghatmish on
+# the felt, and received the oath of the amirs of the ulus one by one.
+# Those who gave it kept their tümens under him. Those who did not —
+# the Jalayir at Khujand, the Sufi lords of Khwarazm — he spent the
+# next ten years bringing to heel.
+#
+# So: the members who think well enough of him (opinion at
+# ulus_sahib_qiran_loyal_opinion or better) become his vassals; against
+# each of the rest he holds a subjugation claim
+# (cb_sahib_qiran_submission); the organisation is dissolved into his
+# realm; he takes gurkan_of_the_ulus. The khan stays in his tent — a
+# Ṣāḥib-qirān still rules behind one.
+#
+# The conquest ambition (the TIM tag and base's Rise of Timur) is
+# ulus_sahib_qiran_conquest_ambition, in
+# scripted_effects/16_sahib_qiran_effects.txt.
+# ---------------------------------------------------------------------
+ulus_end_sahib_qiran = {
+	save_scope_as = ulus_sahib_qiran_realm
+	international_organization:ulus_chaghatay ?= {
+		every_international_organization_member = {
+			limit = { NOT = { this = scope:ulus_sahib_qiran_realm } }
+			add_to_list = ulus_to_reckon
+		}
+		# The khan keeps his marks: he is still held.
+		remove_variable = ulus_held_khan
+		ulus_regency_clear = yes
+	}
+	ulus_unseat_regent = yes
+	set_variable = ulus_sahib_qiran
+	set_global_variable = { name = ulus_sahib_qiran_realm value = scope:ulus_sahib_qiran_realm }
+	if = {
+		limit = { has_ruler = yes }
+		set_global_variable = { name = ulus_sahib_qiran_character value = scope:ulus_sahib_qiran_realm.ruler }
+	}
+	if = {
+		limit = { government_type = government_type:steppe_horde }
+		add_reform = government_reform:gurkan_of_the_ulus
+	}
+	add_country_modifier = {
+		modifier = sahib_qiran_ascendant_mod
+		years = 10
+	}
+	add_horde_unity = 50
+	add_prestige = 25
+
+	every_in_list = {
+		list = ulus_to_reckon
+		remove_variable = ulus_chaghatay_admitted
+		remove_variable = ulus_kingmaker_score
+		remove_variable = ulus_amir_share
+		remove_variable = ulus_weight
+		save_scope_as = ulus_reckoned
+		if = {
+			limit = {
+				is_subject = no
+				opinion = {
+					target = scope:ulus_sahib_qiran_realm
+					value >= ulus_sahib_qiran_loyal_opinion
+				}
+			}
+			make_subject_of = {
+				target = scope:ulus_sahib_qiran_realm
+				type = subject_type:vassal
+			}
+		}
+		else = {
+			scope:ulus_sahib_qiran_realm = {
+				add_casus_belli = {
+					type = casus_belli:cb_sahib_qiran_submission
+					target = scope:ulus_reckoned
+					years = 20
+				}
+			}
+		}
+	}
+	set_global_variable = { name = ulus_chaghatay_ended value = 1 }
+	clear_global_variable_list = ulus_amirs
+	clear_global_variable_list = ulus_kingmakers
+	destroy_international_organization_no_instigator = { target = international_organization:ulus_chaghatay }
 }

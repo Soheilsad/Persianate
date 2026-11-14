@@ -1,0 +1,18 @@
+# AI evaluation list for the Amirs' Regency actions
+# (generic_actions/amirs_regency_actions.txt). The gate is a cheap
+# SUPERSET of every action's own potential: ulus_weight is written
+# monthly on every member of Ulus Chaghatay by the ledger and on nobody
+# else, so one variable test keeps the rest of the world from
+# evaluating these at all.
+amirs_regency_actions_list = {
+	potential = {
+		has_variable = ulus_weight
+	}
+	actions = {
+		ulus_recall_darughas
+		ulus_marry_into_the_line
+		ulus_distribute_largesse
+		ulus_claim_the_khan
+		ulus_back_the_khan
+	}
+}

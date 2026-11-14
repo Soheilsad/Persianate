@@ -77,6 +77,11 @@ ulus_is_khan_material = {
 # over the bar? Either reading is enough (design, "The amirs raise a
 # khan"); both shrink by a third after a child khan.
 ulus_regency_bar_met = {
+	# Not within ulus_khan_triumphant_peace_years of a khan breaking a
+	# regency: the begs who would raise another are dead or cowed.
+	NOT = {
+		international_organization:ulus_chaghatay ?= { has_variable = ulus_khan_triumphant_peace }
+	}
 	OR = {
 		AND = {
 			country_has_estate = estate_type:nobles_estate

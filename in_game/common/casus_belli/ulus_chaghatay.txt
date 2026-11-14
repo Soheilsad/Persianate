@@ -22,6 +22,8 @@ cb_restore_the_ulus = {
 			OR = {
 				has_variable = ulus_regent_seat
 				has_variable = ulus_sahib_qiran
+				# After the Bulqaq: every tümen that went its own way.
+				has_variable = ulus_bulqaq_orphan
 			}
 		}
 	}
@@ -48,4 +50,40 @@ cb_take_the_khan = {
 		}
 	}
 	war_goal_type = take_the_khan_wargoal
+}
+
+# THE ULUS IN DISARRAY. Handed to the regent's strongest neighbours
+# when the regency reaches its third stage: a fractured ulus with a
+# beg at its head is an invitation, and Tughluq Temür was not the only
+# one to read it so (the Kartids of Herat raided to the Oxus in the
+# same years). Ten years (add_casus_belli sets the term).
+cb_ulus_in_disarray = {
+	create_visible = {
+		always = no
+	}
+	create_enabled = {
+		always = no
+	}
+	declare_enabled = {
+		scope:target = {
+			has_variable = ulus_regent_seat
+		}
+	}
+	war_goal_type = ulus_in_disarray_wargoal
+}
+
+# THE ṢĀḤIB-QIRĀN'S RECKONING. Against each amir who did not bow when
+# the ulus became one man's realm: Temür's campaigns of the 1370s
+# against the Jalayir and the Sufis of Khwarazm.
+cb_sahib_qiran_submission = {
+	create_visible = {
+		always = no
+	}
+	create_enabled = {
+		always = no
+	}
+	declare_enabled = {
+		has_variable = ulus_sahib_qiran
+	}
+	war_goal_type = sahib_qiran_submission_wargoal
 }
