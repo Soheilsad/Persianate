@@ -1,17 +1,21 @@
 # Outcome tests of the Rise of Timur situation as this mod runs it
 # (common/situations/rise_of_timur.txt). Any scope; all read c:TIM.
 
-# THE CONJUNCTION HOLDS. He has made himself master of Erānzamīn
-# (is_eranzamin_consolidation_sustained, scripted_triggers/
-# 03_matter_triggers.txt) and still holds the two cities of
-# Transoxiana his rule began from, with his fortune not in the low band.
+# THE CONJUNCTION HOLDS. He has made good sq_ambitions_needed declared
+# conquest ambitions (ANY regions: sq_ambition_check in scripted_effects/
+# 18_sahib_qiran_fortune_effects.txt counts them), still owns the seat
+# his rule began from, and his fortune is not in the low band.
+# Nothing sends him west. Temür took Iran first because the Iran of the
+# 1380s was rich, near and without a master; he sacked Delhi in 1398 and
+# died on the road to China in 1405. A Ṣāḥib-qirān of another decade,
+# or one whose Iran is already united, chooses otherwise.
 sq_conjunction_holds = {
 	custom_tooltip = {
 		text = sq_conjunction_holds_tt
 		c:TIM ?= {
-			is_eranzamin_consolidation_sustained = yes
-			owns = location:samarkand
-			owns = location:bukhara
+			has_variable = sq_ambitions_count
+			var:sq_ambitions_count >= sq_ambitions_needed
+			var:sq_seat ?= { owner ?= c:TIM }
 			NOT = { has_variable = sq_band_low }
 		}
 	}

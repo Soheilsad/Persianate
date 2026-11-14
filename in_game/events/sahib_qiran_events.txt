@@ -93,3 +93,24 @@ sahib_qiran.3 = {
 		add_prestige = sq_conjunction_prestige
 	}
 }
+
+# ----------------------------------------------------------------------------
+# .4 — AN AMBITION MADE GOOD (sq_ambition_check). Notification; the
+# fortune has already risen.
+# ----------------------------------------------------------------------------
+sahib_qiran.4 = {
+	type = country_event
+	title = sahib_qiran.4.title
+	desc = sahib_qiran.4.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = sahib_qiran.4.a
+		custom_tooltip = sahib_qiran_ambition_tt
+	}
+}

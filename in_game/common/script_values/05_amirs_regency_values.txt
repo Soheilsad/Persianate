@@ -359,3 +359,9 @@ ulus_rising_ai_patience_months = 36
 # What a pledged amir receives when the house he backed takes the khan.
 ulus_pledge_favors = 20
 ulus_pledge_prestige = 10
+# An ambition is "made good" at this share of the region's locations in
+# his or his subjects' hands; what it adds to his fortune; how many make
+# the Conjunction hold.
+sq_ambition_share = 0.6
+sq_fortune_ambition = 15
+sq_ambitions_needed = 2

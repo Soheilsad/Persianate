@@ -56,12 +56,66 @@ sq_fortune_seed = {
 	}
 	set_variable = { name = sq_peace_months value = 0 }
 	set_variable = { name = sq_empty_months value = 0 }
+	set_variable = { name = sq_ambitions_count value = 0 }
+	# The seat his rule began from, wherever it was: the "Conjunction
+	# Holds" outcome asks that he still own it.
+	if = {
+		limit = { exists = capital }
+		set_variable = { name = sq_seat value = capital }
+	}
 	if = {
 		limit = { has_ruler = yes }
 		ruler = { save_scope_as = sq_man_scope }
 		set_variable = { name = sq_man value = scope:sq_man_scope }
 	}
 	sq_fortune_refresh = yes
+}
+
+# COUNTRY scope (the Ṣāḥib-qirān's realm), monthly from sq_fortune_tick.
+# AN AMBITION MADE GOOD. The situation holds the region he has declared
+# his conquest ambition (base: rot_conquest_ambition, changed by the
+# Declare Conquest Ambition action). When he and his subjects own
+# sq_ambition_share of its locations, it is counted once (list
+# sq_ambitions_done, counter sq_ambitions_count), his fortune rises by
+# sq_fortune_ambition, and he is told. Any region: Iran, Hindustan,
+# the Qipchaq steppe, Khitai. Two of them make the Conjunction hold
+# (scripted_triggers/13_sahib_qiran_triggers.txt).
+sq_ambition_check = {
+	if = {
+		limit = {
+			is_situation_active = situation:rise_of_timur
+			situation:rise_of_timur = { has_variable = rot_conquest_ambition }
+		}
+		save_scope_as = sq_realm
+		situation:rise_of_timur.var:rot_conquest_ambition = {
+			save_scope_as = sq_ambition_region
+		}
+		if = {
+			limit = {
+				NOT = {
+					is_target_in_variable_list = {
+						name = sq_ambitions_done
+						target = scope:sq_ambition_region
+					}
+				}
+				scope:sq_ambition_region = {
+					any_location_in_region = {
+						percent >= sq_ambition_share
+						owner ?= {
+							OR = {
+								this = scope:sq_realm
+								is_subject_of = scope:sq_realm
+							}
+						}
+					}
+				}
+			}
+			add_to_variable_list = { name = sq_ambitions_done target = scope:sq_ambition_region }
+			change_variable = { name = sq_ambitions_count add = 1 }
+			sq_change_fortune = { AMOUNT = sq_fortune_ambition }
+			trigger_event_non_silently = sahib_qiran.4
+		}
+	}
 }
 
 # COUNTRY scope. $AMOUNT$ a number or a script value; clamped 0..100.
@@ -171,6 +225,8 @@ sq_fortune_tick = {
 
 	# The reckoning. sq_reckoning_called (two months) keeps it from
 	# being called again before the event has run.
+	sq_ambition_check = yes
+
 	# Under an heir (sq_heir_reign, set at every accession after the
 	# founder's): months running in the low band, for the "Sons Divide"
 	# outcome of the situation.

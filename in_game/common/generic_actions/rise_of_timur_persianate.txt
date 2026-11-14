@@ -68,3 +68,333 @@ REPLACE:rot_reform_into_monarchy = {
 		add = 250	#Ai should always do it asap
 	}
 }
+
+
+# =====================================================================
+# THE CONQUEST ACTIONS — base copies (1.4.7) with the marked changes.
+#
+# Plan Invasion offered only the Ṣāḥib-qirān's OWN neighbours (plus the
+# realms of his declared ambition). But his own domain is one house's
+# pastures; his frontier is the frontier of the amirs sworn to him. So
+# both actions now count his subjects' borders as his.
+#
+# Declare Conquest Ambition: base's AI, under the historical rule, had to
+# name Persia first. Nothing obliged him to go west: Iran was the nearest
+# rich country without a master in the 1380s, which is a fact about the
+# 1380s. A Ṣāḥib-qirān of the 1350s faces a Yuan in collapse; one whose
+# Iran is already united has India. The AI now takes what is offered.
+# Search "PERSIANATE WORLD" for each change; re-diff after a patch.
+# =====================================================================
+
+REPLACE:rot_declare_conquest_ambition = {
+	type = situation
+	potential = {
+		scope:actor = {
+			tag = TIM
+		}
+	}
+	allow = {
+		scope:actor = {
+			is_rebel_country = no
+		}
+	}
+
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+
+	cooldown = {
+		type = rot_declare_conquest_ambition
+		years = 5
+	}
+	
+	select_trigger = {
+		looking_for_a = situation
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:rise_of_timur = this
+			situation_is_active = yes
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = region
+		target_flag = target
+		name = "rot_declare_conquest_ambition_select_region"
+		none_available_msg_key = "rot_declare_conquest_ambition_no_regions"
+		column = {
+			data = name
+		}
+		column = {
+			data = population
+		}
+		visible = {
+			scope:actor.capital.region != root
+			any_area_in_region = {
+				# PERSIANATE WORLD: his sworn amirs' and other subjects'
+				# borders count as his own.
+				save_temporary_scope_as = rot_area
+				OR = {
+					adjacent_to_owned_by = scope:actor
+					scope:actor = {
+						any_subject = {
+							save_temporary_scope_as = rot_subject
+							scope:rot_area = { adjacent_to_owned_by = scope:rot_subject }
+						}
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = {
+			text = rot_declare_conquest_ambition_tt
+			scope:recipient = {
+				if = {
+					limit = { has_variable = rot_conquest_ambition }
+					#clear up all the previous modifiers first
+					var:rot_conquest_ambition = {
+						every_location_in_region = {
+							remove_location_modifier = rot_timur_scare
+						}
+					}
+				}
+				set_variable = {
+					name = rot_conquest_ambition
+					value = scope:target
+				}
+			}
+		}
+		custom_tooltip = rot_declare_conquest_ambition_at
+		if = {
+			limit = {
+				scope:actor = {
+					ruler ?= { has_character_modifier = timmy_wants_to_play }
+				}
+			}
+			custom_tooltip = rot_declare_conquest_ambition_bt
+		}
+	}
+
+	ai_will_do = {
+		if = {
+			limit = {
+				NOT = { scope:recipient = { has_variable = rot_conquest_ambition } }
+			}
+			value = 1000
+		}
+		else = {
+			value = -100
+		}
+	}
+}
+
+REPLACE:rot_plan_invasion = {
+	type = situation	
+	potential = {
+		scope:actor = {
+			tag = TIM
+		}
+	}
+	allow = {
+		scope:actor = {
+			is_rebel_country = no
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = situation
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:rise_of_timur = this
+			situation_is_active = yes
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		interaction_source_list = {
+			if = {
+				limit = {
+					scope:recipient = {
+						has_variable = rot_conquest_ambition
+					}
+				}
+				scope:recipient = {
+					var:rot_conquest_ambition = {
+						every_country_with_capital_in_geography = {
+							limit = { this != scope:actor }
+							add_to_list = source
+						}
+					}
+				}
+			}
+			scope:actor = {
+				every_neighbor_country = {
+					add_to_list = source
+				}
+				# PERSIANATE WORLD: the neighbours of his subjects too. The
+				# Ṣāḥib-qirān's own domain may be one tümen's pastures; his
+				# frontier is his sworn amirs'.
+				every_subject = {
+					every_neighbor_country = {
+						limit = {
+							this != scope:actor
+							NOT = { is_subject_of = scope:actor }
+						}
+						add_to_list = source
+					}
+				}
+			}
+		}
+		target_flag = target
+		name = "rot_plan_invasion_select_country"
+		none_available_msg_key = "rot_plan_invasion_no_countries"
+		column = {
+			data = name
+		}
+		column = {
+			data = expected_army_size
+		}
+		visible = {
+			is_real_country = yes
+			scope:actor = {
+				can_declare_war_on = root
+				NOT = { has_truce_with = root }
+				NOT = { is_allied_with = { target = root } }
+			}
+		}
+	}
+
+	cooldown = {
+		type = rot_plan_invasion
+		months = 3
+	}
+
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	ai_tick = monthly
+	ai_tick_frequency = {
+		if = {
+			limit = {
+				at_war = yes
+			}
+			value = 18
+		}
+		else = {
+			value = 3
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			if = {
+				limit = {
+					exists = scope:target
+				}
+				if = {
+					limit = {
+						scope:target = {
+							capital = {
+								OR = {
+									region = scope:actor.capital.region
+									AND = {
+										scope:recipient = { has_variable = rot_conquest_ambition }
+										region = scope:recipient.var:rot_conquest_ambition
+									}
+								}
+							}
+						}
+					}
+					drop_antagonism_bomb = {
+						target = scope:target.capital
+						modifier = antagonism_started_invasion
+					}
+					declare_war_with_cb = {
+						target = scope:target
+						type = casus_belli:cb_timurs_conquests
+					}
+				}
+				else = {
+					add_casus_belli = {
+						target = scope:target
+						type = casus_belli:cb_timurs_conquests
+					}
+					drop_antagonism_bomb = {
+						target = scope:target.capital
+						modifier = antagonism_planned_invasion
+					}
+				}
+			}
+			else = {
+				custom_tooltip = rot_plan_invasion_tt
+				if = {
+					limit = {
+						scope:recipient = { has_variable = rot_conquest_ambition }
+					}
+					custom_tooltip = rot_plan_invasion_bt
+				}
+				else = {
+					custom_tooltip = rot_plan_invasion_at
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		value = -20
+		if = {
+			limit = { exists = scope:target }
+			if = {
+				limit = {
+					scope:target = {
+						capital = {
+							OR = {
+								region = scope:actor.capital.region
+								AND = {
+									scope:recipient = { has_variable = rot_conquest_ambition }
+									region = scope:recipient.var:rot_conquest_ambition
+								}
+							}
+						}
+					}
+				}
+				add = 200
+			}
+			add = {
+				value = "scope:actor.opinion(scope:target)"
+				multiply = -1
+			}
+			add = {
+				value = "scope:actor.antagonism(scope:actor)"
+				divide = -10
+			}
+			multiply = "scope:actor.relative_military_strength(scope:target)"
+			if = {
+				limit = {
+					scope:target = {
+						NOT = { is_neighbor_of = scope:actor }
+						# PERSIANATE WORLD: nor a neighbour of his subjects.
+						NOT = {
+							scope:actor = {
+								any_subject = { is_neighbor_of = scope:target }
+							}
+						}
+					}
+				}
+				subtract = 1000
+			}
+		}
+	}
+}
