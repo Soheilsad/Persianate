@@ -35,5 +35,12 @@ iranic_tribal_polity = {
 		# Thin chancery, light footprint — survives as a nominal vassal of
 		# whichever empire is ascendant.
 		diplomatic_spending_cost = -0.5 # 1.4 name for diplomatic upkeep (was diplomatic_upkeep_modifier)
+		# A mîr over a subject majority of another people is the normal
+		# shape of this polity: the Kurdish emirs of Bitlis, Mush and
+		# Hizan ruled realms two-thirds to nine-tenths Armenian as
+		# protected raʿiyya. County rank plus the acceptance advance
+		# gives 1.0 capacity, and tolerating a people that large costs
+		# about 1.3, so none of them could recognise their own subjects.
+		cultures_capacity = 1
 	}
 }

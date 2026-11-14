@@ -219,6 +219,28 @@ proclaim_khuruj = {
 		}
 	}
 
+	# Every base action of type = religious selects a religion as its
+	# "recipient" first (ibadi.txt, religious orders: 96 of 96). Without
+	# it the engine logs "Could not find flag recipient" each time the AI
+	# weighs the action — the long-running flood in error.log. The order's
+	# own faith is the only entry.
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion"
+		column = {
+			data = name
+		}
+		interaction_source_list = {
+			scope:actor = {
+				religion = {
+					add_to_list = source
+				}
+			}
+		}
+	}
+
 	allow = {
 		scope:actor = {
 			# Only a completed radicalization arms the tribes — the
@@ -352,6 +374,28 @@ rise_against_patron = {
 		}
 	}
 
+	# Every base action of type = religious selects a religion as its
+	# "recipient" first (ibadi.txt, religious orders: 96 of 96). Without
+	# it the engine logs "Could not find flag recipient" each time the AI
+	# weighs the action — the long-running flood in error.log. The order's
+	# own faith is the only entry.
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion"
+		column = {
+			data = name
+		}
+		interaction_source_list = {
+			scope:actor = {
+				religion = {
+					add_to_list = source
+				}
+			}
+		}
+	}
+
 	allow = {
 		scope:actor = {
 			# The Marʿashi trigger: the patron has struck the zawiyas
@@ -459,6 +503,28 @@ capture_the_court = {
 			country_type = building
 			has_reform = government_reform:tariqa_urban_base
 			NOT = { has_variable = tariqa_settled }
+		}
+	}
+
+	# Every base action of type = religious selects a religion as its
+	# "recipient" first (ibadi.txt, religious orders: 96 of 96). Without
+	# it the engine logs "Could not find flag recipient" each time the AI
+	# weighs the action — the long-running flood in error.log. The order's
+	# own faith is the only entry.
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion"
+		column = {
+			data = name
+		}
+		interaction_source_list = {
+			scope:actor = {
+				religion = {
+					add_to_list = source
+				}
+			}
 		}
 	}
 

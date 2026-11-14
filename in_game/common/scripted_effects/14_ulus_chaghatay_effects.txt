@@ -28,15 +28,15 @@
 #     ulus_beg_power    nobles' estate power in the leader's realm,
 #                       0..100                              (header)
 #     ulus_beg_bar      the same against the 50% bar, 0..1
-#     ulus_amir_ratio   amirs' combined weight / the leader's own
-#                                                           (header)
+#     ulus_amir_ratio   the three greatest amirs' combined weight /
+#                       the leader's own                    (header)
 #     ulus_amir_bar     the same against the 2.0 bar, 0..1
 #     ulus_khan_heir    the leader's heir (character), unset if none
 #
 # THE REGENCY BAR (design, "The amirs raise a khan"): the begs can raise
 # a khan of their own when the nobles hold half the power in the khan's
-# realm, or when the junior members together field more than twice the
-# khan's strength. Both readings are kept; whichever fills first is the
+# realm, or when his three greatest amirs together outweigh him twice
+# over (NOT all amirs: their sum always exceeds the khan's). Both readings are kept; whichever fills first is the
 # one to watch.
 #
 # estate_power is on a 0..1 scale (events/horde_succession.txt, verified
@@ -166,6 +166,22 @@ ulus_chaghatay_rebuild_ledger = {
 	}
 
 	# ---4. The seat: its own strength, its begs, its heir ----------------
+	# The three greatest amirs together. The khan never outweighs ALL
+	# his amirs: at his best he is worth three or four of them, and with
+	# a court at Almaliq he may not even be the largest. So the reading
+	# that means something is the khan against his three GREATEST amirs:
+	# near 1.0 he is their match, at 2.0 they outweigh him twice over.
+	set_local_variable = { name = ulus_top3 value = 0 }
+	ordered_international_organization_member = {
+		limit = {
+			NOT = { is_leader_of_international_organization = scope:ulus_io }
+		}
+		order_by = ulus_realm_weight
+		max = 3
+		check_range_bounds = no
+		change_local_variable = { name = ulus_top3 add = var:ulus_weight }
+	}
+
 	leader_country ?= {
 		set_local_variable = { name = ulus_khan_str value = var:ulus_weight }
 		if = {
@@ -207,7 +223,7 @@ ulus_chaghatay_rebuild_ledger = {
 		set_variable = {
 			name = ulus_amir_ratio
 			value = {
-				value = local_var:ulus_amir_str
+				value = local_var:ulus_top3
 				divide = local_var:ulus_khan_str
 				max = 100
 			}
@@ -216,7 +232,7 @@ ulus_chaghatay_rebuild_ledger = {
 	else = {
 		# A khan with no host at all: the bar is met by anyone who has one.
 		if = {
-			limit = { local_var:ulus_amir_str > 0 }
+			limit = { local_var:ulus_top3 > 0 }
 			set_variable = { name = ulus_amir_ratio value = 100 }
 		}
 		else = {
