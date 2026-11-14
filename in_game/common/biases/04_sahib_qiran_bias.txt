@@ -1,0 +1,8 @@
+# Opinion from the Ṣāḥib-qirān's embassies (on_action/
+# 33_sahib_qiran_hooks.txt, sq_courting_pulse). Form as
+# 03_amirs_cadet_bias.txt.
+
+opinion_sq_embassy_gifts = {
+	value = 50
+	yearly_decay = 5
+}

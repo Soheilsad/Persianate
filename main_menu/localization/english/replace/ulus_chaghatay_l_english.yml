@@ -80,10 +80,11 @@
 
  ULUS_CROWN_ROW: "Power of the crown"
  ULUS_KHAN_WEIGHT: "Weight of the khan"
- ULUS_KHAN_WEIGHT_TT: "The khan's own realm on the scale every member of the ulus is weighed on. Each member's [military_strength|e], tax base and prestige are taken as its share of the whole ulus's total, khan included; half the weight comes from the first (out of 50), about a third from the second (out of 35) and the rest from the third (out of 15). All members' weights together make 100."
+ ULUS_KHAN_WEIGHT_TT: "The khan's own realm on the scale every member of the ulus is weighed on. Each member's [military_strength|e], tax base, ruler's abilities and prestige are taken as its share of the whole ulus's total, khan included: the host counts for 40, the tax base for 30, the ruler for 20 and prestige for 10. All members' weights together make 100. On top of that come the tümens pledged to a house, a share of its friends outside the ulus, and for a time whatever largesse has bought."
  ULUS_WEIGHT_MIL: "strength"
  ULUS_WEIGHT_TAX: "tax"
  ULUS_WEIGHT_PRE: "prestige"
+ ULUS_WEIGHT_RUL: "ruler"
  ULUS_GREATEST_AMIR_TT: "One of the three heaviest amir realms, with its weight (out of 100 across the whole ulus). The three weights are summed for the bar above."
  ULUS_AGAINST: "against"
  ULUS_SCORE_HEADER: "kingmaker score"

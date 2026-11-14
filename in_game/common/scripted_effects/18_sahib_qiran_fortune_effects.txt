@@ -294,3 +294,107 @@ sq_fortune_succession = {
 	set_variable = { name = sq_empty_months value = 0 }
 	sq_fortune_refresh = yes
 }
+
+# ---------------------------------------------------------------------
+# THE ARMY IS LOST. COUNTRY scope: the Ṣāḥib-qirān's realm, having lost
+# a war to an outsider with his fortune already in the low band;
+# scope:sq_victor is the victor. Once in a game (global sq_army_lost).
+#
+# The Chaghatay were an army with households. This is the army gone:
+# the reckoning at once (the sworn amirs ride away), and what the
+# Bulqaq leads to without waiting for a Bulqaq — he and the amirs who
+# were his are marked as the broken ulus's orphans, every outside
+# neighbour gets the claim on them (ulus_bulqaq_open_the_pastures,
+# scripted_effects/20_chaghatay_breaking_effects.txt, reads the list
+# ulus_orphans built here), and the prize and the dissolution of
+# on_action/36_chaghatay_breaking_hooks.txt open (global
+# ulus_bulqaq_done).
+# ---------------------------------------------------------------------
+sq_army_is_lost = {
+	set_global_variable = { name = sq_army_lost value = 1 }
+	add_to_list = ulus_orphans
+	every_subject = {
+		limit = { has_variable = sq_sworn_amir }
+		add_to_list = ulus_orphans
+	}
+	sq_fortune_reckoning = yes
+	every_in_list = {
+		list = ulus_orphans
+		set_variable = ulus_bulqaq_orphan
+	}
+	set_global_variable = { name = ulus_bulqaq_done value = 1 }
+	ulus_bulqaq_open_the_pastures = yes
+	# The man who broke the army has the claim whether he borders them
+	# or not.
+	scope:sq_victor ?= {
+		every_in_list = {
+			list = ulus_orphans
+			limit = {
+				NOT = { this = scope:sq_victor }
+				NOT = { is_subject_of = scope:sq_victor }
+			}
+			save_scope_as = sq_orphan
+			scope:sq_victor = {
+				add_casus_belli = {
+					type = casus_belli:cb_break_the_tumens
+					target = scope:sq_orphan
+					years = 25
+				}
+			}
+		}
+		trigger_event_non_silently = sahib_qiran.6
+	}
+	trigger_event_non_silently = sahib_qiran.5
+}
+
+# ---------------------------------------------------------------------
+# AN EMBASSY TO THE STRONG. COUNTRY scope: an AI Ṣāḥib-qirān;
+# scope:sq_courted is the neighbour (sq_worth_courting). Gifts worth
+# sq_court_gift_gold go to him. An AI neighbour takes them (mutual
+# opinion), and if each then thinks well enough of the other, and the
+# neighbour is not one to keep to himself, they ally. A PLAYER is asked
+# (sahib_qiran.7) and nothing is done to him without his answer.
+# ---------------------------------------------------------------------
+sq_send_embassy = {
+	set_variable = { name = sq_courted_recently value = 1 years = 5 }
+	set_local_variable = { name = sq_gift value = sq_court_gift_gold }
+	save_scope_as = sq_courting_realm
+	if = {
+		limit = { scope:sq_courted = { is_ai = no } }
+		set_variable = { name = sq_gift_offered value = local_var:sq_gift years = 1 }
+		scope:sq_courted = {
+			trigger_event_non_silently = sahib_qiran.7
+		}
+	}
+	else = {
+		add_gold = {
+			value = local_var:sq_gift
+			multiply = -1
+		}
+		scope:sq_courted = {
+			add_gold = local_var:sq_gift
+		}
+		add_opinion_mutual_effect = {
+			modifier = opinion_sq_embassy_gifts
+			target = scope:sq_courted
+		}
+		if = {
+			limit = {
+				opinion = {
+					target = scope:sq_courted
+					value >= sq_ai_court_alliance_opinion
+				}
+				scope:sq_courted = {
+					opinion = {
+						target = scope:sq_courting_realm
+						value >= sq_ai_court_alliance_opinion
+					}
+					NOT = { ai_personality = ai_personality:ai_isolationist }
+					NOT = { is_rival_of = scope:sq_courting_realm }
+					at_war = no
+				}
+			}
+			create_alliance = { target = scope:sq_courted }
+		}
+	}
+}

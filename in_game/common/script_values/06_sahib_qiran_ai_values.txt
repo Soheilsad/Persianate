@@ -1,0 +1,176 @@
+# =====================================================================
+# THE ṢĀḤIB-QIRĀN'S JUDGEMENT — what the AI weighs when it names an
+# ambition, plans an invasion, courts a neighbour or divides plunder.
+#
+# His programme, as the author reads it (and Manz): find somewhere
+# WEALTHY and CONQUERABLE, so that the tribal class of a poor and
+# war-worn ulus can sit on top of somebody richer. Iran in the 1380s,
+# Delhi in a succession crisis in 1398; the Golden Horde when Tokhtamysh
+# had split it; not the poor steppe, and not a strong realm at its
+# height. So every score below is wealth against strength, with a
+# wounded realm counted as weaker than its muster.
+#
+# Read by generic_actions/rise_of_timur_persianate.txt and
+# sahib_qiran_actions.txt, and on_action/33_sahib_qiran_hooks.txt.
+# scope:actor is the Ṣāḥib-qirān's realm wherever it appears.
+# =====================================================================
+
+# ---- tunables --------------------------------------------------------
+# A realm is "wounded" at this war exhaustion or under this manpower.
+sq_ai_wounded_exhaustion = 5
+sq_ai_wounded_manpower = 0.4
+# A wounded realm's strength counts for this much of its muster.
+sq_ai_wounded_factor = 0.5
+# "Much stronger than us": never attacked, and each such ruler in a
+# region weighs against naming it.
+sq_ai_outmatched_ratio = 1.25
+# "Clearly stronger": the neighbour he courts instead.
+sq_ai_court_ratio = 1.2
+# "An easy war": a target under this share of our strength.
+sq_ai_easy_ratio = 0.5
+# Ambition score: points per multiple of OUR tax base the region holds
+# (capped), points taken per multiple of OUR strength its rulers muster
+# (capped), and per outmatching ruler.
+sq_ai_wealth_points = 25
+sq_ai_wealth_cap = 150
+sq_ai_strength_points = 30
+sq_ai_strength_cap = 180
+sq_ai_outmatched_points = 70
+sq_ai_wounded_prey_points = 40
+# Courting: months of income sent as gifts, the opinion each side must
+# hold for an alliance, years between embassies.
+sq_ai_court_gift_months = 6
+sq_ai_court_alliance_opinion = 75
+sq_ai_court_years = 5
+# Divide the Plunder: months of income he keeps in hand before the AI
+# will open the chest when nothing presses.
+sq_ai_plunder_reserve_months = 18
+
+# ---- one realm ---------------------------------------------------------
+# COUNTRY scope: its muster as he should fear it. Halved if wounded
+# (sq_is_wounded_realm, scripted_triggers/13_sahib_qiran_triggers.txt).
+sq_effective_strength = {
+	value = military_strength
+	if = {
+		limit = { sq_is_wounded_realm = yes }
+		multiply = sq_ai_wounded_factor
+	}
+}
+
+# Any scope with scope:actor: his own strength and tax base, never 0
+# (divisors).
+sq_actor_strength = {
+	value = scope:actor.military_strength
+	min = 1
+}
+sq_actor_tax = {
+	value = scope:actor.country_tax_base
+	min = 1
+}
+
+# ---- a region as an ambition (REGION scope; scope:actor) ---------------
+# What there is to take: the tax base of every realm seated in the
+# region that is not his or his subject's, in multiples of his own.
+sq_region_wealth_ratio = {
+	value = 0
+	every_country_with_capital_in_geography = {
+		limit = {
+			this != scope:actor
+			is_rebel_country = no
+			NOT = { is_subject_of = scope:actor }
+		}
+		add = country_tax_base
+	}
+	divide = sq_actor_tax
+}
+
+# What stands in the way: their effective strength together, in
+# multiples of his.
+sq_region_strength_ratio = {
+	value = 0
+	every_country_with_capital_in_geography = {
+		limit = {
+			this != scope:actor
+			is_rebel_country = no
+			NOT = { is_subject_of = scope:actor }
+		}
+		add = sq_effective_strength
+	}
+	divide = sq_actor_strength
+}
+
+# How many rulers there outmatch him even so.
+sq_region_outmatching_rulers = {
+	value = 0
+	every_country_with_capital_in_geography = {
+		limit = {
+			this != scope:actor
+			is_rebel_country = no
+			NOT = { is_subject_of = scope:actor }
+			sq_outmatches_actor = yes
+		}
+		add = 1
+	}
+}
+
+# THE SCORE. Positive: worth naming. The action's ai_will_do adds the
+# personality and the keep-or-switch logic on top.
+#   + wealth    25 per multiple of his own tax base, to 150
+#   - strength  30 per multiple of his own strength, to 180
+#   - 70        for each ruler who outmatches him (1.25x, wounded halved)
+#   + 40        if a rich realm there (half his tax base or more) is wounded
+sq_region_ambition_score = {
+	value = 0
+	add = {
+		value = sq_region_wealth_ratio
+		multiply = sq_ai_wealth_points
+		max = sq_ai_wealth_cap
+	}
+	subtract = {
+		value = sq_region_strength_ratio
+		multiply = sq_ai_strength_points
+		max = sq_ai_strength_cap
+	}
+	subtract = {
+		value = sq_region_outmatching_rulers
+		multiply = sq_ai_outmatched_points
+	}
+	if = {
+		limit = {
+			any_country_with_capital_in_geography = {
+				this != scope:actor
+				is_rebel_country = no
+				NOT = { is_subject_of = scope:actor }
+				sq_is_wounded_realm = yes
+				country_tax_base >= {
+					value = scope:actor.country_tax_base
+					multiply = 0.5
+				}
+			}
+		}
+		add = sq_ai_wounded_prey_points
+	}
+}
+
+# ---- one realm as a target (COUNTRY scope; scope:actor) ----------------
+# Its effective strength in multiples of his.
+sq_target_strength_ratio = {
+	value = sq_effective_strength
+	divide = sq_actor_strength
+}
+# Its tax base in multiples of his.
+sq_target_wealth_ratio = {
+	value = country_tax_base
+	divide = sq_actor_tax
+}
+
+# ---- money (COUNTRY scope: the Ṣāḥib-qirān) ----------------------------
+sq_court_gift_gold = {
+	value = monthly_income_trade_and_tax
+	multiply = sq_ai_court_gift_months
+	min = 10
+}
+sq_plunder_reserve_gold = {
+	value = monthly_income_trade_and_tax
+	multiply = sq_ai_plunder_reserve_months
+}

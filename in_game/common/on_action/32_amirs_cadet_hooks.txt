@@ -16,6 +16,7 @@
 on_losing_war = {
 	on_actions = {
 		ulus_cadet_house_beaten
+		ulus_cadet_claim_failed
 	}
 }
 
@@ -26,11 +27,42 @@ ulus_cadet_house_beaten = {
 		exists = scope:winner
 		ulus_house_open_to_cadet_route = yes
 		scope:winner = { ulus_is_cadet_route_invader = yes }
+		# A claimant on the khan beaten by the khan's holder is
+		# ulus_cadet_claim_failed's case (below), with its own text;
+		# this hook stands aside so the house is asked once.
+		NOT = {
+			AND = {
+				has_variable = ulus_claimed_the_khan
+				scope:winner = { is_ulus_regent = yes }
+			}
+		}
 	}
 	effect = {
 		scope:winner = { save_scope_as = ulus_cadet_invader }
 		set_variable = { name = ulus_cadet_asked value = 1 months = 24 }
 		trigger_event_non_silently = amirs_cadet.1
+	}
+}
+
+# ---THE HOUSE HAS LOST ITS OWN CLAIM ON THE KHAN ------------------------
+# The Claim the Khan action (stage 2 on) marks the claimant with the
+# timed ulus_claimed_the_khan. If he then LOSES a war to the state that
+# holds the khan, his bid has failed and the house is asked whether the
+# chief rides out (ulus_cadet_after_defeat). ulus_cadet_house_beaten
+# above stands aside for exactly this case (claimant beaten by the
+# khan's holder), so the house is asked once; and ulus_cadet_after_defeat
+# is silent if the fall of the camp already put the question
+# (ulus_cadet_asked).
+ulus_cadet_claim_failed = {
+	trigger = {
+		has_variable = ulus_claimed_the_khan
+		scope:loser ?= { this = root }
+		scope:winner ?= { is_ulus_regent = yes }
+	}
+	effect = {
+		scope:winner = { save_scope_as = ulus_cadet_invader }
+		remove_variable = ulus_claimed_the_khan
+		ulus_cadet_after_defeat = yes
 	}
 }
 
@@ -71,14 +103,23 @@ ulus_cadet_capital_taken = {
 }
 
 # ---STAGE 2: A KINSMAN WHO IS THE BETTER SOLDIER -----------------------
-# Rare. About fifteen houses are polled once a year; perhaps a fifth of
-# them have such a man; the pulse lets about one in thirty through, and
-# after one coup anywhere in the ulus the others wait eight years
-# (ulus_cadet_coup_recent, on the organisation). Once or twice in a
-# regency.
+# About fifteen houses are polled once a year; perhaps a fifth of them
+# have such a man. With no coup lately the pulse lets about one in
+# thirty through. Once a coup has SUCCEEDED anywhere in the ulus
+# (ulus_coup_contagion on the organisation, set by
+# ulus_cadet_coup_succeeded for ulus_cadet_coup_contagion_years), the
+# roll in every other house is four times likelier: the tümens have
+# seen that it can be done. The house it happened in is shut out by its
+# own ulus_cadet_recent.
+#
+# Two on_actions because random_events takes literal weights; the odds
+# are documented as ulus_cadet_coup_odds / _contagion in
+# script_values/07_amirs_cadet_values.txt.
 yearly_country_pulse = {
 	on_actions = {
 		ulus_cadet_coup_pulse
+		ulus_cadet_coup_pulse_contagion
+		ulus_cadet_coup_reset
 	}
 }
 
@@ -91,12 +132,55 @@ ulus_cadet_coup_pulse = {
 		NOT = { has_variable = ulus_cadet_recent }
 		NOT = { has_variable = ulus_fled_chief }
 		international_organization:ulus_chaghatay ?= {
-			NOT = { has_variable = ulus_cadet_coup_recent }
+			NOT = { has_variable = ulus_coup_contagion }
 		}
 		ulus_house_has_ambitious_cadet = yes
 	}
 	random_events = {
 		97 = 0
 		3 = amirs_cadet.20
+	}
+}
+
+ulus_cadet_coup_pulse_contagion = {
+	trigger = {
+		has_variable = ulus_weight
+		is_ulus_chaghatay_amir = yes
+		ulus_regency_stage_at_least = { STAGE = 2 }
+		at_war = no
+		NOT = { has_variable = ulus_cadet_recent }
+		NOT = { has_variable = ulus_fled_chief }
+		international_organization:ulus_chaghatay ?= {
+			has_variable = ulus_coup_contagion
+		}
+		ulus_house_has_ambitious_cadet = yes
+	}
+	random_events = {
+		88 = 0
+		12 = amirs_cadet.20
+	}
+}
+
+# "The first coup of a regency" is counted on the organisation
+# (ulus_first_coup_done). When no regency stands, the mark is cleared so
+# the next regency has a first of its own. Run once a year from the
+# seat of the ulus.
+ulus_cadet_coup_reset = {
+	trigger = {
+		has_variable = ulus_weight
+		is_ulus_chaghatay_leader = yes
+		international_organization:ulus_chaghatay ?= {
+			has_variable = ulus_first_coup_done
+			NOT = { has_variable = ulus_regency }
+		}
+	}
+	effect = {
+		international_organization:ulus_chaghatay ?= {
+			remove_variable = ulus_first_coup_done
+			if = {
+				limit = { has_variable = ulus_coup_contagion }
+				remove_variable = ulus_coup_contagion
+			}
+		}
 	}
 }

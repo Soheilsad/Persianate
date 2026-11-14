@@ -77,3 +77,23 @@ ulus_tumens_in_service_mod = {
 	land_morale_modifier = 0.05
 	cultures_capacity = 1
 }
+
+# Divide the Plunder (generic_actions/sahib_qiran_actions.txt): what the
+# amirs were given, they remember for a few years.
+sq_plunder_divided_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	subject_loyalty = 10
+}
+
+# The regent's largesse (generic_actions/amirs_regency_actions.txt): his
+# own subjects are the surer for it while the silver is remembered.
+ulus_largesse_given_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	subject_loyalty = 10
+}

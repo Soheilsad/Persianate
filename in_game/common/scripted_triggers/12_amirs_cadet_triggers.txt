@@ -63,3 +63,25 @@ ulus_is_cadet_route_invader = {
 		is_ulus_regent = yes
 	}
 }
+
+# COUNTRY scope (the house); needs scope:ulus_cadet. The kinsman is the
+# better soldier than the sitting chief by at least $EDGE$ (a number or
+# a script value). For the AI's weighing in events/amirs_cadet_events.txt.
+ulus_cadet_outsoldiers_chief = {
+	exists = scope:ulus_cadet
+	has_ruler = yes
+	save_temporary_scope_as = ulus_cadet_cmp_house
+	scope:ulus_cadet = {
+		mil >= {
+			value = scope:ulus_cadet_cmp_house.ruler.mil
+			add = $EDGE$
+		}
+	}
+}
+
+# COUNTRY scope: a steppe horde whose unity is low (horde unity exists
+# only for hordes; every other house fails this).
+ulus_cadet_tumen_is_brittle = {
+	government_type = government_type:steppe_horde
+	horde_unity < ulus_cadet_ai_low_unity
+}

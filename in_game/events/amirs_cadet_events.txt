@@ -5,8 +5,10 @@ namespace = amirs_cadet
 # common/scripted_effects/17_amirs_cadet_effects.txt. Hooks:
 # common/on_action/32_amirs_cadet_hooks.txt.
 #
-#   .1   the invader is upon the house: the chief stands or rides out
-#        (to the house; scope:ulus_cadet_invader)
+#   .1   the invader is upon the house, OR the house's own bid for the
+#        throne has failed: the chief stands or rides out
+#        (to the house; scope:ulus_cadet_invader; the text follows
+#        ulus_cadet_bid_failed and whether the victor is khan or regent)
 #   .2   a kinsman of the house has come to our camp   (to the invader)
 #   .3   a tümen has a new chief by another's yarlıq   (to the leader)
 #   .10  the old chief comes back for his tümen        (to the house)
@@ -21,7 +23,27 @@ namespace = amirs_cadet
 amirs_cadet.1 = {
 	type = country_event
 	title = amirs_cadet.1.title
-	desc = amirs_cadet.1.desc
+	desc = {
+		first_valid = {
+			# Our own bid failed, against the state that holds the khan.
+			triggered_desc = {
+				trigger = {
+					has_variable = ulus_cadet_bid_failed
+					scope:ulus_cadet_invader ?= { is_ulus_regent = yes }
+				}
+				desc = amirs_cadet.1.desc_bid_regent
+			}
+			# Our own bid failed, against the khan himself.
+			triggered_desc = {
+				trigger = { has_variable = ulus_cadet_bid_failed }
+				desc = amirs_cadet.1.desc_bid_khan
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = amirs_cadet.1.desc
+			}
+		}
+	}
 	outcome = negative
 
 	illustration_tags = {
@@ -44,14 +66,53 @@ amirs_cadet.1 = {
 	option = {
 		name = amirs_cadet.1.a
 		trigger = { exists = scope:ulus_cadet }
+		# THE CHIEF RIDES OUT when the house cannot win and the tümen has
+		# a better man to keep: outmatched, a kinsman who is the abler
+		# soldier, a tümen too brittle for a stand, an old chief, a
+		# careful one, and above all a chief the victor has a reason to
+		# kill (his own bid for the throne has just failed).
 		ai_chance = {
-			factor = 50
+			factor = 1
 			modifier = {
 				factor = 3
 				military_strength < {
 					value = scope:ulus_cadet_invader.military_strength
 					multiply = ulus_cadet_outmatched_share
 				}
+			}
+			modifier = {
+				factor = 0.4
+				military_strength >= {
+					value = scope:ulus_cadet_invader.military_strength
+					multiply = ulus_cadet_ai_match_share
+				}
+			}
+			modifier = {
+				factor = 1.5
+				ulus_cadet_outsoldiers_chief = { EDGE = ulus_cadet_ai_mil_edge }
+			}
+			modifier = {
+				factor = 1.5
+				ulus_cadet_tumen_is_brittle = yes
+			}
+			modifier = {
+				factor = 1.5
+				ruler ?= { age_in_years >= 55 }
+			}
+			modifier = {
+				factor = 2
+				has_variable = ulus_cadet_bid_failed
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					ai_personality = ai_personality:ai_cautious
+					ai_personality = ai_personality:ai_defensive
+				}
+			}
+			modifier = {
+				factor = 0.6
+				ai_personality = ai_personality:ai_aggressive
 			}
 		}
 
@@ -62,8 +123,14 @@ amirs_cadet.1 = {
 			}
 			custom_tooltip = amirs_cadet_tributary_tt
 		}
-		else = {
+		else_if = {
+			limit = {
+				scope:ulus_cadet_invader = { is_ulus_regent = yes }
+			}
 			custom_tooltip = amirs_cadet_sworn_tt
+		}
+		else = {
+			custom_tooltip = amirs_cadet_sworn_khan_tt
 		}
 		hidden_effect = {
 			ulus_cadet_takes_tumen = yes
@@ -85,7 +152,34 @@ amirs_cadet.1 = {
 	# ----- B: The chief stands -----
 	option = {
 		name = amirs_cadet.1.b
-		ai_chance = { factor = 50 }
+		# THE CHIEF STANDS when he is a soldier himself, when the house is
+		# a match for the invader, and when no kinsman is plainly the
+		# better man.
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 2
+				military_strength >= {
+					value = scope:ulus_cadet_invader.military_strength
+					multiply = ulus_cadet_ai_match_share
+				}
+			}
+			modifier = {
+				factor = 1.5
+				ruler ?= { mil >= ulus_cadet_ai_able_chief }
+			}
+			modifier = {
+				factor = 0.5
+				ulus_cadet_outsoldiers_chief = { EDGE = ulus_cadet_ai_mil_edge_great }
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					ai_personality = ai_personality:ai_aggressive
+					ai_personality = ai_personality:ai_expansionist
+				}
+			}
+		}
 
 		add_prestige = ulus_cadet_stand_prestige
 		add_horde_unity = ulus_cadet_stand_unity
@@ -167,7 +261,37 @@ amirs_cadet.10 = {
 	# ----- A: The tümen is his; I held it for him -----
 	option = {
 		name = amirs_cadet.10.a
-		ai_chance = { factor = 40 }
+		# HE YIELDS when the old chief is the abler man, when the tümen is
+		# too brittle for two chiefs, and when he is not the kind to
+		# gamble (Temür yielded Kish to Hajji Beg in 1361, and lost
+		# nothing by it).
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 2
+				scope:ulus_fled_chief = {
+					mil >= {
+						value = scope:ulus_cadet.mil
+						add = ulus_cadet_ai_mil_edge
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				ulus_cadet_tumen_is_brittle = yes
+			}
+			modifier = {
+				factor = 1.5
+				scope:ulus_cadet = { age_in_years < 25 }
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					ai_personality = ai_personality:ai_cautious
+					ai_personality = ai_personality:ai_friendly
+				}
+			}
+		}
 
 		custom_tooltip = amirs_cadet_yield_tt
 		add_horde_unity = ulus_cadet_yield_unity
@@ -191,7 +315,44 @@ amirs_cadet.10 = {
 	# ----- B: He left it on the ground; I picked it up -----
 	option = {
 		name = amirs_cadet.10.b
-		ai_chance = { factor = 60 }
+		# HE KEEPS IT when he is the abler man, has made a name since, the
+		# regency has reached the years when no one waits for old men,
+		# and he is the kind who takes what is in his hand.
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 2
+				scope:ulus_cadet = {
+					mil >= {
+						value = scope:ulus_fled_chief.mil
+						add = ulus_cadet_ai_mil_edge
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				scope:ulus_cadet = {
+					has_variable = ulus_renown
+					var:ulus_renown >= 10
+				}
+			}
+			modifier = {
+				factor = 1.5
+				ulus_regency_stage_at_least = { STAGE = 3 }
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					ai_personality = ai_personality:ai_aggressive
+					ai_personality = ai_personality:ai_expansionist
+					ai_personality = ai_personality:ai_opportunistic
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ulus_cadet_tumen_is_brittle = yes
+			}
+		}
 
 		add_horde_unity = ulus_cadet_refuse_unity
 		add_estate_satisfaction = {
@@ -246,7 +407,11 @@ amirs_cadet.11 = {
 # ----------------------------------------------------------------------------
 # .20 — stage 2, the amirs falling out: a kinsman who is plainly the
 # better soldier, and men in the tümen who say so. root = the house.
-# Fired by ulus_cadet_coup_pulse (rare).
+# Fired by ulus_cadet_coup_pulse (rare) or, once a coup has succeeded
+# somewhere in the ulus, by ulus_cadet_coup_pulse_contagion (four times
+# likelier). A coup that succeeds starts or renews the contagion and,
+# if it is the first of the regency, makes the man's name
+# (ulus_cadet_coup_succeeded).
 # ----------------------------------------------------------------------------
 amirs_cadet.20 = {
 	type = country_event
@@ -266,21 +431,53 @@ amirs_cadet.20 = {
 
 	immediate = {
 		ulus_cadet_find = yes
-		international_organization:ulus_chaghatay ?= {
-			set_variable = { name = ulus_cadet_coup_recent value = 1 years = 8 }
-		}
 	}
 
 	# ----- A: The tümen follows the kinsman -----
 	option = {
 		name = amirs_cadet.20.a
 		trigger = { exists = scope:ulus_cadet }
-		ai_chance = { factor = 60 }
+		# THE TÜMEN FOLLOWS THE KINSMAN when he is far the better soldier,
+		# the chief is old, other houses have already done it, and the
+		# chief is no soldier to stop him.
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 2
+				ulus_cadet_outsoldiers_chief = { EDGE = ulus_cadet_ai_mil_edge_great }
+			}
+			modifier = {
+				factor = 1.5
+				ruler ?= { age_in_years >= 55 }
+			}
+			modifier = {
+				factor = 1.5
+				international_organization:ulus_chaghatay ?= { has_variable = ulus_coup_contagion }
+			}
+			modifier = {
+				factor = 1.5
+				ruler ?= { mil < 30 }
+			}
+			modifier = {
+				factor = 0.5
+				ulus_cadet_tumen_is_brittle = yes
+			}
+		}
 
 		custom_tooltip = amirs_cadet_coup_tt
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					NOT = { has_variable = ulus_first_coup_done }
+				}
+			}
+			custom_tooltip = amirs_cadet_first_coup_tt
+		}
+		custom_tooltip = amirs_cadet_contagion_tt
 		add_horde_unity = ulus_cadet_coup_unity
 		hidden_effect = {
 			ulus_cadet_takes_tumen = yes
+			ulus_cadet_coup_succeeded = yes
 		}
 	}
 
@@ -288,7 +485,35 @@ amirs_cadet.20 = {
 	option = {
 		name = amirs_cadet.20.b
 		trigger = { exists = scope:ulus_cadet }
-		ai_chance = { factor = 40 }
+		# THE CHIEF HAS HIM SEIZED when he is a soldier himself and still
+		# in his strength, when the tümen is too brittle to survive a
+		# change of chiefs, and when he is the kind who strikes first.
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 2
+				ruler ?= { mil >= ulus_cadet_ai_able_chief }
+			}
+			modifier = {
+				factor = 1.5
+				ruler ?= { age_in_years < 40 }
+			}
+			modifier = {
+				factor = 1.5
+				ulus_cadet_tumen_is_brittle = yes
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					ai_personality = ai_personality:ai_aggressive
+					ai_personality = ai_personality:ai_defensive
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ulus_cadet_outsoldiers_chief = { EDGE = ulus_cadet_ai_mil_edge_great }
+			}
+		}
 
 		custom_tooltip = amirs_cadet_seized_tt
 		add_horde_unity = ulus_cadet_seized_unity

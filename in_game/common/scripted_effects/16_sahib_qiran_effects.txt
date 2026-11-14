@@ -17,14 +17,15 @@
 # situation go to whoever ends the Amirs' Regency as Ṣāḥib-qirān
 # (amirs_regency.210 -> ulus_end_sahib_qiran -> this effect). It may be
 # Temür Barlas. It may be a Qara'unas, a Jalayir, or a darugha with no
-# house at all. It may be nobody.
+# house at all.
 #
-# THE GATE. The conquest of Iran was possible because Iran after 1335
-# had no master. If some realm has consolidated Erānzamīn
-# (is_eranzamin_consolidation_sustained, scripted_triggers/
-# 03_matter_triggers.txt) the Ṣāḥib-qirān still forms — his regime, his
-# reckoning with the amirs — but there is no easy plunder to the west:
-# TIM is not released and the situation does not start.
+# NO GATE (removed 2026-11-14, author). An earlier version withheld TIM
+# and the situation if some realm had consolidated Erānzamīn. But nothing
+# sent him west: he went where the wealth was easy. A united Iran is a
+# neighbour he avoids, courts (on_action/33_sahib_qiran_hooks.txt,
+# sq_courting_pulse) or falls on when it has been wounded; the AI's
+# choice of ambition weighs exactly that (script_values/
+# 06_sahib_qiran_ai_values.txt). He always gets his conquest state.
 #
 # WHAT IT DOES is what flavor_tim.8's immediate and its player option
 # do, for the emergent man:
@@ -73,12 +74,6 @@ ulus_sahib_qiran_conquest_ambition = {
 			exists = capital
 			NOT = { country_exists = c:TIM }
 			NOT = { has_global_variable = timur_character }
-			NOT = {
-				any_country = {
-					NOT = { this = scope:ulus_sahib_qiran_realm }
-					is_eranzamin_consolidation_sustained = yes
-				}
-			}
 		}
 
 		save_scope_as = ulus_sq_old_realm

@@ -99,7 +99,12 @@ ulus_realm_weight = {
 		add = var:ulus_weight
 	}
 	if = {
-		limit = { has_variable = ulus_pledged_to }
+		limit = {
+			OR = {
+				has_variable = ulus_pledged_to
+				has_variable = ulus_pledged_to_khan
+			}
+		}
 		multiply = {
 			value = 1
 			subtract = ulus_pledge_share
@@ -109,7 +114,60 @@ ulus_realm_weight = {
 		limit = { has_variable = ulus_backing }
 		add = var:ulus_backing
 	}
+	# Friends outside the ulus: a share of his allies' weight and of an
+	# outside backer's (ledger, step 1c).
+	if = {
+		limit = { has_variable = ulus_outside_weight }
+		add = var:ulus_outside_weight
+	}
+	# A passing gain in standing (timed variable): largesse given, a
+	# marriage into the line (generic_actions/amirs_regency_actions.txt).
+	if = {
+		limit = { has_variable = ulus_weight_boost }
+		add = var:ulus_weight_boost
+	}
 }
+
+# THE WEIGHT OF A REALM, in parts out of 100 across the whole ulus
+# (author, 2026-11-14): the men it can put in the field, what it can pay
+# them, the man who leads them, and the name it carries.
+ulus_w_mil = 40
+ulus_w_tax = 30
+ulus_w_rul = 20
+ulus_w_pre = 10
+
+# The man who leads them: his three abilities together (0-300).
+# COUNTRY scope.
+ulus_ruler_abilities = {
+	value = 0
+	if = {
+		limit = { has_ruler = yes }
+		add = ruler.adm
+		add = ruler.dip
+		add = ruler.mil
+	}
+}
+
+# FRIENDS OUTSIDE. An ally who is not of the ulus counts for
+# ulus_ally_fraction of what he would weigh if he were (his host and his
+# tax base on the ulus's own scale; no single friend for more than
+# ulus_outside_friend_cap). An outside BACKER who is not an ally
+# (ulus_ask_outside_support) counts for ulus_backer_fraction. All of a
+# house's outside friends together count for at most ulus_outside_cap.
+ulus_ally_fraction = 0.25
+ulus_backer_fraction = 0.15
+ulus_outside_friend_cap = 12
+ulus_outside_cap = 10
 
 # The share of his weight a pledged amir lends the house he backs.
 ulus_pledge_share = 0.5
+
+# For sharing out a beaten rebel's land among the khan's lords: fewest
+# spoils so far first (ulus_forfeit_a_place). COUNTRY scope.
+ulus_spoils_order = {
+	value = 0
+	if = {
+		limit = { has_variable = ulus_spoils_taken }
+		subtract = var:ulus_spoils_taken
+	}
+}

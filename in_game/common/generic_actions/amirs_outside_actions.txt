@@ -1,0 +1,175 @@
+# ============================================================
+# BACK AN AMIR OF THE ULUS — for a power OUTSIDE Ulus Chaghatay.
+#
+# An outsider has always been able to ally with an amir, and an ally's
+# weight counts for him in the ulus (ledger, step 1c). An alliance
+# binds both ways, and an amir of no great weight will not get one from
+# the Golden Horde. Backing is the lighter thing: silver and a promise,
+# given to a contender who can make trouble for the khan and cannot win
+# without help. It counts for less than an alliance and obliges nobody
+# to ride.
+#
+# The amir's side of it is ulus_ask_outside_support
+# (amirs_rising_actions.txt); both end in ulus_outsider_backs_house.
+# ============================================================
+
+ulus_back_an_amir = {
+	type = owncountry
+
+	ai_tick = monthly
+	ai_tick_frequency = 24
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_back_an_amir
+		years = 5
+	}
+
+	price = price:ulus_back_an_amir_price
+
+	potential = {
+		scope:actor = {
+			is_rebel_country = no
+			NOT = { is_ulus_chaghatay_member = yes }
+			exists = international_organization:ulus_chaghatay
+			any_neighbor_country = { is_ulus_chaghatay_member = yes }
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			custom_tooltip = {
+				text = ulus_outsider_backs_nobody_self_tt
+				NOT = { has_variable = ulus_backs_amir }
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		target_flag = target_country
+		name = "choose_country"
+		none_available_msg_key = "no_valid_countries"
+		interaction_source_list = {
+			every_in_global_list = {
+				variable = ulus_amirs
+				add_to_list = source
+			}
+		}
+		visible = {
+		}
+		enabled = {
+			custom_tooltip = {
+				text = ulus_no_outside_backer_theirs_tt
+				NOT = { has_variable = ulus_outside_backer }
+			}
+			NOT = { is_at_war_with = scope:actor }
+			NOT = { is_rival_of = scope:actor }
+		}
+		column = { data = name }
+		column = { data = population }
+		column = { data = great_power_score }
+	}
+
+	effect = {
+		scope:target_country = { save_scope_as = ulus_asking_house }
+		scope:actor = {
+			ulus_outsider_backs_house = yes
+		}
+	}
+
+	# The AI outsider reasons as ulus_outside_support_acceptance does (the
+	# value reads scope:ulus_asking_house, so its terms are repeated here
+	# for the target in hand): a quarrel with the khan's seat, a
+	# contender neither too strong nor too weak, and the temperament for
+	# meddling. It does not spend on this while at war or in debt.
+	ai_will_do = {
+		add = -25
+		if = {
+			limit = { exists = scope:target_country }
+			add = {
+				value = "scope:actor.opinion(scope:target_country)"
+				multiply = 0.167
+			}
+			if = {
+				limit = {
+					scope:target_country = { has_variable = ulus_kingmaker_score }
+					international_organization:ulus_chaghatay ?= {
+						has_variable = ulus_top_kingmaker_score
+						var:ulus_top_kingmaker_score > 0
+					}
+				}
+				if = {
+					limit = {
+						scope:target_country.var:ulus_kingmaker_score >= {
+							value = international_organization:ulus_chaghatay.var:ulus_top_kingmaker_score
+							multiply = 0.9
+						}
+					}
+					add = -10
+				}
+				else_if = {
+					limit = {
+						scope:target_country.var:ulus_kingmaker_score >= {
+							value = international_organization:ulus_chaghatay.var:ulus_top_kingmaker_score
+							multiply = 0.5
+						}
+					}
+					add = 25
+				}
+				else = {
+					add = -30
+				}
+			}
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes }
+				scope:actor = { is_rival_of = international_organization:ulus_chaghatay.leader_country }
+			}
+			add = 30
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes }
+				scope:actor = { is_neighbor_of = international_organization:ulus_chaghatay.leader_country }
+			}
+			add = 10
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes }
+				scope:actor = { is_allied_with = { target = international_organization:ulus_chaghatay.leader_country } }
+			}
+			add = -100
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_opportunistic } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_expansionist } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_isolationist } }
+			add = -30
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -10
+		}
+		if = {
+			limit = {
+				scope:actor = {
+					OR = {
+						at_war = yes
+						gold < 0
+					}
+				}
+			}
+			add = -40
+		}
+	}
+}

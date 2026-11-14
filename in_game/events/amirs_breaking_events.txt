@@ -38,11 +38,24 @@ amirs_breaking.1 = {
 			years = 30
 		}
 		add_prestige = ulus_breaking_prestige
+		# A steppe court does what the steppe does with a beaten tribe;
+		# anyone short of men wants the riders as his own now.
 		ai_chance = {
 			factor = 1
 			modifier = {
 				factor = 3
 				government_type = government_type:steppe_horde
+			}
+			modifier = {
+				factor = 1.5
+				manpower_percentage < 0.5
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					ai_personality = ai_personality:ai_aggressive
+					ai_personality = ai_personality:ai_expansionist
+				}
 			}
 		}
 	}
@@ -56,8 +69,23 @@ amirs_breaking.1 = {
 			years = -1
 		}
 		add_prestige = ulus_breaking_service_prestige
+		# A settled court has no tribes of its own to divide them among,
+		# and gains a culture it can rule through; a careful ruler keeps
+		# what works.
 		ai_chance = {
 			factor = 1
+			modifier = {
+				factor = 2.5
+				NOT = { government_type = government_type:steppe_horde }
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					ai_personality = ai_personality:ai_cautious
+					ai_personality = ai_personality:ai_defensive
+					ai_personality = ai_personality:ai_friendly
+				}
+			}
 		}
 	}
 }

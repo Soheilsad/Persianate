@@ -1,0 +1,40 @@
+# The cadet takes the tümen — tunables added after the first build
+# (the original ones are in 05_amirs_regency_values.txt, section 9).
+# Effects: scripted_effects/17_amirs_cadet_effects.txt; hooks:
+# on_action/32_amirs_cadet_hooks.txt; events: events/amirs_cadet_events.txt.
+
+# ---- THE FIRST COUP OF A REGENCY ("first mover advantage") ------------
+# The man who shows the tümens it can be done makes a name by it; the
+# men who copy him do not.
+ulus_cadet_first_coup_renown = 5
+ulus_cadet_first_coup_prestige = 10
+
+# ---- COUP CONTAGION ---------------------------------------------------
+# The yearly roll per eligible house. random_events takes literal
+# weights, so these two numbers are DOCUMENTATION of the literals in
+# on_action/32_amirs_cadet_hooks.txt (keep them in step):
+#   ulus_cadet_coup_pulse             3 in 100   (no coup lately)
+#   ulus_cadet_coup_pulse_contagion  12 in 100   (a coup has succeeded
+#                                                 somewhere in the ulus
+#                                                 within the window)
+ulus_cadet_coup_odds = 3
+ulus_cadet_coup_odds_contagion = 12
+# The window, in years, is likewise a literal where it is set
+# (amirs_cadet.20, option A: ulus_coup_contagion on the organisation).
+ulus_cadet_coup_contagion_years = 6
+
+# ---- WHAT THE AI WEIGHS (events/amirs_cadet_events.txt) ---------------
+# A kinsman counts as "the better soldier" for the AI at this edge in
+# military skill over the chief (the coup itself needs
+# ulus_cadet_coup_mil_edge, 15).
+ulus_cadet_ai_mil_edge = 10
+# ...and as far the better at this one.
+ulus_cadet_ai_mil_edge_great = 25
+# A chief this able does not ride out, and does not let himself be set
+# aside.
+ulus_cadet_ai_able_chief = 60
+# Horde unity under this: the tümen will not hold together through a
+# stand, or through a quarrel between two chiefs.
+ulus_cadet_ai_low_unity = 40
+# The house is "a match" for the invader at this share of his strength.
+ulus_cadet_ai_match_share = 1.0

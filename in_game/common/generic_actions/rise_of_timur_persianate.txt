@@ -183,15 +183,98 @@ REPLACE:rot_declare_conquest_ambition = {
 		}
 	}
 
+	# PERSIANATE WORLD: the AI names an ambition by WEALTH AGAINST
+	# STRENGTH (script_values/06_sahib_qiran_ai_values.txt,
+	# sq_region_ambition_score): what the region's rulers can be taxed
+	# for, against what they can put in the field, a wounded realm
+	# counting for half its muster. Base named the first region offered
+	# (or Persia, under the historical rule) and never changed its mind.
+	#   no ambition yet        300 + the region's score: he always names
+	#                          one, and it is the best on offer
+	#   the ambition is made   the same: name the next
+	#     good
+	#   the ambition has       switches if the present one now scores
+	#     turned against him   under -60 and this one beats it by 60
+	#   otherwise              keeps what he has declared
+	# An expansionist or aggressive ruler leans in; a cautious one weighs
+	# each outmatching ruler again.
 	ai_will_do = {
+		value = -100
 		if = {
 			limit = {
 				NOT = { scope:recipient = { has_variable = rot_conquest_ambition } }
 			}
-			value = 1000
+			value = 300
+			add = scope:target.sq_region_ambition_score
 		}
-		else = {
-			value = -100
+		else_if = {
+			limit = {
+				scope:actor = {
+					is_target_in_variable_list = {
+						name = sq_ambitions_done
+						target = scope:recipient.var:rot_conquest_ambition
+					}
+				}
+			}
+			value = 300
+			add = scope:target.sq_region_ambition_score
+		}
+		else_if = {
+			limit = {
+				scope:recipient.var:rot_conquest_ambition = {
+					sq_region_ambition_score < -60
+				}
+				scope:target = {
+					sq_region_ambition_score > {
+						value = scope:recipient.var:rot_conquest_ambition.sq_region_ambition_score
+						add = 60
+					}
+				}
+			}
+			value = scope:target.sq_region_ambition_score
+		}
+		if = {
+			limit = {
+				scope:actor = {
+					OR = {
+						ai_personality = ai_personality:ai_expansionist
+						ai_personality = ai_personality:ai_aggressive
+					}
+				}
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				scope:actor = {
+					OR = {
+						ai_personality = ai_personality:ai_cautious
+						ai_personality = ai_personality:ai_defensive
+					}
+				}
+			}
+			subtract = {
+				value = scope:target.sq_region_outmatching_rulers
+				multiply = 40
+			}
+		}
+		# Never the region already declared, nor one already made good.
+		if = {
+			limit = {
+				OR = {
+					scope:recipient = {
+						has_variable = rot_conquest_ambition
+						var:rot_conquest_ambition = scope:target
+					}
+					scope:actor = {
+						is_target_in_variable_list = {
+							name = sq_ambitions_done
+							target = scope:target
+						}
+					}
+				}
+			}
+			subtract = 2000
 		}
 	}
 }
@@ -352,6 +435,22 @@ REPLACE:rot_plan_invasion = {
 			}
 		}
 	}
+	# PERSIANATE WORLD: base's weighting kept as the core (home or
+	# ambition region +200, less his opinion of the target, scaled by
+	# relative strength), with the judgement of script_values/
+	# 06_sahib_qiran_ai_values.txt on top:
+	#   + wealth     20 per multiple of his own tax base, to 80
+	#   + 60         a wounded realm (war exhaustion, spent manpower)
+	#   FORTUNE LOW  he needs a war he can win, soon: +150 against a
+	#                target under half his strength, -200 against one
+	#                near his own
+	#   FORTUNE HIGH he can afford a real war: no penalty up to his own
+	#                strength
+	#   in between   -100 against a target at 0.9 of his strength or more
+	#   cautious /   a further -80 against anything over 0.8
+	#     defensive
+	#   NEVER        a realm that outmatches him (1.25x, wounded halved),
+	#                nor one neither he nor a subject borders
 	ai_will_do = {
 		value = -20
 		if = {
@@ -381,17 +480,53 @@ REPLACE:rot_plan_invasion = {
 				divide = -10
 			}
 			multiply = "scope:actor.relative_military_strength(scope:target)"
+
+			add = {
+				value = scope:target.sq_target_wealth_ratio
+				multiply = 20
+				max = 80
+			}
+			if = {
+				limit = { scope:target = { sq_is_wounded_realm = yes } }
+				add = 60
+			}
+			if = {
+				limit = { scope:actor = { has_variable = sq_band_low } }
+				if = {
+					limit = { scope:target = { sq_target_strength_ratio < sq_ai_easy_ratio } }
+					add = 150
+				}
+				else_if = {
+					limit = { scope:target = { sq_target_strength_ratio >= 0.8 } }
+					subtract = 200
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { scope:actor = { has_variable = sq_band_high } }
+					scope:target = { sq_target_strength_ratio >= 0.9 }
+				}
+				subtract = 100
+			}
 			if = {
 				limit = {
-					scope:target = {
-						NOT = { is_neighbor_of = scope:actor }
-						# PERSIANATE WORLD: nor a neighbour of his subjects.
-						NOT = {
-							scope:actor = {
-								any_subject = { is_neighbor_of = scope:target }
-							}
+					scope:actor = {
+						OR = {
+							ai_personality = ai_personality:ai_cautious
+							ai_personality = ai_personality:ai_defensive
 						}
 					}
+					scope:target = { sq_target_strength_ratio >= 0.8 }
+				}
+				subtract = 80
+			}
+			if = {
+				limit = { scope:target = { sq_outmatches_actor = yes } }
+				subtract = 2000
+			}
+			if = {
+				limit = {
+					NOT = { scope:actor = { sq_reaches_target = yes } }
 				}
 				subtract = 1000
 			}

@@ -619,7 +619,7 @@ organization_geodiplomatic_theme = {
 						text_single = {
 							autoresize = yes
 							align = right|nobaseline
-							raw_text = "/ 50,"
+							raw_text = "/ 40,"
 						}
 						text_single = {
 							autoresize = yes
@@ -635,7 +635,23 @@ organization_geodiplomatic_theme = {
 						text_single = {
 							autoresize = yes
 							align = right|nobaseline
-							raw_text = "/ 35,"
+							raw_text = "/ 30,"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "ULUS_WEIGHT_RUL"
+							default_format = "#subtle_name"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_khan_w_rul').GetValue|1]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "/ 20,"
 						}
 						text_single = {
 							autoresize = yes
@@ -651,7 +667,7 @@ organization_geodiplomatic_theme = {
 						text_single = {
 							autoresize = yes
 							align = right|nobaseline
-							raw_text = "/ 15"
+							raw_text = "/ 10"
 						}
 					}
 

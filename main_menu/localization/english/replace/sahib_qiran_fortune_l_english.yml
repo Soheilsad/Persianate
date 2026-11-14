@@ -11,7 +11,7 @@
  # Action (generic_actions/sahib_qiran_actions.txt)
  sq_distribute_plunder: "Divide the Plunder"
  sq_distribute_plunder_desc: "Hold the feast and divide what has been taken among the amirs and the tümens, each by his rank. A year's income raises the Ṣāḥib-qirān's fortune."
- sq_distribute_plunder_tt: "The fortune of the Ṣāḥib-qirān rises by #G 10#!."
+ sq_distribute_plunder_tt: "The fortune of the Ṣāḥib-qirān rises by #G 10#!. Our subjects remember the gift for three years."
 
  # Band modifiers
  STATIC_MODIFIER_NAME_sq_fortune_high_mod: "Fortune of the Ṣāḥib-qirān"
@@ -68,3 +68,26 @@
  sahib_qiran.4.desc: "He named this country before the amirs when it was still other men's. Most of it now answers to him or to those who answer to him, and the men who doubted the venture are counting their share of it."
  sahib_qiran.4.a: "Name the next."
  sahib_qiran_ambition_tt: "The fortune of the Ṣāḥib-qirān rises by #G 15#!. Two ambitions made good, with our first seat still ours, and #Y The Conjunction Holds#!."
+
+ # Divide the Plunder: the subjects' loyalty (static modifier)
+ STATIC_MODIFIER_NAME_sq_plunder_divided_mod: "The Plunder Divided"
+ STATIC_MODIFIER_DESC_sq_plunder_divided_mod: "The amirs have had their share, and for a while they remember who gave it."
+
+ # The army is lost (sq_army_is_lost)
+ sahib_qiran.5.title: "The Army Is Lost"
+ sahib_qiran.5.desc: "There was a host that had not been beaten in the memory of the men who rode in it, and it has been beaten. The riders who came back came back singly, without their captains, and would not say what they had seen.\n\nThe amirs did not swear to a realm. They swore to a man who won. By the time the news reached the pastures they had already begun to count what each of them could hold alone, and beyond the frontier others are counting too."
+ sahib_qiran.5.a: "Then we are what we were before the conjunction: one house among many."
+ sahib_qiran_army_lost_tt: "The amirs who swore to us #R ride away#!. We lose #R 25#! prestige and #R 25#! horde unity.\nWe and they are now #R the orphans of a broken ulus#!: every outside neighbour holds a claim on each of us for 25 years, and whoever comes to hold half the old pastures may dispose of the Chaghatay as he sees fit."
+ sahib_qiran.6.title: "We Have Broken Their Army"
+ sahib_qiran.6.desc: "The host of the Ṣāḥib-qirān is scattered, and the tümens that followed him are riding home each by its own road. They have no khan to call them back and, after this, no captain they would answer. Their pastures and their households lie where they always lay."
+ sahib_qiran.6.a: "What a fortune built, a single day has undone."
+ sahib_qiran_army_broken_tt: "We gain a #Y Break the Tümens#! casus belli on him and on every amir who was sworn to him, for 25 years. Whoever comes to hold half the old pastures of the ulus decides what becomes of the Chaghatay."
+
+ # The embassy (sq_send_embassy)
+ sahib_qiran.7.title: "An Embassy from the Ṣāḥib-qirān"
+ sahib_qiran.7.desc: "Envoys have come from [sq_courting_realm.GetName] with horses, falcons, bolts of silk taken from other men's cities, and letters in which their master calls ours brother. He has made war on nearly everyone within reach. He proposes, with great courtesy, not to make it on us."
+ sahib_qiran.7.a: "Receive the gifts and return the courtesy."
+ sahib_qiran.7.b: "Send the envoys home with their horses."
+ sahib_qiran_embassy_accept_tt: "We keep the gifts, and each court thinks better of the other (#G +50#!, fading over ten years)."
+ STATIC_MODIFIER_NAME_ulus_largesse_given_mod: "Largesse Remembered"
+ STATIC_MODIFIER_DESC_ulus_largesse_given_mod: "The robes and the silver have gone out, and for a while those who answer to us answer more readily."

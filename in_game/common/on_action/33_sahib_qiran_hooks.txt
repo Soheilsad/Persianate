@@ -116,3 +116,104 @@ sq_fortune_new_ruler = {
 		trigger_event_non_silently = sahib_qiran.1
 	}
 }
+
+# ---THE ARMY IS LOST (catastrophic defeat) -----------------------------
+# on_losing_war: root = country, scope:winner, scope:loser. A Ṣāḥib-qirān
+# who loses a war to an outsider with his fortune already in the low
+# band has lost what held everything together. Once in a game. See
+# sq_army_is_lost (scripted_effects/18_sahib_qiran_fortune_effects.txt).
+on_losing_war = {
+	on_actions = {
+		sq_army_lost_check
+	}
+}
+
+sq_army_lost_check = {
+	trigger = {
+		has_variable = sq_fortune
+		has_variable = ulus_sahib_qiran
+		has_variable = sq_band_low
+		NOT = { has_global_variable = sq_army_lost }
+		scope:loser ?= { this = root }
+		exists = scope:winner
+		scope:winner = {
+			is_rebel_country = no
+			NOT = { is_subject_of = root }
+			NOT = { has_variable = sq_sworn_amir }
+			NOT = { has_variable = ulus_bulqaq_orphan }
+		}
+	}
+	effect = {
+		scope:winner = { save_scope_as = sq_victor }
+		sq_army_is_lost = yes
+	}
+}
+
+# ---AN EMBASSY TO THE STRONG -------------------------------------------
+# yearly_country_pulse: root = country. An AI Ṣāḥib-qirān at peace, with
+# the gold in hand, who has sent no embassy for five years and borders
+# a realm clearly stronger than himself that he has not named as his
+# ambition: he courts it rather than fights it (the author: facing a
+# King of Kings at his height "he'd probably ask for an alliance, even
+# send gifts"). How readily depends on the man: a cautious, defensive
+# or friendly ruler nearly always, an aggressive one seldom.
+yearly_country_pulse = {
+	on_actions = {
+		sq_courting_pulse
+	}
+}
+
+sq_courting_pulse = {
+	trigger = {
+		has_variable = sq_fortune
+		is_ai = yes
+		at_war = no
+		NOT = { has_variable = sq_courted_recently }
+		gold >= sq_court_gift_gold
+		any_neighbor_country = {
+			sq_worth_courting = { HIM = root }
+		}
+	}
+	effect = {
+		random_neighbor_country = {
+			limit = {
+				sq_worth_courting = { HIM = root }
+			}
+			save_scope_as = sq_courted
+		}
+		if = {
+			limit = { exists = scope:sq_courted }
+			if = {
+				limit = {
+					OR = {
+						ai_personality = ai_personality:ai_cautious
+						ai_personality = ai_personality:ai_defensive
+						ai_personality = ai_personality:ai_friendly
+					}
+				}
+				random = {
+					chance = 85
+					sq_send_embassy = yes
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						ai_personality = ai_personality:ai_aggressive
+						ai_personality = ai_personality:ai_expansionist
+					}
+				}
+				random = {
+					chance = 25
+					sq_send_embassy = yes
+				}
+			}
+			else = {
+				random = {
+					chance = 55
+					sq_send_embassy = yes
+				}
+			}
+		}
+	}
+}

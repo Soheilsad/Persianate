@@ -9,6 +9,10 @@ namespace = sahib_qiran
 #        was his father's.
 #   .2   The Amirs Ride Away — the fortune empty sq_empty_years
 #        running.
+#   .3   The Conjunction Holds; .4 An Ambition Made Good.
+#   .5   The Army Is Lost — a lost war with the fortune already low;
+#        .6 the victor's notice.
+#   .7   An Embassy from the Ṣāḥib-qirān — to a player he is courting.
 # ============================================================================
 
 # ----------------------------------------------------------------------------
@@ -112,5 +116,100 @@ sahib_qiran.4 = {
 	option = {
 		name = sahib_qiran.4.a
 		custom_tooltip = sahib_qiran_ambition_tt
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .5 — THE ARMY IS LOST. To the Ṣāḥib-qirān who lost a war to an outsider
+# with his fortune already low (sq_army_is_lost; the effects are done).
+# .6 — the same day, to the victor.
+# ----------------------------------------------------------------------------
+sahib_qiran.5 = {
+	type = country_event
+	title = sahib_qiran.5.title
+	desc = sahib_qiran.5.desc
+	outcome = negative
+	major = yes
+	major_trigger = {
+		capital ?= {
+			OR = {
+				sub_continent = sub_continent:central_asia
+				sub_continent = sub_continent:middle_east
+				sub_continent = sub_continent:south_asia
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = sahib_qiran.5.a
+		custom_tooltip = sahib_qiran_army_lost_tt
+	}
+}
+
+sahib_qiran.6 = {
+	type = country_event
+	title = sahib_qiran.6.title
+	desc = sahib_qiran.6.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = sahib_qiran.6.a
+		custom_tooltip = sahib_qiran_army_broken_tt
+	}
+}
+
+# ----------------------------------------------------------------------------
+# .7 — AN EMBASSY FROM THE ṢĀḤIB-QIRĀN. To a PLAYER realm an AI
+# Ṣāḥib-qirān is courting (sq_send_embassy). scope:sq_courting_realm is
+# his realm; the gift he offers is on it as sq_gift_offered. Nothing is
+# done to the player unless he accepts.
+# ----------------------------------------------------------------------------
+sahib_qiran.7 = {
+	type = country_event
+	title = sahib_qiran.7.title
+	desc = sahib_qiran.7.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		exists = scope:sq_courting_realm
+		scope:sq_courting_realm = { has_variable = sq_gift_offered }
+	}
+
+	option = {
+		name = sahib_qiran.7.a
+		custom_tooltip = sahib_qiran_embassy_accept_tt
+		add_gold = scope:sq_courting_realm.var:sq_gift_offered
+		scope:sq_courting_realm = {
+			add_gold = {
+				value = var:sq_gift_offered
+				multiply = -1
+			}
+			remove_variable = sq_gift_offered
+		}
+		add_opinion_mutual_effect = {
+			modifier = opinion_sq_embassy_gifts
+			target = scope:sq_courting_realm
+		}
+	}
+	option = {
+		name = sahib_qiran.7.b
+		scope:sq_courting_realm = {
+			remove_variable = sq_gift_offered
+		}
 	}
 }

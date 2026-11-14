@@ -1,0 +1,11 @@
+# Outsiders bordering Ulus Chaghatay (generic_actions/amirs_outside_actions.txt).
+amirs_outside_actions_list = {
+	potential = {
+		NOT = { has_variable = ulus_weight }
+		exists = international_organization:ulus_chaghatay
+		any_neighbor_country = { has_variable = ulus_weight }
+	}
+	actions = {
+		ulus_back_an_amir
+	}
+}

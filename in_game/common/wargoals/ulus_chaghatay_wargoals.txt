@@ -72,3 +72,22 @@ sahib_qiran_submission_wargoal = {
 		conquer_cost = 1.0
 	}
 }
+
+# The feud of the tümens: beat the other house in the field. Land is
+# dear, humbling them is not.
+tumen_feud_wargoal = {
+	type = superiority
+	war_name = "TUMEN_FEUD_WAR_NAME"
+
+	attacker = {
+		conquer_cost = 1.25
+		subjugate_cost = 1.0
+	}
+
+	defender = {
+		conquer_cost = 1.25
+		subjugate_cost = 1.0
+	}
+
+	ticking_war_score = 0.25
+}

@@ -16,5 +16,8 @@ amirs_regency_actions_list = {
 		ulus_back_the_khan
 		ulus_rise_against_the_khan
 		ulus_ask_for_pledge
+		ulus_khan_ask_pledge
+		ulus_press_the_feud
+		ulus_ask_outside_support
 	}
 }

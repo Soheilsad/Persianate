@@ -1,0 +1,31 @@
+# Opinion modifiers of the Amirs' Regency system (form: 03_amirs_cadet_bias.txt).
+
+# The regent has opened his treasury to the amirs.
+opinion_ulus_largesse = {
+	value = 25
+	yearly_decay = 5
+}
+
+# He has married into the line: a güregen is a man one can follow.
+opinion_ulus_gurkan = {
+	value = 15
+	yearly_decay = 1
+}
+
+# Between a house and the outsider who backs it.
+opinion_ulus_outside_backing = {
+	value = 30
+	yearly_decay = 3
+}
+
+# A lord who stood with the khan, in the khan's eyes and his own.
+opinion_ulus_pledged_to_khan = {
+	value = 30
+	yearly_decay = 3
+}
+
+# The khan toward an outsider who backs one of his amirs.
+opinion_ulus_meddler = {
+	value = -30
+	yearly_decay = 3
+}

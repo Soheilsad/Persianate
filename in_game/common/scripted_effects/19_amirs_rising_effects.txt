@@ -62,21 +62,43 @@ ulus_begin_regency_by_force = {
 
 # COUNTRY scope: the amir who rose and LOST; scope:ulus_khan_seat is the
 # khan's realm. The khan's purge has succeeded without a regency ever
-# starting: the begs are cowed for ulus_rising_failed_peace_years (the
-# bar cannot be met; ulus_regency_bar_met reads the variable).
+# starting.
+#   - the begs are cowed for ulus_rising_failed_peace_years (the bar
+#     cannot be met; ulus_regency_bar_met reads the variable);
+#   - the beaten amir pays ulus_rising_fine_months of income, loses two
+#     places outside his capital, and loses standing;
+#   - every house that had pledged its tümen to him pays half the fine
+#     and loses one place: they backed the wrong man;
+#   - the land goes to the lords who had pledged to the KHAN, turn and
+#     turn about, or to the khan himself if he had none;
+#   - the amir himself: one chance in two he does not leave the khan's
+#     tent alive. If he lives, his own house may put him aside
+#     (ulus_cadet_after_defeat, scripted_effects/17_amirs_cadet_effects.txt).
 ulus_rising_lost = {
 	remove_variable = ulus_rising
+	save_scope_as = ulus_beaten_riser
 	add_prestige = ulus_rising_lost_prestige
 	if = {
 		limit = { government_type = government_type:steppe_horde }
 		add_horde_unity = ulus_rising_lost_unity
 	}
-	# Whoever had pledged to him has backed the wrong man.
+	ulus_pay_the_khans_fine = { SHARE = 1 }
+	ulus_forfeit_a_place = yes
+	ulus_forfeit_a_place = yes
+
 	international_organization:ulus_chaghatay ?= {
 		set_variable = { name = ulus_khan_triumphant_peace value = 1 years = ulus_rising_failed_peace_years }
 		every_international_organization_member = {
-			limit = { var:ulus_pledged_to ?= root }
+			limit = { var:ulus_pledged_to ?= scope:ulus_beaten_riser }
 			remove_variable = ulus_pledged_to
+			ulus_pay_the_khans_fine = { SHARE = 0.5 }
+			ulus_forfeit_a_place = yes
+			trigger_event_non_silently = amirs_rising.12
+		}
+		# The khan's own lords have chosen well.
+		every_international_organization_member = {
+			limit = { has_variable = ulus_pledged_to_khan }
+			add_prestige = ulus_khan_loyalist_prestige
 		}
 		ulus_chaghatay_rebuild_ledger = yes
 	}
@@ -89,6 +111,140 @@ ulus_rising_lost = {
 		trigger_event_non_silently = amirs_rising.4
 	}
 	trigger_event_non_silently = amirs_rising.3
+
+	# The man himself.
+	random_list = {
+		50 = {
+			ruler ?= {
+				kill_character = {
+					target = this
+					reason = execution
+				}
+			}
+		}
+		50 = {
+			if = {
+				limit = { exists = scope:ulus_khan_seat }
+				scope:ulus_khan_seat = { save_scope_as = ulus_cadet_invader }
+				ulus_cadet_after_defeat = yes
+			}
+		}
+	}
+}
+
+# COUNTRY scope: a beaten house; scope:ulus_khan_seat is paid. $SHARE$ of
+# ulus_rising_fine_months of its income from trade and tax.
+ulus_pay_the_khans_fine = {
+	set_local_variable = {
+		name = ulus_fine
+		value = {
+			value = monthly_income_trade_and_tax
+			multiply = ulus_rising_fine_months
+			multiply = $SHARE$
+			min = 0
+		}
+	}
+	add_gold = {
+		value = local_var:ulus_fine
+		multiply = -1
+	}
+	scope:ulus_khan_seat ?= {
+		add_gold = local_var:ulus_fine
+	}
+}
+
+# COUNTRY scope: a beaten house gives up one place that is not its
+# capital. It goes to a lord pledged to the khan who has had the least
+# so far (ulus_spoils_taken counts them), or to the khan if none is.
+ulus_forfeit_a_place = {
+	if = {
+		limit = { exists = scope:ulus_spoils_heir }
+		clear_saved_scope = ulus_spoils_heir
+	}
+	international_organization:ulus_chaghatay ?= {
+		ordered_international_organization_member = {
+			limit = { has_variable = ulus_pledged_to_khan }
+			order_by = ulus_spoils_order
+			max = 1
+			check_range_bounds = no
+			save_scope_as = ulus_spoils_heir
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:ulus_spoils_heir } }
+		scope:ulus_khan_seat ?= { save_scope_as = ulus_spoils_heir }
+	}
+	if = {
+		limit = { exists = scope:ulus_spoils_heir }
+		random_owned_location = {
+			limit = { is_capital = no }
+			change_location_owner = scope:ulus_spoils_heir
+		}
+		scope:ulus_spoils_heir = {
+			if = {
+				limit = { has_variable = ulus_spoils_taken }
+				change_variable = { name = ulus_spoils_taken add = 1 }
+			}
+			else = {
+				set_variable = { name = ulus_spoils_taken value = 1 }
+			}
+		}
+	}
+}
+
+# COUNTRY scope: a lesser lord who agrees to stand with the khan
+# (ulus_khan_ask_pledge, or amirs_rising.9.a). scope:ulus_asking_khan is
+# the khan's seat.
+ulus_pledge_to_khan = {
+	set_variable = ulus_pledged_to_khan
+	add_prestige = 5
+	add_opinion = {
+		modifier = opinion_ulus_pledged_to_khan
+		target = scope:ulus_asking_khan
+	}
+	save_scope_as = ulus_khans_lord
+	scope:ulus_asking_khan = {
+		add_opinion = {
+			modifier = opinion_ulus_pledged_to_khan
+			target = scope:ulus_khans_lord
+		}
+		trigger_event_non_silently = amirs_rising.10
+	}
+	international_organization:ulus_chaghatay ?= {
+		ulus_chaghatay_rebuild_ledger = yes
+	}
+}
+
+# COUNTRY scope: an OUTSIDER who agrees to back scope:ulus_asking_house
+# (ulus_ask_outside_support, ulus_back_an_amir, or amirs_rising.11.a).
+# One backer per house, one house per backer. The khan does not thank him.
+ulus_outsider_backs_house = {
+	save_scope_as = ulus_backer
+	set_variable = { name = ulus_backs_amir value = scope:ulus_asking_house }
+	add_opinion = {
+		modifier = opinion_ulus_outside_backing
+		target = scope:ulus_asking_house
+	}
+	scope:ulus_asking_house = {
+		set_variable = { name = ulus_outside_backer value = scope:ulus_backer }
+		add_opinion = {
+			modifier = opinion_ulus_outside_backing
+			target = scope:ulus_backer
+		}
+		trigger_event_non_silently = amirs_rising.13
+	}
+	international_organization:ulus_chaghatay ?= {
+		leader_country ?= {
+			if = {
+				limit = { NOT = { this = scope:ulus_asking_house } }
+				add_opinion = {
+					modifier = opinion_ulus_meddler
+					target = scope:ulus_backer
+				}
+			}
+		}
+		ulus_chaghatay_rebuild_ledger = yes
+	}
 }
 
 # COUNTRY scope: a house that has just taken the khan. Every amir
@@ -96,6 +252,16 @@ ulus_rising_lost = {
 # having chosen well. The pledge itself stands.
 ulus_pay_pledges = {
 	save_scope_as = ulus_backed_house
+	# An outside backer is owed too.
+	if = {
+		limit = {
+			var:ulus_outside_backer ?= { exists = this }
+		}
+		var:ulus_outside_backer = {
+			add_favors = { target = scope:ulus_backed_house value = ulus_pledge_favors }
+			trigger_event_non_silently = amirs_rising.14
+		}
+	}
 	international_organization:ulus_chaghatay ?= {
 		every_international_organization_member = {
 			limit = { var:ulus_pledged_to ?= scope:ulus_backed_house }

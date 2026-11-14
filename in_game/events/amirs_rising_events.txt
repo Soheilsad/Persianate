@@ -163,3 +163,130 @@ amirs_rising.8 = {
 		name = amirs_rising.8.a
 	}
 }
+
+# .9 — to a PLAYER lord the khan has asked to stand with the seat.
+amirs_rising.9 = {
+	type = country_event
+	title = amirs_rising.9.title
+	desc = amirs_rising.9.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		exists = scope:ulus_asking_khan
+		NOR = {
+			has_variable = ulus_pledged_to
+			has_variable = ulus_pledged_to_khan
+		}
+	}
+
+	option = {
+		name = amirs_rising.9.a
+		custom_tooltip = amirs_rising_khan_pledge_tt
+		ulus_pledge_to_khan = yes
+	}
+	option = {
+		name = amirs_rising.9.b
+	}
+}
+
+# .10 — to the khan: a lesser lord has pledged to the seat.
+amirs_rising.10 = {
+	type = country_event
+	title = amirs_rising.10.title
+	desc = amirs_rising.10.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	option = {
+		name = amirs_rising.10.a
+	}
+}
+
+# .11 — to a PLAYER outside the ulus whom an amir has asked for backing.
+amirs_rising.11 = {
+	type = country_event
+	title = amirs_rising.11.title
+	desc = amirs_rising.11.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		exists = scope:ulus_asking_house
+		NOT = { has_variable = ulus_backs_amir }
+	}
+
+	option = {
+		name = amirs_rising.11.a
+		custom_tooltip = amirs_rising_outside_backing_tt
+		ulus_outsider_backs_house = yes
+	}
+	option = {
+		name = amirs_rising.11.b
+	}
+}
+
+# .12 — to a house that had pledged to an amir whose rising failed.
+amirs_rising.12 = {
+	type = country_event
+	title = amirs_rising.12.title
+	desc = amirs_rising.12.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_rising.12.a
+		custom_tooltip = amirs_rising_supporter_tt
+	}
+}
+
+# .13 — to an amir who has gained an outside backer.
+amirs_rising.13 = {
+	type = country_event
+	title = amirs_rising.13.title
+	desc = amirs_rising.13.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	option = {
+		name = amirs_rising.13.a
+	}
+}
+
+# .14 — to an outside backer whose man has taken the khan.
+amirs_rising.14 = {
+	type = country_event
+	title = amirs_rising.14.title
+	desc = amirs_rising.14.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	option = {
+		name = amirs_rising.14.a
+		custom_tooltip = amirs_rising_backer_paid_tt
+	}
+}

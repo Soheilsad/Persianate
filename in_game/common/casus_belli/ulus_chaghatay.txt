@@ -126,3 +126,22 @@ cb_break_the_tumens = {
 	}
 	war_goal_type = restore_the_ulus_wargoal
 }
+
+# THE FEUD OF THE TÜMENS. Once the amirs have fallen out, a house in one
+# bloc against a house in another (given by ulus_press_the_feud).
+cb_tumen_feud = {
+	create_visible = {
+		always = no
+	}
+	create_enabled = {
+		always = no
+	}
+	declare_enabled = {
+		is_ulus_chaghatay_amir = yes
+		ulus_regency_stage_at_least = { STAGE = 2 }
+		scope:target = {
+			is_ulus_chaghatay_amir = yes
+		}
+	}
+	war_goal_type = tumen_feud_wargoal
+}

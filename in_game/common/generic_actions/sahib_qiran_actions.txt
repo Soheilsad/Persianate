@@ -65,6 +65,14 @@ sq_distribute_plunder = {
 				limit = { country_has_estate = estate_type:nobles_estate }
 				add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 }
 			}
+			# The amirs feel it directly: his subjects' loyalty, for a time
+			# (main_menu/common/static_modifiers/
+			# 17_sahib_qiran_fortune_modifiers.txt).
+			add_country_modifier = {
+				modifier = sq_plunder_divided_mod
+				years = 3
+				mode = add_and_extend
+			}
 			custom_tooltip = sq_distribute_plunder_tt
 			hidden_effect = {
 				sq_change_fortune = { AMOUNT = sq_fortune_largesse }
@@ -73,21 +81,62 @@ sq_distribute_plunder = {
 	}
 
 	# The AI pays when his fortune is under the high line.
+	# The AI opens the chest when the fortune needs it and the treasury
+	# can bear it (script_values/06_sahib_qiran_ai_values.txt):
+	#   never        at or over the high line with the amirs steady
+	#   the gap      1 point per point of fortune under the high line
+	#   in the low   +60: the amirs are a season from leaving
+	#     band
+	#   wavering     +40 if a sworn amir's loyalty is under 50
+	#     amirs
+	#   at peace     +20 past three years of it: no victories are coming
+	#   the purse    -80 if paying leaves him under 18 months' income
+	#                (waived in the low band: he has no choice)
+	#   in debt      never
 	ai_will_do = {
 		add = 0
 		if = {
 			limit = {
 				scope:actor = {
-					trigger_if = {
-						limit = { has_variable = sq_fortune }
+					has_variable = sq_fortune
+					gold > 0
+					OR = {
 						var:sq_fortune < sq_fortune_high_line
-					}
-					trigger_else = {
-						always = no
+						sq_amirs_wavering = yes
 					}
 				}
 			}
-			add = 40
+			add = {
+				value = sq_fortune_high_line
+				subtract = scope:actor.var:sq_fortune
+				min = 0
+			}
+			if = {
+				limit = { scope:actor = { has_variable = sq_band_low } }
+				add = 60
+			}
+			if = {
+				limit = { scope:actor = { sq_amirs_wavering = yes } }
+				add = 40
+			}
+			if = {
+				limit = {
+					scope:actor = {
+						has_variable = sq_peace_months
+						var:sq_peace_months > sq_fortune_idle_months
+					}
+				}
+				add = 20
+			}
+			if = {
+				limit = {
+					scope:actor = {
+						NOT = { has_variable = sq_band_low }
+						gold < sq_plunder_reserve_gold
+					}
+				}
+				subtract = 80
+			}
 		}
 	}
 }

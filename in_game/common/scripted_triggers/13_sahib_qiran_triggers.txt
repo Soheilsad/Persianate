@@ -52,3 +52,65 @@ sq_sons_divide = {
 		}
 	}
 }
+
+# ---------------------------------------------------------------------
+# The AI's judgement (script_values/06_sahib_qiran_ai_values.txt).
+# ---------------------------------------------------------------------
+
+# COUNTRY scope: a realm that has been bled. Its muster counts for half.
+# (The author's case: a united Iran that has just lost a ruinous war.)
+sq_is_wounded_realm = {
+	OR = {
+		war_exhaustion >= sq_ai_wounded_exhaustion
+		manpower_percentage < sq_ai_wounded_manpower
+	}
+}
+
+# COUNTRY scope, with scope:actor: even counted so, it is much stronger
+# than he is.
+sq_outmatches_actor = {
+	sq_effective_strength > {
+		value = scope:actor.military_strength
+		multiply = sq_ai_outmatched_ratio
+	}
+}
+
+# COUNTRY scope (the Ṣāḥib-qirān): he or one of his subjects borders
+# scope:target.
+sq_reaches_target = {
+	OR = {
+		is_neighbor_of = scope:target
+		any_subject = { is_neighbor_of = scope:target }
+	}
+}
+
+# COUNTRY scope (the Ṣāḥib-qirān): a sworn amir's loyalty is failing.
+sq_amirs_wavering = {
+	any_subject = {
+		has_variable = sq_sworn_amir
+		subject_loyalty < 50
+	}
+}
+
+# COUNTRY scope (a neighbour); $HIM$ = the Ṣāḥib-qirān. A realm clearly
+# stronger than he is, at its strength, that he has not named: one to
+# send gifts to, not riders. A wounded giant is prey, not a friend.
+sq_worth_courting = {
+	is_rebel_country = no
+	is_subject = no
+	NOT = { is_rival_of = $HIM$ }
+	NOT = { is_allied_with = { target = $HIM$ } }
+	NOT = { has_variable = ulus_bulqaq_orphan }
+	NOT = { sq_is_wounded_realm = yes }
+	military_strength > {
+		value = $HIM$.military_strength
+		multiply = sq_ai_court_ratio
+	}
+	NOT = {
+		AND = {
+			is_situation_active = situation:rise_of_timur
+			situation:rise_of_timur = { has_variable = rot_conquest_ambition }
+			capital ?= { region = situation:rise_of_timur.var:rot_conquest_ambition }
+		}
+	}
+}

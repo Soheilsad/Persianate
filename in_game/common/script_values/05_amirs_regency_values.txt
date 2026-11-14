@@ -326,7 +326,7 @@ ulus_cadet_seized_nobles = -0.10
 # literal in every base use): ulus_cadet_recent 10 years (a house goes
 # through this once a decade at most), ulus_cadet_asked 24 months (a
 # chief who stood is not asked again for two years),
-# ulus_sworn_to_regent 5 years, ulus_cadet_coup_recent 8 years (on the
+# ulus_sworn_to_regent 5 years, (the old ulus-wide ulus_cadet_coup_recent is gone: coups are contagious now, script_values/07_amirs_cadet_values.txt) (on the
 # organisation: one coup anywhere quiets the rest), the old chief's
 # return 365-1095 days at 70% (30% he dies on the road), the coup
 # pulse 3 in 100 a year per eligible house
@@ -484,5 +484,188 @@ ulus_pledge_acceptance = {
 			}
 		}
 		add = 10
+	}
+}
+
+# =====================================================================
+# 13. THE REGENT'S ACTIONS IN THE ULUS
+# =====================================================================
+# Largesse: how long it is remembered, and the weight it lends him.
+ulus_largesse_months = 24
+ulus_largesse_weight = 3
+
+# =====================================================================
+# 14. A RISING THAT FAILS (scripted_effects/19_amirs_rising_effects.txt)
+# =====================================================================
+# Months of income the beaten amir pays the khan; his supporters pay half.
+ulus_rising_fine_months = 12
+# What a lord pledged to the khan receives when a rising is broken.
+ulus_khan_loyalist_prestige = 10
+
+# =====================================================================
+# 15. THE KHAN ASKS A LESSER LORD FOR HIS PLEDGE
+#     COUNTRY scope: the lord asked; scope:actor is the khan's seat.
+#     An AI lord agrees at 0 or more.
+# =====================================================================
+ulus_khan_pledge_acceptance = {
+	value = -15
+	add = {
+		value = "opinion(scope:actor)"
+		multiply = 0.167
+	}
+	if = {
+		limit = { has_royal_marriage_with = scope:actor }
+		add = 25
+	}
+	if = {
+		limit = { is_allied_with = { target = scope:actor } }
+		add = 15
+	}
+	if = {
+		limit = { is_rival_of = scope:actor }
+		add = -100
+	}
+	# A khan who still outweighs the lord he asks is worth standing with.
+	if = {
+		limit = {
+			has_variable = ulus_weight
+			scope:actor = { has_variable = ulus_weight }
+		}
+		if = {
+			limit = {
+				scope:actor.var:ulus_weight >= {
+					value = var:ulus_weight
+					multiply = 2
+				}
+			}
+			add = 25
+		}
+		else_if = {
+			limit = { scope:actor.var:ulus_weight >= var:ulus_weight }
+			add = 10
+		}
+		else = {
+			add = -20
+		}
+	}
+	# How close the amirs are to overruling him: nobody boards a sinking
+	# ship. ulus_amir_bar is 0..1 (the ratio against its line).
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { has_variable = ulus_amir_bar }
+		}
+		add = {
+			value = international_organization:ulus_chaghatay.var:ulus_amir_bar
+			multiply = -30
+		}
+	}
+	# A lord with a great neighbour among the amirs wants a counterweight.
+	if = {
+		limit = {
+			any_neighbor_country = {
+				is_target_in_global_variable_list = {
+					name = ulus_greatest_amirs
+					target = this
+				}
+			}
+		}
+		add = 15
+	}
+	if = {
+		limit = { ai_personality = ai_personality:ai_cautious }
+		add = 10
+	}
+	if = {
+		limit = { ai_personality = ai_personality:ai_opportunistic }
+		add = -10
+	}
+}
+
+# =====================================================================
+# 16. OUTSIDE SUPPORT
+#     COUNTRY scope: the OUTSIDER; scope:ulus_asking_house is the amir.
+#     An AI outsider backs him at 0 or more. An outsider backs a
+#     contender to weaken the khan, so he wants one who can make
+#     trouble and cannot win without him: not too strong, not too weak.
+#     The truly strong go by alliance, which binds both ways.
+# =====================================================================
+ulus_outside_support_acceptance = {
+	value = -20
+	add = {
+		value = "opinion(scope:ulus_asking_house)"
+		multiply = 0.167
+	}
+	if = {
+		limit = { is_rival_of = scope:ulus_asking_house }
+		add = -100
+	}
+	# His quarrel with the khan's seat.
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes }
+			is_rival_of = international_organization:ulus_chaghatay.leader_country
+		}
+		add = 30
+	}
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes }
+			is_neighbor_of = international_organization:ulus_chaghatay.leader_country
+		}
+		add = 10
+	}
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes }
+			is_allied_with = { target = international_organization:ulus_chaghatay.leader_country }
+		}
+		add = -100
+	}
+	# The contender's standing against the best amir's.
+	if = {
+		limit = {
+			scope:ulus_asking_house = { has_variable = ulus_kingmaker_score }
+			international_organization:ulus_chaghatay ?= {
+				has_variable = ulus_top_kingmaker_score
+				var:ulus_top_kingmaker_score > 0
+			}
+		}
+		if = {
+			limit = {
+				scope:ulus_asking_house.var:ulus_kingmaker_score >= {
+					value = international_organization:ulus_chaghatay.var:ulus_top_kingmaker_score
+					multiply = 0.9
+				}
+			}
+			add = -10		# strong enough to win alone, and to forget who helped
+		}
+		else_if = {
+			limit = {
+				scope:ulus_asking_house.var:ulus_kingmaker_score >= {
+					value = international_organization:ulus_chaghatay.var:ulus_top_kingmaker_score
+					multiply = 0.5
+				}
+			}
+			add = 25		# can make trouble, cannot win without us
+		}
+		else = {
+			add = -30		# silver thrown into the grass
+		}
+	}
+	if = {
+		limit = { ai_personality = ai_personality:ai_opportunistic }
+		add = 15
+	}
+	if = {
+		limit = { ai_personality = ai_personality:ai_expansionist }
+		add = 10
+	}
+	if = {
+		limit = { ai_personality = ai_personality:ai_isolationist }
+		add = -30
+	}
+	if = {
+		limit = { ai_personality = ai_personality:ai_cautious }
+		add = -10
 	}
 }

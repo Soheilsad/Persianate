@@ -91,16 +91,19 @@ ulus_chaghatay_rebuild_ledger = {
 	# outweigh Samarkand. A realm's weight in the ulus is what it can
 	# put in the field, what it can tax, and the name it carries: each
 	# taken as its share of the whole ulus's total (khan included), then
-	#   50% military strength, 35% tax base, 15% prestige,
+	#   40% military strength, 30% tax base, 20% the ruler's abilities,
+	#   10% prestige (script_values/04_ulus_chaghatay_values.txt, ulus_w_*),
 	# on a 0-100 scale across all members. Stored on every member as
 	# ulus_weight; the bars, the amirs' shares and the kingmaker score
 	# all read it.
 	set_local_variable = { name = ulus_t_mil value = 0 }
 	set_local_variable = { name = ulus_t_tax value = 0 }
 	set_local_variable = { name = ulus_t_pre value = 0 }
+	set_local_variable = { name = ulus_t_rul value = 0 }
 	every_international_organization_member = {
 		change_local_variable = { name = ulus_t_mil add = military_strength }
 		change_local_variable = { name = ulus_t_tax add = country_tax_base }
+		change_local_variable = { name = ulus_t_rul add = ulus_ruler_abilities }
 		change_local_variable = {
 			name = ulus_t_pre
 			add = {
@@ -119,7 +122,7 @@ ulus_chaghatay_rebuild_ledger = {
 					add = {
 						value = military_strength
 						divide = local_var:ulus_t_mil
-						multiply = 50
+						multiply = ulus_w_mil
 					}
 				}
 				if = {
@@ -127,7 +130,15 @@ ulus_chaghatay_rebuild_ledger = {
 					add = {
 						value = country_tax_base
 						divide = local_var:ulus_t_tax
-						multiply = 35
+						multiply = ulus_w_tax
+					}
+				}
+				if = {
+					limit = { local_var:ulus_t_rul > 0 }
+					add = {
+						value = ulus_ruler_abilities
+						divide = local_var:ulus_t_rul
+						multiply = ulus_w_rul
 					}
 				}
 				if = {
@@ -136,7 +147,7 @@ ulus_chaghatay_rebuild_ledger = {
 						value = prestige
 						min = 0
 						divide = local_var:ulus_t_pre
-						multiply = 15
+						multiply = ulus_w_pre
 					}
 				}
 			}
@@ -187,6 +198,161 @@ ulus_chaghatay_rebuild_ledger = {
 			remove_variable = ulus_pledged_to
 		}
 	}
+	# Pledges to the KHAN (ulus_khan_ask_pledge): the same loan, to the
+	# seat. They lapse when a regency begins: the man they were given to
+	# is no longer the one on the seat.
+	every_international_organization_member = {
+		limit = { has_variable = ulus_pledged_to_khan }
+		if = {
+			limit = {
+				NOT = { is_leader_of_international_organization = scope:ulus_io }
+				scope:ulus_io = { NOT = { has_variable = ulus_regency } }
+			}
+			set_local_variable = {
+				name = ulus_lent
+				value = {
+					value = var:ulus_weight
+					multiply = ulus_pledge_share
+				}
+			}
+			scope:ulus_io.leader_country ?= {
+				change_variable = { name = ulus_backing add = local_var:ulus_lent }
+			}
+		}
+		else = {
+			remove_variable = ulus_pledged_to_khan
+		}
+	}
+
+	# ---1c. Friends outside the ulus --------------------------------------
+	# (script_values/04_ulus_chaghatay_values.txt, FRIENDS OUTSIDE.) An
+	# outsider's weight is reckoned on the ulus's own scale from his host
+	# and his tax base; allies count for more than a mere backer, and a
+	# backer who is also an ally is counted once, as an ally.
+	every_international_organization_member = {
+		set_local_variable = { name = ulus_out value = 0 }
+		save_scope_as = ulus_ledger_member
+		every_ally = {
+			limit = {
+				NOT = { is_member_of_international_organization = scope:ulus_io }
+			}
+			set_local_variable = { name = ulus_friend value = 0 }
+			if = {
+				limit = { local_var:ulus_t_mil > 0 }
+				change_local_variable = {
+					name = ulus_friend
+					add = {
+						value = military_strength
+						divide = local_var:ulus_t_mil
+						multiply = ulus_w_mil
+					}
+				}
+			}
+			if = {
+				limit = { local_var:ulus_t_tax > 0 }
+				change_local_variable = {
+					name = ulus_friend
+					add = {
+						value = country_tax_base
+						divide = local_var:ulus_t_tax
+						multiply = ulus_w_tax
+					}
+				}
+			}
+			if = {
+				limit = { local_var:ulus_friend > ulus_outside_friend_cap }
+				set_local_variable = { name = ulus_friend value = ulus_outside_friend_cap }
+			}
+			change_local_variable = {
+				name = ulus_out
+				add = {
+					value = local_var:ulus_friend
+					multiply = ulus_ally_fraction
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = ulus_outside_backer }
+			if = {
+				limit = {
+					var:ulus_outside_backer ?= {
+						NOT = { is_member_of_international_organization = scope:ulus_io }
+						var:ulus_backs_amir ?= scope:ulus_ledger_member
+					}
+				}
+				var:ulus_outside_backer = {
+					if = {
+						limit = {
+							NOT = { is_allied_with = { target = scope:ulus_ledger_member } }
+						}
+						set_local_variable = { name = ulus_friend value = 0 }
+						if = {
+							limit = { local_var:ulus_t_mil > 0 }
+							change_local_variable = {
+								name = ulus_friend
+								add = {
+									value = military_strength
+									divide = local_var:ulus_t_mil
+									multiply = ulus_w_mil
+								}
+							}
+						}
+						if = {
+							limit = { local_var:ulus_t_tax > 0 }
+							change_local_variable = {
+								name = ulus_friend
+								add = {
+									value = country_tax_base
+									divide = local_var:ulus_t_tax
+									multiply = ulus_w_tax
+								}
+							}
+						}
+						if = {
+							limit = { local_var:ulus_friend > ulus_outside_friend_cap }
+							set_local_variable = { name = ulus_friend value = ulus_outside_friend_cap }
+						}
+						change_local_variable = {
+							name = ulus_out
+							add = {
+								value = local_var:ulus_friend
+								multiply = ulus_backer_fraction
+							}
+						}
+					}
+				}
+			}
+			else = {
+				# The backer is gone, has joined the ulus, or backs another.
+				remove_variable = ulus_outside_backer
+			}
+		}
+		if = {
+			limit = { local_var:ulus_out > ulus_outside_cap }
+			set_local_variable = { name = ulus_out value = ulus_outside_cap }
+		}
+		set_variable = { name = ulus_outside_weight value = local_var:ulus_out }
+	}
+
+	# ---1d. Blocs ----------------------------------------------------------
+	# A house's bloc is the house it has pledged to, or itself if others
+	# have pledged to it (ulus_bloc_head; unset for a house that stands
+	# alone). Read by ulus_press_the_feud.
+	every_international_organization_member = {
+		remove_variable = ulus_bloc_head
+		if = {
+			limit = { has_variable = ulus_pledged_to }
+			set_variable = { name = ulus_bloc_head value = var:ulus_pledged_to }
+		}
+		else_if = {
+			limit = {
+				NOT = { is_leader_of_international_organization = scope:ulus_io }
+				var:ulus_backing > 0
+			}
+			set_variable = { name = ulus_bloc_head value = this }
+		}
+	}
+
 	every_international_organization_member = {
 		set_variable = { name = ulus_weight_eff value = ulus_realm_weight }
 	}
@@ -265,9 +431,10 @@ ulus_chaghatay_rebuild_ledger = {
 	set_local_variable = { name = ulus_k_mil value = 0 }
 	set_local_variable = { name = ulus_k_tax value = 0 }
 	set_local_variable = { name = ulus_k_pre value = 0 }
+	set_local_variable = { name = ulus_k_rul value = 0 }
 	set_local_variable = { name = ulus_crown value = 0 }
 	leader_country ?= {
-		set_local_variable = { name = ulus_khan_str value = var:ulus_weight }
+		set_local_variable = { name = ulus_khan_str value = ulus_realm_weight }	# effective: pledged lords, friends outside
 		# The seat's weight taken apart, by the same three formulas that
 		# built ulus_weight above (the ulus totals are still in hand):
 		# the military part out of 50, the tax part out of 35, the
@@ -280,7 +447,7 @@ ulus_chaghatay_rebuild_ledger = {
 				value = {
 					value = military_strength
 					divide = local_var:ulus_t_mil
-					multiply = 50
+					multiply = ulus_w_mil
 				}
 			}
 		}
@@ -291,7 +458,7 @@ ulus_chaghatay_rebuild_ledger = {
 				value = {
 					value = country_tax_base
 					divide = local_var:ulus_t_tax
-					multiply = 35
+					multiply = ulus_w_tax
 				}
 			}
 		}
@@ -303,7 +470,18 @@ ulus_chaghatay_rebuild_ledger = {
 					value = prestige
 					min = 0
 					divide = local_var:ulus_t_pre
-					multiply = 15
+					multiply = ulus_w_pre
+				}
+			}
+		}
+		if = {
+			limit = { local_var:ulus_t_rul > 0 }
+			set_local_variable = {
+				name = ulus_k_rul
+				value = {
+					value = ulus_ruler_abilities
+					divide = local_var:ulus_t_rul
+					multiply = ulus_w_rul
 				}
 			}
 		}
@@ -388,6 +566,7 @@ ulus_chaghatay_rebuild_ledger = {
 	set_variable = { name = ulus_khan_w_mil value = local_var:ulus_k_mil }
 	set_variable = { name = ulus_khan_w_tax value = local_var:ulus_k_tax }
 	set_variable = { name = ulus_khan_w_pre value = local_var:ulus_k_pre }
+	set_variable = { name = ulus_khan_w_rul value = local_var:ulus_k_rul }
 	set_variable = { name = ulus_top3_weight value = local_var:ulus_top3 }
 	set_variable = {
 		name = ulus_crown_power

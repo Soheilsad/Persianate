@@ -111,27 +111,116 @@ ulus_rise_against_the_khan = {
 
 	# The AI rises when it is the likeliest kingmaker of all and the bar
 	# has been met for ulus_rising_ai_patience_months.
+	# The AI rises when it can win and has waited long enough to be sure
+	# of the others: the likeliest kingmaker of all, the bar met for
+	# ulus_rising_ai_patience_months, and weight to match the khan's own
+	# (tümens pledged to it and friends outside count; so do the lords
+	# pledged to the khan, against it). A child on the felt is an
+	# invitation. A cautious chief waits for better odds, and nobody
+	# rises with his own horde coming apart: the price of failing is his
+	# land and perhaps his head.
 	ai_will_do = {
-		add = 0
+		add = -40
+		if = {
+			limit = {
+				scope:actor = {
+					has_variable = ulus_kingmaker_score
+					international_organization:ulus_chaghatay ?= { has_variable = ulus_top_kingmaker_score }
+					var:ulus_kingmaker_score >= international_organization:ulus_chaghatay.var:ulus_top_kingmaker_score
+				}
+			}
+			add = 25
+		}
 		if = {
 			limit = {
 				international_organization:ulus_chaghatay ?= {
 					has_variable = ulus_bar_met_months
 					var:ulus_bar_met_months >= ulus_rising_ai_patience_months
 				}
-				scope:actor = {
-					has_variable = ulus_kingmaker_score
-					NOT = {
-						any_in_global_list = {
-							variable = ulus_kingmakers
-							NOT = { this = scope:actor }
-							has_variable = ulus_kingmaker_score
-							var:ulus_kingmaker_score > scope:actor.var:ulus_kingmaker_score
-						}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				scope:actor = { has_variable = ulus_weight_eff }
+				international_organization:ulus_chaghatay ?= {
+					leader_country ?= { has_variable = ulus_weight_eff }
+				}
+			}
+			if = {
+				limit = {
+					scope:actor.var:ulus_weight_eff >= {
+						value = international_organization:ulus_chaghatay.leader_country.var:ulus_weight_eff
+						multiply = 1.25
+					}
+				}
+				add = 35
+			}
+			else_if = {
+				limit = {
+					scope:actor.var:ulus_weight_eff >= international_organization:ulus_chaghatay.leader_country.var:ulus_weight_eff
+				}
+				add = 15
+			}
+			else_if = {
+				limit = {
+					scope:actor.var:ulus_weight_eff < {
+						value = international_organization:ulus_chaghatay.leader_country.var:ulus_weight_eff
+						multiply = 0.8
+					}
+				}
+				add = -60
+			}
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					leader_country ?= {
+						ruler ?= { is_adult = no }
 					}
 				}
 			}
-			add = 25
+			add = 20
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes }
+				scope:actor = { is_rival_of = international_organization:ulus_chaghatay.leader_country }
+			}
+			add = 15
+		}
+		if = {
+			limit = {
+				scope:actor = {
+					has_variable = ulus_backing
+					var:ulus_backing > 0
+				}
+			}
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { horde_unity < 30 } }
+			add = -30
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_aggressive } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_expansionist } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_opportunistic } }
+			add = 5
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -25
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_defensive } }
+			add = -15
 		}
 	}
 }
@@ -162,7 +251,10 @@ ulus_pledge_support = {
 		scope:actor = {
 			custom_tooltip = {
 				text = ulus_not_pledged_tt
-				NOT = { has_variable = ulus_pledged_to }
+				NOR = {
+					has_variable = ulus_pledged_to
+					has_variable = ulus_pledged_to_khan
+				}
 			}
 		}
 	}
@@ -242,7 +334,10 @@ ulus_withdraw_pledge = {
 	potential = {
 		scope:actor = {
 			is_ulus_chaghatay_amir = yes
-			has_variable = ulus_pledged_to
+			OR = {
+				has_variable = ulus_pledged_to
+				has_variable = ulus_pledged_to_khan
+			}
 		}
 	}
 
@@ -266,6 +361,7 @@ ulus_withdraw_pledge = {
 	effect = {
 		scope:actor = {
 			remove_variable = ulus_pledged_to
+			remove_variable = ulus_pledged_to_khan
 		}
 		scope:recipient = {
 			ulus_chaghatay_rebuild_ledger = yes
@@ -313,7 +409,10 @@ ulus_ask_for_pledge = {
 			# No chains: a house that has pledged cannot be backed.
 			custom_tooltip = {
 				text = ulus_not_pledged_tt
-				NOT = { has_variable = ulus_pledged_to }
+				NOR = {
+					has_variable = ulus_pledged_to
+					has_variable = ulus_pledged_to_khan
+				}
 			}
 		}
 	}
@@ -381,8 +480,12 @@ ulus_ask_for_pledge = {
 
 	# The AI asks when it is among the likeliest kingmakers and the bar is
 	# not yet met: it is building toward a rising or a succession.
+	# The AI asks for pledges when it is a contender: among the likeliest
+	# kingmakers before a regency (building toward a rising or a
+	# succession), and again once the amirs have fallen out and blocs
+	# decide wars. A house that stands no chance does not canvass.
 	ai_will_do = {
-		add = 0
+		add = -15
 		if = {
 			limit = {
 				scope:actor = {
@@ -391,11 +494,503 @@ ulus_ask_for_pledge = {
 						target = this
 					}
 				}
+			}
+			add = 25
+		}
+		if = {
+			limit = {
 				international_organization:ulus_chaghatay ?= {
-					NOT = { has_variable = ulus_regency }
+					has_variable = ulus_regency
+					has_variable = ulus_regency_stage
+					var:ulus_regency_stage >= 2
 				}
 			}
+			add = 10
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					has_variable = ulus_amir_bar
+					var:ulus_amir_bar >= 0.75
+				}
+			}
+			add = 10	# the bar is close: a little more weight tips it
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_friendly } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_opportunistic } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_isolationist } }
+			add = -20
+		}
+	}
+}
+
+# ============================================================
+# THE KHAN'S SIDE, THE FEUD, AND FRIENDS OUTSIDE
+#
+#   ulus_khan_ask_pledge        the khan asks a lesser lord (one NOT among
+#                               the three likeliest kingmakers) to stand
+#                               with the seat: half the lord's weight is
+#                               counted as the khan's. The lord is paid
+#                               now, and takes the land of broken rebels.
+#   ulus_press_the_feud         from stage 2, a house in one bloc gets a
+#                               casus belli on a house in another: what
+#                               a pledge is FOR once the amirs fall out.
+#   ulus_ask_outside_support    an amir asks a power outside the ulus to
+#                               back him. A backer counts for less than
+#                               an ally and binds nobody; he comes in
+#                               to weaken the khan.
+# Acceptance values: script_values/05_amirs_regency_values.txt, 15-16.
+# ============================================================
+
+ulus_khan_ask_pledge = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_khan_ask_pledge
+		years = 1
+	}
+
+	price = price:ulus_khan_ask_pledge_price
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_leader = yes
+			NOT = { has_variable = ulus_regent_seat }
+		}
+		international_organization:ulus_chaghatay ?= {
+			NOT = { has_variable = ulus_regency }
+		}
+	}
+
+	allow = {
+		always = yes
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		target_flag = target_country
+		name = "choose_country"
+		none_available_msg_key = "no_valid_countries"
+		interaction_source_list = {
+			scope:recipient = {
+				every_international_organization_member = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+		}
+		enabled = {
+			this != scope:actor
+			custom_tooltip = {
+				text = ulus_ask_not_pledged_tt
+				NOR = {
+					has_variable = ulus_pledged_to
+					has_variable = ulus_pledged_to_khan
+				}
+			}
+			# The great amirs are the ones he needs the others AGAINST.
+			custom_tooltip = {
+				text = ulus_khan_ask_lesser_tt
+				NOT = {
+					is_target_in_global_variable_list = {
+						name = ulus_kingmakers
+						target = this
+					}
+				}
+			}
+			custom_tooltip = {
+				text = ulus_khan_ask_acceptance_tt
+				OR = {
+					is_ai = no
+					ulus_khan_pledge_acceptance >= 0
+				}
+			}
+		}
+		column = { data = name }
+		column = { data = population }
+		column = { data = great_power_score }
+	}
+
+	effect = {
+		scope:actor = { save_scope_as = ulus_asking_khan }
+		scope:target_country = {
+			if = {
+				limit = { is_ai = no }
+				trigger_event_non_silently = amirs_rising.9
+			}
+			else = {
+				ulus_pledge_to_khan = yes
+			}
+		}
+	}
+
+	# The AI khan gathers the lesser lords when the amirs are closing on
+	# him: nothing while he is safe, eager as the bar nears its line. A
+	# cautious khan starts earlier; one who cannot pay does not start.
+	ai_will_do = {
+		add = -10
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { has_variable = ulus_amir_bar }
+			}
+			add = {
+				value = international_organization:ulus_chaghatay.var:ulus_amir_bar
+				multiply = 40
+			}
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_defensive } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { gold < 0 } }
+			add = -50
+		}
+	}
+}
+
+ulus_press_the_feud = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_press_the_feud
+		years = 5
+	}
+
+	price = price:ulus_press_the_feud_price
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_amir = yes
+		}
+		international_organization:ulus_chaghatay ?= {
+			has_variable = ulus_regency
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			at_war = no
+			custom_tooltip = {
+				text = ulus_amirs_fallen_out_tt
+				ulus_regency_stage_at_least = { STAGE = 2 }
+			}
+			custom_tooltip = {
+				text = ulus_feud_in_a_bloc_tt
+				has_variable = ulus_bloc_head
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		target_flag = target_country
+		name = "choose_country"
+		none_available_msg_key = "no_valid_countries"
+		interaction_source_list = {
+			scope:recipient = {
+				every_international_organization_member = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+		}
+		enabled = {
+			this != scope:actor
+			NOT = { is_leader_of_international_organization = scope:recipient }
+			custom_tooltip = {
+				text = ulus_feud_other_bloc_tt
+				has_variable = ulus_bloc_head
+				NOT = { var:ulus_bloc_head = scope:actor.var:ulus_bloc_head }
+			}
+			scope:actor = { NOT = { has_truce_with = prev } }
+		}
+		column = { data = name }
+		column = { data = population }
+		column = { data = great_power_score }
+	}
+
+	effect = {
+		scope:actor = {
+			add_casus_belli = {
+				type = casus_belli:cb_tumen_feud
+				target = scope:target_country
+				years = 5
+			}
+		}
+	}
+
+	# The AI presses a feud against a house it can beat: never against a
+	# stronger one, readily against a much weaker one, more so if that
+	# house is a rival or stands behind the bloc's chief rival for the
+	# khan. Aggressive rulers do it sooner, cautious ones seldom, and
+	# nobody starts one while his own horde is coming apart.
+	ai_will_do = {
+		add = -20
+		if = {
+			limit = { exists = scope:target_country }
+			if = {
+				limit = {
+					scope:actor = { has_variable = ulus_weight_eff }
+					scope:target_country = { has_variable = ulus_weight_eff }
+				}
+				if = {
+					limit = {
+						scope:actor.var:ulus_weight_eff >= {
+							value = scope:target_country.var:ulus_weight_eff
+							multiply = 1.5
+						}
+					}
+					add = 35
+				}
+				else_if = {
+					limit = {
+						scope:actor.var:ulus_weight_eff >= {
+							value = scope:target_country.var:ulus_weight_eff
+							multiply = 1.15
+						}
+					}
+					add = 15
+				}
+				else = {
+					add = -60
+				}
+			}
+			if = {
+				limit = { scope:actor = { is_rival_of = scope:target_country } }
+				add = 20
+			}
+			if = {
+				limit = {
+					scope:target_country = {
+						var:ulus_bloc_head ?= {
+							is_target_in_global_variable_list = {
+								name = ulus_kingmakers
+								target = this
+							}
+						}
+					}
+				}
+				add = 10
+			}
+			add = {
+				value = "scope:actor.opinion(scope:target_country)"
+				multiply = -0.1
+			}
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_aggressive } }
 			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_expansionist } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -20
+		}
+		if = {
+			limit = { scope:actor = { horde_unity < 30 } }
+			add = -30
+		}
+	}
+}
+
+ulus_ask_outside_support = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 24
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_ask_outside_support
+		years = 3
+	}
+
+	price = price:ulus_ask_outside_support_price
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_amir = yes
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			custom_tooltip = {
+				text = ulus_no_outside_backer_tt
+				NOT = { has_variable = ulus_outside_backer }
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	# Powers outside the ulus that border any of its members.
+	select_trigger = {
+		looking_for_a = country
+		target_flag = target_country
+		name = "choose_country"
+		none_available_msg_key = "no_valid_countries"
+		interaction_source_list = {
+			scope:recipient = {
+				every_international_organization_member = {
+					every_neighbor_country = {
+						limit = {
+							is_rebel_country = no
+							NOT = { is_member_of_international_organization = scope:recipient }
+						}
+						add_to_list = source
+					}
+				}
+			}
+		}
+		visible = {
+		}
+		enabled = {
+			custom_tooltip = {
+				text = ulus_outsider_backs_nobody_tt
+				NOT = { has_variable = ulus_backs_amir }
+			}
+			scope:actor = { NOT = { is_at_war_with = prev } }
+			custom_tooltip = {
+				text = ulus_outside_acceptance_tt
+				OR = {
+					is_ai = no
+					AND = {
+						# the value reads scope:ulus_asking_house
+						scope:actor = { save_temporary_scope_as = ulus_asking_house }
+						ulus_outside_support_acceptance >= 0
+					}
+				}
+			}
+		}
+		column = { data = name }
+		column = { data = population }
+		column = { data = great_power_score }
+	}
+
+	effect = {
+		scope:actor = { save_scope_as = ulus_asking_house }
+		scope:target_country = {
+			if = {
+				limit = { is_ai = no }
+				trigger_event_non_silently = amirs_rising.11
+			}
+			else = {
+				ulus_outsider_backs_house = yes
+			}
+		}
+	}
+
+	# The AI amir looks outside when he is a contender who is not the
+	# strongest: the top house does not need a patron and should not
+	# want one. Not while he already has allies outside to lean on.
+	ai_will_do = {
+		add = -10
+		if = {
+			limit = {
+				scope:actor = {
+					is_target_in_global_variable_list = {
+						name = ulus_kingmakers
+						target = this
+					}
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				scope:actor = {
+					has_variable = ulus_kingmaker_score
+					international_organization:ulus_chaghatay ?= { has_variable = ulus_top_kingmaker_score }
+					var:ulus_kingmaker_score >= international_organization:ulus_chaghatay.var:ulus_top_kingmaker_score
+				}
+			}
+			add = -25
+		}
+		if = {
+			limit = {
+				scope:actor = {
+					has_variable = ulus_outside_weight
+					var:ulus_outside_weight > 3
+				}
+			}
+			add = -15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_opportunistic } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_isolationist } }
+			add = -20
 		}
 	}
 }

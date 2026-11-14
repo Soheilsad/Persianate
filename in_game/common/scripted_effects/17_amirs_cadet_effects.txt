@@ -26,8 +26,18 @@
 #     ulus_cadet_chief     the kinsman confirmed in his place
 #     ulus_cadet_recent    timed: the route does not reopen
 #     ulus_confirmed_by    the invader who confirmed him (country)
-#     ulus_sworn_to_regent timed: confirmed by the state holding the khan
+#     ulus_sworn_to_regent timed: confirmed by the seat of the ulus —
+#                          the regent's state, or the khan's own after a
+#                          failed rising (the name is older than that case)
+#     ulus_cadet_asked     timed, 24 months: the question has been put
+#     ulus_cadet_bid_failed timed, 3 months: the defeat was the house's
+#                          own bid for the throne (event text only)
+#     ulus_claimed_the_khan timed, set by the Claim the Khan action
+#                          (generic_actions/amirs_regency_actions.txt)
 #   ON THE OLD CHIEF     ulus_chief_in_exile
+#   ON THE ORGANISATION
+#     ulus_coup_contagion  timed: a coup has succeeded; others follow
+#     ulus_first_coup_done the first coup of this regency has happened
 # =====================================================================
 
 # COUNTRY scope (the house). Saves scope:ulus_cadet = its best soldier
@@ -170,4 +180,76 @@ ulus_cadet_clear_exile = {
 	}
 	remove_variable = ulus_fled_chief
 	remove_variable = ulus_cadet_chief
+}
+
+# ---------------------------------------------------------------------
+# AFTER A FAILED BID FOR THE THRONE. COUNTRY scope: the beaten amir
+# house. Needs scope:ulus_cadet_invader = the victor (the khan's seat
+# after a failed rising, the regent's state after a failed claim on the
+# khan). No stage of the regency is required: a rising can fail before
+# any regency exists.
+#
+# A chief who reached for the khan and missed is in the same place as a
+# chief with an invader in his pastures, and worse: the victor knows
+# his name. The house is asked the same question (amirs_cadet.1, with
+# its own text): the chief stands and takes what comes, or he rides out
+# and a kinsman goes to the victor and is confirmed in his place. The
+# victor is a member of the ulus, so the kinsman swears to him and no
+# subject tie is made (ulus_cadet_submits).
+#
+# Called by scripted_effects/19_amirs_rising_effects.txt (a rising
+# lost) and by ulus_cadet_claim_failed in on_action/
+# 32_amirs_cadet_hooks.txt (a claim on the khan lost). Silent if the
+# house has no kinsman at court, is already through the route, or was
+# asked within the last 24 months.
+# ---------------------------------------------------------------------
+ulus_cadet_after_defeat = {
+	if = {
+		limit = {
+			exists = scope:ulus_cadet_invader
+			is_ulus_chaghatay_amir = yes
+			NOT = { has_variable = ulus_fled_chief }
+			NOT = { has_variable = ulus_cadet_asked }
+			ulus_house_has_cadet = yes
+		}
+		set_variable = { name = ulus_cadet_asked value = 1 months = 24 }
+		set_variable = { name = ulus_cadet_bid_failed value = 1 months = 3 }
+		trigger_event_non_silently = amirs_cadet.1
+	}
+}
+
+# ---------------------------------------------------------------------
+# A COUP HAS SUCCEEDED. COUNTRY scope: the house; needs scope:ulus_cadet
+# (the man who now leads it; call AFTER ulus_cadet_takes_tumen).
+#
+# "Everyone is doing it." For ulus_cadet_coup_contagion_years the
+# yearly roll in every OTHER house is several times likelier (the
+# house itself is shut out by ulus_cadet_recent). And the first man to
+# do it in a regency makes a name the copyists do not: renown (his own,
+# as ulus_add_renown keeps it) and prestige for the house.
+# ---------------------------------------------------------------------
+ulus_cadet_coup_succeeded = {
+	international_organization:ulus_chaghatay ?= {
+		set_variable = { name = ulus_coup_contagion value = 1 years = 6 }
+		if = {
+			limit = { NOT = { has_variable = ulus_first_coup_done } }
+			set_variable = ulus_first_coup_done
+			set_local_variable = { name = ulus_first_coup value = 1 }
+		}
+	}
+	if = {
+		limit = { has_local_variable = ulus_first_coup }
+		# On the man directly, as the seed is: whatever the engine has
+		# done with `ruler` by this line.
+		scope:ulus_cadet ?= {
+			if = {
+				limit = { has_variable = ulus_renown }
+				change_variable = { name = ulus_renown add = ulus_cadet_first_coup_renown }
+			}
+			else = {
+				set_variable = { name = ulus_renown value = ulus_cadet_first_coup_renown }
+			}
+		}
+		add_prestige = ulus_cadet_first_coup_prestige
+	}
 }

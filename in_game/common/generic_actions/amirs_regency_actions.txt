@@ -92,15 +92,44 @@ ulus_recall_darughas = {
 	}
 
 	# The AI recalls when its begs are within reach of the bar.
+	# The AI regent recalls the governors when the begs of his own realm
+	# are strong enough to matter and the regency is running away from
+	# him; not as a habit.
 	ai_will_do = {
-		add = 0
+		add = -15
+		if = {
+			limit = { scope:actor = { "estate_power(estate_type:nobles_estate)" >= 0.4 } }
+			add = 25
+		}
+		if = {
+			limit = { scope:actor = { "estate_power(estate_type:nobles_estate)" >= 0.5 } }
+			add = 20
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					has_variable = ulus_regency_progress
+					var:ulus_regency_progress >= 60
+				}
+			}
+			add = 20
+		}
 		if = {
 			limit = {
 				scope:actor = {
-					"estate_power(estate_type:nobles_estate)" >= 0.4
+					country_has_estate = estate_type:nobles_estate
+					"estate(estate_type:nobles_estate)" = { satisfaction < 0.4 }
 				}
 			}
-			add = 30
+			add = -20	# the begs are already close to the knife
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_defensive } }
+			add = 10
 		}
 	}
 }
@@ -185,6 +214,17 @@ ulus_marry_into_the_line = {
 				marry_character = scope:ulus_bride
 			}
 			add_prestige = 10
+			# The amirs' regard for a son-in-law of the line.
+			save_scope_as = ulus_giver
+			international_organization:ulus_chaghatay ?= {
+				every_international_organization_member = {
+					limit = { NOT = { this = scope:ulus_giver } }
+					add_opinion = {
+						modifier = opinion_ulus_gurkan
+						target = scope:ulus_giver
+					}
+				}
+			}
 			international_organization:ulus_chaghatay ?= {
 				ulus_change_progress = { AMOUNT = ulus_regency_progress_marriage }
 				ulus_chaghatay_rebuild_ledger = yes
@@ -192,8 +232,23 @@ ulus_marry_into_the_line = {
 		}
 	}
 
+	# The marriage is the one thing a regent cannot do without if he means
+	# to end as Ṣāḥib-qirān, so the AI wants it early and wants it more
+	# the later the stage. It waits only if it cannot pay.
 	ai_will_do = {
-		add = 60
+		add = 40
+		if = {
+			limit = { scope:actor = { ulus_regency_stage_at_least = { STAGE = 3 } } }
+			add = 40
+		}
+		if = {
+			limit = { scope:actor = { gold < 0 } }
+			add = -100
+		}
+		if = {
+			limit = { scope:actor = { at_war = yes } }
+			add = -15
+		}
 	}
 }
 
@@ -246,7 +301,29 @@ ulus_distribute_largesse = {
 
 	effect = {
 		scope:actor = {
+			save_scope_as = ulus_giver
 			add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 }
+			# Not only his own begs. The robes and the silver go to the
+			# AMIRS OF THE ULUS: each thinks better of him, his own
+			# subjects are the surer for it, and for two years he stands
+			# taller among them (ulus_weight_boost, read by the ledger:
+			# it counts in the bar of the three greatest amirs against
+			# him and in his heir's standing).
+			international_organization:ulus_chaghatay ?= {
+				every_international_organization_member = {
+					limit = { NOT = { this = scope:ulus_giver } }
+					add_opinion = {
+						modifier = opinion_ulus_largesse
+						target = scope:ulus_giver
+					}
+				}
+			}
+			add_country_modifier = {
+				modifier = ulus_largesse_given_mod
+				months = ulus_largesse_months
+				mode = add_and_extend
+			}
+			set_variable = { name = ulus_weight_boost value = ulus_largesse_weight months = ulus_largesse_months }
 			international_organization:ulus_chaghatay ?= {
 				ulus_change_gap = { AMOUNT = ulus_gap_largesse }
 				ulus_chaghatay_rebuild_ledger = yes
@@ -255,21 +332,50 @@ ulus_distribute_largesse = {
 	}
 
 	# The AI pays when the gap is under the filled line.
+	# The AI regent opens the treasury by how far the gap has fallen under
+	# its line: nothing while it is filled, urgently once it is empty,
+	# and more readily in the last stage, when the filled years are being
+	# counted. Never in debt, and less in a war he is paying for.
 	ai_will_do = {
-		add = 0
+		add = -10
 		if = {
 			limit = {
 				international_organization:ulus_chaghatay ?= {
-					trigger_if = {
-						limit = { has_variable = ulus_gap }
-						var:ulus_gap < ulus_gap_filled_line
-					}
-					trigger_else = {
-						always = no
-					}
+					has_variable = ulus_gap
+					var:ulus_gap < ulus_gap_filled_line
+				}
+			}
+			add = {
+				value = ulus_gap_filled_line
+				subtract = international_organization:ulus_chaghatay.var:ulus_gap
+				multiply = 1.5
+				max = 60
+			}
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					has_variable = ulus_gap_empty_months
+					var:ulus_gap_empty_months > 0
 				}
 			}
 			add = 40
+		}
+		if = {
+			limit = { scope:actor = { ulus_regency_stage_at_least = { STAGE = 4 } } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { gold < 0 } }
+			add = -100
+		}
+		if = {
+			limit = { scope:actor = { at_war = yes } }
+			add = -10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_friendly } }
+			add = 10
 		}
 	}
 }
@@ -337,13 +443,55 @@ ulus_claim_the_khan = {
 					target = scope:ulus_regent
 					years = 10
 				}
+				# Read by on_action/32_amirs_cadet_hooks.txt: a chief who
+				# loses this war may lose his tümen to a kinsman.
+				set_variable = { name = ulus_claimed_the_khan value = 1 years = 10 }
 			}
 		}
 	}
 
 	# The AI claims when it stands among the three likeliest kingmakers.
+	# The AI amir claims the khan when he can plausibly take him: by his
+	# weight against the regent's, his own standing among the amirs, and
+	# how badly the regent is doing. A house sworn to the regent does
+	# not, and a cautious chief wants better odds than an aggressive one.
 	ai_will_do = {
-		add = 0
+		add = -25
+		if = {
+			limit = {
+				scope:actor = { has_variable = ulus_weight_eff }
+				international_organization:ulus_chaghatay ?= {
+					leader_country ?= { has_variable = ulus_weight_eff }
+				}
+			}
+			if = {
+				limit = {
+					scope:actor.var:ulus_weight_eff >= {
+						value = international_organization:ulus_chaghatay.leader_country.var:ulus_weight_eff
+						multiply = 1.3
+					}
+				}
+				add = 55
+			}
+			else_if = {
+				limit = {
+					scope:actor.var:ulus_weight_eff >= {
+						value = international_organization:ulus_chaghatay.leader_country.var:ulus_weight_eff
+						multiply = 0.9
+					}
+				}
+				add = 30
+			}
+			else_if = {
+				limit = {
+					scope:actor.var:ulus_weight_eff < {
+						value = international_organization:ulus_chaghatay.leader_country.var:ulus_weight_eff
+						multiply = 0.7
+					}
+				}
+				add = -60
+			}
+		}
 		if = {
 			limit = {
 				scope:actor = {
@@ -353,7 +501,57 @@ ulus_claim_the_khan = {
 					}
 				}
 			}
-			add = 30
+			add = 15
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					has_variable = ulus_gap
+					var:ulus_gap < 30
+				}
+			}
+			add = 20	# the regent's deeds no longer cover for him
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					leader_country ?= { has_variable = ulus_recent_victory }
+				}
+			}
+			add = -20
+		}
+		if = {
+			limit = { scope:actor = { has_variable = ulus_sworn_to_regent } }
+			add = -80
+		}
+		if = {
+			limit = {
+				scope:actor = {
+					has_variable = ulus_outside_weight
+					var:ulus_outside_weight > 3
+				}
+			}
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { horde_unity < 30 } }
+			add = -25
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_aggressive } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_expansionist } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -20
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_defensive } }
+			add = -10
 		}
 	}
 }
@@ -467,13 +665,56 @@ ulus_back_the_khan = {
 	}
 
 	# The AI gambles rarely, and not when it could take the khan itself.
+	# The AI amir backs the khan's purge when he has more to gain from a
+	# khan than from this regent: a man of the line himself, a rival of
+	# the regent, or one who thinks ill of him. A house that could take
+	# the khan for itself would rather do that.
 	ai_will_do = {
-		add = 5
+		add = -10
+		if = {
+			limit = { scope:actor = { ulus_ruler_is_of_the_line = yes } }
+			add = 40
+		}
 		if = {
 			limit = {
-				scope:actor = { ulus_ruler_is_of_the_line = yes }
+				international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes }
+				scope:actor = { is_rival_of = international_organization:ulus_chaghatay.leader_country }
 			}
-			add = 40
+			add = 25
+		}
+		if = {
+			limit = { international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes } }
+			add = {
+				value = "scope:actor.opinion(international_organization:ulus_chaghatay.leader_country)"
+				multiply = -0.15
+			}
+		}
+		if = {
+			limit = {
+				scope:actor = {
+					is_target_in_global_variable_list = {
+						name = ulus_kingmakers
+						target = this
+					}
+				}
+			}
+			add = -20
+		}
+		if = {
+			limit = { scope:actor = { has_variable = ulus_sworn_to_regent } }
+			add = -60
+		}
+		if = {
+			limit = { scope:actor = { gold < 0 } }
+			add = -40
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_opportunistic } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -10
 		}
 	}
 }

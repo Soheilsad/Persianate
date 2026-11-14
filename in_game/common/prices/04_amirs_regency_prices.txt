@@ -39,3 +39,22 @@ ulus_withdraw_pledge_price = {
 ulus_ask_for_pledge_price = {
 	political_influence = 10
 }
+
+# The khan buys a lesser lord's pledge; a feud is pressed; an outsider is
+# asked for his support, or offers it.
+ulus_khan_ask_pledge_price = {
+	political_influence = 5
+	scaled_gold = 2
+}
+
+ulus_press_the_feud_price = {
+	political_influence = 10
+}
+
+ulus_ask_outside_support_price = {
+	political_influence = 10
+}
+
+ulus_back_an_amir_price = {
+	scaled_gold = 3
+}
