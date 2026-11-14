@@ -2,8 +2,9 @@
 # in_game/events/DHE/flavor_tim.txt.
 #
 # Events cannot be REPLACE:d and a file cannot be overridden in part, so
-# the whole file is shipped. ONE change: flavor_tim.8's trigger (search
-# for "PERSIANATE WORLD" below). Everything else is byte-identical to
+# the whole file is shipped. THREE changes, all `always = no` in a trigger
+# (search for "PERSIANATE WORLD" below): flavor_tim.8 (the spawn),
+# flavor_tim.6 (the nickname) and flavor_tim.1000 (the childhood chain). Everything else is byte-identical to
 # base apart from the UTF-8 BOM, which the mod's .txt files do not carry.
 #
 # flavor_tim.8 is base's date-driven Timur: between 1360 and 1400 it
@@ -354,6 +355,9 @@ flavor_tim.6 = { #Timur the Lame
 	}
 
 	trigger = {
+		# PERSIANATE WORLD: disabled — the "Lang" nickname and +mil for the historical Temür.
+		# The Ṣāḥib-qirān is whoever earns it; no scheduled favours.
+		always = no
 		character:chg_timur_lame_borjigin ?= {
 			is_alive = yes
 			owner = root
@@ -1673,6 +1677,9 @@ flavor_tim.1000 = { #A Problematic Individual
 	}
 
 	trigger = {
+		# PERSIANATE WORLD: disabled — the 1345-50 childhood chain (.1000-.1004), which buffs the historical Temür.
+		# The Ṣāḥib-qirān is whoever earns it; no scheduled favours.
+		always = no
 		character:chg_timur_lame_borjigin ?= {
 			is_alive = yes
 			owner = root
