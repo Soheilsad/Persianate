@@ -1,194 +1,262 @@
-# The Erānzamīn succession situation
+# The Succession of Erānzamīn
 
-**Erānzamīn** — *the land of Iran* — is the name the Ilkhanid chancery used for the realm. The succession situation that bears its name is the realm-wide political crisis triggered by Abū Saʿīd's death without a male heir in November 1335 and the rapid extinction, over the following two years, of every plausible Hülegüid candidate.
+> *Only one claimant can sit on Hulagu's seat — the legitimacy of the Khans does not divide.*
 
-This page covers both the doctrine of the crisis and the actual event chain that runs it: `ilkhanate_flavor.1`, `.2`, `.10`, and `.99`.
+**Erānzamīn** — *the land of Iran* — is what the Ilkhanid chancery called its own realm. Abū Saʿīd died without a son in 1335; Arpa Ke'ün lasted five months; every khan after him was some amir's khan. The army, the treasury, the registers and the provinces all survived, but the throne was, by everyone's open admission, vacant. For two decades the great houses answered the question *in whose name is the Friday khuṭba read?* in different ways: some enthroned a Chinggisid of convenience and ruled behind him, some took investiture as the caliph's sword, some claimed the *farr* of Iranian kingship outright, and many simply governed their corner and waited. The situation is that question, asked of every realm in the old Ilkhanate at once.
 
-## The historical problem
+This page covers the situation itself. The roll of who stands where is kept by [the Erānzamīn organisation](eranzamin-organisation.md); the regent's road has its own page, [The Borrowed Mandate](borrowed-mandate.md); the road that claims nothing is [the Ilkhanate Governorate](ilkhanate-governorate.md).
 
-The Mongol political order rested on one rule: only a descendant of Chinggis Khan could legitimately reign. By 1335 Iran's Hülegüid line was running out of credible candidates.
+## How it starts
 
-The actual fourteenth-century solution was a charade. Warlord-regents installed Borjigin puppets in whose name coins were struck and the Friday khuṭba was read, while the regents ran the state. The sequence of puppets ran from a genuine princess (Sātī Beg) through increasingly dubious figures, ending with candidates whose parentage was politely fictional. The system worked, in the sense of producing functioning states, for roughly two decades.
+**The Succession of Erānzamīn** begins on the first day of the 1337 start. Three things happen at once:
 
-It is one of the strangest political experiments of the medieval period: an empire whose army, treasury, chancery, and provinces all survived, but whose sovereignty was, by everyone's open admission, vacated.
+- Every location owned by a member of the Erānzamīn organisation receives **Post-Ilkhanid Chaos** for 40 years.
+- Every **contender** is flagged, receives **Contender for the Throne**, and is shown the opening event *Hulagu's Seat Stands Empty*.
+- The *ṭarīqa* orders seated in the region receive the same event with an answer of their own.
 
-## The situation in game
+The situation is visible to anyone who owns land in the region, borders someone who does, or has a capital in the Middle East or Central Asia.
 
-The situation is `01_eranzamin_succession`, applied at game start to every contender in the post-Ilkhanid space. The contender roster is **inclusive**, not curated — the Safavid order of Ardabīl is in it, despite being a small Sufi lodge in 1337, because the simulation does not get to know what happens in 1501.
+### The region
 
-While the situation is active, certain forms of formal imperial title and certain integration tools are locked. The exit is the prerequisite for several higher-tier government reforms.
+"Erānzamīn" in every rule below means: the regions of **Persia**, **Khorasan** and the **Caucasus**, plus the areas of **Iraq-i Arab** (Baghdad), **Jazira** (Mosul) and **Cappadocia**.
 
-## The contender package — auto-conquest and the warlord prerogative
+## Who is a contender
 
-This is the single most important mechanic to understand about how the situation actually plays. The Erānzamīn contenders are not separate sovereign states having ordinary diplomatic relations. They are **rival claimants to one realm**. The late Ilkhanid chancery considered the *Erānzamīn* a single political space, and the contenders inherit that conviction: each treats the others as usurpers within his own country, not as foreign powers across a recognized border.
+A country is a contender when all of these hold:
 
-That conviction is rendered in script through three stacked layers.
+- it is independent (subjects do not contend);
+- its **capital** lies in the region — owning a border province is not enough;
+- it is **Muslim**. The Ilkhan's throne has been a Muslim throne since Ghazan's conversion in 1295. Georgia, the Armenian and Georgian minors and other Christian realms of the region remain *members* of the organisation and fight in the same wars, but they do not contend: no opening event, no contender modifier, no contender actions;
+- it is not a *ṭarīqa* order. The shrine-polities — the Safavid order at Ardabil (ABL) among them — deny the throne question altogether. They are not contenders and not members; see [Tariqa orders](tariqa-orders.md);
+- it does not belong to [Ulus Chaghatay](ulus-chaghatay.md). The amirs of Transoxiana answer a living Chagatayid khan; the Ilkhan's empty throne is not theirs to contend for.
 
-### The warlord prerogative — `ilkhanate_warlord`
+There is no size floor. The roster is inclusive on purpose: a one-province Muslim lord with his seat in the region is a contender, because the simulation does not get to know who mattered later. A country that comes to meet the conditions after the start (a released subject, a conqueror who moves his capital in) is picked up at the next month's check and gains the contender's actions and the sword rule below.
 
-The ruler of every contender gets the `ilkhanate_warlord` character modifier (`category = character`, indefinite duration) at situation start. It does two things:
+## The contender package
 
-- **`auto_conquer_at_war = yes`** — **what you occupy in war, you keep.** The normal peace-treaty cession of specific provinces is replaced by automatic conquest of every occupied location at the war's resolution. There is no negotiated map.
-- **`force_allow_as_leader = yes`** — overrides the normal "are you allowed to lead this war" restrictions. Any contender ruler can lead any Erānzamīn war regardless of rank or relative size.
+The contenders are not separate sovereign states with ordinary diplomatic relations. They are rival claimants to one realm, and the rules are bent accordingly.
 
-The rationale for `auto_conquer_at_war` is doctrinal, not a convenience hack. A negotiated peace treaty assumes two sovereigns whose mutual recognition gives the treaty its force. The Erānzamīn contenders do not have mutual recognition. You cannot sign a treaty in which your rival recognizes you as the lawful holder of Tabrīz when your own chancery has already declared that Tabrīz is part of your inheritance and that your rival is a usurper sitting on it. Symmetrically, you cannot draft a cession document in which you concede a province to a rival you do not recognize as a sovereign. So the chancery refuses to draft the cession in either direction, and the only legitimate territorial settlement is the fact on the ground: whoever holds it at the war's end owns it. The Mongol *yāsā* solved the same problem the same way — possession decides, because the alternative was admitting that the *ulūs* could be cut up by paper.
+### The sword rules the succession
 
-This is also the mechanic that breaks the base-game habit of inconclusive intra-regional wars. In Europe two duchies can sign a five-year truce and leave the lines roughly where they were. In Erānzamīn, every war is a step-change in the map.
+While the situation runs, **any location in Erānzamīn that a contender's army takes — by winning a siege, or by occupying an unfortified location — is annexed on the spot**, provided its owner is at war with the contender. There is no waiting for the peace table. If the location taken is a **province capital, the whole province changes hands with it**. Land taken this way arrives as *conquered* and still has to be integrated (see below).
 
-### The contender modifier — `eranzamin_contender_modifier`
+A realm that has proven its claim keeps its borders. Land owned by a state holding any of these reforms is immune and must be taken in a peace treaty like anywhere else in the world:
 
-Applied to every contender country (`category = country`, `decaying = no`, indefinite). It tunes the war system to the high-tempo intra-Iranian conflict the situation represents.
+| Immune defender |
+|-|
+| Iranian Kingship |
+| Sword of The Sharia (the *Dār al-Jihād* reform) |
+| The Gurkani Regime |
+| The Crowned Murshid |
+| Sultanate of Rum |
+| Timurid Empire |
 
-- **`global_war_score_efficiency = +0.33`** — wars accumulate score about a third faster than baseline. The fighting resolves at the pace of fourteenth-century Iranian campaigns, not at sixteenth-century European pace.
-- **`antagonism_received_modifier = −0.50`** — other contenders do not treat your expansion as illegitimate. You are playing the same game they are. There is no coalition forming over your conquests as long as the situation is active.
-- **`diplomatic_annexation_cost = −0.25`** — annexation of a subordinated rival is cheaper. (The legitimate non-conquest exit: vassalize a rival first, then annex on the discounted track.)
-- **`aggressiveness_modifier = +0.20`** — AI contenders expand harder. The situation is meant to feel hot.
-- **`pop_join_rebel_threshold = +0.10`** — pops are *less* willing to join rebels. The militarization breeds tolerance for warlord rule; the chaos is not, paradoxically, a rebellion-fertile environment.
-- **`land_morale_modifier = +0.10`** — contender armies fight hard. They believe they are fighting for a legitimate claim.
+The same rule shields you: finish your own legitimacy disaster and reach one of those reforms, and your conquests can only be taken from you the slow way. Until then, every lost siege is a lost city.
 
-### The region modifier — `eranzamin_succession_region_modifier`
+This replaces the automatic-conquest flag of earlier versions. Peace treaties still exist and still work; they are simply no longer the only way land moves.
 
-Applied at situation start, by the Erānzamīn IO's `every_owned_location` block, to every location owned by every IO member. `category = location`, `decaying = no`, indefinite.
+### Contender for the Throne
 
-- **`local_defensive = −0.35`** — **forts are neglected.** The Mongol prohibition on rebuilding city walls is still in effect through the post-Ilkhanid generation. Add the Persianate-baseline fast-resolving siege game (see [the military system](military-system.md)) and the field battle becomes definitively the verdict the cities ratify.
-- **`local_monthly_prosperity = −0.0025`** — the breakdown of order disrupts trade and agriculture. The economy limps along because the militarization of society absorbs the displaced.
-- **`local_levy_size_modifier = +0.10`** — but it breeds warriors. The militarization is the proximate cause of the levy bump; what the economy loses in prosperity, the contenders gain in available manpower.
+Every contender carries this country modifier for as long as the situation lasts.
 
-### How the three layers combine
+| Effect | Value |
+|-|-|
+| War score efficiency | +33% |
+| Antagonism received | −50% |
+| Diplomatic annexation efficiency | +25% |
+| Land morale | +10% |
+| Pops' threshold for joining rebels | +0.10 (harder to raise) |
+| AI behaviour | far more aggressive, less careful, 12 fewer months between wars |
 
-Read together, the modifiers describe the actual play experience of a contender:
+Members of the organisation carry a near-identical passive of their own (see [the organisation page](eranzamin-organisation.md)); a contender who is also a member has both.
 
-- **The map is volatile.** Forts are weak, war score is fast, morale is high, manpower is up. Borders move every campaign.
-- **Diplomacy doesn't preserve them.** Peace deals don't cede or refuse to cede provinces — what was occupied at peace is the new map. The volatility is locked in by `auto_conquer_at_war`.
-- **Other contenders do not punish your expansion.** The antagonism reduction means a rival's growth does not generate the usual coalition pressure that ordinarily limits expansion. The system is balanced on the assumption that *all* contenders are pressing the same way at the same time.
-- **The exit is territorial, not diplomatic.** Resolving the situation (and triggering the `ilkhanate_flavor.10` victory event) requires holding the four key cities (Tabrīz, Baghdad, Sulṭāniyya, Iṣfahān), holding more than 400 locations owned or held by subjects, being sovereign (`is_subject = no`), and meeting one of three end-condition clauses (Tāzīk Triumph at axis ≥ +75 with the [*Matter of Tork*](matter-of-tork.md) resolved; Türk Triumph at axis ≤ −75 with the *Matter of Tazik* resolved; Safavid Synthesis at the 75/75/0.80 thresholds — see the `eranzamin_end_condition_met` script trigger). You cannot diplome your way into the empire of Iran. You have to take it, and then complete the corresponding doctrinal path.
-- **The timeout fires in 1450.** If no contender hits the gate by then, the situation runs out via `ilkhanate_flavor.99` — the historical Tīmūrid sweep as the bad-case alternative.
+### Post-Ilkhanid Chaos
 
-### What is *not* in the contender package
+A location modifier on every location the organisation's members held at the start. It lasts 40 years, fades over that time, and is removed outright when the situation ends.
 
-A small but important note. An earlier design (`ilkhanate_collapse_situation`) granted blanket mutual cores between contenders — every contender could core every other contender's land cheaply, as if the territorial division were already only nominal. **That mechanic is gone.** Integration is now player-driven, via the post-conquest integration actions (Consolidate Diwan, Grant the Yurt, Mixed Settlement), each of which applies its own location modifier (`consolidate_diwan_mod`, `grant_the_yurt_mod`, `mixed_settlement_mod`) and represents a deliberate political choice about *how* the just-conquered land is incorporated. The chancery does not pretend the rival's province was always yours. You have to make it yours, and the *way* you make it yours leaves a trace on the location for the next ten years.
+| Effect | Value |
+|-|-|
+| Fort defence | −66% |
+| Supply limit | +50% |
+| Levy size | +10% |
+| Monthly prosperity | −0.002 |
+| Monthly development | −0.001 |
+| Pop food consumption | −10% |
 
-## The legitimacy choice — `ilkhanate_flavor.1`
+The Mongols forbade the rebuilding of city walls for three generations, and it shows. Sieges are short, armies can be fed almost anywhere, and levies are large. Together with the sword rule this makes the field battle the verdict and the cities its ratification: borders move every campaigning season.
 
-The first thing the situation does, on every contender at start, is fire `ilkhanate_flavor.1`. This event presents the Age 1 legitimacy choice as five options. You must pick one. There is no "decide later" option — the khuṭba is read in someone's name every Friday, and a realm that names no one sits in an Unsettled Legitimacy fault state until you commit.
+## The opening choice — *Hulagu's Seat Stands Empty*
 
-### Option A — Chinggisid Regency
+Every contender must answer the event; there is no "decide later". Which answers you are offered depends on who you are.
 
-Rule as *amīr* in the name of a Borjigin puppet. Available to anyone who does not already hold `chinggisid_regency`, `farr_i_izadi`, or `ghazi_sultanate`. AI weighted toward states already drifting Türk; weighted out for Christian-religion contenders.
+| Answer | Who sees it | Immediate effects |
+|-|-|-|
+| **Find us a Borjigin to enthrone** — Chinggisid Regency | any independent contender not already a regent | adopts the **Chinggisid Regency** reform; +10 legitimacy; Amirs +10%, Dīwān −5% satisfaction; a Persianized Mongol prince of the Borjigin line (aged 18–30) appears at court as your kept khan; every other regent in the organisation takes you for a **Rival for the Regency** and receives a succession casus belli on you |
+| **We rule as the Caliph's sword** — Ghāzī Sultanate | Muslim contenders | adopts **Ghāzī Sultanate**; +5 legitimacy; Clergy +10%, Dīwān −5% |
+| **The farr of Iran does not descend through Mongol seed** — Farr-i Īzadī | any contender | adopts **Farr-i Īzadī**; −10 stability, −10 legitimacy; Dīwān +15%, Burghers +10%, Amirs −15%, Tribes −25%, Clergy −5%; every regent in the organisation takes offence (*Ignored the hallowed bloodline*) and receives a succession casus belli on you; the [Proof of Fortune](farr-proof-of-fortune.md) follows |
+| **We are governors, not kings** — Ilkhanate Governorate | any contender who has not just dropped a khan from the khuṭba | adopts **Ilkhanate Governorate**; +5 legitimacy; Dīwān +5% |
 
-**Effects on pick:**
+Some realms have only one door:
 
-- Adopts the `chinggisid_regency` government reform.
-- `add_legitimacy = +10`, Amirs `+0.10`, Dīwān `−0.05`.
-- **Spawns a Borjigin puppet character.** If `dynasty:borjigin_dynasty` does not yet exist, it is founded. A new character is created, assigned to that dynasty, placed in the Amirs estate, given Mongolian culture and your religion, aged 18–30. The character gets the `blocked_from_character_interactions` modifier so you cannot directly act on him.
-- The puppet's `patron_country` character variable is set to your country. This is the linkage `on_borjigin_puppet_death` reads when firing the follow-up event `.2` on your country specifically.
-- Your country's `charade_counter` variable is set to `1`. This is the stacking counter for "how many puppets deep are we in the fiction."
-- **Every other regent in the Erānzamīn IO is now your enemy.** For every IO member that also holds `chinggisid_regency`, the event adds `opinion_rival_regent` and `cb_eranzamin_succession` casus belli against you. You are now a rival claimant, not a fellow regent.
+| Realm | Their answer | Effects |
+|-|-|-|
+| Chobanids (CHB) | Sati Beg is kept as their khan | +5 legitimacy; they already hold the Chinggisid Regency; **Consolidating Opportunistic Acquisition** for 20 years (Tribes levy size −50%, Amirs levy size −25%, fading) |
+| Jalayirids (JAL) | Muḥammad Khan is kept as their khan | +5 legitimacy; they already hold the Chinggisid Regency |
+| Gurgan (GRG), Hüleguids (HLG) | *I am the Khan by right of blood* | +15 legitimacy. A Borjigin needs no fiction |
+| Sarbadars and any [Commonwealth of Martyrs](commonwealth-of-martyrs.md) | the gallows' answer: coin in the Hidden Imam's name | +10 devotion; both wings of the dyarchy approve |
+| *Ṭarīqa* orders | *We claim no throne* | +5 legitimacy |
 
-This is the trap with the best terms. The legitimacy is cheap by design — the regency reform itself grants `monthly_legitimacy = +0.5`, the highest in the Age 1 tree — but everything else about it tells you the ceiling is real.
+The AI weighs the options by strength and composition: the regency is not for the weak (the AI never takes it below a middling army), realms with many Turkic or Mongol subjects lean to the regency and away from the *farr*, a strong Dīwān pulls toward the *farr*, non-Muslim or heterodox neighbours pull toward the *ghazā*, and the weakest realms overwhelmingly defer.
 
-### Option B — Ghāzī Sultanate
+What each answer means in the long run is on its own page: the regency in [The Borrowed Mandate](borrowed-mandate.md), the *farr* in [Farr — the Proof of Fortune](farr-proof-of-fortune.md), the *ghazā* in [The Burden of the Sword](ghazi-burden-of-sword.md), deferral in [the Ilkhanate Governorate](ilkhanate-governorate.md), and the reforms themselves in [Government reforms](government-reforms.md).
 
-Available only if `religion_group = religion_group:muslim`, and to anyone not already holding `chinggisid_regency`. AI weighted toward states with non-Muslim neighbors (a target for *ghazā*).
+### Unsettled Legitimacy
 
-**Effects on pick:**
+A Persianate Sultanate that holds none of the recognised answers — neither a regency, a claim, a governorate, nor one of the later vindicated forms — carries **Unsettled Legitimacy** until it takes one. A realm ruled by a Borjigin is exempt.
 
-- Adopts the `ghazi_sultanate` reform.
-- `add_legitimacy = +5`, Clergy `+0.10`, Dīwān `−0.05`.
+| Effect | Value |
+|-|-|
+| Monthly legitimacy | −0.6 |
+| Amirs target satisfaction | −20% |
+| Dīwān target satisfaction | −20% |
+| Clergy target satisfaction | −15% |
+| Burghers target satisfaction | −15% |
 
-The reform gives you `monthly_legitimacy = +0.1` (real but modest), `antagonism_received_modifier = −0.10`, `global_manpower_modifier = +0.10`, `land_morale = +0.05`, `tolerance_own = +1`, and `global_clergy_estate_power = +0.50`. The trade is the embedded contradiction the option does not hide: there is no infidel within a month's ride of an Iranian-plateau capital. Your *ghazā* will be waged against Muslims you have first declared bad Muslims.
+You meet it whenever you leave one answer without arriving at another — most often after dropping the regency. The Amīr Sultanate, taken on its own, does not lift it (see [Government reforms](government-reforms.md)).
 
-### Option C — Farr-i Īzadī
+## The kept khan dies — *The Khan is Dead*
 
-Declare Iranian kingship. Available to anyone not already holding `chinggisid_regency`. AI weighted toward Tāzīk-leaning states and away from Mongol-culture-group polities.
+The regent's khan is a real character at court. He cannot be interacted with, and he is mortal. When he dies, a realm still under the Chinggisid Regency must choose:
 
-**Effects on pick:**
+| Choice | Effects |
+|-|-|
+| **Enough. The mask comes off.** | the Chinggisid Regency is removed; −100 legitimacy; −25 stability; Amirs −30%, Tribes −30%, Dīwān +5% |
+| **Enthrone his son.** | a new Borjigin prince is produced; **The Charade Continues** deepens by one step; Amirs +5%, Dīwān −5% |
 
-- Adopts the `farr_i_izadi` reform.
-- **`add_stability = −10`, `add_legitimacy = −10`.** This is the option that pays the price up front.
-- Dīwān `+0.15`, Burghers `+0.10`, Amirs `−0.20`, Clergy `−0.10`.
-- **Every regent in the Erānzamīn IO gets the `opinion_betrayed_genghis` opinion modifier on you and the `cb_eranzamin_succession` casus belli against you.** Picking the *farr* is, in the IO's view, an open declaration of war on the Chinggisid order.
+**The Charade Continues** is one modifier whose size grows with each enthronement:
 
-The reform itself runs: `monthly_legitimacy = −0.25` (you must pay legitimacy upkeep continuously to hold this claim), `stability_decay = +0.05`, large Dīwān/Burgher satisfaction, Amir satisfaction `−0.15`, `monthly_amirs_estate_rebel_growth = +0.005`, and `antagonism_received_modifier = +0.15`. The price of premature kingship is the legitimacy gulf you must climb back out of. Fortune is the evidence of *farr*. You prove it or you do not.
+| Enthronement | Monthly legitimacy | Amirs target satisfaction | Dīwān target satisfaction |
+|-|-|-|-|
+| first | −0.15 | −5% | −10% |
+| second | −0.30 | −10% | −20% |
+| third | −0.45 | −15% | −30% |
 
-### Options D and E — tag-specific puppet hand-offs
+After the third there is no fourth: no further enthronement is credible, and the only option left when that khan dies is to take the mask off at full price. The regency's own +0.5 monthly legitimacy is being eaten a slice at a time, by design. The orderly ways out — and what the forced exit turns you into — are on [The Borrowed Mandate](borrowed-mandate.md).
 
-If you are playing **Chobanids (CHB)**, option D is available: you adopt the historical Sātī Beg as your puppet (`character:chb_sati_beg_pw`), and the `charade_counter` is set to `1`. `add_legitimacy = +5`.
+## The strategic verbs
 
-If you are playing **Jalayirids (JAL)**, option E is available: you adopt the historical Muḥammad Khan as your puppet (`character:jal_muhammad_khan_pw`), and the `charade_counter` is set to `1`. `add_legitimacy = +5`.
+These appear as actions on the situation panel for every contender while the situation runs. Gold costs scale with the size of your economy; the figure given is the multiplier.
 
-These two options are scripted historical hand-offs — the puppets exist in the start data and the event simply binds them to your country's `patron_country` slot, rather than spawning a new Borjigin character.
+### Press Claim to Erānzamīn
 
-## The puppet's death — `ilkhanate_flavor.2`
+Pick a **neighbour** who is a member of the organisation, whom you could declare war on, and with whom you have neither truce nor alliance. You receive the **Succession of Erānzamīn** casus belli against them. It costs nothing and can be used every 6 months. No spy network is needed: the succession crisis *is* the casus belli, and pressing a claim is a public act.
 
-When a Borjigin puppet character dies, the `on_borjigin_puppet_death` on-action fires `ilkhanate_flavor.2` on the puppet's `patron_country`. The event presents two options. Your country must still hold `chinggisid_regency` for the event to be relevant.
+### Rally Turkic Tribes
 
-### Option A — End the fiction
+Call the Türkmen lineages in to the muster.
 
-Drop the reform. The legitimacy of the regency goes with it.
+| | |
+|-|-|
+| Requires | prestige above 40; the realm has not leaned Tāzīk (Türk–Tāzīk axis below 0) |
+| Costs | 20 prestige; gold ×6 |
+| Cooldown | 10 years |
+| Brings | Turkoman tribesmen of your religion, with a noble layer one-tenth their size, to one of your rural locations: 5,000 at county rank, 10,000 at duchy, 20,000 at kingdom, 30,000 at empire |
+| Leaves behind | **Türkmen Tribal Settlement** on that location for 20 years (nobles' maximum literacy −10%) and a mild prosperity loss; the same location will not receive another wave for 10 years |
+| Politics | Amirs +10%; Dīwān, Burghers and Peasants −25% each; −10 stability; 5 points toward Türk |
 
-**Effects:**
+### Restore Persian Bureaucracy
 
-- Removes `chinggisid_regency`.
-- `add_legitimacy = −100`, `add_stability = −25`.
-- Amirs `−0.30`, Tribes `−0.30`, Dīwān `+0.05`.
+Recall the Iranian secretarial class to court. This is the deliberate road *into* the Persianate institution for a warlord who starts on the Türk side.
 
-The numbers tell you exactly what the system thinks of breaking the charade unprepared. You have committed to a path; getting out of it early, before you have built any alternative legitimacy doctrine, costs everything the regency was giving you and more. The realm is now naked of any legitimacy doctrine and falls back under an Unsettled Legitimacy auto-modifier until another Age 1 reform is taken.
+| | |
+|-|-|
+| Requires | prestige above 30; at least duchy rank; not already a Tāzīk realm (axis 50 or more) of kingdom rank or higher — such a realm already has what this grants |
+| Costs | gold ×12; 20 legitimacy; 15 prestige; 10 stability |
+| Cooldown | 15 years |
+| Grants | the permanent right to seat the **Dīwān of the Realms** in your capital, even if the realm later drifts back toward the Türk pole |
+| Also | **Diwan Extension** for 25 years, stacking with earlier uses (tax efficiency +7.5%, maximum control +5%, Dīwān target satisfaction +5%, Dīwān power +10%); Dīwān +15%, Amirs −15%; 10 points toward Tāzīk |
 
-AI weighting: factor 30, doubled if the country already has `charade_continues_mod` (the puppet line is already thin). Not the AI's default — but it picks it more often if the charade is already conspicuous.
+### Integrating what you took
 
-### Option B — Enthrone the son
+Sword-rule conquests arrive as *conquered* land. Three actions settle a province in the region in which you hold conquered locations; each leaves a ten-year mark on the land and each is a statement about what kind of realm you are.
 
-The chancery proclaims the puppet's heir as the new khan.
+| Action | Requires | Costs | Cooldown | Result for your locations in the province | Politics |
+|-|-|-|-|-|-|
+| **Consolidate the Diwan** | axis above +25; a Dīwān of the Realms in your capital; a Local Dīwān somewhere in the province | gold ×3 | 1 year | raised to core; **Consolidated Diwan**: maximum control +10%, raw material output +10%, unrest −0.2 | Dīwān +2%, Amirs −1%, 1.5 toward Tāzīk |
+| **Grant the Yurt** | axis below −15 | 5 legitimacy, 5 political influence | 3 months | raised to integrated only; **Granted as Yurt**: local manpower +30%, maximum control −7.5%, unrest −0.25 | Amirs +2%, Dīwān −1%, 1.5 toward Türk |
+| **Mixed Settlement** | — | gold ×3, 5 legitimacy, 5 political influence | 18 months | raised to core; **Mixed Settlement**: local manpower +10%, unrest −0.25 | none |
 
-**Effects:**
+The chancery route is slow and needs offices on the ground (see [Buildings](buildings.md)); the yurt route is fast and cheap but leaves the land half-absorbed in an amir's hands. See [Türk vs Tāzīk](turk-vs-tazik.md) for the axis itself.
 
-- Spawns a new Borjigin puppet character. Dynasty: `borjigin_dynasty`. Estate: Amirs. Religion: country religion. Culture: Mongolian. Age: 18–30. `patron_country` variable set to your country.
-- Adds `charade_continues_mod`. The modifier's `size` field reads from `root.var:charade_counter` — **the malus scales with how many times you have already done this**. The first iteration is mild; the fifth is structural.
-- Increments `charade_counter` by 1.
-- Amirs `+0.05`, Dīwān `−0.05`.
+## The casus belli
 
-AI weighting: factor 70, halved if `charade_continues_mod` is already on. The default — but the AI starts to second-guess as the charade thickens.
+**Succession of Erānzamīn** can be held by any member of the organisation against any other member.
 
-The two options together are the recurring crisis of the regency path. You can hold the regency for a long time, but each puppet's death is a new resolution, and the stacking `charade_continues_mod` is the system's quiet voice telling you that the fiction is growing thinner each cycle.
+| | |
+|-|-|
+| War goal | superiority — destroy the rival in the field |
+| Cost of conquering or subjugating | 75% of normal, for both sides |
+| What the attacker may take | only land inside Erānzamīn |
+| Ticking war score | 0.25 |
 
-## The victory event — `ilkhanate_flavor.10`
+You come by it through **Press Claim to Erānzamīn**, through **Press the Custody** if you are a regent, and automatically when a rival answers the opening question in a way that offends you (a regent against every new regent and every new claimant of the *farr*; a custodian against a governorate that walks out on him). Because the war goal is limited to the region, two contenders fighting over Iran do not end up carving up Egypt.
 
-When a contender has resolved the situation, `ilkhanate_flavor.10` fires. The event branches by culture group.
+## Winning
 
-### Option A — Mongol Restoration
+The situation ends the month any contender meets **all** of the following:
 
-Available if `NOT culture has_culture_group = culture_group:iranian_group`.
+- independent;
+- **more than 400 locations**, counting its own and those of its subjects and their subjects;
+- **direct ownership of the Five Seats**: Tabriz, Baghdad, Soltaniyeh, Isfahan and Shiraz. A seat held by a vassal does not count until it is your own;
+- one of the doctrinal clauses:
+    - **Tāzīk triumph** — the Türk–Tāzīk axis at +75 or higher *and* [the Matter of Tork](matter-of-tork.md) resolved;
+    - **Türk triumph** — the axis at −75 or lower;
+    - a third, provisional clause — religious unity of 80% or more together with legitimacy of 75 or more.
 
-- `add_prestige = +50`, `add_legitimacy = +50`.
-- Adds `great_khans_mandate` country modifier (`years = -1`, permanent).
-- **`change_societal_value = { type = turk_vs_tazik value = −50 }`** — the country swings hard toward Türk.
+You cannot negotiate your way onto the throne. You take the realm, and then you finish the argument about what kind of realm it is.
 
-This is the Mongol-cultural answer to the situation. The Ilkhanate is, in some sense, restored.
+The halfway mark matters too: holding **more than 240 locations** (own and subjects') with your capital in the region for **24 unbroken months** is what opens the consolidation Matter. The organisation's panel shows who is furthest along that clock.
 
-### Option B — Persian Resurgence
+### What the victor receives — *Fatḥ-nāma, the Proclamation of Victory*
 
-Available if `culture has_culture_group = culture_group:iranian_group`.
+There is one victory, not a menu. Every victor receives:
 
-- `add_prestige = +50`, `add_legitimacy = +50`.
-- **`set_country_rank = country_rank:rank_empire`** — the country is elevated to empire rank, claiming the Shāhanshāh title.
-- Amirs `−0.50`, Dīwān `+0.50`. The Turco-Mongol military aristocracy is, in script, thrown out.
-- Adds `restoration_of_eran` country modifier (`years = -1`, permanent).
-- **`change_societal_value = { type = turk_vs_tazik value = +50 }`** — the country swings hard toward Tāzīk.
+| Reward | Detail |
+|-|-|
+| Prestige and legitimacy | +100 prestige, +50 legitimacy |
+| Integration dividend | each still-*conquered* location you own in Iranshahr (the region without Cappadocia) has a 25% chance to rise to *integrated* |
+| **United Iran** (permanent) | +2 cultures capacity; +0.2 monthly legitimacy; −20% prestige decay; −10% court spending efficiency |
+| **The Recovery** (50 years) | monthly prosperity +0.0025; monthly development +0.003; food production +10% |
 
-This is the Iranian-cultural answer: not restoration of the Ilkhanate but resurrection of the *Erānshahr*.
+The last part depends on where the realm actually stands on the Türk–Tāzīk axis on the day:
 
-## The timeout — `ilkhanate_flavor.99`
+| | Axis at 0 or above — Tāzīk | Axis below 0 — Türk |
+|-|-|-|
+| Permanent modifier | **Restoration of Eran**: tax efficiency +5%; monthly control +0.005; stability investment +20%; cultural tradition +50%; manpower −10% | **Mandate of the Great Khan**: manpower +25%; land morale +10%; diplomatic reputation +2; tax efficiency −15%; pops join rebels more readily (−0.10) |
+| Estate | Dīwān +25% satisfaction | Amirs +25% satisfaction |
+| Cabinet action unlocked | **Integrate into the Dīwān** | **Invite Turkic Settlers** |
+| Formable | — | a Türk victory is the gate to **Iran o Turan** |
 
-If the situation runs to its time limit without a contender resolving it, `ilkhanate_flavor.99` fires on the timed-out country.
+When the situation ends — by victory or otherwise — every contender loses **Contender for the Throne** and the sword rule, **Post-Ilkhanid Chaos** is lifted from the land, and the Erānzamīn organisation dissolves.
 
-- `add_stability = −10`.
-- For every province in the Erānzamīn region, adds the `shattered_administration_mod` province modifier (permanent).
+## If nobody wins
 
-The post-Ilkhanid space did, in the actual fourteenth century, fail to produce a consensus inheritor on any reasonable timescale. The timeout event scripts that historical possibility: the situation closes without a winner, and the realm is the worse for the failure.
+The situation can no longer continue once the calendar passes **1450**: it closes without a victor, and the modifiers, the sword rule and the organisation go with it. Nobody receives the victory rewards.
 
-## The reform's lock — a note
+A bleak closing event exists for this case (*The Dream Dies*: −10 stability and **Shattered Administration** across the region for 50 years — maximum control −10%, fort defence −25%, unrest +0.5), but in the current build it is tied to a later date than the situation's own end and is not expected to appear. See [Known issues](../reference/known-issues.md).
 
-The `chinggisid_regency` reform is declared `locked = always = yes` in its definition. **You cannot pick it from the reform menu.** The only way into it is via `ilkhanate_flavor.1` option A (or options D / E for CHB and JAL specifically). This is deliberate: the reform is the formalization of the puppet relationship, which requires the spawn-and-bind machinery the event provides. There is no menu-only path to it.
+## Flavour along the way
 
-See also: [Government reforms](government-reforms.md), [Persianate Sultanate](persianate-sultanate.md), [Starting the game](starting-the-game.md), [Türk vs Tāzīk](turk-vs-tazik.md).
+A dozen flavour events colour the interregnum for Persianate courts — a ghazal-master in Shiraz looking for a patron, Mustawfī's *Nuzhat al-Qulūb* laid before the throne, Dilshad Khatun, the quarrel of *yasa* and *sharīʿa*, amirs demanding *iqṭāʿ*, the Dīwān's petition, a shaykh at court, a dervish in the bazaar, a widow's endowment, the mountain chiefs, a Türkmen migration, an Anatolian beg. They nudge the estates and the axis rather than decide the contest.
+
+## Practical advice
+
+- **Read the opening event as a choice of mid-game, not of opening bonus.** The regency pays +0.5 legitimacy a month and starts a clock; the *farr* costs you on day one and starts a trial by conquest; the *ghazā* is steady only while you have someone to fight; the governorate is safe and goes nowhere on its own.
+- **Guard your province capitals.** Under the sword rule a fallen provincial capital takes its whole province with it. A single lost siege can cost a dozen locations, and nothing is returned at the peace.
+- **Do not hide behind walls.** With −66% fort defence, forts buy days, not seasons. Meet the enemy in the field or lose the province.
+- **Press Claim is free.** A contender never needs to fabricate a casus belli against a neighbouring member.
+- **Conquest is only half the price.** What you take arrives *conquered*. Decide early whether you are a chancery realm (build Local Dīwāns, Consolidate) or an amirs' realm (Grant the Yurt), because each integration pushes the axis the same way — and the axis is a victory condition.
+- **The Five Seats must be yours, not your vassal's.** Plan to annex or take over any subject sitting on Tabriz, Baghdad, Soltaniyeh, Isfahan or Shiraz.
+- **A Tāzīk victory runs through the Matter of Tork.** A Türk victory does not have a matching requirement at present, which makes it the shorter road on paper.
+
+See also: [The Erānzamīn organisation](eranzamin-organisation.md), [The Borrowed Mandate](borrowed-mandate.md), [The Ilkhanate Governorate](ilkhanate-governorate.md), [Farr — the Proof of Fortune](farr-proof-of-fortune.md), [The Burden of the Sword](ghazi-burden-of-sword.md), [The Matter of Tork](matter-of-tork.md), [Türk vs Tāzīk](turk-vs-tazik.md), [Government reforms](government-reforms.md), [Starting the game](starting-the-game.md).

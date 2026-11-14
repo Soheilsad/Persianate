@@ -1,234 +1,191 @@
-# Ghāzī: Burden of the Sword
+# The Burden of the Sword
 
 > *Heaven's reward attends the holy warrior — the umma is checking.*
 
-Choosing `ghazi_sultanate` in Age 1 places the dynasty under the caliphal shadow as *sword of the faith*. The reform is cheap and quiet — `monthly_legitimacy = +0.10`, clergy and manpower bonuses, a softer hostility ambient. The catch is that the doctrine the dynasty has just publicly avowed is a hunger. A *ghāzī* who is not fighting *ghazā* is a *ghāzī* in name only.
+The *ghāzī* title was the most widely understood claim a Muslim ruler could make in the fourteenth century: the frontier warrior who defends and extends the lands of Islam, recognised by the jurists and, where possible, by a diploma from the Abbasid caliph kept at Cairo. The Muẓaffarid Mubāriz al-Dīn Muḥammad built his rule on it — the caliph's name in the sermon, the censor in the bazaar of Shīrāz — and showed its weakness too, for a ghāzī with no *ghazā* to fight is a title and nothing more. Preachers, volunteers and jurists all keep count of which wars were fought, and against whom.
 
-The **Ghāzī Burden of the Sword** disaster (`ghazi_burden_of_sword`) is the umma's audit. It is automatic, unavoidable, and structurally inverted from the Farr Proof: where *farr* is paid off in continuous conquest, *ghazā* is paid off in **continuous war against the right kind of enemy**.
+Adopting the **Ghāzī Sultanate** government reform starts that count. The disaster is **The Burden of the Sword**. It begins as soon as the reform is adopted and cannot be avoided. Where the [Farr Under Examination](farr-proof-of-fortune.md) is paid in victory of any kind, the Burden is paid in **war against the right kind of enemy**, and it decays at rest.
 
 ## The hunger
 
-The disaster fires within months of the reform's adoption. On start:
+On the day it begins you lose **60 legitimacy**. While it runs:
 
-- `add_legitimacy = -60` — the khuṭba now names you *ghāzī*; the world is waiting to see it. Larger initial hit than *farr*, because the claim is more specific.
-- `trigger_event_non_silently = ghazi_burden.1` — the opening event.
-
-Standing modifier while active:
-
-| Field | Value | Reading |
+| Effect | Value | What it stands for |
 |-|-|-|
-| `monthly_legitimacy` | **−0.5** | Calibrated so that one true *ghazā* removes the penalty. |
-| `clergy_estate_target_satisfaction` | −0.05 | Jurists withhold endorsement. |
-| `global_levy_size_modifier` | −0.10 | Volunteers absent — the *mutaṭawwiʿa* don't come to a quiet court. |
-| `monthly_religious_influence` | −0.10 | Pulpits cool. |
-| `monthly_prestige` | −0.05 | Foreign chanceries omit the title. |
+| Monthly legitimacy | **−0.5** | The claim, unpaid |
+| Clergy estate target satisfaction | −5% | The jurists withhold endorsement |
+| Levy size | −10% | The volunteers do not come to a quiet court |
+| Monthly religious influence | −0.10 | The pulpits cool |
+| Monthly prestige | −0.05 | Foreign chanceries omit the title |
 
-Each line is a specific in-world silence. Together they are the cost of having publicly avowed the *ghāzī* claim without yet visibly executing on it.
+Legitimacy is the ledger. The panel shows five bars: **Sword of Islam (months at legitimacy ≥ 75)** out of 60, **Wars won against dar al-harb** out of 2, **Lapse / Rising (months at legitimacy ≤ 25)** out of 60, **Frontier expectations failed** out of 2, and **Endurance (total disaster months)** out of 300.
 
-## The defining mechanic — `ghazi_lord_at_war`
+## War as the standing offset
 
-The Ghāzī disaster's signature is **decay-at-rest**. The peacetime bleed is offset by a single, large auto-modifier that fires *only* while the dynasty is at war with a qualifying target:
+A realm that holds the Ghāzī Sultanate reform (or its successor, Sword of The Sharia) gains a bonus for every month it is at war with a qualifying enemy. These work in and out of the disaster.
 
-**`ghazi_lord_at_war`** — `in_game/common/auto_modifiers/03_eranzamin_legitimacy_crisis.txt`:
+| At war with | Monthly legitimacy | Monthly prestige | Levy size | Manpower |
+|-|-|-|-|-|
+| A country of a different religion — **Fighting against Infidels, Heretics or Corruption on Earth** | +0.75 | +0.10 | +25% | +25% |
+| A country that keeps Mongol law — **Fighting Against Muslims who Cling to Primitive Law** | +0.50 | +0.05 | +12.5% | +12.5% |
+| A country under Lax Enforcement of the ḥisba — **Fighting Against Muslims who Tolerate Corruption** | +0.25 | +0.025 | +12.5% | +12.5% |
 
-- `monthly_legitimacy = +0.75`
-- `monthly_prestige = +0.10`
-- `global_levy_size_modifier = +0.25`
-- `global_manpower_modifier = +0.25`
+Each is judged separately, so a war against an enemy that fits more than one description earns more than one. Against the −0.5 of the Burden, a war with a realm of another religion nets **+0.25 a month**; peace nets the full −0.5. The reform itself adds a further +0.1 at all times.
 
-Trigger condition: the dynasty has `ghazi_sultanate`, is `at_war = yes`, and the war includes a country whose `religion != root.religion`.
+The house must also be in order. A ghāzī court that itself keeps Mongol law, or itself runs Lax Enforcement, is designed to pay a standing penalty to legitimacy, prestige, levies and manpower. Repeal the *yāsā* before you take the reform.
 
-Net while at qualifying war during the disaster: **+0.25** legitimacy/month. Net at peace: **−0.5**. The doctrine's wager is the policy commitment to never being at peace for long.
+## What the field pays
 
-Two softer variants cover edge cases (`03_eranzamin_legitimacy_crisis.txt`):
+As with the *farr*, each of these first appears as an event with options to silence that kind of notice. Battles and wars against rebels do not count.
 
-- **`ghazi_lord_at_war_yasa`** — at war with a country holding `mongol_law_policy`. A Muslim target whose retention of *yāsā* the doctrine refuses to recognize. `+0.5` leg, `+0.05` prestige, `+0.125` levy and manpower — half the credit, but real.
-- **`ghazi_lord_at_war_lax`** — at war with a country holding `lax_hisba_enforcement`. The din-panāh inference: a court that tolerates vice is legible prey. `+0.25` leg, `+0.025` prestige, `+0.125` levy/manpower — quarter credit. This is the *Mubāriz al-Dīn at Shīrāz* doctrine, priced.
-
-And one explicit penalty:
-
-- **`ghazi_lord_has_yasa_law`** — fires whenever a `ghazi_sultanate` realm itself holds `mongol_law_policy`. Mongol customs are not law to be respected; for the *ghāzī* to hold them is blasphemy. `monthly_legitimacy = −0.25`, `monthly_prestige = −0.10`, `−0.25` levy and manpower. **Purge the tent's law first** — this is the design's point.
-
-## Tier classification of war targets
-
-War credit on `on_winning_war` is sorted by the scripted trigger family `ghazi_target_is_tier_X` (`05_ghazi_triggers.txt`):
-
-- **Tier-3 — true *dār al-ḥarb*.** Non-Muslim states (Christian, Hindū, Tengri, polytheist). Native food. **`+10` legitimacy per won war**, increments `ghazi_tier3_wins`, applies `ghazi_conquest_glory` for 12 months (`monthly_legitimacy = +0.4`, `land_morale_modifier = +0.05`, mode add_and_extend). No caveats.
-- **Tier-2 with fatwā** — yāsā-holders and heterodox Muslim states, *after* the Jihad-Within apparatus has been claimed (`ghazi_fatwa_acquired` variable set). `+5` legitimacy, six months of `ghazi_conquest_glory`. The fatwā provides the doctrinal weight to call the war legitimate.
-- **Tier-2 without fatwā** — same target class, but the apparatus not yet acquired. `+2` legitimacy + a jurist-complaint event (`ghazi_burden.102`). Half credit, with public theological cost.
-- **Ordinary Sunni** — no credit, jurist complaint event fires. The umma will not endorse a *ghāzī* warring on fellow Sunnīs.
-
-The `ghazi_tier3_wins` counter feeds the Sword of Islam resolution gate. The Sword cannot be claimed on tier-2 victories alone.
-
-## Defeats
-
-`ghazi_defeat_shame` (on losing a war): `monthly_legitimacy = −1.0`, `land_morale_modifier = −0.05`. Six months. Heaven's reward visibly withheld.
-
-`ghazi_capital_lost` (capital changes hands): `monthly_legitimacy = −0.3`, `monthly_prestige = −0.10`. Permanent until the seat is recovered. Less catastrophic than the Farr version (the *ghāzī* doctrine survives capital loss better than the *farr* doctrine — frontier mobility is its native condition) but still painful.
-
-## The frontier-designation system
-
-The disaster supports three frontier designations — `ghazi_frontier_caucasus`, `ghazi_frontier_rum`, `ghazi_frontier_hindustan`. Each grants:
-
-- `global_manpower_modifier = +0.10`
-- `global_levy_size_modifier = +0.05`
-
-A designation is the dynasty publicly committing to a theater. Volunteers stream toward it. The catch is that the commitment must be **executed on** — the disaster ticks a `designation_expectation` counter when a frontier is designated with no recent progress, and after enough ticks fires the `ghazi_designation_failed_scar` modifier (`monthly_legitimacy = −0.2`, `−0.05` levy) and increments `ghazi_designation_failures`. Two failures recorded is one of the preconditions for the Dervish Rising resolution.
-
-Tier-3 conquest in the designated theater resets the expectation counter.
-
-## Apparatus claims (50 / 65 / 80 / 90+)
-
-Four buttons on the disaster panel, each a deliberate institutional commitment that **costs** legitimacy and pays back a permanent **refund** plus an irreversible **legacy**. The refund cancels its slice of the standing bleed; the legacy persists past resolution (stripped only by Dervish Rising).
-
-The wiring (effects in `04_ghazi_effects.txt`, generic actions in `ghazi_burden_actions.txt`):
-
-### `claim_jihad_within` — leg ≥ 50, no `chinggisid_regency` (costs **−10** leg)
-
-The *jihād al-akbar* — the censor walks the bazaar in the sultan's name; jurists concede that the dynasty is at least cleaning its own house. Fires `ghazi_burden.50`. Sets `ghazi_fatwa_acquired` (which is the unlock for the tier-2 fatwā path).
-
-- **Refund** `ghazi_jihad_within_refund`: `monthly_legitimacy = +0.10`, clergy satisfaction `+0.05`.
-- **Legacy** `ghazi_hisba_apparatus`: `monthly_religious_influence = +0.05`, `tolerance_own = +1`, clergy satisfaction `+0.03`. The *muḥtasib*'s office now a permanent feature. Also the precondition for the internal-campaign action.
-
-The yāsā / Chinggisid-regency exclusion is explicit — a Türk-descended ghāzī must purge the tent's law before this rung is available.
-
-### `claim_ribat_network` — leg ≥ 60, gold ≥ 100 (costs **−15** leg, **−100** gold up front)
-
-Endows the frontier *khānqāhs* / *ribāṭ*s. Volunteers now have somewhere to muster. Fires `ghazi_burden.65`.
-
-- **Refund** `ghazi_ribat_network_refund`: `monthly_legitimacy = +0.10`, `global_levy_size_modifier = +0.10`.
-- **Legacy** `ghazi_the_lodges_endowed`: `global_levy_size_modifier = +0.03`, `global_manpower_modifier = +0.05`, Tribes satisfaction `+0.05`. Also the precondition for the Dervish Rising — the constituency must exist before it can defect.
-
-### `claim_caliphal_investiture` — leg ≥ 60 (costs **−15** leg)
-
-The diploma from Cairo. Fires `ghazi_burden.80`.
-
-- **Refund** `ghazi_investiture_refund`: `monthly_legitimacy = +0.10`, `monthly_religious_influence = +0.10`.
-- **Legacy** `ghazi_caliphal_diploma`: `diplomatic_reputation = +1`, `monthly_prestige = +0.05`, clergy satisfaction `+0.05`. Also unlocks the **Sultan of the Ghazis** claim at the lower (75) threshold.
-
-### `claim_sultan_of_ghazis` — leg ≥ 75 with investiture, else leg ≥ 90 (costs **−25** leg)
-
-The title in your own right — the Tabrīz-1358 move. Fires `ghazi_burden.90`.
-
-- **Refund** `ghazi_sultan_of_ghazis_refund`: `monthly_legitimacy = +0.20`, `monthly_prestige = +0.05`. With all four refunds standing, the bleed is fully nulled (`+0.10 + 0.10 + 0.10 + 0.20 = +0.50`).
-- **Legacy** `ghazi_sultan_of_ghazis_in_protocol`: `monthly_prestige = +0.10`, `antagonism_received_modifier = −0.15`, `diplomatic_reputation = +1`.
-
-> The two paths: take investiture and then assume *sultan* at 75 (the historical ladder, Cairo to Tabrīz), or skip the diploma entirely and assume the title at 90 in the dynasty's own right (the proud path: never bind the dynasty to Cairo). Both are valid.
-
-## Internal campaigns (tier-1)
-
-The fifth disaster-panel button, **`launch_internal_campaign`**, is a different shape from the apparatus buttons. It is **repeatable** (up to 3 times, the cap encoded as `var:ghazi_internal_campaigns < 3`) and represents the *ghāzī* turning the sword *inward* — vice campaigns, heterodoxy campaigns, sectarian campaigns.
-
-**Gates** (`ghazi_can_launch_internal_campaign` in `05_ghazi_triggers.txt`):
-
-- Disaster active.
-- `ghazi_hisba_apparatus` legacy held (must have claimed Jihad Within).
-- Realm on the strict side of `hisba_law` — either `strict_hisba_enforcement` or `muhtasib_regime`. The lax / customary postures will not back a public morals campaign.
-- At least one `hisba_office` building owned somewhere — the censor needs a desk.
-- Counter `< 3`.
-
-**Cost**: 50 gold and −3 legitimacy up front. Fires `ghazi_burden.500`, which branches into the three campaign types (vice / heterodoxy / sectarian).
-
-**Diminishing returns** (`ghazi_apply_internal_campaign_credit`):
-
-| Campaign # | Legitimacy | Clergy satisfaction |
+| Event | Legitimacy | Also |
 |-|-|-|
-| 1 | +5 | +0.08 |
-| 2 | +3 | +0.05 |
-| 3 | +1 | +0.03 |
+| A battle won | +1, and +2 more if the enemy is non-Muslim | |
+| A battle lost | −2 | |
+| A location gained | +1 | |
+| A location taken from a non-Muslim realm | +6 in all | +10 prestige (**A Mosque on Conquered Ground**) |
+| A location lost | −3 | |
+| A war won | +1.5, plus the credit below | |
+| A war lost | −3 | **The Sword Failed in the Field** for 6 months: −1.0 monthly legitimacy, −5% morale |
+| The capital lost | −25 | **The Seat of the Ghazi Fallen**: −0.3 monthly legitimacy, −0.1 monthly prestige until the Burden ends; it also bars the Guardian ending |
 
-Each branch also applies a permanent scar reflecting the political cost the campaign pays:
+### Which wars are credited
 
-- **`ghazi_vice_campaign_scar`** — `burghers_estate_target_satisfaction = −0.05`, `tax_income_efficiency = −0.025`, `global_monthly_prosperity = −0.001`. Hāfeẓ's Shīrāz, quantified.
-- **`ghazi_heterodoxy_campaign_scar`** — `tolerance_heretic = −1`, `monthly_religious_influence = +0.05`, peasants `−0.03`. Ghulāt circles dispersed; the orthodox jurists pleased, the heterodox poor remember.
-- **`ghazi_sectarian_campaign_scar`** — `global_pop_conversion_speed_modifier = +0.10`, `tolerance_heretic = −1`, `monthly_religious_influence = +0.05`. Conversion edge on home religion; mixed-religion provinces simmer.
+When a war is won, the defeated enemy is classed:
 
-The design's "the realm runs out of sin" — the third campaign reads as theater, not righteousness.
+| The defeated realm | Credit |
+|-|-|
+| **Non-Muslim** — the *dār al-ḥarb* | +10 legitimacy; counts toward the two wars the Sword of Islam needs; **The Banner Carried Forward** for 12 months (+0.4 monthly legitimacy, +5% morale); resets the frontier expectation |
+| **Muslim in name**, with the scholar's ruling in hand | +5 legitimacy; six months of The Banner Carried Forward |
+| **Muslim in name**, without the ruling | +2 legitimacy, and **A Fatwa Arrives Questioning Your Wars** |
+| **An ordinary Sunni realm** | Nothing, and the same fatwa |
 
-## The hisba_law axis
+"Muslim in name" means a Muslim realm ruling as a Chinggisid Regency, or one whose rite is neither Sunni nor Shia. A Shia realm that is not a regency earns neither credit nor complaint. The fatwa asks you to pay the scholars (six months' income; Clergy +5%) or stand by the war (−8 legitimacy, Clergy −10%); it cannot return within two years.
 
-The `hisba_law` law-category sits beside the *ghāzī* disaster (`008_muhtasab_laws.txt`). It is not part of the disaster but it gates the internal-campaign system and pairs with the doctrinal posture.
+**The scholar's ruling** comes by event, not by a button. From time to time **The Scholar Proposes a Ruling**: that a Muslim prince who governs by the *yāsā* has not entered the law. Endorse it (+5 legitimacy, Clergy −5%) or pay for it (twelve months' income, +5 legitimacy) and you hold the ruling for good; refuse (Clergy +5%) and the offer may return after two years.
 
-- **`lax_hisba_enforcement`** — Inju Shīrāz under Abū Isḥāq. Bazaar and dīwān flourish; piety demobilizes (`global_levy_size_modifier = −0.10`, `land_morale_modifier = −0.10`). A `ghazi_sultanate` court flipped to lax should pay a legitimacy / *farr*-ledger cost. The din-panāh inference makes such a court *legible prey* — the `ghazi_lord_at_war_lax` auto-modifier above is the wire.
-- **`customary_enforcement`** — the qāḍī enforces what the quarter expects, ʿurf and discretion. Default posture for most courts.
-- **`strict_hisba_enforcement`** — the *muḥtasib* with a stick. Piety converts to manpower (`global_levy_size_modifier = +0.10`, `land_morale_modifier = +0.25`); merchants pay for it in fines and fled custom.
-- **`muhtasib_regime`** — `unique = yes`, gated on `ghazi_sultanate` AND `dar_al_jihad`. Mubāriz al-Dīn's actual practice: enforcement *as the throne's identity*. `+0.25` levy, `+0.25` land morale, `+0.10` religious influence, `+0.25` conversion speed — but Hāfeẓ's complaint, quantified: prosperity `−0.001`, tax `−0.025`, burghers `−0.10`.
-- **`zill_allah_regime`** — `unique = yes`, Shīʿa-only, requires `mysticism_vs_jurisprudence <= −50`. The Safavid murshid posture: legitimacy through charisma, not enforcement. `tolerance_heretic = +1` — the ghulāt drink at the same table.
+The panel also carries **Ask Ulemma for a Jihad Ruling.**, usable every six months while you hold the Ghāzī Sultanate reform: choose a neighbour and gain the **Ghozva Holy War** casus belli on it. The casus belli is for realms outside the Muslim religions; once you hold the scholar's ruling it is designed to extend to Muslim realms that keep Mongol law.
 
-The interaction with the disaster is two-fold. The internal-campaign action requires `strict` or `muhtasib_regime`. The `ghazi_lord_at_war_lax` auto-modifier credits war against `lax`-holding states. The full mobilized-vs-monetized piety axis runs underneath the *ghāzī* claim.
+## The apparatus of the ghāzī
 
-## The four resolutions
+Four buttons, each claimed once. Each **costs** legitimacy and gives a **refund**, which cancels part of the Burden while it runs, and a permanent **legacy**. With all four refunds standing every line of the Burden's penalty is cancelled.
 
-The disaster polls monthly. Four endings; mutually exclusive.
+| Button | Needs | Costs | Refund (while the Burden runs) | Legacy (permanent) |
+|-|-|-|-|-|
+| **Establish the Hisba** | Legitimacy 50 | −10 | **The Censor's House Cleaning**: +0.1 monthly legitimacy, +5% Clergy | **The Hisba Apparatus**: +0.05 monthly religious influence, +1 tolerance of the true faith, +3% Clergy |
+| **Endow the Frontier Lodges** | Legitimacy 60 and six months' income in the treasury | −15 and six months' income | **The Lodges of the Frontier**: +0.1 monthly legitimacy, +10% levy size | **The Lodges Stand**: +3% levy size, +5% manpower, +5% Tribes |
+| **Seek the Caliph's Diploma** | Legitimacy 60 | −15 | **The Caliph's Diploma**: +0.1 monthly legitimacy, +0.10 monthly religious influence | **The Diploma Exists**: +1 diplomatic reputation, +0.05 monthly prestige, +5% Clergy. Also +30 prestige |
+| **Assume the Style of Sultan of the Ghazis** | Legitimacy 90, or 75 with the diploma | −25 | **Sultan of the Ghazis**: +0.2 monthly legitimacy, +0.05 monthly prestige | **The Title in the Protocol**: +0.10 monthly prestige, −15% antagonism received, +1 diplomatic reputation. The realm becomes a kingdom and gains 50 prestige |
 
-### Sword of Islam — `ghazi_sword_of_islam`
+There are two ladders to the title: through Cairo, at 75, as Mubāriz al-Dīn climbed it; or without Cairo, at 90, in the house's own name.
 
-**Gate** (`ghazi_can_resolve_sword_of_islam`): legitimacy ≥ 75, `ghazi_high_months >= 60`, **`ghazi_tier3_wins >= 2`**. The doctrine requires the wars *actually happened* — high legitimacy alone is not enough.
+## The designated frontier
 
-The Ghāzī Corps institutionalized. Modifier `ghazi_sword_of_islam` — permanent:
+Endowing the lodges gathers the volunteers, and the same day **The Volunteers Are Gathered — Where?** asks where to point them:
 
-- `monthly_legitimacy = +0.20`
-- `global_levy_size_modifier = +0.10`, `land_morale_modifier = +0.10`, `global_manpower_modifier = +0.10`
-- `tolerance_own = +2`, `monthly_prestige = +0.10`.
+- **The Caucasus Gate** — Georgia, Derbent, the steppe;
+- **The Road to Rum** — Anatolia, Trebizond, what is left of Constantinople;
+- **The Ghaznavid Road** — Hindustan;
+- or send them home (−5 legitimacy, Tribes −5%).
 
-Identity locked as *dār al-ḥarb*'s neighbor. All apparatus legacies retained.
+A designated frontier gives **+10% manpower and +5% levy size** while the Burden runs. It is also a promise. If **60 months** pass without a war won against a non-Muslim realm, **The Volunteers Came for War** fires: a frontier expectation is marked as failed, you lose 2 to 5 legitimacy and some Tribes satisfaction, and **The Volunteers Disbanded** applies for three years (−0.2 monthly legitimacy, −5% levy size). The count then starts again. As scripted, any war won against a non-Muslim realm keeps the promise, wherever it is fought.
 
-### Guardian of the Thughur — `ghazi_guardian_of_thughur`
+Two failed expectations are one of the conditions of the Dervish Rising.
 
-**Gate** (`ghazi_can_resolve_guardian`): 25 years elapsed (`ghazi_burden_months >= 300`), realm intact (no `ghazi_capital_lost`), AND the realm **borders *dār al-ḥarb*** directly. **Interior states cannot claim** — this is the *murābiṭ*'s answer, geographically gated.
+## Internal campaigns
 
-Modifier `ghazi_guardian_of_thughur` — permanent: `monthly_legitimacy = +0.10`, `+0.05` levy / morale / prestige. Smaller than Sword but the doctrine stands.
+The fifth button, **Launch an Internal Campaign**, turns the censor's apparatus on the realm itself. It needs:
 
-### Doctrine Lapses — `ghazi_doctrine_lapsed`
+- **The Hisba Apparatus** (from Establish the Hisba);
+- the ḥisba law set to **Strict Enforcement** or **The Muhtasib-King**;
+- at least one **Ḥisba Office** building;
+- fewer than three campaigns so far.
 
-**Gate** (`ghazi_can_resolve_doctrine_lapse`): `ghazi_low_months >= 60` *without* the Dervish Rising's preconditions met.
+Each launch costs **three months' income and 3 legitimacy**, then offers a target:
 
-The quiet failure. Title goes ceremonial. `muhtasib_regime` law option lost. Bleed ends. `ghazi_doctrine_lapsed_scar` permanent: `monthly_prestige = −0.10`, `monthly_legitimacy = −0.05`, clergy satisfaction `−0.05`. The court keeps "ghāzī" in the protocol and everyone knows it is furniture.
+| Campaign | Lasting mark (5 years) | At once |
+|-|-|-|
+| Close the taverns — **The Taverns Sealed** | Burghers −5%, −2.5% tax efficiency, a little prosperity lost | Burghers −10% |
+| Disperse the suspect shaykhs — **The Shaykhs Dispersed** | −1 tolerance of heretics, +0.05 monthly religious influence, Peasants −3% | Clergy +5% |
+| Move on the other branch — **The Other Branch Quieted** | +10% conversion speed, −1 tolerance of heretics, +0.05 monthly religious influence | Unrest in one location |
 
-### Dervish Rising — `ghazi_dervish_rising`
+The credit shrinks each time: **+5 legitimacy and +8% Clergy** for the first, **+3 and +5%** for the second, **+1 and +3%** for the third. Net of the launch cost that is +2, 0 and −2 legitimacy. The first campaign reads as righteousness; the third as theatre.
 
-**Gate** (`ghazi_can_resolve_dervish_rising`): `legitimacy <= 25`, `ghazi_low_months >= 60`, `ghazi_the_lodges_endowed` held (the constituency must exist before it can defect), AND `ghazi_designation_failures >= 2`.
+## The ḥisba law
 
-The ribāṭ network defects to a charismatic shaykh. Reform stripped. **Legacies stripped** — the only outcome that wipes them. Scar `ghazi_dervish_rising_scar` permanent: `monthly_legitimacy = −0.10`, `tolerance_heretic = −2`, clergy `−0.10`, `monthly_religious_influence = −0.10`.
+**Hisba — Enforcement of Public Morals** is a religious law open to every Muslim realm, with or without the disaster. It sets how hard the *muḥtasib*, the market censor, walks the bazaar: piety mobilised into levies, or left to the merchants.
 
-The disaster's generative clause feeds the *murshid-i kāmil* lineage. The frontier-volunteer pool the dynasty endowed has turned into a movement; this is the Ṣafavī-origin moment in code, and the path to Age 2 `mushasha_messianism` and Age 3 `murshid_i_kamil` opens.
+| Policy | Available to | Effects |
+|-|-|-|
+| **Lax Enforcement — The Open Bazaar** | All | Burghers pleased, Clergy displeased; +2.5% tax efficiency, +5% cabinet efficiency, a little prosperity; −10% levy size, −10% morale, −0.05 monthly religious influence; drifts toward Mysticism. Makes you a credited target for ghāzī neighbours |
+| **Customary Enforcement — The Qāḍī's Discretion** | All | +2.5% satisfaction for every estate; beer and liquor imports banned |
+| **Strict Enforcement — The Stick in the Bazaar** | All | Clergy pleased; +10% levy size, +25% morale, +0.05 monthly religious influence; Burghers −5%, −2.5% tax efficiency; wine, beer and liquor imports banned; drifts toward Jurisprudence |
+| **The Muhtasib-King** | Ghāzī Sultanate or Sword of The Sharia; never after the murīd bond | Clergy +10%; +25% levy size, +25% morale, +0.10 monthly religious influence, +25% conversion speed; Burghers −10%, −5% tax efficiency, prosperity lost; the same import bans |
+| **Ẓill Allāh — The Shadow of God** | Shia realms at Mysticism −50, or any realm that has sworn the murīd bond | +0.1 monthly legitimacy, +0.1 monthly religious influence, +25% morale, +10% levy size, Burghers +5%, +2.5% tax efficiency, +1 tolerance of heretics; Clergy −5% |
 
-## How to manage the disaster
+The last two are the two poles of the mod's religious politics: enforcement as the throne's own identity, and authority resting in the person of the guide. Swearing the murīd bond in [the Matter of Tork](matter-of-tork.md) closes the first for good and opens the second.
 
-The arithmetic dictates the strategy: **never be at peace with no qualifying enemy**.
+The **Ḥisba Office** is a one-level building for towns and cities, open to any Muslim realm: +5% local maximum control, +5% local conversion speed, more Clergy power and some Burghers unrest.
 
-The standing posture:
+## Signs and omens
 
-1. **First six months** — absorb the −60 hit. Identify a tier-3 neighbor. Designate the corresponding frontier (`ghazi_frontier_caucasus`, `_rum`, or `_hindustan`).
-2. **Through 50** — fight one tier-3 war. The +10 leg per win plus the `ghazi_conquest_glory` pulse (+0.4/mo for 12 months) is the platform. Claim Jihad Within the first time you can hit 50. This is also the precondition for everything else: it sets `ghazi_fatwa_acquired`, unlocks the tier-2 fatwā path, and opens the internal-campaign system.
-3. **Through 60** — claim Ribāṭ Network when you have the gold spare (the 100-gold cost is genuinely expensive in the first decade) and Caliphal Investiture as soon as 60 holds. The investiture unlocks the 75-threshold path to Sultan of the Ghāzīs, which is a much easier wager than the 90-threshold proud path.
-4. **Through 75** — keep the tier-3 counter accumulating. Sword of Islam requires `ghazi_tier3_wins >= 2` — plan two real conquests against dār al-ḥarb, not skirmishes.
-5. **Hold legitimacy ≥ 75 for 60 months** — with all four refunds standing the disaster's bleed is fully cancelled and the floor holds. Vindicated.
+Three events fire once each as legitimacy falls: **The Preacher Cools** at 35, **The Friday Khutba Turns Colder** at 20, and **Bī-Ghazā** — "without *ghazā*" — at 10. Each lets you buy some warmth back with gold or endure it.
 
-**The yāsā problem.** A Türk-descended *ghāzī* who starts the disaster with `mongol_law_policy` is in a deep hole — the `ghazi_lord_has_yasa_law` penalty stacks under everything else. Repealing the yāsā is the first action.
+Other events arrive at random, each at most once in two years:
 
-**The strict-law tradeoff.** Going `strict_hisba_enforcement` or `muhtasib_regime` opens the internal-campaign system (the easiest legitimacy in the disaster — +5 leg for 50 gold the first time), but at a real economic cost (tax / prosperity malus, burghers irritated). The internal campaigns are best held in reserve as legitimacy first-aid when conquest stalls.
+| Event | The choice |
+|-|-|
+| **A Famous Preacher's Sermon Turns** | Patronise him (three months' income; 60% +4, 40% −3) or ignore him (40% +1, 60% −4) |
+| **The Volunteers Drift** | Recall them (4.5 months' income, −2) or let them go (−5, Tribes −5%) |
+| **News of Infidel Victory** | Answer the call (+3) or look away (−5) |
+| **The Muhtasib Turns on the Court** — only with The Hisba Apparatus, at legitimacy 35 or less | Submit to the audit (Clergy +10%, −15 prestige, −2) or curb him (Clergy −10%, −5) |
+| **The Returned Ghazi** | Honour him (three months' income; +3, Tribes +5%) or a small purse (−4, Tribes −5%) |
+| **The Neglected Ribat** | Rebuild it (six months' income; +2, Clergy +5%) or mourn (−6, Clergy −5%) |
+| **The Banners Flock** | Feast and enrol them (1.5 months' income; +4, Tribes +5%) or bless them (+1) |
+| **The Captives Return** | Pay the balance (three months' income; +5, Clergy +5%) or let the families finish (+1) |
 
-**Border arithmetic for Guardian.** A dynasty that has been holding the disaster for 20+ years without resolving Sword or breaking should check `ghazi_borders_dar_al_harb`. If interior, Guardian is unreachable and the only routes out are Sword (still possible — push to that border) or eventual lapse.
+## The four endings
 
-**Sword vs Dervish Rising.** The Dervish path is only available to a dynasty that took Ribāṭ Network (the lodges exist to defect). A dynasty avoiding the Safavid endgame can simply *not* claim the network — but at the cost of leaving the disaster's `global_levy_size_modifier = −0.10` slice un-cancelled. The trade is real.
+Checked every month, in this order.
 
-## Payoffs in plain numbers
+### Sword of Islam
 
-A Sword of Islam dynasty that has claimed all four apparatus and held the disaster through stands at:
+**When:** legitimacy at 75 or more, 60 months (not necessarily consecutive) spent at 75 or more, and **two wars won against non-Muslim realms**.
 
-- `monthly_legitimacy = +0.20` (Sword) + apparatus legacy traces — the dynasty's permanent legitimacy floor.
-- `global_levy_size_modifier = +0.13` (`+0.10` Sword + `+0.03` lodges).
-- `global_manpower_modifier = +0.15` (`+0.10` Sword + `+0.05` lodges).
-- `land_morale_modifier = +0.10`, `tolerance_own = +3` (`+2` Sword + `+1` hisba), `monthly_prestige = +0.25` total across Sword + diploma + protocol.
-- `antagonism_received_modifier = −0.15`, `diplomatic_reputation = +2`.
-- Religious influence `+0.05` ambient, internal-campaign route still available (up to 3 uses).
-- Standing as a recognized *ghāzī* sultanate; identity locked.
++25 legitimacy, +50 prestige, +10 stability. The Ghāzī Sultanate reform is replaced by **Sword of The Sharia**, and **Sword of Islam** is permanent: +0.2 monthly legitimacy, +10% levy size, +10% manpower, +10% morale, +2 tolerance of the true faith, +0.10 monthly prestige. The legacies stay.
 
-A Guardian of the Thughur dynasty stands at roughly half those numbers, with the geographic flavor — the frontier-defender, not the standard-bearer.
+### The Dervish Rising
 
-A Doctrine-Lapsed dynasty has lost the *muḥtasib regime* option, holds a permanent prestige scar, and cannot re-declare.
+**When:** legitimacy at 25 or less, 60 months spent at 25 or less, **The Lodges Stand** held, and two frontier expectations failed.
 
-A Dervish Rising dynasty has lost the reform itself, the legacies, and is now likely the seed-state of a successor messianic movement.
+The volunteers you housed follow a shaykh instead. The ruler is killed and replaced by a Shia man of the lodges; the country becomes Shia; the reform is replaced by **Mushaʿshaʿ Messianism**; all four legacies are stripped; −25 legitimacy, Clergy −15%, Tribes −20%; and **After the Rising** lasts 25 years (−0.10 monthly legitimacy, −2 tolerance of heretics, Clergy −10%, −0.10 monthly religious influence). The realm survives as something else: this is the mod's picture of how a frontier devotion becomes a messianic movement.
 
-See also: [Government reforms](government-reforms.md), [Erānzamīn situation](eranzamin-situation.md), [Türk vs Tāzīk](turk-vs-tazik.md), [the Farr Proof of Fortune](farr-proof-of-fortune.md) (the parallel disaster for the *farr* path).
+### Guardian of the Thughur
+
+**When:** 300 months have passed, the realm **borders a non-Muslim country**, and the capital has not been lost during the Burden.
+
++12 legitimacy, +20 prestige. The reform is replaced by **Sword of The Sharia**, and **Guardian of the Thughur** is permanent: +0.1 monthly legitimacy, +5% levy size, +5% morale, +0.05 monthly prestige. This is the *murābiṭ*'s answer — holding the wall is service too — and an interior realm cannot give it.
+
+### The Doctrine Lapses
+
+**When:** 60 months spent at legitimacy 25 or less, without the conditions of the Rising.
+
+−15 legitimacy, −25 prestige. The reform is removed and cannot be taken again, The Muhtasib-King goes with it, and **The Doctrine Furniture** is permanent: −0.10 monthly prestige, −0.05 monthly legitimacy, Clergy −5%. The legacies remain.
+
+Sword of Islam and Guardian of the Thughur both settle the question of right for forming Persia. For what Sword of The Sharia gives, see [government reforms](government-reforms.md).
+
+## After the Burden: the lodge and the volunteers
+
+Sword of The Sharia opens the **Mutaṭawwiʿa Lodge**, a one-level building for any settlement, staffed by clergy: it raises local manpower, garrison size (+12.5%) and local Clergy power. Where a lodge stands, the levy **Call the Ghazis** raises **Ghazi Volunteers** from the clergy pops: light cavalry that deals 20% more morale damage and takes 20% less, but takes 20% more casualties and deals 10% fewer, with +1 initiative and a lighter supply train. They fight best in sparse country, on flat land and in desert, and badly in forest and wetlands.
+
+## How to manage it
+
+1. **Choose the reform only with an enemy in reach.** You need a country of another religion to be at war with for most of the next decades, and two won wars against non-Muslims for the best ending. A Muslim neighbour of another rite sustains the monthly offset but does not count toward the Sword.
+2. **Open with a war.** You start 60 down and lose six a year at peace; at war with a realm of another faith you gain three a year, plus everything the field pays. Locations taken from non-Muslim realms are the richest single source in the whole disaster.
+3. **Establish the Hisba at 50, then the diploma and the lodges at 60.** The diploma lowers the title's threshold from 90 to 75. The lodges cost six months' income and commit you to a frontier.
+4. **Endow the lodges only if you mean to fight.** Without The Lodges Stand the Dervish Rising cannot happen, and failure falls back to the quieter Lapse — at the price of leaving the −10% levy penalty standing.
+5. **Mind the two clocks.** Five years in total at 25 or below ends the doctrine. Five years in total at 75 or above, with two wars won, wins it. Claims cost legitimacy, so take them when a victory is paying.
+6. **Check the border before year 25.** The Guardian ending needs a non-Muslim neighbour. An interior realm that has neither won nor lapsed simply stays under the Burden until it wins, lapses or finds a frontier.
+7. **Keep internal campaigns for a bad year.** Only the first is worth its cost, and it requires the strict side of the ḥisba law, with what that does to your burghers.
+
+See also: [government reforms](government-reforms.md), [the Persianate sultanate](persianate-sultanate.md), [the Erānzamīn situation](eranzamin-situation.md), [buildings](buildings.md), [the military system](military-system.md), [ṭarīqa orders](tariqa-orders.md), [the Farr Under Examination](farr-proof-of-fortune.md) (the parallel examination on the *farr* road), [the Matter of Tork](matter-of-tork.md) (what comes after), [known issues](../reference/known-issues.md).
