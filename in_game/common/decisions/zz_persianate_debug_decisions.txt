@@ -209,3 +209,97 @@ persianate_debug_bar_met = { # DEBUG: toggle "the begs outweigh the throne"
 		}
 	}
 }
+
+persianate_debug_cadet_flight = { # DEBUG: the cadet takes the tümen (stage 3 route)
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		is_ulus_chaghatay_amir = yes
+		NOT = { has_variable = ulus_fled_chief }
+	}
+
+	allow = {
+		custom_tooltip = {
+			text = persianate_debug_cadet_needs_kinsman_tt
+			ulus_house_has_cadet = yes
+		}
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	# The invader is the state that leads the ulus (khan or regent): the
+	# cadet swears to him, with no subject tie.
+	option = {
+		name = persianate_debug_cadet_flight.a
+		ai_chance = { value = 0 }
+		effect = {
+			international_organization:ulus_chaghatay ?= {
+				leader_country ?= { save_scope_as = ulus_cadet_invader }
+			}
+			if = {
+				limit = { exists = scope:ulus_cadet_invader }
+				trigger_event_non_silently = amirs_cadet.1
+			}
+		}
+	}
+	# The invader is a neighbour from outside the ulus: the house becomes
+	# his tributary.
+	option = {
+		name = persianate_debug_cadet_flight.b
+		ai_chance = { value = 0 }
+		effect = {
+			random_neighbor_country = {
+				limit = {
+					NOT = { is_ulus_chaghatay_member = yes }
+					is_rebel_country = no
+				}
+				save_scope_as = ulus_cadet_invader
+			}
+			if = {
+				limit = { exists = scope:ulus_cadet_invader }
+				trigger_event_non_silently = amirs_cadet.1
+			}
+		}
+	}
+}
+
+persianate_debug_cadet_coup = { # DEBUG: the cadet's coup (stage 2 route)
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		is_ulus_chaghatay_amir = yes
+		NOT = { has_variable = ulus_fled_chief }
+	}
+
+	allow = {
+		custom_tooltip = {
+			text = persianate_debug_cadet_needs_kinsman_tt
+			ulus_house_has_cadet = yes
+		}
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = persianate_debug_cadet_coup.a
+		ai_chance = { value = 0 }
+		effect = {
+			# The event needs a kinsman clearly abler than the chief:
+			# one is made so.
+			save_scope_as = ulus_debug_house
+			random_character = {
+				limit = {
+					ulus_is_cadet_of_house = { HOUSE = scope:ulus_debug_house }
+				}
+				add_mil = 40
+			}
+			trigger_event_non_silently = amirs_cadet.20
+		}
+	}
+}
