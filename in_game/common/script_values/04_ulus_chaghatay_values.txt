@@ -7,19 +7,22 @@
 # THE KINGMAKER SCORE — who takes the khan if the throne falls vacant
 # with the begs over the bar. COUNTRY scope (a junior member).
 #
-#   ruler's military skill x2   the regency is taken by the man the
-#                               tümens will follow: Qazaghan was the
-#                               ulus's best general before he was its
-#                               master
-#   ruler's administrative skill  holding it is another matter, and it
-#                               was the bitikchis and the settled towns
-#                               that kept Qazaghan twelve years
-#   domain                      his realm's share of all the amirs'
-#                               weight (ulus_amir_share: military
-#                               strength, tax base and prestige, NOT a
-#                               count of locations) x250, capped at 60:
-#                               a quarter of the amirs' weight is worth
-#                               the full 60
+#   HIS REALM'S WEIGHT, FIRST    his share of all the amirs' weight
+#                               (ulus_amir_share: military strength, tax
+#                               base and prestige, NOT a count of
+#                               locations) x400. An amir holding a
+#                               quarter of the amirs' weight scores 100
+#                               here; one holding 3% scores 12. The
+#                               regency goes to the man with the tümens:
+#                               Qazaghan led the Qara'unas, the largest
+#                               host in the ulus.
+#   ruler's military skill x0.5  0-50: the man the tümens will follow
+#   ruler's administrative x0.2  0-20: holding it is another matter
+#                               (First build scored skill x2 and x1, up
+#                               to 300 points against 60 for the realm:
+#                               with random rulers a petty amir with a
+#                               gifted chief outranked the Yasa'uri, who
+#                               field ten times his men.)
 #   a wife of the line          +25: the güregen's claim, Temür's own
 #
 # Character abilities are 0-100 (base reads them as ruler.adm / heir.mil;
@@ -36,16 +39,18 @@ ulus_kingmaker_score = {
 		limit = { has_ruler = yes }
 		add = {
 			value = ruler.mil
-			multiply = 2
+			multiply = 0.5
 		}
-		add = ruler.adm
+		add = {
+			value = ruler.adm
+			multiply = 0.2
+		}
 	}
 	if = {
 		limit = { has_variable = ulus_amir_share }
 		add = {
 			value = var:ulus_amir_share
-			multiply = 250
-			max = 60
+			multiply = 400
 		}
 	}
 	if = {

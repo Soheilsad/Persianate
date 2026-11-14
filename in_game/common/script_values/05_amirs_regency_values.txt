@@ -19,8 +19,12 @@ ulus_regency_noble_power = 0.50
 # ...and the nobles must hold at least this multiple of the crown's.
 ulus_regency_noble_crown_ratio = 2
 # OR: the three greatest amirs' combined weight / the khan's own.
-# The author retunes this one from the in-game reading.
-ulus_regency_amir_ratio = 2.0
+# In-game reading at the 1337 start: 5.25 on day one, 3.5 after the
+# first month (author, 2026-11-14) — the khan at Almaliq is already
+# outweighed, as he was: six khans in the twelve years after 1334. So
+# the bar that marks the amirs' REGENCY (1346) has to sit above the
+# starting disorder, or every game opens with one.
+ulus_regency_amir_ratio = 6.0
 # After a child khan's accession the next poll's bars are multiplied by
 # this (design: "drops by a third").
 ulus_regency_child_bar_factor = 0.667
