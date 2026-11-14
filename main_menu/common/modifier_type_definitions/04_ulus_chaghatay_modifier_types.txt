@@ -1,0 +1,19 @@
+# Engine-derived per-special-status modifier types for Ulus Chaghatay (one
+# pair per status in international_organization_special_statuses/
+# ulus_chaghatay.txt). The engine looks them up for every status and logs
+# "Modifier type definition ... must exist in DB" without them. Cloned
+# from base emperor_can_participate_in_parliament / emperor_agenda_impact,
+# as 01_eranzamin_modifier_types.txt does for the Erānzamīn statuses.
+# Loc: MODIFIER_TYPE_NAME_/DESC_ in ulus_chaghatay_l_english.yml.
+ulus_amir_agenda_impact={
+	percent=yes
+	game_data={
+		category=internationalorganization
+	}
+}
+ulus_amir_can_participate_in_parliament={
+	boolean=yes
+	game_data={
+		category=internationalorganization
+	}
+}

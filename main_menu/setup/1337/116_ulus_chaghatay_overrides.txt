@@ -30,6 +30,8 @@
 #   CHG  keeps                almaliq, ilibalyk, kayalyk, almaty,
 #                             kuragharty, talas, akkol, emin,
 #                             bortala                              (57)
+#        (and, setup being additive, its base CORES on the carved
+#        lands — the khan's standing claim on his amirs' pasture)
 #
 # WHO held which eastern valley in 1337 is thinly attested: the main
 # source, Mirza Haydar's Tarikh-i Rashidi, is two centuries later and
@@ -50,13 +52,31 @@
 # western pair (eurasian_horde_no_coast_no_pleading, legacy_of_genghis),
 # CHG/DGH for the eastern pair (eurasian_horde_no_muslim).
 #
-# CHG is the base block verbatim with the shrunken territory. Its
-# tolerated_cultures list is deliberately NOT repeated: setup is
-# additive for those lists and a culture named in both the base block
-# and a mod block is billed twice (tools/culture_lists.py header).
+# CHG's block carries its shrunken territory and nothing else: a
+# same-tag block is read ON TOP of base's 10_countries entry, so
+# anything repeated here is declared twice (ruler terms, culture lists
+# — see the note in the block and tools/culture_lists.py's header).
 #
-# Same-tag blocks in a later file override the base 10_countries entry
-# (precedent: YEM/ZYD in 115_yemen_overrides.txt). File number 116 so
+# STARTING REGIMENTS — why the four carry tolerated_cultures here.
+# A `type = army` country must be able to raise its regiments at setup
+# from pops of its primary, accepted or tolerated cultures in its
+# capital, or it is destroyed on the spot (error.log: "Army Based
+# Country 'FGN Ulus of Fergana' can not create regiments at start, and
+# will this shatter"; FGN, CAC and DZG went that way on the first load
+# and Fergana came up as a dynamic "Transoxiana"). Andijan and Tashkent
+# have no Mongol pops at all — their tribesmen are Khorezmian — and
+# Urumqi's Mongols are eight clergy; Issyk-Kul survived on 600 Mongol
+# tribesmen at Balasagun. Base JLY, BRL and KTT sit on the same
+# Khorezmian tribesmen and stand because base's blocks tolerate
+# khorezmian_culture. The culture-lists effect cannot help: it runs at
+# on_game_start, after this check. So these lists live in SETUP, and
+# tools/culture_lists.py leaves them alone for tags that have no base
+# block (nothing to double-bill) and treats them as the starting state.
+# Eligible pops in each capital with these lists: Andijan 6.3k
+# (6.0k tribesmen), Tashkent 7.7k (7.5k), Balasagun 15k (6.0k),
+# Urumqi 7.1k (0.7k tribesmen).
+#
+# File number 116 so
 # the new tags exist before 12_diplomacy and
 # 15_international_organizations name them.
 # =====================================================================
@@ -64,7 +84,14 @@
 countries = {
 	countries = {
 		CHG = { #Chagatai — the khan's own share
-			type = army
+			# TERRITORY ONLY. A same-tag block does not replace base's
+			# 10_countries entry, it is read on top of it: the first load
+			# with this block repeating base's government logged "Ruler
+			# term is active but there are subsequent ruler terms" and
+			# twenty overlapping-date lines, base's khans declared twice.
+			# Base already gives CHG its type, template, ruler history,
+			# rank and capital; the carved locations pass to the four
+			# tags below because the LAST claimant of a location owns it.
 			own_control_core = {
 				tamdy akkesene baba_ata nurlykent saudakent shavgar sholakkorgan
 				almaty boyauli karakastek karamergen kargaly kurty shengeldy talkhir
@@ -81,45 +108,6 @@ countries = {
 				ilanbalyk koktuma toli
 				ilibalyk koktal kayalyk tansyk
 			}
-
-			starting_technology_level = 3
-			include = "expl_mongols"
-			include = "eurasian_horde_no_muslim"
-			government = {
-					ruler_term = { character = chagatai_khan start_date = 1227.8.25 end_date = 1242.7.1 regnal_number = 1 }
-					ruler_term = { character = chg_qara_hulegu_borjigin start_date = 1242.7.1 end_date = 1246.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_yesu_mongke_borjigin start_date = 1246.1.1 end_date = 1252.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_qara_hulegu_borjigin start_date = 1252.1.1 end_date = 1252.2.1 regnal_number = 1 }
-					ruler_term = { character = chg_mubarak_shah_borjigin start_date = 1252.2.1 end_date = 1260.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_alghu_borjigin start_date = 1260.1.1 end_date = 1266.3.1 regnal_number = 1 }
-					ruler_term = { character = chg_mubarak_shah_borjigin start_date = 1266.3.1 end_date = 1266.6.1 regnal_number = 1 }
-					ruler_term = { character = baraq_borjigin start_date = 1266.6.1 end_date = 1270.7.22 regnal_number = 1 }
-					ruler_term = { character = chg_nebubei_borjigin start_date = 1270.7.22 end_date = 1272.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_buqa_temur_borjigin start_date = 1272.1.1 end_date = 1282.1.1 regnal_number = 1 }
-					ruler_term = { character = duwa_borjigin start_date = 1282.1.1 end_date = 1307.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_konchek_borjigin start_date = 1307.1.1 end_date = 1308.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_taliqu_borjigin start_date = 1308.1.1 end_date = 1309.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_kebek_borjigin start_date = 1309.1.1 end_date = 1310.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_esen_buqa_borjigin start_date = 1310.1.1 end_date = 1318.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_kebek_borjigin start_date = 1318.1.1 end_date = 1325.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_eljigidey_borjigin start_date = 1325.1.1 end_date = 1329.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_duwa_temur_borjigin start_date = 1329.1.1 end_date = 1330.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_tamashirin_borjigin start_date = 1330.1.1 end_date = 1334.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_buzan_borjigin start_date = 1334.1.1 end_date = 1335.1.1 regnal_number = 1 }
-					ruler_term = { character = chg_changsi start_date = 1335.1.1 regnal_number = 1 }
-
-				type = steppe_horde
-				heir_selection = tribal_oldest_male
-				ruler = chg_changsi
-
-				reforms = {
-					legacy_of_genghis
-				}
-			}
-			country_rank = rank_kingdom
-			court_language = karluk_language
-
-			capital = almaliq
 		}
 
 		FGN = { #Ulus of Fergana
@@ -146,6 +134,11 @@ countries = {
 				reforms = {
 					legacy_of_genghis
 				}
+			}
+
+			# The tümen's own horsemen (see STARTING REGIMENTS above).
+			tolerated_cultures = {
+				khorezmian_culture
 			}
 
 			religious_school = hanafi_school
@@ -182,6 +175,11 @@ countries = {
 			}
 			country_rank = rank_duchy
 
+			# The tümen's own horsemen (see STARTING REGIMENTS above).
+			tolerated_cultures = {
+				khorezmian_culture
+			}
+
 			religious_school = hanafi_school
 			government = { mysticism_vs_jurisprudence = 20 }
 
@@ -209,6 +207,12 @@ countries = {
 				}
 			}
 
+			# Balasagun has Mongol tribesmen, but only 600 of them; the
+			# Kyrgyz are the domain's horsemen (see STARTING REGIMENTS).
+			tolerated_cultures = {
+				kyrgyz_culture
+			}
+
 			capital = balasagun
 		}
 
@@ -230,6 +234,13 @@ countries = {
 				reforms = {
 					legacy_of_genghis
 				}
+			}
+
+			# Urumqi's only Mongols are eight clergy (see STARTING
+			# REGIMENTS above); the Oirat ride, the Uyghurs farm.
+			tolerated_cultures = {
+				oirat_culture
+				uyghur_culture
 			}
 
 			capital = urumqi

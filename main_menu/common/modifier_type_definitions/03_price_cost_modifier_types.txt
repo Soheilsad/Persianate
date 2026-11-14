@@ -307,3 +307,11 @@ swear_bayah_price_cost_modifier={
 		category=country
 	}
 }
+
+ulus_chaghatay_qubchur_price_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}

@@ -25,3 +25,10 @@ io_opinion_imamate_living = {
 io_opinion_sarbadar_movement = {
 	value = 0
 }
+
+# Ulus Chaghatay: tümens of one ulus under one khan. Base gives the Tatar
+# Yoke and the Middle Kingdom 10 and a tribal confederation 15; the amirs
+# were closer than tributaries and warier of each other than confederates.
+io_opinion_ulus_chaghatay = {
+	value = 10
+}

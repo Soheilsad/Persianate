@@ -33,6 +33,8 @@
  ulus_chaghatay_qubchur_desc: "The khan's share: one part in a hundred of each amir's income, sent to the seat of the ulus. It is a light levy. What the khan truly has of his amirs is their horsemen."
  ULUS_CHAGHATAY_QUBCHUR_PAYMENT_MULTIPLIER: "1% of the amirs' [monthly_income_trade_and_tax|e]"
  ulus_chaghatay_qubchur_price: "Qubchur"
+ MODIFIER_TYPE_NAME_ulus_chaghatay_qubchur_price_cost_modifier: "$ulus_chaghatay_qubchur_price$"
+ MODIFIER_TYPE_DESC_ulus_chaghatay_qubchur_price_cost_modifier: "This impacts the [cost|e] of the qubchur the amirs of [GetInternationalOrganization('ulus_chaghatay').GetName] send to the khan."
 
  # --- IO variables (header strip) ---
  ulus_amir_count: "Amirs"
