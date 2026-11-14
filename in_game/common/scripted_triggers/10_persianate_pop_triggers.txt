@@ -38,14 +38,20 @@ is_diwan_pop = {
 		}
 		# Apparatus flag only — the chancery makes the pop class, not the
 		# government form (a beylik sultanate has no diwan to join).
-		location = {
-			owner ?= {
-				has_chancery_apparatus = yes
-			}
+		# Pop's own owner link, as is_amir_pop and every base estate rung
+		# use it. This went through `location = { owner ?= ... }`; no base
+		# rung reads a pop's location link, and the amirs (owner link)
+		# existed on day one while the diwan did not.
+		owner ?= {
+			has_chancery_apparatus = yes
 		}
 
 
 		OR = {
+			# Same start-year waiver as literacy, for the same reason:
+			# the urban test reads the pop's location link, the other
+			# value that may not be ready when setup pops are sorted.
+			current_year < 1338
 			location ?= {
 				is_province_capital = yes
 			}

@@ -461,20 +461,20 @@ organization_geodiplomatic_theme = {
 												align = left|nobaseline
 												text = "[Country.GetName]"
 											}
+											# The head's flag is NOT drawn here: a widget cannot
+											# set a Country datacontext from the Country it is
+											# already in (1.4.7 log: "reading and writing the
+											# same context (Country) this is not allowed"). Rows
+											# come grouped head by head, in the order of the
+											# cards above; the head's name is shown instead.
 											text_single = {
 												visible = "[Country.MakeScope.GetVariable('eranzamin_bloc_of').IsSet]"
 												parentanchor = right|vcenter
-												position = { -42 0 }
-												size = { 26 24 }
+												size = { 95 24 }
 												autoresize = no
 												align = right|nobaseline
-												text = "ERANZAMIN_FOR_BLOC"
+												text = "[Country.MakeScope.GetVariable('eranzamin_bloc_of').GetCountry.GetName]"
 												default_format = "#subtle_name"
-											}
-											country_flag_small = {
-												visible = "[Country.MakeScope.GetVariable('eranzamin_bloc_of').IsSet]"
-												parentanchor = right|vcenter
-												datacontext = "[Country.MakeScope.GetVariable('eranzamin_bloc_of').GetCountry]"
 											}
 										}
 									}
