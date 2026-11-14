@@ -353,6 +353,20 @@ ulus_chaghatay_rebuild_ledger = {
 		}
 	}
 
+	# For the panel's Pledges card: every house that has pledged its tümen
+	# (to an amir or to the khan) or has a patron outside the ulus.
+	clear_global_variable_list = ulus_pledgers
+	every_international_organization_member = {
+		limit = {
+			OR = {
+				has_variable = ulus_pledged_to
+				has_variable = ulus_pledged_to_khan
+				has_variable = ulus_outside_backer
+			}
+		}
+		add_to_global_variable_list = { name = ulus_pledgers target = this }
+	}
+
 	every_international_organization_member = {
 		set_variable = { name = ulus_weight_eff value = ulus_realm_weight }
 	}

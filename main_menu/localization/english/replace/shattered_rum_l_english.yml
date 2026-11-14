@@ -107,7 +107,7 @@
  rum_summon_no_countries: "No neighboring beylik can be summoned."
  cb_rum_custody: "Custody of Rum"
  cb_rum_custody_desc: "This march was summoned to obedience by the keeper of the Old Capital and refused. The claim of Konya carries the sword with it, inside Anatolia and nowhere else."
- RUM_CUSTODY_WAR_NAME: "$ORDER$$ATTACKER.GetAdjectiveWithFlag$ Summons of $DEFENDER.GetNameWithFlagNoTooltip$"
+ RUM_CUSTODY_WAR_NAME: "The $NUM$$ORDER$ $FIRSTNAME$ Summons of $SECONDNAME$"
  # ----- hook notifications (rum.30-36) -----
  rum.30.title: "Victory Under the Claim"
  rum.30.desc: "The field is ours, and Anatolia was watching. The qadis will mention it after Friday prayers, and the begs who doubted us will spend the evening recounting their horsemen."

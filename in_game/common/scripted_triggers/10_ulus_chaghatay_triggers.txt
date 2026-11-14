@@ -53,3 +53,57 @@ is_ulus_chaghatay_roster_tag = {
 		tag = DZG
 	}
 }
+
+
+# In the organisation's can_declare_war (scope:attacker, scope:defender):
+# the attacker holds one of the ulus's own casus belli on the defender.
+ulus_attacker_holds_ulus_cb = {
+	exists = scope:attacker
+	exists = scope:defender
+	scope:attacker = {
+		OR = {
+			has_casus_belli_of_type_on = {
+				target = scope:defender
+				type = casus_belli:cb_rise_against_the_khan
+			}
+			has_casus_belli_of_type_on = {
+				target = scope:defender
+				type = casus_belli:cb_take_the_khan
+			}
+			has_casus_belli_of_type_on = {
+				target = scope:defender
+				type = casus_belli:cb_restore_the_ulus
+			}
+			has_casus_belli_of_type_on = {
+				target = scope:defender
+				type = casus_belli:cb_tumen_feud
+			}
+			has_casus_belli_of_type_on = {
+				target = scope:defender
+				type = casus_belli:cb_break_the_tumens
+			}
+			has_casus_belli_of_type_on = {
+				target = scope:defender
+				type = casus_belli:cb_sahib_qiran_submission
+			}
+		}
+	}
+}
+
+# A country whose capital stands on a tümen's pasture (marked at game
+# start, on_action/36) while the ulus stands, or the Ṣāḥib-qirān's own
+# realm. Neither belongs in the Ilkhanid succession: a horde that
+# collapsed leaves a settled Tajik country on its ground, and base's
+# culture count made that a Persianate sultanate which then joined
+# Erānzamīn (author's test, Suldus, 2026-11-14); the Ṣāḥib-qirān's
+# state was picked up the same way at its release.
+ulus_ground_or_sahib_qiran = {
+	OR = {
+		tag = TIM
+		has_variable = sq_fortune
+		AND = {
+			exists = international_organization:ulus_chaghatay
+			capital ?= { has_variable = ulus_tumen_pasture }
+		}
+	}
+}

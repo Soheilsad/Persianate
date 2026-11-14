@@ -217,3 +217,42 @@ sq_courting_pulse = {
 		}
 	}
 }
+
+
+# ---WHAT HE OCCUPIES IS HIS ------------------------------------------
+# sq_fortune_high_mod carries the engine's auto_conquer_at_war, but in
+# the author's test (2026-11-14) a province with no fort gave him
+# nothing when his riders took it. So the open country is scripted, the
+# way the mod already does it for the Ilkhanid warlords
+# (24_warlord_conquest_hooks.txt): root = the occupier, scope:target =
+# the location. Only in the high band, only land of a country he is at
+# war with; where the engine has already handed the place over the
+# owner is no longer an enemy and nothing happens twice.
+on_location_occupied = {
+	on_actions = {
+		sq_open_country_is_his
+	}
+}
+
+on_siege_won = {
+	on_actions = {
+		sq_open_country_is_his
+	}
+}
+
+sq_open_country_is_his = {
+	trigger = {
+		has_variable = sq_fortune
+		has_variable = sq_band_high
+		scope:target.owner ?= {
+			is_at_war_with = root
+		}
+	}
+	effect = {
+		scope:target = {
+			change_integration_level = conquered
+			change_location_owner = root
+			change_integration_level = conquered
+		}
+	}
+}

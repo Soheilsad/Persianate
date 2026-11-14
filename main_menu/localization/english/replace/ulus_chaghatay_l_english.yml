@@ -122,3 +122,10 @@
  ULUS_KEEPING_LABEL: "In the keeping of"
  ULUS_REGENT_HEIR_LABEL: "Regent's heir:"
  ULUS_KHAN_AGE_LABEL: "age"
+ ULUS_PLEDGES_CARD: "Pledges"
+ ULUS_PLEDGES_CARD_TT: "Every house that has pledged its tümen, and to whom: half its weight is counted as that house's (or the khan's). A pledge has no term. It stands until it is taken back, until the house it was given to leaves the ulus or takes the seat, or until a rising that house leads is broken. Houses with a patron outside the ulus are listed too."
+ ULUS_NO_PLEDGES: "No tümen is pledged."
+ ULUS_PLEDGED_TO: "pledged to"
+ ULUS_PLEDGED_TO_KHAN: "pledged to the khan"
+ ULUS_PATRON_ROW: "patron: [Country.MakeScope.GetVariable('ulus_outside_backer').GetCountry.GetName]"
+

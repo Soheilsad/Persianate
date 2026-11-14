@@ -53,8 +53,24 @@ sworn_amir = {
 	overlord_can_cancel = yes
 	subject_can_cancel = no
 
-	join_offensive_wars_always = { always = no }
-	join_defensive_wars_always = { always = no }
+	# They ride unasked while his star holds: that is what they are for.
+	# (Author's test, 2026-11-14: with "always = no" a war begun by Plan
+	# Invasion, which declares by script and so never shows the call to
+	# arms, went out without one of them.) Only when his fortune is low
+	# (sq_band_low, scripted_effects/18) must he ask, and an amir asked
+	# may refuse. scope:actor = the one calling, scope:recipient = the
+	# one called (base vassal.txt).
+	join_offensive_wars_always = {
+		NOT = { scope:actor ?= { is_subject_of = scope:recipient } }
+		NOT = { scope:actor ?= { has_variable = sq_band_low } }
+	}
+	join_defensive_wars_always = {
+		OR = {
+			# he always answers for his own men
+			scope:actor ?= { is_subject_of = scope:recipient }
+			NOT = { scope:actor ?= { has_variable = sq_band_low } }
+		}
+	}
 	join_offensive_wars_can_call = { always = yes }
 	join_defensive_wars_can_call = { always = yes }
 	will_join_independence_wars = yes

@@ -14,6 +14,8 @@
  sq_distribute_plunder_tt: "The fortune of the Ṣāḥib-qirān rises by #G 10#!. Our subjects remember the gift for three years."
 
  # Band modifiers
+ STATIC_MODIFIER_NAME_sq_name_goes_before_him_mod: "His Name Goes Before Him"
+ STATIC_MODIFIER_DESC_sq_name_goes_before_him_mod: "Courts that would league against any other conqueror send this one envoys, each for itself."
  STATIC_MODIFIER_NAME_sq_fortune_high_mod: "Fortune of the Ṣāḥib-qirān"
  STATIC_MODIFIER_DESC_sq_fortune_high_mod: "He keeps winning and he keeps giving. The amirs follow."
  STATIC_MODIFIER_NAME_sq_fortune_low_mod: "A Failing Fortune"

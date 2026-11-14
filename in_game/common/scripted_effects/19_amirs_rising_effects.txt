@@ -283,3 +283,263 @@ ulus_pledge_to_asker = {
 		ulus_chaghatay_rebuild_ledger = yes
 	}
 }
+
+# ---------------------------------------------------------------------
+# THE RECKONING, SHOWN. Tooltip-only effects: what a house will answer
+# when asked, and each thing it weighs, as lines the player can read
+# before he pays. They repeat the terms of the acceptance values
+# (script_values/05_amirs_regency_values.txt, sections 12, 15, 16); if a
+# term changes there, change its line here and its text in
+# amirs_rising_l_english.yml.
+# COUNTRY scope: the house (or outsider) that is asked.
+# ---------------------------------------------------------------------
+
+# scope:actor asks this house to pledge to him.
+ulus_show_pledge_reckoning = {
+	if = {
+		limit = { is_ai = no }
+		custom_tooltip = ulus_reckon_player_tt
+	}
+	else_if = {
+		limit = { ulus_pledge_acceptance >= 0 }
+		custom_tooltip = ulus_reckon_agree_tt
+	}
+	else = {
+		custom_tooltip = ulus_reckon_refuse_tt
+	}
+	custom_tooltip = ulus_reckon_reluctance_25_tt
+	ulus_show_reckoning_of_actor = yes
+	if = {
+		limit = {
+			has_variable = ulus_weight
+			scope:actor = { has_variable = ulus_weight }
+		}
+		if = {
+			limit = {
+				scope:actor.var:ulus_weight >= {
+					value = var:ulus_weight
+					multiply = 2
+				}
+			}
+			custom_tooltip = ulus_reckon_twice_30_tt
+		}
+		else_if = {
+			limit = {
+				scope:actor.var:ulus_weight >= {
+					value = var:ulus_weight
+					multiply = 1.25
+				}
+			}
+			custom_tooltip = ulus_reckon_heavier_15_tt
+		}
+		else_if = {
+			limit = { scope:actor.var:ulus_weight < var:ulus_weight }
+			custom_tooltip = ulus_reckon_lighter_tt
+		}
+		else = {
+			custom_tooltip = ulus_reckon_even_tt
+		}
+	}
+	if = {
+		limit = {
+			is_target_in_global_variable_list = {
+				name = ulus_kingmakers
+				target = this
+			}
+		}
+		custom_tooltip = ulus_reckon_own_hopes_tt
+	}
+	if = {
+		limit = {
+			scope:actor = {
+				is_target_in_global_variable_list = {
+					name = ulus_kingmakers
+					target = this
+				}
+			}
+		}
+		custom_tooltip = ulus_reckon_we_contend_10_tt
+	}
+}
+
+# Shared: what this house makes of scope:actor himself.
+ulus_show_reckoning_of_actor = {
+	if = {
+		limit = {
+			opinion = {
+				target = scope:actor
+				value >= 100
+			}
+		}
+		custom_tooltip = ulus_reckon_opinion_high_tt
+	}
+	else_if = {
+		limit = {
+			opinion = {
+				target = scope:actor
+				value >= 0
+			}
+		}
+		custom_tooltip = ulus_reckon_opinion_mid_tt
+	}
+	else = {
+		custom_tooltip = ulus_reckon_opinion_low_tt
+	}
+	if = {
+		limit = { has_royal_marriage_with = scope:actor }
+		custom_tooltip = ulus_reckon_marriage_25_tt
+	}
+	if = {
+		limit = { is_allied_with = { target = scope:actor } }
+		custom_tooltip = ulus_reckon_alliance_15_tt
+	}
+	if = {
+		limit = { is_rival_of = scope:actor }
+		custom_tooltip = ulus_reckon_rival_100_tt
+	}
+}
+
+# scope:actor (the khan's seat) asks this lord to stand with it.
+ulus_show_khan_pledge_reckoning = {
+	if = {
+		limit = { is_ai = no }
+		custom_tooltip = ulus_reckon_player_tt
+	}
+	else_if = {
+		limit = { ulus_khan_pledge_acceptance >= 0 }
+		custom_tooltip = ulus_reckon_agree_tt
+	}
+	else = {
+		custom_tooltip = ulus_reckon_refuse_tt
+	}
+	custom_tooltip = ulus_reckon_reluctance_15_tt
+	ulus_show_reckoning_of_actor = yes
+	if = {
+		limit = {
+			has_variable = ulus_weight
+			scope:actor = { has_variable = ulus_weight }
+		}
+		if = {
+			limit = {
+				scope:actor.var:ulus_weight >= {
+					value = var:ulus_weight
+					multiply = 2
+				}
+			}
+			custom_tooltip = ulus_reckon_khan_twice_25_tt
+		}
+		else_if = {
+			limit = { scope:actor.var:ulus_weight >= var:ulus_weight }
+			custom_tooltip = ulus_reckon_khan_heavier_10_tt
+		}
+		else = {
+			custom_tooltip = ulus_reckon_khan_lighter_20_tt
+		}
+	}
+	custom_tooltip = ulus_reckon_khan_sinking_tt
+	if = {
+		limit = {
+			any_neighbor_country = {
+				is_target_in_global_variable_list = {
+					name = ulus_greatest_amirs
+					target = this
+				}
+			}
+		}
+		custom_tooltip = ulus_reckon_khan_counterweight_15_tt
+	}
+}
+
+# scope:ulus_asking_house asks this OUTSIDER to back it.
+ulus_show_outside_reckoning = {
+	if = {
+		limit = { is_ai = no }
+		custom_tooltip = ulus_reckon_player_tt
+	}
+	else_if = {
+		limit = { ulus_outside_support_acceptance >= 0 }
+		custom_tooltip = ulus_reckon_agree_tt
+	}
+	else = {
+		custom_tooltip = ulus_reckon_refuse_tt
+	}
+	custom_tooltip = ulus_reckon_reluctance_20_tt
+	if = {
+		limit = {
+			opinion = {
+				target = scope:ulus_asking_house
+				value >= 100
+			}
+		}
+		custom_tooltip = ulus_reckon_opinion_high_tt
+	}
+	else_if = {
+		limit = {
+			opinion = {
+				target = scope:ulus_asking_house
+				value >= 0
+			}
+		}
+		custom_tooltip = ulus_reckon_opinion_mid_tt
+	}
+	else = {
+		custom_tooltip = ulus_reckon_opinion_low_tt
+	}
+	if = {
+		limit = { is_rival_of = scope:ulus_asking_house }
+		custom_tooltip = ulus_reckon_rival_100_tt
+	}
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes }
+			is_allied_with = { target = international_organization:ulus_chaghatay.leader_country }
+		}
+		custom_tooltip = ulus_reckon_out_khans_ally_tt
+	}
+	else_if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes }
+			is_rival_of = international_organization:ulus_chaghatay.leader_country
+		}
+		custom_tooltip = ulus_reckon_out_khans_rival_tt
+	}
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes }
+			is_neighbor_of = international_organization:ulus_chaghatay.leader_country
+		}
+		custom_tooltip = ulus_reckon_out_khans_neighbour_tt
+	}
+	if = {
+		limit = {
+			scope:ulus_asking_house = { has_variable = ulus_kingmaker_score }
+			international_organization:ulus_chaghatay ?= {
+				has_variable = ulus_top_kingmaker_score
+				var:ulus_top_kingmaker_score > 0
+			}
+		}
+		if = {
+			limit = {
+				scope:ulus_asking_house.var:ulus_kingmaker_score >= {
+					value = international_organization:ulus_chaghatay.var:ulus_top_kingmaker_score
+					multiply = 0.9
+				}
+			}
+			custom_tooltip = ulus_reckon_out_too_strong_tt
+		}
+		else_if = {
+			limit = {
+				scope:ulus_asking_house.var:ulus_kingmaker_score >= {
+					value = international_organization:ulus_chaghatay.var:ulus_top_kingmaker_score
+					multiply = 0.5
+				}
+			}
+			custom_tooltip = ulus_reckon_out_contender_tt
+		}
+		else = {
+			custom_tooltip = ulus_reckon_out_too_weak_tt
+		}
+	}
+	custom_tooltip = ulus_reckon_out_temper_tt
+}
+

@@ -4,7 +4,7 @@
  ulus_lead_a_raid_desc: "Take the tümen across the frontier for what can be driven or carried home: herds, silver, captives, and a payment not to come back. We declare war at once, and the realm we ride against will hold a claim to answer us for five years. Land costs dear in the peace and is not the point. If we win, the spoils come home with us, our men follow us the more readily, and for a time we stand taller in the ulus."
  cb_tumen_raid: "The Tümen's Raid"
  cb_tumen_raid_desc: "A chief of the ulus has brought his riders over the frontier for herds, silver and captives."
- TUMEN_RAID_WAR_NAME: "$ORDER$$ATTACKER.GetAdjectiveWithFlag$ Raid on $DEFENDER.GetNameWithFlag$"
+ TUMEN_RAID_WAR_NAME: "The $NUM$$ORDER$ $FIRSTNAME$ Raid on $SECONDNAME$"
  ulus_raid_not_our_patron_tt: "This realm is not our patron outside the ulus"
  ulus_raid_ghaza_tt: "They are unbelievers: this is a ghaza. Our men of religion approve (#G +5%#! clergy satisfaction)."
  ulus_raid_no_pretext_tt: "They are of our own faith and we have named no cause against them. We lose #R 10#! prestige and #R 5%#! clergy satisfaction.\n#italic A cause would be that they are our rival, that they back an amir of the ulus, or that they are at war with the seat of the ulus.#!"

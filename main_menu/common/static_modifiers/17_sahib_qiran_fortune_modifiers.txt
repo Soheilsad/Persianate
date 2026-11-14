@@ -18,6 +18,9 @@ sq_fortune_high_mod = {
 	# fortune: while his star is up, what his armies occupy is his; when
 	# it is not, he besieges and treats like anyone else.
 	auto_conquer_at_war = yes
+	# At the height of his fortune rulers send embassies and gifts, not
+	# armies against him (see sq_name_goes_before_him_mod below).
+	antagonism_received_modifier = -0.25
 }
 
 # Failing: he has stopped winning, or stopped giving.
@@ -96,4 +99,20 @@ ulus_largesse_given_mod = {
 		decaying = no
 	}
 	subject_loyalty = 10
+}
+
+
+# The Ṣāḥib-qirān's standing among other courts, whatever his fortune.
+# Temür took Delhi, Damascus, Baghdad and the Ottoman sultan himself and
+# no league ever formed against him: Cairo, Constantinople, Castile and
+# the Ming court each dealt with him singly, by embassy, submission or
+# avoidance. In the author's test (2026-11-14) the antagonism of his
+# conquests shut him out of diplomacy "for centuries". Given by
+# sq_fortune_refresh (scripted_effects/18) to whoever carries sq_fortune.
+sq_name_goes_before_him_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	antagonism_received_modifier = -0.40
 }

@@ -80,12 +80,23 @@ ulus_chaghatay = {
 	#    scope:recipient = callee, scope:target = the enemy.
 	join_defensive_wars_always = {
 		scope:actor = { is_leader_of_international_organization = root }
+		# Against an outsider the whole ulus musters. Against one of its
+		# own (a rising, a war for the khan) nobody is bound but the
+		# lords who pledged to the seat; the rest may be asked.
+		OR = {
+			NOT = { scope:target ?= { is_member_of_international_organization = root } }
+			scope:recipient ?= { has_variable = ulus_pledged_to_khan }
+		}
 	}
 	join_defensive_wars_can_call = {
 		OR = {
 			scope:actor = { is_leader_of_international_organization = root }
 			scope:recipient = { is_leader_of_international_organization = root }
+			# A pledged tümen rides for the house it pledged to.
+			scope:recipient ?= { var:ulus_pledged_to ?= scope:actor }
 		}
+		# Nobody is summoned against the house he is pledged to.
+		NOT = { scope:recipient ?= { var:ulus_pledged_to ?= scope:target } }
 	}
 	join_defensive_wars_auto_call = {
 		OR = {
@@ -94,12 +105,29 @@ ulus_chaghatay = {
 		}
 	}
 	join_offensive_wars_can_call = {
-		scope:actor = { is_leader_of_international_organization = root }
+		OR = {
+			scope:actor = { is_leader_of_international_organization = root }
+			# A pledged tümen rides for the house it pledged to: this is
+			# what gives a rising amir an army beyond his own.
+			scope:recipient ?= { var:ulus_pledged_to ?= scope:actor }
+		}
+		NOT = { scope:recipient ?= { var:ulus_pledged_to ?= scope:target } }
 	}
 	join_offensive_wars_auto_call = {
 		scope:actor = { is_leader_of_international_organization = root }
 	}
 	gives_military_access_to_all_when_at_war = yes
+	# The tümens ride through each other's pastures as of right: the ulus
+	# is one people's grazing, not fifteen frontiers (base
+	# foreign_league_hre.txt gives its members the same).
+	has_military_access = {
+		scope:recipient ?= {
+			is_member_of_international_organization = root
+		}
+		scope:actor ?= {
+			is_member_of_international_organization = root
+		}
+	}
 
 	# 2. No war inside the ulus — not on the khan, not on each other
 	#    (base tribal_confederation.txt). The Amirs' Regency lifts this by
@@ -109,6 +137,13 @@ ulus_chaghatay = {
 			limit = {
 				scope:recipient = { NOT = { has_variable = ulus_amirs_may_fight } }
 				scope:attacker ?= { is_member_of_international_organization = scope:recipient }
+				# The ulus's own quarrels carry their own leave: a casus
+				# belli handed out by the rising, the war for the khan or
+				# the war to restore the ulus opens the war it was given
+				# for, whatever the stage. (Author's test, 2026-11-14: Rise
+				# Against the Khan gave the CB and the war was refused,
+				# "both are members of Ulus Chaghatay".)
+				NOT = { ulus_attacker_holds_ulus_cb = yes }
 			}
 			scope:defender ?= { NOT = { is_member_of_international_organization = scope:recipient } }
 		}

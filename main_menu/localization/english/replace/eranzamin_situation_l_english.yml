@@ -41,7 +41,7 @@
  cb_ghozva_desc: "A holy war declared against enemies of the faith by a Ghazi"
  cb_unite_iran: "Unite Iran"
  cb_unite_iran_desc: "Re-establish the Authority of the King of Kings over all of Iran, as righteousness demands"
- ERANZAMIN_SUCCESSION_WAR_NAME: "$ATTACKER$'s Succession War against $DEFENDER$"
+ ERANZAMIN_SUCCESSION_WAR_NAME: "The $NUM$$ORDER$ $FIRSTNAME$ Succession War against $SECONDNAME$"
  rally_turkic_tribes: "Rally Turkic Tribes"
  rally_turkic_tribes_desc: "Send the bitikchis out to the ulus — call the Türkmen lineages in to the muster. Tribesmen and their amir layer arrive in the chosen rural location, scaled to the rank of the realm. The diwan, the burghers, and the peasantry are alienated by the influx; the steppe will not be summoned by a court that has gone Tāzīk."
  rally_turkic_tribes_axis_tt: "Realm has not leaned Tāzīk (turk_vs_tazik < 0)"

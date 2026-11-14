@@ -144,6 +144,13 @@ sq_fortune_refresh = {
 			divide = 100
 		}
 	}
+	if = {
+		limit = { NOT = { has_country_modifier = sq_name_goes_before_him_mod } }
+		add_country_modifier = {
+			modifier = sq_name_goes_before_him_mod
+			years = -1
+		}
+	}
 	remove_variable = sq_band_high
 	remove_variable = sq_band_low
 	if = {

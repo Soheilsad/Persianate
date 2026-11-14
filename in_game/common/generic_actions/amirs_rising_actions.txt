@@ -451,14 +451,6 @@ ulus_ask_for_pledge = {
 				text = ulus_ask_not_pledged_tt
 				NOT = { has_variable = ulus_pledged_to }
 			}
-			# An AI house is only asked when it would say yes.
-			custom_tooltip = {
-				text = ulus_ask_acceptance_tt
-				OR = {
-					is_ai = no
-					ulus_pledge_acceptance >= 0
-				}
-			}
 		}
 		column = { data = name }
 		column = { data = population }
@@ -468,12 +460,20 @@ ulus_ask_for_pledge = {
 	effect = {
 		scope:actor = { save_scope_as = ulus_asking_house }
 		scope:target_country = {
+			# What they will answer, and each thing they weigh (tooltip).
+			ulus_show_pledge_reckoning = yes
 			if = {
 				limit = { is_ai = no }
 				trigger_event_non_silently = amirs_rising.7
 			}
-			else = {
+			else_if = {
+				limit = { ulus_pledge_acceptance >= 0 }
 				ulus_pledge_to_asker = yes
+			}
+			else = {
+				scope:ulus_asking_house = {
+					trigger_event_non_silently = amirs_rising.8
+				}
 			}
 		}
 	}
@@ -485,6 +485,16 @@ ulus_ask_for_pledge = {
 	# succession), and again once the amirs have fallen out and blocs
 	# decide wars. A house that stands no chance does not canvass.
 	ai_will_do = {
+		if = {
+			limit = {
+				exists = scope:target_country
+				scope:target_country = {
+					is_ai = yes
+					ulus_pledge_acceptance < 0
+				}
+			}
+			add = -1000
+		}
 		add = -15
 		if = {
 			limit = {
@@ -625,13 +635,6 @@ ulus_khan_ask_pledge = {
 					}
 				}
 			}
-			custom_tooltip = {
-				text = ulus_khan_ask_acceptance_tt
-				OR = {
-					is_ai = no
-					ulus_khan_pledge_acceptance >= 0
-				}
-			}
 		}
 		column = { data = name }
 		column = { data = population }
@@ -641,12 +644,19 @@ ulus_khan_ask_pledge = {
 	effect = {
 		scope:actor = { save_scope_as = ulus_asking_khan }
 		scope:target_country = {
+			ulus_show_khan_pledge_reckoning = yes
 			if = {
 				limit = { is_ai = no }
 				trigger_event_non_silently = amirs_rising.9
 			}
-			else = {
+			else_if = {
+				limit = { ulus_khan_pledge_acceptance >= 0 }
 				ulus_pledge_to_khan = yes
+			}
+			else = {
+				scope:ulus_asking_khan = {
+					trigger_event_non_silently = amirs_rising.8
+				}
 			}
 		}
 	}
@@ -655,6 +665,16 @@ ulus_khan_ask_pledge = {
 	# him: nothing while he is safe, eager as the bar nears its line. A
 	# cautious khan starts earlier; one who cannot pay does not start.
 	ai_will_do = {
+		if = {
+			limit = {
+				exists = scope:target_country
+				scope:target_country = {
+					is_ai = yes
+					ulus_khan_pledge_acceptance < 0
+				}
+			}
+			add = -1000
+		}
 		add = -10
 		if = {
 			limit = {
@@ -919,17 +939,6 @@ ulus_ask_outside_support = {
 				NOT = { has_variable = ulus_backs_amir }
 			}
 			scope:actor = { NOT = { is_at_war_with = prev } }
-			custom_tooltip = {
-				text = ulus_outside_acceptance_tt
-				OR = {
-					is_ai = no
-					AND = {
-						# the value reads scope:ulus_asking_house
-						scope:actor = { save_temporary_scope_as = ulus_asking_house }
-						ulus_outside_support_acceptance >= 0
-					}
-				}
-			}
 		}
 		column = { data = name }
 		column = { data = population }
@@ -939,12 +948,19 @@ ulus_ask_outside_support = {
 	effect = {
 		scope:actor = { save_scope_as = ulus_asking_house }
 		scope:target_country = {
+			ulus_show_outside_reckoning = yes
 			if = {
 				limit = { is_ai = no }
 				trigger_event_non_silently = amirs_rising.11
 			}
-			else = {
+			else_if = {
+				limit = { ulus_outside_support_acceptance >= 0 }
 				ulus_outsider_backs_house = yes
+			}
+			else = {
+				scope:ulus_asking_house = {
+					trigger_event_non_silently = amirs_rising.15
+				}
 			}
 		}
 	}
@@ -953,6 +969,17 @@ ulus_ask_outside_support = {
 	# strongest: the top house does not need a patron and should not
 	# want one. Not while he already has allies outside to lean on.
 	ai_will_do = {
+		if = {
+			limit = {
+				exists = scope:target_country
+				scope:target_country = {
+					is_ai = yes
+					scope:actor = { save_temporary_scope_as = ulus_asking_house }
+					ulus_outside_support_acceptance < 0
+				}
+			}
+			add = -1000
+		}
 		add = -10
 		if = {
 			limit = {

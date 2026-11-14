@@ -96,6 +96,7 @@ eranzamin = {
 		# (scripted_triggers/10_ulus_chaghatay_triggers.txt)
 		NOT = { is_ulus_chaghatay_member = yes }
 		NOT = { is_ulus_chaghatay_roster_tag = yes }
+		NOT = { ulus_ground_or_sahib_qiran = yes }
 	}
 
 	# Members cannot voluntarily abandon the claim.

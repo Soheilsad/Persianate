@@ -498,7 +498,7 @@
  STATIC_MODIFIER_DESC_matter_raid_designated: "The hosts of a distant throne are pointed here. Conquest in this region feeds their migration, and enough of it lets their ruler release his holdings here as a march. While the banner stands, the tribes of this land keep their tents, their tongue, and their rite: no settling, no melting into the villages, no new prayers."
  cb_great_raid: "The Great Raid"
  cb_great_raid_desc: "The raid was proclaimed and this realm holds land in its theater. The hosts do not ask twice."
- GREAT_RAID_WAR_NAME: "$ORDER$$ATTACKER.GetAdjectiveWithFlag$ Great Raid on $DEFENDER.GetNameWithFlagNoTooltip$"
+ GREAT_RAID_WAR_NAME: "The $NUM$$ORDER$ $FIRSTNAME$ Great Raid on $SECONDNAME$"
  STATIC_MODIFIER_NAME_matter_great_raid: "The Great Raid"
  STATIC_MODIFIER_DESC_matter_great_raid: "The hosts ride outward under the throne's blessing — larger, prouder, and pointed away."
  STATIC_MODIFIER_NAME_matter_yurt_charter: "Yurt Charter"

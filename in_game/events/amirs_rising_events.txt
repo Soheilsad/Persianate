@@ -290,3 +290,21 @@ amirs_rising.14 = {
 		custom_tooltip = amirs_rising_backer_paid_tt
 	}
 }
+
+# .15 — to an amir whom an outside power has declined to back.
+amirs_rising.15 = {
+	type = country_event
+	title = amirs_rising.15.title
+	desc = amirs_rising.15.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_rising.15.a
+	}
+}
+

@@ -80,10 +80,10 @@
  # --- Casus belli ---
  cb_restore_the_ulus: "Restore the Ulus"
  cb_restore_the_ulus_desc: "A khan of the line against the beg who rules the ulus through a khan of his own making."
- RESTORE_THE_ULUS_WAR_NAME: "$ORDER$$ATTACKER.GetAdjectiveWithFlag$ War to Restore the Ulus"
+ RESTORE_THE_ULUS_WAR_NAME: "The $NUM$$ORDER$ $FIRSTNAME$ War to Restore the Ulus"
  cb_take_the_khan: "Take the Khan"
  cb_take_the_khan_desc: "An amir of the ulus against the amir who holds the khan. Whoever takes the regent's ordu takes the khan."
- TAKE_THE_KHAN_WAR_NAME: "$ORDER$$ATTACKER.GetAdjectiveWithFlag$ War for the Khan"
+ TAKE_THE_KHAN_WAR_NAME: "The $NUM$$ORDER$ $FIRSTNAME$ War for the Khan"
 
  # --- Opinion ---
  opinion_ulus_heir_confirmed: "Confirmed our succession"
@@ -180,10 +180,10 @@
  # --- Casus belli ---
  cb_ulus_in_disarray: "The Ulus in Disarray"
  cb_ulus_in_disarray_desc: "The ulus is ruled by a beg whose own amirs make war on him. Its pastures are there for the taking."
- ULUS_IN_DISARRAY_WAR_NAME: "$ORDER$$ATTACKER.GetAdjectiveWithFlag$ Invasion of the Ulus"
+ ULUS_IN_DISARRAY_WAR_NAME: "The $NUM$$ORDER$ $FIRSTNAME$ Invasion of the Ulus"
  cb_sahib_qiran_submission: "The Ṣāḥib-qirān's Reckoning"
  cb_sahib_qiran_submission_desc: "This amir did not come to swear when the ulus became one man's realm."
- SAHIB_QIRAN_SUBMISSION_WAR_NAME: "$ORDER$$ATTACKER.GetAdjectiveWithFlag$ Reckoning with $DEFENDER.GetNameWithFlagNoTooltip$"
+ SAHIB_QIRAN_SUBMISSION_WAR_NAME: "The $NUM$$ORDER$ $FIRSTNAME$ Reckoning with $SECONDNAME$"
 
  # --- Modifiers ---
  STATIC_MODIFIER_NAME_amirs_regency_strain: "The Regency Under Strain"

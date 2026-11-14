@@ -172,7 +172,7 @@ organization_geodiplomatic_theme = {
 						}
 						country_flag_small = {}
 						text_single = {
-							size = { 150 24 }
+							size = { 110 24 }
 							autoresize = no
 							align = left|nobaseline
 							text = "[Country.GetName]"
@@ -183,7 +183,7 @@ organization_geodiplomatic_theme = {
 							texture = "gfx/interface/icons/character_roles/regent.dds"
 						}
 						text_single = {
-							size = { 190 24 }
+							size = { 150 24 }
 							autoresize = no
 							align = right|nobaseline
 							text = "[Country.GetGovernment.GetRulerOrRegent.GetShortNameWithNoTooltip]"
@@ -948,6 +948,102 @@ organization_geodiplomatic_theme = {
 									autoresize = no
 									align = right|nobaseline
 									text = "[Country.MakeScope.GetVariable('ulus_amir_share').GetValue|%0]"
+									default_format = "#subtle_name"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		# (4) PLEDGES — who stands behind whom. One row per house that has
+		# pledged its tümen or has a patron outside the ulus (global list
+		# ulus_pledgers, drawn up by the ledger). A pledge has no term: it
+		# stands until it is taken back, the house it was given to leaves
+		# the ulus or takes the seat, or that house's rising fails.
+		card_common = {
+			blockoverride "header_decor_templates" {
+				using = bg_card_header_01_brown
+				using = bg_cabinet_card_frame
+			}
+			blockoverride "common_header_icon_texture" {
+				texture = "gfx/interface/icons/flat_icons/country.dds"
+			}
+			blockoverride "common_header_text" {
+				text = "ULUS_PLEDGES_CARD"
+			}
+			blockoverride "common_bottom_content" {
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					tooltip = "ULUS_PLEDGES_CARD_TT"
+
+					text_single = {
+						visible = "[IsDataModelEmpty(GetGlobalList('ulus_pledgers'))]"
+						align = left|nobaseline
+						text = "ULUS_NO_PLEDGES"
+						default_format = "#subtle_name"
+					}
+					vbox = {
+						spacing = 2
+						datamodel = "[GetGlobalList('ulus_pledgers')]"
+						item = {
+							widget = {
+								datacontext = "[Scope.GetCountry]"
+								size = { 470 26 }
+								country_flag_small = {
+									parentanchor = left|vcenter
+								}
+								text_single = {
+									parentanchor = left|vcenter
+									position = { 42 0 }
+									size = { 120 24 }
+									autoresize = no
+									align = left|nobaseline
+									text = "[Country.GetName]"
+								}
+								# pledged to an amir
+								text_single = {
+									visible = "[Country.MakeScope.GetVariable('ulus_pledged_to').IsSet]"
+									parentanchor = left|vcenter
+									position = { 166 0 }
+									size = { 70 24 }
+									autoresize = no
+									align = left|nobaseline
+									text = "ULUS_PLEDGED_TO"
+									default_format = "#subtle_name"
+								}
+								text_single = {
+									visible = "[Country.MakeScope.GetVariable('ulus_pledged_to').IsSet]"
+									parentanchor = left|vcenter
+									position = { 238 0 }
+									size = { 110 24 }
+									autoresize = no
+									align = left|nobaseline
+									text = "[Country.MakeScope.GetVariable('ulus_pledged_to').GetCountry.GetName]"
+									default_format = "#yellow_titles"
+								}
+								# pledged to the khan
+								text_single = {
+									visible = "[Country.MakeScope.GetVariable('ulus_pledged_to_khan').IsSet]"
+									parentanchor = left|vcenter
+									position = { 166 0 }
+									size = { 180 24 }
+									autoresize = no
+									align = left|nobaseline
+									text = "ULUS_PLEDGED_TO_KHAN"
+									default_format = "#yellow_titles"
+								}
+								# a patron outside the ulus
+								text_single = {
+									visible = "[Country.MakeScope.GetVariable('ulus_outside_backer').IsSet]"
+									parentanchor = right|vcenter
+									position = { -6 0 }
+									size = { 118 24 }
+									autoresize = no
+									align = right|nobaseline
+									fontsize = 12
+									text = "ULUS_PATRON_ROW"
 									default_format = "#subtle_name"
 								}
 							}

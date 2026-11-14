@@ -68,7 +68,7 @@ join_eranzamin = {
         NOT = { has_variable = ulus_chaghatay_admitted }
         NOT = { is_ulus_chaghatay_member = yes }
         NOT = { is_ulus_chaghatay_roster_tag = yes }
-        
+        NOT = { ulus_ground_or_sahib_qiran = yes }
     }
     effect = {
         international_organization:eranzamin = {
