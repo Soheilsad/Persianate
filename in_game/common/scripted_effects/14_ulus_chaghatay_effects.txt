@@ -14,6 +14,9 @@
 #     ulus_amirs        every junior member, strongest first
 #     ulus_kingmakers   the three junior members with the highest
 #                       kingmaker score, best first
+#     ulus_greatest_amirs  the three junior members with the greatest
+#                       WEIGHT, heaviest first (the three the amir bar
+#                       is about; often not the same three)
 #
 #   ON EACH JUNIOR MEMBER (country)
 #     ulus_kingmaker_score   script value of the same name
@@ -32,6 +35,11 @@
 #                       the leader's own                    (header)
 #     ulus_amir_bar     the same against the 2.0 bar, 0..1
 #     ulus_khan_heir    the leader's heir (character), unset if none
+#     ulus_khan_weight  the leader's own ulus_weight
+#     ulus_khan_w_mil / _tax / _pre   its three parts (of 50, 35, 15)
+#     ulus_top3_weight  the three greatest amirs' weights summed
+#     ulus_crown_power  the crown's estate power in the leader's realm,
+#                       0..100; ulus_crown_line = twice that
 #     ulus_beg_line / ulus_amir_line   the two bars' thresholds today
 #   ON THE IO, DURING A REGENCY (section 6)
 #     ulus_held_khan_age    the puppet khan's age
@@ -62,6 +70,7 @@ ulus_chaghatay_rebuild_ledger = {
 	}
 	clear_global_variable_list = ulus_amirs
 	clear_global_variable_list = ulus_kingmakers
+	clear_global_variable_list = ulus_greatest_amirs
 	remove_variable = ulus_khan_heir
 
 	set_local_variable = { name = ulus_n value = 0 }
@@ -179,6 +188,10 @@ ulus_chaghatay_rebuild_ledger = {
 	# a court at Almaliq he may not even be the largest. So the reading
 	# that means something is the khan against his three GREATEST amirs:
 	# near 1.0 he is their match, at 2.0 they outweigh him twice over.
+	# The same three are listed BY WEIGHT under the bar
+	# (ulus_greatest_amirs), so that they are not mistaken for the three
+	# likeliest kingmakers, who are ranked by score and need not be the
+	# same houses.
 	set_local_variable = { name = ulus_top3 value = 0 }
 	ordered_international_organization_member = {
 		limit = {
@@ -188,10 +201,60 @@ ulus_chaghatay_rebuild_ledger = {
 		max = 3
 		check_range_bounds = no
 		change_local_variable = { name = ulus_top3 add = var:ulus_weight }
+		add_to_global_variable_list = { name = ulus_greatest_amirs target = this }
 	}
 
+	set_local_variable = { name = ulus_k_mil value = 0 }
+	set_local_variable = { name = ulus_k_tax value = 0 }
+	set_local_variable = { name = ulus_k_pre value = 0 }
+	set_local_variable = { name = ulus_crown value = 0 }
 	leader_country ?= {
 		set_local_variable = { name = ulus_khan_str value = var:ulus_weight }
+		# The seat's weight taken apart, by the same three formulas that
+		# built ulus_weight above (the ulus totals are still in hand):
+		# the military part out of 50, the tax part out of 35, the
+		# prestige part out of 15. For the panel, so the khan's number
+		# can be checked against the game's own figures.
+		if = {
+			limit = { local_var:ulus_t_mil > 0 }
+			set_local_variable = {
+				name = ulus_k_mil
+				value = {
+					value = military_strength
+					divide = local_var:ulus_t_mil
+					multiply = 50
+				}
+			}
+		}
+		if = {
+			limit = { local_var:ulus_t_tax > 0 }
+			set_local_variable = {
+				name = ulus_k_tax
+				value = {
+					value = country_tax_base
+					divide = local_var:ulus_t_tax
+					multiply = 35
+				}
+			}
+		}
+		if = {
+			limit = { local_var:ulus_t_pre > 0 }
+			set_local_variable = {
+				name = ulus_k_pre
+				value = {
+					value = prestige
+					min = 0
+					divide = local_var:ulus_t_pre
+					multiply = 15
+				}
+			}
+		}
+		# The crown's power in the seat's realm: the other half of the
+		# begs' bar (begs >= the line AND >= twice the crown).
+		set_local_variable = {
+			name = ulus_crown
+			value = "estate_power(estate_type:crown_estate)"
+		}
 		# The seat's own weight on the amirs' scale, so that
 		# ulus_kingmaker_score reads the same for a regent (and his
 		# heir) as for the amirs he is measured against. The seat is in
@@ -228,6 +291,28 @@ ulus_chaghatay_rebuild_ledger = {
 
 	# ---5. The regency bar ------------------------------------------------
 	set_variable = { name = ulus_amir_count value = local_var:ulus_n }
+	set_variable = { name = ulus_khan_weight value = local_var:ulus_khan_str }
+	set_variable = { name = ulus_khan_w_mil value = local_var:ulus_k_mil }
+	set_variable = { name = ulus_khan_w_tax value = local_var:ulus_k_tax }
+	set_variable = { name = ulus_khan_w_pre value = local_var:ulus_k_pre }
+	set_variable = { name = ulus_top3_weight value = local_var:ulus_top3 }
+	set_variable = {
+		name = ulus_crown_power
+		value = {
+			value = local_var:ulus_crown
+			multiply = 100
+		}
+	}
+	# What the begs must reach on the crown's account: twice its power
+	# (ulus_regency_noble_crown_ratio), as a percentage.
+	set_variable = {
+		name = ulus_crown_line
+		value = {
+			value = local_var:ulus_crown
+			multiply = ulus_regency_noble_crown_ratio
+			multiply = 100
+		}
+	}
 	set_variable = {
 		name = ulus_beg_power
 		value = {

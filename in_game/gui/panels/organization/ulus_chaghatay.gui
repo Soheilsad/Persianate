@@ -457,6 +457,119 @@ organization_geodiplomatic_theme = {
 						tooltip = "ULUS_BEG_BAR_TT"
 					}
 
+					# The crown's power beside the begs': the bar's second
+					# condition (begs at least twice the crown).
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						tooltip = "ULUS_BEG_BAR_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_CROWN_ROW"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_crown_power').GetValue|V0]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "%, begs need"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_crown_line').GetValue|V0]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "%"
+						}
+					}
+
+					# The khan's own weight and what it is made of.
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						margin_top = 4
+						tooltip = "ULUS_KHAN_WEIGHT_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_KHAN_WEIGHT"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_khan_weight').GetValue|1]"
+							default_format = "#yellow_titles"
+						}
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 6
+						tooltip = "ULUS_KHAN_WEIGHT_TT"
+
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "ULUS_WEIGHT_MIL"
+							default_format = "#subtle_name"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_khan_w_mil').GetValue|1]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "/ 50,"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "ULUS_WEIGHT_TAX"
+							default_format = "#subtle_name"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_khan_w_tax').GetValue|1]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "/ 35,"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "ULUS_WEIGHT_PRE"
+							default_format = "#subtle_name"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_khan_w_pre').GetValue|1]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "/ 15"
+						}
+					}
+
 					# The amirs' combined strength against the khan's, against 2.
 					hbox = {
 						layoutpolicy_horizontal = expanding
@@ -497,14 +610,96 @@ organization_geodiplomatic_theme = {
 						tooltip = "ULUS_AMIR_BAR_TT"
 					}
 
-					# If the khan died today.
-					text_single = {
+					# The three the bar is about: the greatest amirs BY WEIGHT
+					# (global list ulus_greatest_amirs, one level deep, fixed
+					# widget items), then the arithmetic in one line:
+					# their sum against the khan's weight = the ratio.
+					vbox = {
+						spacing = 2
+						datamodel = "[GetGlobalList('ulus_greatest_amirs')]"
+						item = {
+							widget = {
+								datacontext = "[Scope.GetCountry]"
+								size = { 470 26 }
+								tooltip = "ULUS_GREATEST_AMIR_TT"
+								country_flag_small = {
+									parentanchor = left|vcenter
+								}
+								text_single = {
+									parentanchor = left|vcenter
+									position = { 42 0 }
+									size = { 300 24 }
+									autoresize = no
+									align = left|nobaseline
+									text = "[Country.GetName]"
+								}
+								text_single = {
+									visible = "[Country.MakeScope.GetVariable('ulus_weight').IsSet]"
+									parentanchor = right|vcenter
+									position = { -6 0 }
+									size = { 60 24 }
+									autoresize = no
+									align = right|nobaseline
+									text = "[Country.MakeScope.GetVariable('ulus_weight').GetValue|1]"
+								}
+							}
+						}
+					}
+					hbox = {
 						layoutpolicy_horizontal = expanding
-						margin_top = 4
-						align = left|nobaseline
-						text = "ULUS_IF_KHAN_DIED"
-						default_format = "#yellow_titles"
+						spacing = 6
+						tooltip = "ULUS_AMIR_BAR_TT"
+
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_top3_weight').GetValue|1]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "ULUS_AGAINST"
+							default_format = "#subtle_name"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_khan_weight').GetValue|1]"
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							raw_text = "="
+						}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_amir_ratio').GetValue|2]"
+							default_format = "#yellow_titles"
+						}
+					}
+
+					# If the khan died today: a DIFFERENT ranking, by
+					# kingmaker score.
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						margin_top = 6
 						tooltip = "ULUS_KINGMAKER_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_IF_KHAN_DIED"
+							default_format = "#yellow_titles"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "ULUS_SCORE_HEADER"
+							default_format = "#subtle_name"
+						}
 					}
 					text_single = {
 						visible = "[IsDataModelEmpty(GetGlobalList('ulus_kingmakers'))]"
@@ -602,10 +797,21 @@ organization_geodiplomatic_theme = {
 								text_single = {
 									parentanchor = left|vcenter
 									position = { 42 0 }
-									size = { 135 24 }
+									size = { 100 24 }
 									autoresize = no
 									align = left|nobaseline
 									text = "[Country.GetName]"
+								}
+								# Weight (0-100 across the whole ulus), then
+								# the share of the amirs' weight.
+								text_single = {
+									visible = "[Country.MakeScope.GetVariable('ulus_weight').IsSet]"
+									parentanchor = right|vcenter
+									position = { -50 0 }
+									size = { 40 24 }
+									autoresize = no
+									align = right|nobaseline
+									text = "[Country.MakeScope.GetVariable('ulus_weight').GetValue|1]"
 								}
 								text_single = {
 									visible = "[Country.MakeScope.GetVariable('ulus_amir_share').IsSet]"
