@@ -276,3 +276,126 @@ ulus_withdraw_pledge = {
 		add = 0
 	}
 }
+
+# ------------------------------------------------------------
+# ASK FOR A PLEDGE. The other direction: an amir asks another house to
+# stand behind HIM. An AI house agrees when ulus_pledge_acceptance
+# (script_values/05_amirs_regency_values.txt, section 12) is 0 or more:
+# what it thinks of us, a marriage or alliance between the houses, the
+# gap in weight, and whether it has hopes of the khan itself. Houses
+# that would refuse are greyed out in the list, with the reckoning in
+# the tooltip. A player's house is asked by event (amirs_rising.7).
+# ------------------------------------------------------------
+ulus_ask_for_pledge = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 24
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_ask_for_pledge
+		years = 2
+	}
+
+	price = price:ulus_ask_for_pledge_price
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_amir = yes
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			# No chains: a house that has pledged cannot be backed.
+			custom_tooltip = {
+				text = ulus_not_pledged_tt
+				NOT = { has_variable = ulus_pledged_to }
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		target_flag = target_country
+		name = "choose_country"
+		none_available_msg_key = "no_valid_countries"
+		interaction_source_list = {
+			scope:recipient = {
+				every_international_organization_member = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+		}
+		enabled = {
+			this != scope:actor
+			NOT = { is_leader_of_international_organization = scope:recipient }
+			custom_tooltip = {
+				text = ulus_ask_not_pledged_tt
+				NOT = { has_variable = ulus_pledged_to }
+			}
+			# An AI house is only asked when it would say yes.
+			custom_tooltip = {
+				text = ulus_ask_acceptance_tt
+				OR = {
+					is_ai = no
+					ulus_pledge_acceptance >= 0
+				}
+			}
+		}
+		column = { data = name }
+		column = { data = population }
+		column = { data = great_power_score }
+	}
+
+	effect = {
+		scope:actor = { save_scope_as = ulus_asking_house }
+		scope:target_country = {
+			if = {
+				limit = { is_ai = no }
+				trigger_event_non_silently = amirs_rising.7
+			}
+			else = {
+				ulus_pledge_to_asker = yes
+			}
+		}
+	}
+
+	# The AI asks when it is among the likeliest kingmakers and the bar is
+	# not yet met: it is building toward a rising or a succession.
+	ai_will_do = {
+		add = 0
+		if = {
+			limit = {
+				scope:actor = {
+					is_target_in_global_variable_list = {
+						name = ulus_kingmakers
+						target = this
+					}
+				}
+				international_organization:ulus_chaghatay ?= {
+					NOT = { has_variable = ulus_regency }
+				}
+			}
+			add = 15
+		}
+	}
+}

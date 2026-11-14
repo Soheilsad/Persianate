@@ -115,3 +115,51 @@ amirs_rising.6 = {
 		custom_tooltip = amirs_rising_pledge_paid_tt
 	}
 }
+
+# .7 — to a PLAYER house another amir has asked for its pledge
+# (ulus_ask_for_pledge). scope:ulus_asking_house is the asker.
+amirs_rising.7 = {
+	type = country_event
+	title = amirs_rising.7.title
+	desc = amirs_rising.7.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	trigger = {
+		exists = scope:ulus_asking_house
+		NOT = { has_variable = ulus_pledged_to }
+	}
+
+	option = {
+		name = amirs_rising.7.a
+		custom_tooltip = ulus_pledge_effect_tt
+		ulus_pledge_to_asker = yes
+	}
+	option = {
+		name = amirs_rising.7.b
+		scope:ulus_asking_house = {
+			trigger_event_non_silently = amirs_rising.8
+		}
+	}
+}
+
+# .8 — to the asker: refused.
+amirs_rising.8 = {
+	type = country_event
+	title = amirs_rising.8.title
+	desc = amirs_rising.8.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_rising.8.a
+	}
+}

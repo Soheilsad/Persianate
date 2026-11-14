@@ -374,3 +374,83 @@ sq_ambitions_needed = 2
 ulus_breaking_share = 0.5
 ulus_breaking_prestige = 50
 ulus_breaking_service_prestige = 25
+
+# =====================================================================
+# 12. ASKING FOR A PLEDGE (generic_actions/amirs_rising_actions.txt,
+#     ulus_ask_for_pledge). COUNTRY scope: the house that is ASKED;
+#     scope:actor is the house asking. An AI house pledges at 0 or more.
+#     Each term is shown to the player in the action's tooltip.
+# =====================================================================
+ulus_pledge_acceptance = {
+	# A tümen does not give half its weight away for nothing.
+	value = -25
+	# What they think of us: a third of their opinion (opinion runs to ±200).
+	add = {
+		value = "opinion(scope:actor)"
+		multiply = 0.33
+	}
+	# Kin by marriage.
+	if = {
+		limit = { has_royal_marriage_with = scope:actor }
+		add = 25
+	}
+	if = {
+		limit = { is_allied_with = { target = scope:actor } }
+		add = 15
+	}
+	if = {
+		limit = { is_rival_of = scope:actor }
+		add = -100
+	}
+	# The gap in weight. A house backs a stronger one, never a weaker.
+	if = {
+		limit = {
+			has_variable = ulus_weight
+			scope:actor = { has_variable = ulus_weight }
+		}
+		if = {
+			limit = {
+				scope:actor.var:ulus_weight >= {
+					value = var:ulus_weight
+					multiply = 2
+				}
+			}
+			add = 30
+		}
+		else_if = {
+			limit = {
+				scope:actor.var:ulus_weight >= {
+					value = var:ulus_weight
+					multiply = 1.25
+				}
+			}
+			add = 15
+		}
+		else_if = {
+			limit = { scope:actor.var:ulus_weight < var:ulus_weight }
+			add = -40
+		}
+	}
+	# A house that could take the khan itself does not stand behind another.
+	if = {
+		limit = {
+			is_target_in_global_variable_list = {
+				name = ulus_kingmakers
+				target = this
+			}
+		}
+		add = -30
+	}
+	# Standing behind a likely winner.
+	if = {
+		limit = {
+			scope:actor = {
+				is_target_in_global_variable_list = {
+					name = ulus_kingmakers
+					target = this
+				}
+			}
+		}
+		add = 10
+	}
+}

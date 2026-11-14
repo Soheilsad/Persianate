@@ -35,3 +35,7 @@ ulus_pledge_support_price = {
 ulus_withdraw_pledge_price = {
 	prestige = 5
 }
+
+ulus_ask_for_pledge_price = {
+	political_influence = 10
+}

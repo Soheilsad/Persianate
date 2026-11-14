@@ -105,3 +105,15 @@ ulus_pay_pledges = {
 		}
 	}
 }
+
+# COUNTRY scope: a house that has agreed to pledge to
+# scope:ulus_asking_house (ulus_ask_for_pledge, or amirs_rising.7.a).
+ulus_pledge_to_asker = {
+	set_variable = { name = ulus_pledged_to value = scope:ulus_asking_house }
+	scope:ulus_asking_house = {
+		trigger_event_non_silently = amirs_rising.5
+	}
+	international_organization:ulus_chaghatay ?= {
+		ulus_chaghatay_rebuild_ledger = yes
+	}
+}
