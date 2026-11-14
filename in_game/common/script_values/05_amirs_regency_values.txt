@@ -24,7 +24,11 @@ ulus_regency_noble_crown_ratio = 2
 # outweighed, as he was: six khans in the twelve years after 1334. So
 # the bar that marks the amirs' REGENCY (1346) has to sit above the
 # starting disorder, or every game opens with one.
-ulus_regency_amir_ratio = 6.0
+# It is only tested at a khan's death (the poll), never on its own. 6.0
+# was too high (author); 4.0 sits between the two readings, so the first
+# succession can go either way. Retune once the four carved tümens
+# survive day one and the reading settles.
+ulus_regency_amir_ratio = 4.0
 # After a child khan's accession the next poll's bars are multiplied by
 # this (design: "drops by a third").
 ulus_regency_child_bar_factor = 0.667
