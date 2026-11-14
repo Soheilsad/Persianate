@@ -357,4 +357,17 @@ building_manager = {
 	regional_diwan = { tag = DLH level = 1 location = daulatabad }
 	regional_diwan = { tag = DLH level = 1 location = multan }
 
+	## ---Ulus Chaghatay: the four carved tümens --------------------------
+	## Every army-type horde in base's 07_cities_and_buildings.txt has a
+	## kurultai in its capital (BRL at akhsisek, JLY at khujand, ...): it is
+	## the building that carries can_recruit_regiment_in_this_location, and
+	## an army country with nowhere to recruit does not survive its first
+	## day. The four tags carved out of CHG had none (base's kurultai at
+	## balasagun is tagged to CHG, whose land it no longer is), and all
+	## four vanished on day one. One each, in the capital.
+	kurultai = { tag = FGN level = 1 location = andijan }
+	kurultai = { tag = CAC level = 1 location = chach }
+	kurultai = { tag = ISQ level = 1 location = balasagun }
+	kurultai = { tag = DZG level = 1 location = urumqi }
+
 }
