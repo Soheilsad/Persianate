@@ -30,7 +30,7 @@ is_diwan_pop = {
 		# government form (a beylik sultanate has no diwan to join).
 		location = {
 			owner ?= {
-				modifier:has_nizam_ul_mulk_chancery = yes
+				has_chancery_apparatus = yes
 			}
 		}
 
@@ -57,7 +57,7 @@ is_amir_pop = {
 	# amirs_base_values from it). Amir pops return to any polity the
 	# moment it acquires the chancery.
 	owner ?= {
-		modifier:has_nizam_ul_mulk_chancery = yes
+		has_chancery_apparatus = yes
 	}
 	# The umara is a closed MUSLIM service order in 1337 — revocable
 	# iqṭāʿ rank, not hereditary right (Barani's khan–malik–amir ladder;
@@ -91,7 +91,7 @@ is_burgher_diwan_pop = {
 		# Apparatus flag only — the chancery makes the pop class, not the
 		# government form (a beylik sultanate has no diwan to join).
 		owner ?= {
-			modifier:has_nizam_ul_mulk_chancery = yes
+			has_chancery_apparatus = yes
 		}
 		location ?= {
 			OR = {
@@ -130,5 +130,27 @@ is_sufyani_pop = {
 is_shaykhi_pop = {
 	owner ?= {
 		government_type = government_type:commonwealth_of_martyrs
+	}
+}
+
+# The chancery apparatus, COUNTRY scope. The design keys everything on
+# the has_nizam_ul_mulk_chancery flag rather than on a reform, and that
+# stays the rule. But the flag is a computed country modifier, and on the
+# first day of a game pops are sorted into estates before country
+# modifiers are computed: no country had the flag yet, no pop qualified
+# as diwan or amir, and the two estates did not exist until the next
+# yearly re-sort. The reforms that CARRY the flag are plain setup data
+# and are readable on day one, so they are accepted directly as well.
+# Keep this list in step with every reform that sets the flag
+# (grep has_nizam_ul_mulk_chancery in common/government_reforms).
+has_chancery_apparatus = {
+	OR = {
+		modifier:has_nizam_ul_mulk_chancery = yes
+		has_reform = government_reform:persianate_bureaucracy_reform
+		has_reform = government_reform:timurid_empire
+		has_reform = government_reform:niyaba_amma_charter_reform
+		has_reform = government_reform:mamluk_government
+		has_reform = government_reform:indian_sultanate_reform
+		has_reform = government_reform:yemeni_chancery
 	}
 }

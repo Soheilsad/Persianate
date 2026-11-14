@@ -34,6 +34,13 @@ is_eranzamin_contender = {
 	# the province link returned unset scopes for some countries in the
 	# any_country sweeps (error.log 2026-08-25).
 	capital ?= { is_eranzamin_region_province = yes }
+	# A contender claims the Ilkhan's inheritance, which is a Muslim
+	# throne by 1337 (Ghazan's conversion, 1295). Georgia, the Armenian
+	# and Georgian minors and other Christian realms of the region stay
+	# MEMBERS of Eranzamin (former Ilkhanid vassals, in the same wars)
+	# but do not contend: no flavor.1, no warlord modifier, no
+	# contender actions such as Restore Persian Bureaucracy.
+	religion.group = religion_group:muslim
 
 	# Must be a relevant state
 	# OR = {
