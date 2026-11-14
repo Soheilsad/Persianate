@@ -1,7 +1,7 @@
 ﻿l_english:
  # Government Type
  persianate_sultanate: "Persianate Sultanate"
- persianate_sultanate_desc: "A post-Seljuk political form weaving together Sasanian administrative inheritance, Islamic juridical legitimacy, and Turco-Mongol military aristocracy. The sultan rules through a dual settlement: the [Concept('diwan_estate', 'Diwan')|E] manages taxation, irrigation, and the chancery; the [Concept('amirs_estate', 'Amirs')|E] raise tribal cavalry hosts in exchange for [iqta_law|E] grants. Succession follows the [favorite_son_elective_succession|E] norm rather than primogeniture — the strongest son, blessed by the late ruler and acclaimed by the amirs, takes the throne, with civil war if the question is not settled."
+ persianate_sultanate_desc: "A post-Seljuk political form weaving together Sasanian administrative inheritance, Islamic juridical legitimacy, and Turco-Mongol military aristocracy. The sultan rules through a dual settlement: the [Concept('diwan_estate', 'Diwan')|E] manages taxation, irrigation, and the chancery; the [Concept('amirs_estate', 'Amirs')|E] raise tribal cavalry hosts in exchange for Iqṭāʿ Law grants. Succession follows the Favorite Son Elective Succession norm rather than primogeniture — the strongest son, blessed by the late ruler and acclaimed by the amirs, takes the throne, with civil war if the question is not settled."
 
  # Government Power
  GOV_POWER_NAME_legitimacy_persianate_sultanate: "Legitimacy"
