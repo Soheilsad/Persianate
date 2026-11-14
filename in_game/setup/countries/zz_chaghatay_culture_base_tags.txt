@@ -7,4 +7,24 @@
 # The western amir tags (APD ART BRL JLY KTT QUN SLD YSU) are edited in
 # place in persia.txt, FGN and CAC in ulus_chaghatay.txt.
 #
-# CHG_IS_CHAGHATAY = False: the khan's own tag stays mongolian_culture (no CHG entry below).
+# CHG_IS_CHAGHATAY = True: the khan's own tag is Chaghatay.
+
+REPLACE:CHG = { #Chagatai
+	color = map_CHG
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = chaghatay_culture
+	religion_definition = tengri
+
+	description_category = military
+	difficulty = 4
+}
+
+# KRG: tajik_culture (OTHER_BASE in the generator).
+REPLACE:KRG = {#Karategin
+	color = map_KRG
+	color2 = rgb { 61 208 181 }
+
+	culture_definition = tajik_culture
+	religion_definition = sunni
+}

@@ -29771,41 +29771,47 @@ konibodom = {
 koshoy_korgon = {
 	define_pop = { type = peasants	size = 1.304	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.004	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.676	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.016	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.169	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.507	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.016	culture = chaghatay_culture	religion = sunni }
 }
 cholok_kaiyn = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 1.601	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.004	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.379	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.016	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.095	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.284	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.016	culture = chaghatay_culture	religion = sunni }
 }
 chon_naryn = {
 	define_pop = { type = clergy	size = 0.002	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 1.405	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.004	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.572	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.016	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.143	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.429	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.016	culture = chaghatay_culture	religion = sunni }
 }
 jumgal = {
 	define_pop = { type = peasants	size = 1.517	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.004	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.463	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.016	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.116	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.347	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.016	culture = chaghatay_culture	religion = sunni }
 }
 ketmen_tobe = {
 	define_pop = { type = peasants	size = 1.677	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.004	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.303	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.016	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.076	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.227	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.016	culture = chaghatay_culture	religion = sunni }
 }
 naryn = {
 	define_pop = { type = clergy	size = 0.001	culture = tajik_culture	religion = sunni }
 	define_pop = { type = peasants	size = 1.259	culture = tajik_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.004	culture = tajik_culture	religion = sunni }
-	define_pop = { type = tribesmen	size = 0.720	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.016	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.180	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = tribesmen	size = 0.540	culture = chaghatay_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.016	culture = chaghatay_culture	religion = sunni }
 }
 chatyr_kol_lake = {
 }
@@ -30577,45 +30583,42 @@ akkol_lake = {
 bilikol_lake = {
 }
 almaliq = {
-	define_pop = { type = nobles	size = 0.143	culture = oirat_culture	religion = tengri }
-	define_pop = { type = clergy	size = 0.009	culture = oirat_culture	religion = tengri }
-	define_pop = { type = peasants	size = 0.617	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.025	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 6.350	culture = oirat_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.168	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.009	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 6.967	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 1.090	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.036	culture = kyrgyz_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 1.355	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 6.503	culture = oirat_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 7.858	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 1.871	culture = kyrgyz_culture	religion = tengri }
-	define_pop = { type = slaves	size = 1.998	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = slaves	size = 1.998	culture = chaghatay_culture	religion = nestorianism }
 }
 gulja = {
-	define_pop = { type = clergy	size = 0.013	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 6.479	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.200	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 12.311	culture = oirat_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.998	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.013	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 6.479	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.200	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 12.311	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.998	culture = chaghatay_culture	religion = nestorianism }
 }
 narat = {
-	define_pop = { type = clergy	size = 0.006	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 4.726	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.100	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 4.668	culture = oirat_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.500	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.006	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 4.726	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.100	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 4.668	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.500	culture = chaghatay_culture	religion = nestorianism }
 }
 nilka = {
-	define_pop = { type = clergy	size = 0.007	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 3.169	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.100	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 6.225	culture = oirat_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.499	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.007	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 3.169	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.100	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 6.225	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.499	culture = chaghatay_culture	religion = nestorianism }
 }
 tokkuztara = {
-	define_pop = { type = clergy	size = 0.011	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 6.811	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.200	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 11.979	culture = oirat_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.998	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.011	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 6.811	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.200	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 11.979	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.998	culture = chaghatay_culture	religion = nestorianism }
 }
 borohoro2 = {
 }
@@ -30624,48 +30627,48 @@ tian_shan6 = {
 wusun = {
 }
 almaty = {
-	define_pop = { type = nobles	size = 0.012	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.012	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = burghers	size = 0.766	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.272	culture = kyrgyz_culture	religion = tengri }
-	define_pop = { type = peasants	size = 0.174	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = burghers	size = 0.029	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 0.174	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = burghers	size = 0.029	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 4.485	culture = kyrgyz_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 0.309	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 0.309	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 8.063	culture = kyrgyz_culture	religion = tengri }
 }
 boyauli = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 2.251	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.071	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 4.736	culture = kyrgyz_culture	religion = tengri }
 }
 karakastek = {
-	define_pop = { type = clergy	size = 0.003	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.003	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 3.191	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.071	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 3.794	culture = kyrgyz_culture	religion = tengri }
 }
 karamergen = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 1.708	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.035	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 1.785	culture = kyrgyz_culture	religion = tengri }
 }
 kargaly = {
-	define_pop = { type = clergy	size = 0.004	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.004	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 2.335	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.072	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 4.647	culture = kyrgyz_culture	religion = tengri }
 }
 kurty = {
-	define_pop = { type = clergy	size = 0.002	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.002	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 2.720	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.071	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 4.265	culture = kyrgyz_culture	religion = tengri }
 }
 shengeldy = {
-	define_pop = { type = clergy	size = 0.003	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.003	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 2.795	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.069	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 4.191	culture = kyrgyz_culture	religion = tengri }
@@ -30687,17 +30690,17 @@ taukum_desert = {
 tian_shan10 = {
 }
 balasagun = {
-	define_pop = { type = nobles	size = 0.024	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = clergy	size = 0.026	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.024	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.026	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = burghers	size = 0.917	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.144	culture = kyrgyz_culture	religion = tengri }
-	define_pop = { type = burghers	size = 0.156	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = burghers	size = 0.156	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = burghers	size = 0.670	culture = kyrgyz_culture	religion = nestorianism }
 	define_pop = { type = nobles	size = 0.074	culture = kyrgyz_culture	religion = nestorianism }
-	define_pop = { type = tribesmen	size = 0.601	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 0.601	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 5.429	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = peasants	size = 2.085	culture = kyrgyz_culture	religion = tengri }
-	define_pop = { type = peasants	size = 0.353	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 0.353	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 1.522	culture = kyrgyz_culture	religion = nestorianism }
 }
 dzhul = {
@@ -30730,7 +30733,7 @@ nuzket = {
 	define_pop = { type = tribesmen	size = 3.800	culture = uzbek_culture	religion = tengri }
 }
 sargau = {
-	define_pop = { type = clergy	size = 0.003	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.003	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 2.104	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.059	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 3.834	culture = kyrgyz_culture	religion = tengri }
@@ -30743,46 +30746,46 @@ soltobe = {
 	define_pop = { type = tribesmen	size = 3.043	culture = kyrgyz_culture	religion = tengri }
 }
 targabatay = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 1.452	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.037	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 1.966	culture = oirat_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.181	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.452	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.037	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 1.966	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.181	culture = chaghatay_culture	religion = nestorianism }
 }
 dahra_sasykkol = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 1.480	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.037	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 1.938	culture = oirat_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.181	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.480	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.037	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 1.938	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.181	culture = chaghatay_culture	religion = nestorianism }
 }
 emin = {
-	define_pop = { type = clergy	size = 0.003	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 1.275	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.035	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 2.142	culture = oirat_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.181	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.003	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.275	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.035	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 2.142	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.181	culture = chaghatay_culture	religion = nestorianism }
 }
 ilanbalyk = {
 	define_pop = { type = clergy	size = 0.000	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 1.094	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.036	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 2.324	culture = oirat_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.182	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = peasants	size = 1.094	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.036	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 2.324	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.182	culture = chaghatay_culture	religion = nestorianism }
 }
 koktuma = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 0.773	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.018	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 0.936	culture = oirat_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.091	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 0.773	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.018	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 0.936	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.091	culture = chaghatay_culture	religion = nestorianism }
 }
 toli = {
-	define_pop = { type = clergy	size = 0.002	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 1.053	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.037	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 2.363	culture = oirat_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.180	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.002	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.053	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.037	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 2.363	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.180	culture = chaghatay_culture	religion = nestorianism }
 }
 alakol_lake = {
 }
@@ -30795,14 +30798,14 @@ balruq = {
 targabatay_mountains = {
 }
 ilibalyk = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 0.741	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.020	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 1.139	culture = oirat_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.100	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 0.741	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.020	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 1.139	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.100	culture = chaghatay_culture	religion = nestorianism }
 }
 charyn = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 0.869	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.020	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 1.110	culture = kyrgyz_culture	religion = tengri }
@@ -30811,53 +30814,53 @@ chundzha = {
 	define_pop = { type = clergy	size = 0.000	culture = mongolian_culture	religion = tengri }
 	define_pop = { type = peasants	size = 0.646	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.016	culture = kyrgyz_culture	religion = tengri }
-	define_pop = { type = peasants	size = 0.185	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.004	culture = oirat_culture	religion = tengri }
+	define_pop = { type = peasants	size = 0.185	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.004	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 0.938	culture = kyrgyz_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 0.211	culture = oirat_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 0.211	culture = chaghatay_culture	religion = tengri }
 }
 kegen = {
-	define_pop = { type = clergy	size = 0.003	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.003	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 1.711	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.039	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 2.246	culture = kyrgyz_culture	religion = tengri }
 }
 koktal = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 1.632	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.040	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 2.127	culture = oirat_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.200	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.632	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.040	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 2.127	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.200	culture = chaghatay_culture	religion = nestorianism }
 }
 lavar = {
-	define_pop = { type = clergy	size = 0.003	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.003	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 1.613	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.041	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 2.343	culture = kyrgyz_culture	religion = tengri }
 }
 shelek = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 0.973	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.020	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 1.006	culture = kyrgyz_culture	religion = tengri }
 }
 barskoon = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = peasants	size = 2.394	culture = kyrgyz_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.005	culture = kyrgyz_culture	religion = sunni }
 }
 balykchy = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = peasants	size = 2.395	culture = kyrgyz_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.005	culture = kyrgyz_culture	religion = sunni }
 }
 kochkor = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = peasants	size = 2.394	culture = khorezmian_culture	religion = sunni }
-	define_pop = { type = nobles	size = 0.005	culture = khorezmian_culture	religion = sunni }
+	define_pop = { type = nobles	size = 0.005	culture = chaghatay_culture	religion = sunni }
 }
 san_tash = {
-	define_pop = { type = clergy	size = 0.002	culture = mongolian_culture	religion = sunni }
+	define_pop = { type = clergy	size = 0.002	culture = chaghatay_culture	religion = sunni }
 	define_pop = { type = peasants	size = 4.788	culture = kyrgyz_culture	religion = sunni }
 	define_pop = { type = nobles	size = 0.010	culture = kyrgyz_culture	religion = sunni }
 }
@@ -30865,11 +30868,11 @@ issyk_kul_lake = {
 }
 kayalyk = {
 	define_pop = { type = clergy	size = 0.000	culture = mongolian_culture	religion = tengri }
-	define_pop = { type = peasants	size = 0.909	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.027	culture = oirat_culture	religion = tengri }
+	define_pop = { type = peasants	size = 0.909	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.027	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 0.361	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.009	culture = kyrgyz_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 1.742	culture = oirat_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 1.742	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 0.523	culture = kyrgyz_culture	religion = tengri }
 }
 ayagoz = {
@@ -30881,33 +30884,33 @@ ayagoz = {
 	define_pop = { type = slaves	size = 0.175	culture = oirat_culture	religion = nestorianism }
 }
 dungene = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 1.517	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.036	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 2.018	culture = kyrgyz_culture	religion = tengri }
 }
 lepsy = {
-	define_pop = { type = clergy	size = 0.002	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.002	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 1.728	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.035	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 1.806	culture = kyrgyz_culture	religion = tengri }
 }
 sagabuyen = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 1.141	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.036	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 2.394	culture = kyrgyz_culture	religion = tengri }
 }
 tansyk = {
-	define_pop = { type = peasants	size = 1.093	culture = oirat_culture	religion = tengri }
-	define_pop = { type = nobles	size = 0.035	culture = oirat_culture	religion = tengri }
-	define_pop = { type = tribesmen	size = 1.732	culture = oirat_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.093	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = nobles	size = 0.035	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 1.732	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = slaves	size = 0.028	culture = uzbek_culture	religion = sunni }
 	define_pop = { type = slaves	size = 0.506	culture = uzbek_culture	religion = tengri }
-	define_pop = { type = slaves	size = 0.177	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = slaves	size = 0.177	culture = chaghatay_culture	religion = nestorianism }
 }
 tekeli = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 1.066	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.035	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 2.469	culture = kyrgyz_culture	religion = tengri }
@@ -30927,7 +30930,7 @@ aspara = {
 	define_pop = { type = tribesmen	size = 0.493	culture = uzbek_culture	religion = tengri }
 }
 khantau = {
-	define_pop = { type = clergy	size = 0.001	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.001	culture = chaghatay_culture	religion = tengri }
 	define_pop = { type = peasants	size = 0.451	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = nobles	size = 0.010	culture = kyrgyz_culture	religion = tengri }
 	define_pop = { type = tribesmen	size = 0.538	culture = kyrgyz_culture	religion = tengri }
@@ -58069,34 +58072,34 @@ yuanhu = {
 bodga_shan = {
 }
 bortala = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 5.501	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 7.425	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.680	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 5.501	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 7.425	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.680	culture = chaghatay_culture	religion = nestorianism }
 }
 jing = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 4.851	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 5.901	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.565	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 4.851	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 5.901	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.565	culture = chaghatay_culture	religion = nestorianism }
 }
 kuytun = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 2.250	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 4.500	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.354	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 2.250	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 4.500	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.354	culture = chaghatay_culture	religion = nestorianism }
 }
 urghtbulaq = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 1.392	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 3.067	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.234	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.392	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 3.067	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.234	culture = chaghatay_culture	religion = nestorianism }
 }
 usu_xinjiang = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 2.765	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 5.662	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.442	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 2.765	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 5.662	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.442	culture = chaghatay_culture	religion = nestorianism }
 }
 ebi_lake = {
 }
@@ -58107,32 +58110,32 @@ borohoro1 = {
 alatau = {
 }
 hoboksar = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 1.726	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 1.992	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.195	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.726	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 1.992	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.195	culture = chaghatay_culture	religion = nestorianism }
 }
 gonganbao = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 1.654	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 1.760	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.179	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.654	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 1.760	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.179	culture = chaghatay_culture	religion = nestorianism }
 }
 manas = {
-	define_pop = {	type = peasants	size = 0.600	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 1.402	culture = mongolian_culture	religion = tengri }
+	define_pop = { type = peasants	size = 0.600	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 1.402	culture = chaghatay_culture	religion = tengri }
 }
 utbulaq = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 2.274	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 2.998	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.276	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 2.274	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 2.998	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.276	culture = chaghatay_culture	religion = nestorianism }
 }
 zhekdeliq = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 1.131	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 1.264	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.125	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.131	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 1.264	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.125	culture = chaghatay_culture	religion = nestorianism }
 }
 manas_lake = {
 }
@@ -58192,38 +58195,38 @@ toksun = {
 	define_pop = {	type = peasants	size = 0.298	culture = uyghur_culture	religion = manichaeism }
 }
 yangjibaliq = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 1.261	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 2.484	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.440	culture = uyghur_culture	religion = mahayana }
-	define_pop = {	type = slaves	size = 0.219	culture = uyghur_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.261	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 2.484	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.440	culture = uyghur_culture	religion = mahayana }
+	define_pop = { type = slaves	size = 0.219	culture = uyghur_culture	religion = nestorianism }
 }
 kutubi = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 1.603	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 2.151	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.441	culture = uyghur_culture	religion = mahayana }
-	define_pop = {	type = slaves	size = 0.220	culture = uyghur_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.603	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 2.151	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.441	culture = uyghur_culture	religion = mahayana }
+	define_pop = { type = slaves	size = 0.220	culture = uyghur_culture	religion = nestorianism }
 }
 ulan_us = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 3.015	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 3.954	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.366	culture = oirat_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 3.015	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 3.954	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.366	culture = chaghatay_culture	religion = nestorianism }
 }
 qanbalik = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 1.858	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = tribesmen	size = 2.851	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = slaves	size = 0.553	culture = uyghur_culture	religion = mahayana }
-	define_pop = {	type = slaves	size = 0.276	culture = uyghur_culture	religion = nestorianism }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 1.858	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = tribesmen	size = 2.851	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = slaves	size = 0.553	culture = uyghur_culture	religion = mahayana }
+	define_pop = { type = slaves	size = 0.276	culture = uyghur_culture	religion = nestorianism }
 }
 urumqi = {
-	define_pop = {	type = clergy	size = 0.008	culture = mongolian_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 0.350	culture = oirat_culture	religion = tengri }
-	define_pop = {	type = peasants	size = 5.695	culture = uyghur_culture	religion = mahayana }
-	define_pop = {	type = peasants	size = 0.355	culture = uyghur_culture	religion = nestorianism }
-	define_pop = {	type = tribesmen	size = 0.717	culture = oirat_culture	religion = tengri }
+	define_pop = { type = clergy	size = 0.008	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 0.350	culture = chaghatay_culture	religion = tengri }
+	define_pop = { type = peasants	size = 5.695	culture = uyghur_culture	religion = mahayana }
+	define_pop = { type = peasants	size = 0.355	culture = uyghur_culture	religion = nestorianism }
+	define_pop = { type = tribesmen	size = 0.717	culture = chaghatay_culture	religion = tengri }
 }
 borohoro3 = {
 }

@@ -126,5 +126,38 @@ chaghatay_culture_start = {
 				change_character_culture = culture:chaghatay_culture
 			}
 		}
+		c:CHG ?= {
+			every_character = {
+				limit = {
+					OR = {
+						culture = culture:mongolian_culture
+						culture = culture:khorezmian_culture
+					}
+				}
+				change_character_culture = culture:chaghatay_culture
+			}
+		}
+		c:ISQ ?= {
+			every_character = {
+				limit = {
+					OR = {
+						culture = culture:mongolian_culture
+						culture = culture:khorezmian_culture
+					}
+				}
+				change_character_culture = culture:chaghatay_culture
+			}
+		}
+		c:DZG ?= {
+			every_character = {
+				limit = {
+					OR = {
+						culture = culture:mongolian_culture
+						culture = culture:khorezmian_culture
+					}
+				}
+				change_character_culture = culture:chaghatay_culture
+			}
+		}
 	}
 }

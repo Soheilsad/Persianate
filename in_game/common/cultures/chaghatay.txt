@@ -44,6 +44,10 @@ chaghatay_culture = {
 		khorezmian_culture = kindred
 		# The other Muslim Turco-Mongol military class, across the Oxus.
 		persianized_mongol_culture = positive
+		# The Turkic nomads of the khan's own pastures in the Ili and
+		# Zhetysu (base's kyrgyz and uzbek pops there).
+		kyrgyz_culture = positive
+		uzbek_culture = positive
 	}
 
 	culture_groups = {

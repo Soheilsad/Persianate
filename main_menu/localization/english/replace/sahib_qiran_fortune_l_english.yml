@@ -36,3 +36,11 @@
  rank_gurkan_horde_mirza: "Horde"
  rank_gurkan_horde_mirza_ruler_suffix_male: "Mīrzā"
  rank_gurkan_horde_mirza_ruler_suffix_female: "Begum"
+
+ # The situation is named after whoever became the Ṣāḥib-qirān, not after
+ # Temür: base's key was "Rise of $name_timur$". tim_founding_father is set
+ # on TIM at release (scripted_effects/16_sahib_qiran_effects.txt); base's
+ # own event text reads it the same way. The situation's first event takes
+ # its title from this key.
+ rise_of_timur: "Rise of [GetCountry('TIM').MakeScope.GetVariable('tim_founding_father').GetCharacter.GetFirstNameWithNoTooltip]"
+ STATIC_MODIFIER_NAME_rot_timur_scare: "Dread of the Ṣāḥib-qirān"

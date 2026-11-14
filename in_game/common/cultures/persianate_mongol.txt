@@ -426,3 +426,20 @@ INJECT:georgian_culture = {
 		mongolian_culture = negative
 	}
 }
+
+# The Turkic nomads of the Ili, the Chu and Zhetysu, toward the khan's
+# own people (cultures/chaghatay.txt): they ride in the same hosts and
+# speak a tongue of the same family. This is what makes them affordable
+# for the khan to accept (tools/culture_lists.py reads the opinion the
+# subject culture holds of the ruling one).
+INJECT:kyrgyz_culture = {
+	opinions = {
+		chaghatay_culture = positive
+	}
+}
+
+INJECT:uzbek_culture = {
+	opinions = {
+		chaghatay_culture = positive
+	}
+}
