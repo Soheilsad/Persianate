@@ -303,3 +303,146 @@ persianate_debug_cadet_coup = { # DEBUG: the cadet's coup (stage 2 route)
 		}
 	}
 }
+
+persianate_debug_bgl_begin = { # DEBUG (the Beglerbeg's Regency) — remove before release
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		government_type = government_type:steppe_horde
+		NOT = { is_ulus_chaghatay_member = yes }
+		NOT = { has_variable = bgl_regency }
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = persianate_debug_bgl_begin.a
+		ai_chance = { value = 0 }
+		effect = {
+			bgl_begin_regency = yes
+		}
+	}
+}
+
+persianate_debug_bgl_advance = { # DEBUG (the Beglerbeg's Regency) — remove before release
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		has_variable = bgl_regency
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = persianate_debug_bgl_advance.a
+		ai_chance = { value = 0 }
+		effect = {
+			change_variable = { name = bgl_progress add = 100 }
+		}
+	}
+}
+
+persianate_debug_bgl_fill_gap = { # DEBUG (the Beglerbeg's Regency) — remove before release
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		has_variable = bgl_regency
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = persianate_debug_bgl_fill_gap.a
+		ai_chance = { value = 0 }
+		effect = {
+			set_variable = { name = bgl_gap value = 100 }
+			set_variable = { name = bgl_gap_filled_months value = 60 }
+		}
+	}
+}
+
+persianate_debug_bgl_empty_gap = { # DEBUG (the Beglerbeg's Regency) — remove before release
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		has_variable = bgl_regency
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = persianate_debug_bgl_empty_gap.a
+		ai_chance = { value = 0 }
+		effect = {
+			set_variable = { name = bgl_gap value = 0 }
+			set_variable = { name = bgl_gap_empty_months value = 36 }
+		}
+	}
+}
+
+persianate_debug_bgl_prince = { # DEBUG (the Beglerbeg's Regency) — remove before release
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		has_variable = bgl_regency
+		any_subject = {
+			is_subject_type = ulus
+			ruler ?= { is_of_chinggis_line = yes }
+		}
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = persianate_debug_bgl_prince.a
+		ai_chance = { value = 0 }
+		effect = {
+			ordered_subject = {
+				limit = {
+					is_subject_type = ulus
+					ruler ?= { is_of_chinggis_line = yes }
+				}
+				order_by = army_size
+				max = 1
+				check_range_bounds = no
+				save_scope_as = bgl_claimant
+			}
+			bgl_prince_declares = yes
+		}
+	}
+}

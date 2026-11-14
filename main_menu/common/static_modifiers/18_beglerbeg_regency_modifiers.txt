@@ -1,0 +1,21 @@
+# The Beglerbeg's Regency (scripted_effects/23_beglerbeg_regency_effects.txt).
+
+# The House Holds: the office has become hereditary in the beg's house.
+bgl_house_holds_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	monthly_horde_unity = 0.05
+	monthly_prestige = 0.02
+}
+
+# The Partition: what the regent kept after the shares went.
+bgl_partitioned_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	monthly_horde_unity = -0.05
+	monthly_prestige = -0.05
+}

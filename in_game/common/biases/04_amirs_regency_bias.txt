@@ -58,3 +58,10 @@ opinion_ulus_amirs_fallen_out = {
 	value = -100
 	yearly_decay = 3
 }
+
+
+# A prince with a share, toward a beg who rules in the khan's place.
+opinion_bgl_a_beg_on_the_felt = {
+	value = -60
+	yearly_decay = 2
+}

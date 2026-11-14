@@ -1,0 +1,37 @@
+# The Beglerbeg's Regency: a beg rules a unitary khanate through a khan
+# he keeps (scripted_effects/23_beglerbeg_regency_effects.txt). The
+# Golden Horde's version of the Amirs' Regency; its own disaster, by
+# the author's decision. Started and ended by the country variable
+# bgl_regency; its clock is the monthly pulse hook, not on_monthly, so
+# that it runs whether or not the engine has opened the panel yet.
+beglerbegs_regency = {
+
+	image = "gfx/interface/illustrations/disaster/amirs_regency.dds"
+
+	monthly_spawn_chance = 1
+
+	can_start = {
+		has_variable = bgl_regency
+	}
+
+	can_end = {
+		custom_tooltip = {
+			text = beglerbegs_regency_end_tt
+			NOT = { has_variable = bgl_regency }
+		}
+	}
+
+	modifier = {
+		monthly_horde_unity = -0.02
+		subject_loyalty = -5
+	}
+
+	on_start = {
+	}
+
+	on_monthly = {
+	}
+
+	on_end = {
+	}
+}

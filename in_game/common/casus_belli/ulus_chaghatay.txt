@@ -21,6 +21,8 @@ cb_restore_the_ulus = {
 		scope:target = {
 			OR = {
 				has_variable = ulus_regent_seat
+				# the Beglerbeg's Regency: a prince against the beg
+				has_variable = bgl_regency
 				has_variable = ulus_sahib_qiran
 				# After the Bulqaq: every tümen that went its own way.
 				has_variable = ulus_bulqaq_orphan
@@ -66,7 +68,10 @@ cb_ulus_in_disarray = {
 	}
 	declare_enabled = {
 		scope:target = {
-			has_variable = ulus_regent_seat
+			OR = {
+				has_variable = ulus_regent_seat
+				has_variable = bgl_regency
+			}
 		}
 	}
 	war_goal_type = ulus_in_disarray_wargoal

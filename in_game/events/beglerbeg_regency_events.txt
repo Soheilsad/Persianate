@@ -1,0 +1,261 @@
+namespace = beglerbeg_regency
+
+# Events of the Beglerbeg's Regency (scripted_effects/
+# 23_beglerbeg_regency_effects.txt). root = the regent's state unless
+# noted.
+#   .1   the regency begins        .2  another khan is raised
+#   .3   the regent's heir         .10-.12 the stages
+#   .15  a prince declares (to the regent)  .16 (to a player prince)
+#   .20  the House Holds           .30 the Partition
+#   .40  the khan's purge succeeds .41 it fails
+#   .42  the prince has won        .43 the törü seats a prince
+
+beglerbeg_regency.1 = {
+	type = country_event
+	title = beglerbeg_regency.1.title
+	desc = beglerbeg_regency.1.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	option = {
+		name = beglerbeg_regency.1.a
+		custom_tooltip = beglerbeg_regency_begins_tt
+	}
+}
+
+beglerbeg_regency.2 = {
+	type = country_event
+	title = beglerbeg_regency.2.title
+	desc = beglerbeg_regency.2.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	option = {
+		name = beglerbeg_regency.2.a
+	}
+}
+
+beglerbeg_regency.3 = {
+	type = country_event
+	title = beglerbeg_regency.3.title
+	desc = beglerbeg_regency.3.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	option = {
+		name = beglerbeg_regency.3.a
+		custom_tooltip = beglerbeg_regency_heir_tt
+	}
+}
+
+beglerbeg_regency.10 = {
+	type = country_event
+	title = beglerbeg_regency.10.title
+	desc = beglerbeg_regency.10.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = beglerbeg_regency.10.a
+		custom_tooltip = beglerbeg_regency_stage_2_tt
+	}
+}
+
+beglerbeg_regency.11 = {
+	type = country_event
+	title = beglerbeg_regency.11.title
+	desc = beglerbeg_regency.11.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = beglerbeg_regency.11.a
+		custom_tooltip = beglerbeg_regency_stage_3_tt
+	}
+}
+
+beglerbeg_regency.12 = {
+	type = country_event
+	title = beglerbeg_regency.12.title
+	desc = beglerbeg_regency.12.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	option = {
+		name = beglerbeg_regency.12.a
+		custom_tooltip = beglerbeg_regency_stage_4_tt
+	}
+}
+
+beglerbeg_regency.15 = {
+	type = country_event
+	title = beglerbeg_regency.15.title
+	desc = beglerbeg_regency.15.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = beglerbeg_regency.15.a
+	}
+}
+
+beglerbeg_regency.16 = {
+	type = country_event
+	title = beglerbeg_regency.16.title
+	desc = beglerbeg_regency.16.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = beglerbeg_regency.16.a
+		custom_tooltip = beglerbeg_regency_claim_tt
+	}
+}
+
+beglerbeg_regency.20 = {
+	type = country_event
+	title = beglerbeg_regency.20.title
+	desc = beglerbeg_regency.20.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	option = {
+		name = beglerbeg_regency.20.a
+		custom_tooltip = beglerbeg_regency_house_holds_tt
+		bgl_end_house_holds = yes
+	}
+}
+
+beglerbeg_regency.30 = {
+	type = country_event
+	title = beglerbeg_regency.30.title
+	desc = beglerbeg_regency.30.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = beglerbeg_regency.30.a
+		custom_tooltip = beglerbeg_regency_partition_tt
+		bgl_end_partition = yes
+	}
+}
+
+beglerbeg_regency.40 = {
+	type = country_event
+	title = beglerbeg_regency.40.title
+	desc = beglerbeg_regency.40.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	option = {
+		name = beglerbeg_regency.40.a
+		custom_tooltip = beglerbeg_regency_purge_won_tt
+		bgl_end_khan_triumphant = yes
+	}
+}
+
+beglerbeg_regency.41 = {
+	type = country_event
+	title = beglerbeg_regency.41.title
+	desc = beglerbeg_regency.41.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	option = {
+		name = beglerbeg_regency.41.a
+		custom_tooltip = beglerbeg_regency_purge_failed_tt
+		bgl_change_progress = { AMOUNT = 25 }
+		random = {
+			chance = 75
+			var:bgl_held_khan ?= {
+				if = {
+					limit = { is_alive = yes }
+					kill_character = {
+						target = this
+						reason = execution
+					}
+				}
+			}
+		}
+	}
+}
+
+beglerbeg_regency.42 = {
+	type = country_event
+	title = beglerbeg_regency.42.title
+	desc = beglerbeg_regency.42.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = beglerbeg_regency.42.a
+	}
+}
+
+beglerbeg_regency.43 = {
+	type = country_event
+	title = beglerbeg_regency.43.title
+	desc = beglerbeg_regency.43.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	option = {
+		name = beglerbeg_regency.43.a
+	}
+}

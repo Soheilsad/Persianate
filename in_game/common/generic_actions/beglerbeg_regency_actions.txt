@@ -1,0 +1,293 @@
+# ============================================================
+# THE BEGLERBEG'S REGENCY — the regent's actions, on the disaster panel
+# (scripted_effects/23_beglerbeg_regency_effects.txt). The same three a
+# regent of Ulus Chaghatay has (amirs_regency_actions.txt), written for
+# a unitary khanate. Granting a prince a share is the existing
+# character interaction (character_interactions/grant_ulus.txt).
+# ============================================================
+
+# LARGESSE. Robes, horses and silver to the begs and the princes: the
+# gap is filled, the nobles are content, and for two years the princes
+# with shares are slow to move (the yearly roll, a quarter as likely).
+bgl_distribute_largesse = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = bgl_distribute_largesse
+		years = 2
+	}
+
+	price = price:ulus_largesse_price
+
+	potential = {
+		scope:actor = { has_variable = bgl_regency }
+	}
+
+	allow = {
+		scope:actor = { has_variable = bgl_gap }
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = {
+			data = name
+		}
+		visible = {
+			disaster_type = disaster_type:beglerbegs_regency
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 }
+			bgl_change_gap = { AMOUNT = ulus_gap_largesse }
+			set_variable = { name = bgl_quiet_princes value = 1 months = ulus_largesse_months }
+			every_subject = {
+				limit = { is_subject_type = ulus }
+				add_opinion = {
+					modifier = opinion_ulus_largesse
+					target = scope:actor
+				}
+			}
+			custom_tooltip = bgl_largesse_tt
+			bgl_refresh_panel = yes
+		}
+	}
+
+	# The AI opens the treasury by how far the gap has fallen under its
+	# line, urgently once it is empty and when a prince could move;
+	# never in debt, and a cautious regent sooner than a bold one.
+	ai_will_do = {
+		add = -10
+		if = {
+			limit = { scope:actor = { var:bgl_gap < ulus_gap_filled_line } }
+			add = {
+				value = ulus_gap_filled_line
+				subtract = scope:actor.var:bgl_gap
+				multiply = 1.5
+				max = 60
+			}
+		}
+		if = {
+			limit = { scope:actor = { var:bgl_gap_empty_months > 0 } }
+			add = 40
+		}
+		if = {
+			limit = {
+				scope:actor = {
+					var:bgl_stage >= 2
+					any_subject = {
+						is_subject_type = ulus
+						ruler ?= { is_of_chinggis_line = yes }
+					}
+				}
+			}
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { var:bgl_stage >= 4 } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { gold < 0 } }
+			add = -100
+		}
+		if = {
+			limit = { scope:actor = { at_war = yes } }
+			add = -10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = 10
+		}
+	}
+}
+
+# MARRY INTO THE LINE. A wife of Chinggis's house: the regent is a
+# güregen, and the gap drains a quarter slower while he lives.
+bgl_marry_into_the_line = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	price = price:ulus_marry_into_the_line_price
+
+	potential = {
+		scope:actor = { has_variable = bgl_regency }
+	}
+
+	allow = {
+		scope:actor = {
+			has_ruler = yes
+			custom_tooltip = {
+				text = ulus_not_yet_gurkan_tt
+				NOT = { has_variable = bgl_gurkan }
+			}
+			custom_tooltip = {
+				text = ulus_holds_a_khan_tt
+				var:bgl_held_khan ?= { is_alive = yes }
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = {
+			data = name
+		}
+		visible = {
+			disaster_type = disaster_type:beglerbegs_regency
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			create_character = {
+				dynasty = dynasty:borjigin_dynasty
+				estate = estate_type:nobles_estate
+				religion = scope:actor.religion
+				culture = scope:actor.culture
+				age = { 16 22 }
+				female = yes
+				save_scope_as = bgl_bride
+			}
+			ruler = {
+				set_variable = ulus_gurkan
+				marry_character = scope:bgl_bride
+			}
+			set_variable = bgl_gurkan
+			add_prestige = 10
+			bgl_change_gap = { AMOUNT = 5 }
+			custom_tooltip = bgl_marriage_tt
+		}
+	}
+
+	# Worth it to any regent who means to last: more so the faster the
+	# gap is draining, less to one already at war for his life.
+	ai_will_do = {
+		add = 20
+		if = {
+			limit = { scope:actor = { var:bgl_stage >= 2 } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { var:bgl_gap < ulus_gap_filled_line } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { gold < 0 } }
+			add = -100
+		}
+		if = {
+			limit = { scope:actor = { at_war = yes } }
+			add = -15
+		}
+	}
+}
+
+# RECALL THE DARUGHAS. Inside the regent's own realm: the appointed
+# begs are called in. Their estate is the weaker for ten years, the
+# stage clock runs back, and they do not forgive it.
+bgl_recall_darughas = {
+	type = disaster
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = bgl_recall_darughas
+		years = 10
+	}
+
+	price = price:ulus_recall_darughas_price
+
+	potential = {
+		scope:actor = { has_variable = bgl_regency }
+	}
+
+	allow = {
+		scope:actor = {
+			country_has_estate = estate_type:nobles_estate
+			NOT = { has_country_modifier = ulus_darughas_recalled_mod }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = {
+			data = name
+		}
+		visible = {
+			disaster_type = disaster_type:beglerbegs_regency
+			disaster_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			add_country_modifier = {
+				modifier = ulus_darughas_recalled_mod
+				years = 10
+			}
+			add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.15 }
+			add_stability = -10
+			bgl_change_progress = { AMOUNT = ulus_regency_progress_recall }
+			bgl_refresh_panel = yes
+		}
+	}
+
+	# Only when the begs are what is driving the clock, and never with
+	# the nobles already near revolt or the horde coming apart.
+	ai_will_do = {
+		add = -15
+		if = {
+			limit = { scope:actor = { "estate_power(estate_type:nobles_estate)" >= 0.4 } }
+			add = 25
+		}
+		if = {
+			limit = { scope:actor = { "estate_power(estate_type:nobles_estate)" >= 0.5 } }
+			add = 20
+		}
+		if = {
+			limit = { scope:actor = { var:bgl_progress >= 60 } }
+			add = 15
+		}
+		if = {
+			limit = {
+				scope:actor = {
+					"estate(estate_type:nobles_estate)" = { satisfaction < 0.4 }
+				}
+			}
+			add = -40
+		}
+		if = {
+			limit = { scope:actor = { horde_unity < 30 } }
+			add = -30
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -10
+		}
+	}
+}

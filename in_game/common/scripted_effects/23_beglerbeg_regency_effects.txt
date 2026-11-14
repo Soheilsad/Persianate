@@ -1,0 +1,708 @@
+# =====================================================================
+# THE BEGLERBEG'S REGENCY — a beg rules a UNITARY khanate through a khan
+# he keeps. The Golden Horde's Mamai (from 1359) and Edigü (from 1397).
+#
+# Its own disaster (disasters/06_beglerbegs_regency.txt), separate from
+# the Amirs' Regency of Ulus Chaghatay by the author's decision
+# (2026-11-14): the two share an idea and numbers, not code. There the
+# khan passes from house to house inside an organisation; here there is
+# one realm, the rivals are its own princes, and a rival does not take
+# the kept khan but raises himself and fights for the throne.
+#
+# ENTRY  events/horde_succession.txt, the poll's route (c): the törü has
+#        seated a man who is not of the line on a throne of the line.
+# STATE  on the COUNTRY:
+#   bgl_regency            the regency is on (the disaster's can_start)
+#   bgl_stage              1..4
+#   bgl_progress           0..100 within the stage
+#   bgl_gap                0..100, the legitimacy gap's fill
+#   bgl_gap_filled_months / bgl_gap_empty_months / bgl_gap_drain
+#   bgl_held_khan          character
+#   bgl_no_khan            the regent rules with no khan
+#   bgl_gurkan             a wife of the line (slows the drain)
+#   bgl_year_clock         months toward the yearly rolls
+#   bgl_house_holds        the office has become the house's (ending)
+#   ulus_d_*               the panel's mirrors, the same names the Amirs'
+#                          Regency panel reads
+# NUMBERS are the Amirs' Regency's own (script_values/
+# 05_amirs_regency_values.txt): one edit tunes both.
+# ENDINGS
+#   the Khan Triumphant    a khan of the line breaks the beg: by the
+#                          purge, by a prince who declared himself khan
+#                          and won, or by the törü seating a prince
+#   the House Holds        stage 4, a khan in keeping, the gap filled
+#                          ulus_sahib_qiran_months running
+#   the Partition          the gap empty ulus_bulqaq_months running, or
+#                          the clock full in stage 4 with the gap under
+#                          the line: every share goes its own way
+# There is no Ṣāḥib-qirān here: Mamai's and Edigü's power was the
+# Horde's own army and never became a following that could leave.
+# =====================================================================
+
+# COUNTRY scope. Picks a prince to keep: the most pliant man of the line
+# in the realm (as the ulus does); if every man of the line is ruling a
+# share of his own, a lesser prince is found.
+bgl_pick_khan = {
+	if = {
+		limit = { exists = scope:bgl_puppet }
+		clear_saved_scope = bgl_puppet
+	}
+	ordered_character = {
+		limit = {
+			is_alive = yes
+			is_female = no
+			is_ruler = no
+			is_of_chinggis_line = yes
+			NOT = { has_variable = patron_country }
+		}
+		order_by = ulus_puppet_pliancy
+		max = 1
+		check_range_bounds = no
+		save_scope_as = bgl_puppet
+	}
+	if = {
+		limit = { NOT = { exists = scope:bgl_puppet } }
+		if = {
+			limit = { NOT = { exists = dynasty:borjigin_dynasty } }
+			found_dynasty = borjigin_dynasty
+		}
+		create_character = {
+			dynasty = dynasty:borjigin_dynasty
+			estate = estate_type:nobles_estate
+			religion = root.religion
+			culture = root.culture
+			age = { 12 30 }
+			female = no
+			save_scope_as = bgl_puppet
+		}
+	}
+	scope:bgl_puppet = {
+		set_variable = { name = patron_country value = root }
+		add_character_modifier = {
+			modifier = borjigin_puppet_sequestered
+			years = -1
+			mode = add_and_extend
+		}
+	}
+	set_variable = { name = bgl_held_khan value = scope:bgl_puppet }
+	remove_variable = bgl_no_khan
+}
+
+# COUNTRY scope. The regency begins (or, for a house that already holds
+# the office, begins again under the heir).
+bgl_begin_regency = {
+	set_variable = bgl_regency
+	set_variable = { name = bgl_stage value = 1 }
+	set_variable = { name = bgl_progress value = 0 }
+	if = {
+		limit = { has_variable = bgl_house_holds }
+		set_variable = { name = bgl_gap value = ulus_gap_filled_line }
+	}
+	else = {
+		set_variable = { name = bgl_gap value = ulus_gap_start }
+	}
+	remove_variable = bgl_house_holds
+	if = {
+		limit = { has_country_modifier = bgl_house_holds_mod }
+		remove_country_modifier = bgl_house_holds_mod
+	}
+	set_variable = { name = bgl_gap_filled_months value = 0 }
+	set_variable = { name = bgl_gap_empty_months value = 0 }
+	set_variable = { name = bgl_year_clock value = 0 }
+	set_variable = beglerbeg_regency_granted
+	if = {
+		limit = {
+			government_type = government_type:steppe_horde
+			NOT = { has_reform = government_reform:beglerbeg_regency }
+		}
+		add_reform = government_reform:beglerbeg_regency
+	}
+	if = {
+		limit = {
+			NOT = { var:bgl_held_khan ?= { is_alive = yes } }
+		}
+		bgl_pick_khan = yes
+	}
+	bgl_refresh_panel = yes
+	trigger_event_non_silently = beglerbeg_regency.1
+}
+
+# COUNTRY scope. $AMOUNT$ a number or a script value.
+bgl_change_gap = {
+	if = {
+		limit = { has_variable = bgl_gap }
+		change_variable = { name = bgl_gap add = $AMOUNT$ }
+		if = {
+			limit = { var:bgl_gap < 0 }
+			set_variable = { name = bgl_gap value = 0 }
+		}
+		if = {
+			limit = { var:bgl_gap > 100 }
+			set_variable = { name = bgl_gap value = 100 }
+		}
+	}
+}
+bgl_change_progress = {
+	if = {
+		limit = { has_variable = bgl_progress }
+		change_variable = { name = bgl_progress add = $AMOUNT$ }
+		if = {
+			limit = { var:bgl_progress < 0 }
+			set_variable = { name = bgl_progress value = 0 }
+		}
+	}
+}
+
+# COUNTRY scope: the panel's mirrors (gui/panels/disaster/
+# beglerbegs_regency.gui reads the same names as the Amirs' Regency's).
+bgl_refresh_panel = {
+	remove_variable = ulus_d_stage_1
+	remove_variable = ulus_d_stage_2
+	remove_variable = ulus_d_stage_3
+	remove_variable = ulus_d_stage_4
+	if = {
+		limit = { has_variable = bgl_stage }
+		if = {
+			limit = { var:bgl_stage >= 4 }
+			set_variable = ulus_d_stage_4
+		}
+		else_if = {
+			limit = { var:bgl_stage >= 3 }
+			set_variable = ulus_d_stage_3
+		}
+		else_if = {
+			limit = { var:bgl_stage >= 2 }
+			set_variable = ulus_d_stage_2
+		}
+		else = {
+			set_variable = ulus_d_stage_1
+		}
+		set_variable = { name = ulus_d_progress value = var:bgl_progress }
+		set_variable = { name = ulus_d_gap value = var:bgl_gap }
+	}
+}
+
+# COUNTRY scope: the month (on_action/39_beglerbeg_regency_hooks.txt).
+bgl_monthly = {
+	# --- the khan ---------------------------------------------------
+	if = {
+		limit = {
+			NOT = { var:bgl_held_khan ?= { is_alive = yes } }
+		}
+		if = {
+			limit = { NOT = { has_variable = bgl_no_khan } }
+			# He has just died (or was killed): a month with none.
+			set_variable = bgl_no_khan
+			remove_variable = bgl_held_khan
+		}
+		else = {
+			# The next month another is raised. It costs him: every
+			# new khan is a reminder of what the last one was for.
+			bgl_pick_khan = yes
+			bgl_change_gap = { AMOUNT = -10 }
+			trigger_event_non_silently = beglerbeg_regency.2
+		}
+	}
+
+	# --- the stage clock (as ulus_regency_stage_tick) -------------
+	set_local_variable = { name = bgl_step value = 0 }
+	if = {
+		limit = {
+			country_has_estate = estate_type:nobles_estate
+			"estate_power(estate_type:nobles_estate)" >= ulus_regency_noble_power
+		}
+		set_local_variable = { name = bgl_step value = ulus_regency_progress_monthly }
+	}
+	else_if = {
+		limit = {
+			country_has_estate = estate_type:nobles_estate
+			"estate_power(estate_type:crown_estate)" > "estate_power(estate_type:nobles_estate)"
+		}
+		set_local_variable = { name = bgl_step value = ulus_regency_progress_recovery }
+	}
+	bgl_change_progress = { AMOUNT = local_var:bgl_step }
+	if = {
+		limit = { var:bgl_progress >= ulus_regency_stage_length }
+		if = {
+			limit = { var:bgl_stage < 4 }
+			change_variable = { name = bgl_stage add = 1 }
+			set_variable = { name = bgl_progress value = 0 }
+			bgl_enter_stage = yes
+		}
+		else = {
+			set_variable = { name = bgl_progress value = ulus_regency_stage_length }
+		}
+	}
+
+	# --- the gap (as ulus_regency_gap_tick) ------------------------
+	set_local_variable = {
+		name = bgl_drain
+		value = {
+			value = ulus_gap_drain_base
+			multiply = var:bgl_stage
+			divide = 4
+			multiply = -1
+		}
+	}
+	if = {
+		limit = { has_variable = bgl_no_khan }
+		change_local_variable = { name = bgl_drain multiply = 2 }
+	}
+	# A prince with a share whose host outweighs the regent's own.
+	if = {
+		limit = {
+			any_subject = {
+				is_subject_type = ulus
+				ruler ?= { is_of_chinggis_line = yes }
+				army_size > root.army_size
+			}
+		}
+		change_local_variable = { name = bgl_drain multiply = 1.5 }
+	}
+	# A wife of the line.
+	if = {
+		limit = { has_variable = bgl_gurkan }
+		change_local_variable = { name = bgl_drain multiply = 0.75 }
+	}
+	set_variable = {
+		name = bgl_gap_drain
+		value = {
+			value = local_var:bgl_drain
+			multiply = -1
+		}
+	}
+	bgl_change_gap = { AMOUNT = local_var:bgl_drain }
+	if = {
+		limit = { var:bgl_gap >= ulus_gap_filled_line }
+		change_variable = { name = bgl_gap_filled_months add = 1 }
+		set_variable = { name = bgl_gap_empty_months value = 0 }
+	}
+	else = {
+		set_variable = { name = bgl_gap_filled_months value = 0 }
+		if = {
+			limit = { var:bgl_gap <= 0 }
+			change_variable = { name = bgl_gap_empty_months add = 1 }
+		}
+		else = {
+			set_variable = { name = bgl_gap_empty_months value = 0 }
+		}
+	}
+
+	# --- the year's rolls --------------------------------------------
+	change_variable = { name = bgl_year_clock add = 1 }
+	if = {
+		limit = { var:bgl_year_clock >= 12 }
+		set_variable = { name = bgl_year_clock value = 0 }
+		bgl_yearly_rolls = yes
+	}
+
+	bgl_refresh_panel = yes
+
+	# --- the endings ----------------------------------------------------
+	if = {
+		limit = {
+			has_variable = bgl_regency
+			NOT = { has_variable = bgl_ending_called }
+		}
+		if = {
+			limit = {
+				OR = {
+					var:bgl_gap_empty_months >= ulus_bulqaq_months
+					AND = {
+						var:bgl_stage >= 4
+						var:bgl_progress >= ulus_regency_stage_length
+						var:bgl_gap < ulus_gap_filled_line
+					}
+				}
+			}
+			set_variable = { name = bgl_ending_called value = 1 months = 2 }
+			trigger_event_non_silently = { id = beglerbeg_regency.30 days = 1 }
+		}
+		else_if = {
+			limit = {
+				var:bgl_stage >= 4
+				var:bgl_gap_filled_months >= ulus_sahib_qiran_months
+				var:bgl_held_khan ?= { is_alive = yes }
+			}
+			set_variable = { name = bgl_ending_called value = 1 months = 2 }
+			trigger_event_non_silently = { id = beglerbeg_regency.20 days = 1 }
+		}
+	}
+}
+
+# COUNTRY scope: what a stage opens.
+bgl_enter_stage = {
+	if = {
+		limit = { var:bgl_stage = 2 }
+		# The princes stir: each prince with a share thinks the worse
+		# of the man in his father's tent.
+		every_subject = {
+			limit = {
+				is_subject_type = ulus
+				ruler ?= { is_of_chinggis_line = yes }
+			}
+			add_opinion = {
+				target = root
+				modifier = opinion_bgl_a_beg_on_the_felt
+			}
+		}
+		trigger_event_non_silently = { id = beglerbeg_regency.10 days = 1 }
+	}
+	else_if = {
+		limit = { var:bgl_stage = 3 }
+		# The shock from outside: strong neighbours hold a claim, and
+		# the shares begin to go.
+		every_neighbor_country = {
+			limit = {
+				is_subject = no
+				NOT = { is_subject_of = root }
+				army_size > {
+					value = root.army_size
+					multiply = 0.5
+				}
+			}
+			add_casus_belli = {
+				type = casus_belli:cb_ulus_in_disarray
+				target = root
+				years = 10
+			}
+		}
+		every_subject = {
+			limit = {
+				is_subject_type = ulus
+				ruler ?= { is_of_chinggis_line = yes }
+			}
+			random = {
+				chance = 50
+				save_scope_as = bgl_leaver
+				root = { cancel_subject = scope:bgl_leaver }
+			}
+		}
+		trigger_event_non_silently = { id = beglerbeg_regency.11 days = 1 }
+	}
+	else_if = {
+		limit = { var:bgl_stage = 4 }
+		trigger_event_non_silently = { id = beglerbeg_regency.12 days = 1 }
+	}
+}
+
+# COUNTRY scope, once a year.
+bgl_yearly_rolls = {
+	# A PRINCE DECLARES HIMSELF KHAN, from the second stage: the
+	# strongest prince with a share. Likelier as the stages turn and
+	# when the regent's standing is low.
+	if = {
+		limit = {
+			var:bgl_stage >= 2
+			any_subject = {
+				is_subject_type = ulus
+				ruler ?= { is_of_chinggis_line = yes }
+			}
+			NOT = { has_variable = bgl_claimant_abroad }
+		}
+		set_local_variable = { name = bgl_chance value = 10 }
+		if = {
+			limit = { var:bgl_stage >= 3 }
+			change_local_variable = { name = bgl_chance add = 10 }
+		}
+		if = {
+			limit = { var:bgl_gap < 30 }
+			change_local_variable = { name = bgl_chance add = 15 }
+		}
+		if = {
+			limit = { has_variable = bgl_quiet_princes }
+			change_local_variable = { name = bgl_chance multiply = 0.25 }
+		}
+		random = {
+			chance = local_var:bgl_chance
+			ordered_subject = {
+				limit = {
+					is_subject_type = ulus
+					ruler ?= { is_of_chinggis_line = yes }
+				}
+				order_by = army_size
+				max = 1
+				check_range_bounds = no
+				save_scope_as = bgl_claimant
+			}
+			if = {
+				limit = { exists = scope:bgl_claimant }
+				bgl_prince_declares = yes
+			}
+		}
+	}
+	# THE KHAN'S PURGE: a grown khan with a soldier's skill, kept in a
+	# beg's tent, tries to rule. (In the ulus another amir must back
+	# him; here he has the Horde's own princes and begs to turn to.)
+	if = {
+		limit = {
+			has_variable = bgl_regency
+			var:bgl_held_khan ?= {
+				is_alive = yes
+				is_adult = yes
+				mil >= ulus_purge_min_mil
+			}
+		}
+		set_local_variable = { name = bgl_chance value = 6 }
+		if = {
+			limit = { var:bgl_gap < 30 }
+			change_local_variable = { name = bgl_chance add = 8 }
+		}
+		if = {
+			limit = { var:bgl_stage >= 3 }
+			change_local_variable = { name = bgl_chance add = 4 }
+		}
+		random = {
+			chance = local_var:bgl_chance
+			if = {
+				limit = { var:bgl_held_khan = { mil >= ulus_purge_good_mil } }
+				random_list = {
+					50 = { trigger_event_non_silently = beglerbeg_regency.40 }
+					50 = { trigger_event_non_silently = beglerbeg_regency.41 }
+				}
+			}
+			else = {
+				random_list = {
+					30 = { trigger_event_non_silently = beglerbeg_regency.40 }
+					70 = { trigger_event_non_silently = beglerbeg_regency.41 }
+				}
+			}
+		}
+	}
+}
+
+# COUNTRY scope: the regent. scope:bgl_claimant, a prince with a share,
+# breaks with him and claims the throne. Tokhtamysh out of the left
+# wing against Mamai, 1378-80.
+bgl_prince_declares = {
+	cancel_subject = scope:bgl_claimant
+	set_variable = { name = bgl_claimant_abroad value = scope:bgl_claimant years = 15 }
+	scope:bgl_claimant = {
+		set_variable = { name = bgl_claims_the_throne_of value = root years = 15 }
+		add_casus_belli = {
+			type = casus_belli:cb_restore_the_ulus
+			target = root
+			years = 15
+		}
+		if = {
+			limit = { is_ai = yes }
+			declare_war_with_cb = {
+				target = root
+				type = casus_belli:cb_restore_the_ulus
+			}
+		}
+		else = {
+			trigger_event_non_silently = beglerbeg_regency.16
+		}
+	}
+	trigger_event_non_silently = beglerbeg_regency.15
+}
+
+# COUNTRY scope: clears the regency's state (not the ending's marks).
+bgl_clear = {
+	var:bgl_held_khan ?= {
+		if = {
+			limit = { is_alive = yes }
+			remove_variable = patron_country
+			if = {
+				limit = { has_character_modifier = borjigin_puppet_sequestered }
+				remove_character_modifier = borjigin_puppet_sequestered
+			}
+		}
+	}
+	remove_variable = bgl_regency
+	remove_variable = bgl_stage
+	remove_variable = bgl_progress
+	remove_variable = bgl_gap
+	remove_variable = bgl_gap_drain
+	remove_variable = bgl_gap_filled_months
+	remove_variable = bgl_gap_empty_months
+	remove_variable = bgl_no_khan
+	remove_variable = bgl_year_clock
+	remove_variable = bgl_ending_called
+	remove_variable = bgl_quiet_princes
+	remove_variable = ulus_d_stage_1
+	remove_variable = ulus_d_stage_2
+	remove_variable = ulus_d_stage_3
+	remove_variable = ulus_d_stage_4
+	remove_variable = ulus_d_progress
+	remove_variable = ulus_d_gap
+}
+
+# COUNTRY scope. ENDING: THE KHAN TRIUMPHANT, from inside. The kept
+# khan takes the throne; the beg's house is finished.
+bgl_end_khan_triumphant = {
+	if = {
+		limit = { exists = scope:bgl_puppet }
+		clear_saved_scope = bgl_puppet
+	}
+	var:bgl_held_khan ?= { save_scope_as = bgl_puppet }
+	ruler ?= { save_scope_as = bgl_fallen_beg }
+	bgl_clear = yes
+	remove_variable = bgl_held_khan
+	remove_variable = bgl_gurkan
+	remove_variable = beglerbeg_regency_granted
+	if = {
+		limit = { has_reform = government_reform:beglerbeg_regency }
+		remove_reform = government_reform:beglerbeg_regency
+	}
+	if = {
+		limit = { scope:bgl_puppet ?= { is_alive = yes } }
+		set_variable = { name = ulus_succession_settled value = 1 months = 6 }
+		set_new_ruler = scope:bgl_puppet
+		scope:bgl_fallen_beg ?= {
+			if = {
+				limit = { is_alive = yes }
+				kill_character = {
+					target = this
+					reason = execution
+				}
+			}
+		}
+	}
+	set_variable = horde_of_the_line
+	add_country_modifier = {
+		modifier = khan_triumphant_mod
+		years = 20
+	}
+	add_horde_unity = 25
+}
+
+# COUNTRY scope: the regent's state, beaten in war by the prince who
+# claimed its throne (scope:bgl_victor). The prince's realm and the
+# khanate become one again under him.
+bgl_end_khan_triumphant_by_war = {
+	scope:bgl_victor = { ruler ?= { save_scope_as = bgl_new_khan } }
+	ruler ?= { save_scope_as = bgl_fallen_beg }
+	bgl_clear = yes
+	remove_variable = bgl_held_khan
+	remove_variable = bgl_gurkan
+	remove_variable = bgl_claimant_abroad
+	remove_variable = beglerbeg_regency_granted
+	if = {
+		limit = { has_reform = government_reform:beglerbeg_regency }
+		remove_reform = government_reform:beglerbeg_regency
+	}
+	annex_country = {
+		country = scope:bgl_victor
+		reason = Diplomatic
+		transfer = yes
+	}
+	if = {
+		limit = { scope:bgl_new_khan ?= { is_alive = yes } }
+		set_variable = { name = ulus_succession_settled value = 1 months = 6 }
+		set_new_ruler = scope:bgl_new_khan
+		scope:bgl_fallen_beg ?= {
+			if = {
+				limit = { is_alive = yes }
+				kill_character = {
+					target = this
+					reason = execution
+				}
+			}
+		}
+	}
+	set_variable = horde_of_the_line
+	add_country_modifier = {
+		modifier = khan_triumphant_mod
+		years = 20
+	}
+	add_horde_unity = 25
+	trigger_event_non_silently = beglerbeg_regency.42
+}
+
+# COUNTRY scope. ENDING: THE HOUSE HOLDS. The office is the house's
+# now: the reform and the kept khan stay, the disaster ends. At the
+# regent's death the poll begins it again under his heir with the gap
+# at the filled line (bgl_begin_regency reads bgl_house_holds).
+bgl_end_house_holds = {
+	bgl_clear = yes
+	set_variable = bgl_house_holds
+	var:bgl_held_khan ?= {
+		if = {
+			limit = { is_alive = yes }
+			set_variable = { name = patron_country value = root }
+			add_character_modifier = {
+				modifier = borjigin_puppet_sequestered
+				years = -1
+				mode = add_and_extend
+			}
+		}
+	}
+	add_country_modifier = {
+		modifier = bgl_house_holds_mod
+		years = -1
+	}
+	add_horde_unity = 20
+	add_prestige = 15
+}
+
+# COUNTRY scope. ENDING: THE PARTITION. Every share goes its own way
+# under its prince; the regent keeps what he holds himself, with no
+# khan and no office.
+bgl_end_partition = {
+	every_subject = {
+		limit = { is_subject_type = ulus }
+		save_scope_as = bgl_leaver
+		root = { cancel_subject = scope:bgl_leaver }
+		add_opinion = {
+			target = root
+			modifier = opinion_bgl_a_beg_on_the_felt
+		}
+	}
+	bgl_clear = yes
+	remove_variable = bgl_held_khan
+	remove_variable = bgl_gurkan
+	remove_variable = beglerbeg_regency_granted
+	if = {
+		limit = { has_reform = government_reform:beglerbeg_regency }
+		remove_reform = government_reform:beglerbeg_regency
+	}
+	remove_variable = horde_of_the_line
+	add_country_modifier = {
+		modifier = bgl_partitioned_mod
+		years = 20
+	}
+	add_horde_unity = -30
+	add_prestige = -25
+}
+
+# COUNTRY scope: a ruler has just been seated in a realm that is under
+# the regency or whose house holds the office (called by the poll,
+# events/horde_succession.txt, before its other routes).
+bgl_succession = {
+	if = {
+		limit = { ruler ?= { is_of_chinggis_line = yes } }
+		# The törü has seated a prince: the line is back without a blow.
+		bgl_clear = yes
+		remove_variable = bgl_held_khan
+		remove_variable = bgl_gurkan
+		remove_variable = bgl_house_holds
+		remove_variable = beglerbeg_regency_granted
+		if = {
+			limit = { has_country_modifier = bgl_house_holds_mod }
+			remove_country_modifier = bgl_house_holds_mod
+		}
+		if = {
+			limit = { has_reform = government_reform:beglerbeg_regency }
+			remove_reform = government_reform:beglerbeg_regency
+		}
+		set_variable = horde_of_the_line
+		add_horde_unity = 10
+		trigger_event_non_silently = beglerbeg_regency.43
+	}
+	else_if = {
+		limit = { has_variable = bgl_house_holds }
+		# The heir of a house that holds the office: it begins again.
+		remove_variable = bgl_gurkan
+		bgl_begin_regency = yes
+	}
+	else = {
+		# The regent has died in the middle of it. His heir keeps the
+		# khan and the stage, and starts with less than his father had.
+		remove_variable = bgl_gurkan
+		bgl_change_gap = { AMOUNT = -15 }
+		bgl_change_progress = { AMOUNT = 20 }
+		trigger_event_non_silently = beglerbeg_regency.3
+	}
+}

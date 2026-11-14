@@ -1,0 +1,89 @@
+# =====================================================================
+# THE BEGLERBEG'S REGENCY — engine hooks
+# (scripted_effects/23_beglerbeg_regency_effects.txt). Re-declaring an
+# engine on_action EXTENDS it. Every trigger opens with
+# has_variable = bgl_regency.
+# Scopes as in 31_amirs_regency_hooks.txt.
+# =====================================================================
+
+monthly_country_pulse = {
+	on_actions = {
+		bgl_month
+	}
+}
+bgl_month = {
+	trigger = { has_variable = bgl_regency }
+	effect = { bgl_monthly = yes }
+}
+
+on_great_battle_won = {
+	on_actions = {
+		bgl_great_battle
+	}
+}
+bgl_great_battle = {
+	trigger = { has_variable = bgl_regency }
+	effect = { bgl_change_gap = { AMOUNT = ulus_gap_great_battle } }
+}
+
+on_siege_won = {
+	on_actions = {
+		bgl_siege
+	}
+}
+bgl_siege = {
+	trigger = { has_variable = bgl_regency }
+	effect = { bgl_change_gap = { AMOUNT = ulus_gap_siege } }
+}
+
+on_winning_war = {
+	on_actions = {
+		bgl_war_won
+	}
+}
+bgl_war_won = {
+	trigger = {
+		has_variable = bgl_regency
+		scope:winner ?= { this = root }
+	}
+	effect = {
+		bgl_change_gap = { AMOUNT = ulus_gap_war_won }
+		# The prince who claimed the throne is beaten: the claim is dead.
+		if = {
+			limit = {
+				scope:loser ?= { var:bgl_claims_the_throne_of ?= root }
+			}
+			scope:loser = { remove_variable = bgl_claims_the_throne_of }
+			remove_variable = bgl_claimant_abroad
+			bgl_change_gap = { AMOUNT = ulus_gap_war_won }
+		}
+	}
+}
+
+on_losing_war = {
+	on_actions = {
+		bgl_war_lost
+	}
+}
+bgl_war_lost = {
+	trigger = {
+		has_variable = bgl_regency
+		scope:loser ?= { this = root }
+	}
+	effect = {
+		if = {
+			limit = {
+				scope:winner ?= {
+					var:bgl_claims_the_throne_of ?= root
+					ruler ?= { is_of_chinggis_line = yes }
+				}
+			}
+			scope:winner = { save_scope_as = bgl_victor }
+			bgl_end_khan_triumphant_by_war = yes
+		}
+		else = {
+			bgl_change_gap = { AMOUNT = ulus_gap_war_lost }
+			bgl_change_progress = { AMOUNT = 25 }
+		}
+	}
+}

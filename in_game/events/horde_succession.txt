@@ -174,7 +174,19 @@ horde_succession.1 = {
 		# --- route ------------------------------------------------------------
 		# (d) THE BLOOD HAS FAILED. No living adult of the line anywhere, and
 		# no regency standing in for one. This is 1359, and it happened once.
+		# (g) THE BEGLERBEG'S REGENCY IS ALREADY ON, or the house holds the
+		# office: this accession is the regent's heir, or a prince the
+		# törü has seated over him (scripted_effects/23, bgl_succession).
 		if = {
+			limit = {
+				OR = {
+					has_variable = bgl_regency
+					has_variable = bgl_house_holds
+				}
+			}
+			bgl_succession = yes
+		}
+		else_if = {
 			limit = {
 				local_var:blood = 0
 				NOT = { has_reform = government_reform:beglerbeg_regency }
@@ -219,6 +231,23 @@ horde_succession.1 = {
 			trigger_event_non_silently = amirs_regency.2
 		}
 
+		# (c1) A BEG ON A THRONE OF THE LINE. The törü has seated a man who
+		# is not of Chinggis's house on a throne that was (horde_of_the_line,
+		# marked at every accession of a prince), outside Ulus Chaghatay,
+		# and men of the line are alive. He does not become khan. He takes
+		# a prince into keeping and rules as beglerbeg: Mamai in 1359.
+		# (Author, 2026-11-14: the election is right; what was missing was
+		# everything after it. Until now this fell into (c) for -20 unity
+		# and a khan of a generated dynasty.)
+		else_if = {
+			limit = {
+				has_variable = horde_of_the_line
+				NOT = { ruler ?= { is_of_chinggis_line = yes } }
+				NOT = { is_ulus_chaghatay_member = yes }
+				NOT = { has_reform = government_reform:beglerbeg_regency }
+			}
+			bgl_begin_regency = yes
+		}
 		# (c) THE BEGS MAKE THEIR PLAY. Either a non-Borjigin has taken the
 		# seat outright, or the appointed aristocracy has grown heavy enough
 		# to hold whoever sits on it. Mamai's office, and Qazaghan's.
