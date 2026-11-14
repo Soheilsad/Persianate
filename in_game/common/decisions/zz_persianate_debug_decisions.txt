@@ -1,0 +1,70 @@
+# =====================================================================
+# DEBUG DECISIONS — REMOVE BEFORE A PUBLIC RELEASE.
+#
+# The author's Mac build cannot open the console, so the Amirs' Regency
+# (which otherwise needs a khan to die with the begs over the bar, years
+# into a game) could not be tested. These decisions do what the console
+# test lines in the build report do. Player only; any member of Ulus
+# Chaghatay sees them.
+# =====================================================================
+
+persianate_debug_begin_regency = { # DEBUG: the amirs raise a khan now
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		is_ulus_chaghatay_member = yes
+		international_organization:ulus_chaghatay ?= {
+			NOT = { has_variable = ulus_regency }
+		}
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = persianate_debug_begin_regency.a
+		ai_chance = { value = 0 }
+		effect = {
+			international_organization:ulus_chaghatay ?= {
+				leader_country ?= { save_scope_as = ulus_old_seat }
+				ulus_begin_regency = yes
+			}
+		}
+	}
+}
+
+persianate_debug_advance_regency = { # DEBUG: +100 progress, i.e. the next stage
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		is_ulus_chaghatay_member = yes
+		international_organization:ulus_chaghatay ?= {
+			has_variable = ulus_regency
+		}
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = persianate_debug_advance_regency.a
+		ai_chance = { value = 0 }
+		effect = {
+			international_organization:ulus_chaghatay ?= {
+				change_variable = { name = ulus_regency_progress add = 100 }
+			}
+		}
+	}
+}
