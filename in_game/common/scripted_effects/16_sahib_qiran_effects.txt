@@ -1,0 +1,271 @@
+# =====================================================================
+# THE ṢĀḤIB-QIRĀN'S CONQUEST AMBITION — the emergent Timur.
+#
+# Base schedules Timur. Between 1360 and 1400 its event flavor_tim.8
+# takes the historical Temür Barlas (character:chg_timur_lame_borjigin),
+# puts him at the head of the TIM tag released around Samarkand out of
+# whoever owns it, and starts the Rise of Timur situation. That event
+# is disabled in this mod (events/DHE/flavor_tim.txt, a same-path copy
+# with .8's trigger closed), and the Temür of base setup has lost his
+# plot armour (the is_tim_timur life-expectancy modifier is removed at
+# game start, on_action/30_ulus_chaghatay_start.txt).
+#
+# What Manz shows is that the conqueror was the product of the regency,
+# not of the calendar: the ulus produced a Ṣāḥib-qirān because of what
+# had happened to it since 1346, and it was Temür because Temür came
+# out of the 1360s with the greatest name. So here the TIM tag and the
+# situation go to whoever ends the Amirs' Regency as Ṣāḥib-qirān
+# (amirs_regency.210 -> ulus_end_sahib_qiran -> this effect). It may be
+# Temür Barlas. It may be a Qara'unas, a Jalayir, or a darugha with no
+# house at all. It may be nobody.
+#
+# THE GATE. The conquest of Iran was possible because Iran after 1335
+# had no master. If some realm has consolidated Erānzamīn
+# (is_eranzamin_consolidation_sustained, scripted_triggers/
+# 03_matter_triggers.txt) the Ṣāḥib-qirān still forms — his regime, his
+# reckoning with the amirs — but there is no easy plunder to the west:
+# TIM is not released and the situation does not start.
+#
+# WHAT IT DOES is what flavor_tim.8's immediate and its player option
+# do, for the emergent man:
+#   - every location of his realm becomes a TIM core, and TIM is
+#     released from them (create_country_from_cores_in_our_locations),
+#     seated at his capital, with him as ruler and as
+#     global_var:timur_character (which the situation's can_start and
+#     its events read);
+#   - TIM is set up as base sets it up (steppe horde, legacy of
+#     Genghis, Mongol law, the societal values, the kurultai);
+#   - his old realm, now landless, is annexed by TIM (base does exactly
+#     this when the releasing country keeps no land), and a player is
+#     moved to TIM (base's option b);
+#   - the situation is enabled and activated.
+# Base hands the new tag 3000 gold; here it is ulus_sahib_qiran_gold.
+#
+# THE NAME. TIM's own name is "Timurids". If the man is not Temür
+# Barlas the tag is renamed after the house he came from
+# (change_country_name / change_country_adjective, as base renames
+# released tags), falling back to "the Ṣāḥib-qirān's Realm".
+#
+# BASE REFERENCES THAT STILL NAME THE HISTORICAL MAN (not rewritten;
+# they are silent or off-key for a different conqueror):
+#   events/DHE/flavor_tim.txt
+#     .1     Death of Timur: fires only if the dead ruler IS him
+#     .6     Timur the Lame: about him personally
+#     .9     reads `ruler != character:chg_timur_lame_borjigin`
+#     .12    fires only while he rules
+#     .14    reads `ruler != ...`
+#     .17    scopes to him
+#     .1000-.1004  the childhood chain at the Chagatai court
+#   The situation itself (common/situations/rise_of_timur.txt,
+#   events/situations/rise_of_timur.txt, scripted_triggers/
+#   situation_triggers.txt) reads only global_var:timur_character and
+#   c:TIM, so it runs for whoever is set here.
+#
+# COUNTRY scope: the Ṣāḥib-qirān's realm. Needs
+# scope:ulus_sahib_qiran_realm (= this); re-saves it as TIM if the tag
+# is released, so the caller's reckoning with the amirs lands on TIM.
+# =====================================================================
+
+ulus_sahib_qiran_conquest_ambition = {
+	if = {
+		limit = {
+			has_ruler = yes
+			exists = capital
+			NOT = { country_exists = c:TIM }
+			NOT = { has_global_variable = timur_character }
+			NOT = {
+				any_country = {
+					NOT = { this = scope:ulus_sahib_qiran_realm }
+					is_eranzamin_consolidation_sustained = yes
+				}
+			}
+		}
+
+		save_scope_as = ulus_sq_old_realm
+		ruler = { save_scope_as = ulus_sq_man }
+		capital = { save_scope_as = ulus_sq_seat }
+		set_global_variable = {
+			name = timur_character
+			value = scope:ulus_sq_man
+		}
+		c:TIM = { save_scope_as = ulus_tim }
+
+		every_owned_location = {
+			add_core = scope:ulus_tim
+		}
+		scope:ulus_sq_seat = {
+			# base: "create an army so that a released army based country
+			# does actually think it exists"
+			while = {
+				count = 12
+				create_sub_unit_with_owner = {
+					type = a_steppe_horse_archers
+					owner = scope:ulus_tim
+				}
+			}
+		}
+		create_country_from_cores_in_our_locations = scope:ulus_tim
+
+		scope:ulus_tim = {
+			set_capital = scope:ulus_sq_seat
+			set_new_ruler = global_var:timur_character
+			set_variable = {
+				name = tim_founding_father
+				value = global_var:timur_character
+			}
+			change_culture = scope:ulus_sq_old_realm.culture
+			change_religion = scope:ulus_sq_old_realm.religion
+			change_country_type = army
+			change_government_type = government_type:steppe_horde
+			add_reform = government_reform:legacy_of_genghis
+			change_heir_selection = heir_selection:tribal_oldest_male
+			add_policy = policy:mongol_law_policy
+			change_country_color = map_TIM
+			setup_societal_values = {
+				centralization_vs_decentralization = -60
+				traditionalist_vs_innovative = 40
+				spiritualist_vs_humanist = -50
+				aristocracy_vs_plutocracy = -60
+				serfdom_vs_free_subjects = 50
+				mercantilism_vs_free_trade = 50
+				belligerent_vs_conciliatory = -80
+				quality_vs_quantity = -50
+				offensive_vs_defensive = -90
+				land_vs_naval = -80
+				capital_economy_vs_traditional_economy = 100
+				individualism_vs_communalism = 60
+				outward_vs_inward = -20
+			}
+			if = {
+				limit = { country_rank_level < 3 }
+				set_country_rank = country_rank:rank_kingdom
+			}
+			add_horde_unity = horde_unity_extreme_bonus
+			add_gold = ulus_sahib_qiran_gold
+			add_estate_satisfaction = { type = estate_type:nobles_estate value = estate_satisfaction_radical_bonus }
+			add_estate_satisfaction = { type = estate_type:clergy_estate value = estate_satisfaction_radical_bonus }
+			add_estate_satisfaction = { type = estate_type:peasants_estate value = estate_satisfaction_radical_bonus }
+			add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_radical_bonus }
+			every_owned_location = {
+				change_control = control_radical_bonus
+			}
+			every_province = {
+				limit = { any_location_in_province = { NOT = { integration_level = core } } }
+				change_province_integration = core
+			}
+
+			# The name: Timurid only for Temür.
+			if = {
+				limit = {
+					NOT = { ruler ?= character:chg_timur_lame_borjigin }
+				}
+				if = {
+					limit = { scope:ulus_sq_old_realm = { tag = QUN } }
+					change_country_name = SQR_QUN
+					change_country_adjective = SQR_QUN_ADJ
+				}
+				else_if = {
+					limit = { scope:ulus_sq_old_realm = { tag = BRL } }
+					change_country_name = SQR_BRL
+					change_country_adjective = SQR_BRL_ADJ
+				}
+				else_if = {
+					limit = { scope:ulus_sq_old_realm = { tag = JLY } }
+					change_country_name = SQR_JLY
+					change_country_adjective = SQR_JLY_ADJ
+				}
+				else_if = {
+					limit = { scope:ulus_sq_old_realm = { tag = SLD } }
+					change_country_name = SQR_SLD
+					change_country_adjective = SQR_SLD_ADJ
+				}
+				else_if = {
+					limit = { scope:ulus_sq_old_realm = { tag = ART } }
+					change_country_name = SQR_ART
+					change_country_adjective = SQR_ART_ADJ
+				}
+				else_if = {
+					limit = { scope:ulus_sq_old_realm = { tag = APD } }
+					change_country_name = SQR_APD
+					change_country_adjective = SQR_APD_ADJ
+				}
+				else_if = {
+					limit = { scope:ulus_sq_old_realm = { tag = YSU } }
+					change_country_name = SQR_YSU
+					change_country_adjective = SQR_YSU_ADJ
+				}
+				else_if = {
+					limit = { scope:ulus_sq_old_realm = { tag = KTT } }
+					change_country_name = SQR_KTT
+					change_country_adjective = SQR_KTT_ADJ
+				}
+				else_if = {
+					limit = { scope:ulus_sq_old_realm = { tag = NGD } }
+					change_country_name = SQR_NGD
+					change_country_adjective = SQR_NGD_ADJ
+				}
+				else_if = {
+					limit = { scope:ulus_sq_old_realm = { tag = BSD } }
+					change_country_name = SQR_BSD
+					change_country_adjective = SQR_BSD_ADJ
+				}
+				else_if = {
+					limit = { scope:ulus_sq_old_realm = { tag = DGH } }
+					change_country_name = SQR_DGH
+					change_country_adjective = SQR_DGH_ADJ
+				}
+				else = {
+					# The land-named domains (Fergana, Chach, Issyk-Kul,
+					# Dzungaria), a darugha's new house, anyone else.
+					change_country_name = SQR_REALM
+					change_country_adjective = SQR_REALM_ADJ
+				}
+			}
+		}
+		cancel_subject = scope:ulus_tim
+		scope:ulus_sq_seat = {
+			if = {
+				limit = {
+					NOT = { has_building = building_type:kurultai }
+				}
+				construct_building = {
+					building_type = building_type:kurultai
+					cost_multiplier = 0
+					cost_multiplier_reason = "game_concept_event"
+					instant = yes
+				}
+			}
+		}
+
+		# The khan goes with the man who holds him.
+		every_character = {
+			limit = {
+				is_alive = yes
+				var:patron_country ?= scope:ulus_sq_old_realm
+			}
+			set_variable = {
+				name = patron_country
+				value = scope:ulus_tim
+			}
+			move_country = scope:ulus_tim
+		}
+
+		# base flavor_tim.8, option b: the player rides on as TIM; the
+		# landless old realm is folded in.
+		if = {
+			limit = { is_ai = no }
+			change_player = scope:ulus_tim
+		}
+		enable_situation_effect = { type = rise_of_timur }
+		scope:ulus_tim = {
+			annex_country = {
+				country = scope:ulus_sq_old_realm
+				reason = MilitaryConquest
+				transfer = yes
+			}
+		}
+		activate_situation = situation:rise_of_timur
+
+		scope:ulus_tim = { save_scope_as = ulus_sahib_qiran_realm }
+	}
+}

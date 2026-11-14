@@ -17,5 +17,19 @@ on_ulus_chaghatay_start = {
 		international_organization:ulus_chaghatay ?= {
 			ulus_chaghatay_rebuild_ledger = yes
 		}
+
+		# NO PLOT ARMOUR. Base setup gives the historical Temür Barlas
+		# the character modifier is_tim_timur (+30 life expectancy, "he
+		# lived to 1405 - prevent early random death from collapsing the
+		# Timurid arc"). The Timurid arc is no longer scheduled here: the
+		# Ṣāḥib-qirān is whoever wins the Amirs' Regency
+		# (scripted_effects/16_sahib_qiran_effects.txt), and Temür may
+		# die young like any other amir's son.
+		character:chg_timur_lame_borjigin ?= {
+			if = {
+				limit = { has_character_modifier = is_tim_timur }
+				remove_character_modifier = is_tim_timur
+			}
+		}
 	}
 }

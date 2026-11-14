@@ -1086,64 +1086,83 @@ ulus_end_bulqaq = {
 #
 # The conquest ambition (the TIM tag and base's Rise of Timur) is
 # ulus_sahib_qiran_conquest_ambition, in
-# scripted_effects/16_sahib_qiran_effects.txt.
+# scripted_effects/16_sahib_qiran_effects.txt; it is called from here.
 # ---------------------------------------------------------------------
 ulus_end_sahib_qiran = {
 	save_scope_as = ulus_sahib_qiran_realm
+
+	# The amirs are sorted FIRST, by what they think of the man they
+	# know: if the conquest ambition below moves him to a new tag, their
+	# opinion of that tag would be a blank.
 	international_organization:ulus_chaghatay ?= {
 		every_international_organization_member = {
 			limit = { NOT = { this = scope:ulus_sahib_qiran_realm } }
-			add_to_list = ulus_to_reckon
+			if = {
+				limit = {
+					is_subject = no
+					opinion = {
+						target = scope:ulus_sahib_qiran_realm
+						value >= ulus_sahib_qiran_loyal_opinion
+					}
+				}
+				add_to_list = ulus_loyal_amirs
+			}
+			else = {
+				add_to_list = ulus_defiant_amirs
+			}
 		}
 		# The khan keeps his marks: he is still held.
 		remove_variable = ulus_held_khan
 		ulus_regency_clear = yes
 	}
 	ulus_unseat_regent = yes
-	set_variable = ulus_sahib_qiran
+
+	# The conquest ambition: TIM and base's Rise of Timur for this man,
+	# if Iran lies open (scripted_effects/16_sahib_qiran_effects.txt).
+	# Re-saves scope:ulus_sahib_qiran_realm as TIM when it releases it.
+	ulus_sahib_qiran_conquest_ambition = yes
+
+	scope:ulus_sahib_qiran_realm = {
+		set_variable = ulus_sahib_qiran
+		if = {
+			limit = {
+				government_type = government_type:steppe_horde
+				NOT = { has_reform = government_reform:gurkan_of_the_ulus }
+			}
+			add_reform = government_reform:gurkan_of_the_ulus
+		}
+		add_country_modifier = {
+			modifier = sahib_qiran_ascendant_mod
+			years = 10
+		}
+		add_horde_unity = 50
+		add_prestige = 25
+	}
 	set_global_variable = { name = ulus_sahib_qiran_realm value = scope:ulus_sahib_qiran_realm }
-	if = {
-		limit = { has_ruler = yes }
-		set_global_variable = { name = ulus_sahib_qiran_character value = scope:ulus_sahib_qiran_realm.ruler }
-	}
-	if = {
-		limit = { government_type = government_type:steppe_horde }
-		add_reform = government_reform:gurkan_of_the_ulus
-	}
-	add_country_modifier = {
-		modifier = sahib_qiran_ascendant_mod
-		years = 10
-	}
-	add_horde_unity = 50
-	add_prestige = 25
 
 	every_in_list = {
-		list = ulus_to_reckon
+		list = ulus_loyal_amirs
+		remove_variable = ulus_chaghatay_admitted
+		remove_variable = ulus_kingmaker_score
+		remove_variable = ulus_amir_share
+		remove_variable = ulus_weight
+		make_subject_of = {
+			target = scope:ulus_sahib_qiran_realm
+			type = subject_type:vassal
+		}
+	}
+	every_in_list = {
+		list = ulus_defiant_amirs
 		remove_variable = ulus_chaghatay_admitted
 		remove_variable = ulus_kingmaker_score
 		remove_variable = ulus_amir_share
 		remove_variable = ulus_weight
 		save_scope_as = ulus_reckoned
-		if = {
-			limit = {
-				is_subject = no
-				opinion = {
-					target = scope:ulus_sahib_qiran_realm
-					value >= ulus_sahib_qiran_loyal_opinion
-				}
-			}
-			make_subject_of = {
-				target = scope:ulus_sahib_qiran_realm
-				type = subject_type:vassal
-			}
-		}
-		else = {
-			scope:ulus_sahib_qiran_realm = {
-				add_casus_belli = {
-					type = casus_belli:cb_sahib_qiran_submission
-					target = scope:ulus_reckoned
-					years = 20
-				}
+		scope:ulus_sahib_qiran_realm = {
+			add_casus_belli = {
+				type = casus_belli:cb_sahib_qiran_submission
+				target = scope:ulus_reckoned
+				years = 20
 			}
 		}
 	}

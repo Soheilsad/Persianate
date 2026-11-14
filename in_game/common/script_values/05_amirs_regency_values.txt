@@ -232,3 +232,6 @@ ulus_khan_triumphant_peace_years = 15
 # A member whose opinion of the Ṣāḥib-qirān is at least this bows and
 # becomes his subject; the rest are left to be subjugated.
 ulus_sahib_qiran_loyal_opinion = 0
+# Gold in the new tag's treasury when the conquest ambition releases
+# TIM around him (base's scheduled Timur is handed 3000).
+ulus_sahib_qiran_gold = 1000
