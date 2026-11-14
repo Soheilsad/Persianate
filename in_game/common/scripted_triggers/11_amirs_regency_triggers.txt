@@ -87,6 +87,9 @@ ulus_regency_bar_met = {
 		international_organization:ulus_chaghatay ?= { has_variable = ulus_khan_triumphant_peace }
 	}
 	OR = {
+		# DEBUG (decisions/zz_persianate_debug_decisions.txt): the bar
+		# counted as met. Remove with the debug decisions.
+		international_organization:ulus_chaghatay ?= { has_variable = ulus_debug_bar_met }
 		AND = {
 			country_has_estate = estate_type:nobles_estate
 			"estate_power(estate_type:nobles_estate)" >= ulus_regency_noble_power_now

@@ -172,3 +172,40 @@ persianate_debug_bulqaq = { # DEBUG: the gap empty three years
 		}
 	}
 }
+
+persianate_debug_bar_met = { # DEBUG: toggle "the begs outweigh the throne"
+	decision_category = country_specific_decisions
+
+	potential = {
+		is_ai = no
+		is_ulus_chaghatay_member = yes
+		international_organization:ulus_chaghatay ?= {
+			NOT = { has_variable = ulus_regency }
+		}
+	}
+
+	allow = {
+		always = yes
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	option = {
+		name = persianate_debug_bar_met.a
+		ai_chance = { value = 0 }
+		effect = {
+			international_organization:ulus_chaghatay ?= {
+				if = {
+					limit = { has_variable = ulus_debug_bar_met }
+					remove_variable = ulus_debug_bar_met
+				}
+				else = {
+					set_variable = ulus_debug_bar_met
+				}
+				ulus_chaghatay_rebuild_ledger = yes
+			}
+		}
+	}
+}

@@ -56,9 +56,13 @@ ulus_rise_against_the_khan = {
 			# The amirs do not follow a nobody.
 			custom_tooltip = {
 				text = ulus_rising_kingmaker_tt
-				is_target_in_global_variable_list = {
-					name = ulus_kingmakers
-					target = this
+				OR = {
+					is_target_in_global_variable_list = {
+						name = ulus_kingmakers
+						target = this
+					}
+					# DEBUG: any amir may rise while the debug bar is on.
+					international_organization:ulus_chaghatay ?= { has_variable = ulus_debug_bar_met }
 				}
 			}
 		}

@@ -107,3 +107,6 @@
  persianate_debug_bulqaq.title: "DEBUG: Bulqaq"
  persianate_debug_bulqaq.desc: "Testing aid. Empties the legitimacy gap and counts it as empty for three years. The Bulqaq event reaches the regent at the next monthly tick."
  persianate_debug_bulqaq.a: "Let it fall apart."
+ persianate_debug_bar_met.title: "DEBUG: The Begs Outweigh the Throne (toggle)"
+ persianate_debug_bar_met.desc: "Testing aid. Counts the regency bar as met, whatever the two readings say, until this is taken again. While it is on, any amir may use Rise Against the Khan, and a khan's death starts a regency. The panel's line under the standing changes with it."
+ persianate_debug_bar_met.a: "Switch it."
