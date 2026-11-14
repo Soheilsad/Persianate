@@ -1,0 +1,41 @@
+# How a tümen's raid ends (scripted_effects/21_amirs_raid_effects.txt).
+# on_winning_war / on_losing_war: root = country, scope:winner,
+# scope:loser (base _hardcoded.txt). The raider carries ulus_raiding =
+# the realm he rode against (set by ulus_lead_a_raid, five years).
+# Re-declaring the on_actions EXTENDS them.
+
+on_winning_war = {
+	on_actions = {
+		ulus_raid_war_won
+	}
+}
+
+ulus_raid_war_won = {
+	trigger = {
+		has_variable = ulus_raiding
+		scope:winner ?= { this = root }
+		scope:loser ?= { this = root.var:ulus_raiding }
+	}
+	effect = {
+		scope:loser = { save_scope_as = ulus_raided }
+		ulus_raid_won = yes
+	}
+}
+
+on_losing_war = {
+	on_actions = {
+		ulus_raid_war_lost
+	}
+}
+
+ulus_raid_war_lost = {
+	trigger = {
+		has_variable = ulus_raiding
+		scope:loser ?= { this = root }
+		scope:winner ?= { this = root.var:ulus_raiding }
+	}
+	effect = {
+		scope:winner = { save_scope_as = ulus_raided }
+		ulus_raid_lost = yes
+	}
+}

@@ -1,0 +1,273 @@
+# ============================================================
+# THE TÜMENS' RAIDS.
+#
+# In 1337 the khan of the Chaghatay led nobody anywhere: no campaign of
+# a khan against a foreign power is recorded between Tarmashirin's fall
+# in 1334 and Qazan's death in 1346. The tribes on the edges never
+# stopped. The Qara'unas and the Negüderi went down every winter into
+# Sistan, Kirman and the Indus country and took what they passed; and
+# the first great expedition after 1334 was a REGENT's, Qazaghan against
+# Herat in 1351, which ended in the Kart paying.
+#
+# What a raid was for: herds, silver, captives to ransom or sell, and a
+# payment not to return. Almost never land.
+#
+# The faith. A free Muslim may not be enslaved and war on Muslims wants a
+# cause. In practice that set the price and the direction: unbelievers
+# were lawful prey and their raiding was ghaza; against a realm of one's
+# own faith a chief took herds and tribute, ransomed his captives back,
+# and either named a cause or paid for the lack of one in his name and
+# with the men of religion.
+#
+#   ulus_lead_a_raid   an amir, or the regent, against a neighbour
+#                      outside the ulus. Declares the war at once
+#                      (cb_tumen_raid). The khan on his seat does not
+#                      raid; a regent does, and his gap is filled by it.
+# How it ends: on_action/37_amirs_raid_hooks.txt.
+# ============================================================
+
+ulus_lead_a_raid = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_lead_a_raid
+		years = 3
+	}
+
+	price = price:ulus_lead_a_raid_price
+
+	potential = {
+		scope:actor = {
+			OR = {
+				is_ulus_chaghatay_amir = yes
+				is_ulus_regent = yes
+			}
+		}
+	}
+
+	allow = {
+		scope:actor = {
+			at_war = no
+			NOT = { has_variable = ulus_raiding }
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	# Our own neighbours outside the ulus.
+	select_trigger = {
+		looking_for_a = country
+		target_flag = target_country
+		name = "choose_country"
+		none_available_msg_key = "no_valid_countries"
+		interaction_source_list = {
+			scope:actor = {
+				every_neighbor_country = {
+					limit = {
+						is_rebel_country = no
+						NOT = { is_member_of_international_organization = scope:recipient }
+					}
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+		}
+		enabled = {
+			scope:actor = {
+				NOT = { has_truce_with = prev }
+				NOT = { is_allied_with = { target = prev } }
+				can_declare_war_on = prev
+			}
+			NOT = { is_subject_of = scope:actor }
+			# A patron is not raided.
+			custom_tooltip = {
+				text = ulus_raid_not_our_patron_tt
+				NOT = { scope:actor = { var:ulus_outside_backer ?= prev } }
+			}
+		}
+		column = { data = name }
+		column = { data = expected_army_size }
+		column = { data = population }
+	}
+
+	effect = {
+		scope:actor = {
+			set_variable = { name = ulus_raiding value = scope:target_country years = 5 }
+		}
+		# What the faith makes of it.
+		if = {
+			limit = { scope:target_country = { ulus_raid_is_ghaza = yes } }
+			custom_tooltip = ulus_raid_ghaza_tt
+			scope:actor = {
+				if = {
+					limit = { country_has_estate = estate_type:clergy_estate }
+					add_estate_satisfaction = { type = estate_type:clergy_estate value = ulus_raid_ghaza_clergy }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:target_country = {
+					ulus_raid_is_on_own_faith = yes
+					NOT = { ulus_raid_has_pretext = yes }
+				}
+			}
+			custom_tooltip = ulus_raid_no_pretext_tt
+			scope:actor = {
+				add_prestige = ulus_raid_muslim_prestige
+				if = {
+					limit = { country_has_estate = estate_type:clergy_estate }
+					add_estate_satisfaction = { type = estate_type:clergy_estate value = ulus_raid_muslim_clergy }
+				}
+			}
+		}
+		else_if = {
+			limit = { scope:target_country = { ulus_raid_is_on_own_faith = yes } }
+			custom_tooltip = ulus_raid_pretext_tt
+		}
+		custom_tooltip = ulus_raid_spoils_tt
+		scope:actor = {
+			declare_war_with_cb = {
+				target = scope:target_country
+				type = casus_belli:cb_tumen_raid
+			}
+		}
+		# He will want it back.
+		scope:target_country = {
+			add_casus_belli = {
+				type = casus_belli:cb_raiding_retaliation
+				target = scope:actor
+				years = 5
+			}
+		}
+	}
+
+	# The AI chief raids for what it brings and against whom he can beat.
+	#   - Never a realm that outmatches him; readily one he outmatches.
+	#   - The richer the prey against his own means, the better.
+	#   - Unbelievers are free prey; a realm of his own faith with no
+	#     cause costs his name, so he wants a clearer margin for it, and
+	#     will not do it at all with little prestige to spend.
+	#   - A chief short of silver, or a regent whose gap is under its
+	#     line, needs a raid; a chief whose horde is coming apart cannot
+	#     risk one.
+	#   - Temperament: the aggressive raid sooner, the cautious seldom.
+	ai_will_do = {
+		add = -30
+		if = {
+			limit = { exists = scope:target_country }
+			if = {
+				limit = {
+					scope:actor.military_strength >= {
+						value = scope:target_country.military_strength
+						multiply = 1.5
+					}
+				}
+				add = 40
+			}
+			else_if = {
+				limit = {
+					scope:actor.military_strength >= {
+						value = scope:target_country.military_strength
+						multiply = 1.1
+					}
+				}
+				add = 15
+			}
+			else = {
+				add = -80
+			}
+			# Wealth of the prey against the raider's own: up to +40.
+			if = {
+				limit = { scope:actor.country_tax_base > 0 }
+				add = {
+					value = scope:target_country.country_tax_base
+					divide = scope:actor.country_tax_base
+					multiply = 15
+					max = 40
+				}
+			}
+			if = {
+				limit = { scope:target_country = { ulus_raid_is_ghaza = yes } }
+				add = 15
+			}
+			if = {
+				limit = {
+					scope:target_country = {
+						ulus_raid_is_on_own_faith = yes
+						NOT = { ulus_raid_has_pretext = yes }
+					}
+				}
+				add = -20
+				if = {
+					limit = { scope:actor = { prestige < 20 } }
+					add = -40
+				}
+			}
+			if = {
+				limit = { scope:target_country = { at_war = yes } }
+				add = 15	# his back is turned
+			}
+			add = {
+				value = "scope:actor.opinion(scope:target_country)"
+				multiply = -0.1
+			}
+		}
+		if = {
+			limit = { scope:actor = { gold < 0 } }
+			add = 20
+		}
+		if = {
+			limit = {
+				scope:actor = { is_ulus_regent = yes }
+				international_organization:ulus_chaghatay ?= {
+					has_variable = ulus_gap
+					var:ulus_gap < ulus_gap_filled_line
+				}
+			}
+			add = 30
+		}
+		if = {
+			limit = { scope:actor = { horde_unity < 30 } }
+			add = -30
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_aggressive } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_expansionist } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_opportunistic } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -20
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_isolationist } }
+			add = -25
+		}
+	}
+}

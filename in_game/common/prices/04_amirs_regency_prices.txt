@@ -58,3 +58,7 @@ ulus_ask_outside_support_price = {
 ulus_back_an_amir_price = {
 	scaled_gold = 3
 }
+
+ulus_lead_a_raid_price = {
+	political_influence = 5
+}

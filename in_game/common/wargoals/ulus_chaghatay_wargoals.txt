@@ -91,3 +91,23 @@ tumen_feud_wargoal = {
 
 	ticking_war_score = 0.25
 }
+
+# The raid: win in the field and go home. Land is priced so that it is
+# not the point (base superiority_raiding does the same), and the score
+# ticks fast: a raid that drags on has failed.
+tumen_raid_wargoal = {
+	type = superiority
+	war_name = "TUMEN_RAID_WAR_NAME"
+
+	attacker = {
+		conquer_cost = 2.0
+		subjugate_cost = 1.5
+	}
+
+	defender = {
+		conquer_cost = 1.0
+		subjugate_cost = 1.0
+	}
+
+	ticking_war_score = 0.5
+}

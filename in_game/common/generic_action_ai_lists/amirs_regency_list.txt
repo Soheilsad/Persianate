@@ -19,5 +19,6 @@ amirs_regency_actions_list = {
 		ulus_khan_ask_pledge
 		ulus_press_the_feud
 		ulus_ask_outside_support
+		ulus_lead_a_raid
 	}
 }

@@ -1,0 +1,89 @@
+# The tümens' raids — how they end
+# (on_action/37_amirs_raid_hooks.txt; events/amirs_raid_events.txt).
+
+# COUNTRY scope: the raider, having WON. scope:ulus_raided is the beaten
+# realm. The herds and goods are driven off at once; what is done with
+# the captives is the chief's choice (amirs_raid.1).
+ulus_raid_won = {
+	remove_variable = ulus_raiding
+	save_scope_as = ulus_raider
+	set_local_variable = {
+		name = ulus_plunder
+		value = {
+			value = scope:ulus_raided.country_tax_base
+			multiply = ulus_raid_plunder
+			min = 0
+		}
+	}
+	add_gold = local_var:ulus_plunder
+	scope:ulus_raided = {
+		add_gold = {
+			value = local_var:ulus_plunder
+			multiply = -0.5
+		}
+	}
+	# In the ulus: a chief who brings his men home rich stands taller.
+	if = {
+		limit = { has_variable = ulus_weight }
+		set_variable = { name = ulus_weight_boost value = ulus_raid_weight months = ulus_raid_weight_months }
+		ulus_add_renown = { AMOUNT = ulus_raid_renown }
+		international_organization:ulus_chaghatay ?= {
+			ulus_chaghatay_rebuild_ledger = yes
+		}
+	}
+	if = {
+		limit = { government_type = government_type:steppe_horde }
+		add_horde_unity = ulus_raid_unity
+	}
+	trigger_event_non_silently = amirs_raid.1
+}
+
+# COUNTRY scope: the raider, having LOST.
+ulus_raid_lost = {
+	remove_variable = ulus_raiding
+	add_prestige = ulus_raid_lost_prestige
+	if = {
+		limit = { government_type = government_type:steppe_horde }
+		add_horde_unity = ulus_raid_lost_unity
+	}
+	trigger_event_non_silently = amirs_raid.2
+}
+
+# COUNTRY scope: the raider ransoms the captives back; scope:ulus_raided pays.
+ulus_raid_ransom_captives = {
+	set_local_variable = {
+		name = ulus_ransom
+		value = {
+			value = scope:ulus_raided.country_tax_base
+			multiply = ulus_raid_ransom
+			min = 0
+		}
+	}
+	add_gold = local_var:ulus_ransom
+	scope:ulus_raided = {
+		add_gold = {
+			value = local_var:ulus_ransom
+			multiply = -1
+		}
+	}
+}
+
+# COUNTRY scope: the raider sells them in the markets instead.
+ulus_raid_sell_captives = {
+	add_gold = {
+		value = scope:ulus_raided.country_tax_base
+		multiply = ulus_raid_sale
+		min = 0
+	}
+	if = {
+		limit = {
+			religion.group = religion_group:muslim
+			scope:ulus_raided = { religion.group = religion_group:muslim }
+		}
+		add_prestige = ulus_raid_sale_prestige
+		if = {
+			limit = { country_has_estate = estate_type:clergy_estate }
+			add_estate_satisfaction = { type = estate_type:clergy_estate value = ulus_raid_sale_clergy }
+		}
+	}
+}

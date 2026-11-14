@@ -1,0 +1,30 @@
+# The tümens' raids — tests.
+
+# COUNTRY scope (the realm to be raided); scope:actor is the raider.
+# A raid on a realm of the raider's own faith needs a cause, or it costs
+# him. The causes a chief could give: the realm is a patron of his rivals
+# in the ulus (it backs an amir), it is his declared rival, or it is at
+# war with the seat of the ulus.
+ulus_raid_has_pretext = {
+	OR = {
+		has_variable = ulus_backs_amir
+		is_rival_of = scope:actor
+		AND = {
+			international_organization:ulus_chaghatay ?= { international_organization_has_leader = yes }
+			is_at_war_with = international_organization:ulus_chaghatay.leader_country
+		}
+	}
+}
+
+# COUNTRY scope (the realm to be raided); scope:actor is the raider.
+# Same faith, both of them Muslim: the case the law speaks to.
+ulus_raid_is_on_own_faith = {
+	religion.group = religion_group:muslim
+	religion = scope:actor.religion
+}
+
+# COUNTRY scope (the realm to be raided): unbelievers, to a Muslim raider.
+ulus_raid_is_ghaza = {
+	scope:actor = { religion.group = religion_group:muslim }
+	NOT = { religion.group = religion_group:muslim }
+}

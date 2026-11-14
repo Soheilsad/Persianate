@@ -669,3 +669,36 @@ ulus_outside_support_acceptance = {
 		add = -10
 	}
 }
+
+# =====================================================================
+# 17. THE TÜMENS' RAIDS (generic_actions/amirs_raid_actions.txt,
+#     scripted_effects/21_amirs_raid_effects.txt)
+# =====================================================================
+# Raiding a realm of one's own faith with no pretext: prestige lost at
+# once, and what the clergy think of it.
+ulus_raid_muslim_prestige = -10
+ulus_raid_muslim_clergy = -0.05
+# Raiding unbelievers is ghaza.
+ulus_raid_ghaza_clergy = 0.05
+# The spoils of a raid won, in multiples of the beaten realm's tax base:
+# what is driven and carried off at once (the victim loses half of it:
+# the rest is his subjects' own herds and goods);
+ulus_raid_plunder = 2
+# the captives ransomed back to their own (the victim pays);
+ulus_raid_ransom = 2
+# the captives sold in the markets instead (nobody pays but the buyers).
+ulus_raid_sale = 3
+# Selling Muslim captives.
+ulus_raid_sale_prestige = -10
+ulus_raid_sale_clergy = -0.10
+# What a raid won does for the chief in the ulus: weight for a time,
+# renown, and a horde that follows him.
+ulus_raid_weight = 2
+ulus_raid_weight_months = 36
+ulus_raid_renown = 2
+ulus_raid_unity = 5
+# A raid lost.
+ulus_raid_lost_prestige = -10
+ulus_raid_lost_unity = -10
+# The regent's gap is filled by a raid won as by any war
+# (on_action/31_amirs_regency_hooks.txt already does that).

@@ -145,3 +145,22 @@ cb_tumen_feud = {
 	}
 	war_goal_type = tumen_feud_wargoal
 }
+
+# THE TÜMEN'S RAID. A chief of the ulus against a neighbour outside it,
+# for what can be driven or carried home: herds, silver, captives, and a
+# payment not to come back. Given, and the war declared, by the action
+# ulus_lead_a_raid (generic_actions/amirs_raid_actions.txt); how it ends
+# is read by on_action/37_amirs_raid_hooks.txt.
+cb_tumen_raid = {
+	create_visible = {
+		always = no
+	}
+	create_enabled = {
+		always = no
+	}
+	declare_enabled = {
+		has_variable = ulus_raiding
+	}
+	speed = 20
+	war_goal_type = tumen_raid_wargoal
+}

@@ -1,0 +1,116 @@
+namespace = amirs_raid
+
+# The tümens' raids (generic_actions/amirs_raid_actions.txt).
+
+# .1 — THE SPOILS. To the raider who won; scope:ulus_raided is the
+# beaten realm. The herds are already home (ulus_raid_won). What remains
+# is the captives. Ransoming them to their own people is the custom and
+# offends nobody. Selling them pays more; if they are Muslims taken by a
+# Muslim it is against the law of the faith, and it is remembered.
+amirs_raid.1 = {
+	type = country_event
+	title = amirs_raid.1.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					religion.group = religion_group:muslim
+					scope:ulus_raided = { religion.group = religion_group:muslim }
+				}
+				desc = amirs_raid.1.desc_muslim
+			}
+			triggered_desc = {
+				trigger = { always = yes }
+				desc = amirs_raid.1.desc
+			}
+		}
+	}
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	trigger = {
+		exists = scope:ulus_raided
+	}
+
+	# Ransom them back.
+	option = {
+		name = amirs_raid.1.a
+		custom_tooltip = amirs_raid_ransom_tt
+		ulus_raid_ransom_captives = yes
+		ai_chance = {
+			factor = 2
+			# The lawful course with captives of one's own faith.
+			modifier = {
+				factor = 3
+				religion.group = religion_group:muslim
+				scope:ulus_raided = { religion.group = religion_group:muslim }
+			}
+			# The beaten realm cannot pay what it does not have.
+			modifier = {
+				factor = 0.3
+				scope:ulus_raided = { gold < 0 }
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					ai_personality = ai_personality:ai_cautious
+					ai_personality = ai_personality:ai_friendly
+				}
+			}
+		}
+	}
+	# Sell them in the markets.
+	option = {
+		name = amirs_raid.1.b
+		custom_tooltip = amirs_raid_sale_tt
+		ulus_raid_sell_captives = yes
+		ai_chance = {
+			factor = 1
+			# Unbelievers: nothing to weigh but the price.
+			modifier = {
+				factor = 4
+				NOT = { scope:ulus_raided = { religion.group = religion_group:muslim } }
+			}
+			# A chief in debt takes the better price whatever is said of it.
+			modifier = {
+				factor = 3
+				gold < 0
+			}
+			# One with little name left to lose it does not.
+			modifier = {
+				factor = 0.3
+				prestige < 20
+				scope:ulus_raided = { religion.group = religion_group:muslim }
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					ai_personality = ai_personality:ai_aggressive
+					ai_personality = ai_personality:ai_opportunistic
+				}
+			}
+		}
+	}
+}
+
+# .2 — THE RAID FAILS. To the raider who lost.
+amirs_raid.2 = {
+	type = country_event
+	title = amirs_raid.2.title
+	desc = amirs_raid.2.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_raid.2.a
+		custom_tooltip = amirs_raid_lost_tt
+	}
+}
