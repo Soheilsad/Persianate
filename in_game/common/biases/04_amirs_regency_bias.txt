@@ -36,3 +36,16 @@ opinion_ulus_raised_by_him = {
 	value = 50
 	yearly_decay = 2
 }
+
+
+# From the second stage (the amirs have fallen out): every house that
+# is not both weaker than the keeper of the khan and his ally.
+opinion_ulus_keeps_what_is_ours = {
+	value = -100
+	yearly_decay = 2
+}
+# A house whose pledged tümen was talked away, toward the tümen.
+opinion_ulus_pledge_broken = {
+	value = -40
+	yearly_decay = 4
+}

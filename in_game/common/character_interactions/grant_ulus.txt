@@ -193,10 +193,30 @@ grant_ulus = {
 	# grown prince idle. Kept modest: the darugha is the cheaper answer
 	# and should stay the default road.
 	# 1.4: ai_will_do is a script value; modifier = { factor/add } became if = { limit = { } multiply/add }.
-	ai_will_do = {
-		add = 0
+	# The AI had no tick at all and never granted one (author, 2026-11-14).
+	ai_tick = monthly
+	ai_tick_frequency = 24
 
+	# A khan gives a share when he has a far country he cannot hold and a
+	# realm that is coming apart, and he stops when the princes with
+	# shares are already enough to contest his own son.
+	ai_will_do = {
+		add = -10
+		# Country he does not hold: a share of his cores under a quarter
+		# control.
 		if = {
+			limit = {
+				scope:actor = {
+					any_core_location = {
+						percent >= 0.30
+						owner ?= scope:actor
+						local_control < 25
+					}
+				}
+			}
+			add = 30
+		}
+		else_if = {
 			limit = {
 				scope:actor = {
 					any_core_location = {
@@ -206,17 +226,41 @@ grant_ulus = {
 					}
 				}
 			}
+			add = 15
+		}
+		# The horde's unity: a share buys the princes' quiet.
+		if = {
+			limit = { scope:actor = { horde_unity < 30 } }
 			add = 25
 		}
-
+		else_if = {
+			limit = { scope:actor = { horde_unity < 50 } }
+			add = 12
+		}
+		# The begs are heavy: a prince with tümens is a counterweight.
 		if = {
 			limit = {
-				scope:actor = { horde_unity < 50 }
+				scope:actor = {
+					country_has_estate = estate_type:nobles_estate
+					"estate_power(estate_type:nobles_estate)" > 0.4
+				}
 			}
-			add = 20
+			add = 10
 		}
-
-		# Do not hand out the realm one province at a time.
+		# Not while he is fighting for his life.
+		if = {
+			limit = { scope:actor = { at_war = yes } }
+			add = -15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_friendly } }
+			add = 5
+		}
+		# Each share already granted makes the next dearer; three is the end.
 		if = {
 			limit = {
 				scope:actor = {
@@ -227,6 +271,25 @@ grant_ulus = {
 				}
 			}
 			multiply = 0
+		}
+		else_if = {
+			limit = {
+				scope:actor = {
+					any_subject = {
+						count >= 2
+						is_subject_type = ulus
+					}
+				}
+			}
+			add = -20
+		}
+		else_if = {
+			limit = {
+				scope:actor = {
+					any_subject = { is_subject_type = ulus }
+				}
+			}
+			add = -10
 		}
 	}
 }

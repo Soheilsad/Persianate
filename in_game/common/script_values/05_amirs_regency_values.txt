@@ -382,8 +382,22 @@ ulus_breaking_service_prestige = 25
 #     Each term is shown to the player in the action's tooltip.
 # =====================================================================
 ulus_pledge_acceptance = {
-	# A tümen does not give half its weight away for nothing.
+	# A tümen does not give its weight away for nothing.
 	value = -25
+	# Already pledged elsewhere: its word is given, and it is moved only
+	# if it thinks better of us than of the house it stands behind.
+	if = {
+		limit = { has_variable = ulus_pledged_to }
+		add = -30
+		if = {
+			limit = { exists = scope:ulus_current_patron }
+			add = {
+				value = "opinion(scope:actor)"
+				subtract = "opinion(scope:ulus_current_patron)"
+				multiply = 0.167
+			}
+		}
+	}
 	# What they think of us: a sixth of their opinion (opinion runs to ±200).
 	add = {
 		value = "opinion(scope:actor)"

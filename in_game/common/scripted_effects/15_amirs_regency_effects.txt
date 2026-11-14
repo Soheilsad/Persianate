@@ -333,6 +333,14 @@ ulus_unseat_regent = {
 		limit = { has_country_modifier = amirs_regency_strain }
 		remove_country_modifier = amirs_regency_strain
 	}
+	if = {
+		limit = { has_country_modifier = ulus_khan_keeper_office }
+		remove_country_modifier = ulus_khan_keeper_office
+	}
+	if = {
+		limit = { has_country_modifier = ulus_khan_keeper_influence }
+		remove_country_modifier = ulus_khan_keeper_influence
+	}
 	# The office goes with the khan.
 	if = {
 		limit = { has_country_modifier = beglerbeg_office_hardened }
@@ -421,6 +429,14 @@ ulus_begin_regency = {
 		}
 		scope:ulus_old_seat ?= {
 			trigger_event_non_silently = amirs_regency.10
+		}
+		every_international_organization_member = {
+			limit = {
+				is_ai = no
+				NOT = { this = scope:ulus_new_regent }
+				NOT = { this = scope:ulus_old_seat }
+			}
+			trigger_event_non_silently = amirs_regency.3
 		}
 	}
 }
@@ -595,6 +611,7 @@ ulus_regency_monthly_tick = {
 
 		# The disaster's month: the stage clock, the gap, the endings.
 		ulus_regency_stage_tick = yes
+		ulus_houses_resent_the_keeper = yes
 		ulus_regency_gap_tick = yes
 		ulus_regency_endings_poll = yes
 	}
@@ -676,6 +693,7 @@ ulus_regency_enter_stage = {
 		limit = { var:ulus_regency_stage >= 2 }
 		set_variable = ulus_amirs_may_fight
 	}
+	ulus_houses_resent_the_keeper = yes
 	if = {
 		limit = { var:ulus_regency_stage >= 3 }
 		set_variable = ulus_members_may_leave
@@ -747,6 +765,33 @@ ulus_regency_stage_tick = {
 		}
 	}
 
+	# What keeping the khan is worth to an amir of the ulus (static
+	# modifiers, 17): influence, most in the first stage, none in the last.
+	leader_country ?= {
+		if = {
+			limit = { NOT = { has_country_modifier = ulus_khan_keeper_office } }
+			add_country_modifier = { modifier = ulus_khan_keeper_office years = -1 }
+		}
+		if = {
+			limit = { international_organization:ulus_chaghatay.var:ulus_regency_stage < 4 }
+			add_country_modifier = {
+				modifier = ulus_khan_keeper_influence
+				years = -1
+				mode = replace
+				size = {
+					value = 4
+					subtract = international_organization:ulus_chaghatay.var:ulus_regency_stage
+					min = 1
+					max = 3
+				}
+			}
+		}
+		else_if = {
+			limit = { has_country_modifier = ulus_khan_keeper_influence }
+			remove_country_modifier = ulus_khan_keeper_influence
+		}
+	}
+
 	# The strain on the regent's state, sized by stage.
 	leader_country ?= {
 		add_country_modifier = {
@@ -813,6 +858,31 @@ ulus_regency_gap_tick = {
 	if = {
 		limit = { has_variable = ulus_no_khan }
 		change_local_variable = { name = ulus_drain multiply = 2 }
+	}
+	# A regent some other house outweighs is kept in his place by
+	# sufferance: half as fast again (author, 2026-11-14).
+	remove_variable = ulus_regent_outweighed
+	if = {
+		limit = { leader_country ?= { has_variable = ulus_weight_eff } }
+		set_local_variable = { name = ulus_keeper_w value = leader_country.var:ulus_weight_eff }
+		if = {
+			limit = {
+				any_international_organization_member = {
+					is_ulus_chaghatay_amir = yes
+					has_variable = ulus_weight_eff
+					var:ulus_weight_eff > local_var:ulus_keeper_w
+				}
+			}
+			set_variable = ulus_regent_outweighed
+			change_local_variable = { name = ulus_drain multiply = 1.5 }
+		}
+	}
+	set_variable = {
+		name = ulus_gap_drain
+		value = {
+			value = local_var:ulus_drain
+			multiply = -1
+		}
 	}
 	ulus_change_gap = { AMOUNT = local_var:ulus_drain }
 
@@ -1201,4 +1271,50 @@ ulus_end_sahib_qiran = {
 	clear_global_variable_list = ulus_amirs
 	clear_global_variable_list = ulus_kingmakers
 	destroy_international_organization_no_instigator = { target = international_organization:ulus_chaghatay }
+}
+
+
+# IO scope; called at each stage's turn and every month from the second
+# stage. THE AMIRS HAVE FALLEN OUT. In the author's test (2026-11-14) a
+# regent with no army left sat at +200 with the strongest house in the
+# ulus, which will never move against a man it thinks that well of.
+# From the second stage every house holds it against the keeper that he
+# keeps the khan, unless it is both lighter than he is and his ally
+# (those are his clients; they live by him). Marked per house against
+# the regent it was applied for (ulus_resents), so a new keeper is
+# resented afresh and the same one only once.
+ulus_houses_resent_the_keeper = {
+	if = {
+		limit = {
+			has_variable = ulus_regency_stage
+			var:ulus_regency_stage >= 2
+			exists = leader_country
+		}
+		leader_country = { save_scope_as = ulus_keeper }
+		set_local_variable = { name = ulus_keeper_w value = 0 }
+		if = {
+			limit = { leader_country = { has_variable = ulus_weight_eff } }
+			set_local_variable = { name = ulus_keeper_w value = leader_country.var:ulus_weight_eff }
+		}
+		every_international_organization_member = {
+			limit = {
+				is_ulus_chaghatay_amir = yes
+				NOT = { var:ulus_resents ?= scope:ulus_keeper }
+				NOT = {
+					AND = {
+						is_allied_with = { target = scope:ulus_keeper }
+						has_variable = ulus_weight_eff
+						var:ulus_weight_eff < local_var:ulus_keeper_w
+					}
+				}
+				NOT = { is_subject_of = scope:ulus_keeper }
+				NOT = { var:ulus_pledged_to ?= scope:ulus_keeper }
+			}
+			set_variable = { name = ulus_resents value = scope:ulus_keeper }
+			add_opinion = {
+				target = scope:ulus_keeper
+				modifier = opinion_ulus_keeps_what_is_ours
+			}
+		}
+	}
 }

@@ -61,6 +61,14 @@ ulus_kingmaker_score = {
 		}
 		add = 25
 	}
+	# A khan of the line behind him, outside the ulus: an ally or a
+	# backer whose ruler is of the line lends what the begs lack. Once,
+	# however many there are. (Tughluq Temür confirming Temür over the
+	# Barlas in 1360.)
+	if = {
+		limit = { ulus_has_patron_of_the_line = yes }
+		add = ulus_borjigin_patron_bonus
+	}
 	if = {
 		limit = {
 			ruler ?= { has_variable = ulus_renown }
@@ -92,11 +100,19 @@ ulus_standing_score = {
 # first ledger run). COUNTRY scope.
 # EFFECTIVE weight since pledges exist (ledger, step 1b): his own, less
 # the share he has lent to another house, plus what others lend him.
+ulus_borjigin_patron_bonus = 10
+
 ulus_realm_weight = {
 	value = 0
 	if = {
 		limit = { has_variable = ulus_weight }
 		add = var:ulus_weight
+	}
+	# A house that is the SUBJECT of another house of the ulus has no
+	# weight of its own: all of it stands behind its lord (ledger, 1b).
+	if = {
+		limit = { has_variable = ulus_weight_lent_all }
+		multiply = 0
 	}
 	if = {
 		limit = {
@@ -156,11 +172,13 @@ ulus_ruler_abilities = {
 # house's outside friends together count for at most ulus_outside_cap.
 ulus_ally_fraction = 0.25
 ulus_backer_fraction = 0.15
-ulus_outside_friend_cap = 12
+ulus_outside_friend_cap = 15
 ulus_outside_cap = 10
 
 # The share of his weight a pledged amir lends the house he backs.
-ulus_pledge_share = 0.5
+# The whole of it (author, 2026-11-14; was 0.5): he pledges his tümen,
+# not half of it, and drops out of the reckoning for the khan himself.
+ulus_pledge_share = 1
 
 # For sharing out a beaten rebel's land among the khan's lords: fewest
 # spoils so far first (ulus_forfeit_a_place). COUNTRY scope.

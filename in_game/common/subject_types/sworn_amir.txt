@@ -44,7 +44,7 @@ sworn_amir = {
 
 	overlord_inherit_if_no_heir = no
 
-	strength_vs_overlord = -0.20
+	strength_vs_overlord = -0.10
 
 	annexation_speed = 0.1
 	annexation_min_years_before = 30

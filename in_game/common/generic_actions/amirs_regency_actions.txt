@@ -492,6 +492,41 @@ ulus_claim_the_khan = {
 				add = -60
 			}
 		}
+		# A keeper of the khan with no host is an invitation, whatever
+		# his rents and his friends make him weigh.
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					leader_country ?= {
+						army_size < {
+							value = scope:actor.army_size
+							multiply = 0.34
+						}
+					}
+				}
+			}
+			add = 60
+		}
+		else_if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					leader_country ?= {
+						army_size < {
+							value = scope:actor.army_size
+							multiply = 0.67
+						}
+					}
+				}
+			}
+			add = 30
+		}
+		# And one the houses already hold in sufferance.
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { has_variable = ulus_regent_outweighed }
+			}
+			add = 10
+		}
 		if = {
 			limit = {
 				scope:actor = {

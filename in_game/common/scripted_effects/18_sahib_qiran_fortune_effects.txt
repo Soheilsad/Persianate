@@ -57,6 +57,9 @@ sq_fortune_seed = {
 	set_variable = { name = sq_peace_months value = 0 }
 	set_variable = { name = sq_empty_months value = 0 }
 	set_variable = { name = sq_ambitions_count value = 0 }
+	# The new realm starts with no accepted or tolerated cultures at all;
+	# this is what he has to spend on them.
+	add_political_influence = 50
 	# The seat his rule began from, wherever it was: the "Conjunction
 	# Holds" outcome asks that he still own it.
 	if = {

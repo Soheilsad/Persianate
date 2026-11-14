@@ -408,6 +408,24 @@ REPLACE:rot_plan_invasion = {
 					declare_war_with_cb = {
 						target = scope:target
 						type = casus_belli:cb_timurs_conquests
+						save_scope_as = sq_invasion_war
+					}
+					# A war declared by script never shows the call to arms,
+					# and the subject type's "always join" did not bring one
+					# sworn amir (author's tests, twice). So they are put in
+					# the war here, while his fortune is not low.
+					if = {
+						limit = {
+							exists = scope:sq_invasion_war
+							NOT = { has_variable = sq_band_low }
+						}
+						every_subject = {
+							limit = {
+								is_subject_type = sworn_amir
+								NOT = { is_at_war_with = scope:target }
+							}
+							join_war_as_attacker = { war = scope:sq_invasion_war }
+						}
 					}
 				}
 				else = {

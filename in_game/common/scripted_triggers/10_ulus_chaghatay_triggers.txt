@@ -137,3 +137,31 @@ ulus_ground_or_sahib_qiran = {
 		}
 	}
 }
+
+
+# COUNTRY scope: a house of the ulus with an ally or a backer outside it
+# whose ruler is of Chinggis's line (scripted_triggers/11).
+ulus_has_patron_of_the_line = {
+	exists = international_organization:ulus_chaghatay
+	OR = {
+		any_ally = {
+			NOT = { is_member_of_international_organization = international_organization:ulus_chaghatay }
+			ruler ?= { is_of_chinggis_line = yes }
+		}
+		var:ulus_outside_backer ?= {
+			NOT = { is_member_of_international_organization = international_organization:ulus_chaghatay }
+			ruler ?= { is_of_chinggis_line = yes }
+		}
+	}
+}
+
+# COUNTRY scope: a house that has put its weight behind another (a
+# pledge to an amir or to the khan, or as a subject of a house): it is
+# out of the reckoning for the khan itself.
+ulus_has_chosen_a_side = {
+	OR = {
+		has_variable = ulus_pledged_to
+		has_variable = ulus_pledged_to_khan
+		has_variable = ulus_weight_lent_all
+	}
+}

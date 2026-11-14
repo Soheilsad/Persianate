@@ -173,6 +173,60 @@ ulus_chaghatay_rebuild_ledger = {
 	# has left the ulus, or become its leader, lapses here.
 	every_international_organization_member = {
 		set_variable = { name = ulus_backing value = 0 }
+		remove_variable = ulus_weight_lent_all
+	}
+	# SUBJECTS (author, 2026-11-14). A house that is the subject of
+	# another house of the ulus (a tümen or a client raised on broken
+	# ground, events/amirs_client_events.txt) stands behind its lord with
+	# all it has, and any pledge of its own is void. A lord's subjects
+	# OUTSIDE the ulus are reckoned on the ulus's scale from host and tax
+	# base, as outside friends are, and counted whole.
+	every_international_organization_member = {
+		limit = {
+			is_subject = yes
+			overlord ?= { is_member_of_international_organization = scope:ulus_io }
+		}
+		remove_variable = ulus_pledged_to
+		remove_variable = ulus_pledged_to_khan
+		set_variable = ulus_weight_lent_all
+		set_local_variable = { name = ulus_lent value = var:ulus_weight }
+		overlord = {
+			change_variable = { name = ulus_backing add = local_var:ulus_lent }
+		}
+	}
+	every_international_organization_member = {
+		save_scope_as = ulus_lord
+		every_subject = {
+			limit = {
+				NOT = { is_member_of_international_organization = scope:ulus_io }
+			}
+			set_local_variable = { name = ulus_friend value = 0 }
+			if = {
+				limit = { local_var:ulus_t_mil > 0 }
+				change_local_variable = {
+					name = ulus_friend
+					add = {
+						value = military_strength
+						divide = local_var:ulus_t_mil
+						multiply = ulus_w_mil
+					}
+				}
+			}
+			if = {
+				limit = { local_var:ulus_t_tax > 0 }
+				change_local_variable = {
+					name = ulus_friend
+					add = {
+						value = country_tax_base
+						divide = local_var:ulus_t_tax
+						multiply = ulus_w_tax
+					}
+				}
+			}
+			scope:ulus_lord = {
+				change_variable = { name = ulus_backing add = local_var:ulus_friend }
+			}
+		}
 	}
 	every_international_organization_member = {
 		limit = { has_variable = ulus_pledged_to }
@@ -413,6 +467,8 @@ ulus_chaghatay_rebuild_ledger = {
 		limit = {
 			NOT = { is_leader_of_international_organization = scope:ulus_io }
 			NOT = { ulus_marked_client = yes }
+			# A house that has chosen a side is not in the running.
+			NOT = { ulus_has_chosen_a_side = yes }
 		}
 		order_by = ulus_kingmaker_score
 		max = 3
@@ -569,6 +625,154 @@ ulus_chaghatay_rebuild_ledger = {
 			}
 		}
 		set_variable = ulus_seat_row
+	}
+
+	# ---4c. THE PARTS, for the panel's hover (author, 2026-11-14: "the
+	# users will have trouble" seeing why one house stands above another).
+	# Every member carries what its weight and its score are made of:
+	#   ulus_p_mil/tax/rul/pre   its own weight, by part
+	#   ulus_p_back              tümens and subjects standing behind it
+	#   ulus_p_out               friends outside the ulus
+	#   ulus_p_boost             passing gains (largesse, a raid won)
+	#   ulus_p_lent              its own weight given to another house
+	#   ulus_s_share/mil/adm/wife/patron/renown/line   the kingmaker score
+	every_international_organization_member = {
+		set_variable = {
+			name = ulus_p_mil
+			value = {
+				value = 0
+				if = {
+					limit = { local_var:ulus_t_mil > 0 }
+					add = {
+						value = military_strength
+						divide = local_var:ulus_t_mil
+						multiply = ulus_w_mil
+					}
+				}
+			}
+		}
+		set_variable = {
+			name = ulus_p_tax
+			value = {
+				value = 0
+				if = {
+					limit = { local_var:ulus_t_tax > 0 }
+					add = {
+						value = country_tax_base
+						divide = local_var:ulus_t_tax
+						multiply = ulus_w_tax
+					}
+				}
+			}
+		}
+		set_variable = {
+			name = ulus_p_rul
+			value = {
+				value = 0
+				if = {
+					limit = { local_var:ulus_t_rul > 0 }
+					add = {
+						value = ulus_ruler_abilities
+						divide = local_var:ulus_t_rul
+						multiply = ulus_w_rul
+					}
+				}
+			}
+		}
+		set_variable = {
+			name = ulus_p_pre
+			value = {
+				value = 0
+				if = {
+					limit = { local_var:ulus_t_pre > 0 }
+					add = {
+						value = prestige
+						min = 0
+						divide = local_var:ulus_t_pre
+						multiply = ulus_w_pre
+					}
+				}
+			}
+		}
+		set_variable = { name = ulus_p_back value = 0 }
+		if = {
+			limit = { has_variable = ulus_backing }
+			set_variable = { name = ulus_p_back value = var:ulus_backing }
+		}
+		set_variable = { name = ulus_p_out value = 0 }
+		if = {
+			limit = { has_variable = ulus_outside_weight }
+			set_variable = { name = ulus_p_out value = var:ulus_outside_weight }
+		}
+		set_variable = { name = ulus_p_boost value = 0 }
+		if = {
+			limit = { has_variable = ulus_weight_boost }
+			set_variable = { name = ulus_p_boost value = var:ulus_weight_boost }
+		}
+		set_variable = { name = ulus_p_lent value = 0 }
+		if = {
+			limit = { ulus_has_chosen_a_side = yes  has_variable = ulus_weight }
+			set_variable = { name = ulus_p_lent value = var:ulus_weight }
+		}
+		set_variable = {
+			name = ulus_s_share
+			value = {
+				value = 0
+				if = {
+					limit = { has_variable = ulus_amir_share }
+					add = {
+						value = var:ulus_amir_share
+						multiply = 400
+					}
+				}
+			}
+		}
+		set_variable = { name = ulus_s_mil value = 0 }
+		set_variable = { name = ulus_s_adm value = 0 }
+		if = {
+			limit = { has_ruler = yes }
+			set_variable = {
+				name = ulus_s_mil
+				value = {
+					value = ruler.mil
+					multiply = 0.5
+				}
+			}
+			set_variable = {
+				name = ulus_s_adm
+				value = {
+					value = ruler.adm
+					multiply = 0.2
+				}
+			}
+		}
+		set_variable = { name = ulus_s_wife value = 0 }
+		if = {
+			limit = { ruler ?= { any_spouse = { dynasty ?= dynasty:borjigin_dynasty } } }
+			set_variable = { name = ulus_s_wife value = 25 }
+		}
+		set_variable = { name = ulus_s_patron value = 0 }
+		if = {
+			limit = { ulus_has_patron_of_the_line = yes }
+			set_variable = { name = ulus_s_patron value = ulus_borjigin_patron_bonus }
+		}
+		set_variable = { name = ulus_s_renown value = 0 }
+		if = {
+			limit = { ruler ?= { has_variable = ulus_renown } }
+			set_variable = {
+				name = ulus_s_renown
+				value = {
+					value = ruler.var:ulus_renown
+					multiply = ulus_renown_weight
+					max = ulus_renown_cap
+				}
+			}
+		}
+		set_variable = { name = ulus_s_line value = 0 }
+		if = {
+			limit = { is_leader_of_international_organization = scope:ulus_io  ulus_ruler_is_of_the_line = yes }
+			set_variable = { name = ulus_s_line value = ulus_khan_line_bonus }
+		}
 	}
 	ordered_international_organization_member = {
 		limit = {

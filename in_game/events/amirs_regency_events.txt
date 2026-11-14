@@ -88,6 +88,28 @@ amirs_regency.2 = {
 }
 
 # ----------------------------------------------------------------------------
+# THE AMIRS' REGENCY BEGINS, as the other houses of the ulus hear of it.
+# scope:ulus_new_regent is the house that has the khan.
+# ----------------------------------------------------------------------------
+amirs_regency.3 = {
+	type = country_event
+	title = amirs_regency.3.title
+	desc = amirs_regency.3.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = amirs_regency.3.a
+		custom_tooltip = amirs_regency_begins_tt
+	}
+}
+
+
+# ----------------------------------------------------------------------------
 # .10 — THE OLD SEAT ANSWERS. The eastern tribes did not accept
 # Qazaghan's khans: in 1347 the Dughlat amir Bulaji raised Tughluq
 # Temür at Aqsu, and from then on there were two khans of the ulus of
@@ -1102,10 +1124,10 @@ amirs_regency.220 = {
 # THE OFFICE HARDENS. Fired on the regent when a stage turns with his
 # standing whole (scripted_effects/22, ulus_office_hardens_check).
 # ----------------------------------------------------------------------------
-amirs_regency.130 = {
+amirs_regency.135 = {
 	type = country_event
-	title = amirs_regency.130.title
-	desc = amirs_regency.130.desc
+	title = amirs_regency.135.title
+	desc = amirs_regency.135.desc
 	outcome = positive
 
 	illustration_tags = {
@@ -1114,7 +1136,7 @@ amirs_regency.130 = {
 	}
 
 	option = {
-		name = amirs_regency.130.a
+		name = amirs_regency.135.a
 		custom_tooltip = amirs_regency_office_tt
 	}
 }

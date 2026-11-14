@@ -64,3 +64,26 @@ ulus_client_lapse_check = {
 		ulus_client_lapses = yes
 	}
 }
+
+
+# Who beat whom last, among the houses of the ulus: read when a tümen
+# shatters after the peace is already made (author's test: the Chagatai
+# seat lost its host to Dzungaria, made peace, and only then shattered,
+# and the event went to the regent, who had no part in it).
+# root = country, scope:winner, scope:loser (31_amirs_regency_hooks.txt).
+on_losing_war = {
+	on_actions = {
+		ulus_remember_who_beat_us
+	}
+}
+
+ulus_remember_who_beat_us = {
+	trigger = {
+		has_variable = ulus_weight
+		scope:loser ?= { this = root }
+		exists = scope:winner
+	}
+	effect = {
+		set_variable = { name = ulus_last_beaten_by value = scope:winner years = 3 }
+	}
+}

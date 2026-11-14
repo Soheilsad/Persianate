@@ -9,7 +9,7 @@ sq_distribute_plunder_price = {
 # What a sworn amir sends the Ṣāḥib-qirān (subject_types/sworn_amir.txt):
 # men, and a token of gold. The plunder flows the other way.
 sworn_amir_pays = {
-	scaled_gold = 0.05
-	scaled_manpower = 0.25
+	# Men, not silver (author, 2026-11-14): what the amirs owe him is riders.
+	scaled_manpower = 0.50
 	ignore_inflation = yes
 }

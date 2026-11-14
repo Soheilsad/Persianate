@@ -79,8 +79,28 @@ ulus_tumen_is_broken = {
 		check_range_bounds = no
 		save_scope_as = ulus_breaker
 	}
+	# ... or the house of the ulus that beat it last, within three
+	# years (on_action/38, ulus_remember_who_beat_us).
 	if = {
-		limit = { NOT = { exists = scope:ulus_breaker } }
+		limit = {
+			NOT = { exists = scope:ulus_breaker }
+			has_variable = ulus_last_beaten_by
+		}
+		var:ulus_last_beaten_by ?= {
+			if = {
+				limit = { is_ulus_chaghatay_member = yes }
+				save_scope_as = ulus_breaker
+			}
+		}
+	}
+	# ... and only if nobody broke it at all (it starved, or an outsider
+	# did it and has no say in the ulus), the seat.
+	if = {
+		limit = {
+			NOT = { exists = scope:ulus_breaker }
+			NOT = { has_variable = ulus_last_beaten_by }
+			NOT = { any_country_at_war_with = { always = yes } }
+		}
 		international_organization:ulus_chaghatay.leader_country ?= {
 			if = {
 				limit = { NOT = { this = scope:ulus_broken } }
@@ -238,6 +258,15 @@ ulus_owes_his_place_to_the_breaker = {
 		target = root
 		modifier = opinion_ulus_raised_by_him
 	}
+	# And his subject: a house of the ulus under a house of the ulus,
+	# whose whole weight the ledger puts behind its lord.
+	if = {
+		limit = { is_subject = no }
+		make_subject_of = {
+			target = root
+			type = subject_type:vassal
+		}
+	}
 }
 
 ulus_broken_ground_done = {
@@ -285,7 +314,7 @@ ulus_office_hardens_check = {
 						max = 3
 					}
 				}
-				trigger_event_non_silently = { id = amirs_regency.130 days = 2 }
+				trigger_event_non_silently = { id = amirs_regency.135 days = 2 }
 			}
 		}
 	}

@@ -248,15 +248,9 @@ rise_of_timur = {
 					}
 					trigger_event_non_silently = rise_of_timur.12
 				}
-				if = {
-					limit = {
-						can_fire_situation_event = {
-							situation = root
-							event = rot_right_to_conquer
-						}
-					}
-					trigger_event_non_silently = rise_of_timur.13
-				}
+				# Base's "Our Legacy" (rise_of_timur.13, rot_right_to_conquer)
+				# is not fired: it asks a man who already rules as güregen
+				# behind a khan to pick where his authority comes from.
 				if = {
 					limit = {
 						can_fire_situation_event = {

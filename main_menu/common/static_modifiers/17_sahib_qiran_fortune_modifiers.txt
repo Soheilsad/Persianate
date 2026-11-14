@@ -20,7 +20,14 @@ sq_fortune_high_mod = {
 	auto_conquer_at_war = yes
 	# At the height of his fortune rulers send embassies and gifts, not
 	# armies against him (see sq_name_goes_before_him_mod below).
-	antagonism_received_modifier = -0.25
+	antagonism_received_modifier = -0.30
+	# He lives on what he takes: without this the host bankrupted him
+	# (author's test). Base's own plunder bonuses are 0.33 and 0.5.
+	amount_looted_modifier = 1.0
+	# Newly taken country does not rise behind a conqueror whose star is
+	# up; it rises when the star falls. (Base scales: -0.05 / -0.1.)
+	pop_join_rebel_threshold = -0.15
+	global_separatism = -0.10
 }
 
 # Failing: he has stopped winning, or stopped giving.
@@ -114,5 +121,34 @@ sq_name_goes_before_him_mod = {
 		category = country
 		decaying = no
 	}
-	antagonism_received_modifier = -0.40
+	# -0.40 still raised all of Hindustan in one league (author's test):
+	# the rulers of the 1390s dealt with him one by one.
+	antagonism_received_modifier = -0.60
+	# A following, not an administration: he rules through men who must
+	# be given things, like the keeper of a khan in a single realm.
+	monthly_political_influence_gain_modifier = -0.20
+}
+
+# The keeper of the khan INSIDE the ulus (scripted_effects/15,
+# ulus_regency_stage_tick). The beglerbeg reform's -20% is the price a
+# beg pays for ruling a unitary khanate through a puppet. An amir of
+# the ulus who takes the khan into keeping has GAINED something: every
+# other house must now deal with him. That gain is greatest while the
+# peace holds and is spent as the amirs fall out.
+# This one undoes the reform's -20% for him:
+ulus_khan_keeper_office = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	monthly_political_influence_gain_modifier = 0.20
+}
+# and this one is sized 3 / 2 / 1 in stages 1 / 2 / 3 (0.75, 0.50, 0.25 a
+# month) and removed in stage 4.
+ulus_khan_keeper_influence = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	monthly_political_influence = 0.25
 }

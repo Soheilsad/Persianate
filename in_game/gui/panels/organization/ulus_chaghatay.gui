@@ -399,6 +399,36 @@ organization_geodiplomatic_theme = {
 						direction = horizontal
 						tooltip = "ULUS_GAP_TT"
 					}
+					# What it loses a month (ulus_gap_drain, written by
+					# ulus_regency_gap_tick), and why faster than it might.
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_gap_drain').IsSet]"
+						spacing = 8
+						tooltip = "ULUS_GAP_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_GAP_DRAIN_LABEL"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_gap_drain').GetValue|2]"
+						}
+					}
+					text_single = {
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_regent_outweighed').IsSet]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						fontsize = 12
+						text = "ULUS_GAP_OUTWEIGHED"
+						default_format = "#subtle_name"
+						tooltip = "ULUS_GAP_TT"
+					}
 					hbox = {
 						layoutpolicy_horizontal = expanding
 						spacing = 8
@@ -722,7 +752,7 @@ organization_geodiplomatic_theme = {
 							widget = {
 								datacontext = "[Scope.GetCountry]"
 								size = { 470 26 }
-								tooltip = "ULUS_GREATEST_AMIR_TT"
+								tooltip = "ULUS_GREATEST_ROW_TT"
 								country_flag_small = {
 									parentanchor = left|vcenter
 								}
@@ -819,7 +849,7 @@ organization_geodiplomatic_theme = {
 							widget = {
 								datacontext = "[Scope.GetCountry]"
 								size = { 470 30 }
-								tooltip = "ULUS_KINGMAKER_TT"
+								tooltip = "ULUS_STANDING_ROW_TT"
 								country_flag_small = {
 									parentanchor = left|vcenter
 								}
@@ -918,6 +948,7 @@ organization_geodiplomatic_theme = {
 							widget = {
 								datacontext = "[Scope.GetCountry]"
 								size = { 235 30 }
+								tooltip = "ULUS_AMIR_ROW_TT"
 								country_flag_small = {
 									parentanchor = left|vcenter
 								}

@@ -548,6 +548,9 @@ press_eranzamin_claim = {
 	potential = {
 		scope:actor = {
 			has_variable = eranzamin_contender
+			# Not the Ṣāḥib-qirān: his realm inherited the mark from the
+			# house it was made of, or was given it at its making.
+			NOT = { ulus_ground_or_sahib_qiran = yes }
 		}
 	}
 

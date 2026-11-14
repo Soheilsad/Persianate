@@ -449,10 +449,14 @@ ulus_ask_for_pledge = {
 		enabled = {
 			this != scope:actor
 			NOT = { is_leader_of_international_organization = scope:recipient }
+			# A house already pledged may be asked: it is the harder to
+			# move, and weighs us against the house it stands behind
+			# (ulus_pledge_acceptance). Only a lord's own subject cannot.
 			custom_tooltip = {
-				text = ulus_ask_not_pledged_tt
-				NOT = { has_variable = ulus_pledged_to }
+				text = ulus_ask_not_a_subject_tt
+				NOT = { has_variable = ulus_weight_lent_all }
 			}
+			NOT = { var:ulus_pledged_to ?= scope:actor }
 		}
 		column = { data = name }
 		column = { data = population }
@@ -462,6 +466,7 @@ ulus_ask_for_pledge = {
 	effect = {
 		scope:actor = { save_scope_as = ulus_asking_house }
 		scope:target_country = {
+			var:ulus_pledged_to ?= { save_scope_as = ulus_current_patron }
 			# What they will answer, and each thing they weigh (tooltip).
 			ulus_show_pledge_reckoning = yes
 			if = {

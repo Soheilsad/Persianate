@@ -35,7 +35,7 @@
  amirs_rising.6.a: "We will not be slow to collect."
  amirs_rising_pledge_paid_tt: "We gain #G 20#! favours with the new regent and #G 10#! prestige."
  ulus_ask_for_pledge: "Ask for a Pledge"
- ulus_ask_for_pledge_desc: "Ask another amir house to stand behind us. If it agrees, half its weight in the ulus is counted as ours, in the bar of the three greatest amirs and in our standing as a kingmaker, and we owe it favours on the day we take the khan. A house agrees for reasons: what it thinks of us, a marriage or an alliance between us, how far we outweigh it. A house with hopes of the khan itself will not. Hover a house in the list to see what it will answer and why; a house that refuses still costs us the asking. A pledge has no term: it stands until that house takes it back."
+ ulus_ask_for_pledge_desc: "Ask another amir house to stand behind us. If it agrees, its whole weight in the ulus is counted as ours and it drops out of the reckoning for the khan itself, in the bar of the three greatest amirs and in our standing as a kingmaker, and we owe it favours on the day we take the khan. A house agrees for reasons: what it thinks of us, a marriage or an alliance between us, how far we outweigh it. A house with hopes of the khan itself will not. Hover a house in the list to see what it will answer and why; a house that refuses still costs us the asking. A pledge has no term: it stands until that house takes it back."
  ulus_ask_not_pledged_tt: "This house has not already pledged its tümen"
  ulus_ask_acceptance_tt: "This house would agree. It weighs: its opinion of us (a sixth of it counts), a royal marriage with us (#G +25#!), an alliance (#G +15#!), rivalry (#R −100#!), our weight against its own (#G +30#! if we are twice as heavy, #G +15#! if a quarter heavier, up to #R −100#! if we are the lighter, by how much), whether it is itself among the three likeliest kingmakers (up to #R −66#!, most for the likeliest) and whether we are (#G +10#!), against a reluctance of #R −25#!"
  amirs_rising.7.title: "An Amir Asks for Our Tümen"
@@ -125,4 +125,7 @@
  amirs_rising.15.title: "No Patron There"
  amirs_rising.15.desc: "Our envoy was received with every courtesy and sent home with a letter that says nothing. They do not think our quarrel worth their silver."
  amirs_rising.15.a: "Then we look elsewhere."
-
+ ulus_ask_not_a_subject_tt: "This house is not the subject of another house of the ulus"
+ ulus_reckoning_already_pledged_tt: "It has already pledged its tümen: #R -30#!, and a sixth of the difference between what it thinks of us and what it thinks of the house it stands behind. If it comes over, that house will hold it against both of us."
+ opinion_ulus_keeps_what_is_ours: "Keeps the khan who is ours as much as his"
+ opinion_ulus_pledge_broken: "A pledged tümen was talked away"

@@ -1,0 +1,74 @@
+# Base's kurultai (unique_buildings.txt, 1.4.7) with one change: it may
+# also stand where the OWNER's primary culture is of the steppe group,
+# not only where the location's majority is. Without it a horde seated
+# in a Tajik city could not build or upgrade its kurultai, and so could
+# not grow its manpower (author's test, Yasa'uri, 2026-11-14).
+REPLACE:kurultai = {
+	audio_tier = 3
+	is_special = yes
+	is_foreign = no
+	pop_type = soldiers
+	
+	max_levels = kurultai_max_level
+	employment_size = kurultai_employment
+	
+	category = military_category
+	
+	rural_settlement = yes
+	town = yes
+	city = yes
+	megalopolis = yes
+	
+	allow_wrong_startup = yes
+	
+	expensive = yes
+	
+	country_potential = {
+		has_advance = kurultai_advance		# just to hide from those who do not get the tech.
+		government_type ?= government_type:steppe_horde
+	}
+	
+	location_potential = {
+		custom_tooltip = {
+			text = dominant_culture_is_of_steppe_group
+			OR = {
+				dominant_culture = {
+					has_culture_group = culture_group:steppe_group
+				}
+				# The mod's amirs keep their ordu in cities whose people
+				# are Tajik (the Yasa'uri at Bukhara and Samarkand): the
+				# kuriltai is the ruling people's, not the townsmen's.
+				owner ?= {
+					culture = { has_culture_group = culture_group:steppe_group }
+				}
+			}
+		}
+	}
+	
+	remove_if = {
+		OR = {
+			NOT = { owner = { has_advance = kurultai_advance } }
+			owner = { government_type != government_type:steppe_horde }
+		}
+	}
+	
+	
+	build_time = soldier_building
+	
+	modifier = {
+		local_manpower = 0.05
+		can_recruit_regiment_in_this_location = yes
+	}
+	
+	unique_production_methods = {
+		kurultai_maintenance = {
+			icon_type = building_type
+			icon = kurultai
+			horses = 4.64
+			leather = 1.16
+			weaponry = 0.46
+			category = building_maintenance
+		}
+	}
+	construction_demand = early_soldier_building_construction
+}

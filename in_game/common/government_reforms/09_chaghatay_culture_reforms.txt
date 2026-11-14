@@ -47,6 +47,9 @@ REPLACE:legacy_of_genghis = {
 		army_light_cavalry_maintenance_cost_modifier = -0.1
 		court_spending_efficiency = 0.4
 		monthly_towards_aristocracy = societal_value_monthly_move
+		# A kuriltai without the tribes is not one (author, 2026-11-14:
+		# a horde's parliament seated nobles and peasants only).
+		tribes_estate_can_participate_in_parliament = yes
 	}
 
 	years = 2

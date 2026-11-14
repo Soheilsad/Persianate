@@ -89,7 +89,10 @@ eranzamin_succession = {
 		# driven via the Consolidate Diwan / Grant the Yurt / Mixed
 		# Settlement actions (design §7).
 		every_country = {
-			limit = { is_eranzamin_contender = yes }
+			limit = {
+				is_eranzamin_contender = yes
+				NOT = { ulus_ground_or_sahib_qiran = yes }
+			}
 			set_variable = { name = eranzamin_contender value = yes }
 			
 			add_country_modifier = {
@@ -130,6 +133,7 @@ eranzamin_succession = {
 			limit = { 
 				NOT = { has_variable = eranzamin_contender }
 				is_eranzamin_contender = yes
+				NOT = { ulus_ground_or_sahib_qiran = yes }
 				
 
 			}

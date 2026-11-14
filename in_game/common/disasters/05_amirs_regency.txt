@@ -41,7 +41,7 @@
 
 amirs_regency = {
 
-	image = "gfx/interface/illustrations/disaster/horde_civil_war.dds"
+	image = "gfx/interface/illustrations/disaster/amirs_regency.dds"
 
 	monthly_spawn_chance = 1
 
