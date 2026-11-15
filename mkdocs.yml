@@ -94,9 +94,13 @@ nav:
   - The steppe:
       - Hordes: concepts/hordes.md
       - Ulus Chaghatay: concepts/ulus-chaghatay.md
+      - The Amirs' Regency: concepts/amirs-regency.md
+      - The Ṣāḥib-qirān: concepts/sahib-qiran.md
+      - The Beglerbeg's Regency: concepts/beglerbegs-regency.md
   - The periphery:
       - Shattered Rum: concepts/shattered-rum.md
       - Kurdish emirates: concepts/kurdish-emirates.md
       - Periphery sultanates: concepts/periphery-sultanates.md
   - Reference:
       - Countries and tags: reference/countries-and-tags.md
+      - Ulus and regency numbers: reference/ulus-and-regency-numbers.md
