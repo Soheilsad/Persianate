@@ -1,14 +1,14 @@
 ﻿l_english:
 
  # --- Press the Amirs' Retinues (in_game/common/generic_actions/amir_retinue_actions.txt) ---
- press_amir_retinues: "Summon the Amirs' Tümens"
- press_amir_retinues_desc: "Call the amirs' own horse under the royal standard. Their tümens are fed from their own iqtāʿs and answer to their own amirs; under the royal banner they are ours to command, for as long as the amirs can be made to remember whose name is on the coin.\n\nThis costs [legitimacy|e] and [political_influence|e], and the amirs resent it. A [estate|e] of the Diwan stronger than the amirs makes it a matter of routine rather than a favour."
- press_amir_retinues_diwan_discount_tt: "The Diwan outweighs the amirs: the muster is a matter of the registers, not of begging (reduced [political_influence|e] cost)"
+ press_amir_retinues: "Summon the Amīrs' Tümens"
+ press_amir_retinues_desc: "Call the amīrs' own horse under the royal standard. Their tümens are fed from their own iqtāʿs and answer to their own amīrs; under the royal banner they are ours to command, for as long as the amīrs can be made to remember whose name is on the coin.\n\nThis costs [legitimacy|e] and [political_influence|e], and the amīrs resent it. A [estate|e] of the Dīwān stronger than the amīrs makes it a matter of routine rather than a favour."
+ press_amir_retinues_diwan_discount_tt: "The Dīwān outweighs the amīrs: the muster is a matter of the registers, not of begging (reduced [political_influence|e] cost)"
 
- PERFORM_press_amir_retinues_ACTION_SETUP: "When we summon the amirs' tümens into royal service."
+ PERFORM_press_amir_retinues_ACTION_SETUP: "When we summon the amīrs' tümens into royal service."
  PERFORM_press_amir_retinues_ACTION_HEADER: "$MESSENGER$"
  PERFORM_press_amir_retinues_ACTION_TITLE: "The Tümens Ride Under the Royal Standard"
- PERFORM_press_amir_retinues_ACTION_DESC: "The amirs have brought their horse to the royal camp. The muster rolls name the sultan; the men still name their own amirs."
+ PERFORM_press_amir_retinues_ACTION_DESC: "The amīrs have brought their horse to the royal camp. The muster rolls name the sultān; the men still name their own amīrs."
  PERFORM_press_amir_retinues_ACTION_EFFECTS: "$EFFECT$"
  PERFORM_press_amir_retinues_ACTION_LOG: "We summoned the tümens of the [SCOPE.sEstate('target').GetName]."
  PERFORM_press_amir_retinues_ACTION_BTN1: "Let them ride."

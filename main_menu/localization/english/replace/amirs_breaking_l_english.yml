@@ -1,9 +1,9 @@
 ﻿l_english:
  # The Breaking of the Chaghatay (on_action/36_chaghatay_breaking_hooks.txt)
  cb_break_the_tumens: "Break the Tümens"
- cb_break_the_tumens_desc: "The ulus is a name. Its tümens stand each for itself, with no khan to call them and no beg they follow. Whoever reaches their pastures first takes them."
+ cb_break_the_tumens_desc: "The ulus is a name. Its tümens stand each for itself, with no khān to call them and no beg they follow. Whoever reaches their pastures first takes them."
  amirs_breaking.1.title: "The Tümens Are Ours to Dispose Of"
- amirs_breaking.1.desc: "The men who rode under the names of Barlas and Jalayir and Suldus are dead, scattered, or in our own ranks. What remains in the pastures between the two rivers is their households: the women, the boys, the old men who remember Kebek Khan, and such herds as nobody has yet driven off.\n\nThey were never a people apart from their army. The army is gone. The question of what they become is ours to answer, and it will be answered once."
+ amirs_breaking.1.desc: "The men who rode under the names of Barlas and Jalayir and Suldus are dead, scattered, or in our own ranks. What remains in the pastures between the two rivers is their households: the women, the boys, the old men who remember Kebek Khān, and such herds as nobody has yet driven off.\n\nThey were never a people apart from their army. The army is gone. The question of what they become is ours to answer, and it will be answered once."
  amirs_breaking.1.a: "Divide them among our own, hearth by hearth. Their grandsons will be ours."
  amirs_breaking.1.b: "Let them keep their captains and their name, and ride for us."
  amirs_breaking_distribute_tt: "In every pasture of the old ulus that we hold, the Chaghatay tribesmen, soldiers and nobles become people of #Y our own culture#! at once.\nFor 30 years: #G +20%#! manpower and #G +15%#! levy size."

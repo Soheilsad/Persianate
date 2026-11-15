@@ -10,47 +10,47 @@
 
  # --- .1 The invader is upon the house (to the house) ---
  amirs_cadet.1.title: "The Chief Looks to the Road"
- amirs_cadet.1.desc: "The host of [SCOPE.sCountry('ulus_cadet_invader').GetName] is in our pastures and we have not been able to turn it. Our chief has had the herds moved twice already and is said to have asked which passes into Khurasan are still open.\n\nThe tümen is the house's, not one man's. [ulus_cadet.GetName], of our own blood, has let it be known that he will not ride out. If the chief goes, he will go to the invader's camp, kiss the ground, and ask to be confirmed over our people and our valley. An invader who wants the tribe quiet will give him the yarlıq."
- amirs_cadet.1.desc_bid_khan: "We rode against the khan and the khan is still on the felt. The amirs who said they would come did not come, and the host of [SCOPE.sCountry('ulus_cadet_invader').GetName] is now between us and our own pastures. Our chief's name is the one that will be read out when the khan asks who began this.\n\nThe tümen is the house's, not one man's. [ulus_cadet.GetName], of our own blood, took no oath against the khan that anyone can prove. If the chief rides out tonight, he will go to the khan's camp in the morning, kiss the ground, and ask to be confirmed over our people and our valley. A khan who has just won wants the tribe quiet more than he wants it punished."
- amirs_cadet.1.desc_bid_regent: "We claimed the khan and we could not take him. [SCOPE.sCountry('ulus_cadet_invader').GetName] still keeps him, its riders are in our pastures, and our chief is the man who said before the amirs that the khan was wrongly held.\n\nThe tümen is the house's, not one man's. [ulus_cadet.GetName], of our own blood, has let it be known that the claim was the chief's and not the house's. If the chief rides out, he will go to the camp where the khan is kept, kiss the ground, and ask to be confirmed over our people and our valley. The man who holds the khan would rather have a tümen that owes him than one he must hunt."
+ amirs_cadet.1.desc: "The host of [SCOPE.sCountry('ulus_cadet_invader').GetName] is in our pastures and we have not been able to turn it. Our chief has had the herds moved twice already and is said to have asked which passes into Khurāsān are still open.\n\nThe tümen is the house's, not one man's. [ulus_cadet.GetName], of our own blood, has let it be known that he will not ride out. If the chief goes, he will go to the invader's camp, kiss the ground, and ask to be confirmed over our people and our valley. An invader who wants the tribe quiet will give him the yarligh."
+ amirs_cadet.1.desc_bid_khan: "We rode against the khān and the khān is still on the felt. The amīrs who said they would come did not come, and the host of [SCOPE.sCountry('ulus_cadet_invader').GetName] is now between us and our own pastures. Our chief's name is the one that will be read out when the khān asks who began this.\n\nThe tümen is the house's, not one man's. [ulus_cadet.GetName], of our own blood, took no oath against the khān that anyone can prove. If the chief rides out tonight, he will go to the khān's camp in the morning, kiss the ground, and ask to be confirmed over our people and our valley. A khān who has just won wants the tribe quiet more than he wants it punished."
+ amirs_cadet.1.desc_bid_regent: "We claimed the khān and we could not take him. [SCOPE.sCountry('ulus_cadet_invader').GetName] still keeps him, its riders are in our pastures, and our chief is the man who said before the amīrs that the khān was wrongly held.\n\nThe tümen is the house's, not one man's. [ulus_cadet.GetName], of our own blood, has let it be known that the claim was the chief's and not the house's. If the chief rides out, he will go to the camp where the khān is kept, kiss the ground, and ask to be confirmed over our people and our valley. The man who holds the khān would rather have a tümen that owes him than one he must hunt."
  amirs_cadet.1.a: "Let the chief save himself. One of our blood will keep the tümen."
  amirs_cadet.1.b: "A chief who leaves his people has none. We stand."
- amirs_cadet_flee_tt: "The chief leaves the realm alive. #Y [ulus_cadet.GetName]#! becomes ruler and gains renown among the amirs. The old chief may return for his tümen within three years."
+ amirs_cadet_flee_tt: "The chief leaves the realm alive. #Y [ulus_cadet.GetName]#! becomes ruler and gains renown among the amīrs. The old chief may return for his tümen within three years."
  amirs_cadet_tributary_tt: "We become a #Y tributary#! of [SCOPE.sCountry('ulus_cadet_invader').GetName], if the war between us can be closed. We remain a member of the ulus."
- amirs_cadet_sworn_tt: "The new chief is sworn to the holder of the khan for five years. No subject tie is made."
- amirs_cadet_sworn_khan_tt: "The new chief is sworn to the khan for five years. No subject tie is made."
+ amirs_cadet_sworn_tt: "The new chief is sworn to the holder of the khān for five years. No subject tie is made."
+ amirs_cadet_sworn_khan_tt: "The new chief is sworn to the khān for five years. No subject tie is made."
 
  # --- .2 A kinsman has come to our camp (to the invader) ---
  amirs_cadet.2.title: "A Tümen Comes to Our Camp"
- amirs_cadet.2.desc: "The chief of [SCOPE.sCountry('ulus_cadet_house').GetName] has fled before us. A kinsman of his house, [ulus_cadet.GetName], has ridden into our camp instead, submitted, and asked to hold the tümen and its pastures from our hand. We have given him the yarlıq. It costs us nothing and the tribe will not have to be fought valley by valley."
+ amirs_cadet.2.desc: "The chief of [SCOPE.sCountry('ulus_cadet_house').GetName] has fled before us. A kinsman of his house, [ulus_cadet.GetName], has ridden into our camp instead, submitted, and asked to hold the tümen and its pastures from our hand. We have given him the yarligh. It costs us nothing and the tribe will not have to be fought valley by valley."
  amirs_cadet.2.a: "He is our man there, for as long as he remembers it."
 
  # --- .3 A tümen confirmed by another (to the leader of the ulus) ---
  amirs_cadet.3.title: "Another Hand Confirms a Tümen"
- amirs_cadet.3.desc: "[SCOPE.sCountry('ulus_cadet_house').GetName] has a new chief. Its old one fled before [SCOPE.sCountry('ulus_cadet_invader').GetName], and [ulus_cadet.GetName] of the same house went to the invader's camp and was confirmed there. The yarlıq he holds is not ours."
+ amirs_cadet.3.desc: "[SCOPE.sCountry('ulus_cadet_house').GetName] has a new chief. Its old one fled before [SCOPE.sCountry('ulus_cadet_invader').GetName], and [ulus_cadet.GetName] of the same house went to the invader's camp and was confirmed there. The yarligh he holds is not ours."
  amirs_cadet.3.a: "A tümen of the ulus, held of a stranger."
 
  # --- .10 The old chief comes back (to the house) ---
  amirs_cadet.10.title: "The Old Chief at the Edge of the Pastures"
- amirs_cadet.10.desc: "[ulus_fled_chief.GetName] has come back. He has men with him, fewer than he left with, and he has sent word that the danger is past and the tümen is his as it always was.\n\nThere are elders who agree with him: he is the senior of the house and he was never deposed, only absent. There are others who point out who was here when the invader came and who was on the road to Khurasan."
+ amirs_cadet.10.desc: "[ulus_fled_chief.GetName] has come back. He has men with him, fewer than he left with, and he has sent word that the danger is past and the tümen is his as it always was.\n\nThere are elders who agree with him: he is the senior of the house and he was never deposed, only absent. There are others who point out who was here when the invader came and who was on the road to Khurāsān."
  amirs_cadet.10.a: "The tümen is his. I held it for him, and everyone saw me hold it."
  amirs_cadet.10.b: "He left it lying on the ground. I picked it up."
  amirs_cadet_yield_tt: "#Y [ulus_fled_chief.GetName]#! becomes ruler again. #Y [ulus_cadet.GetName]#! keeps the renown he has won, and gains more."
 
  # --- .11 The old chief is dead (to the house) ---
  amirs_cadet.11.title: "Word from the Road"
- amirs_cadet.11.desc: "[ulus_fled_chief.GetName] is dead. He was killed on the road in Khurasan with the few men who had stayed by him; the accounts differ on whether it was robbers or someone who knew whose head it was.\n\nNo one now living has a better claim to lead the tümen than the man who leads it."
+ amirs_cadet.11.desc: "[ulus_fled_chief.GetName] is dead. He was killed on the road in Khurāsān with the few men who had stayed by him; the accounts differ on whether it was robbers or someone who knew whose head it was.\n\nNo one now living has a better claim to lead the tümen than the man who leads it."
  amirs_cadet.11.a: "God have mercy on him. The matter is closed."
 
  # --- .20 A kinsman who is the better soldier (to the house) ---
  amirs_cadet.20.title: "The Tümen Talks"
- amirs_cadet.20.desc: "With the amirs at each other's throats, a tümen wants a chief who wins. Ours has begun to say, at the fires and not yet in council, that [ulus_cadet.GetName] is the better soldier of our house and that the chief knows it.\n\nHe has not asked for anything. The commanders of hundreds have started riding to his tents anyway."
+ amirs_cadet.20.desc: "With the amīrs at each other's throats, a tümen wants a chief who wins. Ours has begun to say, at the fires and not yet in council, that [ulus_cadet.GetName] is the better soldier of our house and that the chief knows it.\n\nHe has not asked for anything. The commanders of hundreds have started riding to his tents anyway."
  amirs_cadet.20.a: "A tümen follows the man who leads it best. Let it."
  amirs_cadet.20.b: "Seize him before the commanders choose for us."
  amirs_cadet.20.c: "It was talk, and the talk has died down."
- amirs_cadet_coup_tt: "#Y [ulus_cadet.GetName]#! becomes ruler and gains renown among the amirs. The old chief leaves the realm alive and may return within three years."
+ amirs_cadet_coup_tt: "#Y [ulus_cadet.GetName]#! becomes ruler and gains renown among the amīrs. The old chief leaves the realm alive and may return within three years."
  amirs_cadet_seized_tt: "#Y [ulus_cadet.GetName]#! is put to death."
- amirs_cadet_first_coup_tt: "No tümen has changed chiefs this way in this regency. The first man to do it makes a name by it: he gains #G 5#! more renown among the amirs, and our house #G 10#! prestige."
+ amirs_cadet_first_coup_tt: "No tümen has changed chiefs this way in this regency. The first man to do it makes a name by it: he gains #G 5#! more renown among the amīrs, and our house #G 10#! prestige."
  amirs_cadet_contagion_tt: "For six years, kinsmen in the other houses of the ulus are far likelier to try the same."
 
  # --- opinion modifiers (common/biases/03_amirs_cadet_bias.txt) ---

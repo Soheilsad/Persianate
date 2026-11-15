@@ -19,18 +19,18 @@
  rank_kingdom_persianate_iranzamin_contender_ruler_male: "Regent"
  rank_kingdom_persianate_iranzamin_contender_ruler_female: "Regent"
  rank_kingdom_persianate_iranzamin_contender_ADJ: "Faction"
- rank_tariqa_iranzamin: "Tariqa"
+ rank_tariqa_iranzamin: "Ṭarīqa"
  # ----- Kingdom rank (post-succession — a Sulṭān has emerged) -----
  rank_kingdom_persianate_iranzamin: "Sultanate"
- rank_kingdom_persianate_iranzamin_ruler_male: "Sulṭān"
- rank_kingdom_persianate_iranzamin_ruler_female: "Sulṭāna"
+ rank_kingdom_persianate_iranzamin_ruler_male: "Sultān"
+ rank_kingdom_persianate_iranzamin_ruler_female: "Sultāna"
  rank_kingdom_persianate_iranzamin_ADJ: "Sultanate"
 
  # ----- Duchy rank (Tāzīk-leaning) -----
- rank_duchy_persianate_iranzamin_tazik: "Vilāyat"
+ rank_duchy_persianate_iranzamin_tazik: "Wilāyat"
  rank_duchy_persianate_iranzamin_tazik_ruler_male: "Vālī"
  rank_duchy_persianate_iranzamin_tazik_ruler_female: "Vālīya"
- rank_duchy_persianate_iranzamin_tazik_ADJ: "Vilāyat"
+ rank_duchy_persianate_iranzamin_tazik_ADJ: "Wilāyat"
 
  # ----- Duchy rank (Türk-leaning) -----
  rank_duchy_persianate_iranzamin_turk: "Amirate"
@@ -39,10 +39,10 @@
  rank_duchy_persianate_iranzamin_turk_ADJ: "Amirate"
 
  # ----- County rank (Tāzīk-leaning) -----
- rank_county_persianate_iranzamin_tazik: "Ḥukūmat"
- rank_county_persianate_iranzamin_tazik_ruler_male: "Ḥākim"
- rank_county_persianate_iranzamin_tazik_ruler_female: "Ḥākima"
- rank_county_persianate_iranzamin_tazik_ADJ: "Ḥukūmat"
+ rank_county_persianate_iranzamin_tazik: "Hukūmat"
+ rank_county_persianate_iranzamin_tazik_ruler_male: "Hākim"
+ rank_county_persianate_iranzamin_tazik_ruler_female: "Hākima"
+ rank_county_persianate_iranzamin_tazik_ADJ: "Hukūmat"
 
  # ----- County rank (Türk-leaning) -----
  rank_county_persianate_iranzamin_turk: "Tūmān"
@@ -58,5 +58,5 @@
  rank_zaydi_theocracy: "Imamate"
  rank_zaydi_theocracy_ruler_male: "Imām"
  rank_zaydi_theocracy_ruler_female: "Imāma"
- rank_zaydi_theocracy_ADJ: "Imami"
+ rank_zaydi_theocracy_ADJ: "Zaydī"
 

@@ -2,34 +2,34 @@
  # The Ṣāḥib-qirān's fortune (in_game/common/scripted_effects/18_sahib_qiran_fortune_effects.txt)
 
  # Panel (gui/panels/situation/rise_of_timur.gui)
- SQ_FORTUNE_LABEL: "Fortune of the Ṣāḥib-qirān"
- SQ_FORTUNE_TT: "#T Fortune (dawlat)#!\nHe is not a khan. What holds the amirs to him is the fortune he is seen to have, on a scale of 0 to 100.\n\nIt drains every month: half as fast while he is at war, twice as fast once he has been at peace for more than three years.\nIt is filled by great battles won (+4), sieges won (+2), wars won (+10) and by dividing the plunder (+10). A lost war costs 15.\n\nAt 60 or more the amirs follow him gladly. Under 30 they begin to look elsewhere. If it stays empty for two years, the amirs who swore to him when he took the ulus go their own way.\n\nThe fortune is the man's. His heir begins at 25, whatever was left."
- SQ_FORTUNE_HIGH: "His star is up: the amirs follow."
- SQ_FORTUNE_MIDDLE: "The amirs wait to see what the next campaign brings."
- SQ_FORTUNE_LOW: "His fortune is failing: the amirs look elsewhere."
+ SQ_FORTUNE_LABEL: "Fortune of the Sāhib-qirān"
+ SQ_FORTUNE_TT: "#T Fortune (dawlat)#!\nHe is not a khān. What holds the amīrs to him is the fortune he is seen to have, on a scale of 0 to 100.\n\nIt drains every month: half as fast while he is at war, twice as fast once he has been at peace for more than three years.\nIt is filled by great battles won (+4), sieges won (+2), wars won (+10) and by dividing the plunder (+10). A lost war costs 15.\n\nAt 60 or more the amīrs follow him gladly. Under 30 they begin to look elsewhere. If it stays empty for two years, the amīrs who swore to him when he took the ulus go their own way.\n\nThe fortune is the man's. His heir begins at 25, whatever was left."
+ SQ_FORTUNE_HIGH: "His star is up: the amīrs follow."
+ SQ_FORTUNE_MIDDLE: "The amīrs wait to see what the next campaign brings."
+ SQ_FORTUNE_LOW: "His fortune is failing: the amīrs look elsewhere."
 
  # Action (generic_actions/sahib_qiran_actions.txt)
  sq_distribute_plunder: "Divide the Plunder"
- sq_distribute_plunder_desc: "Hold the feast and divide what has been taken among the amirs and the tümens, each by his rank. A year's income raises the Ṣāḥib-qirān's fortune."
- sq_distribute_plunder_tt: "The fortune of the Ṣāḥib-qirān rises by #G 10#!. Our subjects remember the gift for three years."
+ sq_distribute_plunder_desc: "Hold the feast and divide what has been taken among the amīrs and the tümens, each by his rank. A year's income raises the Sāhib-qirān's fortune."
+ sq_distribute_plunder_tt: "The fortune of the Sāhib-qirān rises by #G 10#!. Our subjects remember the gift for three years."
 
  # Band modifiers
  STATIC_MODIFIER_NAME_sq_name_goes_before_him_mod: "His Name Goes Before Him"
  STATIC_MODIFIER_DESC_sq_name_goes_before_him_mod: "Courts that would league against any other conqueror send this one envoys, each for itself."
- STATIC_MODIFIER_NAME_sq_fortune_high_mod: "Fortune of the Ṣāḥib-qirān"
- STATIC_MODIFIER_DESC_sq_fortune_high_mod: "He keeps winning and he keeps giving. The amirs follow."
+ STATIC_MODIFIER_NAME_sq_fortune_high_mod: "Fortune of the Sāhib-qirān"
+ STATIC_MODIFIER_DESC_sq_fortune_high_mod: "He keeps winning and he keeps giving. The amīrs follow."
  STATIC_MODIFIER_NAME_sq_fortune_low_mod: "A Failing Fortune"
- STATIC_MODIFIER_DESC_sq_fortune_low_mod: "No victories and nothing divided. The amirs who followed his fortune have begun to doubt it."
+ STATIC_MODIFIER_DESC_sq_fortune_low_mod: "No victories and nothing divided. The amīrs who followed his fortune have begun to doubt it."
 
  # Events (events/sahib_qiran_events.txt)
- sahib_qiran.1.title: "The Sons and the Amirs"
- sahib_qiran.1.desc: "The man who made this realm is dead, and what he made it with has died with him. The amirs did not swear to a house. They swore to a fortune: to a man who had won every year they could remember and had divided what he took. His heir sits in his place with his father's name and none of his father's victories.\n\nThe brothers and the nephews have governorships and armies of their own. The amirs who commanded the tümens are watching to see which of them is worth following. Nothing that was owed to the father is owed to the son until he has earned it in the field."
+ sahib_qiran.1.title: "The Sons and the Amīrs"
+ sahib_qiran.1.desc: "The man who made this realm is dead, and what he made it with has died with him. The amīrs did not swear to a house. They swore to a fortune: to a man who had won every year they could remember and had divided what he took. His heir sits in his place with his father's name and none of his father's victories.\n\nThe brothers and the nephews have governorships and armies of their own. The amīrs who commanded the tümens are watching to see which of them is worth following. Nothing that was owed to the father is owed to the son until he has earned it in the field."
  sahib_qiran.1.a: "Then I will earn it as he did."
- sahib_qiran_succession_tt: "The fortune of the Ṣāḥib-qirān begins again at #R 25#! for the new ruler. It is filled as before: by victories and by dividing the plunder."
- sahib_qiran.2.title: "The Amirs Ride Away"
- sahib_qiran.2.desc: "There has been no campaign worth the name for two years, and no division of spoils because there were no spoils. The amirs who gave their oath when the ulus was taken gave it to a man whose fortune was plain to everyone. It is no longer plain to anyone.\n\nThey have not rebelled. They have taken their tümens back to their own pastures and stopped answering the summons, which comes to the same thing."
+ sahib_qiran_succession_tt: "The fortune of the Sāhib-qirān begins again at #R 25#! for the new ruler. It is filled as before: by victories and by dividing the plunder."
+ sahib_qiran.2.title: "The Amīrs Ride Away"
+ sahib_qiran.2.desc: "There has been no campaign worth the name for two years, and no division of spoils because there were no spoils. The amīrs who gave their oath when the ulus was taken gave it to a man whose fortune was plain to everyone. It is no longer plain to anyone.\n\nThey have not rebelled. They have taken their tümens back to their own pastures and stopped answering the summons, which comes to the same thing."
  sahib_qiran.2.a: "They will answer the next one, or be made to."
- sahib_qiran_reckoning_tt: "Every amir who became our subject when the ulus was taken breaks free.\nWe lose #R 25#! prestige and #R 25#! horde unity."
+ sahib_qiran_reckoning_tt: "Every amīr who became our subject when the ulus was taken breaks free.\nWe lose #R 25#! prestige and #R 25#! horde unity."
 
  # Ruler style (in_game/common/customizable_localization/country_ranks.txt)
  rank_gurkan_horde: "Horde"
@@ -45,55 +45,55 @@
  # own event text reads it the same way. The situation's first event takes
  # its title from this key.
  rise_of_timur: "Rise of [GetCountry('TIM').MakeScope.GetVariable('tim_founding_father').GetCharacter.GetFirstNameWithNoTooltip]"
- STATIC_MODIFIER_NAME_rot_timur_scare: "Dread of the Ṣāḥib-qirān"
+ STATIC_MODIFIER_NAME_rot_timur_scare: "Dread of the Sāhib-qirān"
 
  # Subject type (subject_types/sworn_amir.txt)
- sworn_amir: "Sworn Amir"
- sworn_amir_desc: "An amir who swore to the Ṣāḥib-qirān when the ulus became one man's realm. He keeps his tümen and his pastures, rides when he is called, and sends men and a token of gold. He is a follower, not a governor: he takes up none of our diplomatic capacity and cannot be absorbed for a generation. Nothing binds him but our fortune. While it stands high he is loyal; when it runs low his loyalty goes with it, and if it lies empty he rides away."
- sworn_amir_pays: "Sworn Amir rides for the Ṣāḥib-qirān"
- sworn_amir_turn_on_him_tt: "A sworn amir turns on the Ṣāḥib-qirān only when his loyalty has failed."
+ sworn_amir: "Sworn Amīr"
+ sworn_amir_desc: "An amīr who swore to the Sāhib-qirān when the ulus became one man's realm. He keeps his tümen and his pastures, rides when he is called, and sends men and a token of gold. He is a follower, not a governor: he takes up none of our diplomatic capacity and cannot be absorbed for a generation. Nothing binds him but our fortune. While it stands high he is loyal; when it runs low his loyalty goes with it, and if it lies empty he rides away."
+ sworn_amir_pays: "Sworn Amīr rides for the Sāhib-qirān"
+ sworn_amir_turn_on_him_tt: "A sworn amīr turns on the Sāhib-qirān only when his loyalty has failed."
 
  # Outcomes of the situation (common/situations/rise_of_timur.txt)
  rise_of_timur_empire_forged: "The Conjunction Holds"
- rise_of_timur_conquests_stall: "The Amirs Ride Away"
- rise_of_timur_conquests_stall_desc: "The fortune of [GetCountry('TIM').MakeScope.GetVariable('tim_founding_father').GetCharacter.GetName] lay empty too long, and the amirs who swore to him have gone. The campaign bonus lapses and outstanding claims of conquest expire."
+ rise_of_timur_conquests_stall: "The Amīrs Ride Away"
+ rise_of_timur_conquests_stall_desc: "The fortune of [GetCountry('TIM').MakeScope.GetVariable('tim_founding_father').GetCharacter.GetName] lay empty too long, and the amīrs who swore to him have gone. The campaign bonus lapses and outstanding claims of conquest expire."
  rise_of_timur_sons_divide: "The Sons Divide"
  rise_of_timur_sons_divide_desc: "The man who made the realm is dead and his heir has not found a fortune of his own. The campaign bonus lapses and outstanding claims of conquest expire."
  sq_conjunction_holds_tt: "[GetCountry('TIM').GetNameWithNoTooltip] has made good two declared conquest ambitions (holding, with its subjects, six in ten locations of each region), still owns the seat its rule began from, and its fortune is not low"
- sq_amirs_rode_away_tt: "The fortune of the Ṣāḥib-qirān has lain empty for two years and his sworn amirs have ridden away"
+ sq_amirs_rode_away_tt: "The fortune of the Sāhib-qirān has lain empty for two years and his sworn amīrs have ridden away"
  sq_sons_divide_tt: "The founder is dead and an heir's fortune has stayed low for five years running, or the realm has neither ruler nor heir"
  sahib_qiran.3.title: "The Conjunction Holds"
- sahib_qiran.3.desc: "Twice he named a country before the amirs and twice he has ridden into it and stayed. The cities that closed their gates have opened them, the amirs who rode for plunder now ride because there is nowhere else to ride, and the secretaries at his court have begun to write of this house as though it had always been here.\n\nIt was made by one man's fortune. It will not need to be made again from nothing."
+ sahib_qiran.3.desc: "Twice he named a country before the amīrs and twice he has ridden into it and stayed. The cities that closed their gates have opened them, the amīrs who rode for plunder now ride because there is nowhere else to ride, and the secretaries at his court have begun to write of this house as though it had always been here.\n\nIt was made by one man's fortune. It will not need to be made again from nothing."
  sahib_qiran.3.a: "Let them write it so."
- sahib_qiran_conjunction_tt: "The situation ends. The fortune of the Ṣāḥib-qirān continues, but from now on each heir begins at #G 50#! instead of 25."
+ sahib_qiran_conjunction_tt: "The situation ends. The fortune of the Sāhib-qirān continues, but from now on each heir begins at #G 50#! instead of 25."
  sahib_qiran.4.title: "An Ambition Made Good"
- sahib_qiran.4.desc: "He named this country before the amirs when it was still other men's. Most of it now answers to him or to those who answer to him, and the men who doubted the venture are counting their share of it."
+ sahib_qiran.4.desc: "He named this country before the amīrs when it was still other men's. Most of it now answers to him or to those who answer to him, and the men who doubted the venture are counting their share of it."
  sahib_qiran.4.a: "Name the next."
- sahib_qiran_ambition_tt: "The fortune of the Ṣāḥib-qirān rises by #G 15#!. Two ambitions made good, with our first seat still ours, and #Y The Conjunction Holds#!."
+ sahib_qiran_ambition_tt: "The fortune of the Sāhib-qirān rises by #G 15#!. Two ambitions made good, with our first seat still ours, and #Y The Conjunction Holds#!."
 
  # Divide the Plunder: the subjects' loyalty (static modifier)
  STATIC_MODIFIER_NAME_sq_plunder_divided_mod: "The Plunder Divided"
- STATIC_MODIFIER_DESC_sq_plunder_divided_mod: "The amirs have had their share, and for a while they remember who gave it."
+ STATIC_MODIFIER_DESC_sq_plunder_divided_mod: "The amīrs have had their share, and for a while they remember who gave it."
 
  # The army is lost (sq_army_is_lost)
  sahib_qiran.5.title: "The Army Is Lost"
- sahib_qiran.5.desc: "There was a host that had not been beaten in the memory of the men who rode in it, and it has been beaten. The riders who came back came back singly, without their captains, and would not say what they had seen.\n\nThe amirs did not swear to a realm. They swore to a man who won. By the time the news reached the pastures they had already begun to count what each of them could hold alone, and beyond the frontier others are counting too."
+ sahib_qiran.5.desc: "There was a host that had not been beaten in the memory of the men who rode in it, and it has been beaten. The riders who came back came back singly, without their captains, and would not say what they had seen.\n\nThe amīrs did not swear to a realm. They swore to a man who won. By the time the news reached the pastures they had already begun to count what each of them could hold alone, and beyond the frontier others are counting too."
  sahib_qiran.5.a: "Then we are what we were before the conjunction: one house among many."
- sahib_qiran_army_lost_tt: "The amirs who swore to us #R ride away#!. We lose #R 25#! prestige and #R 25#! horde unity.\nWe and they are now #R the orphans of a broken ulus#!: every outside neighbour holds a claim on each of us for 25 years, and whoever comes to hold half the old pastures may dispose of the Chaghatay as he sees fit."
+ sahib_qiran_army_lost_tt: "The amīrs who swore to us #R ride away#!. We lose #R 25#! prestige and #R 25#! horde unity.\nWe and they are now #R the orphans of a broken ulus#!: every outside neighbour holds a claim on each of us for 25 years, and whoever comes to hold half the old pastures may dispose of the Chaghatay as he sees fit."
  sahib_qiran.6.title: "We Have Broken Their Army"
- sahib_qiran.6.desc: "The host of the Ṣāḥib-qirān is scattered, and the tümens that followed him are riding home each by its own road. They have no khan to call them back and, after this, no captain they would answer. Their pastures and their households lie where they always lay."
+ sahib_qiran.6.desc: "The host of the Sāhib-qirān is scattered, and the tümens that followed him are riding home each by its own road. They have no khān to call them back and, after this, no captain they would answer. Their pastures and their households lie where they always lay."
  sahib_qiran.6.a: "What a fortune built, a single day has undone."
- sahib_qiran_army_broken_tt: "We gain a #Y Break the Tümens#! casus belli on him and on every amir who was sworn to him, for 25 years. Whoever comes to hold half the old pastures of the ulus decides what becomes of the Chaghatay."
+ sahib_qiran_army_broken_tt: "We gain a #Y Break the Tümens#! casus belli on him and on every amīr who was sworn to him, for 25 years. Whoever comes to hold half the old pastures of the ulus decides what becomes of the Chaghatay."
 
  # The embassy (sq_send_embassy)
- sahib_qiran.7.title: "An Embassy from the Ṣāḥib-qirān"
+ sahib_qiran.7.title: "An Embassy from the Sāhib-qirān"
  sahib_qiran.7.desc: "Envoys have come from [sq_courting_realm.GetName] with horses, falcons, bolts of silk taken from other men's cities, and letters in which their master calls ours brother. He has made war on nearly everyone within reach. He proposes, with great courtesy, not to make it on us."
  sahib_qiran.7.a: "Receive the gifts and return the courtesy."
  sahib_qiran.7.b: "Send the envoys home with their horses."
  sahib_qiran_embassy_accept_tt: "We keep the gifts, and each court thinks better of the other (#G +50#!, fading over ten years)."
  STATIC_MODIFIER_NAME_ulus_largesse_given_mod: "Largesse Remembered"
  STATIC_MODIFIER_DESC_ulus_largesse_given_mod: "The robes and the silver have gone out, and for a while those who answer to us answer more readily."
- CANCEL_sworn_amirTITLE: "Release a Sworn Amir"
+ CANCEL_sworn_amirTITLE: "Release a Sworn Amīr"
  CANCEL_sworn_amir_DESC: "Release [COUNTRY.GetFlagIconWithNoTooltip] [COUNTRY.GetName] from his oath."
  CANCEL_sworn_amir_NEWDESC: "Do we wish to release [COUNTRY.GetName] from his oath?"
  CANCEL_sworn_amir_FLAVOR: "Choose a [country|e] to release from its [ShowSubjectTypeName('sworn_amir')] oath"
