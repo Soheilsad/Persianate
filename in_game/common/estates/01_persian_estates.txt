@@ -177,6 +177,16 @@ amirs_estate = {
 
 REPLACE:tribes_estate = {
 	color = pop_tribes
+	# TEST (author, 2026-11-15). Base marks only the peasants' and the
+	# dhimmi estates with disenfranchise_to; enfranchisement is a
+	# property of the estate, so without this line nothing a privilege
+	# says about the tribesmen's share can act. With it: does the
+	# tribes' wealth share move with global_tribesmen_enfranchisment
+	# (the mod's test type), with base's global_peasant_enfranchisment,
+	# or not at all? See estate_privileges/13_steppe_privileges.txt.
+	# Affects EVERY tribes estate in the game: remove if the answer is
+	# "peasant" or "not at all".
+	disenfranchise_to = nobles_estate
 	# power_per_pop = 1 -- 1.4 moved this key onto pop types (pop_types/00_default.txt); rejected here.
 	tax_per_pop = 1
 	rival = -0.01

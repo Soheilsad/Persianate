@@ -468,6 +468,23 @@ ulus_claim_the_khan = {
 				# Read by on_action/32_amirs_cadet_hooks.txt: a chief who
 				# loses this war may lose his tümen to a kinsman.
 				set_variable = { name = ulus_claimed_the_khan value = 1 years = 10 }
+				# Told to the claimant (.22), the keeper (.23) and every
+				# other house (.24), each with the names.
+				save_scope_as = ulus_claimant
+				trigger_event_non_silently = amirs_rising.22
+				scope:ulus_regent = {
+					trigger_event_non_silently = amirs_rising.23
+				}
+				international_organization:ulus_chaghatay ?= {
+					every_international_organization_member = {
+						limit = {
+							is_ai = no
+							NOT = { this = scope:ulus_claimant }
+							NOT = { this = scope:ulus_regent }
+						}
+						trigger_event_non_silently = amirs_rising.24
+					}
+				}
 			}
 		}
 	}

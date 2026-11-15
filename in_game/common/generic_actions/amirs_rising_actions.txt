@@ -102,8 +102,22 @@ ulus_rise_against_the_khan = {
 					target = scope:ulus_khan_seat
 					years = 5
 				}
+				# Told to all three parties, each with the names: the riser
+				# (.20), the seat (.1), every other house (.21).
+				save_scope_as = ulus_riser
+				trigger_event_non_silently = amirs_rising.20
 				scope:ulus_khan_seat = {
 					trigger_event_non_silently = amirs_rising.1
+				}
+				international_organization:ulus_chaghatay ?= {
+					every_international_organization_member = {
+						limit = {
+							is_ai = no
+							NOT = { this = scope:ulus_riser }
+							NOT = { this = scope:ulus_khan_seat }
+						}
+						trigger_event_non_silently = amirs_rising.21
+					}
 				}
 			}
 		}

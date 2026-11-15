@@ -308,3 +308,128 @@ amirs_rising.15 = {
 	}
 }
 
+# ----------------------------------------------------------------------------
+# WHO IS AGAINST WHOM. Rise Against the Khan and Claim the Khan each
+# tell all three parties, by name (author, 2026-11-15).
+#   .20  to the riser          scope:ulus_riser, scope:ulus_khan_seat
+#   .1   to the khan's seat    (above; its text now names the riser)
+#   .21  to every other house
+#   .22  to the claimant       scope:ulus_claimant, scope:ulus_regent
+#   .23  to the keeper of the khan
+#   .24  to every other house
+# ----------------------------------------------------------------------------
+
+amirs_rising.20 = {
+	type = country_event
+	title = amirs_rising.20.title
+	desc = amirs_rising.20.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_rising.20.a
+		custom_tooltip = amirs_rising_riser_tt
+	}
+}
+
+amirs_rising.21 = {
+	type = country_event
+	title = amirs_rising.21.title
+	desc = amirs_rising.21.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = amirs_rising.21.a
+		if = {
+			limit = { var:ulus_pledged_to ?= scope:ulus_riser }
+			custom_tooltip = amirs_rising_side_riser_tt
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_variable = ulus_pledged_to_khan
+					is_subject_of = scope:ulus_khan_seat
+				}
+			}
+			custom_tooltip = amirs_rising_side_khan_tt
+		}
+		else = {
+			custom_tooltip = amirs_rising_side_none_tt
+		}
+	}
+}
+
+amirs_rising.22 = {
+	type = country_event
+	title = amirs_rising.22.title
+	desc = amirs_rising.22.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = exterior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_rising.22.a
+		custom_tooltip = amirs_rising_claimant_tt
+	}
+}
+
+amirs_rising.23 = {
+	type = country_event
+	title = amirs_rising.23.title
+	desc = amirs_rising.23.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	option = {
+		name = amirs_rising.23.a
+		custom_tooltip = amirs_rising_keeper_tt
+	}
+}
+
+amirs_rising.24 = {
+	type = country_event
+	title = amirs_rising.24.title
+	desc = amirs_rising.24.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = amirs_rising.24.a
+		if = {
+			limit = { var:ulus_pledged_to ?= scope:ulus_claimant }
+			custom_tooltip = amirs_claim_side_claimant_tt
+		}
+		else_if = {
+			limit = {
+				OR = {
+					var:ulus_pledged_to ?= scope:ulus_regent
+					is_subject_of = scope:ulus_regent
+				}
+			}
+			custom_tooltip = amirs_claim_side_keeper_tt
+		}
+		else = {
+			custom_tooltip = amirs_claim_side_none_tt
+		}
+	}
+}
