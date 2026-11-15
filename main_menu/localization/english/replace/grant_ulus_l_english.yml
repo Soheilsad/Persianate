@@ -19,11 +19,11 @@
 
  # --- Selection stages ---
  grant_ulus_choose_prince: "Which man of the line shall be endowed?"
- grant_ulus_no_prince: "There is no grown man of the line to endow."
+ grant_ulus_no_prince: "@trigger_no! There is no grown man of the line to endow."
  grant_ulus_select_seat_area: "Which country shall be his?"
  grant_ulus_select_second_area: "And what shall he hold beside it?"
- grant_ulus_no_area: "There is no country we hold that is fit to give away."
- grant_ulus_no_adjacent_area: "Nothing we hold borders that country."
+ grant_ulus_no_area: "@trigger_no! There is no country we hold that is fit to give away."
+ grant_ulus_no_adjacent_area: "@trigger_no! Nothing we hold borders that country."
 
  # --- Tooltips ---
  grant_ulus_must_be_adjacent_tt: "Must border the first country — a share is pasture a man can ride across, not two halves of a map"

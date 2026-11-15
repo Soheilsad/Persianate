@@ -22,6 +22,3 @@
  horde_succession.40.title: "There Is No One Left to Raise"
  horde_succession.40.desc: "We have looked, and there is nobody.\n\nNot a son, not a brother, not a cousin far enough out to be safe and near enough to be believed. The purges took some, the plagues took others, and the rest were spent on each other over ground that is now held by men who cannot inherit it. The felt is on the ground and there is no one to lift.\n\nEvery bond in this realm runs through the line. The prince holds his pastures because the khān is the senior of his house; the beg holds his district because the khān appointed him; the tribute comes up the Volga because somewhere at the top of it there is a name worth fearing. Cut the name out and none of it is attached to anything.\n\nThere will be khāns. There will be a great many khāns, and most of them will be somebody's creature, and they will not last."
  horde_succession.40.a: "Then every man will take what he can hold."
- grant_ulus_no_prince: "@trigger_no! No prince of Chinggis's line is of age and free to take a share."
- grant_ulus_no_area: "@trigger_no! No [area|e] outside the capital is more than half ours and free of a darugha."
- grant_ulus_no_adjacent_area: "@trigger_no! No second [area|e] borders the first."
