@@ -1,448 +1,458 @@
 # =====================================================================
-# DEBUG DECISIONS — REMOVE BEFORE A PUBLIC RELEASE.
-#
-# The author's Mac build cannot open the console, so the Amirs' Regency
-# (which otherwise needs a khan to die with the begs over the bar, years
-# into a game) could not be tested. These decisions do what the console
-# test lines in the build report do. Player only; any member of Ulus
-# Chaghatay sees them.
+# DEBUG DECISIONS — COMMENTED OUT FOR RELEASE (2026-11-15, author).
+# Thirteen test decisions for the Ulus Chaghatay, the Amirs' Regency,
+# the cadet routes and the Beglerbeg's Regency. To test again, remove
+# the leading "#~ " from every line below. Their loc keys
+# (persianate_debug_*) are left in place and are harmless unused.
+# The ulus_debug_bar_met tests in scripted_triggers/11 and
+# generic_actions/amirs_rising_actions.txt are also left: nothing can
+# set that variable while these are off.
 # =====================================================================
-
-persianate_debug_begin_regency = { # DEBUG: the amirs raise a khan now
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		is_ulus_chaghatay_member = yes
-		international_organization:ulus_chaghatay ?= {
-			NOT = { has_variable = ulus_regency }
-		}
-	}
-
-	allow = {
-		always = yes
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	option = {
-		name = persianate_debug_begin_regency.a
-		ai_chance = { value = 0 }
-		effect = {
-			international_organization:ulus_chaghatay ?= {
-				leader_country ?= { save_scope_as = ulus_old_seat }
-				ulus_begin_regency = yes
-			}
-		}
-	}
-}
-
-persianate_debug_advance_regency = { # DEBUG: +100 progress, i.e. the next stage
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		is_ulus_chaghatay_member = yes
-		international_organization:ulus_chaghatay ?= {
-			has_variable = ulus_regency
-		}
-	}
-
-	allow = {
-		always = yes
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	option = {
-		name = persianate_debug_advance_regency.a
-		ai_chance = { value = 0 }
-		effect = {
-			international_organization:ulus_chaghatay ?= {
-				change_variable = { name = ulus_regency_progress add = 100 }
-			}
-		}
-	}
-}
-
-persianate_debug_take_regency = { # DEBUG: the player's state takes the khan
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		is_ulus_chaghatay_member = yes
-		NOT = { has_variable = ulus_regent_seat }
-		international_organization:ulus_chaghatay ?= {
-			has_variable = ulus_regency
-		}
-	}
-
-	allow = {
-		always = yes
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	option = {
-		name = persianate_debug_take_regency.a
-		ai_chance = { value = 0 }
-		effect = {
-			save_scope_as = ulus_new_regent
-			ulus_transfer_regency = yes
-		}
-	}
-}
-
-persianate_debug_sahib_qiran = { # DEBUG: stage 4, a wife of the line, the gap filled five years
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		is_ulus_chaghatay_member = yes
-		international_organization:ulus_chaghatay ?= {
-			has_variable = ulus_regency
-		}
-	}
-
-	allow = {
-		# The one thing this cannot supply: a living khan in the
-		# regent's keeping (enthrone one from the panel first).
-		international_organization:ulus_chaghatay ?= {
-			var:ulus_held_khan ?= { is_alive = yes }
-		}
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	option = {
-		name = persianate_debug_sahib_qiran.a
-		ai_chance = { value = 0 }
-		effect = {
-			international_organization:ulus_chaghatay ?= {
-				set_variable = { name = ulus_regency_stage value = 4 }
-				set_variable = { name = ulus_regency_progress value = 0 }
-				set_variable = { name = ulus_gap value = 100 }
-				set_variable = { name = ulus_gap_filled_months value = ulus_sahib_qiran_months }
-				set_variable = { name = ulus_gap_empty_months value = 0 }
-				leader_country ?= {
-					ruler ?= { set_variable = ulus_gurkan }
-				}
-				ulus_chaghatay_rebuild_ledger = yes
-			}
-		}
-	}
-}
-
-persianate_debug_bulqaq = { # DEBUG: the gap empty three years
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		is_ulus_chaghatay_member = yes
-		international_organization:ulus_chaghatay ?= {
-			has_variable = ulus_regency
-		}
-	}
-
-	allow = {
-		always = yes
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	option = {
-		name = persianate_debug_bulqaq.a
-		ai_chance = { value = 0 }
-		effect = {
-			international_organization:ulus_chaghatay ?= {
-				set_variable = { name = ulus_gap value = 0 }
-				set_variable = { name = ulus_gap_filled_months value = 0 }
-				set_variable = { name = ulus_gap_empty_months value = ulus_bulqaq_months }
-			}
-		}
-	}
-}
-
-persianate_debug_bar_met = { # DEBUG: toggle "the begs outweigh the throne"
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		is_ulus_chaghatay_member = yes
-		international_organization:ulus_chaghatay ?= {
-			NOT = { has_variable = ulus_regency }
-		}
-	}
-
-	allow = {
-		always = yes
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	option = {
-		name = persianate_debug_bar_met.a
-		ai_chance = { value = 0 }
-		effect = {
-			international_organization:ulus_chaghatay ?= {
-				if = {
-					limit = { has_variable = ulus_debug_bar_met }
-					remove_variable = ulus_debug_bar_met
-				}
-				else = {
-					set_variable = ulus_debug_bar_met
-				}
-				ulus_chaghatay_rebuild_ledger = yes
-			}
-		}
-	}
-}
-
-persianate_debug_cadet_flight = { # DEBUG: the cadet takes the tümen (stage 3 route)
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		is_ulus_chaghatay_amir = yes
-		NOT = { has_variable = ulus_fled_chief }
-	}
-
-	allow = {
-		custom_tooltip = {
-			text = persianate_debug_cadet_needs_kinsman_tt
-			ulus_house_has_cadet = yes
-		}
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	# The invader is the state that leads the ulus (khan or regent): the
-	# cadet swears to him, with no subject tie.
-	option = {
-		name = persianate_debug_cadet_flight.a
-		ai_chance = { value = 0 }
-		effect = {
-			international_organization:ulus_chaghatay ?= {
-				leader_country ?= { save_scope_as = ulus_cadet_invader }
-			}
-			if = {
-				limit = { exists = scope:ulus_cadet_invader }
-				trigger_event_non_silently = amirs_cadet.1
-			}
-		}
-	}
-	# The invader is a neighbour from outside the ulus: the house becomes
-	# his tributary.
-	option = {
-		name = persianate_debug_cadet_flight.b
-		ai_chance = { value = 0 }
-		effect = {
-			random_neighbor_country = {
-				limit = {
-					NOT = { is_ulus_chaghatay_member = yes }
-					is_rebel_country = no
-				}
-				save_scope_as = ulus_cadet_invader
-			}
-			if = {
-				limit = { exists = scope:ulus_cadet_invader }
-				trigger_event_non_silently = amirs_cadet.1
-			}
-		}
-	}
-}
-
-persianate_debug_cadet_coup = { # DEBUG: the cadet's coup (stage 2 route)
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		is_ulus_chaghatay_amir = yes
-		NOT = { has_variable = ulus_fled_chief }
-	}
-
-	allow = {
-		custom_tooltip = {
-			text = persianate_debug_cadet_needs_kinsman_tt
-			ulus_house_has_cadet = yes
-		}
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	option = {
-		name = persianate_debug_cadet_coup.a
-		ai_chance = { value = 0 }
-		effect = {
-			# The event needs a kinsman clearly abler than the chief:
-			# one is made so.
-			save_scope_as = ulus_debug_house
-			random_character = {
-				limit = {
-					ulus_is_cadet_of_house = { HOUSE = scope:ulus_debug_house }
-				}
-				add_mil = 40
-			}
-			trigger_event_non_silently = amirs_cadet.20
-		}
-	}
-}
-
-persianate_debug_bgl_begin = { # DEBUG (the Beglerbeg's Regency) — remove before release
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		government_type = government_type:steppe_horde
-		NOT = { is_ulus_chaghatay_member = yes }
-		NOT = { has_variable = bgl_regency }
-	}
-
-	allow = {
-		always = yes
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	option = {
-		name = persianate_debug_bgl_begin.a
-		ai_chance = { value = 0 }
-		effect = {
-			bgl_begin_regency = yes
-		}
-	}
-}
-
-persianate_debug_bgl_advance = { # DEBUG (the Beglerbeg's Regency) — remove before release
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		has_variable = bgl_regency
-	}
-
-	allow = {
-		always = yes
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	option = {
-		name = persianate_debug_bgl_advance.a
-		ai_chance = { value = 0 }
-		effect = {
-			change_variable = { name = bgl_progress add = 100 }
-		}
-	}
-}
-
-persianate_debug_bgl_fill_gap = { # DEBUG (the Beglerbeg's Regency) — remove before release
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		has_variable = bgl_regency
-	}
-
-	allow = {
-		always = yes
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	option = {
-		name = persianate_debug_bgl_fill_gap.a
-		ai_chance = { value = 0 }
-		effect = {
-			set_variable = { name = bgl_gap value = 100 }
-			set_variable = { name = bgl_gap_filled_months value = 60 }
-		}
-	}
-}
-
-persianate_debug_bgl_empty_gap = { # DEBUG (the Beglerbeg's Regency) — remove before release
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		has_variable = bgl_regency
-	}
-
-	allow = {
-		always = yes
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	option = {
-		name = persianate_debug_bgl_empty_gap.a
-		ai_chance = { value = 0 }
-		effect = {
-			set_variable = { name = bgl_gap value = 0 }
-			set_variable = { name = bgl_gap_empty_months value = 36 }
-		}
-	}
-}
-
-persianate_debug_bgl_prince = { # DEBUG (the Beglerbeg's Regency) — remove before release
-	decision_category = country_specific_decisions
-
-	potential = {
-		is_ai = no
-		has_variable = bgl_regency
-		any_subject = {
-			is_subject_type = ulus
-			ruler ?= { is_of_chinggis_line = yes }
-		}
-	}
-
-	allow = {
-		always = yes
-	}
-
-	ai_will_do = {
-		value = 0
-	}
-
-	option = {
-		name = persianate_debug_bgl_prince.a
-		ai_chance = { value = 0 }
-		effect = {
-			ordered_subject = {
-				limit = {
-					is_subject_type = ulus
-					ruler ?= { is_of_chinggis_line = yes }
-				}
-				order_by = army_size
-				max = 1
-				check_range_bounds = no
-				save_scope_as = bgl_claimant
-			}
-			bgl_prince_declares = yes
-		}
-	}
-}
+#~ # =====================================================================
+#~ # DEBUG DECISIONS — REMOVE BEFORE A PUBLIC RELEASE.
+#~ #
+#~ # The author's Mac build cannot open the console, so the Amirs' Regency
+#~ # (which otherwise needs a khan to die with the begs over the bar, years
+#~ # into a game) could not be tested. These decisions do what the console
+#~ # test lines in the build report do. Player only; any member of Ulus
+#~ # Chaghatay sees them.
+#~ # =====================================================================
+#~
+#~ persianate_debug_begin_regency = { # DEBUG: the amirs raise a khan now
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		is_ulus_chaghatay_member = yes
+#~ 		international_organization:ulus_chaghatay ?= {
+#~ 			NOT = { has_variable = ulus_regency }
+#~ 		}
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		always = yes
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	option = {
+#~ 		name = persianate_debug_begin_regency.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			international_organization:ulus_chaghatay ?= {
+#~ 				leader_country ?= { save_scope_as = ulus_old_seat }
+#~ 				ulus_begin_regency = yes
+#~ 			}
+#~ 		}
+#~ 	}
+#~ }
+#~
+#~ persianate_debug_advance_regency = { # DEBUG: +100 progress, i.e. the next stage
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		is_ulus_chaghatay_member = yes
+#~ 		international_organization:ulus_chaghatay ?= {
+#~ 			has_variable = ulus_regency
+#~ 		}
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		always = yes
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	option = {
+#~ 		name = persianate_debug_advance_regency.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			international_organization:ulus_chaghatay ?= {
+#~ 				change_variable = { name = ulus_regency_progress add = 100 }
+#~ 			}
+#~ 		}
+#~ 	}
+#~ }
+#~
+#~ persianate_debug_take_regency = { # DEBUG: the player's state takes the khan
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		is_ulus_chaghatay_member = yes
+#~ 		NOT = { has_variable = ulus_regent_seat }
+#~ 		international_organization:ulus_chaghatay ?= {
+#~ 			has_variable = ulus_regency
+#~ 		}
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		always = yes
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	option = {
+#~ 		name = persianate_debug_take_regency.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			save_scope_as = ulus_new_regent
+#~ 			ulus_transfer_regency = yes
+#~ 		}
+#~ 	}
+#~ }
+#~
+#~ persianate_debug_sahib_qiran = { # DEBUG: stage 4, a wife of the line, the gap filled five years
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		is_ulus_chaghatay_member = yes
+#~ 		international_organization:ulus_chaghatay ?= {
+#~ 			has_variable = ulus_regency
+#~ 		}
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		# The one thing this cannot supply: a living khan in the
+#~ 		# regent's keeping (enthrone one from the panel first).
+#~ 		international_organization:ulus_chaghatay ?= {
+#~ 			var:ulus_held_khan ?= { is_alive = yes }
+#~ 		}
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	option = {
+#~ 		name = persianate_debug_sahib_qiran.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			international_organization:ulus_chaghatay ?= {
+#~ 				set_variable = { name = ulus_regency_stage value = 4 }
+#~ 				set_variable = { name = ulus_regency_progress value = 0 }
+#~ 				set_variable = { name = ulus_gap value = 100 }
+#~ 				set_variable = { name = ulus_gap_filled_months value = ulus_sahib_qiran_months }
+#~ 				set_variable = { name = ulus_gap_empty_months value = 0 }
+#~ 				leader_country ?= {
+#~ 					ruler ?= { set_variable = ulus_gurkan }
+#~ 				}
+#~ 				ulus_chaghatay_rebuild_ledger = yes
+#~ 			}
+#~ 		}
+#~ 	}
+#~ }
+#~
+#~ persianate_debug_bulqaq = { # DEBUG: the gap empty three years
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		is_ulus_chaghatay_member = yes
+#~ 		international_organization:ulus_chaghatay ?= {
+#~ 			has_variable = ulus_regency
+#~ 		}
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		always = yes
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	option = {
+#~ 		name = persianate_debug_bulqaq.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			international_organization:ulus_chaghatay ?= {
+#~ 				set_variable = { name = ulus_gap value = 0 }
+#~ 				set_variable = { name = ulus_gap_filled_months value = 0 }
+#~ 				set_variable = { name = ulus_gap_empty_months value = ulus_bulqaq_months }
+#~ 			}
+#~ 		}
+#~ 	}
+#~ }
+#~
+#~ persianate_debug_bar_met = { # DEBUG: toggle "the begs outweigh the throne"
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		is_ulus_chaghatay_member = yes
+#~ 		international_organization:ulus_chaghatay ?= {
+#~ 			NOT = { has_variable = ulus_regency }
+#~ 		}
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		always = yes
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	option = {
+#~ 		name = persianate_debug_bar_met.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			international_organization:ulus_chaghatay ?= {
+#~ 				if = {
+#~ 					limit = { has_variable = ulus_debug_bar_met }
+#~ 					remove_variable = ulus_debug_bar_met
+#~ 				}
+#~ 				else = {
+#~ 					set_variable = ulus_debug_bar_met
+#~ 				}
+#~ 				ulus_chaghatay_rebuild_ledger = yes
+#~ 			}
+#~ 		}
+#~ 	}
+#~ }
+#~
+#~ persianate_debug_cadet_flight = { # DEBUG: the cadet takes the tümen (stage 3 route)
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		is_ulus_chaghatay_amir = yes
+#~ 		NOT = { has_variable = ulus_fled_chief }
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		custom_tooltip = {
+#~ 			text = persianate_debug_cadet_needs_kinsman_tt
+#~ 			ulus_house_has_cadet = yes
+#~ 		}
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	# The invader is the state that leads the ulus (khan or regent): the
+#~ 	# cadet swears to him, with no subject tie.
+#~ 	option = {
+#~ 		name = persianate_debug_cadet_flight.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			international_organization:ulus_chaghatay ?= {
+#~ 				leader_country ?= { save_scope_as = ulus_cadet_invader }
+#~ 			}
+#~ 			if = {
+#~ 				limit = { exists = scope:ulus_cadet_invader }
+#~ 				trigger_event_non_silently = amirs_cadet.1
+#~ 			}
+#~ 		}
+#~ 	}
+#~ 	# The invader is a neighbour from outside the ulus: the house becomes
+#~ 	# his tributary.
+#~ 	option = {
+#~ 		name = persianate_debug_cadet_flight.b
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			random_neighbor_country = {
+#~ 				limit = {
+#~ 					NOT = { is_ulus_chaghatay_member = yes }
+#~ 					is_rebel_country = no
+#~ 				}
+#~ 				save_scope_as = ulus_cadet_invader
+#~ 			}
+#~ 			if = {
+#~ 				limit = { exists = scope:ulus_cadet_invader }
+#~ 				trigger_event_non_silently = amirs_cadet.1
+#~ 			}
+#~ 		}
+#~ 	}
+#~ }
+#~
+#~ persianate_debug_cadet_coup = { # DEBUG: the cadet's coup (stage 2 route)
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		is_ulus_chaghatay_amir = yes
+#~ 		NOT = { has_variable = ulus_fled_chief }
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		custom_tooltip = {
+#~ 			text = persianate_debug_cadet_needs_kinsman_tt
+#~ 			ulus_house_has_cadet = yes
+#~ 		}
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	option = {
+#~ 		name = persianate_debug_cadet_coup.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			# The event needs a kinsman clearly abler than the chief:
+#~ 			# one is made so.
+#~ 			save_scope_as = ulus_debug_house
+#~ 			random_character = {
+#~ 				limit = {
+#~ 					ulus_is_cadet_of_house = { HOUSE = scope:ulus_debug_house }
+#~ 				}
+#~ 				add_mil = 40
+#~ 			}
+#~ 			trigger_event_non_silently = amirs_cadet.20
+#~ 		}
+#~ 	}
+#~ }
+#~
+#~ persianate_debug_bgl_begin = { # DEBUG (the Beglerbeg's Regency) — remove before release
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		government_type = government_type:steppe_horde
+#~ 		NOT = { is_ulus_chaghatay_member = yes }
+#~ 		NOT = { has_variable = bgl_regency }
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		always = yes
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	option = {
+#~ 		name = persianate_debug_bgl_begin.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			bgl_begin_regency = yes
+#~ 		}
+#~ 	}
+#~ }
+#~
+#~ persianate_debug_bgl_advance = { # DEBUG (the Beglerbeg's Regency) — remove before release
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		has_variable = bgl_regency
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		always = yes
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	option = {
+#~ 		name = persianate_debug_bgl_advance.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			change_variable = { name = bgl_progress add = 100 }
+#~ 		}
+#~ 	}
+#~ }
+#~
+#~ persianate_debug_bgl_fill_gap = { # DEBUG (the Beglerbeg's Regency) — remove before release
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		has_variable = bgl_regency
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		always = yes
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	option = {
+#~ 		name = persianate_debug_bgl_fill_gap.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			set_variable = { name = bgl_gap value = 100 }
+#~ 			set_variable = { name = bgl_gap_filled_months value = 60 }
+#~ 		}
+#~ 	}
+#~ }
+#~
+#~ persianate_debug_bgl_empty_gap = { # DEBUG (the Beglerbeg's Regency) — remove before release
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		has_variable = bgl_regency
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		always = yes
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	option = {
+#~ 		name = persianate_debug_bgl_empty_gap.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			set_variable = { name = bgl_gap value = 0 }
+#~ 			set_variable = { name = bgl_gap_empty_months value = 36 }
+#~ 		}
+#~ 	}
+#~ }
+#~
+#~ persianate_debug_bgl_prince = { # DEBUG (the Beglerbeg's Regency) — remove before release
+#~ 	decision_category = country_specific_decisions
+#~
+#~ 	potential = {
+#~ 		is_ai = no
+#~ 		has_variable = bgl_regency
+#~ 		any_subject = {
+#~ 			is_subject_type = ulus
+#~ 			ruler ?= { is_of_chinggis_line = yes }
+#~ 		}
+#~ 	}
+#~
+#~ 	allow = {
+#~ 		always = yes
+#~ 	}
+#~
+#~ 	ai_will_do = {
+#~ 		value = 0
+#~ 	}
+#~
+#~ 	option = {
+#~ 		name = persianate_debug_bgl_prince.a
+#~ 		ai_chance = { value = 0 }
+#~ 		effect = {
+#~ 			ordered_subject = {
+#~ 				limit = {
+#~ 					is_subject_type = ulus
+#~ 					ruler ?= { is_of_chinggis_line = yes }
+#~ 				}
+#~ 				order_by = army_size
+#~ 				max = 1
+#~ 				check_range_bounds = no
+#~ 				save_scope_as = bgl_claimant
+#~ 			}
+#~ 			bgl_prince_declares = yes
+#~ 		}
+#~ 	}
+#~ }
