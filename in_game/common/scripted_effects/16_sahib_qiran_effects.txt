@@ -110,7 +110,9 @@ ulus_sahib_qiran_conquest_ambition = {
 
 		scope:ulus_tim = {
 			set_capital = scope:ulus_sq_seat
-			set_new_ruler = global_var:timur_character
+			# (He is made its ruler AFTER the old realm is annexed, below:
+			# while he ruled both, the game showed a union formed and
+			# then disbanded.)
 			set_variable = {
 				name = tim_founding_father
 				value = global_var:timur_character
@@ -264,6 +266,10 @@ ulus_sahib_qiran_conquest_ambition = {
 				country = scope:ulus_sq_old_realm
 				reason = MilitaryConquest
 				transfer = yes
+			}
+			if = {
+				limit = { global_var:timur_character ?= { is_alive = yes } }
+				set_new_ruler = global_var:timur_character
 			}
 		}
 		activate_situation = situation:rise_of_timur

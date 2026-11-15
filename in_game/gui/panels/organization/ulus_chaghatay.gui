@@ -326,6 +326,29 @@ organization_geodiplomatic_theme = {
 					}
 
 					# The regent's heir against the best rival amir.
+					# The keeper's own weight (he is not in the Amirs card, and
+					# the khan's-weight row belongs to the other face).
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.IsLeaderCountryInPlace]"
+						datacontext = "[InternationalOrganizationsView.GetInternationalOrganization.GetLeaderCountry]"
+						spacing = 8
+						tooltip = "ULUS_AMIR_ROW_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_KEEPER_WEIGHT"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[Country.MakeScope.GetVariable('ulus_weight_eff').GetValue|1]"
+							default_format = "#yellow_titles"
+						}
+					}
 					hbox = {
 						layoutpolicy_horizontal = expanding
 						spacing = 8
@@ -963,13 +986,26 @@ organization_geodiplomatic_theme = {
 								# Weight (0-100 across the whole ulus), then
 								# the share of the amirs' weight.
 								text_single = {
-									visible = "[Country.MakeScope.GetVariable('ulus_weight_eff').IsSet]"
+									visible = "[And(Country.MakeScope.GetVariable('ulus_weight_eff').IsSet, Not(Country.MakeScope.GetVariable('ulus_row_lent').IsSet))]"
 									parentanchor = right|vcenter
 									position = { -50 0 }
 									size = { 40 24 }
 									autoresize = no
 									align = right|nobaseline
 									text = "[Country.MakeScope.GetVariable('ulus_weight_eff').GetValue|1]"
+								}
+								# A house whose weight stands behind another: its
+								# own weight, greyed and bracketed (the hover says
+								# where it went).
+								text_single = {
+									visible = "[Country.MakeScope.GetVariable('ulus_row_lent').IsSet]"
+									parentanchor = right|vcenter
+									position = { -50 0 }
+									size = { 48 24 }
+									autoresize = no
+									align = right|nobaseline
+									text = "ULUS_ROW_LENT_WEIGHT"
+									default_format = "#subtle_name"
 								}
 								text_single = {
 									visible = "[Country.MakeScope.GetVariable('ulus_amir_share').IsSet]"

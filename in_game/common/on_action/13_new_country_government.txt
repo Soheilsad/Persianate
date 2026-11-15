@@ -69,6 +69,18 @@ join_eranzamin = {
         NOT = { is_ulus_chaghatay_member = yes }
         NOT = { is_ulus_chaghatay_roster_tag = yes }
         NOT = { ulus_ground_or_sahib_qiran = yes }
+        # A country born after the start is enrolled only if it is a
+        # settled Muslim state that mostly lies inside the region. A
+        # capital in the region was the only test, and a horde broken
+        # off the Golden Horde walked in on it (author, 2026-11-14).
+        # The 1337 roster is seeded in setup and is not touched by this.
+        NOT = { country_type = army }
+        NOT = { government_type = government_type:steppe_horde }
+        religion.group = religion_group:muslim
+        any_owned_location = {
+            percent >= 0.5
+            is_eranzamin_region_province = yes
+        }
     }
     effect = {
         international_organization:eranzamin = {

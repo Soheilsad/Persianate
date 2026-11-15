@@ -295,6 +295,7 @@ ulus_pledge_to_asker = {
 	}
 	remove_variable = ulus_pledged_to_khan
 	set_variable = { name = ulus_pledged_to value = scope:ulus_asking_house }
+	save_scope_as = ulus_pledger
 	scope:ulus_asking_house = {
 		trigger_event_non_silently = amirs_rising.5
 	}

@@ -304,6 +304,7 @@ ulus_pledge_support = {
 			set_variable = { name = ulus_pledged_to value = scope:target_country }
 			custom_tooltip = ulus_pledge_effect_tt
 		}
+		scope:actor = { save_scope_as = ulus_pledger }
 		scope:target_country = {
 			trigger_event_non_silently = amirs_rising.5
 		}

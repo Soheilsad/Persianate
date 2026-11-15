@@ -80,41 +80,38 @@ ulus_chaghatay = {
 	#    scope:recipient = callee, scope:target = the enemy.
 	join_defensive_wars_always = {
 		scope:actor = { is_leader_of_international_organization = root }
-		# Against an outsider the whole ulus musters. Against one of its
-		# own (a rising, a war for the khan) nobody is bound but the
-		# lords who pledged to the seat; the rest may be asked.
-		OR = {
-			NOT = { scope:target ?= { is_member_of_international_organization = root } }
-			scope:recipient ?= { has_variable = ulus_pledged_to_khan }
-		}
+		ulus_callee_may_ride_for_caller = yes
 	}
 	join_defensive_wars_can_call = {
 		OR = {
 			scope:actor = { is_leader_of_international_organization = root }
 			scope:recipient = { is_leader_of_international_organization = root }
-			# A pledged tümen rides for the house it pledged to.
-			scope:recipient ?= { var:ulus_pledged_to ?= scope:actor }
+			ulus_callee_stands_with_caller = yes
 		}
-		# Nobody is summoned against the house he is pledged to.
-		NOT = { scope:recipient ?= { var:ulus_pledged_to ?= scope:target } }
+		ulus_callee_may_ride_for_caller = yes
 	}
 	join_defensive_wars_auto_call = {
 		OR = {
 			scope:actor = { is_leader_of_international_organization = root }
 			scope:recipient = { is_leader_of_international_organization = root }
 		}
+		ulus_callee_may_ride_for_caller = yes
 	}
+	# Offensive: the seat summons whom it will; a house may summon the
+	# tümens pledged to it (what gives a rising amir an army beyond his
+	# own). In a war inside the ulus only those who have taken the
+	# caller's side can be summoned at all
+	# (scripted_triggers/10, WARS INSIDE THE ULUS).
 	join_offensive_wars_can_call = {
 		OR = {
 			scope:actor = { is_leader_of_international_organization = root }
-			# A pledged tümen rides for the house it pledged to: this is
-			# what gives a rising amir an army beyond his own.
-			scope:recipient ?= { var:ulus_pledged_to ?= scope:actor }
+			ulus_callee_stands_with_caller = yes
 		}
-		NOT = { scope:recipient ?= { var:ulus_pledged_to ?= scope:target } }
+		ulus_callee_may_ride_for_caller = yes
 	}
 	join_offensive_wars_auto_call = {
 		scope:actor = { is_leader_of_international_organization = root }
+		ulus_callee_may_ride_for_caller = yes
 	}
 	gives_military_access_to_all_when_at_war = yes
 	# The tümens ride through each other's pastures as of right: the ulus

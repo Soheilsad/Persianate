@@ -44,7 +44,7 @@ grant_ulus = {
 			government_type = government_type:steppe_horde
 			OR = {
 				ruler ?= { dynasty ?= dynasty:borjigin_dynasty }
-				has_reform ?= government_reform:beglerbeg_regency
+				has_reform = government_reform:beglerbeg_regency
 			}
 		}
 		scope:recipient ?= {
@@ -195,7 +195,9 @@ grant_ulus = {
 	# 1.4: ai_will_do is a script value; modifier = { factor/add } became if = { limit = { } multiply/add }.
 	# The AI had no tick at all and never granted one (author, 2026-11-14).
 	ai_tick = monthly
-	ai_tick_frequency = 24
+	# Every three months, not every two years: the action needs peace,
+	# and a great horde is at peace for a few months at a time.
+	ai_tick_frequency = 3
 
 	# A khan gives a share when he has a far country he cannot hold and a
 	# realm that is coming apart, and he stops when the princes with

@@ -40,7 +40,6 @@ on_shatter_country = {
 ulus_tumen_shatters = {
 	trigger = {
 		is_ulus_chaghatay_amir = yes
-		NOT = { has_global_variable = ulus_broken_seat }
 	}
 	effect = {
 		ulus_tumen_is_broken = yes
@@ -85,5 +84,35 @@ ulus_remember_who_beat_us = {
 	}
 	effect = {
 		set_variable = { name = ulus_last_beaten_by value = scope:winner years = 3 }
+	}
+}
+
+
+# A country released or set up as the subject of a house of the ulus is
+# seated in the ulus at once (author, 2026-11-14: "new vassals created
+# by me, from conquered land, do not join. They should."). A horde
+# joins as an amir; anything settled joins as a client king, keeping
+# its own government. As a subject its whole weight stands behind its
+# lord (ledger, step 1b).
+# root = the released country, scope:overlord = its overlord
+# (base _hardcoded.txt).
+on_released_country = {
+	on_actions = {
+		ulus_new_subject_joins
+	}
+}
+
+ulus_new_subject_joins = {
+	trigger = {
+		exists = international_organization:ulus_chaghatay
+		NOT = { is_ulus_chaghatay_member = yes }
+		scope:overlord ?= { is_ulus_chaghatay_member = yes }
+	}
+	effect = {
+		if = {
+			limit = { NOT = { government_type = government_type:steppe_horde } }
+			set_variable = ulus_client
+		}
+		ulus_seat_in_the_ulus = yes
 	}
 }

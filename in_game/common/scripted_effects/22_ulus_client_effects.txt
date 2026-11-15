@@ -67,11 +67,32 @@ ulus_client_lapses = {
 	}
 }
 
+# ---------------------------------------------------------------------
+# THE RECORD IS KEPT ON THE OLD CAPITAL (a location outlives any
+# country), one per broken house, so that two tümens broken in the same
+# war each get their own disposal. Until 2026-11-14 there was a single
+# global slot: the second collapse was dropped and its ground left the
+# ulus, and the ground was recognised by "capital on a marked pasture",
+# which the khan's own share never was (author's test).
+#   on the seat (location):
+#     ulus_broken_house    country  the house that shattered
+#     ulus_broken_breaker  country  who disposes of it
+#     ulus_broken_ground   list of locations it held
+#   on every such location:  ulus_ground_seat = the seat
+#   global list ulus_broken_seats: seats waiting for their event
+# In the event and the effects below the seat is
+# scope:ulus_broken_seat_loc and the house scope:ulus_broken_house.
+# ---------------------------------------------------------------------
+
 # COUNTRY scope: a tümen of the ulus at the moment it shatters.
 ulus_tumen_is_broken = {
 	save_scope_as = ulus_broken
+	if = {
+		limit = { exists = scope:ulus_breaker }
+		clear_saved_scope = ulus_breaker
+	}
 	# Who decides: an ulus house at war with it, the heaviest if there
-	# are several; failing that, the seat.
+	# are several ...
 	ordered_country_at_war_with = {
 		limit = { is_ulus_chaghatay_member = yes }
 		order_by = ulus_realm_weight
@@ -80,7 +101,7 @@ ulus_tumen_is_broken = {
 		save_scope_as = ulus_breaker
 	}
 	# ... or the house of the ulus that beat it last, within three
-	# years (on_action/38, ulus_remember_who_beat_us).
+	# years (on_action/38, ulus_remember_who_beat_us) ...
 	if = {
 		limit = {
 			NOT = { exists = scope:ulus_breaker }
@@ -93,8 +114,7 @@ ulus_tumen_is_broken = {
 			}
 		}
 	}
-	# ... and only if nobody broke it at all (it starved, or an outsider
-	# did it and has no say in the ulus), the seat.
+	# ... and only if nobody broke it at all, the seat of the ulus.
 	if = {
 		limit = {
 			NOT = { exists = scope:ulus_breaker }
@@ -109,50 +129,58 @@ ulus_tumen_is_broken = {
 		}
 	}
 	if = {
-		limit = { exists = scope:ulus_breaker }
-		clear_global_variable_list = ulus_broken_ground
-		every_owned_location = {
-			add_to_global_variable_list = { name = ulus_broken_ground target = this }
+		limit = {
+			exists = scope:ulus_breaker
+			exists = capital
 		}
-		capital ?= { save_scope_as = ulus_broken_seat_loc }
-		if = {
-			limit = { exists = scope:ulus_broken_seat_loc }
-			set_global_variable = { name = ulus_broken_seat value = scope:ulus_broken_seat_loc }
-			set_global_variable = { name = ulus_breaker value = scope:ulus_breaker }
-			set_global_variable = { name = ulus_broken_house value = scope:ulus_broken }
-			# Its pledges die with it.
-			remove_variable = ulus_pledged_to
-			remove_variable = ulus_pledged_to_khan
-			scope:ulus_breaker = {
-				# Hidden first: is there still loose ground? (amirs_client.2)
-				trigger_event_non_silently = { id = amirs_client.2 days = 3 }
+		capital = { save_scope_as = ulus_broken_seat_loc }
+		scope:ulus_broken_seat_loc = {
+			set_variable = { name = ulus_broken_house value = scope:ulus_broken }
+			set_variable = { name = ulus_broken_breaker value = scope:ulus_breaker }
+			clear_variable_list = ulus_broken_ground
+		}
+		every_owned_location = {
+			set_variable = { name = ulus_ground_seat value = scope:ulus_broken_seat_loc }
+			save_scope_as = ulus_ground_piece
+			scope:ulus_broken_seat_loc = {
+				add_to_variable_list = { name = ulus_broken_ground target = scope:ulus_ground_piece }
 			}
+		}
+		add_to_global_variable_list = { name = ulus_broken_seats target = scope:ulus_broken_seat_loc }
+		# Its pledges die with it.
+		remove_variable = ulus_pledged_to
+		remove_variable = ulus_pledged_to_khan
+		scope:ulus_breaker = {
+			# Hidden first: is there still loose ground? (amirs_client.2)
+			trigger_event_non_silently = { id = amirs_client.2 days = 3 }
 		}
 	}
 }
 
-# COUNTRY scope: the breaker. Whoever sits on the old capital now is the
-# house that inherits the ground; saved as scope:ulus_ground_heir, and
-# every place the broken house held that others of its pieces hold is
-# gathered under it. Needs the globals above.
+# LOCATION scope: one of a broken house's places that is still loose,
+# i.e. held by the broken house itself or by one of the countries that
+# came out of it (their capitals lie inside its old ground). Anything a
+# standing house or an outsider has taken meanwhile is theirs.
+# Needs scope:ulus_broken_seat_loc and scope:ulus_broken_house.
+# (A scripted TRIGGER lives in scripted_triggers/10; this comment marks
+# where its logic is used.)
+
+# COUNTRY scope: the breaker. Whoever sits on the old capital is the
+# house that inherits the ground (scope:ulus_ground_heir); every loose
+# place of the broken house is gathered under it.
 ulus_gather_the_broken_ground = {
-	global_var:ulus_broken_seat.owner ?= { save_scope_as = ulus_ground_heir }
+	scope:ulus_broken_seat_loc.owner ?= { save_scope_as = ulus_ground_heir }
 	if = {
 		limit = { exists = scope:ulus_ground_heir }
-		every_in_global_list = {
-			variable = ulus_broken_ground
-			limit = {
-				exists = owner
-				NOT = { owner = scope:ulus_ground_heir }
-				# only what is still loose: nothing a standing house of
-				# the ulus or an outsider has taken meanwhile
-				owner = {
-					NOT = { is_ulus_chaghatay_member = yes }
-					capital ?= { has_variable = ulus_tumen_pasture }
-					NOT = { this = root }
+		scope:ulus_broken_seat_loc = {
+			every_in_list = {
+				variable = ulus_broken_ground
+				limit = {
+					ulus_is_loose_broken_ground = yes
+					NOT = { owner ?= scope:ulus_ground_heir }
 				}
+				change_location_owner = scope:ulus_ground_heir
 			}
-			change_location_owner = scope:ulus_ground_heir
 		}
 	}
 }
@@ -176,19 +204,17 @@ ulus_peace_with_the_ground_heir = {
 
 # COUNTRY scope: the breaker. CHOICE I: the ground is his.
 ulus_broken_ground_taken = {
-	every_in_global_list = {
-		variable = ulus_broken_ground
-		limit = {
-			exists = owner
-			NOT = { owner = root }
-			owner = {
-				NOT = { is_ulus_chaghatay_member = yes }
-				capital ?= { has_variable = ulus_tumen_pasture }
+	scope:ulus_broken_seat_loc = {
+		every_in_list = {
+			variable = ulus_broken_ground
+			limit = {
+				ulus_is_loose_broken_ground = yes
+				NOT = { owner ?= root }
 			}
+			change_integration_level = conquered
+			change_location_owner = root
+			change_integration_level = conquered
 		}
-		change_integration_level = conquered
-		change_location_owner = root
-		change_integration_level = conquered
 	}
 	ulus_broken_ground_done = yes
 }
@@ -239,31 +265,19 @@ ulus_broken_ground_client = {
 	ulus_broken_ground_done = yes
 }
 
-# COUNTRY scope: the house just raised; root = the breaker. Pledged to
-# the man who raised it (if he is an amir who can be pledged to) and
-# well disposed to him.
+# COUNTRY scope: the house just raised; root = the breaker. His subject,
+# and well disposed to him. (As his subject the ledger puts its whole
+# weight behind him; no pledge is needed.)
 ulus_owes_his_place_to_the_breaker = {
-	if = {
-		limit = {
-			root = {
-				is_ulus_chaghatay_amir = yes
-				NOT = { has_variable = ulus_pledged_to }
-			}
-		}
-		set_variable = { name = ulus_pledged_to value = root }
-	}
-	else_if = {
-		limit = { root = { is_ulus_chaghatay_leader = yes } }
-		set_variable = ulus_pledged_to_khan
-	}
 	add_opinion = {
 		target = root
 		modifier = opinion_ulus_raised_by_him
 	}
-	# And his subject: a house of the ulus under a house of the ulus,
-	# whose whole weight the ledger puts behind its lord.
 	if = {
-		limit = { is_subject = no }
+		limit = {
+			is_subject = no
+			NOT = { this = root }
+		}
 		make_subject_of = {
 			target = root
 			type = subject_type:vassal
@@ -271,13 +285,29 @@ ulus_owes_his_place_to_the_breaker = {
 	}
 }
 
+# COUNTRY scope: the breaker. This seat's record is closed; if another
+# broken house is waiting on him, it is asked about next.
 ulus_broken_ground_done = {
-	clear_global_variable_list = ulus_broken_ground
-	remove_global_variable = ulus_broken_seat
-	remove_global_variable = ulus_breaker
-	remove_global_variable = ulus_broken_house
+	scope:ulus_broken_seat_loc ?= {
+		every_in_list = {
+			variable = ulus_broken_ground
+			remove_variable = ulus_ground_seat
+		}
+		clear_variable_list = ulus_broken_ground
+		remove_variable = ulus_broken_house
+		remove_variable = ulus_broken_breaker
+	}
 	international_organization:ulus_chaghatay ?= {
 		ulus_chaghatay_rebuild_ledger = yes
+	}
+	if = {
+		limit = {
+			any_in_global_list = {
+				variable = ulus_broken_seats
+				var:ulus_broken_breaker ?= root
+			}
+		}
+		trigger_event_non_silently = { id = amirs_client.2 days = 1 }
 	}
 }
 

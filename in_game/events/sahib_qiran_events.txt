@@ -213,3 +213,48 @@ sahib_qiran.7 = {
 		}
 	}
 }
+
+
+# ----------------------------------------------------------------------------
+# sahib_qiran.8 — THE CORE. Hidden; five days after the founding. The
+# sworn amirs that border him and have their seat in the same AREA as
+# his own are taken into his realm outright, with their men, treasury
+# and people (transfer = yes). Temür's Barlas and the houses around
+# Kesh and Samarkand were his household, not his following. The
+# periphery stays sworn.
+# ----------------------------------------------------------------------------
+sahib_qiran.8 = {
+	type = country_event
+	hidden = yes
+	outcome = neutral
+	title = empty_text
+	desc = empty_text
+
+	trigger = {
+		has_variable = sq_fortune
+		exists = capital
+	}
+
+	immediate = {
+		every_subject = {
+			limit = {
+				is_subject_type = sworn_amir
+				has_variable = sq_sworn_amir
+				capital ?= { area = root.capital.area }
+				any_neighbor_country = { this = root }
+			}
+			add_to_list = sq_core_houses
+		}
+		every_in_list = {
+			list = sq_core_houses
+			save_scope_as = sq_core_house
+			root = {
+				annex_country = {
+					country = scope:sq_core_house
+					reason = Diplomatic
+					transfer = yes
+				}
+			}
+		}
+	}
+}

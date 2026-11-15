@@ -14,12 +14,10 @@ amirs_client.1 = {
 		10 = regular
 	}
 
+	# Fired by amirs_client.2, which saves scope:ulus_broken_seat_loc
+	# and scope:ulus_broken_house.
 	trigger = {
-		has_global_variable = ulus_broken_seat
-	}
-
-	immediate = {
-		global_var:ulus_broken_seat = { save_scope_as = ulus_broken_seat_loc }
+		exists = scope:ulus_broken_seat_loc
 	}
 
 	# I. The pastures are ours.
@@ -126,13 +124,15 @@ amirs_client.1 = {
 	}
 }
 
-# Hidden. Three days after a tümen shatters: is its old capital still
-# loose ground? In the author's test (2026-11-14) the house that broke
-# Dzungaria had already TAKEN its capital in the peace, and the event
-# then offered to turn the conqueror's own realm into "a new tümen".
-# Loose means the seat is held by the broken house itself or by a
-# country that is not a standing house of the ulus and sits on a
-# tümen's pasture. Otherwise there is nothing to dispose of.
+# Hidden. Fired on the breaker three days after a tümen shatters (and
+# again a day after each disposal while another waits). Takes the next
+# broken seat that is his to dispose of off the list and asks whether
+# its old capital is still loose ground: held by the broken house
+# itself or by one of the countries that came out of it. In the
+# author's test (2026-11-14) the house that broke Dzungaria had already
+# TAKEN its capital in the peace, and the event offered to turn the
+# conqueror's own realm into "a new tümen". If a standing house or an
+# outsider holds the seat, there is nothing to dispose of.
 amirs_client.2 = {
 	type = country_event
 	hidden = yes
@@ -141,24 +141,28 @@ amirs_client.2 = {
 	desc = empty_text
 
 	trigger = {
-		has_global_variable = ulus_broken_seat
+		any_in_global_list = {
+			variable = ulus_broken_seats
+			var:ulus_broken_breaker ?= root
+		}
 	}
 
 	immediate = {
+		random_in_global_list = {
+			variable = ulus_broken_seats
+			limit = { var:ulus_broken_breaker ?= root }
+			save_scope_as = ulus_broken_seat_loc
+		}
+		remove_list_global_variable = { name = ulus_broken_seats target = scope:ulus_broken_seat_loc }
+		scope:ulus_broken_seat_loc = {
+			var:ulus_broken_house ?= { save_scope_as = ulus_broken_house }
+		}
 		if = {
 			limit = {
-				global_var:ulus_broken_seat = {
-					exists = owner
-					owner = {
-						NOT = { this = root }
-						OR = {
-							this = global_var:ulus_broken_house
-							AND = {
-								NOT = { is_ulus_chaghatay_member = yes }
-								capital ?= { has_variable = ulus_tumen_pasture }
-							}
-						}
-					}
+				exists = scope:ulus_broken_house
+				scope:ulus_broken_seat_loc = {
+					ulus_is_loose_broken_ground = yes
+					NOT = { owner ?= root }
 				}
 			}
 			trigger_event_non_silently = amirs_client.1

@@ -424,6 +424,13 @@ ulus_chaghatay_rebuild_ledger = {
 
 	every_international_organization_member = {
 		set_variable = { name = ulus_weight_eff value = ulus_realm_weight }
+		# For the Amirs card: a house whose weight stands behind another
+		# is shown with its own weight in brackets, not as 0.0.
+		remove_variable = ulus_row_lent
+		if = {
+			limit = { ulus_has_chosen_a_side = yes }
+			set_variable = ulus_row_lent
+		}
 	}
 
 	# The client kings are not amirs: no share of the amirs' weight, no

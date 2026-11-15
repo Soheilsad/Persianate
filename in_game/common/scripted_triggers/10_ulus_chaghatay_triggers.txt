@@ -165,3 +165,118 @@ ulus_has_chosen_a_side = {
 		has_variable = ulus_weight_lent_all
 	}
 }
+
+
+# ---------------------------------------------------------------------
+# WARS INSIDE THE ULUS, for the organisation's join/call rules
+# (international_organizations/ulus_chaghatay.txt). root = the
+# organisation, scope:actor = the caller, scope:recipient = the callee.
+#
+# These replace tests on scope:target, which the engine does not supply
+# to an organisation with no target of its own: with it missing, "the
+# enemy is not a member" read as true for everyone and "pledged to the
+# enemy" never matched, so every house rode for the khan against a
+# rising, the riser's own pledged tümens included (author's test,
+# Jalayirs pledged to the Yasa'uri, 2026-11-14).
+# A house is "against" the caller if it is at war with him or holds one
+# of the ulus's own casus belli on him (which covers the days between
+# the rising being proclaimed and the war being declared).
+# ---------------------------------------------------------------------
+
+# The caller is fighting, or about to fight, a house of the ulus.
+ulus_caller_fights_a_house = {
+	any_international_organization_member = {
+		NOT = { this = scope:actor }
+		OR = {
+				is_at_war_with = scope:actor
+				has_casus_belli_of_type_on = {
+					target = scope:actor
+					type = casus_belli:cb_rise_against_the_khan
+				}
+				has_casus_belli_of_type_on = {
+					target = scope:actor
+					type = casus_belli:cb_take_the_khan
+				}
+				has_casus_belli_of_type_on = {
+					target = scope:actor
+					type = casus_belli:cb_tumen_feud
+				}
+				has_casus_belli_of_type_on = {
+					target = scope:actor
+					type = casus_belli:cb_restore_the_ulus
+				}
+			}
+	}
+}
+
+# The callee has put its tümen behind a house that is against the caller.
+ulus_callee_is_pledged_against_caller = {
+	scope:recipient = {
+		has_variable = ulus_pledged_to
+		var:ulus_pledged_to = {
+			OR = {
+				is_at_war_with = scope:actor
+				has_casus_belli_of_type_on = {
+					target = scope:actor
+					type = casus_belli:cb_rise_against_the_khan
+				}
+				has_casus_belli_of_type_on = {
+					target = scope:actor
+					type = casus_belli:cb_take_the_khan
+				}
+				has_casus_belli_of_type_on = {
+					target = scope:actor
+					type = casus_belli:cb_tumen_feud
+				}
+				has_casus_belli_of_type_on = {
+					target = scope:actor
+					type = casus_belli:cb_restore_the_ulus
+				}
+			}
+		}
+	}
+}
+
+# The callee stands with the caller: pledged to him, his subject, or
+# (the caller being the seat) pledged to the khan.
+ulus_callee_stands_with_caller = {
+	scope:recipient = {
+		OR = {
+			var:ulus_pledged_to ?= scope:actor
+			is_subject_of = scope:actor
+			AND = {
+				has_variable = ulus_pledged_to_khan
+				scope:actor = { is_leader_of_international_organization = root }
+			}
+		}
+	}
+}
+
+# In a war inside the ulus nobody rides who has not taken a side; in any
+# other war the ordinary rules hold.
+ulus_callee_may_ride_for_caller = {
+	NOT = { ulus_callee_is_pledged_against_caller = yes }
+	OR = {
+		NOT = { ulus_caller_fights_a_house = yes }
+		ulus_callee_stands_with_caller = yes
+	}
+}
+
+
+# LOCATION scope: a place of a broken tümen that is still loose: held by
+# the broken house itself, or by a country whose capital lies inside
+# that house's old ground (one of the pieces that came out of it).
+# Needs scope:ulus_broken_seat_loc and scope:ulus_broken_house
+# (scripted_effects/22_ulus_client_effects.txt).
+ulus_is_loose_broken_ground = {
+	exists = owner
+	owner = {
+		OR = {
+			this = scope:ulus_broken_house
+			AND = {
+				NOT = { is_ulus_chaghatay_member = yes }
+				capital ?= { var:ulus_ground_seat ?= scope:ulus_broken_seat_loc }
+			}
+		}
+	}
+}
