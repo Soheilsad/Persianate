@@ -101,3 +101,10 @@
  CANCEL_sworn_amir_TOOLTIP_HEADER_NO_TARGET: "Release a [country|e] from its oath"
  CANCEL_sworn_amir_CATEGORY: "CATEGORY_SUBJECT_ACTIONS"
  CANCEL_sworn_amir_REQDESC: "$MONARCHTITLE$"
+ # Base's opening event and situation text describe a man who founds a horde
+ # "with a handful of loyal soldiers" to "surpass the fallen Caliphates" and
+ # restore the Great Mongol Horde, and style him by his country's ruler
+ # title. None of that is this mod's Sāhib-qirān (author, 2026-11-15).
+ rise_of_timur.1.desc: "[GetCountry('TIM').MakeScope.GetVariable('tim_founding_father').GetCharacter.GetFirstNameWithNoTooltip] was never raised on the white felt and never asked to be. He kept a khān of Chinggis's line in his camp, gave the amīrs more than he took from them, and married into the house he served. The begs of the ulus now follow him and not the prince in his tent, and they have a name for a man the stars favour like this: Sāhib-qirān, Lord of the Conjunction.\n\nHe rules as güregen, son-in-law of the line, and the khān still reigns. What holds his following together is victory and plunder, and both must be found beyond the ulus. While his fortune stands the amīrs will ride wherever he points. When it fails they will remember that he is one of them."
+ rise_of_timur.1.a: "The amīrs want plunder. We shall find it."
+ rise_of_timur_desc: "[GetCountry('TIM').MakeScope.GetVariable('tim_founding_father').GetCharacter.GetFirstNameWithNoTooltip] holds no throne by right. He kept a khān, filled the amīrs' hands and married into Chinggis's line, and the ulus followed him. His following lasts while his #Y fortune#! does: it is fed by battles and sieges won, by wars won and by plunder shared out, and it drains in every month of peace.\n\nHe must find lands rich enough to be worth taking and weak enough to be taken, and make good on what he says he will conquer. If he does, his house keeps what he built. If he does not, the amīrs ride home."
