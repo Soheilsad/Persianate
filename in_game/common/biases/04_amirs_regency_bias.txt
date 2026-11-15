@@ -65,3 +65,17 @@ opinion_bgl_a_beg_on_the_felt = {
 	value = -60
 	yearly_decay = 2
 }
+
+
+# A house that has pledged its tümen, toward the seat or the keeper its
+# patron has proclaimed against (Rise Against the Khan, Claim the Khan),
+# and a lord pledged to the khan toward the house that rose. The
+# engine's call-to-arms reckoning has no hook for a pledge, but it
+# weighs the callee's opinion of the TARGET at -0.5 a point: -60 here
+# is +30 toward answering. (Author's test, 2026-11-15: the Barlas,
+# pledged to the riser, refused at -34 because they still thought well
+# of the khan.)
+opinion_ulus_sworn_against_him = {
+	value = -60
+	yearly_decay = 6
+}

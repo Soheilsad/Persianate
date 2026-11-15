@@ -471,6 +471,7 @@ ulus_claim_the_khan = {
 				# Told to the claimant (.22), the keeper (.23) and every
 				# other house (.24), each with the names.
 				save_scope_as = ulus_claimant
+				ulus_pledged_houses_take_sides = { TARGET = ulus_regent }
 				trigger_event_non_silently = amirs_rising.22
 				scope:ulus_regent = {
 					trigger_event_non_silently = amirs_rising.23

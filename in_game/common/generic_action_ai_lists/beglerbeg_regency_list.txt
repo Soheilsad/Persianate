@@ -1,0 +1,13 @@
+# The Beglerbeg's Regency: the regent's three actions
+# (generic_actions/beglerbeg_regency_actions.txt). Without a list the AI
+# does not consider an action at all.
+beglerbeg_regency_actions_list = {
+	potential = {
+		has_variable = bgl_regency
+	}
+	actions = {
+		bgl_distribute_largesse
+		bgl_marry_into_the_line
+		bgl_recall_darughas
+	}
+}

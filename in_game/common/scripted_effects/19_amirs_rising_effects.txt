@@ -567,3 +567,44 @@ ulus_show_outside_reckoning = {
 	custom_tooltip = ulus_reckon_out_temper_tt
 }
 
+
+# COUNTRY scope: a house that has proclaimed against $TARGET$ (a saved
+# scope name: the khan's seat or the keeper). Every house pledged to it
+# takes its quarrel as its own, and every lord who stands with the
+# target takes his; that is what makes them answer the summons
+# (biases/04, opinion_ulus_sworn_against_him).
+ulus_pledged_houses_take_sides = {
+	save_scope_as = ulus_proclaimer
+	international_organization:ulus_chaghatay ?= {
+		every_international_organization_member = {
+			limit = {
+				OR = {
+					var:ulus_pledged_to ?= scope:ulus_proclaimer
+					is_subject_of = scope:ulus_proclaimer
+				}
+			}
+			add_opinion = {
+				target = scope:$TARGET$
+				modifier = opinion_ulus_sworn_against_him
+			}
+		}
+		every_international_organization_member = {
+			limit = {
+				NOT = { this = scope:$TARGET$ }
+				NOT = { this = scope:ulus_proclaimer }
+				OR = {
+					var:ulus_pledged_to ?= scope:$TARGET$
+					is_subject_of = scope:$TARGET$
+					AND = {
+						has_variable = ulus_pledged_to_khan
+						scope:$TARGET$ = { is_ulus_chaghatay_leader = yes }
+					}
+				}
+			}
+			add_opinion = {
+				target = scope:ulus_proclaimer
+				modifier = opinion_ulus_sworn_against_him
+			}
+		}
+	}
+}
