@@ -267,6 +267,21 @@ ulus_sahib_qiran_conquest_ambition = {
 				reason = MilitaryConquest
 				transfer = yes
 			}
+			# The regime is in place BEFORE he is seated and before the
+			# situation's first event is written: the ruler's style
+			# (customizable_localization/country_ranks.txt: Güregen, not
+			# Khān) is read from this reform, and both the man's name in
+			# that event and his name on the map came out as "Khān" when
+			# the reform arrived a moment later (author, 2026-11-15).
+			# scripted_effects/15 adds the reform again only if missing.
+			set_variable = ulus_sahib_qiran
+			if = {
+				limit = {
+					government_type = government_type:steppe_horde
+					NOT = { has_reform = government_reform:gurkan_of_the_ulus }
+				}
+				add_reform = government_reform:gurkan_of_the_ulus
+			}
 			if = {
 				limit = { global_var:timur_character ?= { is_alive = yes } }
 				set_new_ruler = global_var:timur_character
