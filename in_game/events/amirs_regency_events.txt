@@ -421,6 +421,10 @@ amirs_regency.40 = {
 				limit = {
 					NOT = { is_leader_of_international_organization = scope:ulus_io }
 					has_ruler = yes
+					# Not a client king, and not a house that has put
+					# its weight behind another.
+					NOT = { ulus_marked_client = yes }
+					NOT = { ulus_has_chosen_a_side = yes }
 				}
 				order_by = ulus_kingmaker_score
 				max = 1
@@ -430,6 +434,22 @@ amirs_regency.40 = {
 			}
 		}
 		set_local_variable = { name = ulus_heir_score value = ulus_kingmaker_score }
+		# The hardened office (scripted_effects/22): each step lifts the
+		# heir's standing, here where it decides, as on the panel.
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { has_variable = ulus_office_steps }
+			}
+			set_local_variable = {
+				name = ulus_heir_score
+				value = {
+					value = international_organization:ulus_chaghatay.var:ulus_office_steps
+					multiply = ulus_office_heir_bonus
+					add = 1
+					multiply = local_var:ulus_heir_score
+				}
+			}
+		}
 
 		if = {
 			limit = {
@@ -447,11 +467,8 @@ amirs_regency.40 = {
 				ulus_regency_advance_to_stage_2 = yes
 			}
 			scope:ulus_new_regent = { trigger_event_non_silently = amirs_regency.42 }
-			# The dispossessed house may fight to take the khan back.
-			add_casus_belli = {
-				type = casus_belli:cb_take_the_khan
-				target = scope:ulus_new_regent
-			}
+			# The dispossessed house may fight to take the khan back:
+			# the claim is given by .43 itself.
 			trigger_event_non_silently = amirs_regency.43
 		}
 		else = {
@@ -510,6 +527,25 @@ amirs_regency.43 = {
 		name = amirs_regency.43.a
 		add_horde_unity = -10
 		custom_tooltip = amirs_regency_lost_khan_tt
+		# The claim the tooltip promises, whichever way the khan was
+		# lost (the heir's standing, the capital taken, the stage-4
+		# handover): on whoever keeps him now.
+		international_organization:ulus_chaghatay ?= {
+			leader_country ?= {
+				if = {
+					limit = { NOT = { this = root } }
+					save_scope_as = ulus_khan_keeper_now
+				}
+			}
+		}
+		if = {
+			limit = { exists = scope:ulus_khan_keeper_now }
+			add_casus_belli = {
+				type = casus_belli:cb_take_the_khan
+				target = scope:ulus_khan_keeper_now
+				years = 10
+			}
+		}
 	}
 }
 

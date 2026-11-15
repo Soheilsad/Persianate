@@ -250,6 +250,7 @@ ulus_chaghatay = {
 
 	special_statuses_implemented = {
 		ulus_amir
+		ulus_client
 	}
 
 	ai_desire_to_join = {

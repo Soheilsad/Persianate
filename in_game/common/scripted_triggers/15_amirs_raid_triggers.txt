@@ -17,10 +17,14 @@ ulus_raid_has_pretext = {
 }
 
 # COUNTRY scope (the realm to be raided); scope:actor is the raider.
-# Same faith, both of them Muslim: the case the law speaks to.
+# Muslim on Muslim: the case the law speaks to. Of whatever rite: a
+# Sunni chief raiding a Shīʿī town was not raiding unbelievers, and
+# until 2026-11-14 that case fell between this test and the ghaza and
+# cost nothing. A chief who is not a Muslim has no such law on him and
+# meets neither test.
 ulus_raid_is_on_own_faith = {
 	religion.group = religion_group:muslim
-	religion = scope:actor.religion
+	scope:actor = { religion.group = religion_group:muslim }
 }
 
 # COUNTRY scope (the realm to be raided): unbelievers, to a Muslim raider.

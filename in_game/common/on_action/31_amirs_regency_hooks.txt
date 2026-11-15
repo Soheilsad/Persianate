@@ -142,7 +142,17 @@ ulus_renown_siege = {
 #                             lost-war step) but not moved.
 ulus_khan_taken_by_force = {
 	trigger = {
-		ulus_regency_stage_at_least = { STAGE = 3 }
+		# Stage 3 opens it to anyone. A house of the ulus has it from
+		# stage 2, when Claim the Khan opens: that action and its casus
+		# belli both say the capital delivers the khan, and until
+		# 2026-11-14 a war won at stage 2 delivered nothing.
+		OR = {
+			ulus_regency_stage_at_least = { STAGE = 3 }
+			AND = {
+				ulus_regency_stage_at_least = { STAGE = 2 }
+				is_ulus_chaghatay_amir = yes
+			}
+		}
 		scope:target ?= {
 			is_capital = yes
 			owner ?= {

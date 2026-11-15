@@ -39,7 +39,7 @@
  ulus_ask_not_pledged_tt: "This house has not already pledged its tümen"
  ulus_ask_acceptance_tt: "This house would agree. It weighs: its opinion of us (a sixth of it counts), a royal marriage with us (#G +25#!), an alliance (#G +15#!), rivalry (#R −100#!), our weight against its own (#G +30#! if we are twice as heavy, #G +15#! if a quarter heavier, up to #R −100#! if we are the lighter, by how much), whether it is itself among the three likeliest kingmakers (up to #R −66#!, most for the likeliest) and whether we are (#G +10#!), against a reluctance of #R −25#!"
  amirs_rising.7.title: "An Amīr Asks for Our Tümen"
- amirs_rising.7.desc: "A messenger has come from another house of the ulus with gifts that are generous without being a bribe, and a proposal that is polite without being vague. He asks that our riders stand where his stand. Half of what we weigh in the councils of the ulus would be counted as his. If he comes to hold the khān, he will remember who stood with him when it was a wager.\n\nIf he does not, we will have spent our name on another man's ambition."
+ amirs_rising.7.desc: "A messenger has come from another house of the ulus with gifts that are generous without being a bribe, and a proposal that is polite without being vague. He asks that our riders stand where his stand. All that we weigh in the councils of the ulus would be counted as his, and we would be out of the reckoning for the khān ourselves. If he comes to hold the khān, he will remember who stood with him when it was a wager.\n\nIf he does not, we will have spent our name on another man's ambition."
  amirs_rising.7.a: "Our tümen stands with his."
  amirs_rising.7.b: "Our tümen stands for itself."
  amirs_rising.8.title: "The Pledge Is Refused"

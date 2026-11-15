@@ -929,6 +929,8 @@ ulus_chaghatay_rebuild_ledger = {
 			limit = {
 				NOT = { is_leader_of_international_organization = scope:ulus_io }
 				NOT = { ulus_marked_client = yes }
+				NOT = { ulus_has_chosen_a_side = yes }
+				has_ruler = yes
 			}
 			order_by = ulus_kingmaker_score
 			max = 1

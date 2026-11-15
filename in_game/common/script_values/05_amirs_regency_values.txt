@@ -113,22 +113,34 @@ ulus_puppet_pliancy = {
 # kingmaker score with the HEIR's abilities in place of the ruler's.
 # COUNTRY scope (the regent's state).
 ulus_regent_heir_score = {
+	# The kingmaker score (script_values/04, ulus_kingmaker_score) as it
+	# will read on the day the heir rules: the house's share and its
+	# patron stay, the ruler's skills become the heir's, and what was
+	# the dead man's own (his renown, his wife of the line) is gone.
+	# Until 2026-11-14 this was the first draft's formula (military x2,
+	# share x250 capped at 60) and the panel disagreed with the poll.
 	value = 0
 	if = {
 		limit = { has_heir = yes }
 		add = {
 			value = heir.mil
-			multiply = 2
+			multiply = 0.5
 		}
-		add = heir.adm
+		add = {
+			value = heir.adm
+			multiply = 0.2
+		}
 	}
 	if = {
 		limit = { has_variable = ulus_amir_share }
 		add = {
 			value = var:ulus_amir_share
-			multiply = 250
-			max = 60
+			multiply = 400
 		}
+	}
+	if = {
+		limit = { ulus_has_patron_of_the_line = yes }
+		add = ulus_borjigin_patron_bonus
 	}
 }
 

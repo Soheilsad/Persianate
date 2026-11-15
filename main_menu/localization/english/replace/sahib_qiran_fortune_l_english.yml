@@ -49,7 +49,7 @@
 
  # Subject type (subject_types/sworn_amir.txt)
  sworn_amir: "Sworn Amīr"
- sworn_amir_desc: "An amīr who swore to the Sāhib-qirān when the ulus became one man's realm. He keeps his tümen and his pastures, rides when he is called, and sends men and a token of gold. He is a follower, not a governor: he takes up none of our diplomatic capacity and cannot be absorbed for a generation. Nothing binds him but our fortune. While it stands high he is loyal; when it runs low his loyalty goes with it, and if it lies empty he rides away."
+ sworn_amir_desc: "An amīr who swore to the Sāhib-qirān when the ulus became one man's realm. He keeps his tümen and his pastures, rides when he is called, and sends him men. He is a follower, not a governor: he takes up none of our diplomatic capacity and cannot be absorbed for a generation. Nothing binds him but our fortune. While it stands high he is loyal; when it runs low his loyalty goes with it, and if it lies empty he rides away."
  sworn_amir_pays: "Sworn Amīr rides for the Sāhib-qirān"
  sworn_amir_turn_on_him_tt: "A sworn amīr turns on the Sāhib-qirān only when his loyalty has failed."
 
