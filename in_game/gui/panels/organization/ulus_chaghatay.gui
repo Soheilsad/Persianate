@@ -1024,6 +1024,202 @@ organization_geodiplomatic_theme = {
 			}
 		}
 
+		# (3b) THE KHAN'S AUTHORITY — what a khan who keeps his seat has to
+		# work with (scripted_effects/24_khan_authority_effects.txt): his
+		# authority and what moves it each month, what it does to the
+		# bar, the decrees standing, how the weight of the ulus would
+		# answer the NEXT decree, and the houses in open defiance. All of
+		# it IO variables written by ulus_authority_ledger and
+		# ulus_authority_monthly. Frozen during a regency (a line says so).
+		card_common = {
+			blockoverride "header_decor_templates" {
+				using = bg_card_header_01_geopolitics
+				using = bg_cabinet_card_frame
+			}
+			blockoverride "common_header_icon_texture" {
+				texture = "gfx/interface/icons/character_roles/ruler.dds"
+			}
+			blockoverride "common_header_text" {
+				text = "ULUS_AUTHORITY_CARD"
+			}
+			blockoverride "common_bottom_content" {
+				vbox = {
+					layoutpolicy_horizontal = expanding
+					spacing = 4
+					visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_authority').IsSet]"
+
+					text_single = {
+						visible = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_regency').IsSet]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						fontsize = 12
+						text = "ULUS_AUTHORITY_FROZEN"
+						default_format = "#subtle_name"
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						tooltip = "ULUS_AUTHORITY_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_AUTHORITY_LABEL"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_authority').GetValue|0]"
+							default_format = "#yellow_titles"
+						}
+					}
+					progressbar = {
+						layoutpolicy_horizontal = expanding
+						size = { -1 6 }
+						using = progress_bar_red_alt
+						min = 0
+						max = 1
+						value = "[FixedPointToFloat(InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_authority_bar').GetValue)]"
+						direction = horizontal
+						tooltip = "ULUS_AUTHORITY_TT"
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						tooltip = "ULUS_AUTHORITY_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_AUTHORITY_MONTH_LABEL"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_authority_month').GetValue|2+=]"
+						}
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						tooltip = "ULUS_AUTHORITY_BAR_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_AUTHORITY_BAR_LABEL"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_bar_needed').GetValue|2]"
+						}
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						tooltip = "ULUS_DECREES_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_DECREES_LABEL"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_decree_level').GetValue|0]"
+						}
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						tooltip = "ULUS_DECREE_RECKONING_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_DECREE_FOR_LABEL"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_decree_for').GetValue|1]"
+						}
+					}
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+						tooltip = "ULUS_DECREE_RECKONING_TT"
+
+						text_single = {
+							autoresize = yes
+							align = left|nobaseline
+							text = "ULUS_DECREE_AGAINST_LABEL"
+							default_format = "#subtle_name"
+						}
+						expand = {}
+						text_single = {
+							autoresize = yes
+							align = right|nobaseline
+							text = "[InternationalOrganizationsView.GetInternationalOrganization.MakeScope.GetVariable('ulus_decree_against').GetValue|1]"
+						}
+					}
+
+					# The houses in open defiance.
+					text_single = {
+						visible = "[Not(IsDataModelEmpty(GetGlobalList('ulus_defiant_houses')))]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_DEFIANT_HEADER"
+						default_format = "#subtle_name"
+						tooltip = "ULUS_DEFIANT_TT"
+					}
+					vbox = {
+						spacing = 2
+						datamodel = "[GetGlobalList('ulus_defiant_houses')]"
+						item = {
+							widget = {
+								datacontext = "[Scope.GetCountry]"
+								size = { 470 26 }
+								tooltip = "ULUS_DEFIANT_ROW_TT"
+								country_flag_small = {
+									parentanchor = left|vcenter
+								}
+								text_single = {
+									parentanchor = left|vcenter
+									position = { 42 0 }
+									size = { 220 24 }
+									autoresize = no
+									align = left|nobaseline
+									text = "[Country.GetName]"
+								}
+								text_single = {
+									parentanchor = right|vcenter
+									position = { -6 0 }
+									size = { 190 24 }
+									autoresize = no
+									align = right|nobaseline
+									text = "ULUS_DEFIANT_ROW_WEIGHT"
+									default_format = "#subtle_name"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
 		# (4) PLEDGES — who stands behind whom. One row per house that has
 		# pledged its tümen or has a patron outside the ulus (global list
 		# ulus_pledgers, drawn up by the ledger). A pledge has no term: it

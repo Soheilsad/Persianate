@@ -96,6 +96,11 @@ ulus_attacker_holds_ulus_cb = {
 				target = scope:defender
 				type = casus_belli:cb_rise_against_the_khan
 			}
+			# the khan against a house that defies a decree
+			has_casus_belli_of_type_on = {
+				target = scope:defender
+				type = casus_belli:cb_enforce_the_decree
+			}
 			has_casus_belli_of_type_on = {
 				target = scope:defender
 				type = casus_belli:cb_take_the_khan
@@ -279,4 +284,22 @@ ulus_is_loose_broken_ground = {
 			}
 		}
 	}
+}
+
+
+# ---------------------------------------------------------------------
+# THE KHAN'S AUTHORITY (scripted_effects/24).
+# ---------------------------------------------------------------------
+# COUNTRY scope: a house the khan's decrees are put to: an amir, not a
+# house already in open defiance (it is asked nothing more until that is
+# settled).
+ulus_house_is_asked = {
+	is_ulus_chaghatay_amir = yes
+	NOT = { has_variable = ulus_defiant }
+}
+# IO scope: a khan rules and may decree.
+ulus_khan_may_decree = {
+	has_variable = ulus_authority
+	NOT = { has_variable = ulus_regency }
+	exists = leader_country
 }

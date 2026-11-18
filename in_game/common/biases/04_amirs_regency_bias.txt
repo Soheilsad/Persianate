@@ -79,3 +79,15 @@ opinion_ulus_sworn_against_him = {
 	value = -60
 	yearly_decay = 6
 }
+
+
+# A house that refused a decree, toward the khan who proclaimed it.
+opinion_ulus_decreed_too_far = {
+	value = -40
+	yearly_decay = 3
+}
+# A house the khan won over with gifts.
+opinion_ulus_won_over = {
+	value = 40
+	yearly_decay = 4
+}

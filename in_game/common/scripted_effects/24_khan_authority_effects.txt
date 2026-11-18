@@ -1,0 +1,496 @@
+# =====================================================================
+# THE KHAN'S AUTHORITY — what a khan who keeps his seat can do with it.
+#
+# History. Every capable Chaghatay khan tried to rule his amirs, and it
+# is what killed most of them. Kebek (1318-26) settled at Qarshi, struck
+# one coinage and assessed the country by tümens, and died in his bed.
+# Tarmashirin (1331-34) stopped holding the quriltai and visiting the
+# east and was deposed for breaking the yasa. Qazan (1343-46) tried to
+# rule the western begs by killing them and was killed. Tughluq Temür
+# (1360-61) came with an army and confirmed or removed amirs as he chose.
+# So each step is possible, each provokes the begs, and the pace decides.
+#
+# STATE on the organisation:
+#   ulus_authority        0..100, the khan's standing with his amirs
+#   ulus_decree_level     0..5, decrees standing (each needs the last)
+#   ulus_decree_for / ulus_decree_against
+#                         weight that would obey / defy the NEXT decree
+#                         (drawn up by the ledger; what the panel shows)
+#   ulus_decree_failed    timed: a decree was refused by the heavier part
+#   global list ulus_defiant_houses
+# on a house:
+#   ulus_decree_margin    the reckoning for the next decree (>= 0 obeys)
+#   ulus_would_obey       flag for the panel
+#   ulus_obeys_N          it obeys decree N
+#   ulus_defiant          it is in open defiance (ulus_defies_N: of which)
+#   ulus_tarkhan_N        the khan's charter frees it from decree N
+#
+# THE DECREES (generic_actions/khan_decree_actions.txt):
+#   1 the Yearly Quriltai      authority grows; the houses think better
+#   2 Kebek's Assessment       the obeying houses' qubchur rises by half
+#   3 Darughas in the Towns    crown power for the khan, begs' power cut
+#   4 the Khan Confirms        an obeying house counts half as a kingmaker
+#   5 the Tümens Are His       a quarter of an obeying house's weight
+#                              stands behind the seat
+#   6 One Ulus, One Khan       the ulus becomes one realm
+#
+# WHAT A DECREE DOES WHEN PROCLAIMED: every house is asked. It obeys if
+# its reckoning (script_values/08, ulus_decree_margin_value) is not
+# negative. If the houses that refuse outweigh the khan and those that
+# obey, the decree FAILS. Otherwise it stands, binding those who obeyed;
+# each house that refused is in open defiance, the khan holds a casus
+# belli on it that opens war inside the ulus, and his authority drains
+# while it stands. He settles it by breaking the house, winning it over,
+# granting it a charter of immunity, or outlasting it.
+# =====================================================================
+
+# IO scope. $AMOUNT$ a number or a script value.
+ulus_change_authority = {
+	if = {
+		limit = { has_variable = ulus_authority }
+		change_variable = { name = ulus_authority add = $AMOUNT$ }
+		if = {
+			limit = { var:ulus_authority < 0 }
+			set_variable = { name = ulus_authority value = 0 }
+		}
+		if = {
+			limit = { var:ulus_authority > 100 }
+			set_variable = { name = ulus_authority value = 100 }
+		}
+		set_variable = {
+			name = ulus_authority_bar
+			value = {
+				value = var:ulus_authority
+				divide = 100
+			}
+		}
+	}
+}
+
+# IO scope: the month (international_organizations/ulus_chaghatay.txt,
+# monthly_effect). Nothing moves during a regency: there is no khan
+# whose authority it would be.
+ulus_authority_monthly = {
+	if = {
+		limit = { NOT = { has_variable = ulus_authority } }
+		set_variable = { name = ulus_authority value = ulus_authority_start }
+		set_variable = { name = ulus_decree_level value = 0 }
+	}
+	if = {
+		limit = { ulus_khan_may_decree = yes }
+		leader_country = { save_scope_as = ulus_khan_now }
+		set_local_variable = { name = ulus_auth_step value = 0 }
+		leader_country = {
+			if = {
+				limit = {
+					has_regent = no
+					ruler ?= { is_adult = yes }
+				}
+				change_local_variable = { name = ulus_auth_step add = ulus_authority_month_adult }
+			}
+			else = {
+				change_local_variable = { name = ulus_auth_step add = ulus_authority_month_child }
+			}
+			if = {
+				limit = {
+					country_has_estate = estate_type:nobles_estate
+					"estate_power(estate_type:crown_estate)" > "estate_power(estate_type:nobles_estate)"
+				}
+				change_local_variable = { name = ulus_auth_step add = ulus_authority_month_crown }
+			}
+		}
+		if = {
+			limit = { var:ulus_decree_level >= 1 }
+			change_local_variable = { name = ulus_auth_step add = ulus_authority_month_quriltai }
+		}
+		every_international_organization_member = {
+			limit = { has_variable = ulus_pledged_to_khan }
+			change_local_variable = { name = ulus_auth_step add = ulus_authority_month_per_pledged }
+		}
+		every_international_organization_member = {
+			limit = { has_variable = ulus_defiant }
+			change_local_variable = { name = ulus_auth_step add = ulus_authority_month_per_defiant }
+		}
+		set_variable = { name = ulus_authority_month value = local_var:ulus_auth_step }
+		ulus_change_authority = { AMOUNT = local_var:ulus_auth_step }
+
+		# OUTLASTING a defiance: a house that would now obey, five years
+		# after it refused, comes round of itself.
+		every_international_organization_member = {
+			limit = {
+				has_variable = ulus_defiant
+				NOT = { has_variable = ulus_defied_lately }
+				ulus_decree_margin_value >= 0
+			}
+			ulus_house_submits = yes
+			trigger_event_non_silently = khan_authority.3
+		}
+	}
+	else_if = {
+		limit = { has_variable = ulus_authority }
+		set_variable = { name = ulus_authority_month value = 0 }
+	}
+}
+
+# IO scope, from the ledger: the reckoning for the next decree, house by
+# house, and the two sums the panel shows.
+ulus_authority_ledger = {
+	set_local_variable = { name = ulus_dfor value = 0 }
+	set_local_variable = { name = ulus_dagainst value = 0 }
+	clear_global_variable_list = ulus_defiant_houses
+	if = {
+		limit = {
+			has_variable = ulus_authority
+			exists = leader_country
+		}
+		leader_country = { save_scope_as = ulus_khan_now }
+		leader_country ?= {
+			if = {
+				limit = { has_variable = ulus_weight_eff }
+				change_local_variable = { name = ulus_dfor add = var:ulus_weight_eff }
+			}
+		}
+		every_international_organization_member = {
+			limit = { is_ulus_chaghatay_amir = yes }
+			set_variable = { name = ulus_decree_margin value = ulus_decree_margin_value }
+			remove_variable = ulus_would_obey
+			if = {
+				limit = { has_variable = ulus_defiant }
+				add_to_global_variable_list = { name = ulus_defiant_houses target = this }
+				if = {
+					limit = { has_variable = ulus_weight_eff }
+					change_local_variable = { name = ulus_dagainst add = var:ulus_weight_eff }
+				}
+			}
+			else_if = {
+				limit = { var:ulus_decree_margin >= 0 }
+				set_variable = ulus_would_obey
+				if = {
+					limit = { has_variable = ulus_weight_eff }
+					change_local_variable = { name = ulus_dfor add = var:ulus_weight_eff }
+				}
+			}
+			else = {
+				if = {
+					limit = { has_variable = ulus_weight_eff }
+					change_local_variable = { name = ulus_dagainst add = var:ulus_weight_eff }
+				}
+			}
+		}
+		set_variable = { name = ulus_decree_for value = local_var:ulus_dfor }
+		set_variable = { name = ulus_decree_against value = local_var:ulus_dagainst }
+		set_variable = { name = ulus_bar_needed value = ulus_regency_amir_ratio_now }
+		# The third decree's gain to the khan, by the houses that obey it.
+		set_local_variable = { name = ulus_dar value = 0 }
+		every_international_organization_member = {
+			limit = { has_variable = ulus_obeys_3 }
+			change_local_variable = { name = ulus_dar add = 1 }
+		}
+		leader_country ?= {
+			if = {
+				limit = {
+					local_var:ulus_dar >= 1
+					prev = { NOT = { has_variable = ulus_regency } }
+				}
+				add_country_modifier = {
+					modifier = ulus_decree_darughas_mod
+					years = -1
+					mode = replace
+					size = {
+						value = local_var:ulus_dar
+						min = 1
+						max = 15
+					}
+				}
+			}
+			else_if = {
+				limit = { has_country_modifier = ulus_decree_darughas_mod }
+				remove_country_modifier = ulus_decree_darughas_mod
+			}
+		}
+	}
+}
+
+# COUNTRY scope: a house. It obeys decree $LEVEL$.
+ulus_house_obeys_decree = {
+	set_variable = ulus_obeys_$LEVEL$
+	remove_variable = ulus_defies_$LEVEL$
+}
+
+# COUNTRY scope: a house. What obeying the third decree puts on it.
+ulus_house_refresh_decree_marks = {
+	if = {
+		limit = { has_variable = ulus_obeys_3 }
+		if = {
+			limit = { NOT = { has_country_modifier = ulus_decree_darugha_seated_mod } }
+			add_country_modifier = { modifier = ulus_decree_darugha_seated_mod years = -1 }
+		}
+	}
+	else_if = {
+		limit = { has_country_modifier = ulus_decree_darugha_seated_mod }
+		remove_country_modifier = ulus_decree_darugha_seated_mod
+	}
+}
+
+# COUNTRY scope: a defiant house gives way. It obeys every decree
+# standing that it holds no charter against.
+ulus_house_submits = {
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { var:ulus_decree_level >= 1 }
+			NOT = { has_variable = ulus_tarkhan_1 }
+		}
+		set_variable = ulus_obeys_1
+	}
+	remove_variable = ulus_defies_1
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { var:ulus_decree_level >= 2 }
+			NOT = { has_variable = ulus_tarkhan_2 }
+		}
+		set_variable = ulus_obeys_2
+	}
+	remove_variable = ulus_defies_2
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { var:ulus_decree_level >= 3 }
+			NOT = { has_variable = ulus_tarkhan_3 }
+		}
+		set_variable = ulus_obeys_3
+	}
+	remove_variable = ulus_defies_3
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { var:ulus_decree_level >= 4 }
+			NOT = { has_variable = ulus_tarkhan_4 }
+		}
+		set_variable = ulus_obeys_4
+	}
+	remove_variable = ulus_defies_4
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= { var:ulus_decree_level >= 5 }
+			NOT = { has_variable = ulus_tarkhan_5 }
+		}
+		set_variable = ulus_obeys_5
+	}
+	remove_variable = ulus_defies_5
+	remove_variable = ulus_defiant
+	remove_variable = ulus_defied_lately
+	ulus_house_refresh_decree_marks = yes
+	international_organization:ulus_chaghatay ?= {
+		ulus_chaghatay_rebuild_ledger = yes
+	}
+}
+
+# COUNTRY scope: a defiant house is given the khan's charter: it is free
+# of every decree it defied, for good.
+ulus_house_made_tarkhan = {
+	if = {
+		limit = { has_variable = ulus_defies_1 }
+		set_variable = ulus_tarkhan_1
+		remove_variable = ulus_defies_1
+	}
+	if = {
+		limit = { has_variable = ulus_defies_2 }
+		set_variable = ulus_tarkhan_2
+		remove_variable = ulus_defies_2
+	}
+	if = {
+		limit = { has_variable = ulus_defies_3 }
+		set_variable = ulus_tarkhan_3
+		remove_variable = ulus_defies_3
+	}
+	if = {
+		limit = { has_variable = ulus_defies_4 }
+		set_variable = ulus_tarkhan_4
+		remove_variable = ulus_defies_4
+	}
+	if = {
+		limit = { has_variable = ulus_defies_5 }
+		set_variable = ulus_tarkhan_5
+		remove_variable = ulus_defies_5
+	}
+	remove_variable = ulus_defiant
+	remove_variable = ulus_defied_lately
+	if = {
+		limit = { NOT = { has_country_modifier = ulus_tarkhan_mod } }
+		add_country_modifier = { modifier = ulus_tarkhan_mod years = -1 }
+	}
+	international_organization:ulus_chaghatay ?= {
+		ulus_change_authority = { AMOUNT = ulus_authority_tarkhan_granted }
+		ulus_chaghatay_rebuild_ledger = yes
+	}
+}
+
+# IO scope: the khan proclaims decree $LEVEL$ (1..5).
+ulus_proclaim_decree = {
+	ulus_chaghatay_rebuild_ledger = yes
+	leader_country = { save_scope_as = ulus_decreeing_khan }
+	if = {
+		limit = { var:ulus_decree_against > var:ulus_decree_for }
+		# REFUSED by the heavier part of the ulus: withdrawn.
+		ulus_change_authority = { AMOUNT = ulus_authority_decree_failed }
+		set_variable = { name = ulus_decree_failed value = $LEVEL$ years = 10 }
+		every_international_organization_member = {
+			limit = {
+				ulus_house_is_asked = yes
+				NOT = { has_variable = ulus_would_obey }
+			}
+			add_opinion = {
+				target = scope:ulus_decreeing_khan
+				modifier = opinion_ulus_decreed_too_far
+			}
+		}
+		scope:ulus_decreeing_khan = {
+			trigger_event_non_silently = khan_authority.2
+		}
+		every_international_organization_member = {
+			limit = {
+				is_ai = no
+				NOT = { this = scope:ulus_decreeing_khan }
+			}
+			trigger_event_non_silently = khan_authority.2
+		}
+	}
+	else = {
+		set_variable = { name = ulus_decree_level value = $LEVEL$ }
+		set_local_variable = { name = ulus_refusers value = 0 }
+		every_international_organization_member = {
+			limit = { ulus_house_is_asked = yes }
+			if = {
+				limit = { has_variable = ulus_would_obey }
+				ulus_house_obeys_decree = { LEVEL = $LEVEL$ }
+				ulus_house_refresh_decree_marks = yes
+			}
+			else = {
+				set_variable = ulus_defiant
+				set_variable = ulus_defies_$LEVEL$
+				set_variable = { name = ulus_defied_lately value = 1 years = 5 }
+				change_local_variable = { name = ulus_refusers add = 1 }
+				save_scope_as = ulus_defier
+				scope:ulus_decreeing_khan = {
+					add_casus_belli = {
+						type = casus_belli:cb_enforce_the_decree
+						target = scope:ulus_defier
+						years = 20
+					}
+				}
+				add_opinion = {
+					target = scope:ulus_decreeing_khan
+					modifier = opinion_ulus_decreed_too_far
+				}
+			}
+		}
+		# Client kings obey: they hold their thrones of the ulus.
+		every_international_organization_member = {
+			limit = { is_ulus_chaghatay_client = yes }
+			ulus_house_obeys_decree = { LEVEL = $LEVEL$ }
+		}
+		if = {
+			limit = { local_var:ulus_refusers = 0 }
+			ulus_change_authority = { AMOUNT = ulus_authority_decree_obeyed_by_all }
+		}
+		scope:ulus_decreeing_khan = {
+			trigger_event_non_silently = khan_authority.1
+		}
+		every_international_organization_member = {
+			limit = {
+				is_ai = no
+				NOT = { this = scope:ulus_decreeing_khan }
+			}
+			trigger_event_non_silently = khan_authority.1
+		}
+	}
+	ulus_chaghatay_rebuild_ledger = yes
+}
+
+# COUNTRY scope: the khan's seat. ONE ULUS, ONE KHAN. Every obeying
+# house is taken into his realm with its men and people; a house that
+# holds a charter, and the client kings, become his subjects. The
+# organisation is at an end, and the other hordes of the steppe are his
+# to gather.
+ulus_khan_unifies = {
+	save_scope_as = ulus_one_khan_realm
+	international_organization:ulus_chaghatay ?= {
+		every_international_organization_member = {
+			limit = { NOT = { this = scope:ulus_one_khan_realm } }
+			if = {
+				limit = {
+					OR = {
+						ulus_marked_client = yes
+						has_country_modifier = ulus_tarkhan_mod
+					}
+				}
+				add_to_list = ulus_kept_houses
+			}
+			else = {
+				add_to_list = ulus_taken_houses
+			}
+		}
+	}
+	every_in_list = {
+		list = ulus_kept_houses
+		remove_variable = ulus_chaghatay_admitted
+		if = {
+			limit = { NOT = { is_subject_of = scope:ulus_one_khan_realm } }
+			make_subject_of = {
+				target = scope:ulus_one_khan_realm
+				type = subject_type:vassal
+			}
+		}
+	}
+	every_in_list = {
+		list = ulus_taken_houses
+		save_scope_as = ulus_taken_house
+		scope:ulus_one_khan_realm = {
+			annex_country = {
+				country = scope:ulus_taken_house
+				reason = Diplomatic
+				transfer = yes
+			}
+		}
+	}
+	set_variable = ulus_one_khan
+	set_variable = horde_of_the_line
+	add_country_modifier = {
+		modifier = khan_of_one_ulus_mod
+		years = 30
+	}
+	add_horde_unity = 50
+	add_prestige = 50
+	ulus_one_khan_claims = yes
+	set_global_variable = { name = ulus_chaghatay_ended value = 1 }
+	clear_global_variable_list = ulus_amirs
+	clear_global_variable_list = ulus_kingmakers
+	clear_global_variable_list = ulus_defiant_houses
+	destroy_international_organization_no_instigator = { target = international_organization:ulus_chaghatay }
+	trigger_event_non_silently = khan_authority.5
+}
+
+# COUNTRY scope: the khan of one ulus. A claim on every other horde he
+# borders (renewed each year by on_action/40 while the modifier lasts).
+ulus_one_khan_claims = {
+	every_neighbor_country = {
+		limit = {
+			government_type = government_type:steppe_horde
+			NOT = { is_subject_of = root }
+			NOT = {
+				root = {
+					has_casus_belli_of_type_on = {
+						target = prev
+						type = casus_belli:cb_gather_the_uluses
+					}
+				}
+			}
+		}
+		save_scope_as = ulus_other_horde
+		root = {
+			add_casus_belli = {
+				type = casus_belli:cb_gather_the_uluses
+				target = scope:ulus_other_horde
+				years = 10
+			}
+		}
+	}
+}

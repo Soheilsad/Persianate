@@ -175,6 +175,29 @@ ulus_chaghatay_rebuild_ledger = {
 		set_variable = { name = ulus_backing value = 0 }
 		remove_variable = ulus_weight_lent_all
 	}
+	# The fifth decree (scripted_effects/24): the tümens are the khan's to
+	# assign, and a quarter of an obeying house's weight stands behind
+	# the seat (the house keeps its own).
+	if = {
+		limit = { NOT = { has_variable = ulus_regency } }
+		every_international_organization_member = {
+			limit = {
+				has_variable = ulus_obeys_5
+				NOT = { is_leader_of_international_organization = scope:ulus_io }
+				has_variable = ulus_weight
+			}
+			set_local_variable = {
+				name = ulus_lent
+				value = {
+					value = var:ulus_weight
+					multiply = 0.25
+				}
+			}
+			scope:ulus_io.leader_country ?= {
+				change_variable = { name = ulus_backing add = local_var:ulus_lent }
+			}
+		}
+	}
 	# SUBJECTS (author, 2026-11-14). A house that is the subject of
 	# another house of the ulus (a tümen or a client raised on broken
 	# ground, events/amirs_client_events.txt) stands behind its lord with
@@ -467,6 +490,22 @@ ulus_chaghatay_rebuild_ledger = {
 		}
 		set_variable = { name = ulus_kingmaker_score value = ulus_kingmaker_score }
 		add_to_global_variable_list = { name = ulus_amirs target = this }
+	}
+
+	# The fourth decree (scripted_effects/24): a house whose succession
+	# the khan confirms counts half as a kingmaker.
+	every_international_organization_member = {
+		limit = {
+			has_variable = ulus_obeys_4
+			has_variable = ulus_kingmaker_score
+		}
+		set_variable = {
+			name = ulus_kingmaker_score
+			value = {
+				value = var:ulus_kingmaker_score
+				multiply = 0.5
+			}
+		}
 	}
 
 	# ---3. If the khan died today: the three likeliest kingmakers --------
@@ -796,6 +835,9 @@ ulus_chaghatay_rebuild_ledger = {
 		check_range_bounds = no
 		add_to_global_variable_list = { name = ulus_standing target = this }
 	}
+
+	# ---4d. The khan's authority: who would obey his next decree ---------
+	ulus_authority_ledger = yes
 
 	# ---5. The regency bar ------------------------------------------------
 	set_variable = { name = ulus_amir_count value = local_var:ulus_n }

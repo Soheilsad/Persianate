@@ -72,6 +72,25 @@ ulus_chaghatay_qubchur = {
 				multiply = ulus_regency_tribute_factor
 			}
 		}
+		# The second decree, Kebek's assessment (scripted_effects/24): the
+		# houses that obey it are assessed at half as much again. (The
+		# engine shares the whole sum among the payers by income, so a
+		# defiant house bears a little of it too.)
+		add = {
+			desc = "ULUS_DECREE_ASSESSMENT_MULTIPLIER"
+			every_international_organization_member = {
+				limit = {
+					NOT = { is_leader_of_international_organization = root }
+					has_variable = ulus_obeys_2
+				}
+				add = monthly_income_trade_and_tax
+			}
+			multiply = 0.025
+			if = {
+				limit = { has_variable = ulus_regency }
+				multiply = 0
+			}
+		}
 	}
 	proportion_for_payer = {
 		add = {

@@ -1,0 +1,41 @@
+# The Khan's Authority (scripted_effects/24_khan_authority_effects.txt).
+
+# Third decree, on a house that obeys it: the khan's darugha sits in its
+# towns.
+ulus_decree_darugha_seated_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	global_nobles_estate_power = -0.10
+	monthly_prestige = -0.01
+}
+# Third decree, on the khan, sized by the houses that obey it (1..15).
+ulus_decree_darughas_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	base_crown_estate_power_modifier = 0.01
+	monthly_prestige = 0.005
+}
+# A house holding the khan's charter of immunity.
+ulus_tarkhan_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	monthly_prestige = 0.02
+}
+# One ulus, one khan.
+khan_of_one_ulus_mod = {
+	game_data = {
+		category = country
+		decaying = no
+	}
+	monthly_horde_unity = 0.20
+	global_levy_size_modifier = 0.25
+	land_morale_modifier = 0.10
+	antagonism_received_modifier = -0.50
+	monthly_prestige = 0.10
+}

@@ -20,5 +20,13 @@ amirs_regency_actions_list = {
 		ulus_press_the_feud
 		ulus_ask_outside_support
 		ulus_lead_a_raid
+		ulus_decree_1
+		ulus_decree_2
+		ulus_decree_3
+		ulus_decree_4
+		ulus_decree_5
+		ulus_decree_6
+		ulus_win_over_a_house
+		ulus_grant_tarkhan
 	}
 }

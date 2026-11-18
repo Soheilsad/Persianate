@@ -1,0 +1,115 @@
+# =====================================================================
+# THE KHAN'S AUTHORITY (scripted_effects/24_khan_authority_effects.txt).
+# Author's design, 2026-11-18: a khan who keeps his seat can rebuild the
+# ulus by decree, as Kebek did; each decree is obeyed or defied house by
+# house, and a khan who decrees past his strength gets Tarmashirin's or
+# Qazan's end.
+# =====================================================================
+
+# Where a khan starts in 1337 (Changshi: three khans in four years).
+ulus_authority_start = 25
+# A new khan inherits this share of the last one's, and never less than
+# the floor: authority is the man's, like renown.
+ulus_authority_inherit = 0.5
+ulus_authority_floor = 10
+# A khan seated by the Khan Triumphant.
+ulus_authority_triumphant = 45
+
+# ---- the month (added to authority; all while no regency stands) ----
+ulus_authority_month_adult = 0.03          # a grown khan on the felt
+ulus_authority_month_quriltai = 0.05       # the first decree stands
+ulus_authority_month_per_pledged = 0.02    # each lord pledged to the seat
+ulus_authority_month_crown = 0.04          # his crown outweighs his own begs
+ulus_authority_month_per_defiant = -0.10   # each house in open defiance
+ulus_authority_month_child = -0.05         # a child or a regent on the felt
+
+# ---- deeds ----
+ulus_authority_war_won = 8
+ulus_authority_war_lost = -10
+ulus_authority_great_battle = 1
+ulus_authority_decree_obeyed_by_all = 3
+ulus_authority_decree_failed = -15
+ulus_authority_house_broken = 10
+ulus_authority_house_won_over = 2
+ulus_authority_tarkhan_granted = -8
+
+# ---- the bar ----
+# The three greatest amirs must outweigh the khan ulus_regency_amir_ratio
+# times over to raise their own khan or to rise. Authority moves that:
+# x (0.5 + authority/100), so 4.0 at 50, 6.0 at 100, 2.0 at 0.
+ulus_authority_bar_factor = {
+	value = 1
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= {
+				has_variable = ulus_authority
+				NOT = { has_variable = ulus_regency }
+			}
+		}
+		value = international_organization:ulus_chaghatay.var:ulus_authority
+		divide = 100
+		add = 0.5
+	}
+}
+
+# ---- compliance ----
+# COUNTRY scope: a house of the ulus. Would it obey the khan's NEXT
+# decree? Positive = obeys. The khan's side is his weight raised by his
+# authority; the house's side is its own effective weight (its pledged
+# tümens and friends with it) and how hard the decree bites.
+#   + khan's effective weight x (0.5 + authority/100)
+#   - the house's effective weight
+#   - 1.5 for each decree already standing (each asks more than the last)
+#   + a twentieth of what it thinks of the khan (opinion runs to +-200)
+#   + 3 for a marriage with the seat
+# A house pledged to the khan, or his subject, always obeys.
+# Needs scope:ulus_khan_now (the seat), saved by the two effects that
+# read this value (ulus_authority_ledger, ulus_authority_monthly).
+ulus_decree_margin_value = {
+	value = 0
+	if = {
+		limit = {
+			international_organization:ulus_chaghatay ?= {
+				has_variable = ulus_authority
+				leader_country ?= { has_variable = ulus_weight_eff }
+			}
+		}
+		add = {
+			value = international_organization:ulus_chaghatay.var:ulus_authority
+			divide = 100
+			add = 0.5
+			multiply = international_organization:ulus_chaghatay.leader_country.var:ulus_weight_eff
+		}
+		if = {
+			limit = { has_variable = ulus_weight_eff }
+			subtract = var:ulus_weight_eff
+		}
+		if = {
+			limit = { international_organization:ulus_chaghatay = { has_variable = ulus_decree_level } }
+			subtract = {
+				value = international_organization:ulus_chaghatay.var:ulus_decree_level
+				multiply = 1.5
+			}
+		}
+		add = {
+			value = "opinion(scope:ulus_khan_now)"
+			multiply = 0.05
+		}
+		if = {
+			limit = { has_royal_marriage_with = scope:ulus_khan_now }
+			add = 3
+		}
+		if = {
+			limit = {
+				OR = {
+					has_variable = ulus_pledged_to_khan
+					is_subject_of = scope:ulus_khan_now
+				}
+			}
+			add = 100
+		}
+	}
+}
+
+# Prices of the khan's two ways of settling a defiance short of war.
+ulus_win_over_months_of_income = 6

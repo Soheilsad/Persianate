@@ -1,0 +1,91 @@
+namespace = khan_authority
+
+# The khan's authority (scripted_effects/24_khan_authority_effects.txt).
+#   .1  a decree stands (to the khan and to human houses)
+#   .2  a decree is refused by the heavier part and withdrawn
+#   .3  a defiant house gives way (root = the house)
+#   .4  a house is given the khan's charter (root = the house)
+#   .5  one ulus, one khan
+
+khan_authority.1 = {
+	type = country_event
+	title = khan_authority.1.title
+	desc = khan_authority.1.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	option = {
+		name = khan_authority.1.a
+		custom_tooltip = khan_authority_decree_stands_tt
+	}
+}
+
+khan_authority.2 = {
+	type = country_event
+	title = khan_authority.2.title
+	desc = khan_authority.2.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = interior
+		10 = angry
+	}
+
+	option = {
+		name = khan_authority.2.a
+		custom_tooltip = khan_authority_decree_failed_tt
+	}
+}
+
+khan_authority.3 = {
+	type = country_event
+	title = khan_authority.3.title
+	desc = khan_authority.3.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = exterior
+		10 = regular
+	}
+
+	option = {
+		name = khan_authority.3.a
+	}
+}
+
+khan_authority.4 = {
+	type = country_event
+	title = khan_authority.4.title
+	desc = khan_authority.4.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	option = {
+		name = khan_authority.4.a
+	}
+}
+
+khan_authority.5 = {
+	type = country_event
+	title = khan_authority.5.title
+	desc = khan_authority.5.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = khan_authority.5.a
+		custom_tooltip = khan_authority_one_ulus_tt
+	}
+}

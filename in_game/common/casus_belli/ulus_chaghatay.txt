@@ -169,3 +169,40 @@ cb_tumen_raid = {
 	speed = 20
 	war_goal_type = tumen_raid_wargoal
 }
+
+
+# THE KHAN ENFORCES A DECREE. The seat against a house that refused one
+# (scripted_effects/24). Like the ulus's other quarrels it opens the war
+# inside the ulus whatever the stage (scripted_triggers/10,
+# ulus_attacker_holds_ulus_cb): a decree nobody may be made to obey is
+# not a decree. Won, the house submits to every decree standing.
+cb_enforce_the_decree = {
+	create_visible = {
+		always = no
+	}
+	create_enabled = {
+		always = no
+	}
+	declare_enabled = {
+		is_ulus_chaghatay_leader = yes
+		scope:target = {
+			has_variable = ulus_defiant
+		}
+	}
+	war_goal_type = restore_the_ulus_wargoal
+}
+
+# ONE ULUS GATHERS THE REST. The khan who made the Chaghatay one realm
+# again, against the other hordes of the steppe.
+cb_gather_the_uluses = {
+	create_visible = {
+		always = no
+	}
+	create_enabled = {
+		always = no
+	}
+	declare_enabled = {
+		has_variable = ulus_one_khan
+	}
+	war_goal_type = ulus_in_disarray_wargoal
+}

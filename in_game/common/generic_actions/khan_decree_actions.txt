@@ -1,0 +1,1087 @@
+# ============================================================
+# THE KHAN'S DECREES (scripted_effects/24_khan_authority_effects.txt).
+# Organisation actions for the seat of the ulus while a khan rules.
+#   ulus_decree_1 .. 5     each needs the one before it
+#   ulus_decree_6          One Ulus, One Khan
+#   ulus_win_over_a_house  end a house's defiance with gifts
+#   ulus_grant_tarkhan     end it with a charter of immunity
+# The casus belli on a defiant house (cb_enforce_the_decree) is the
+# third way; outlasting it (five years, and a reckoning that has turned)
+# the fourth.
+# ============================================================
+
+# Decree 1.
+ulus_decree_1 = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_leader = yes
+			NOT = { has_variable = ulus_regent_seat }
+		}
+		international_organization:ulus_chaghatay ?= {
+			ulus_khan_may_decree = yes
+			var:ulus_decree_level = 0
+		}
+	}
+
+	allow = {
+		scope:actor = { at_war = no }
+		international_organization:ulus_chaghatay ?= {
+			custom_tooltip = {
+				text = ulus_decree_needs_authority_1_tt
+				var:ulus_authority >= 20
+			}
+			custom_tooltip = {
+				text = ulus_decree_not_failed_lately_tt
+				NOT = { has_variable = ulus_decree_failed }
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		custom_tooltip = ulus_decree_1_effect_tt
+		custom_tooltip = ulus_decree_reckoning_tt
+		# House by house, what each will answer (tooltip).
+		show_as_tooltip = {
+			international_organization:ulus_chaghatay ?= {
+				every_international_organization_member = {
+					limit = {
+						ulus_house_is_asked = yes
+						has_variable = ulus_would_obey
+					}
+					custom_tooltip = ulus_decree_house_obeys_tt
+				}
+				every_international_organization_member = {
+					limit = {
+						ulus_house_is_asked = yes
+						NOT = { has_variable = ulus_would_obey }
+					}
+					custom_tooltip = ulus_decree_house_defies_tt
+				}
+			}
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { var:ulus_decree_against > var:ulus_decree_for }
+			}
+			custom_tooltip = ulus_decree_will_fail_tt
+		}
+		else = {
+			custom_tooltip = ulus_decree_will_stand_tt
+		}
+		hidden_effect = {
+			international_organization:ulus_chaghatay ?= {
+				ulus_proclaim_decree = { LEVEL = 1 }
+			}
+		}
+	}
+
+	# The AI khan decrees when he has the authority to spare and nearly
+	# all the weight of the ulus would obey; a bold khan accepts more
+	# defiance than a careful one, and none decrees into a refusal.
+	ai_will_do = {
+		add = -20
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against > var:ulus_decree_for
+				}
+			}
+			add = -1000
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against <= {
+						value = var:ulus_decree_for
+						multiply = 0.15
+					}
+				}
+			}
+			add = 45
+		}
+		else_if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against <= {
+						value = var:ulus_decree_for
+						multiply = 0.35
+					}
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { var:ulus_authority >= 40 }
+			}
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_aggressive } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_expansionist } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -15
+		}
+		if = {
+			limit = { scope:actor = { horde_unity < 30 } }
+			add = -30
+		}
+		# Not with houses already in open defiance and unanswered.
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					any_international_organization_member = { has_variable = ulus_defiant }
+				}
+			}
+			add = -40
+		}
+	}
+}
+
+# Decree 2.
+ulus_decree_2 = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_leader = yes
+			NOT = { has_variable = ulus_regent_seat }
+		}
+		international_organization:ulus_chaghatay ?= {
+			ulus_khan_may_decree = yes
+			var:ulus_decree_level = 1
+		}
+	}
+
+	allow = {
+		scope:actor = { at_war = no }
+		international_organization:ulus_chaghatay ?= {
+			custom_tooltip = {
+				text = ulus_decree_needs_authority_2_tt
+				var:ulus_authority >= 30
+			}
+			custom_tooltip = {
+				text = ulus_decree_not_failed_lately_tt
+				NOT = { has_variable = ulus_decree_failed }
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		custom_tooltip = ulus_decree_2_effect_tt
+		custom_tooltip = ulus_decree_reckoning_tt
+		# House by house, what each will answer (tooltip).
+		show_as_tooltip = {
+			international_organization:ulus_chaghatay ?= {
+				every_international_organization_member = {
+					limit = {
+						ulus_house_is_asked = yes
+						has_variable = ulus_would_obey
+					}
+					custom_tooltip = ulus_decree_house_obeys_tt
+				}
+				every_international_organization_member = {
+					limit = {
+						ulus_house_is_asked = yes
+						NOT = { has_variable = ulus_would_obey }
+					}
+					custom_tooltip = ulus_decree_house_defies_tt
+				}
+			}
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { var:ulus_decree_against > var:ulus_decree_for }
+			}
+			custom_tooltip = ulus_decree_will_fail_tt
+		}
+		else = {
+			custom_tooltip = ulus_decree_will_stand_tt
+		}
+		hidden_effect = {
+			international_organization:ulus_chaghatay ?= {
+				ulus_proclaim_decree = { LEVEL = 2 }
+			}
+		}
+	}
+
+	# The AI khan decrees when he has the authority to spare and nearly
+	# all the weight of the ulus would obey; a bold khan accepts more
+	# defiance than a careful one, and none decrees into a refusal.
+	ai_will_do = {
+		add = -20
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against > var:ulus_decree_for
+				}
+			}
+			add = -1000
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against <= {
+						value = var:ulus_decree_for
+						multiply = 0.15
+					}
+				}
+			}
+			add = 45
+		}
+		else_if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against <= {
+						value = var:ulus_decree_for
+						multiply = 0.35
+					}
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { var:ulus_authority >= 50 }
+			}
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_aggressive } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_expansionist } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -15
+		}
+		if = {
+			limit = { scope:actor = { horde_unity < 30 } }
+			add = -30
+		}
+		# Not with houses already in open defiance and unanswered.
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					any_international_organization_member = { has_variable = ulus_defiant }
+				}
+			}
+			add = -40
+		}
+	}
+}
+
+# Decree 3.
+ulus_decree_3 = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_leader = yes
+			NOT = { has_variable = ulus_regent_seat }
+		}
+		international_organization:ulus_chaghatay ?= {
+			ulus_khan_may_decree = yes
+			var:ulus_decree_level = 2
+		}
+	}
+
+	allow = {
+		scope:actor = { at_war = no }
+		international_organization:ulus_chaghatay ?= {
+			custom_tooltip = {
+				text = ulus_decree_needs_authority_3_tt
+				var:ulus_authority >= 40
+			}
+			custom_tooltip = {
+				text = ulus_decree_not_failed_lately_tt
+				NOT = { has_variable = ulus_decree_failed }
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		custom_tooltip = ulus_decree_3_effect_tt
+		custom_tooltip = ulus_decree_reckoning_tt
+		# House by house, what each will answer (tooltip).
+		show_as_tooltip = {
+			international_organization:ulus_chaghatay ?= {
+				every_international_organization_member = {
+					limit = {
+						ulus_house_is_asked = yes
+						has_variable = ulus_would_obey
+					}
+					custom_tooltip = ulus_decree_house_obeys_tt
+				}
+				every_international_organization_member = {
+					limit = {
+						ulus_house_is_asked = yes
+						NOT = { has_variable = ulus_would_obey }
+					}
+					custom_tooltip = ulus_decree_house_defies_tt
+				}
+			}
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { var:ulus_decree_against > var:ulus_decree_for }
+			}
+			custom_tooltip = ulus_decree_will_fail_tt
+		}
+		else = {
+			custom_tooltip = ulus_decree_will_stand_tt
+		}
+		hidden_effect = {
+			international_organization:ulus_chaghatay ?= {
+				ulus_proclaim_decree = { LEVEL = 3 }
+			}
+		}
+	}
+
+	# The AI khan decrees when he has the authority to spare and nearly
+	# all the weight of the ulus would obey; a bold khan accepts more
+	# defiance than a careful one, and none decrees into a refusal.
+	ai_will_do = {
+		add = -20
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against > var:ulus_decree_for
+				}
+			}
+			add = -1000
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against <= {
+						value = var:ulus_decree_for
+						multiply = 0.15
+					}
+				}
+			}
+			add = 45
+		}
+		else_if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against <= {
+						value = var:ulus_decree_for
+						multiply = 0.35
+					}
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { var:ulus_authority >= 60 }
+			}
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_aggressive } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_expansionist } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -15
+		}
+		if = {
+			limit = { scope:actor = { horde_unity < 30 } }
+			add = -30
+		}
+		# Not with houses already in open defiance and unanswered.
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					any_international_organization_member = { has_variable = ulus_defiant }
+				}
+			}
+			add = -40
+		}
+	}
+}
+
+# Decree 4.
+ulus_decree_4 = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_leader = yes
+			NOT = { has_variable = ulus_regent_seat }
+		}
+		international_organization:ulus_chaghatay ?= {
+			ulus_khan_may_decree = yes
+			var:ulus_decree_level = 3
+		}
+	}
+
+	allow = {
+		scope:actor = { at_war = no }
+		international_organization:ulus_chaghatay ?= {
+			custom_tooltip = {
+				text = ulus_decree_needs_authority_4_tt
+				var:ulus_authority >= 50
+			}
+			custom_tooltip = {
+				text = ulus_decree_not_failed_lately_tt
+				NOT = { has_variable = ulus_decree_failed }
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		custom_tooltip = ulus_decree_4_effect_tt
+		custom_tooltip = ulus_decree_reckoning_tt
+		# House by house, what each will answer (tooltip).
+		show_as_tooltip = {
+			international_organization:ulus_chaghatay ?= {
+				every_international_organization_member = {
+					limit = {
+						ulus_house_is_asked = yes
+						has_variable = ulus_would_obey
+					}
+					custom_tooltip = ulus_decree_house_obeys_tt
+				}
+				every_international_organization_member = {
+					limit = {
+						ulus_house_is_asked = yes
+						NOT = { has_variable = ulus_would_obey }
+					}
+					custom_tooltip = ulus_decree_house_defies_tt
+				}
+			}
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { var:ulus_decree_against > var:ulus_decree_for }
+			}
+			custom_tooltip = ulus_decree_will_fail_tt
+		}
+		else = {
+			custom_tooltip = ulus_decree_will_stand_tt
+		}
+		hidden_effect = {
+			international_organization:ulus_chaghatay ?= {
+				ulus_proclaim_decree = { LEVEL = 4 }
+			}
+		}
+	}
+
+	# The AI khan decrees when he has the authority to spare and nearly
+	# all the weight of the ulus would obey; a bold khan accepts more
+	# defiance than a careful one, and none decrees into a refusal.
+	ai_will_do = {
+		add = -20
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against > var:ulus_decree_for
+				}
+			}
+			add = -1000
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against <= {
+						value = var:ulus_decree_for
+						multiply = 0.15
+					}
+				}
+			}
+			add = 45
+		}
+		else_if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against <= {
+						value = var:ulus_decree_for
+						multiply = 0.35
+					}
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { var:ulus_authority >= 70 }
+			}
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_aggressive } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_expansionist } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -15
+		}
+		if = {
+			limit = { scope:actor = { horde_unity < 30 } }
+			add = -30
+		}
+		# Not with houses already in open defiance and unanswered.
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					any_international_organization_member = { has_variable = ulus_defiant }
+				}
+			}
+			add = -40
+		}
+	}
+}
+
+# Decree 5.
+ulus_decree_5 = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_leader = yes
+			NOT = { has_variable = ulus_regent_seat }
+		}
+		international_organization:ulus_chaghatay ?= {
+			ulus_khan_may_decree = yes
+			var:ulus_decree_level = 4
+		}
+	}
+
+	allow = {
+		scope:actor = { at_war = no }
+		international_organization:ulus_chaghatay ?= {
+			custom_tooltip = {
+				text = ulus_decree_needs_authority_5_tt
+				var:ulus_authority >= 60
+			}
+			custom_tooltip = {
+				text = ulus_decree_not_failed_lately_tt
+				NOT = { has_variable = ulus_decree_failed }
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		custom_tooltip = ulus_decree_5_effect_tt
+		custom_tooltip = ulus_decree_reckoning_tt
+		# House by house, what each will answer (tooltip).
+		show_as_tooltip = {
+			international_organization:ulus_chaghatay ?= {
+				every_international_organization_member = {
+					limit = {
+						ulus_house_is_asked = yes
+						has_variable = ulus_would_obey
+					}
+					custom_tooltip = ulus_decree_house_obeys_tt
+				}
+				every_international_organization_member = {
+					limit = {
+						ulus_house_is_asked = yes
+						NOT = { has_variable = ulus_would_obey }
+					}
+					custom_tooltip = ulus_decree_house_defies_tt
+				}
+			}
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { var:ulus_decree_against > var:ulus_decree_for }
+			}
+			custom_tooltip = ulus_decree_will_fail_tt
+		}
+		else = {
+			custom_tooltip = ulus_decree_will_stand_tt
+		}
+		hidden_effect = {
+			international_organization:ulus_chaghatay ?= {
+				ulus_proclaim_decree = { LEVEL = 5 }
+			}
+		}
+	}
+
+	# The AI khan decrees when he has the authority to spare and nearly
+	# all the weight of the ulus would obey; a bold khan accepts more
+	# defiance than a careful one, and none decrees into a refusal.
+	ai_will_do = {
+		add = -20
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against > var:ulus_decree_for
+				}
+			}
+			add = -1000
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against <= {
+						value = var:ulus_decree_for
+						multiply = 0.15
+					}
+				}
+			}
+			add = 45
+		}
+		else_if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					var:ulus_decree_against <= {
+						value = var:ulus_decree_for
+						multiply = 0.35
+					}
+				}
+			}
+			add = 20
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { var:ulus_authority >= 80 }
+			}
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_aggressive } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_expansionist } }
+			add = 10
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_cautious } }
+			add = -15
+		}
+		if = {
+			limit = { scope:actor = { horde_unity < 30 } }
+			add = -30
+		}
+		# Not with houses already in open defiance and unanswered.
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= {
+					any_international_organization_member = { has_variable = ulus_defiant }
+				}
+			}
+			add = -40
+		}
+	}
+}
+
+# Decree 6: ONE ULUS, ONE KHAN.
+ulus_decree_6 = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_leader = yes
+			NOT = { has_variable = ulus_regent_seat }
+		}
+		international_organization:ulus_chaghatay ?= {
+			ulus_khan_may_decree = yes
+			var:ulus_decree_level = 5
+		}
+	}
+
+	allow = {
+		scope:actor = { at_war = no }
+		international_organization:ulus_chaghatay ?= {
+			custom_tooltip = {
+				text = ulus_decree_needs_authority_6_tt
+				var:ulus_authority >= 75
+			}
+			custom_tooltip = {
+				text = ulus_decree_no_defiance_tt
+				NOT = {
+					any_international_organization_member = { has_variable = ulus_defiant }
+				}
+			}
+			custom_tooltip = {
+				text = ulus_decree_all_would_obey_tt
+				NOT = {
+					any_international_organization_member = {
+						ulus_house_is_asked = yes
+						NOT = { has_variable = ulus_would_obey }
+						NOT = { has_country_modifier = ulus_tarkhan_mod }
+					}
+				}
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	effect = {
+		custom_tooltip = ulus_decree_6_effect_tt
+		hidden_effect = {
+			scope:actor = { ulus_khan_unifies = yes }
+		}
+	}
+
+	# An AI khan who can, does: it is what the five decrees were for.
+	ai_will_do = {
+		add = 50
+		if = {
+			limit = { scope:actor = { horde_unity < 30 } }
+			add = -60
+		}
+	}
+}
+
+# WIN OVER A HOUSE. Gifts, a robe and a place of honour for a house in
+# open defiance. It takes the gifts if it does not think too ill of the
+# khan; then it obeys.
+ulus_win_over_a_house = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	cooldown = {
+		type = ulus_win_over_a_house
+		years = 2
+	}
+
+	price = price:ulus_win_over_a_house_price
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_leader = yes
+			NOT = { has_variable = ulus_regent_seat }
+		}
+		international_organization:ulus_chaghatay ?= {
+			ulus_khan_may_decree = yes
+			any_international_organization_member = { has_variable = ulus_defiant }
+		}
+	}
+
+	allow = {
+		always = yes
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		target_flag = target_country
+		name = "choose_country"
+		none_available_msg_key = "no_valid_countries"
+		interaction_source_list = {
+			scope:recipient = {
+				every_international_organization_member = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			has_variable = ulus_defiant
+		}
+		enabled = {
+			custom_tooltip = {
+				text = ulus_win_over_opinion_tt
+				"opinion(scope:actor)" >= -50
+			}
+			NOT = { is_at_war_with = scope:actor }
+		}
+		column = { data = name }
+		column = { data = population }
+	}
+
+	effect = {
+		custom_tooltip = ulus_win_over_effect_tt
+		scope:target_country = {
+			add_opinion = {
+				target = scope:actor
+				modifier = opinion_ulus_won_over
+			}
+			hidden_effect = {
+				ulus_house_submits = yes
+				trigger_event_non_silently = khan_authority.3
+			}
+		}
+		hidden_effect = {
+			international_organization:ulus_chaghatay ?= {
+				ulus_change_authority = { AMOUNT = ulus_authority_house_won_over }
+			}
+		}
+	}
+
+	# The AI buys a house off when it can afford to and would sooner not
+	# fight it: a house heavier than a third of his own weight, or any
+	# house while he is at war elsewhere.
+	ai_will_do = {
+		add = 10
+		if = {
+			limit = { scope:actor = { gold < 0 } }
+			add = -100
+		}
+		if = {
+			limit = {
+				scope:actor = { has_variable = ulus_weight_eff }
+				scope:target_country = {
+					has_variable = ulus_weight_eff
+					var:ulus_weight_eff >= {
+						value = scope:actor.var:ulus_weight_eff
+						multiply = 0.34
+					}
+				}
+			}
+			add = 25
+		}
+		if = {
+			limit = { scope:actor = { at_war = yes } }
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { ai_personality = ai_personality:ai_aggressive } }
+			add = -20
+		}
+	}
+}
+
+# GRANT A CHARTER (tarkhan). The khan frees a defiant house, by his
+# yarligh, of every decree it refused. It ends the defiance at once and
+# costs him authority; the house never obeys those decrees.
+ulus_grant_tarkhan = {
+	type = internationalorganization
+	show_message = no
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	automation_tick = never
+	automation_tick_frequency = 12
+
+	potential = {
+		scope:actor = {
+			is_ulus_chaghatay_leader = yes
+			NOT = { has_variable = ulus_regent_seat }
+		}
+		international_organization:ulus_chaghatay ?= {
+			ulus_khan_may_decree = yes
+			any_international_organization_member = { has_variable = ulus_defiant }
+		}
+	}
+
+	allow = {
+		always = yes
+	}
+
+	select_trigger = {
+		looking_for_a = international_organization
+		source = actor
+		target_flag = recipient
+		name = "choose_international_organization"
+		column = {
+			data = name
+		}
+		visible = {
+			international_organization_type = international_organization_type:ulus_chaghatay
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		target_flag = target_country
+		name = "choose_country"
+		none_available_msg_key = "no_valid_countries"
+		interaction_source_list = {
+			scope:recipient = {
+				every_international_organization_member = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			has_variable = ulus_defiant
+		}
+		enabled = {
+			NOT = { is_at_war_with = scope:actor }
+		}
+		column = { data = name }
+		column = { data = population }
+	}
+
+	effect = {
+		custom_tooltip = ulus_tarkhan_effect_tt
+		scope:target_country = {
+			hidden_effect = {
+				ulus_house_made_tarkhan = yes
+				trigger_event_non_silently = khan_authority.4
+			}
+		}
+	}
+
+	# The last resort: only when the defiance is bleeding him and he can
+	# neither break the house (it outweighs him) nor has the silver.
+	ai_will_do = {
+		add = -30
+		if = {
+			limit = {
+				scope:actor = { has_variable = ulus_weight_eff }
+				scope:target_country = {
+					has_variable = ulus_weight_eff
+					var:ulus_weight_eff > scope:actor.var:ulus_weight_eff
+				}
+			}
+			add = 30
+		}
+		if = {
+			limit = {
+				international_organization:ulus_chaghatay ?= { var:ulus_authority < 20 }
+			}
+			add = 15
+		}
+		if = {
+			limit = { scope:actor = { gold < 0 } }
+			add = 10
+		}
+	}
+}

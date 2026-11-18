@@ -132,6 +132,6 @@
  ULUS_SCORE_BREAKDOWN: "#T [Country.GetName]: kingmaker score [Country.MakeScope.GetVariable('ulus_kingmaker_score').GetValue|0]#!\nShare of the amīrs' weight × 400: [Country.MakeScope.GetVariable('ulus_s_share').GetValue|0]\nRuler's military skill × 0.5: [Country.MakeScope.GetVariable('ulus_s_mil').GetValue|0]\nRuler's administrative skill × 0.2: [Country.MakeScope.GetVariable('ulus_s_adm').GetValue|0]\nA wife of Chinggis's line: [Country.MakeScope.GetVariable('ulus_s_wife').GetValue|0]\nA patron of the line outside the ulus: [Country.MakeScope.GetVariable('ulus_s_patron').GetValue|0]\nRenown: [Country.MakeScope.GetVariable('ulus_s_renown').GetValue|0]\nOf the line himself (the khān's seat only): [Country.MakeScope.GetVariable('ulus_s_line').GetValue|0]"
  ULUS_STANDING_ROW_TT: "$ULUS_SCORE_BREAKDOWN$\n\n$ULUS_WEIGHT_BREAKDOWN$"
  ULUS_GREATEST_ROW_TT: "$ULUS_WEIGHT_BREAKDOWN$"
- ULUS_AMIR_ROW_TT: "$ULUS_WEIGHT_BREAKDOWN$\n\n$ULUS_SCORE_BREAKDOWN$"
+ ULUS_AMIR_ROW_TT: "$ULUS_WEIGHT_BREAKDOWN$\n\n$ULUS_SCORE_BREAKDOWN$\n\n$ULUS_DECREE_HOUSE_LINE$"
  ULUS_KEEPER_WEIGHT: "Weight of the keeper of the khān"
  ULUS_ROW_LENT_WEIGHT: "([Country.MakeScope.GetVariable('ulus_weight').GetValue|1])"

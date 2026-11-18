@@ -62,3 +62,9 @@ ulus_back_an_amir_price = {
 ulus_lead_a_raid_price = {
 	political_influence = 5
 }
+
+
+# The khan's authority (generic_actions/khan_decree_actions.txt).
+ulus_win_over_a_house_price = {
+	scaled_gold = 6
+}

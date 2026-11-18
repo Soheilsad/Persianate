@@ -46,6 +46,8 @@ ulus_regency_noble_power_now = {
 }
 ulus_regency_amir_ratio_now = {
 	value = ulus_regency_amir_ratio
+	# The khan's authority moves the bar (script_values/08): 4.0 at 50.
+	multiply = ulus_authority_bar_factor
 	if = {
 		limit = {
 			international_organization:ulus_chaghatay ?= { has_variable = ulus_bar_reduced }

@@ -212,6 +212,7 @@ ulus_chaghatay = {
 	monthly_effect = {
 		ulus_chaghatay_rebuild_ledger = yes
 		ulus_regency_monthly_tick = yes
+		ulus_authority_monthly = yes
 	}
 
 	# Header readouts, written by the ledger (no monthly_change of their

@@ -1,0 +1,119 @@
+# =====================================================================
+# THE KHAN'S AUTHORITY — engine hooks
+# (scripted_effects/24_khan_authority_effects.txt). Re-declaring an
+# engine on_action EXTENDS it. Scopes as in 31_amirs_regency_hooks.txt.
+# =====================================================================
+
+# ---his deeds --------------------------------------------------------
+on_winning_war = {
+	on_actions = {
+		ulus_khan_wins_war
+	}
+}
+ulus_khan_wins_war = {
+	trigger = {
+		is_ulus_chaghatay_leader = yes
+		NOT = { has_variable = ulus_regent_seat }
+		scope:winner ?= { this = root }
+	}
+	effect = {
+		international_organization:ulus_chaghatay ?= {
+			ulus_change_authority = { AMOUNT = ulus_authority_war_won }
+		}
+		# A house that defied a decree, beaten: it submits.
+		if = {
+			limit = { scope:loser ?= { has_variable = ulus_defiant } }
+			scope:loser = {
+				ulus_house_submits = yes
+				trigger_event_non_silently = khan_authority.3
+			}
+			international_organization:ulus_chaghatay ?= {
+				ulus_change_authority = { AMOUNT = ulus_authority_house_broken }
+			}
+		}
+	}
+}
+
+on_losing_war = {
+	on_actions = {
+		ulus_khan_loses_war
+	}
+}
+ulus_khan_loses_war = {
+	trigger = {
+		is_ulus_chaghatay_leader = yes
+		NOT = { has_variable = ulus_regent_seat }
+		scope:loser ?= { this = root }
+	}
+	effect = {
+		international_organization:ulus_chaghatay ?= {
+			ulus_change_authority = { AMOUNT = ulus_authority_war_lost }
+		}
+	}
+}
+
+on_great_battle_won = {
+	on_actions = {
+		ulus_khan_great_battle
+	}
+}
+ulus_khan_great_battle = {
+	trigger = {
+		is_ulus_chaghatay_leader = yes
+		NOT = { has_variable = ulus_regent_seat }
+	}
+	effect = {
+		international_organization:ulus_chaghatay ?= {
+			ulus_change_authority = { AMOUNT = ulus_authority_great_battle }
+		}
+	}
+}
+
+# ---a new khan -------------------------------------------------------
+# Authority is the man's: his heir has half of it, and never less than
+# the floor. Not during a regency (the regent's state is the seat then).
+on_new_ruler = {
+	on_actions = {
+		ulus_new_khan_authority
+	}
+}
+ulus_new_khan_authority = {
+	trigger = {
+		is_ulus_chaghatay_leader = yes
+		NOT = { has_variable = ulus_regent_seat }
+		international_organization:ulus_chaghatay ?= { has_variable = ulus_authority }
+	}
+	effect = {
+		international_organization:ulus_chaghatay = {
+			set_variable = {
+				name = ulus_authority
+				value = {
+					value = var:ulus_authority
+					multiply = ulus_authority_inherit
+					min = ulus_authority_floor
+				}
+			}
+			ulus_change_authority = { AMOUNT = 0 }
+		}
+	}
+}
+
+# ---one ulus: the claims are renewed each year -----------------------
+monthly_country_pulse = {
+	on_actions = {
+		ulus_one_khan_pulse
+	}
+}
+ulus_one_khan_pulse = {
+	trigger = {
+		has_variable = ulus_one_khan
+		has_country_modifier = khan_of_one_ulus_mod
+	}
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = ulus_one_khan_claimed_lately } }
+			set_variable = { name = ulus_one_khan_claimed_lately value = 1 years = 1 }
+			ulus_one_khan_claims = yes
+		}
+	}
+}
