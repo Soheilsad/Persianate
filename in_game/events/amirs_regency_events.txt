@@ -1176,3 +1176,43 @@ amirs_regency.135 = {
 		custom_tooltip = amirs_regency_office_tt
 	}
 }
+
+
+# ----------------------------------------------------------------------------
+# AN OUTSIDE CHINGGISID INVESTS A PRINCE (scripted_effects/15,
+# ulus_outside_khan_invests_a_prince). scope:ulus_investor,
+# scope:ulus_invested_seat, scope:ulus_invested_prince.
+#   .206  to the victor       .207  to the houses of the ulus
+# ----------------------------------------------------------------------------
+amirs_regency.206 = {
+	type = country_event
+	title = amirs_regency.206.title
+	desc = amirs_regency.206.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = exterior
+		10 = happy
+	}
+
+	option = {
+		name = amirs_regency.206.a
+		custom_tooltip = amirs_regency_invested_tt
+	}
+}
+
+amirs_regency.207 = {
+	type = country_event
+	title = amirs_regency.207.title
+	desc = amirs_regency.207.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = interior
+		10 = regular
+	}
+
+	option = {
+		name = amirs_regency.207.a
+	}
+}

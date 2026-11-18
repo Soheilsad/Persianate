@@ -1369,3 +1369,127 @@ ulus_amirs_fall_out = {
 		}
 	}
 }
+
+
+# ---------------------------------------------------------------------
+# AN OUTSIDE CHINGGISID INVESTS A PRINCE. COUNTRY scope: the victor (a
+# realm outside the ulus whose ruler is of the line) that has beaten the
+# keeper of the khan, scope:ulus_beaten_regent.
+#
+# The Great Khans in Dadu claimed all the uluses and after 1304 the
+# Chaghatay khans acknowledged it, but no emperor ever sat on the felt
+# of Chaghatay: what an outside Chinggisid did with a beaten ulus was
+# set a prince of his own house over it (Tughluq Temür's son Ilyas
+# Khoja over Transoxiana, 1361). So the victor does not join the ulus
+# or lead it. A prince of his line is raised as khan of the Chaghatay
+# and holds the seat of the ulus OF him, as an ulus (the mod's subject
+# type for a prince's share).
+#   the seat  the khan's old realm (CHG) if it still stands inside the
+#             ulus and is not the beaten regent; otherwise the beaten
+#             regent's own state, whose beg is put aside.
+#   the man   a grown prince of the victor's court who is of the line,
+#             the least able first (he is meant to obey); one is found
+#             if there is none.
+# The regency ends; the kept khan is let go.
+# ---------------------------------------------------------------------
+ulus_outside_khan_invests_a_prince = {
+	save_scope_as = ulus_investor
+	if = {
+		limit = { exists = scope:ulus_invested_prince }
+		clear_saved_scope = ulus_invested_prince
+	}
+	if = {
+		limit = { exists = scope:ulus_invested_seat }
+		clear_saved_scope = ulus_invested_seat
+	}
+	ordered_character = {
+		limit = {
+			is_alive = yes
+			is_adult = yes
+			is_female = no
+			is_ruler = no
+			is_heir = no
+			is_of_chinggis_line = yes
+			NOT = { has_variable = patron_country }
+		}
+		order_by = ulus_puppet_pliancy
+		max = 1
+		check_range_bounds = no
+		save_scope_as = ulus_invested_prince
+	}
+	if = {
+		limit = { NOT = { exists = scope:ulus_invested_prince } }
+		create_character = {
+			dynasty = dynasty:borjigin_dynasty
+			estate = estate_type:nobles_estate
+			religion = scope:ulus_investor.religion
+			culture = scope:ulus_investor.culture
+			age = { 18 30 }
+			female = no
+			save_scope_as = ulus_invested_prince
+		}
+	}
+	# Where he sits.
+	c:CHG ?= {
+		if = {
+			limit = {
+				is_ulus_chaghatay_member = yes
+				NOT = { this = scope:ulus_beaten_regent }
+				NOT = { has_variable = ulus_regent_seat }
+				is_subject = no
+			}
+			save_scope_as = ulus_invested_seat
+		}
+	}
+	if = {
+		limit = { NOT = { exists = scope:ulus_invested_seat } }
+		scope:ulus_beaten_regent ?= { save_scope_as = ulus_invested_seat }
+	}
+	if = {
+		limit = {
+			exists = scope:ulus_invested_seat
+			exists = scope:ulus_invested_prince
+			exists = international_organization:ulus_chaghatay
+		}
+		scope:ulus_beaten_regent ?= {
+			ulus_unseat_regent = yes
+		}
+		international_organization:ulus_chaghatay = {
+			ulus_regency_clear = yes
+			remove_variable = ulus_held_khan
+			set_leader_country = scope:ulus_invested_seat
+			set_variable = { name = ulus_khan_triumphant_peace value = 1 years = ulus_khan_triumphant_peace_years }
+		}
+		scope:ulus_invested_prince = {
+			if = {
+				limit = { NOT = { owner ?= scope:ulus_invested_seat } }
+				move_country = scope:ulus_invested_seat
+			}
+		}
+		scope:ulus_invested_seat = {
+			set_variable = { name = ulus_succession_settled value = 1 months = 6 }
+			set_new_ruler = scope:ulus_invested_prince
+			set_variable = horde_of_the_line
+			set_variable = { name = ulus_invested_by value = scope:ulus_investor }
+			if = {
+				limit = { is_subject = no }
+				make_subject_of = {
+					target = scope:ulus_investor
+					type = subject_type:ulus
+				}
+			}
+			add_horde_unity = 10
+		}
+		international_organization:ulus_chaghatay = {
+			ulus_chaghatay_rebuild_ledger = yes
+		}
+		add_prestige = 25
+		trigger_event_non_silently = amirs_regency.206
+		international_organization:ulus_chaghatay = {
+			every_international_organization_member = {
+				limit = { is_ai = no }
+				trigger_event_non_silently = amirs_regency.207
+			}
+		}
+	}
+}

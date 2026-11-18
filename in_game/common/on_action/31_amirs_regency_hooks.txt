@@ -166,13 +166,13 @@ ulus_khan_taken_by_force = {
 		# A khan of the line first, member or not: a Borjigin who takes
 		# the regent's ordu does not become a regent, he ends the regency.
 		if = {
-			limit = {
-				OR = {
-					has_variable = ulus_eastern_khanate_realm
-					ulus_ruler_is_of_the_line = yes
-				}
-			}
+			limit = { ulus_is_a_chaghatayid_khan = yes }
 			trigger_event_non_silently = amirs_regency.205
+		}
+		# A Chinggisid from outside: he raises a prince of his own house.
+		else_if = {
+			limit = { ulus_is_an_outside_chinggisid = yes }
+			ulus_outside_khan_invests_a_prince = yes
 		}
 		else_if = {
 			limit = { is_ulus_chaghatay_member = yes }
@@ -240,17 +240,17 @@ ulus_regent_loses_war = {
 			ulus_change_gap = { AMOUNT = ulus_gap_war_lost }
 		}
 		if = {
-			limit = {
-				scope:winner = {
-					OR = {
-						has_variable = ulus_eastern_khanate_realm
-						ulus_ruler_is_of_the_line = yes
-					}
-				}
-			}
+			limit = { scope:winner = { ulus_is_a_chaghatayid_khan = yes } }
 			save_scope_as = ulus_beaten_regent
 			scope:winner = {
 				trigger_event_non_silently = amirs_regency.205
+			}
+		}
+		else_if = {
+			limit = { scope:winner = { ulus_is_an_outside_chinggisid = yes } }
+			save_scope_as = ulus_beaten_regent
+			scope:winner = {
+				ulus_outside_khan_invests_a_prince = yes
 			}
 		}
 	}

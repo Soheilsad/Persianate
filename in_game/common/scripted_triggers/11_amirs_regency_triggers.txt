@@ -169,3 +169,31 @@ is_of_chinggis_line = {
 	is_patrilineal_descendant_of = dynasty:borjigin_dynasty
 	NOT = { dynasty ?= dynasty:barlas_dynasty }
 }
+
+
+# COUNTRY scope. A khan of CHAGHATAY's house: the eastern khanate that
+# broke away, or a house of the ulus whose ruler is of the line. Only
+# such a realm becomes the seat of the ulus by beating the keeper of a
+# khan ("One Khan Again", amirs_regency.205). Until 2026-11-18 the test
+# was "ruler is a Borjigin" alone, and in the author's campaign the
+# Yuan emperor, a Toluid in Dadu, beat a regent and became the khan of
+# the Chaghatay, with the amirs mustering for him.
+ulus_is_a_chaghatayid_khan = {
+	OR = {
+		has_variable = ulus_eastern_khanate_realm
+		AND = {
+			is_ulus_chaghatay_member = yes
+			ulus_ruler_is_of_the_line = yes
+		}
+	}
+}
+
+# COUNTRY scope. A Chinggisid power from OUTSIDE the ulus (the Yuan,
+# the Golden Horde, a restored Ilkhan). Beating the keeper does not make
+# it khan of the Chaghatay: it raises a prince of its own house there,
+# who holds the ulus of it as a share (amirs_regency.206).
+ulus_is_an_outside_chinggisid = {
+	NOT = { ulus_is_a_chaghatayid_khan = yes }
+	NOT = { is_ulus_chaghatay_member = yes }
+	ulus_ruler_is_of_the_line = yes
+}
