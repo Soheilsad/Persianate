@@ -931,6 +931,15 @@ matter_of_tork.95 = {
 	outcome = positive
 
 	immediate = {
+		# A DURABLE mark that the Matter was closed by a settlement.
+		# matter_tork_answer_given is cleared when the disaster is
+		# cleaned up, and matter_of_tork_resolved is set only on the
+		# blood routes, so until 2026-11-19 nothing recorded this
+		# ending, and the Persia formable (formable_countries/
+		# persia.txt), which asks whether the Matter is resolved,
+		# refused every ruler who had settled it peacefully while
+		# accepting one who had crushed a defection.
+		set_variable = matter_of_tork_answered
 		if = {
 			limit = { has_variable = matter_tork_path_dissolve_done }
 			add_legitimacy = 10

@@ -39,7 +39,18 @@ REPLACE:IRA_f = {
 			text = ira_f_matter_tt
 			OR = {
 				AND = {
-					has_variable = matter_of_tork_resolved
+					OR = {
+						# fought out (a defection crushed) or dissolved
+						# by demography
+						has_variable = matter_of_tork_resolved
+						# closed by settlement: The Answer Is Given with
+						# at least one path completed (matter_of_tork.95)
+						has_variable = matter_of_tork_answered
+						# the Qizilbash synthesis, which answers both
+						# questions at once (the legitimacy clause above
+						# already accepts it; this one did not)
+						has_variable = matter_of_tork_resolved_by_synthesis
+					}
 					NOT = { has_country_modifier = matter_turk_defection_scar }
 				}
 				AND = {
