@@ -25,6 +25,14 @@ SRC_DIR="${SRC_DIR:-$MOD_DIR}"
 STEAM_USER="soheils"
 CHANGENOTE="${1:-Mod update}"
 DRY_RUN="${DRY_RUN:-0}"
+# Explicit mod version. Unset = bump the patch number as before.
+#   VERSION=0.6.0 ./tools/upload_better.sh "note"
+# sets metadata.json to exactly that (major.minor.patch) and uploads it.
+VERSION="${VERSION:-}"
+if [[ -n "$VERSION" && ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo "ABORT: VERSION must look like 0.6.0 (got '$VERSION')" >&2
+    exit 1
+fi
 STAGING_ROOT="/Users/mohammadsoheilsadabadi/Documents/mod_staging"
 
 # Whitelist: only these are actual mod content. Everything else in MOD_DIR
@@ -61,22 +69,30 @@ trap cleanup EXIT
 # previews don't inflate the version. Regex over a JSON parser to preserve the
 # file's tab indentation and field ordering.
 if [[ "$DRY_RUN" != "1" ]]; then
-    python3 - "$META_JSON" <<'PY'
+    python3 - "$META_JSON" "$VERSION" <<'PY'
 import re, sys
-path = sys.argv[1]
+path, explicit = sys.argv[1], sys.argv[2]
 with open(path) as f:
     s = f.read()
 m = re.search(r'("version"\s*:\s*")(\d+)\.(\d+)\.(\d+)(")', s)
 if not m:
     sys.exit("metadata.json: version field not found")
-major, minor, patch = int(m.group(2)), int(m.group(3)), int(m.group(4)) + 1
-s = s[:m.start()] + f'{m.group(1)}{major}.{minor}.{patch}{m.group(5)}' + s[m.end():]
+old = f"{m.group(2)}.{m.group(3)}.{m.group(4)}"
+if explicit:
+    new = explicit
+else:
+    new = f"{int(m.group(2))}.{int(m.group(3))}.{int(m.group(4)) + 1}"
+s = s[:m.start()] + f'{m.group(1)}{new}{m.group(5)}' + s[m.end():]
 with open(path, "w") as f:
     f.write(s)
-print(f"version bumped to {major}.{minor}.{patch}")
+print(f"version {old} -> {new}" + (" (explicit)" if explicit else " (patch bump)"))
 PY
 else
-    echo "dry-run: skipping version bump"
+    if [[ -n "$VERSION" ]]; then
+        echo "dry-run: would set version to $VERSION (not written)"
+    else
+        echo "dry-run: skipping version bump"
+    fi
 fi
 
 # iCloud conflict copies ("06_pops 2.txt") load as extra files and stack
