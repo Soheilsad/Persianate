@@ -97,6 +97,20 @@ REPLACE:rise_of_the_ottomans = {
 					at_war = no
 				}
 			}
+			# THE MARCHES ARE GATHERED: the strongest beylik holds most of
+			# Anatolia. It does not have to be a world empire first
+			# (scripted_triggers/02, rum_holds_anatolia).
+			AND = {
+				country_exists = var:strongest_beylik_variable
+				custom_tooltip = {
+					text = strongest_beylik_holds_anatolia_tt
+					var:strongest_beylik_variable = {
+						is_subject = no
+						at_war = no
+						rum_holds_anatolia = yes
+					}
+				}
+			}
 		}
 	}
 
@@ -422,6 +436,9 @@ REPLACE:rise_of_the_ottomans = {
 								var:strongest_beylik_variable ?= {
 									num_locations < 500
 									num_of_non_rural < 50
+									# a realm that holds Anatolia has not
+									# failed for want of an empire
+									NOT = { rum_holds_anatolia = yes }
 								}
 							}
 							NOT = {

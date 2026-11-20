@@ -50,6 +50,12 @@ persianate_bureaucracy_reform = {
 				NOR = {
 					has_variable = rum_diwan_restored
 					is_member_of_international_organization = international_organization:eranzamin
+					# ... and keeps it when the organisation is gone:
+					# every member is marked as it dissolves
+					# (situations/01_eranzamin_succession.txt, on_ending).
+					# Without this the Eretnids lost their chancery the
+					# day the succession resolved.
+					has_variable = eranzamin_chancery_inherited
 				}
 			}
 		}

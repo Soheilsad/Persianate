@@ -68,3 +68,26 @@ controls_eranzamin_key_cities = {
 	# City of literature
 	owns = location:shiraz
 }
+
+
+# COUNTRY scope. This realm, with its subjects, holds at least seven
+# tenths of the locations of Anatolia. The win condition of Shattered
+# Rum (situations/03_shattered_rum.txt): base's own bar, kept there as
+# an alternative, is 500 locations, more than all Anatolia has (about
+# 360), so a power that gathered every march could not end the
+# situation before its 1565 timeout (author's campaign, Eretnids,
+# 2026-11-19).
+rum_holds_anatolia = {
+	save_temporary_scope_as = rum_gatherer
+	region:anatolia_region = {
+		any_location_in_region = {
+			percent >= 0.7
+			owner ?= {
+				OR = {
+					this = scope:rum_gatherer
+					is_subject_of = scope:rum_gatherer
+				}
+			}
+		}
+	}
+}

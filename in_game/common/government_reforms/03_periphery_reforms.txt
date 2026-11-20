@@ -179,6 +179,15 @@ yemeni_chancery = {
 	age = age_1_traditions
 	potential = {
 		government_type = government_type:persianate_sultanate   # was offered to the Zaydi Imam at start
+		# Only in Arabia, or by the Zaydi imam's transformation
+		# (scripted_effects/11_zaydi_effects.txt). It had no gate at
+		# all, and in the author's campaign the Eretnids of Sivas,
+		# having lost the Iranian chancery, took the Rasulid one
+		# (2026-11-19).
+		OR = {
+			capital ?= { region = region:arabia_region }
+			has_variable = imams_house_proclaimed
+		}
 		NOT = { has_reform = government_reform:indian_sultanate_reform }
 		NOT = { has_reform = government_reform:mamluk_government}
 		NOT = { has_reform = government_reform:persianate_bureaucracy_reform }

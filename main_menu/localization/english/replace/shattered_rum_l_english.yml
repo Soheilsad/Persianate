@@ -153,3 +153,4 @@
  rum_consolidate_no_provinces: "No conquered Anatolian province to consolidate."
  AUTO_MODIFIER_NAME_rum_march_without_mandate: "March Without a Mandate"
  AUTO_MODIFIER_DESC_rum_march_without_mandate: "The Īlkhān who confirmed this house in its march is gone, and the house has claimed nothing in his place: no ghazā, no Konya. Every month without an answer, the begs' oaths mean a little less. Adopt the Ghāzī Sultanate or declare the Seljuk claim to stop the bleeding."
+ strongest_beylik_holds_anatolia_tt: "The strongest beylik is independent, at peace, and holds (with its subjects) at least seven tenths of Anatolia"

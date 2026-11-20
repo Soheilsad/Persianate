@@ -632,12 +632,6 @@ ilkhanate_flavor.99 = {
 		add_stability = -10
 		
 		# Shattered Administration
-		every_province = {
-			limit = { is_eranzamin_region_province = yes }
-			add_province_modifier = {
-				modifier = shattered_administration_mod
-				years = 50
-			}
-		}
+		custom_tooltip = eranzamin_dream_dies_tt
 	}
 }

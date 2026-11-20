@@ -153,27 +153,45 @@ eranzamin_succession = {
 			set_variable = eranzamin_succession_victor
 		}
 
-		# Timeout check. The situation's on_monthly runs in SITUATION
-		# scope — the event needs a country, so fan out over the IO's
-		# members (log fix: "expected scope 'country', got 'situation'").
-		if = {
-			limit = { current_year > 1550 }
-			international_organization:eranzamin ?= {
-				every_international_organization_member = {
-					trigger_event_non_silently = ilkhanate_flavor.99
-				}
-			}
-		}
+		# (The timeout's telling moved to on_ended: it was tested here for
+		# a year a century after the situation's own end.)
 	}
-
 	# Mark resolved BEFORE on_ended runs. The eranzamin IO reads this
 	# global as its auto_disband trigger.
 	on_ending = {
+		# The Ilkhanid apparatus stays with those who had it by
+		# membership (government_reforms/01, persianate_bureaucracy_reform).
+		international_organization:eranzamin ?= {
+			every_international_organization_member = {
+				set_variable = eranzamin_chancery_inherited
+			}
+		}
 		set_global_variable = eranzamin_succession_resolved
 	}
 
 	on_ended = {
 		remove_succession_mod_effect = yes
+		# NO VICTOR: the dream dies. Every contender is told, and the
+		# administration of the old realm is left broken for fifty years
+		# (once, here; the event used to do it once per member).
+		if = {
+			limit = {
+				NOT = {
+					any_country = { has_variable = eranzamin_succession_victor }
+				}
+			}
+			every_province = {
+				limit = { is_eranzamin_region_province = yes }
+				add_province_modifier = {
+					modifier = shattered_administration_mod
+					years = 50
+				}
+			}
+			every_country = {
+				limit = { has_variable = eranzamin_contender }
+				trigger_event_non_silently = ilkhanate_flavor.99
+			}
+		}
 		every_country = {
 			limit = { has_variable = eranzamin_contender }
 			remove_variable = eranzamin_contender
