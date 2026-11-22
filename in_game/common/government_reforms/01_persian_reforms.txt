@@ -734,10 +734,11 @@ mushasha_messianism = {
 		# Shattered Rum); it had no condition but exclusions.
 		# The Mushaʿshaʿ of Hoveyzeh (from 1436): Muhammad b. Falāh's
 		# messianism among the Arab tribes of Khuzestan and lower Iraq.
-		# Any Shīʿī state, anywhere, whose society leans to jurisprudence
-		# over mysticism (author's ruling, 2026-11-21).
+		# Any Shīʿī state, anywhere, whose society leans to mysticism
+		# over jurisprudence (author's ruling, 2026-11-21): the movement
+		# was ghulāt and charismatic, denounced by the Hilla jurists.
 		religion = religion:shia
-		societal_value:mysticism_vs_jurisprudence > 0
+		societal_value:mysticism_vs_jurisprudence < 0
 	}
 
 	country_modifier = {
