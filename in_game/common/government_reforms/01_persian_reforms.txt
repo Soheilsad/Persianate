@@ -504,9 +504,21 @@ timurid_synthesis = {
 		NOT = { has_reform = government_reform:turkmen_confederation }
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:dar_al_jihad }
-		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:tariqa_order }
-
+		# GATED 2026-11-21. A player's Ottoman campaign found this reform
+		# open to every Persianate sultanate (the Ottomans are one after
+		# Shattered Rum); it had no condition but exclusions.
+		# The Timurid synthesis is Herat's under Shāhrukh and Husayn
+		# Bāyqarā: a Chaghatay Turk military class over a Tāzīk chancery,
+		# under a house that claims Temür. It went with his heirs (Bābur
+		# took it to Hindustan), not to every sultan of the age.
+		OR = {
+			tag = TIM
+			tag = MUG
+			has_variable = ulus_sahib_qiran		# the mod's Sāhib-qirān and his heirs
+			culture = culture:chaghatay_culture
+			ruler ?= { dynasty ?= dynasty:barlas_dynasty }
+		}
 	}
 
 	country_modifier = {
@@ -539,6 +551,19 @@ turkmen_confederation = {
 		NOT = { has_reform = government_reform:iranian_kingship }
 		NOT = { has_reform = government_reform:dar_al_jihad }
 		NOT = { has_reform = government_reform:tariqa_order }
+		# GATED 2026-11-21. A player's Ottoman campaign found this reform
+		# open to every Persianate sultanate (the Ottomans are one after
+		# Shattered Rum); it had no condition but exclusions.
+		# The Qara Qoyunlu and the Aq Qoyunlu: confederations of Oghuz
+		# Türkmen tribes ruling from Tabrēz, Van, Diyarbakr and Baghdad.
+		# A Türkmen house seated in Ērānzamīn, eastern Anatolia
+		# (Cappadocia, the Armenian highlands), the Jazira or Iraq; not
+		# the Ottomans at Bursa or a western beylik.
+		OR = {
+			culture = culture:turkmen_culture
+			culture = culture:turkoman_culture
+		}
+		capital ?= { is_eranzamin_region_province = yes }
 	}
 
 	country_modifier = {
@@ -704,7 +729,19 @@ mushasha_messianism = {
 	government = persianate_sultanate
 
 	potential = {
-		religion.group = religion_group:muslim
+		# GATED 2026-11-21. A player's Ottoman campaign found this reform
+		# open to every Persianate sultanate (the Ottomans are one after
+		# Shattered Rum); it had no condition but exclusions.
+		# The Mushaʿshaʿ of Hoveyzeh (from 1436): Muhammad b. Falāh's
+		# ghulāt Shīʿī messianism among the Arab tribes of Khuzestan and
+		# the marshes of lower Iraq. Shīʿī, and seated there.
+		religion = religion:shia
+		capital ?= {
+			OR = {
+				area = area:khuzestan_area
+				area = area:iraq_arabi_area
+			}
+		}
 	}
 
 	country_modifier = {
@@ -732,6 +769,24 @@ mushasha_messianism = {
 sahib_qiran = {
 	age = age_2_renaissance
 	government = persianate_sultanate
+
+	potential = {
+		# GATED 2026-11-21. A player's Ottoman campaign found this reform
+		# open to every Persianate sultanate (the Ottomans are one after
+		# Shattered Rum); it had no condition but exclusions.
+		# "Lord of the Auspicious Conjunction": Temür's title, then claimed
+		# by the great Muslim conquerors after him (Süleyman as sāhib-
+		# kırān, Shāh Jahān as the "second" one). The mod's Sāhib-qirān
+		# and his heirs, or a Muslim empire that can make the claim good.
+		OR = {
+			tag = TIM
+			has_variable = ulus_sahib_qiran
+			AND = {
+				religion.group = religion_group:muslim
+				country_rank_level >= 4
+			}
+		}
+	}
 
 	country_modifier = {
 		land_morale = 0.05
