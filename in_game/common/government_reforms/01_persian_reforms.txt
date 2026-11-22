@@ -733,15 +733,12 @@ mushasha_messianism = {
 		# open to every Persianate sultanate (the Ottomans are one after
 		# Shattered Rum); it had no condition but exclusions.
 		# The Mushaʿshaʿ of Hoveyzeh (from 1436): Muhammad b. Falāh's
-		# ghulāt Shīʿī messianism among the Arab tribes of Khuzestan and
-		# the marshes of lower Iraq. Shīʿī, and seated there.
+		# messianism among the Arab tribes of Khuzestan and lower Iraq.
+		# Any Shīʿī state, anywhere, whose society leans to jurisprudence
+		# over mysticism (author, 2026-11-21: the claim is made against
+		# an established juristic order, so it needs one to stand on).
 		religion = religion:shia
-		capital ?= {
-			OR = {
-				area = area:khuzestan_area
-				area = area:iraq_arabi_area
-			}
-		}
+		societal_value:mysticism_vs_jurisprudence > 0
 	}
 
 	country_modifier = {
