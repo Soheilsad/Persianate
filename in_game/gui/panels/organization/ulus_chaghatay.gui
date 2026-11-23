@@ -1176,6 +1176,84 @@ organization_geodiplomatic_theme = {
 						}
 					}
 
+					text_single = {
+						visible = "[Not(IsDataModelEmpty(GetGlobalList('ulus_decree_obeyers')))]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_DECREE_OBEYERS"
+						default_format = "#subtle_name"
+						tooltip = "ULUS_DECREE_LISTS_TT"
+					}
+					dynamicgridbox = {
+						flipdirection = yes
+						datamodel_wrap = 2
+						datamodel = "[GetGlobalList('ulus_decree_obeyers')]"
+						item = {
+							widget = {
+								datacontext = "[Scope.GetCountry]"
+								size = { 235 26 }
+								tooltip = "ULUS_DEFIANT_ROW_TT"
+								country_flag_small = {
+									parentanchor = left|vcenter
+								}
+								text_single = {
+									parentanchor = left|vcenter
+									position = { 42 0 }
+									size = { 140 24 }
+									autoresize = no
+									align = left|nobaseline
+									text = "[Country.GetName]"
+								}
+								text_single = {
+									parentanchor = right|vcenter
+									position = { -6 0 }
+									size = { 44 24 }
+									autoresize = no
+									align = right|nobaseline
+									text = "[Country.MakeScope.GetVariable('ulus_decree_margin').GetValue|1+=]"
+								}
+							}
+						}
+					}
+					text_single = {
+						visible = "[Not(IsDataModelEmpty(GetGlobalList('ulus_decree_refusers')))]"
+						layoutpolicy_horizontal = expanding
+						align = left|nobaseline
+						text = "ULUS_DECREE_REFUSERS"
+						default_format = "#subtle_name"
+						tooltip = "ULUS_DECREE_LISTS_TT"
+					}
+					dynamicgridbox = {
+						flipdirection = yes
+						datamodel_wrap = 2
+						datamodel = "[GetGlobalList('ulus_decree_refusers')]"
+						item = {
+							widget = {
+								datacontext = "[Scope.GetCountry]"
+								size = { 235 26 }
+								tooltip = "ULUS_DEFIANT_ROW_TT"
+								country_flag_small = {
+									parentanchor = left|vcenter
+								}
+								text_single = {
+									parentanchor = left|vcenter
+									position = { 42 0 }
+									size = { 140 24 }
+									autoresize = no
+									align = left|nobaseline
+									text = "[Country.GetName]"
+								}
+								text_single = {
+									parentanchor = right|vcenter
+									position = { -6 0 }
+									size = { 44 24 }
+									autoresize = no
+									align = right|nobaseline
+									text = "[Country.MakeScope.GetVariable('ulus_decree_margin').GetValue|1+=]"
+								}
+							}
+						}
+					}
 					# The houses in open defiance.
 					text_single = {
 						visible = "[Not(IsDataModelEmpty(GetGlobalList('ulus_defiant_houses')))]"

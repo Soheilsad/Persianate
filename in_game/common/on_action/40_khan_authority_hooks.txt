@@ -117,3 +117,21 @@ ulus_one_khan_pulse = {
 		}
 	}
 }
+
+
+# ---game start --------------------------------------------------------
+on_game_start = {
+	on_actions = {
+		ulus_authority_start
+	}
+}
+ulus_authority_start = {
+	effect = {
+		international_organization:ulus_chaghatay ?= {
+			if = {
+				limit = { NOT = { has_variable = ulus_authority } }
+				ulus_authority_init = yes
+			}
+		}
+	}
+}

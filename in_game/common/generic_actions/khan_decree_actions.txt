@@ -61,25 +61,6 @@ ulus_decree_1 = {
 	effect = {
 		custom_tooltip = ulus_decree_1_effect_tt
 		custom_tooltip = ulus_decree_reckoning_tt
-		# House by house, what each will answer (tooltip).
-		show_as_tooltip = {
-			international_organization:ulus_chaghatay ?= {
-				every_international_organization_member = {
-					limit = {
-						ulus_house_is_asked = yes
-						has_variable = ulus_would_obey
-					}
-					custom_tooltip = ulus_decree_house_obeys_tt
-				}
-				every_international_organization_member = {
-					limit = {
-						ulus_house_is_asked = yes
-						NOT = { has_variable = ulus_would_obey }
-					}
-					custom_tooltip = ulus_decree_house_defies_tt
-				}
-			}
-		}
 		if = {
 			limit = {
 				international_organization:ulus_chaghatay ?= { var:ulus_decree_against > var:ulus_decree_for }
@@ -216,25 +197,6 @@ ulus_decree_2 = {
 	effect = {
 		custom_tooltip = ulus_decree_2_effect_tt
 		custom_tooltip = ulus_decree_reckoning_tt
-		# House by house, what each will answer (tooltip).
-		show_as_tooltip = {
-			international_organization:ulus_chaghatay ?= {
-				every_international_organization_member = {
-					limit = {
-						ulus_house_is_asked = yes
-						has_variable = ulus_would_obey
-					}
-					custom_tooltip = ulus_decree_house_obeys_tt
-				}
-				every_international_organization_member = {
-					limit = {
-						ulus_house_is_asked = yes
-						NOT = { has_variable = ulus_would_obey }
-					}
-					custom_tooltip = ulus_decree_house_defies_tt
-				}
-			}
-		}
 		if = {
 			limit = {
 				international_organization:ulus_chaghatay ?= { var:ulus_decree_against > var:ulus_decree_for }
@@ -371,25 +333,6 @@ ulus_decree_3 = {
 	effect = {
 		custom_tooltip = ulus_decree_3_effect_tt
 		custom_tooltip = ulus_decree_reckoning_tt
-		# House by house, what each will answer (tooltip).
-		show_as_tooltip = {
-			international_organization:ulus_chaghatay ?= {
-				every_international_organization_member = {
-					limit = {
-						ulus_house_is_asked = yes
-						has_variable = ulus_would_obey
-					}
-					custom_tooltip = ulus_decree_house_obeys_tt
-				}
-				every_international_organization_member = {
-					limit = {
-						ulus_house_is_asked = yes
-						NOT = { has_variable = ulus_would_obey }
-					}
-					custom_tooltip = ulus_decree_house_defies_tt
-				}
-			}
-		}
 		if = {
 			limit = {
 				international_organization:ulus_chaghatay ?= { var:ulus_decree_against > var:ulus_decree_for }
@@ -526,25 +469,6 @@ ulus_decree_4 = {
 	effect = {
 		custom_tooltip = ulus_decree_4_effect_tt
 		custom_tooltip = ulus_decree_reckoning_tt
-		# House by house, what each will answer (tooltip).
-		show_as_tooltip = {
-			international_organization:ulus_chaghatay ?= {
-				every_international_organization_member = {
-					limit = {
-						ulus_house_is_asked = yes
-						has_variable = ulus_would_obey
-					}
-					custom_tooltip = ulus_decree_house_obeys_tt
-				}
-				every_international_organization_member = {
-					limit = {
-						ulus_house_is_asked = yes
-						NOT = { has_variable = ulus_would_obey }
-					}
-					custom_tooltip = ulus_decree_house_defies_tt
-				}
-			}
-		}
 		if = {
 			limit = {
 				international_organization:ulus_chaghatay ?= { var:ulus_decree_against > var:ulus_decree_for }
@@ -681,25 +605,6 @@ ulus_decree_5 = {
 	effect = {
 		custom_tooltip = ulus_decree_5_effect_tt
 		custom_tooltip = ulus_decree_reckoning_tt
-		# House by house, what each will answer (tooltip).
-		show_as_tooltip = {
-			international_organization:ulus_chaghatay ?= {
-				every_international_organization_member = {
-					limit = {
-						ulus_house_is_asked = yes
-						has_variable = ulus_would_obey
-					}
-					custom_tooltip = ulus_decree_house_obeys_tt
-				}
-				every_international_organization_member = {
-					limit = {
-						ulus_house_is_asked = yes
-						NOT = { has_variable = ulus_would_obey }
-					}
-					custom_tooltip = ulus_decree_house_defies_tt
-				}
-			}
-		}
 		if = {
 			limit = {
 				international_organization:ulus_chaghatay ?= { var:ulus_decree_against > var:ulus_decree_for }

@@ -73,8 +73,7 @@ ulus_change_authority = {
 ulus_authority_monthly = {
 	if = {
 		limit = { NOT = { has_variable = ulus_authority } }
-		set_variable = { name = ulus_authority value = ulus_authority_start }
-		set_variable = { name = ulus_decree_level value = 0 }
+		ulus_authority_init = yes
 	}
 	if = {
 		limit = { ulus_khan_may_decree = yes }
@@ -138,6 +137,10 @@ ulus_authority_ledger = {
 	set_local_variable = { name = ulus_dfor value = 0 }
 	set_local_variable = { name = ulus_dagainst value = 0 }
 	clear_global_variable_list = ulus_defiant_houses
+	clear_global_variable_list = ulus_decree_obeyers
+	clear_global_variable_list = ulus_decree_refusers
+	set_local_variable = { name = ulus_nobey value = 0 }
+	set_local_variable = { name = ulus_nrefuse value = 0 }
 	if = {
 		limit = {
 			has_variable = ulus_authority
@@ -165,18 +168,24 @@ ulus_authority_ledger = {
 			else_if = {
 				limit = { var:ulus_decree_margin >= 0 }
 				set_variable = ulus_would_obey
+				add_to_global_variable_list = { name = ulus_decree_obeyers target = this }
+				change_local_variable = { name = ulus_nobey add = 1 }
 				if = {
 					limit = { has_variable = ulus_weight_eff }
 					change_local_variable = { name = ulus_dfor add = var:ulus_weight_eff }
 				}
 			}
 			else = {
+				add_to_global_variable_list = { name = ulus_decree_refusers target = this }
+				change_local_variable = { name = ulus_nrefuse add = 1 }
 				if = {
 					limit = { has_variable = ulus_weight_eff }
 					change_local_variable = { name = ulus_dagainst add = var:ulus_weight_eff }
 				}
 			}
 		}
+		set_variable = { name = ulus_decree_obey_count value = local_var:ulus_nobey }
+		set_variable = { name = ulus_decree_refuse_count value = local_var:ulus_nrefuse }
 		set_variable = { name = ulus_decree_for value = local_var:ulus_dfor }
 		set_variable = { name = ulus_decree_against value = local_var:ulus_dagainst }
 		set_variable = { name = ulus_bar_needed value = ulus_regency_amir_ratio_now }
@@ -493,4 +502,16 @@ ulus_one_khan_claims = {
 			}
 		}
 	}
+}
+
+
+# IO scope: the meter is set up (game start, or the first month of a
+# save made before it existed) and the reckoning drawn up at once, so
+# the panel and the decree tooltips are never read before it exists.
+ulus_authority_init = {
+	set_variable = { name = ulus_authority value = ulus_authority_start }
+	set_variable = { name = ulus_decree_level value = 0 }
+	set_variable = { name = ulus_authority_month value = 0 }
+	ulus_change_authority = { AMOUNT = 0 }
+	ulus_chaghatay_rebuild_ledger = yes
 }
